@@ -1,0 +1,29 @@
+{
+  "id": "story_1",
+  "title": {
+    "vi": "Thanh Phong Kiếm Ý",
+    "en": "The Whispering Blade"
+  },
+  "description": {
+    "vi": "Sinh ra là một {gender_term} tại Làng Tàn Kiếm cổ kính, nơi sương mù lạnh buốt vây quanh những thanh phế kiếm cắm đầy sườn núi, bạn từ nhỏ đã mang trong mình {spiritualRoot}. Khi những đứa trẻ khác chơi đùa với đất cát, bạn lại bị thu hút bởi những mảnh vụn kim khí rỉ sét vang lên tiếng oanh oanh khe khẽ. \n\nSuốt mười năm đầu đời, bạn lặng lẽ rèn luyện ngón tay chạm vào kim loại, cảm nhận linh lực thổ nạp chạy dọc huyết mạch. Bạn học cách nghe thấy kiếm oanh oanh réo gọi trong gió tuyết, tôi luyện ý chí sắt đá chịu đựng sương giá lạnh xương tủy. \n\nVào năm {starting_age} tuổi, tuyển trạch sứ của Kiếm Tông du hành qua làng. Giữa hàng trăm thiếu niên thử thách rút Kiếm Thạch, duy chỉ có bạn rút ra một thanh phế kiếm rỉ sét vang lên âm thanh vù vù cộng hưởng cùng linh căn chi lực. Bạn chính thức được đưa về sơn môn, bước vào hàng ngũ Đệ Tử Ngoại Môn của Kiếm Tông, gánh vác tu chân nghịch thiên cải mệnh!",
+    "en": "Born as a {gender_term} in the ancient Ruined Sword Village, where chilling mists shroud shattered blades stuck across the mountain ridges, you possessed the rare {spiritualRoot} since birth. While other children played in the dirt, you were drawn to rusted metal fragments humming faintly in the wind.\n\nFor your first ten years, you quietly refined your touch, learning to feel the elemental flows through your veins. You learned to listen to the whispers of swords in the winter storms, forging a steel-like will in the freezing cold.\n\nAt age {starting_age}, recruiters from the legendary Sword Sect passed through the village. Among hundreds of youths attempting to draw from the Sword Stone, only you drew a rusted blade that resonated with your spiritual root. You were taken back to the mountain, officially entering the ranks of Outer Disciples!"
+  },
+  "choices": [
+    {
+      "id": "begin_journey",
+      "text": {
+        "vi": "Bắt đầu hành trình",
+        "en": "Begin Journey"
+      },
+      "effects": {
+        "cultivation": 3,
+        "daoHeart": 3,
+        "health": 2,
+        "gainFragment": {
+          "techniqueId": "sword",
+          "amount": 1
+        }
+      }
+    }
+  ]
+}

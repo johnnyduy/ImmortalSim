@@ -1,0 +1,246 @@
+[
+  {
+    "id": "quest_mine_ore",
+    "title": {
+      "vi": "Đào Quặng Linh Hầm",
+      "en": "Mine Spirit Ore"
+    },
+    "description": {
+      "vi": "Khai thác linh quặng thô dưới hầm mỏ sâu tối tăm. Công việc nặng nhọc đòi hỏi khí huyết dồi dào để chống chọi nguy cơ sập hầm.",
+      "en": "Mine raw spirit ore deep in dark tunnels. Heavy labor requiring healthy vitality to survive cave-ins."
+    },
+    "difficulty": "Hoàng",
+    "durationMonths": 3,
+    "minRank": "ngoại_môn",
+    "checkStat": "health",
+    "checkValue": 15,
+    "rewards": {
+      "contribution": 20,
+      "gold": 15,
+      "item": {
+        "itemId": "item_linh_quang",
+        "quantity": 2
+      }
+    },
+    "progressLogs": {
+      "vi": [
+        "Bạn vác cuốc sắt tiến sâu vào linh quặng hầm âm u.",
+        "Tiếng búa đục đá vang vọng cơ hồ chấn động trần hầm mỏ.",
+        "Tìm thấy những quặng tinh thạch lấp lánh rực rỡ dưới lớp bùn đất."
+      ],
+      "en": [
+        "You carry the pickaxe deep into the dark spirit mine.",
+        "The sound of pickaxes echoes, shaking the ceiling of the mine.",
+        "You locate sparkling crystals shining under the clay mud."
+      ]
+    }
+  },
+  {
+    "id": "quest_harvest_herbs",
+    "title": {
+      "vi": "Hái Linh Thảo Dược Viên",
+      "en": "Harvest Spirit Herbs"
+    },
+    "description": {
+      "vi": "Thu hoạch linh dược quý chín tới tại dược viên của sơn môn. Cần Ngộ tính cao để nhận biết dược thảo hoặc Vận may tốt để tránh hái nhầm cỏ dại vô ích.",
+      "en": "Harvest spiritual herbs in the sect garden. Requires comprehension or luck to spot and gather mature variants safely."
+    },
+    "difficulty": "Hoàng",
+    "durationMonths": 3,
+    "minRank": "ngoại_môn",
+    "checkStat": "comprehension",
+    "checkValue": 8,
+    "rewards": {
+      "contribution": 20,
+      "gold": 10,
+      "item": {
+        "itemId": "item_linh_thao",
+        "quantity": 3
+      }
+    },
+    "progressLogs": {
+      "vi": [
+        "Bạn dạo quanh dược viên xanh mướt đầy linh thảo tươi mát.",
+        "Cẩn thận nhổ rễ tinh thảo chín tới để bảo tồn dược hiệu tốt nhất.",
+        "Phân loại linh thảo thô đưa về kho đan dược tông môn."
+      ],
+      "en": [
+        "You wander the lush herb garden smelling sweet spirit herbs.",
+        "Carefully extract mature herbs to preserve their properties.",
+        "Classify the herbs and deliver them to the sect apothecary."
+      ]
+    }
+  },
+  {
+    "id": "quest_beast_care",
+    "title": {
+      "vi": "Chăn Nuôi Linh Thú",
+      "en": "Care for Spirit Beasts"
+    },
+    "description": {
+      "vi": "Chăm sóc nuôi dưỡng các linh thú tại Thú Viên. Yêu cầu Đạo tâm vững vàng hoặc Vận may tốt để tránh thú dữ nổi điên cắn xé mất HP.",
+      "en": "Care for spirit beasts in the sect beast pen. Requires high Dao Heart or luck to avoid vicious bites."
+    },
+    "difficulty": "Hoàng",
+    "durationMonths": 4,
+    "minRank": "ngoại_môn",
+    "checkStat": "daoHeart",
+    "checkValue": 10,
+    "rewards": {
+      "contribution": 25,
+      "gold": 12,
+      "item": {
+        "itemId": "item_than_cot",
+        "quantity": 1
+      }
+    },
+    "progressLogs": {
+      "vi": [
+        "Bạn cho linh thú ăn hoa quả và quét dọn sạch sẽ thú chuồng.",
+        "Một con linh thú nghịch ngợm nổi điên gầm gừ giương vuốt sắc.",
+        "Nhờ có đạo tâm điềm tĩnh, bạn thuần phục thú dữ ngoan ngoãn trở lại."
+      ],
+      "en": [
+        "You feed the beasts and clean the beast pens.",
+        "A mischievous spirit beast growls and flashes its iron claws.",
+        "Thanks to a calm Dao Heart, you soothe the beast and complete chores."
+      ]
+    }
+  },
+  {
+    "id": "quest_patrol",
+    "title": {
+      "vi": "Tuần Tra & Trị An Ngoại Môn",
+      "en": "Outer Sect Patrol & Security"
+    },
+    "description": {
+      "vi": "Tuần tra biên cảnh sơn môn đề phòng tà tu ma đạo rình mò xâm nhập. Đòi hỏi Chiến lực tốt tự vệ hoặc Ngộ tính nhìn thấu ngụy trang.",
+      "en": "Patrol borders and guard gates against demonic cultivators. Requires high Combat Power or Comprehension."
+    },
+    "difficulty": "Huyền",
+    "durationMonths": 4,
+    "minRank": "nội_môn",
+    "checkStat": "combatPower",
+    "checkValue": 35,
+    "rewards": {
+      "contribution": 55,
+      "gold": 20
+    },
+    "progressLogs": {
+      "vi": [
+        "Bạn lặng lẽ đi qua rừng trúc mờ sương, cảnh giác cao độ.",
+        "Đụng độ một đám tà tu che mặt định thâm nhập sơn môn kết giới linh mạch.",
+        "Bạn phát kiếm khí cùng các sư huynh đệ đẩy lùi ma đạo xâm nhập."
+      ],
+      "en": [
+        "You patrol through the misty bamboo forest on high alert.",
+        "You encounter masked figures attempting to infiltrate the array.",
+        "You gather sword Qi and drive away the spies with your squad."
+      ]
+    }
+  },
+  {
+    "id": "quest_logistics",
+    "title": {
+      "vi": "Phụ Việc Hậu Cần Sơn Môn",
+      "en": "Sect Logistics & Alchemy"
+    },
+    "description": {
+      "vi": "Hỗ trợ canh lò luyện đan và phân loại phế liệu hậu cần. Yêu cầu Ngộ tính cao canh lửa đan lò để đề phòng nổ lò tốn HP.",
+      "en": "Tend to the alchemy furnace fires and sort scraps. Requires high comprehension to avoid cauldron explosions."
+    },
+    "difficulty": "Huyền",
+    "durationMonths": 4,
+    "minRank": "nội_môn",
+    "checkStat": "comprehension",
+    "checkValue": 12,
+    "rewards": {
+      "contribution": 45,
+      "gold": 25,
+      "item": {
+        "itemId": "item_phe_dan",
+        "quantity": 2
+      }
+    },
+    "progressLogs": {
+      "vi": [
+        "Bạn ngồi bên lò luyện khổng lồ nóng rực, điều chỉnh đan hỏa thích hợp.",
+        "Lò đan rung chuyển liên tục, bạn vận dụng ngộ tính giữ cân bằng đan khí.",
+        "Đan lò thành công xuất phủ, thu hoạch được vài hạt đan dược phế phẩm linh khí dồi dào."
+      ],
+      "en": [
+        "You sit by the roaring furnace, regulating the heat carefully.",
+        "The cauldron vibrates, you apply comprehension to stabilize forces.",
+        "Alchemy complete. You recover scrap waste pills rich in spiritual energy."
+      ]
+    }
+  },
+  {
+    "id": "quest_diplomacy",
+    "title": {
+      "vi": "Ngoại Giao & Chấp Pháp Phàm Trần",
+      "en": "Sect Diplomacy & Taxing"
+    },
+    "description": {
+      "vi": "Xuống phàm trần thành thị thu nạp cống phẩm và chấp pháp. Đòi hỏi Vận may giao tế hoặc Lực chiến cao trấn áp tán tu cướp bóc.",
+      "en": "Collect taxes from mortals and enforce sect law. Requires Luck or Combat Power to handle rogue thieves."
+    },
+    "difficulty": "Địa",
+    "durationMonths": 5,
+    "minRank": "ngoại_môn",
+    "checkStat": "luck",
+    "checkValue": 12,
+    "rewards": {
+      "contribution": 60,
+      "gold": 120
+    },
+    "progressLogs": {
+      "vi": [
+        "Bạn tiến vào phàm trần thành trì thu cống vật từ phú thương.",
+        "Một băng nhóm tán tu giang hồ xuất hiện đòi cướp linh vật cống nạp.",
+        "Bạn trấn áp băng đảng tàn bạo thành công, bảo toàn cống phẩm tông môn."
+      ],
+      "en": [
+        "You enter the mortal city to collect tax from merchants.",
+        "A band of rogue cultivators block your way demanding tribute.",
+        "You suppress the thugs and secure the tribute for the sect."
+      ]
+    }
+  },
+  {
+    "id": "quest_cleanup",
+    "title": {
+      "vi": "Vệ Sinh Điểm Tử Chiến",
+      "en": "Battlefield Cemetery Cleanup"
+    },
+    "description": {
+      "vi": "Thanh tẩy ma khí dọn dẹp bãi tha ma chiến sự. Đòi hỏi Đạo tâm cực cao đề phòng ma khí xâm nhập tẩu hỏa nhập ma. (Chỉ mở khóa khi warLevel > 50).",
+      "en": "Purify demonic aura and clear battlefield graves. Requires high Dao Heart. (Only available when warLevel > 50)."
+    },
+    "difficulty": "Thiên",
+    "durationMonths": 5,
+    "minRank": "chân_truyền",
+    "checkStat": "daoHeart",
+    "checkValue": 20,
+    "rewards": {
+      "contribution": 80,
+      "gold": 40,
+      "item": {
+        "itemId": "item_oan_hon_chau",
+        "quantity": 1
+      }
+    },
+    "progressLogs": {
+      "vi": [
+        "Bạn bước vào bãi chiến trường hoang tàn ngập bóng ma và mùi xác thối.",
+        "Ma chướng âm u rít gào, bạn tụng trì chú ấn giữ vững tâm đài thanh tịnh.",
+        "Thu gom ma đạo phế vật xua tan ma chướng, giải tỏa linh oán thế giới."
+      ],
+      "en": [
+        "You enter the desolate battlefield filled with ghosts and stench.",
+        "Demonic spirits wail, you chant sutras to keep your mind pure.",
+        "Gather soul beads and crystalized blood, clearing the world's dark aura."
+      ]
+    }
+  }
+]

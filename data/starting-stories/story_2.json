@@ -1,0 +1,29 @@
+{
+  "id": "story_2",
+  "title": {
+    "vi": "U Minh Chi Hỏa",
+    "en": "U-Fire of the Dark Depths"
+  },
+  "description": {
+    "vi": "Từ khi lọt lòng, bạn đã là một {gender_term} tại Làng Hắc Thạch hoang tàn, một ngôi làng u ám vây quanh bởi những vách đá đen dựng đứng chứa ma độc. Nhờ có thiên phú {spiritualRoot}, bạn nhạy cảm vô cùng với nhiệt lượng ngầm luân chuyển dưới lòng đất sâu. Năm 6 tuổi, bạn tò mò bò vào hang động núi lửa nguội lạnh, vô tình tìm thấy u hỏa tím mang luồng linh lực quỷ dị. \n\nThay vì bị thiêu đốt, cơ thể bạn hấp thu ngọn lửa đó như một chất dinh dưỡng tự nhiên, tôi luyện huyết mạch u ám và làm dịu đi tính độc trong hồn cốt của bạn. Bạn lớn lên trong nghịch cảnh đó, học cách ẩn mình né tránh ma vật rình rập và giữ đầu óc lạnh lùng tàn nhẫn trước hiểm cảnh. \n\nVào năm {starting_age} tuổi, đại diện thu nhận đệ tử của Ma Đạo ghé thăm làng để tìm kiếm khí tức tà mị. Bạn bộc lộ khí tức lửa u linh thiêu đốt đá đen, lọt vào mắt xanh của trưởng lão. Bạn rời khỏi ngôi làng tăm tối, bước vào Ma Đạo tông môn làm đệ tử ngoại môn, chính thức bước vào con đường nghịch thiên!",
+    "en": "Since your birth, you were a {gender_term} in the desolate Black Stone Village, a dark settlement built around basalt cliffs seeped with toxic aura. Blessed with the rare {spiritualRoot}, you were highly sensitive to the geothermal heat in the deep caverns. At age 6, you wandered into a volcanic trench and found a mysterious purple demonic spark.\n\nInstead of burning you, your meridians absorbed it, refining your internal fire while balancing the poison in your veins. You grew up in this harsh environment, learning to hide from lurking spirits and keep a cold, scheming mind under pressure.\n\nAt age {starting_age}, recruiters from the Demonic Path swept through searching for dark talents. Sensing the netherworld fire inside you, they instantly claimed you. You left the gloomy valley to join the Sect as an Outer Disciple!"
+  },
+  "choices": [
+    {
+      "id": "begin_journey",
+      "text": {
+        "vi": "Bắt đầu hành trình",
+        "en": "Begin Journey"
+      },
+      "effects": {
+        "cultivation": 4,
+        "luck": 1,
+        "karma": -2,
+        "gainItem": {
+          "itemId": "item_nhien_huyet_dan",
+          "quantity": 1
+        }
+      }
+    }
+  ]
+}

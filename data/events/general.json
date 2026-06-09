@@ -1,0 +1,1059 @@
+[
+  {
+    "id": "waking_dawn",
+    "title": {
+      "en": "Waking Dawn",
+      "vi": "Bình Minh Thức Giấc"
+    },
+    "description": {
+      "en": "A cold dawn breaks. A choice appears: cultivate steadily or chase a risky shortcut.",
+      "vi": "Sương lạnh tan, một lựa chọn mở ra: tu luyện bền bỉ hay mạo hiểm nhảy vọt."
+    },
+    "minAge": 1,
+    "maxAge": 5,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steady_practice",
+        "text": {
+          "en": "Practice patiently, build your foundation.",
+          "vi": "Luyện tập kiên nhẫn, xây nền móng vững chắc."
+        },
+        "effects": {
+          "cultivation": 2,
+          "comprehension": 1,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "liet_duong_hoa",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "shortcut_burst",
+        "text": {
+          "en": "Use a risky shortcut to leap forward.",
+          "vi": "Dùng bước tắt mạo hiểm để tiến nhanh."
+        },
+        "effects": {
+          "cultivation": 5,
+          "luck": -2,
+          "health": -3,
+          "gainItem": {
+            "itemId": "item_tho_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "chosen_one_duel",
+    "location": "any",
+    "tags": [
+      "combat",
+      "npc_thien_kieu_chan_chinh"
+    ],
+    "title": {
+      "en": "Duel with the Chosen One",
+      "vi": "Thiên Kiêu Chân Chính Thách Đấu"
+    },
+    "description": {
+      "en": "Long Ngao Thien, the arrogant child of destiny, blocks your path. He points his glittering sword at you, demanding a duel to step on your dignity.",
+      "vi": "Long Ngạo Thiên, con cưng của thiên đạo, kiêu ngạo chặn đường bạn. Hắn chĩa thanh lân kiếm lấp lánh vào bạn, đòi quyết đấu để giẫm đạp lên tôn nghiêm của bạn."
+    },
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {},
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": {
+          "en": "Go all out and prove your worth!",
+          "vi": "Dốc toàn lực, chứng minh thực lực!"
+        },
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "daoMind": 10,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": {
+          "en": "Acknowledge his superiority and back down.",
+          "vi": "Nhận thua, biết khó mà lui."
+        },
+        "effects": {
+          "daoMind": -10,
+          "health": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "spirit_herbs",
+    "location": "any",
+    "tags": [
+      "opportunity",
+      "cultivation"
+    ],
+    "title": {
+      "en": "Spirit Herbs",
+      "vi": "Thảo Dược Linh Hồn"
+    },
+    "description": {
+      "en": "You stumble upon mysterious spirit herbs. Their aura is intoxicating but slightly unstable.",
+      "vi": "Bạn phát hiện những thảo dược linh hồn bí ẩn. Khí tức của chúng vô cùng hấp dẫn nhưng có phần bất ổn định."
+    },
+    "minAge": 3,
+    "maxAge": 100,
+    "weight": 1,
+    "conditions": {},
+    "choices": [
+      {
+        "id": "accept_herbs",
+        "text": {
+          "en": "Refine them safely using your core techniques.",
+          "vi": "Nhận thảo dược và tinh luyện chúng an toàn."
+        },
+        "effects": {
+          "health": 2,
+          "cultivation": 1,
+          "karma": 1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "test_herbs",
+        "text": {
+          "en": "Test the raw herbs directly on yourself.",
+          "vi": "Tự mình thí nghiệm nuốt trực tiếp thảo dược."
+        },
+        "effects": {
+          "health": -2,
+          "comprehension": 2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "decline_herbs",
+        "text": {
+          "en": "Decline the temptation and leave silently.",
+          "vi": "Từ chối cám dỗ và tiếp tục lặng lẽ."
+        },
+        "effects": {
+          "karma": 1,
+          "luck": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "duel_challenge",
+    "location": "any",
+    "tags": [
+      "combat",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Duel Challenge",
+      "vi": "Thách Đấu Quyết Chiến"
+    },
+    "description": {
+      "en": "A wandering martial artist abruptly blocks your path, drawing their weapon and demanding a duel to hone their Dao.",
+      "vi": "Một võ giả lang thang bất ngờ chặn đường, rút vũ khí và thách đấu bạn để chứng minh đạo tâm của hắn."
+    },
+    "minAge": 18,
+    "maxAge": 35,
+    "weight": 1,
+    "conditions": {},
+    "choices": [
+      {
+        "id": "accept_duel",
+        "text": {
+          "en": "Accept the duel and prove yourself.",
+          "vi": "Đồng ý quyết đấu và chứng minh bản thân."
+        },
+        "effects": {
+          "cultivation": 2,
+          "luck": 1,
+          "health": -3,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "avoid_duel",
+        "text": {
+          "en": "Avoid the confrontation but observe their stance.",
+          "vi": "Tránh đối đầu và học hỏi từ kết quả."
+        },
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenly_dao_quake",
+    "location": "any",
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward",
+      "secret_realm"
+    ],
+    "title": {
+      "en": "Heavenly Dao Quake",
+      "vi": "Thiên Đạo Chấn Động"
+    },
+    "description": {
+      "en": "Spiritual energy fluctuates violently, reaching an alarming level! An extraordinary destiny is approaching, and a hidden secret realm might be opening.",
+      "vi": "Năng lượng thiêng liêng dao động dữ dội ở mức báo động! Cơ duyên phi thường đang đến gần, một bí cảnh ẩn có thể sắp khai mở."
+    },
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 65"
+    },
+    "choices": [
+      {
+        "id": "absorb_violent_qi",
+        "text": {
+          "en": "Risk your life to absorb the violent spiritual Qi.",
+          "vi": "Liều mạng hấp thụ luồng linh khí bạo loạn."
+        },
+        "effects": {
+          "health": -25,
+          "cultivation": 30,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "seek_secret_realm",
+        "text": {
+          "en": "Search for the entrance to the opening secret realm.",
+          "vi": "Tìm kiếm lối vào bí cảnh đang khai mở."
+        },
+        "effects": {
+          "luck": 2,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenly_qi_surge",
+    "location": "any",
+    "tags": [
+      "opportunity",
+      "cultivation",
+      "dao_event"
+    ],
+    "title": {
+      "en": "Heavenly Qi Surge",
+      "vi": "Linh Khí Bộc Phát"
+    },
+    "description": {
+      "en": "The spiritual Qi of the world suddenly surges to an incredibly dense level! It completely suppresses demonic auras, but inhaling too much might overwhelm a weak body.",
+      "vi": "Linh khí thiên địa đột nhiên bộc phát đến mức độ dày đặc khó tin! Nó đè bẹp hoàn toàn ma khí, nhưng hít quá nhiều có thể làm quá tải một thân thể yếu ớt."
+    },
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "conditions": {
+      "spiritualQi": "> 80"
+    },
+    "choices": [
+      {
+        "id": "absorb_madly",
+        "text": {
+          "en": "Absorb the Qi madly to surge your cultivation!",
+          "vi": "Hút linh khí điên cuồng để tăng vọt tu vi!"
+        },
+        "effects": {
+          "health": -15,
+          "cultivation": 20,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "refine_into_pills",
+        "text": {
+          "en": "Safely guide the Qi to refine it into spiritual pills.",
+          "vi": "Cẩn thận dẫn dắt linh khí để ngưng tụ thành đan dược."
+        },
+        "effects": {
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenly_epiphany_surge",
+    "location": "any",
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Heavenly Epiphany Surge",
+      "vi": "Thiên Đạo Đốn Ngộ"
+    },
+    "description": {
+      "en": "The Heavenly Dao fluctuates wildly. A sudden surge of profound Dao rhythm washes over you, resonating with your meridians and presenting a rare chance for a sudden epiphany.",
+      "vi": "Thiên Đạo dao động kịch liệt. Một luồng Đạo vận uyên thâm bất ngờ gột rửa tâm trí bạn, cộng hưởng với kinh mạch và mang đến cơ hội đốn ngộ hiếm có."
+    },
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 55"
+    },
+    "choices": [
+      {
+        "id": "absorb_epiphany",
+        "text": {
+          "en": "Close your eyes and absorb the Dao rhythm to surge your cultivation.",
+          "vi": "Nhắm mắt hấp thu Đạo vận để tu vi tăng vọt."
+        },
+        "effects": {
+          "health": -5,
+          "cultivation": 15,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "comprehend_manual",
+        "text": {
+          "en": "Use this profound moment to deduce martial techniques.",
+          "vi": "Dùng khoảnh khắc uyên thâm này để diễn hóa công pháp."
+        },
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "echoes_of_the_immortal_rift",
+    "location": "any",
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "dao_event"
+    ],
+    "title": {
+      "en": "Echoes of the Immortal Rift",
+      "vi": "Tiếng Vọng Từ Vết Nứt Tiên Giới"
+    },
+    "description": {
+      "en": "A sudden spike in Dao fluctuations has caused a localized temporal rift. You hear echoes of a future breakthrough or a past failure resonating with your soul,.",
+      "vi": "Sự gia tăng đột ngột của Thiên Đạo dị động đã gây ra một vết nứt thời gian cục bộ. Bạn nghe thấy tiếng vọng của một lần đột phá trong tương lai hoặc một thất bại trong quá khứ cộng hưởng với linh hồn,."
+    },
+    "minAge": 15,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 80"
+    },
+    "choices": [
+      {
+        "id": "peer_into_destiny",
+        "text": {
+          "en": "Force your mind through the rift to grasp a fragment of supreme knowledge,.",
+          "vi": "Cưỡng ép thần trí xuyên qua vết nứt để nắm bắt một mảnh kiến thức tối cao,."
+        },
+        "effects": {
+          "comprehension": 15,
+          "daoMind": -5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "sacrifice_cultivation_for_luck",
+        "text": {
+          "en": "Offer your current cultivation base to the rift in exchange for a shift in destiny,.",
+          "vi": "Dâng hiến tu vi hiện tại cho vết nứt để đổi lấy sự thay đổi vận mệnh,."
+        },
+        "effects": {
+          "cultivation": -20,
+          "luck": 10,
+          "karma": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenly_thunder_tempering",
+    "location": "any",
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward"
+    ],
+    "title": {
+      "en": "Heavenly Thunder Tempering",
+      "vi": "Thiên Lôi Tôi Thể"
+    },
+    "description": {
+      "en": "Heavenly Dao is fluctuating wildly. A localized spiritual storm has summoned bolts of Heavenly Thunder. You can try to use the lightning to temper your meridians.",
+      "vi": "Thiên Đạo đang dao động dữ dội. Một cơn bão linh khí cục bộ đã triệu hồi Thiên Lôi. Bạn có thể thử mượn sức mạnh sấm sét để tôi luyện kinh mạch."
+    },
+    "minAge": 30,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 85"
+    },
+    "choices": [
+      {
+        "id": "face_the_thunder",
+        "text": {
+          "en": "Face the thunder head-on to purge your body.",
+          "vi": "Trực diện đón sấm sét để tẩy tủy cốt cách."
+        },
+        "effects": {
+          "health": -35,
+          "cultivation": 30,
+          "comprehension": 5,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "flee_the_storm",
+        "text": {
+          "en": "Retreat to safety and avoid the deadly lightning.",
+          "vi": "Lùi lại nơi an toàn, tránh xa tia sét chết chóc."
+        },
+        "effects": {
+          "luck": 2,
+          "daoMind": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "ancient_array_puzzle",
+    "location": "any",
+    "tags": [
+      "puzzle",
+      "opportunity",
+      "secret_realm"
+    ],
+    "title": {
+      "en": "The Lost Array of the Ancients",
+      "vi": "Trận Pháp Cổ Nhân Thất Lạc"
+    },
+    "description": {
+      "en": "While exploring a remote area, you discover an ancient array carved into the rock. It flickers with a mysterious light, resonating with the current Heavenly Dao fluctuations.",
+      "vi": "Trong lúc thám hiểm vùng hẻo lánh, bạn phát hiện một trận pháp cổ xưa khắc trên đá. Nó nhấp nháy ánh sáng kỳ bí, cộng hưởng với những dao động của Thiên Đạo hiện tại."
+    },
+    "minAge": 15,
+    "maxAge": 250,
+    "weight": 2,
+    "conditions": {
+      "daoFluctuation": "> 55"
+    },
+    "choices": [
+      {
+        "id": "solve_with_wisdom",
+        "text": {
+          "en": "Use your deep comprehension to solve the puzzle peacefully.",
+          "vi": "Dùng ngộ tính thâm hậu để giải mã trận pháp một cách hòa bình."
+        },
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 3,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "break_with_force",
+        "text": {
+          "en": "Use sheer martial power to shatter the array's core.",
+          "vi": "Dùng võ lực tuyệt đối để phá vỡ lõi trận pháp."
+        },
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "immortal_tomb_emergence",
+    "location": "any",
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "danger"
+    ],
+    "title": {
+      "en": "Immortal's Tomb Emergence",
+      "vi": "Mộ Táng Tiên Nhân Xuất Thế"
+    },
+    "description": {
+      "en": "Extreme Dao fluctuations have caused the earth to split, revealing the entrance to a majestic tomb belonging to an ancient Ascendant Immortal.",
+      "vi": "Thiên Đạo dị động cực độ khiến đất đai nứt nẻ, để lộ lối vào của một ngôi mộ tráng lệ thuộc về một vị Tiên Nhân phi thăng từ thời viễn cổ."
+    },
+    "minAge": 40,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 80"
+    },
+    "choices": [
+      {
+        "id": "enter_the_core_tomb",
+        "text": {
+          "en": "Brave the deadly traps to enter the core burial chamber.",
+          "vi": "Bất chấp cạm bẫy chết người để tiến vào lõi mộ táng."
+        },
+        "effects": {
+          "health": -35,
+          "comprehension": 10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          },
+          "luck": 5
+        }
+      },
+      {
+        "id": "scavenge_the_outskirts",
+        "text": {
+          "en": "Stay safe and scavenge the offerings in the outer halls.",
+          "vi": "Giữ an toàn và nhặt nhạnh lễ vật ở các sảnh ngoài."
+        },
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          },
+          "luck": 2,
+          "health": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "world_dao_epiphany",
+    "location": "any",
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "cultivation"
+    ],
+    "title": {
+      "en": "Heavenly Dao Resonance",
+      "vi": "Thiên Đạo Cộng Hưởng"
+    },
+    "description": {
+      "en": "The world's Dao fluctuates violently, causing spiritual energy to manifest as physical lotus petals falling from the sky.",
+      "vi": "Thiên Đạo dị động kịch liệt, khiến linh khí thiên địa hóa thành những cánh hoa sen rơi rụng khắp bầu trời."
+    },
+    "minAge": 10,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 65"
+    },
+    "choices": [
+      {
+        "id": "meditate_on_dao",
+        "text": {
+          "en": "Focus on comprehending the laws of the universe.",
+          "vi": "Tập trung lĩnh ngộ quy luật của vũ trụ."
+        },
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 10,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_petals",
+        "text": {
+          "en": "Quickly absorb the manifestation petals for cultivation.",
+          "vi": "Nhanh chóng hấp thụ các cánh hoa linh khí để tăng tu vi."
+        },
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "spiritualQi": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenly_karma_judgment",
+    "location": "any",
+    "tags": [
+      "dao_event",
+      "karma_event",
+      "high_risk_reward"
+    ],
+    "title": {
+      "en": "Heavenly Karma Judgment",
+      "vi": "Thiên Đạo Nghiệp Lực Phán Quyết"
+    },
+    "description": {
+      "en": "Heavenly Dao fluctuations have triggered a moment of karmic clarity. The world judges your past actions, resonating with your soul's purity or corruption.",
+      "vi": "Thiên Đạo dị động đã kích hoạt một khoảnh khắc thấu thị nghiệp lực. Thế giới phán xét những hành động trong quá khứ của bạn, cộng hưởng với sự thuần khiết hoặc ô uế của linh hồn."
+    },
+    "minAge": 10,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 75"
+    },
+    "choices": [
+      {
+        "id": "embrace_the_judgment",
+        "text": {
+          "en": "Offer your soul to the judgment of the heavens.",
+          "vi": "Dâng hiến linh hồn cho sự phán xét của thiên đình."
+        },
+        "effects": {
+          "daoMind": 10,
+          "luck": 5,
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "defy_the_heavens",
+        "text": {
+          "en": "Defy the judgment and rely only on your own power.",
+          "vi": "Chống lại phán xét và chỉ tin vào sức mạnh của bản thân."
+        },
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -20,
+          "health": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "pill_toxin_backlash",
+    "location": "any",
+    "tags": [
+      "cultivation",
+      "danger",
+      "pill_toxin"
+    ],
+    "title": {
+      "en": "Accumulated Pill Toxins",
+      "vi": "Tích Tụ Đan Độc"
+    },
+    "description": {
+      "en": "Your over-reliance on low-grade pills to survive the lifespan race has caused 'Pill Toxins' to accumulate in your meridians. A backlash is imminent.",
+      "vi": "Việc lạm dụng đan dược cấp thấp để chạy đua với thọ nguyên khiến 'Đan Độc' tích tụ trong kinh mạch. Một đợt bạo kích năng lượng đang đe dọa cơ thể bạn."
+    },
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "spiritualQi": "> 50"
+    },
+    "choices": [
+      {
+        "id": "cleanse_meridians",
+        "text": {
+          "en": "Endure excruciating pain to manually cleanse the toxins.",
+          "vi": "Chịu đựng đau đớn tột cùng để cưỡng ép thanh tẩy đan độc."
+        },
+        "effects": {
+          "health": -20,
+          "daoMind": 10,
+          "cultivation": -2,
+          "karma": 5
+        }
+      },
+      {
+        "id": "neutralize_with_herb",
+        "text": {
+          "en": "Use a rare Snow Lotus to neutralize the toxins safely.",
+          "vi": "Dùng một đóa Tuyết Liên hiếm có để trung hòa đan độc an toàn."
+        },
+        "effects": {
+          "money": -150,
+          "health": 5,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pill_toxin_cleansing_ritual",
+    "location": "any",
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ],
+    "title": {
+      "en": "Pill Toxin Cleansing Ritual",
+      "vi": "Nghi Lễ Tẩy Rửa Đan Độc"
+    },
+    "description": {
+      "en": "Your meridians are clogged with dark residues from excessive pill consumption. A wandering healer offers a dangerous ritual to burn away the toxins using pure spiritual fire.",
+      "vi": "Kinh mạch của bạn bị tắc nghẽn bởi tàn dư từ việc lạm dụng đan dược [2]. Một vị lang trung lang thang đề nghị một nghi lễ nguy hiểm: dùng linh hỏa tinh khiết để thiêu cháy đan độc."
+    },
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 2,
+    "conditions": {
+      "spiritualQi": "> 60"
+    },
+    "choices": [
+      {
+        "id": "endure_the_fire",
+        "text": {
+          "en": "Endure the excruciating spiritual fire to cleanse your body.",
+          "vi": "Cắn răng chịu đựng linh hỏa thiêu đốt để thanh tẩy cơ thể."
+        },
+        "effects": {
+          "health": -30,
+          "daoMind": 10,
+          "cultivation": -5,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "refuse_and_seek_herbs",
+        "text": {
+          "en": "Refuse the ritual and try to neutralize toxins with rare herbs.",
+          "vi": "Từ chối nghi lễ và cố gắng trung hòa đan độc bằng linh dược."
+        },
+        "effects": {
+          "money": -200,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fragment_of_the_heavens",
+    "location": "any",
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ],
+    "title": {
+      "en": "Fragment of the Heavens",
+      "vi": "Mảnh Vỡ Thiên Đạo"
+    },
+    "description": {
+      "en": "Extreme Dao fluctuations have caused a physical fragment of the Heavenly Dao to fall from the sky. It radiates a rhythm that defies mortality.",
+      "vi": "Thiên Đạo dị động cực độ khiến một mảnh vỡ vật chất của Thiên Đạo rơi xuống từ bầu trời. Nó tỏa ra một giai điệu vượt xa phàm trần."
+    },
+    "minAge": 15,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 85"
+    },
+    "choices": [
+      {
+        "id": "grasp_the_fragment",
+        "text": {
+          "en": "Risk your body to grasp the divine fragment.",
+          "vi": "Liều mình để nắm lấy mảnh vỡ thần thánh."
+        },
+        "effects": {
+          "health": -40,
+          "comprehension": 20,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "watch_it_dissolve",
+        "text": {
+          "en": "Don't touch it; simply sit nearby and observe as it dissolves.",
+          "vi": "Không chạm vào; chỉ ngồi gần quan sát khi nó tan biến."
+        },
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 20,
+          "karma": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenly_dao_vision_war",
+    "location": "any",
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "lore"
+    ],
+    "title": {
+      "en": "Vision of the Eternal War",
+      "vi": "Ảo Ảnh Vĩnh Hằng Đại Chiến"
+    },
+    "description": {
+      "en": "Extreme Dao fluctuations have triggered a spiritual resonance. You see a vision of the founding Sect Leader battling a Great Demon, revealing a flaw in your current technique.",
+      "vi": "Thiên Đạo dị động cực độ kích phát cộng hưởng linh hồn. Bạn nhìn thấy ảo ảnh Thủy Tổ tông môn đại chiến Đại Ma, hé lộ một sơ hở trong công pháp hiện tại của bạn."
+    },
+    "minAge": 30,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 80"
+    },
+    "choices": [
+      {
+        "id": "correct_the_flaw",
+        "text": {
+          "en": "Focus on correcting the technique's flaw to boost efficiency.",
+          "vi": "Tập trung sửa chữa sơ hở công pháp để tăng hiệu suất tu luyện."
+        },
+        "effects": {
+          "comprehension": 15,
+          "cultivation": 5,
+          "daoMind": 10,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "capture_demon_technique",
+        "text": {
+          "en": "Try to memorize the Demon's forbidden moves instead.",
+          "vi": "Thay vào đó, cố gắng ghi nhớ các chiêu thức cấm kỵ của Đại Ma."
+        },
+        "effects": {
+          "comprehension": 10,
+          "karma": -20,
+          "daoMind": -15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pill_toxin_meridian_blockage",
+    "location": "any",
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ],
+    "title": {
+      "en": "Meridian Blockage Crisis",
+      "vi": "Khủng Hoảng Tắc Nghẽn Kinh Mạch"
+    },
+    "description": {
+      "en": "The high spiritual Qi in the environment is reacting violently with the 'Pill Toxins' in your body, causing a localized Qi explosion within your meridians.",
+      "vi": "Linh khí nồng đậm trong môi trường đang phản ứng dữ dội với 'Đan Độc' trong cơ thể, gây ra một vụ nổ linh khí cục bộ ngay trong kinh mạch của bạn."
+    },
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "conditions": {
+      "spiritualQi": "> 70"
+    },
+    "choices": [
+      {
+        "id": "force_suppression",
+        "text": {
+          "en": "Forcefully suppress the explosion, risking permanent damage.",
+          "vi": "Cưỡng ép trấn áp vụ nổ, chấp nhận rủi ro tổn thương vĩnh viễn."
+        },
+        "effects": {
+          "health": -40,
+          "cultivation": -5,
+          "daoMind": 15,
+          "karma": 5
+        }
+      },
+      {
+        "id": "vent_excess_qi",
+        "text": {
+          "en": "Vent the excess energy outwards, causing a small shockwave.",
+          "vi": "Xả bớt năng lượng dư thừa ra ngoài, tạo thành một xung kích nhỏ."
+        },
+        "effects": {
+          "health": -15,
+          "cultivation": -10,
+          "luck": -2,
+          "reputation": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "ancient_spatial_rift_puzzle",
+    "location": "any",
+    "tags": [
+      "secret_realm",
+      "puzzle",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Ancient Spatial Rift",
+      "vi": "Vết Nứt Không Gian Cổ"
+    },
+    "description": {
+      "en": "Extreme Heavenly Dao fluctuations have opened a localized spatial rift. It leads to a pocket dimension containing ancient cultivation techniques [cite: 56, 59].",
+      "vi": "Thiên Đạo dị động cực độ đã mở ra một vết nứt không gian cục bộ. Nó dẫn đến một tiểu thế giới chứa đựng các công pháp tu luyện cổ đại [cite: 56, 59]."
+    },
+    "minAge": 25,
+    "maxAge": 400,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 75"
+    },
+    "choices": [
+      {
+        "id": "decipher_the_rift",
+        "text": {
+          "en": "Use your high comprehension to stabilize the rift and enter safely.",
+          "vi": "Dùng ngộ tính thâm hậu để ổn định vết nứt và tiến vào an toàn."
+        },
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "force_entry",
+        "text": {
+          "en": "Brave the chaotic space to snatch a supreme manual fragment.",
+          "vi": "Bất chấp không gian bạo loạn để đoạt lấy mảnh tàn quyển tối cao."
+        },
+        "effects": {
+          "health": -40,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenly_nectar_epiphany",
+    "location": "any",
+    "tags": [
+      "cultivation",
+      "opportunity",
+      "rare"
+    ],
+    "title": {
+      "en": "Heavenly Nectar Rain",
+      "vi": "Linh Vũ Thiên Đạo"
+    },
+    "description": {
+      "en": "A rare phenomenon occurs when spiritual Qi peaks! Rain that directly nourishes the soul falls from the sky, bypassing ordinary bottlenecks [cite: 56, 12].",
+      "vi": "Một hiện tượng hiếm gặp xảy ra khi linh khí đạt đỉnh! Những giọt mưa nuôi dưỡng linh hồn rơi xuống, giúp vượt qua các bình cảnh thông thường [cite: 56, 12]."
+    },
+    "minAge": 10,
+    "maxAge": 500,
+    "weight": 1,
+    "conditions": {
+      "spiritualQi": "> 85"
+    },
+    "choices": [
+      {
+        "id": "meditate_in_rain",
+        "text": {
+          "en": "Meditate openly to maximize tu vi gain.",
+          "vi": "Tĩnh tọa giữa màn mưa để tối đa hóa lượng tu vi nhận được."
+        },
+        "effects": {
+          "cultivation": 25,
+          "health": 10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "collect_nectar",
+        "text": {
+          "en": "Focus on collecting the rain into jade bottles for later sale.",
+          "vi": "Tập trung thu thập linh vũ vào bình ngọc để bán sau này."
+        },
+        "effects": {
+          "money": 300,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ]
+  }
+]

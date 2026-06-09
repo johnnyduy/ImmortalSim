@@ -1,0 +1,15 @@
+{
+  "id": "npc_thien_kieu_tra_xanh",
+  "name": "Mộc Uyển Thanh",
+  "archetype": "Thiên Kiêu Trà Xanh",
+  "spiritualRoot": "Mộc Linh Căn",
+  "karma": -20,
+  "meta_memory_id": "grudge_moc_uyen_thanh",
+  "description": "Sở hữu Đơn Linh Căn, vẻ ngoài yếu đuối nhưng tâm cơ thâm độc. Thường giả vờ để lợi dụng người khác.",
+  "sect": "Thanh Vân Môn",
+  "role": {
+    "vi": "Nội Môn Đệ Tử",
+    "en": "Inner Disciple"
+  },
+  "avatar": "👱‍♀️"
+}

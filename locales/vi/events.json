@@ -1,0 +1,5611 @@
+[
+  {
+    "id": "auction_house_conflict",
+    "title": "Đấu Giá Hội Lục Đục",
+    "description": "Tại buổi đấu giá thập niên của Thanh Dương Thành, bạn vừa dốc cạn Linh thạch để mua được một viên Trúc Cơ Đan. Khi bước ra khỏi cửa, Vương Thiếu Gia của gia tộc tu tiên bản địa chặn đường, ném cho bạn 10 Linh thạch và yêu cầu giao nộp viên đan dược.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "slap_young_master",
+        "text": "Dùng thực lực vả mặt thiếu gia!",
+        "effects": {
+          "cultivation": 2,
+          "daoMind": 5,
+          "health": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "endure_humiliation",
+        "text": "Nhẫn nhịn nuốt hận, giao nộp Trúc Cơ Đan.",
+        "effects": {
+          "daoMind": -10,
+          "luck": -1,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "npc_thieu_gia",
+      "combat"
+    ]
+  },
+  {
+    "id": "slum_black_market",
+    "title": "Chợ Đen Góc Tối",
+    "description": "Len lỏi vào khu ổ chuột của thành thị, bạn tìm thấy một phiên chợ đen chuyên tiêu thụ hàng hóa không rõ nguồn gốc. Một tên thương nhân che mặt chào bán 'Trúc Cơ Đan Cực Phẩm' với giá chỉ bằng một nửa thị trường, nhưng đan dược tỏa ra mùi tanh nồng.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_bloody_pill",
+        "text": "Mua Trúc Cơ Đan tanh máu.",
+        "effects": {
+          "money": -150,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "rob_the_merchant",
+        "text": "Rút vũ khí đe dọa, cướp luôn đan dược!",
+        "effects": {
+          "health": -12,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "crime",
+      "demonic"
+    ]
+  },
+  {
+    "id": "mortal_plague",
+    "title": "Ôn Dịch Phàm Trần",
+    "description": "Đi qua một ngôi làng phàm nhân dưới chân núi, bạn phát hiện nơi này đang lây lan một loại ôn dịch kỳ lạ do ma khí rò rỉ. Hàng trăm người đang kêu la thảm thiết, thây chất thành đống.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "heal_mortals",
+        "text": "Tiêu hao linh thảo để luyện thuốc giải cứu người.",
+        "effects": {
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "collect_plague",
+        "text": "Thu thập khí tức ôn dịch để luyện Độc Đan.",
+        "effects": {
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_doc_chuong_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "karma_extreme",
+      "demonic",
+      "city_interaction"
+    ]
+  },
+  {
+    "id": "rogue_cultivator_scam",
+    "title": "Tán Tu Lừa Đảo",
+    "description": "Đang dạo quanh phường thị, một lão giả thần bí rách rưới kéo bạn lại, gạ bán 'Cửu Chuyển Thần Công' với giá chỉ 50 Linh thạch.",
+    "minAge": 12,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_scam_manual",
+        "text": "Đánh cược mua thử.",
+        "effects": {
+          "money": -50,
+          "comprehension": -1,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "expose_scammer",
+        "text": "Lạnh lùng vạch mặt, đánh đuổi lão giả.",
+        "effects": {
+          "daoMind": 1,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "random_chance"
+    ]
+  },
+  {
+    "id": "beast_tide_mortals",
+    "title": "Thú Triều Quét Qua Phàm Trần",
+    "description": "Yêu thú bạo động tràn xuống chân núi, tàn sát một ngôi làng phàm nhân. Bạn vừa vặn đi ngang qua.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_mortals",
+        "text": "Lập trận pháp cản hậu, bảo vệ phàm nhân.",
+        "effects": {
+          "health": -10,
+          "karma": 8
+        }
+      },
+      {
+        "id": "loot_beasts",
+        "text": "Bỏ mặc phàm nhân, thu thập xác thú.",
+        "effects": {
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "karma_event",
+      "combat"
+    ]
+  },
+  {
+    "id": "demonic_invasion",
+    "title": "Ma Đạo Đại Xâm Nhập",
+    "description": "Bầu trời nhuốm màu máu khi ma khí dày đặc bao trùm. Một đội quân tà tu đã phá vỡ trận pháp phòng ngự, tàn sát tất cả những ai chúng nhìn thấy.",
+    "minAge": 18,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_demonic_horde",
+        "text": "Quyết chiến đến cùng để bảo vệ kẻ yếu.",
+        "effects": {
+          "health": -25,
+          "karma": 15,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "join_demons",
+        "text": "Đầu hàng và dâng máu phàm nhân để sống sót.",
+        "effects": {
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "grand_decennial_auction",
+    "title": "Đại Đấu Giá Thập Niên",
+    "description": "Thành thị đang cực kỳ phồn hoa, tổ chức một buổi đại đấu giá. Các dị bảo và tàn quyển công pháp tối thượng được trưng bày, nhưng giá cả ở mức trên trời.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "buy_supreme_fragment",
+        "text": "Tiêu tốn gia tài để mua Mảnh tàn quyển Thiên Cấp.",
+        "effects": {
+          "money": -300,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_vip",
+        "text": "Thử móc túi một vị khách VIP đang lơ đễnh.",
+        "effects": {
+          "health": -15,
+          "luck": -3,
+          "money": 150,
+          "karma": -5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "market_crash_scavenging",
+    "title": "Thị Trường Sụp Đổ",
+    "description": "Thị trường dư thừa khiến giá cả sụp đổ. Các thương nhân đang tuyệt vọng bán tháo linh thảo thô ngay trên phố với giá rẻ như cho để cắt lỗ.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_cheap_herbs",
+        "text": "Bỏ ra chút tiền để gom hàng linh thảo giá rẻ.",
+        "effects": {
+          "money": -30,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "extort_merchants",
+        "text": "Đe dọa các thương nhân phá sản phải giao nộp hàng miễn phí.",
+        "effects": {
+          "karma": -8,
+          "daoMind": -2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thieu_gia_gay_su",
+    "title": "Vương Thiếu Gia Chèn Ép",
+    "description": "Tại đấu giá hội, Vương Thiếu Gia dùng tiền đè người, ác ý nâng giá để tranh đoạt bảo vật của bạn.",
+    "minAge": 15,
+    "maxAge": 40,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "slap_thieu_gia",
+        "text": "Đánh mặt thiếu gia, phục kích cướp lại bảo vật bên ngoài thành!",
+        "effects": {
+          "health": -5,
+          "money": 200,
+          "karma": -5
+        }
+      },
+      {
+        "id": "endure_thieu_gia",
+        "text": "Nhẫn nhịn nuốt giận, quân tử trả thù mười năm chưa muộn.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "npc_thieu_gia",
+      "combat"
+    ]
+  },
+  {
+    "id": "soul_festival",
+    "title": "Lễ Hội Hồn Linh",
+    "description": "Bạn tình cờ tham gia một Lễ Hội Hồn Linh hiếm gặp trong thành, nơi tinh linh và phàm nhân tụ tập với nguồn năng lượng huyền bí.",
+    "minAge": 12,
+    "maxAge": 22,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "join_festival",
+        "text": "Hòa mình cùng tinh linh và xây dựng quan hệ.",
+        "effects": {
+          "luck": 2,
+          "karma": -1,
+          "health": -1,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "study_scripture",
+        "text": "Nghiên cứu kinh điển thiêng liêng.",
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 1
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "market"
+    ]
+  },
+  {
+    "id": "herb_price_surge",
+    "title": "Giá Linh Dược Leo Thang",
+    "description": "Do khan hiếm trầm trọng, giá linh dược leo thang chóng mặt! Thị trường đang hỗn loạn, tạo ra cơ hội hoàn hảo để đầu cơ tích trữ.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "speculate_market",
+        "text": "Lợi dụng sự hỗn loạn để đầu cơ trục lợi.",
+        "effects": {
+          "money": 300,
+          "luck": -1,
+          "karma": -2
+        }
+      },
+      {
+        "id": "rob_merchant_convoy",
+        "text": "Cướp bóc một đoàn thương nhân chở linh thảo quý.",
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "demonic_town_activity",
+    "title": "Tà Tu Xuất Hiện Tại Trấn",
+    "description": "Tà tu đã xuất hiện tại vùng ven thị trấn, làm suy giảm an ninh nghiêm trọng. Các tu sĩ được cảnh báo nên tránh đi xa.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "hunt_demonic_cultivators",
+        "text": "Truy lùng tà tu để bảo vệ thị trấn.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "ignore_warning",
+        "text": "Phớt lờ cảnh báo và tiếp tục công việc của bạn.",
+        "effects": {
+          "health": -5,
+          "luck": -2,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "illicit_demonic_caravan",
+    "title": "Thương Đội Tà Tu",
+    "description": "Do an ninh kém và ma đạo thâm nhập, một đoàn thương nhân khả nghi lập sạp trong hẻm tối, lén lút bán các vật liệu hiến tế cấm kỵ của Ma đạo.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_blood_crystal",
+        "text": "Lặng lẽ mua một viên Huyết Tinh để tăng tốc tu luyện.",
+        "effects": {
+          "money": -100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_guards",
+        "text": "Báo cáo cho thành vệ để nhận tiền thưởng.",
+        "effects": {
+          "money": 50,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "mortal_rebellion",
+    "title": "Phàm Nhân Bạo Loạn",
+    "description": "Dân tâm thành thị đã chạm đáy. Những phàm nhân chết đói đang bạo loạn chống lại tên thành chủ tham nhũng làm tay sai cho tu chân giả.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "distribute_wealth",
+        "text": "Phân phát linh thạch của bạn để mua lương thực cứu tế.",
+        "effects": {
+          "money": -100,
+          "karma": 15,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "suppress_rebels",
+        "text": "Giúp thành chủ ra tay tàn nhẫn trấn áp phàm nhân.",
+        "effects": {
+          "money": 150,
+          "karma": -15,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "danger"
+    ]
+  },
+  {
+    "id": "corrupted_pill_vendor",
+    "title": "Thương Nhân Đan Dược Ô Uế",
+    "description": "Lợi dụng sự thâm nhập của ma đạo trong thành, một kẻ trùm đầu trong hẻm tối gạ bán cho bạn một viên Trúc Cơ Đan. Giá rất rẻ, nhưng nó nồng nặc mùi đan độc và tà thuật.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_corrupted_pill",
+        "text": "Mua nó! Đột phá cảnh giới xứng đáng với mọi rủi ro.",
+        "effects": {
+          "money": -100,
+          "karma": -5,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "refuse_corrupted_pill",
+        "text": "Từ chối cám dỗ tà ác và rời đi ngay lập tức.",
+        "effects": {
+          "daoMind": 3,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "demonic_blood_raid",
+    "title": "Tà Tu Huyết Tế",
+    "description": "Hoạt động tà tu đang ở đỉnh điểm. Một nhóm ma tu bịt mặt lập huyết trận ở vùng ven thành thị, cố gắng luyện hóa phàm nhân qua đường thành đan dược.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "destroy_blood_array",
+        "text": "Liều mạng phá trận pháp cứu phàm nhân.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": "Núp trong bóng tối và trộm viên Huyết Đan vừa luyện thành.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "underground_black_auction",
+    "title": "Đấu Giá Ngầm Hắc Ám",
+    "description": "An ninh thành thị lỏng lẻo. Bạn nhận được thư mời bí mật tham gia một buổi đấu giá ngầm, nơi bày bán các pháp bảo tông môn bị ăn cắp và đan dược cấm kỵ.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_forbidden_item",
+        "text": "Vung tiền mua một ma khí cấm kỵ.",
+        "effects": {
+          "money": -250,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_black_market",
+        "text": "Báo cáo địa điểm cho các danh môn chính phái.",
+        "effects": {
+          "karma": 10,
+          "money": 100,
+          "luck": -2,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "counterfeit_manual_scam",
+    "title": "Bí Kíp Giả Mạo",
+    "description": "An ninh thành thị lỏng lẻo, kẻ lừa đảo lộng hành. Một thương nhân gạ bán cho bạn mảnh tàn quyển 'Thiên Cấp' với giá rẻ bất ngờ.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_fake_manual",
+        "text": "Liều lĩnh mua thử xem sao.",
+        "effects": {
+          "money": -120,
+          "comprehension": -2,
+          "luck": -5
+        }
+      },
+      {
+        "id": "intimidate_scammer",
+        "text": "Đe dọa kẻ lừa đảo phải nộp ra hàng thật.",
+        "effects": {
+          "money": 50,
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "herb_monopoly_challenge",
+    "title": "Thách Thức Độc Quyền Linh Dược",
+    "description": "Với chỉ số giá cả leo thang, một thương hội địa phương đã độc chiếm toàn bộ linh dược, đẩy giá lên cao hơn nữa. Một nhóm tán tu đang lên kế hoạch đột kích kho hàng của chúng.",
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": "Tham gia đột kích để giành linh dược cho bản thân.",
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 6
+          }
+        }
+      },
+      {
+        "id": "protect_merchant",
+        "text": "Bảo vệ kho hàng để nhận được sự ưu ái của thương hội.",
+        "effects": {
+          "health": -10,
+          "money": 200,
+          "reputation": 5,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "demonic_merchant_trap",
+    "title": "Cạm Bẫy Thương Nhân Ma Đạo",
+    "description": "Hoạt động tà tu dâng cao. Một thương nhân gạ bán cho bạn 'Phá Cảnh Đan' với giá rẻ không tưởng, nhưng bạn nhận thấy một luồng ma khí mờ nhạt tỏa ra từ hắn.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "accept_and_test",
+        "text": "Mua đan dược và thử nghiệm hiệu quả của nó.",
+        "effects": {
+          "money": -50,
+          "health": -15,
+          "cultivation": -5,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expose_merchant",
+        "text": "Vạch trần thân phận ma đạo của thương nhân và tham chiến.",
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "karma": 10,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "trap"
+    ]
+  },
+  {
+    "id": "corrupt_speculation_frenzy",
+    "title": "Cơn Cuồng Đầu Cơ Hủ Bại",
+    "description": "Do giá linh dược leo thang, một nhóm thương nhân hủ bại đang đầu cơ tích trữ đan dược cứu mạng để bán với giá gấp mười lần. Dân tâm thành thị đang chạm đáy khi bóng ma đói khát ám ảnh khắp phố phường,.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_speculators",
+        "text": "Dùng thế lực tông môn để gia nhập nhóm độc quyền nhằm trục lợi lớn,.",
+        "effects": {
+          "money": 400,
+          "karma": -20,
+          "daoMind": -5,
+          "city.morale": -5
+        }
+      },
+      {
+        "id": "raid_merchant_vault",
+        "text": "Đột kích kho mật của chúng và phân phát đan dược cho dân nghèo,.",
+        "effects": {
+          "health": -15,
+          "karma": 25,
+          "city.morale": 10,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "the_shadow_ritual",
+    "title": "Nghi Lễ Trong Bóng Tối",
+    "description": "Hoạt động ma đạo đã đạt đến đỉnh điểm. Tại khu ổ chuột của thành phố, bạn phát hiện một nghi lễ dùng trẻ em phàm nhân để hạ sinh một Ma Chủng mới,.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "purify_the_slums",
+        "text": "Mạo hiểm đối đầu trực tiếp với tà giáo để ngăn chặn nghi lễ và cứu phàm nhân,.",
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 15,
+          "city.security": 10
+        }
+      },
+      {
+        "id": "harvest_the_ma_chung",
+        "text": "Đợi nghi lễ kết thúc, sau đó giết lũ tà tu và đoạt lấy Ma Chủng cho riêng mình,.",
+        "effects": {
+          "karma": -100,
+          "daoMind": -20,
+          "cultivation": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "karma_extreme",
+      "danger"
+    ]
+  },
+  {
+    "id": "mysterious_wandering_merchant",
+    "title": "Thương Nhân Lang Thang Bí Ẩn",
+    "description": "Chỉ số giá cả của thành phố đang thấp. Một thương nhân lang thang từ vùng đất xa xôi chào mời các linh vật hiếm với mức giá hời đến khó tin.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_bulk_materials",
+        "text": "Dùng linh thạch để gom linh vật số lượng lớn.",
+        "effects": {
+          "money": -150,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 4
+          },
+          "luck": 1
+        }
+      },
+      {
+        "id": "haggle_for_pills",
+        "text": "Mặc cả quyết liệt để đổi lấy một viên đan dược tu luyện hiếm.",
+        "effects": {
+          "money": -80,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "corrupt_guard_extortion",
+    "title": "Vệ Binh Tống Tiền",
+    "description": "An ninh thành thị lỏng lẻo. Một đội trưởng vệ binh hủ bại cáo buộc bạn buôn lậu ma cụ cấm và đòi một khoản tiền 'dàn xếp'.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_the_bribe",
+        "text": "Nộp tiền hối lộ để tránh rắc rối với pháp luật thành thị.",
+        "effects": {
+          "money": -100,
+          "karma": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "fight_the_guards",
+        "text": "Bảo vệ danh dự và quyết chiến với lũ vệ binh hủ bại.",
+        "effects": {
+          "health": -15,
+          "karma": 5,
+          "daoMind": 5,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "starving_mob_riot",
+    "title": "Đám Đông Đói Khát",
+    "description": "Dân tâm thành thị chạm mức báo động. Một đám đông phàm nhân đói khát đang chặn đường bạn, đòi linh thạch để mua lương thực từ những thương nhân đang đầu cơ tăng giá.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "give_alms",
+        "text": "Hào phóng phân phát linh thạch để cứu đói cho họ.",
+        "effects": {
+          "money": -150,
+          "karma": 20,
+          "daoMind": 10,
+          "reputation": 10
+        }
+      },
+      {
+        "id": "disperse_mob",
+        "text": "Dùng linh áp để cưỡng chế giải tán đám đông.",
+        "effects": {
+          "karma": -15,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ]
+  },
+  {
+    "id": "city_guard_mutiny",
+    "title": "Binh Biến Vệ Thành",
+    "description": "An ninh và dân tâm thành thị đã sụp đổ. Đội vệ binh không được trả lương trong nhiều tháng đã biến thành những kẻ cướp bóc, khủng bố chính những thương nhân mà chúng từng bảo vệ.",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "suppress_mutiny",
+        "text": "Tiêu diệt đám vệ binh phản loạn để khôi phục trật tự.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "reputation": 10,
+          "money": 80
+        }
+      },
+      {
+        "id": "loot_with_guards",
+        "text": "Gia nhập cùng đám vệ binh và cướp phá thương hội địa phương.",
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "danger"
+    ]
+  },
+  {
+    "id": "mortal_hunger_riot",
+    "title": "Cuộc Bạo Loạn Của Những Bóng Ma Đói",
+    "description": "Dân tâm thành thị sụp đổ do tình trạng đầu cơ tăng giá. Những phàm nhân đói khát đang tấn công các đoàn xe của tu sĩ để cướp bóc linh khí vụn vặt.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "distribute_rations",
+        "text": "Phân phát linh thảo của bạn để xoa dịu đám đông.",
+        "effects": {
+          "money": -150,
+          "karma": 30,
+          "daoMind": 10,
+          "city.morale": 15
+        }
+      },
+      {
+        "id": "ruthless_suppression",
+        "text": "Trấn áp tàn nhẫn cuộc bạo loạn để khôi phục trật tự thị trường.",
+        "effects": {
+          "karma": -40,
+          "money": 100,
+          "city.security": 10,
+          "reputation": -10
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ]
+  },
+  {
+    "id": "mystical_lantern_festival",
+    "title": "Lễ Hội Hoa Đăng Huyền Bí",
+    "description": "Thành thị đang cực kỳ phồn hoa và linh khí nồng đậm. Một lễ hội lớn được tổ chức, nơi hàng ngàn hoa đăng chứa đựng hồn lực lấp đầy bầu trời, tạo nên sự cộng hưởng với Thiên Đạo.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "make_a_dao_wish",
+        "text": "Thả hoa đăng và cầu nguyện cho con đường tu đạo.",
+        "effects": {
+          "luck": 3,
+          "daoMind": 5,
+          "karma": 2,
+          "money": -20
+        }
+      },
+      {
+        "id": "collect_fallen_essence",
+        "text": "Lặng lẽ thu thập hồn lực tinh hoa rơi xuống từ các hoa đăng.",
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 5,
+          "luck": -1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "black_market_smuggling",
+    "title": "Buôn Lậu Chợ Đen",
+    "description": "Chỉ số giá cả leo thang và an ninh thành thị lỏng lẻo. Một mạng lưới buôn lậu đang vận chuyển linh thảo cấm và huyết thạch ma đạo thông qua hệ thống cống ngầm.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_smugglers",
+        "text": "Phục kích bọn buôn lậu và tịch thu hàng hóa của chúng.",
+        "effects": {
+          "health": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 10
+          },
+          "karma": 5
+        }
+      },
+      {
+        "id": "invest_in_smuggling",
+        "text": "Dùng linh thạch của bạn để đầu tư cho chuyến hàng tiếp theo của chúng.",
+        "effects": {
+          "money": -200,
+          "luck": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "demonic"
+    ]
+  },
+  {
+    "id": "black_market_hoarding",
+    "title": "Đầu Cơ Chợ Đen",
+    "description": "Với chỉ số giá cả đang ở mức cao kỷ lục, một nhân vật thần bí đề nghị bạn tham gia vào kế hoạch đầu cơ tích trữ linh quặng để thao túng thị trường.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "invest_in_monopoly",
+        "text": "Vung tiền để độc chiếm nguồn cung Linh Quặng.",
+        "effects": {
+          "money": -300,
+          "luck": 5,
+          "karma": -15,
+          "city.priceIndex": 10
+        }
+      },
+      {
+        "id": "expose_to_authorities",
+        "text": "Vạch trần âm mưu cho Thành Chủ để nhận tiền thưởng.",
+        "effects": {
+          "money": 100,
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "ghost_market_whispers",
+    "title": "Lời Thì Thầm Chợ Ma",
+    "description": "An ninh thành thị lỏng lẻo. Bạn tìm thấy lối vào bí mật của Chợ Ma, nơi các tán tu trao đổi ma cụ cấm. Một kẻ đeo mặt nạ gạ bán cho bạn một khối 'Huyền Thiết' với giá nghi vấn.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_huyen_thiet",
+        "text": "Mua khối linh quặng hiếm để nâng cấp vũ khí.",
+        "effects": {
+          "money": -120,
+          "luck": -2,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_dealer",
+        "text": "Chờ kẻ buôn lậu rời đi và ra tay phục kích.",
+        "effects": {
+          "health": -15,
+          "karma": -15,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "mortal_plague_curse",
+    "title": "Lời Nguyền Dịch Bệnh",
+    "description": "Một trận dịch bệnh bí ẩn, nghi do ma đạo nguyền rủa, đang tàn phá dân cư phàm nhân. Dân tâm chạm đáy khi hàng trăm người chết mỗi ngày.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "heal_with_spiritual_qi",
+        "text": "Hao tổn linh khí để chữa trị cho phàm nhân.",
+        "effects": {
+          "cultivation": -10,
+          "health": -10,
+          "karma": 40,
+          "daoMind": 15,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "ignore_mortal_suffering",
+        "text": "Ngó lơ; sinh mạng phàm nhân chỉ như khói mây phù du.",
+        "effects": {
+          "daoMind": -5,
+          "karma": -20,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "demonic"
+    ]
+  },
+  {
+    "id": "city_embargo_crisis",
+    "title": "Khủng Hoảng Cấm Vận Thành Thị",
+    "description": "Thành phố đang bị cấm vận tài nguyên do hoạt động tà tu dâng cao [7, 8]. Giá cả đã chạm mức cực đoan, và chợ đen là con đường duy nhất để sinh tồn.",
+    "minAge": 18,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "smuggle_goods",
+        "text": "Mạo hiểm buôn lậu linh dược vào thành để trục lợi.",
+        "effects": {
+          "money": 500,
+          "karma": -20,
+          "luck": -5,
+          "city.security": -5
+        }
+      },
+      {
+        "id": "defend_caravans",
+        "text": "Làm vệ sĩ cho những đoàn thương buôn hợp pháp hiếm hoi còn sót lại.",
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "reputation": 10,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "city_spirit_tide",
+    "title": "Linh Triều Thành Thị",
+    "description": "Do linh khí thiên địa đột ngột tăng vọt, các linh tuyền trong thành bùng nổ. Một đợt linh triều tràn qua các con phố, biến khu chợ tạm thời trở thành một thánh địa tu luyện thượng hạng.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_in_public",
+        "text": "Ngồi ngay giữa phố và hấp thụ linh triều.",
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "daoMind": -2,
+          "luck": 2
+        }
+      },
+      {
+        "id": "gather_spirit_liquid",
+        "text": "Dùng bình ngọc thu thập linh dịch ngưng tụ để bán sau này.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "demonic_market_raid",
+    "title": "Càn Quét Chợ Đen Ma Đạo",
+    "description": "An ninh thành thị đang cao trong khi hoạt động tà tu dâng trào. Thành Chủ kêu gọi tình nguyện viên càn quét một khu chợ ma đạo bí mật vừa bị phát hiện dưới khu ổ chuột.",
+    "minAge": 25,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": "Gia nhập vệ binh thành thị và tấn công tà tu.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "reputation": 10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leak_info",
+        "text": "Lén mật báo cho khu chợ để đổi lấy một khoản 'quyên góp'.",
+        "effects": {
+          "money": 300,
+          "karma": -30,
+          "daoMind": -15,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "huyen_thiet_black_market",
+    "title": "Chợ Đen Huyền Thiết",
+    "description": "An ninh thành thị thấp và chỉ số giá cả đang tăng. Một tán tu đang lén lút bán 'Huyền Thiết' đánh cắp từ đoàn xe tông môn, vật liệu cực tốt để đúc thần binh [3, 4].",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_huyen_thiet_cheap",
+        "text": "Chi linh thạch để mua khối linh quặng bất hợp pháp.",
+        "effects": {
+          "money": -150,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_sect",
+        "text": "Báo cáo địa điểm cho chấp sự tông môn để nhận thưởng.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 80,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corrupt_city_lord_tax",
+    "title": "Thuế Vô Lý Của Thành Chủ",
+    "description": "Dân tâm và an ninh thành thị đang thấp. Tên Thành Chủ hủ bại áp đặt 'Thuế Bảo Hộ Linh Khí' lên tất cả tu sĩ vãng lai để nuôi tư quân.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_the_tax",
+        "text": "Nộp thuế để giữ thái độ khiêm nhường, tránh rắc rối.",
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "incite_rebellion",
+        "text": "Bí mật kích động phàm nhân đói khát bạo động chống lại Thành Chủ.",
+        "effects": {
+          "karma": 20,
+          "reputation": 10,
+          "city.morale": -10,
+          "city.security": -15,
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "city_tax_riot_interaction",
+    "title": "Bạo Loạn Lương Thực Và Linh Thạch",
+    "description": "Với giá cả leo thang và dân tâm sụt giảm, những phàm nhân đói khát đang chặn đường bạn, cáo buộc tu sĩ đang đầu cơ tích trữ mạch sống của thế giới [cite: 53, 60].",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bribe_the_mob",
+        "text": "Vung linh thạch để giải tán đám đông và tích đức.",
+        "effects": {
+          "money": -200,
+          "karma": 25,
+          "daoMind": 10,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "protect_merchant_convoy",
+        "text": "Giúp thương nhân gần đó trấn áp đám đông để nhận ưu đãi.",
+        "effects": {
+          "karma": -20,
+          "money": 100,
+          "luck": 2,
+          "city.security": 5
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "grand_decade_auction",
+    "title": "Đại Đấu Giá Thập Niên",
+    "description": "Với phồn vinh thành thị đạt đỉnh, Đại Đấu Giá Thập Niên huyền thoại đã khai mở. Những kỳ trân dị bảo từ khắp đại lục, bao gồm đan dược phá cảnh và bí tịch tối cao, đang được trưng bày [cite: 60, 18].",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bid_for_breakthrough_pill",
+        "text": "Chi một khoản tiền khổng lồ để sở hữu Đan Dược Phá Cảnh bảo chứng.",
+        "effects": {
+          "money": -500,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "sell_rare_materials",
+        "text": "Tận dụng giá cao để bán các linh quặng và linh thảo hiếm của bạn.",
+        "effects": {
+          "money": 400,
+          "reputation": 10,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thien_kieu_tra_xanh_gap_go",
+    "title": "Gặp Gỡ Mộc Uyển Thanh",
+    "description": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh đang bị yêu thú bao vây, dáng vẻ yếu đuối cầu cứu.",
+    "minAge": 15,
+    "maxAge": 50,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "rescue_tra_xanh",
+        "text": "Ra tay cứu giúp, không thể thấy chết không cứu.",
+        "effects": {
+          "health": -5,
+          "karma": 5,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": 10
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 0
+          }
+        }
+      },
+      {
+        "id": "ignore_tra_xanh",
+        "text": "Nhận ra sự bất thường, lẳng lặng rời đi.",
+        "effects": {
+          "luck": 1,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": -20
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 10
+          }
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_tra_xanh",
+      "rescue"
+    ]
+  },
+  {
+    "id": "save_demonic_cultivator",
+    "title": "Cứu Giúp Tà Tu",
+    "description": "Trời mưa tầm tã, bạn phát hiện một nữ tử mặc áo bào đen bê bết máu ngã gục bên đường. Khí tức của nàng ta lạnh lẽo và sặc mùi ma khí. Đám tu sĩ chính đạo đang lùng sục gần đó.",
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "save_demonic_girl",
+        "text": "Dùng Hồi Huyết Đan cứu giúp nàng ta.",
+        "effects": {
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "ma_cong_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "call_righteous",
+        "text": "Hô hoán tu sĩ chính đạo đến vây bắt.",
+        "effects": {
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "npc_hong_nhan_ma_dao",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "abyssal_whispers",
+    "title": "Tiếng Gọi Từ Vực Thẳm",
+    "description": "Đang bế quan tĩnh tu tại một hang động hẻo lánh, bạn bỗng nghe thấy những tiếng nỉ non thì thầm vọng lên từ mạch nước ngầm, hứa hẹn ban cho bạn sức mạnh vô song và tuổi thọ vô tận nếu bạn chịu buông bỏ Đạo Tâm.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "resist_whisper",
+        "text": "Giữ vững linh đài, cự tuyệt ma âm.",
+        "effects": {
+          "daoMind": 5,
+          "cultivation": 2,
+          "comprehension": 1
+        }
+      },
+      {
+        "id": "accept_whisper",
+        "text": "Mở rộng tâm trí, tiếp nhận sức mạnh tà ác.",
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "black_roadhouse_inn",
+    "title": "Hắc Điếm Ven Đường",
+    "description": "Trời tối mịt giữa hoang dã, bạn tấp vào một khách điếm leo lét ánh đèn. Chưởng quỹ là một bà lão xảo quyệt mỉm cười bưng lên một bát thịt kho có mùi linh khí rất kỳ lạ nhưng vô cùng hấp dẫn.",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "stay_awake",
+        "text": "Cẩn thận không ăn, ban đêm thức trắng phòng thủ.",
+        "effects": {
+          "health": -2,
+          "daoMind": 2,
+          "money": 50
+        }
+      },
+      {
+        "id": "eat_and_sleep",
+        "text": "Đánh chén no nê rồi đi ngủ.",
+        "effects": {
+          "health": -15,
+          "luck": -2,
+          "money": -50
+        }
+      }
+    ],
+    "tags": [
+      "trap",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "blood_sacrifice_array",
+    "title": "Huyết Tế Trận Pháp",
+    "description": "Trong lúc đi tuần, bạn phát hiện một trận pháp tà ác đang hút máu của phàm nhân để ngưng tụ Huyết Đan.",
+    "minAge": 30,
+    "maxAge": 200,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "destroy_array",
+        "text": "Liều mạng phá hủy trận pháp.",
+        "effects": {
+          "health": -15,
+          "daoMind": 5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": "Đợi trận pháp hoàn tất rồi nẫng tay trên.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "karma_extreme"
+    ]
+  },
+  {
+    "id": "qi_deviation_crisis",
+    "title": "Nguy Cơ Tẩu Hỏa",
+    "description": "Ma khí dâng cao kích phát tâm ma trong lúc bạn tĩnh tu. Linh khí trong kinh mạch trở nên bạo loạn, đe dọa nổ tung.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_breakthrough",
+        "text": "Mượn cỗ lực lượng bạo loạn này để cưỡng ép tăng tu vi!",
+        "effects": {
+          "health": -20,
+          "cultivation": 10,
+          "daoMind": -5
+        }
+      },
+      {
+        "id": "suppress_qi",
+        "text": "Cắn chóp lưỡi, tàn nhẫn áp chế linh khí xao động.",
+        "effects": {
+          "cultivation": -5,
+          "daoMind": 5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "demonic_qi_overload",
+    "title": "Ma Khí Quá Tải",
+    "description": "Ma khí thiên địa quá dày đặc bắt đầu thấm vào kinh mạch của bạn ngay cả khi đang nghỉ ngơi, gây ra một cuộc xung đột dữ dội giữa linh khí và hắc ám khí tức.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "refine_demonic_qi",
+        "text": "Cố gắng tinh luyện ma khí thành sức mạnh của bản thân.",
+        "effects": {
+          "cultivation": 15,
+          "health": -20,
+          "daoMind": -10,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expel_darkness",
+        "text": "Tập trung toàn lực để trục xuất hắc khí khỏi cơ thể.",
+        "effects": {
+          "health": -5,
+          "daoMind": 8,
+          "cultivation": -2
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ]
+  },
+  {
+    "id": "shadow_demonic_ambush",
+    "title": "Bóng Ma Ma Đạo",
+    "description": "Ma khí dâng cao khiến các tà tu bạo dạn hơn. Một sát thủ ma đạo lão luyện phục kích bạn từ bóng tối, âm mưu cướp đoạt tu vi của bạn.",
+    "minAge": 25,
+    "maxAge": 180,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "counter_ambush",
+        "text": "Phản ứng tức thì và bước vào cuộc quyết chiến sinh tử.",
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "use_escape_talisman",
+        "text": "Dùng độn phù để tẩu thoát, bỏ lại tài sản để giữ mạng.",
+        "effects": {
+          "money": -200,
+          "luck": -2,
+          "daoMind": -5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "void_visions_meditation",
+    "title": "Ảo Ảnh Hư Không",
+    "description": "Ma khí dày đặc bao vây bạn trong lúc bế quan. Những ảo ảnh về một hư không đen tối bắt đầu cám dỗ tâm trí, hứa hẹn sức mạnh để đổi lấy nhân tính.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "embrace_the_darkness",
+        "text": "Tiếp nhận ảo ảnh và khai thác năng lượng hư không.",
+        "effects": {
+          "cultivation": 18,
+          "karma": -15,
+          "health": -10,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "recite_heart_sutra",
+        "text": "Tụng trì Băng Tâm Quyết để thanh tẩy sự ô nhiễm.",
+        "effects": {
+          "daoMind": 15,
+          "cultivation": -5,
+          "karma": 10,
+          "health": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ]
+  },
+  {
+    "id": "demonic_whisper_meditation",
+    "title": "Tiếng Thì Thầm Của Ma Chủng",
+    "description": "Khi ma khí thiên địa bão hòa, một giọng nói hắc ám bắt đầu thì thầm trong tâm trí bạn lúc tĩnh tu, hứa hẹn sức mạnh cấm kỵ để vượt qua bình cảnh hiện tại.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "listen_to_whispers",
+        "text": "Lắng nghe tiếng thì thầm và chấp nhận con đường tắt ma đạo.",
+        "effects": {
+          "cultivation": 20,
+          "karma": -30,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "seal_the_mind",
+        "text": "Phong tỏa ngũ quan, kiên trì bảo vệ đạo tâm chính đạo.",
+        "effects": {
+          "daoMind": 15,
+          "health": -10,
+          "karma": 10
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "dao_mind"
+    ]
+  },
+  {
+    "id": "demonic_blood_sacrifice_interruption",
+    "title": "Phá Hoại Huyết Tế",
+    "description": "Bạn vô tình bắt gặp một nghi lễ ẩn giấu: các tà tu đang dùng phàm nhân làm vật hiến tế để gia tăng ma khí [6, 8]. Không khí nồng nặc mùi máu và tử vong.",
+    "minAge": 25,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "save_mortals",
+        "text": "Liều mạng tiêu diệt lũ tà tu và cứu những người sống sót.",
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 20,
+          "reputation": 15
+        }
+      },
+      {
+        "id": "wait_and_scavenge",
+        "text": "Đợi nghi lễ kết thúc, sau đó nhặt nhạnh các ma cụ bị bỏ lại.",
+        "effects": {
+          "karma": -50,
+          "daoMind": -20,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          },
+          "money": 300
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "heart_demon_resonance",
+    "title": "Tâm Ma Cộng Hưởng",
+    "description": "Ma khí thiên địa tràn trề, kích phát sự cộng hưởng với 'Đan Độc' tích tụ và những dục vọng kìm nén trong linh hồn bạn, hóa thành một đợt Tâm Ma bùng phát [cite: 18, 56].",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "conquer_heart_demon",
+        "text": "Bước vào cuộc chiến tâm linh để chinh phục bóng tối trong lòng.",
+        "effects": {
+          "daoMind": 20,
+          "comprehension": 5,
+          "health": -20,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "surrender_to_darkness",
+        "text": "Đầu hàng trước những tiếng thì thầm để tăng vọt tu vi trong chớp mắt.",
+        "effects": {
+          "cultivation": 40,
+          "daoMind": -30,
+          "karma": -50,
+          "health": -10
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "dao_mind"
+    ]
+  },
+  {
+    "id": "waking_dawn",
+    "title": "Bình Minh Thức Giấc",
+    "description": "Sương lạnh tan, một lựa chọn mở ra: tu luyện bền bỉ hay mạo hiểm nhảy vọt.",
+    "minAge": 1,
+    "maxAge": 5,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steady_practice",
+        "text": "Luyện tập kiên nhẫn, xây nền móng vững chắc.",
+        "effects": {
+          "cultivation": 2,
+          "comprehension": 1,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "liet_duong_hoa",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "shortcut_burst",
+        "text": "Dùng bước tắt mạo hiểm để tiến nhanh.",
+        "effects": {
+          "cultivation": 5,
+          "luck": -2,
+          "health": -3,
+          "gainItem": {
+            "itemId": "item_tho_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "chosen_one_duel",
+    "title": "Thiên Kiêu Chân Chính Thách Đấu",
+    "description": "Long Ngạo Thiên, con cưng của thiên đạo, kiêu ngạo chặn đường bạn. Hắn chĩa thanh lân kiếm lấp lánh vào bạn, đòi quyết đấu để giẫm đạp lên tôn nghiêm của bạn.",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": "Dốc toàn lực, chứng minh thực lực!",
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "daoMind": 10,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": "Nhận thua, biết khó mà lui.",
+        "effects": {
+          "daoMind": -10,
+          "health": 0
+        }
+      }
+    ],
+    "tags": [
+      "combat",
+      "npc_thien_kieu_chan_chinh"
+    ]
+  },
+  {
+    "id": "spirit_herbs",
+    "title": "Thảo Dược Linh Hồn",
+    "description": "Bạn phát hiện những thảo dược linh hồn bí ẩn. Khí tức của chúng vô cùng hấp dẫn nhưng có phần bất ổn định.",
+    "minAge": 3,
+    "maxAge": 100,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "accept_herbs",
+        "text": "Nhận thảo dược và tinh luyện chúng an toàn.",
+        "effects": {
+          "health": 2,
+          "cultivation": 1,
+          "karma": 1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "test_herbs",
+        "text": "Tự mình thí nghiệm nuốt trực tiếp thảo dược.",
+        "effects": {
+          "health": -2,
+          "comprehension": 2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "decline_herbs",
+        "text": "Từ chối cám dỗ và tiếp tục lặng lẽ.",
+        "effects": {
+          "karma": 1,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "duel_challenge",
+    "title": "Thách Đấu Quyết Chiến",
+    "description": "Một võ giả lang thang bất ngờ chặn đường, rút vũ khí và thách đấu bạn để chứng minh đạo tâm của hắn.",
+    "minAge": 18,
+    "maxAge": 35,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "accept_duel",
+        "text": "Đồng ý quyết đấu và chứng minh bản thân.",
+        "effects": {
+          "cultivation": 2,
+          "luck": 1,
+          "health": -3,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "avoid_duel",
+        "text": "Tránh đối đầu và học hỏi từ kết quả.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "combat",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "heavenly_dao_quake",
+    "title": "Thiên Đạo Chấn Động",
+    "description": "Năng lượng thiêng liêng dao động dữ dội ở mức báo động! Cơ duyên phi thường đang đến gần, một bí cảnh ẩn có thể sắp khai mở.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_violent_qi",
+        "text": "Liều mạng hấp thụ luồng linh khí bạo loạn.",
+        "effects": {
+          "health": -25,
+          "cultivation": 30,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "seek_secret_realm",
+        "text": "Tìm kiếm lối vào bí cảnh đang khai mở.",
+        "effects": {
+          "luck": 2,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "heavenly_qi_surge",
+    "title": "Linh Khí Bộc Phát",
+    "description": "Linh khí thiên địa đột nhiên bộc phát đến mức độ dày đặc khó tin! Nó đè bẹp hoàn toàn ma khí, nhưng hít quá nhiều có thể làm quá tải một thân thể yếu ớt.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_madly",
+        "text": "Hút linh khí điên cuồng để tăng vọt tu vi!",
+        "effects": {
+          "health": -15,
+          "cultivation": 20,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "refine_into_pills",
+        "text": "Cẩn thận dẫn dắt linh khí để ngưng tụ thành đan dược.",
+        "effects": {
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "cultivation",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_epiphany_surge",
+    "title": "Thiên Đạo Đốn Ngộ",
+    "description": "Thiên Đạo dao động kịch liệt. Một luồng Đạo vận uyên thâm bất ngờ gột rửa tâm trí bạn, cộng hưởng với kinh mạch và mang đến cơ hội đốn ngộ hiếm có.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_epiphany",
+        "text": "Nhắm mắt hấp thu Đạo vận để tu vi tăng vọt.",
+        "effects": {
+          "health": -5,
+          "cultivation": 15,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "comprehend_manual",
+        "text": "Dùng khoảnh khắc uyên thâm này để diễn hóa công pháp.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "echoes_of_the_immortal_rift",
+    "title": "Tiếng Vọng Từ Vết Nứt Tiên Giới",
+    "description": "Sự gia tăng đột ngột của Thiên Đạo dị động đã gây ra một vết nứt thời gian cục bộ. Bạn nghe thấy tiếng vọng của một lần đột phá trong tương lai hoặc một thất bại trong quá khứ cộng hưởng với linh hồn,.",
+    "minAge": 15,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "peer_into_destiny",
+        "text": "Cưỡng ép thần trí xuyên qua vết nứt để nắm bắt một mảnh kiến thức tối cao,.",
+        "effects": {
+          "comprehension": 15,
+          "daoMind": -5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "sacrifice_cultivation_for_luck",
+        "text": "Dâng hiến tu vi hiện tại cho vết nứt để đổi lấy sự thay đổi vận mệnh,.",
+        "effects": {
+          "cultivation": -20,
+          "luck": 10,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_thunder_tempering",
+    "title": "Thiên Lôi Tôi Thể",
+    "description": "Thiên Đạo đang dao động dữ dội. Một cơn bão linh khí cục bộ đã triệu hồi Thiên Lôi. Bạn có thể thử mượn sức mạnh sấm sét để tôi luyện kinh mạch.",
+    "minAge": 30,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "face_the_thunder",
+        "text": "Trực diện đón sấm sét để tẩy tủy cốt cách.",
+        "effects": {
+          "health": -35,
+          "cultivation": 30,
+          "comprehension": 5,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "flee_the_storm",
+        "text": "Lùi lại nơi an toàn, tránh xa tia sét chết chóc.",
+        "effects": {
+          "luck": 2,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "ancient_array_puzzle",
+    "title": "Trận Pháp Cổ Nhân Thất Lạc",
+    "description": "Trong lúc thám hiểm vùng hẻo lánh, bạn phát hiện một trận pháp cổ xưa khắc trên đá. Nó nhấp nháy ánh sáng kỳ bí, cộng hưởng với những dao động của Thiên Đạo hiện tại.",
+    "minAge": 15,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "solve_with_wisdom",
+        "text": "Dùng ngộ tính thâm hậu để giải mã trận pháp một cách hòa bình.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 3,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "break_with_force",
+        "text": "Dùng võ lực tuyệt đối để phá vỡ lõi trận pháp.",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "opportunity",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "immortal_tomb_emergence",
+    "title": "Mộ Táng Tiên Nhân Xuất Thế",
+    "description": "Thiên Đạo dị động cực độ khiến đất đai nứt nẻ, để lộ lối vào của một ngôi mộ tráng lệ thuộc về một vị Tiên Nhân phi thăng từ thời viễn cổ.",
+    "minAge": 40,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_the_core_tomb",
+        "text": "Bất chấp cạm bẫy chết người để tiến vào lõi mộ táng.",
+        "effects": {
+          "health": -35,
+          "comprehension": 10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          },
+          "luck": 5
+        }
+      },
+      {
+        "id": "scavenge_the_outskirts",
+        "text": "Giữ an toàn và nhặt nhạnh lễ vật ở các sảnh ngoài.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          },
+          "luck": 2,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "danger"
+    ]
+  },
+  {
+    "id": "world_dao_epiphany",
+    "title": "Thiên Đạo Cộng Hưởng",
+    "description": "Thiên Đạo dị động kịch liệt, khiến linh khí thiên địa hóa thành những cánh hoa sen rơi rụng khắp bầu trời.",
+    "minAge": 10,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "meditate_on_dao",
+        "text": "Tập trung lĩnh ngộ quy luật của vũ trụ.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 10,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_petals",
+        "text": "Nhanh chóng hấp thụ các cánh hoa linh khí để tăng tu vi.",
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "spiritualQi": -5
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "heavenly_karma_judgment",
+    "title": "Thiên Đạo Nghiệp Lực Phán Quyết",
+    "description": "Thiên Đạo dị động đã kích hoạt một khoảnh khắc thấu thị nghiệp lực. Thế giới phán xét những hành động trong quá khứ của bạn, cộng hưởng với sự thuần khiết hoặc ô uế của linh hồn.",
+    "minAge": 10,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "embrace_the_judgment",
+        "text": "Dâng hiến linh hồn cho sự phán xét của thiên đình.",
+        "effects": {
+          "daoMind": 10,
+          "luck": 5,
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "defy_the_heavens",
+        "text": "Chống lại phán xét và chỉ tin vào sức mạnh của bản thân.",
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -20,
+          "health": -15
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "karma_event",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "pill_toxin_backlash",
+    "title": "Tích Tụ Đan Độc",
+    "description": "Việc lạm dụng đan dược cấp thấp để chạy đua với thọ nguyên khiến 'Đan Độc' tích tụ trong kinh mạch. Một đợt bạo kích năng lượng đang đe dọa cơ thể bạn.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "cleanse_meridians",
+        "text": "Chịu đựng đau đớn tột cùng để cưỡng ép thanh tẩy đan độc.",
+        "effects": {
+          "health": -20,
+          "daoMind": 10,
+          "cultivation": -2,
+          "karma": 5
+        }
+      },
+      {
+        "id": "neutralize_with_herb",
+        "text": "Dùng một đóa Tuyết Liên hiếm có để trung hòa đan độc an toàn.",
+        "effects": {
+          "money": -150,
+          "health": 5,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "pill_toxin"
+    ]
+  },
+  {
+    "id": "pill_toxin_cleansing_ritual",
+    "title": "Nghi Lễ Tẩy Rửa Đan Độc",
+    "description": "Kinh mạch của bạn bị tắc nghẽn bởi tàn dư từ việc lạm dụng đan dược [2]. Một vị lang trung lang thang đề nghị một nghi lễ nguy hiểm: dùng linh hỏa tinh khiết để thiêu cháy đan độc.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "endure_the_fire",
+        "text": "Cắn răng chịu đựng linh hỏa thiêu đốt để thanh tẩy cơ thể.",
+        "effects": {
+          "health": -30,
+          "daoMind": 10,
+          "cultivation": -5,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "refuse_and_seek_herbs",
+        "text": "Từ chối nghi lễ và cố gắng trung hòa đan độc bằng linh dược.",
+        "effects": {
+          "money": -200,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ]
+  },
+  {
+    "id": "fragment_of_the_heavens",
+    "title": "Mảnh Vỡ Thiên Đạo",
+    "description": "Thiên Đạo dị động cực độ khiến một mảnh vỡ vật chất của Thiên Đạo rơi xuống từ bầu trời. Nó tỏa ra một giai điệu vượt xa phàm trần.",
+    "minAge": 15,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "grasp_the_fragment",
+        "text": "Liều mình để nắm lấy mảnh vỡ thần thánh.",
+        "effects": {
+          "health": -40,
+          "comprehension": 20,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "watch_it_dissolve",
+        "text": "Không chạm vào; chỉ ngồi gần quan sát khi nó tan biến.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 20,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_dao_vision_war",
+    "title": "Ảo Ảnh Vĩnh Hằng Đại Chiến",
+    "description": "Thiên Đạo dị động cực độ kích phát cộng hưởng linh hồn. Bạn nhìn thấy ảo ảnh Thủy Tổ tông môn đại chiến Đại Ma, hé lộ một sơ hở trong công pháp hiện tại của bạn.",
+    "minAge": 30,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "correct_the_flaw",
+        "text": "Tập trung sửa chữa sơ hở công pháp để tăng hiệu suất tu luyện.",
+        "effects": {
+          "comprehension": 15,
+          "cultivation": 5,
+          "daoMind": 10,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "capture_demon_technique",
+        "text": "Thay vào đó, cố gắng ghi nhớ các chiêu thức cấm kỵ của Đại Ma.",
+        "effects": {
+          "comprehension": 10,
+          "karma": -20,
+          "daoMind": -15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "lore"
+    ]
+  },
+  {
+    "id": "pill_toxin_meridian_blockage",
+    "title": "Khủng Hoảng Tắc Nghẽn Kinh Mạch",
+    "description": "Linh khí nồng đậm trong môi trường đang phản ứng dữ dội với 'Đan Độc' trong cơ thể, gây ra một vụ nổ linh khí cục bộ ngay trong kinh mạch của bạn.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_suppression",
+        "text": "Cưỡng ép trấn áp vụ nổ, chấp nhận rủi ro tổn thương vĩnh viễn.",
+        "effects": {
+          "health": -40,
+          "cultivation": -5,
+          "daoMind": 15,
+          "karma": 5
+        }
+      },
+      {
+        "id": "vent_excess_qi",
+        "text": "Xả bớt năng lượng dư thừa ra ngoài, tạo thành một xung kích nhỏ.",
+        "effects": {
+          "health": -15,
+          "cultivation": -10,
+          "luck": -2,
+          "reputation": -5
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ]
+  },
+  {
+    "id": "ancient_spatial_rift_puzzle",
+    "title": "Vết Nứt Không Gian Cổ",
+    "description": "Thiên Đạo dị động cực độ đã mở ra một vết nứt không gian cục bộ. Nó dẫn đến một tiểu thế giới chứa đựng các công pháp tu luyện cổ đại [cite: 56, 59].",
+    "minAge": 25,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "decipher_the_rift",
+        "text": "Dùng ngộ tính thâm hậu để ổn định vết nứt và tiến vào an toàn.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "force_entry",
+        "text": "Bất chấp không gian bạo loạn để đoạt lấy mảnh tàn quyển tối cao.",
+        "effects": {
+          "health": -40,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "puzzle",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "heavenly_nectar_epiphany",
+    "title": "Linh Vũ Thiên Đạo",
+    "description": "Một hiện tượng hiếm gặp xảy ra khi linh khí đạt đỉnh! Những giọt mưa nuôi dưỡng linh hồn rơi xuống, giúp vượt qua các bình cảnh thông thường [cite: 56, 12].",
+    "minAge": 10,
+    "maxAge": 500,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "meditate_in_rain",
+        "text": "Tĩnh tọa giữa màn mưa để tối đa hóa lượng tu vi nhận được.",
+        "effects": {
+          "cultivation": 25,
+          "health": 10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "collect_nectar",
+        "text": "Tập trung thu thập linh vũ vào bình ngọc để bán sau này.",
+        "effects": {
+          "money": 300,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "opportunity",
+      "rare"
+    ]
+  },
+  {
+    "id": "beast_king_lotus",
+    "title": "Yêu Vương Trấn Giữ Huyết Liên",
+    "description": "Tiến sâu vào lõi Vạn Thú Sơn Mạch, bạn phát hiện một đóa Huyết Liên ngàn năm đang tỏa hương thơm ngát. Tuy nhiên, nằm khoanh tròn bên cạnh là một con Huyết Mãng Yêu Vương đang say ngủ.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steal_lotus",
+        "text": "Lập trận pháp ẩn nấp, trộm Huyết Liên rồi bỏ chạy.",
+        "effects": {
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_huyet_lien",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leave_safely",
+        "text": "Bỏ đi, mạng sống là trên hết.",
+        "effects": {
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "beast",
+      "danger",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corpse_in_swamp",
+    "title": "Xác Chết Giữa Đầm Lầy",
+    "description": "Tại sâu trong Vạn Thú Sơn Mạch, bạn thấy thi thể một tu sĩ Trúc Cơ Kỳ chìm một nửa dưới đầm lầy, bên hông vẫn còn lấp lánh một Túi trữ vật căng phồng. Xung quanh tĩnh lặng một cách đáng sợ.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "loot_corpse",
+        "text": "Dùng ngự kiếm thuật hoặc cành cây khều Túi trữ vật.",
+        "effects": {
+          "health": -15,
+          "luck": 1,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_boi_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "burn_corpse",
+        "text": "Phóng hỏa thiêu rụi thi thể từ xa để tránh hậu họa.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "trap",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "unfinished_go_game",
+    "title": "Tàn Cuộc Cờ Vây",
+    "description": "Khám phá một hang động bám đầy nhũ đá, bạn tìm thấy một bàn cờ vây làm từ bạch ngọc. Trận cờ đang đánh dở, mỗi quân cờ đều tỏa ra Đạo Vận vô cùng thâm thúy, dường như là tàn cuộc của hai vị đại năng phi thăng từ ngàn năm trước.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "solve_go_game",
+        "text": "Ngồi xuống, dốc toàn bộ tâm trí để giải cờ.",
+        "effects": {
+          "cultivation": 20,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "observe_briefly",
+        "text": "Chỉ chắp tay kính cẩn đứng xem qua loa rồi rời đi.",
+        "effects": {
+          "comprehension": 1,
+          "cultivation": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "dao_event",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "demon_king_metamorphosis",
+    "title": "Yêu Vương Hóa Hình",
+    "description": "Bầu trời Vạn Thú Sơn Mạch đen kịt. Bạn nhìn thấy một con Yêu Vương đang chịu Thiên Kiếp để hóa hình người, cơ thể đang cực kỳ suy yếu.",
+    "minAge": 50,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "protect_demon",
+        "text": "Bảo hộ Yêu Vương qua cơn thiên kiếp.",
+        "effects": {
+          "health": -20,
+          "karma": 5,
+          "gainItem": {
+            "itemId": "item_van_thu_huyet_lenh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "sneak_attack_demon",
+        "text": "Thừa nước đục thả câu, đánh lén!",
+        "effects": {
+          "karma": -8,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "rare_encounter"
+    ]
+  },
+  {
+    "id": "secret_realm_opening",
+    "title": "Bí Cảnh Khai Mở",
+    "description": "Thiên Đạo dị động dữ dội. Một vết nứt không gian xé rách mây trời, để lộ ra một bí cảnh viễn cổ đang tỏa ra luồng linh khí tối thượng.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_realm",
+        "text": "Liều mạng nhảy vào vết nứt không gian.",
+        "effects": {
+          "health": -20,
+          "cultivation": 25,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "meditate_outside",
+        "text": "Quá nguy hiểm. Chỉ ngồi ngoài cửa hút linh khí rò rỉ.",
+        "effects": {
+          "cultivation": 5,
+          "luck": 2,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_treasure_emerges",
+    "title": "Thiên Tài Địa Bảo Xuất Thế",
+    "description": "Tài nguyên sơn mạch đang cực kỳ dồi dào. Trên vách núi nở rộ một đóa Tuyết Liên ngàn năm quý hiếm, thu hút vô số tán tu tham lam đang chém giết lẫn nhau để tranh giành.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "sneak_and_grab",
+        "text": "Ẩn nấp luồn lách qua chiến trường để hái Tuyết Liên.",
+        "effects": {
+          "health": -10,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_tuyet_lien",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "ambush_survivors",
+        "text": "Đợi chúng chém giết xong rồi phục kích kẻ sống sót.",
+        "effects": {
+          "karma": -10,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "resource_gathering",
+      "opportunity",
+      "danger"
+    ]
+  },
+  {
+    "id": "encounter_mu_wanqing",
+    "title": "Gặp Gỡ Mộc Uyển Thanh",
+    "description": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh (đệ tử nội môn nổi danh xinh đẹp) đang bị yêu thú bao vây, khóc lóc cầu cứu vô cùng yếu đuối.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "rescue_tra_xanh",
+        "text": "Lao vào anh hùng cứu mỹ nhân.",
+        "effects": {
+          "health": -15,
+          "karma": 5,
+          "money": 50
+        }
+      },
+      {
+        "id": "ignore_tra_xanh",
+        "text": "Nhìn thấu rắc rối, lẳng lặng rời đi.",
+        "effects": {
+          "luck": 2,
+          "daoMind": 2,
+          "karma": -2
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_tra_xanh",
+      "rescue",
+      "beast"
+    ]
+  },
+  {
+    "id": "mountain_meditation",
+    "title": "Thưởng Thiền Sơn",
+    "description": "Những đỉnh núi cao chót vót của ngọn núi cổ xưa mời gọi bạn ngồi xuống và suy ngẫm về Thiên Đạo.",
+    "minAge": 6,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "embrace_silence",
+        "text": "Ngồi cùng linh hồn núi và lắng nghe sự tĩnh lặng.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 2,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "seek_fortune",
+        "text": "Tìm kiếm kho báu ẩn giấu trên các vách núi.",
+        "effects": {
+          "health": -1,
+          "cultivation": 1,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "mountain"
+    ]
+  },
+  {
+    "id": "event_hong_nhan_ma_dao_am_sat",
+    "title": "Huyết Mân Côi Phục Kích",
+    "description": "Đang thám hiểm Vạn Thú Sơn Mạch, Huyết Mân Côi bất ngờ hiện nguyên hình tà tu bao vây bạn với sát tâm nồng đậm.",
+    "minAge": 20,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_hong_nhan",
+        "text": "Quyết chiến tử thành, phá vây!",
+        "effects": {
+          "health": -15,
+          "cultivation": 10,
+          "luck": 2
+        }
+      },
+      {
+        "id": "flee_hong_nhan",
+        "text": "Bỏ lại tài sản, tìm đường tẩu thoát.",
+        "effects": {
+          "health": -5,
+          "money": -100
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "npc_hong_nhan_ma_dao"
+    ]
+  },
+  {
+    "id": "ancestral_memory",
+    "title": "Ký Ức Tổ Tiên",
+    "description": "Sâu trong cổ nhân di tích, một sự cộng hưởng bí ẩn khiến luồng ký ức của tổ tiên xa xưa ùa vào tâm trí bạn.",
+    "minAge": 1,
+    "maxAge": 100,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "remember_ancestors",
+        "text": "Hòa cùng tổ tiên và nuôi dưỡng di sản.",
+        "effects": {
+          "karma": 2,
+          "cultivation": 1,
+          "comprehension": 1
+        }
+      },
+      {
+        "id": "forge_own_path",
+        "text": "Phá vỡ con đường cũ và tạo số mệnh riêng.",
+        "effects": {
+          "luck": 2,
+          "comprehension": 1,
+          "karma": -1
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "lore",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "grave_storm",
+    "title": "Giông Mộ Linh",
+    "description": "Một cơn giông lốc kinh hoàng chứa đầy oán linh bất ngờ quét qua khu mộ cổ.",
+    "minAge": 25,
+    "maxAge": 60,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "stand_firm",
+        "text": "Đứng vững và bảo vệ trái tim.",
+        "effects": {
+          "health": -1,
+          "karma": 2,
+          "cultivation": 1
+        }
+      },
+      {
+        "id": "evade_pain",
+        "text": "Lẩn tránh đau đớn và giữ gìn năng lượng.",
+        "effects": {
+          "luck": 2,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "danger",
+      "demonic",
+      "trap"
+    ]
+  },
+  {
+    "id": "helping_hand_daoist",
+    "title": "Đạo Hữu Gặp Nạn",
+    "description": "Bạn bắt gặp một tu sĩ chính đạo đang bị thương nặng và bị dồn vào đường cùng bởi bầy ma lang. Họ khẩn khoản cầu cứu bạn.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "help_daoist",
+        "text": "Rút kiếm xông vào giải vây cứu người.",
+        "effects": {
+          "health": -10,
+          "karma": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "loot_daoist",
+        "text": "Chờ họ bị cắn chết rồi hôi của.",
+        "effects": {
+          "karma": -10,
+          "money": 80,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "karma_event",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "ruined_alchemy_furnace",
+    "title": "Lò Luyện Đan Tàn Tích",
+    "description": "Trong một hang động bị lãng quên, bạn tìm thấy một lò luyện đan nứt nẻ vẫn tỏa ra dược khí nồng đậm nhưng bất ổn dù đã qua hàng thế kỷ.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_medicinal_qi",
+        "text": "Hút luồng dược khí nóng rực để rèn luyện nhục thể.",
+        "effects": {
+          "health": -5,
+          "cultivation": 5,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "scavenge_furnace",
+        "text": "Đập vỡ lò để tìm kiếm đan dược còn sót lại.",
+        "effects": {
+          "luck": -1,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "crafting",
+      "opportunity",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "ancient_array_trap",
+    "title": "Cạm Bẫy Trận Pháp Cổ",
+    "description": "Thiên Đạo dị động đã làm lộ ra lối vào của một Cổ Nhân Di Tích, nhưng nó được bảo vệ bởi một sát trận vô cùng phức tạp và chết chóc.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_break_array",
+        "text": "Dùng toàn bộ võ lực để phá vỡ trận pháp!",
+        "effects": {
+          "health": -25,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "decipher_array",
+        "text": "Ngồi xuống và dùng ngộ tính để giải mã trận pháp.",
+        "effects": {
+          "comprehension": 3,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "danger",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "demonic_altar_discovery",
+    "title": "Phát Hiện Tế Đàn Ma Đạo",
+    "description": "Sâu trong vùng núi sương mù, bạn tình cờ phát hiện một Tế Đàn Ma Đạo. Máu tươi bao phủ các rune, và một ma khí hắc ám đang đập thình thịch với sức mạnh cấm kỵ.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "take_artifact",
+        "text": "Chịu đựng luồng năng lượng ô uế và đoạt lấy ma khí.",
+        "effects": {
+          "health": -15,
+          "karma": -15,
+          "daoMind": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "destroy_altar",
+        "text": "Dùng tu vi của bản thân để thanh tẩy tế đàn.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "cultivation": 5,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "millennial_ginseng_guardian",
+    "title": "Huyết Lang Trấn Giữ Linh Sâm",
+    "description": "Sâu trong Vạn Thú Sơn Mạch, bạn phát hiện một bãi linh thảo hiếm, bao gồm cả một cây Nhân Sâm Ngàn Năm. Tuy nhiên, một con ma lang hung dữ đang gầm gừ bảo vệ khu vực này.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_wolf_for_ginseng",
+        "text": "Huyết chiến với ma lang để đoạt lấy linh thảo.",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 4
+          }
+        }
+      },
+      {
+        "id": "sneak_and_steal_herbs",
+        "text": "Nín thở và cố gắng trộm vài nhánh linh thảo mà không đánh động nó.",
+        "effects": {
+          "health": -10,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "beast",
+      "resource_gathering",
+      "combat"
+    ]
+  },
+  {
+    "id": "ancient_dao_stele",
+    "title": "Đạo Bi Thượng Cổ",
+    "description": "Được kích hoạt bởi sự dao động kịch liệt của Thiên Đạo, một tấm bia đá khổng lồ trồi lên từ lòng đất, tỏa ra những cổ tự Đạo vận cộng hưởng với linh hồn bạn.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_stele",
+        "text": "Ngồi dưới bia đá và tĩnh tâm ngộ đạo.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 5,
+          "cultivation": 10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "pry_fragment",
+        "text": "Cạy một mảnh vỡ của bia đá đem đi bán.",
+        "effects": {
+          "karma": -5,
+          "luck": -2,
+          "money": 150
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "beast_king_lair",
+    "title": "Sào Huyệt Yêu Vương",
+    "description": "Khi yêu thú bạo động lên đỉnh điểm, bạn vô tình lạc vào sào huyệt trống rỗng của một Yêu Vương khi nó đang ra ngoài dẫn dắt thú triều. Khắp nơi vương vãi kỳ trân dị bảo.",
+    "minAge": 25,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "loot_lair_quickly",
+        "text": "Vơ vét nhiều nhất có thể rồi tháo chạy trước khi nó về!",
+        "effects": {
+          "health": -5,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          },
+          "money": 150
+        }
+      },
+      {
+        "id": "trap_beast_king",
+        "text": "Thiết lập sát trận để phục kích Yêu Vương suy yếu khi trở về.",
+        "effects": {
+          "health": -30,
+          "cultivation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "high_risk_reward",
+      "danger"
+    ]
+  },
+  {
+    "id": "miasma_mountain_trail",
+    "title": "Chướng Khí Đường Sơn",
+    "description": "Ma khí dâng cao tạo ra một lớp chướng khí độc dày đặc trên đường núi. Bạn nghe thấy tiếng gầm rống biến dị của yêu thú bên trong màn sương.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "push_through_miasma",
+        "text": "Nín thở xông qua để tìm kiếm linh thảo hiếm.",
+        "effects": {
+          "health": -15,
+          "cultivation": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "wait_for_clearance",
+        "text": "Chờ chướng khí tan đi, chấp nhận lãng phí thời gian.",
+        "effects": {
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "danger",
+      "demonic",
+      "beast"
+    ]
+  },
+  {
+    "id": "spiritual_spring_epiphany",
+    "title": "Linh Tuyền Đốn Ngộ",
+    "description": "Linh khí thiên địa nồng đậm đã làm lộ ra một suối linh tuyền ẩn giấu. Dòng nước tinh khiết và tỏa ra Đạo vận thâm thúy.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "bathe_in_spring",
+        "text": "Ngâm mình trong linh tuyền để tẩy rửa kinh mạch.",
+        "effects": {
+          "health": 10,
+          "cultivation": 5,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "collect_spring_water",
+        "text": "Thu thập nước suối vào bình ngọc để bán hoặc dùng sau.",
+        "effects": {
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "opportunity",
+      "rare"
+    ]
+  },
+  {
+    "id": "ghost_battlefield_scavenging",
+    "title": "Quét Dọn Chiến Trường Ma",
+    "description": "Vùng núi đầy rẫy hài cốt từ cuộc chiến tông môn đang diễn ra. Tiếng oán linh gào thét vang vọng khi bạn tìm kiếm các pháp khí và vũ khí bị bỏ lại.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "search_remains",
+        "text": "Tìm kiếm sâu trong chiến trường bất chấp nguy hiểm từ oán linh.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          },
+          "money": 120
+        }
+      },
+      {
+        "id": "purify_battlefield",
+        "text": "Dùng tu vi để siêu thoát cho linh hồn những người đã khuất.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 20,
+          "daoMind": 10
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "ancient_battlefield_vision",
+    "title": "Ảo Ảnh Chiến Trường Cổ",
+    "description": "Thiên Đạo dị động kịch liệt kích phát một vết nứt thời gian. Bạn nhìn thấy ảo ảnh về cuộc đại chiến cổ xưa giữa Tiên và Ma, hé lộ những chiến đấu kỹ pháp thâm thúy.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "study_vision",
+        "text": "Hòa mình vào ảo ảnh để học hỏi cổ pháp.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "resist_vision",
+        "text": "Nhắm mắt lại để bảo vệ thần trí khỏi sát ý tàn khốc.",
+        "effects": {
+          "daoMind": 10,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "lore"
+    ]
+  },
+  {
+    "id": "spirit_beast_egg_discovery",
+    "title": "Phát Hiện Trứng Linh Thú",
+    "description": "Tài nguyên sơn mạch dồi dào. Bạn tìm thấy một quả trứng linh thú phát sáng ẩn trong kẽ đá, nhưng thú cha mẹ đang ở gần đó săn mồi.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "steal_egg",
+        "text": "Lén lút trộm quả trứng và tẩu thoát.",
+        "effects": {
+          "luck": 5,
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leave_beast_alone",
+        "text": "Để quả trứng yên vị để tôn trọng quy luật tự nhiên.",
+        "effects": {
+          "karma": 10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "resource_gathering",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "night_of_the_blood_moon",
+    "title": "Đêm Trăng Máu",
+    "description": "Bầu trời chuyển sang màu đỏ thẫm bệnh hoạn. Ma khí cực đoan đã đẩy lũ yêu thú vào cơn cuồng sát, và bức màn giữa các thế giới đang dần mỏng đi,.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "absorb_blood_essence",
+        "text": "Ngồi giữa tâm điểm cuộc thảm sát và hấp thụ huyết tinh bạo loạn để tăng vọt tu vi,.",
+        "effects": {
+          "cultivation": 25,
+          "health": -30,
+          "daoMind": -15,
+          "karma": -10
+        }
+      },
+      {
+        "id": "slay_frenzied_beasts",
+        "text": "Tiêu diệt lũ thú cuồng loạn để thu hoạch nội đan đột biến phục vụ chế tạo,.",
+        "effects": {
+          "health": -20,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "beast"
+    ]
+  },
+  {
+    "id": "beast_mountain_landslide",
+    "title": "Sạt Lở Vạn Thú Sơn",
+    "description": "Độ nguy hiểm sơn mạch tăng cao gây ra một vụ sạt lở lớn. Những quặng sắt cổ đại lộ ra, nhưng khu vực này vô cùng bất ổn và đầy yêu thú đang bị kích động.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "mine_rare_ores",
+        "text": "Bất chấp đá lăn để khai thác quặng hiếm.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "hunt_agitated_beasts",
+        "text": "Săn tìm lũ yêu thú đang hoảng loạn để lấy nội đan.",
+        "effects": {
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "beast_tide_vanguard",
+    "title": "Tiền Tuyến Thú Triều",
+    "description": "Yêu thú bạo động bùng nổ! Một đợt thú triều khổng lồ đang tràn xuống núi. Bạn bị kẹt ngay trên đường tiến công của đội tiên phong yêu thú.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "hold_the_line",
+        "text": "Trụ vững vị trí và tiêu diệt yêu thú để bảo vệ thung lũng.",
+        "effects": {
+          "health": -30,
+          "cultivation": 10,
+          "reputation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "retreat_and_scavenge",
+        "text": "Lùi về hậu phương và nhặt nhạnh xác thú triều.",
+        "effects": {
+          "health": -5,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "combat",
+      "war"
+    ]
+  },
+  {
+    "id": "herbalist_hidden_garden",
+    "title": "Dược Viên Của Cổ Tu",
+    "description": "Khi linh khí sơn mạch nồng đậm, một trận pháp ẩn giấu đã sụp đổ, để lộ ra dược viên bị lãng quên từ lâu của một vị đại năng luyện đan sư.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "harvest_rare_strains",
+        "text": "Thu hoạch những chủng loại linh thảo quý hiếm nhất.",
+        "effects": {
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 8
+          },
+          "luck": 3,
+          "health": -5
+        }
+      },
+      {
+        "id": "transplant_to_sect",
+        "text": "Cẩn thận di dời linh dược mầm về dược viên tông môn.",
+        "effects": {
+          "reputation": 20,
+          "karma": 10,
+          "daoMind": 5,
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "resource_gathering",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "ancient_alchemy_relic",
+    "title": "Tàn Tích Của Tiên Đan Sư",
+    "description": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn trong Cổ Nhân Di Tích. Bên trong, một lò luyện đan vẫn còn cháy ngọn lửa tiên hỏa mờ nhạt.",
+    "minAge": 25,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "complete_the_pill",
+        "text": "Thử hoàn tất quá trình luyện đan cổ đại.",
+        "effects": {
+          "comprehension": 5,
+          "luck": 5,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_ngung_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "salvage_the_furnace",
+        "text": "Tháo dỡ lò luyện để lấy các nguyên liệu đúc luyện hiếm.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "alchemy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "ancient_beast_seal_weakening",
+    "title": "Phong Ấn Cổ Thú Suy Yếu",
+    "description": "Ma khí và hoạt động yêu thú dâng cao đã làm suy yếu một phong ấn cổ xưa trong núi. Một luồng khí tức kinh khủng từ thời Đại Chiến Cổ Đại đang rò rỉ ra ngoài.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "reinforce_seal_with_qi",
+        "text": "Hiến tế linh khí của bản thân để củng cố phong ấn.",
+        "effects": {
+          "cultivation": -15,
+          "karma": 30,
+          "daoMind": 15,
+          "luck": 5
+        }
+      },
+      {
+        "id": "enter_leaking_fissure",
+        "text": "Tiến vào vết nứt để nhặt nhạnh các cổ vật viễn cổ.",
+        "effects": {
+          "health": -35,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          },
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "ancient_weapon_awakening",
+    "title": "Cổ Khí Thức Tỉnh",
+    "description": "Sâu trong Cổ Nhân Di Tích, một món binh khí rỉ sét bắt đầu cộng hưởng với Thiên Đạo dị động, tỏa ra một luồng kiếm ý mờ nhạt nhưng sắc bén.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "awaken_with_blood",
+        "text": "Dâng hiến tinh huyết để đánh thức khí linh của thần binh.",
+        "effects": {
+          "health": -15,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "study_the_intent",
+        "text": "Tĩnh tâm cảm ngộ kiếm ý để nâng cao ngộ tính.",
+        "effects": {
+          "comprehension": 8,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "weapon",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corrupted_spirit_spring",
+    "title": "Linh Tuyền Ô Uế",
+    "description": "Một con suối linh tuyền trên núi đã bị ô nhiễm bởi ma khí đang dâng cao. Dòng nước tỏa ra ánh tím bệnh hoạn, nhưng năng lượng bên trong vẫn cực kỳ mạnh mẽ.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "absorb_corrupted_qi",
+        "text": "Hấp thụ linh khí vẩn đục để phá vỡ giới hạn.",
+        "effects": {
+          "cultivation": 15,
+          "health": -20,
+          "daoMind": -10,
+          "karma": -10
+        }
+      },
+      {
+        "id": "purify_the_spring",
+        "text": "Dùng linh lực của bản thân để thanh tẩy dòng suối.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 20,
+          "daoMind": 10,
+          "luck": 5
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "hibernating_beast_king",
+    "title": "Yêu Vương Ngủ Đông",
+    "description": "Trong lúc thám hiểm, bạn phát hiện sào huyệt của một Yêu Vương đang ngủ đông. 'Linh Thảo' và 'Linh Quặng' hiếm tích tụ xung quanh thân hình khổng lồ của nó.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steal_materials_carefully",
+        "text": "Cẩn thận trộm lấy nguyên liệu mà không đánh thức nó.",
+        "effects": {
+          "health": -10,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          }
+        }
+      },
+      {
+        "id": "slay_the_sleeping_beast",
+        "text": "Tận dụng cơ hội giết chết yêu thú để lấy nội đan.",
+        "effects": {
+          "health": -40,
+          "cultivation": 20,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          },
+          "reputation": 15
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "high_risk_reward",
+      "danger"
+    ]
+  },
+  {
+    "id": "ancient_sword_intent_ruins",
+    "title": "Kiếm Ý Của Cổ Tu",
+    "description": "Tại Cổ Nhân Di Tích, Thiên Đạo dị động [6] đã đánh thức kiếm ý còn sót lại của một vị đại năng cổ đại. Không khí xung quanh trở nên sắc bén và chết chóc.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_on_intent",
+        "text": "Tĩnh tâm cảm ngộ trực tiếp giữa kiếm ý để tôi luyện thần trí.",
+        "effects": {
+          "comprehension": 12,
+          "health": -15,
+          "daoMind": 10,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "protect_yourself",
+        "text": "Dùng linh khí hộ thể và thu thập linh quặng hiếm lộ ra.",
+        "effects": {
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          },
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "combat",
+      "comprehension"
+    ]
+  },
+  {
+    "id": "cursed_herb_patch",
+    "title": "Bãi Linh Thảo Bị Nguyền Rủa",
+    "description": "Ma khí dâng cao đã làm ô uế một bãi linh thảo hiếm. Những cây linh thảo tỏa ra ánh sáng hắc ám, hứa hẹn sức mạnh to lớn nhưng phải trả giá bằng sự thuần khiết của linh hồn.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "harvest_dark_herbs",
+        "text": "Thu hoạch linh thảo ô uế và tinh luyện chúng thành ma đan.",
+        "effects": {
+          "cultivation": 20,
+          "karma": -25,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "burn_the_patch",
+        "text": "Thiêu hủy bãi linh thảo để ngăn chặn sự lây lan của ma khí.",
+        "effects": {
+          "karma": 15,
+          "daoMind": 10,
+          "reputation": 5,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "ancient_ruins_puzzle_box",
+    "title": "Di Tích Cổ: Hộp Trận Pháp",
+    "description": "Trong lúc thám hiểm Cổ Nhân Di Tích, bạn tìm thấy một hộp kim loại bị niêm phong bởi trận pháp phức tạp. Thiên Đạo dị động đã làm suy yếu khóa ấn của nó [5, 6].",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "solve_with_comprehension",
+        "text": "Dùng ngộ tính thâm hậu để giải mã trận pháp.",
+        "effects": {
+          "comprehension": 5,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "break_with_force",
+        "text": "Dùng linh lực tuyệt đối để đập vỡ hộp.",
+        "effects": {
+          "health": -15,
+          "cultivation": 2,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 4
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "puzzle",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "blood_moon_beast_tide",
+    "title": "Thú Triều Huyết Nguyệt",
+    "description": "Hoạt động yêu thú đã đạt mức cực đoan! Dưới sự kích động của huyết nguyệt, một đợt thú triều đang tràn về phía khu dân cư phàm nhân [10, 11].",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "protect_the_village",
+        "text": "Tham gia phòng thủ để cứu giúp phàm nhân.",
+        "effects": {
+          "health": -35,
+          "karma": 30,
+          "reputation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "hunt_mutated_leaders",
+        "text": "Tập trung săn giết yêu thú đầu đàn để lấy nội đan đột biến.",
+        "effects": {
+          "health": -25,
+          "cultivation": 10,
+          "money": 150,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "ancient_furnace_residual_fire",
+    "title": "Dư Hỏa Lò Đan Cổ",
+    "description": "Linh khí nồng đậm đã thắp lại một ngọn thần hỏa tàn dư trong lò luyện đan bỏ hoang tại Cổ Nhân Di Tích. Sức nóng đang nung chảy đá vây quanh, lộ ra những khối linh quặng ẩn giấu.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "extract_huyen_thiet",
+        "text": "Bất chấp thần hỏa để chiết xuất 'Huyền Thiết' từ đá nóng chảy.",
+        "effects": {
+          "health": -20,
+          "luck": 3,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "absorb_residual_heat",
+        "text": "Tĩnh tu gần lò đan để tôi luyện linh căn thuộc tính hỏa.",
+        "effects": {
+          "cultivation": 8,
+          "comprehension": 5,
+          "health": -5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "alchemy",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_war_convoy_ambush",
+    "title": "Tông Môn Chiến: Phục Kích Đoàn Xe",
+    "description": "Chiến sự đang ở mức cao. Bạn đang hộ tống đoàn xe tài nguyên của tông môn thì bị các đệ tử tinh nhuệ của Vạn Tiên Giáo phục kích.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_the_convoy",
+        "text": "Tử chiến để bảo vệ tài nguyên của tông môn.",
+        "effects": {
+          "health": -35,
+          "reputation": 30,
+          "karma": 10,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_ngung_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "seize_and_flee",
+        "text": "Thừa dịp hỗn loạn, vơ vét một phần tài nguyên rồi bỏ trốn.",
+        "effects": {
+          "money": 500,
+          "karma": -30,
+          "reputation": -50,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 10
+          }
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "ma_huyet_quang_mach",
+    "title": "Quặng Mạch Ma Huyết",
+    "description": "Ma khí dâng cao đã thấm vào một mạch linh quặng trên núi. Những khối quặng đang đập thình thịch với ánh sáng đỏ sẫm, hứa hẹn sức mạnh lớn nhưng đi kèm rủi ro ô uế cực cao [cite: 54, 56].",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "mine_corrupted_ore",
+        "text": "Khai thác quặng ô uế để đúc ma binh.",
+        "effects": {
+          "health": -15,
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "purify_with_righteous_qi",
+        "text": "Dùng tu vi bản thân để thanh tẩy một phần nhỏ mạch quặng.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 15,
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "mountain",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "lost_huyen_thiet_vein",
+    "title": "Mạch Quặng Huyền Thiết Thất Lạc",
+    "description": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn chứa mạch quặng 'Huyền Thiết' tinh khiết—nguyên liệu tối thượng để đúc vũ khí Địa Cấp [cite: 19, 54].",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intensive_mining",
+        "text": "Dành nhiều tháng để khai thác càng nhiều Huyền Thiết càng tốt.",
+        "effects": {
+          "health": -15,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "report_location_for_merit",
+        "text": "Báo cáo mạch quặng cho tông môn để đổi lấy điểm cống hiến khổng lồ.",
+        "effects": {
+          "reputation": 50,
+          "money": 150,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "resource_gathering",
+      "mountain",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thien_kieu_chan_chinh_thach_dau",
+    "title": "Chung Kết Đại Hội Tỷ Thí",
+    "description": "Long Ngạo Thiên, con cưng thiên đạo, đứng trên lôi đài chờ bạn. Linh khí quanh hắn bạo động dữ dội.",
+    "minAge": 18,
+    "maxAge": 25,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": "Dốc toàn lực, chứng minh ai mới là thiên kiêu!",
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "sectPrestige": 100,
+          "worldState": {
+            "sect": {
+              "reputation": 10
+            },
+            "global": {
+              "daoFluctuation": 5
+            }
+          },
+          "npcFavorability": {
+            "npc_thien_kieu_chan_chinh": 20
+          }
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": "Biết khó lui bước, nhận thua bảo toàn tính mạng.",
+        "effects": {
+          "daoHeart": -5,
+          "health": 0
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_chan_chinh",
+      "tournament"
+    ]
+  },
+  {
+    "id": "corrupt_sect_deacon",
+    "title": "Chấp Sự Lũng Đoạn",
+    "description": "Khi bạn đến Chấp Sự Đường để nhận nhiệm vụ tông môn bắt buộc hàng năm, tên Chấp Sự béo ú nháy mắt ám chỉ: nếu bạn nộp 50 Linh thạch 'bôi trơn', hắn sẽ giao cho bạn nhiệm vụ hái thuốc nhàn hạ. Nếu không, bạn sẽ phải xuống hầm quặng sâu nhất đầy nguy hiểm.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bribe_deacon",
+        "text": "Cắn răng hối lộ 50 Linh thạch.",
+        "effects": {
+          "money": -50,
+          "health": 5,
+          "daoMind": -2
+        }
+      },
+      {
+        "id": "refuse_and_mine",
+        "text": "Thà gãy không chịu cong, xuống hầm quặng!",
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "sect_chaos",
+      "npc_interaction"
+    ]
+  },
+  {
+    "id": "immortal_guidance",
+    "title": "Tiên Nhân Chỉ Lộ",
+    "description": "Thiên Đạo dị động cuốn tâm trí bạn vào một không gian kỳ ảo, nơi một ảo ảnh tiên nhân đang giảng đạo.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "listen_respectfully",
+        "text": "Cung kính lắng nghe, không màng tạp niệm.",
+        "effects": {
+          "comprehension": 5,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "beg_for_treasures",
+        "text": "Lòng tham nổi lên, vội vã cầu xin bảo vật.",
+        "effects": {
+          "luck": -5,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "sect_rebellion",
+    "title": "Nội Loạn Môn Phái",
+    "description": "Sự ổn định của môn phái đã chạm đáy. Một vị chấp sự bị ám sát giữa ban ngày, và các đệ tử phản loạn đang đốt phá các các viện ngoại môn để cướp bóc tài nguyên.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_sect",
+        "text": "Rút kiếm bảo vệ môn phái!",
+        "effects": {
+          "health": -15,
+          "karma": 10,
+          "daoMind": 5,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "loot_chaos",
+        "text": "Đục nước béo cò, lẻn vào kho để vơ vét.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "rebel"
+    ]
+  },
+  {
+    "id": "sect_conscription",
+    "title": "Bắt Lính Ra Trận",
+    "description": "Chiến sự tông môn leo thang tột độ. Các chấp sự đang cưỡng ép bắt đệ tử ngoại môn ra tiền tuyến làm bia đỡ đạn cho đại chiến.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": "Rút kiếm, dũng cảm chiến đấu bảo vệ tông môn!",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "daoMind": 5,
+          "money": 80,
+          "karma": 5
+        }
+      },
+      {
+        "id": "bribe_to_hide",
+        "text": "Hối lộ đậm cho chấp sự để được ở lại hậu phương.",
+        "effects": {
+          "money": -150,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ]
+  },
+  {
+    "id": "possessed_deacon",
+    "title": "Chấp Sự Bị Đoạt Xá",
+    "description": "Ma đạo thâm nhập nghiêm trọng. Đêm khuya, bạn vô tình bắt gặp một vị Chấp Sự tông môn đạo mạo đang lén lút tu luyện huyết công cấm kỵ. Hắn đã phát hiện ra bạn.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "flee_and_report",
+        "text": "Liều mạng bỏ chạy và bẩm báo cho Tông Chủ.",
+        "effects": {
+          "health": -18,
+          "daoMind": 5,
+          "money": 100,
+          "karma": 5
+        }
+      },
+      {
+        "id": "join_demonic_path",
+        "text": "Quỳ xuống thề trung thành và gia nhập Ma đạo.",
+        "effects": {
+          "karma": -15,
+          "cultivation": 10,
+          "daoMind": -5,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "danger"
+    ]
+  },
+  {
+    "id": "event_ke_sinh_ton_phan_boi",
+    "title": "Cẩu Dư Phản Bội",
+    "description": "Trong lúc Tông môn có nội loạn, Cẩu Dư lén dẫn một nhóm phản đồ đến động phủ của bạn cướp bóc.",
+    "minAge": 30,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "kill_cau_du",
+        "text": "Thanh lý môn hộ, giết không tha!",
+        "effects": {
+          "health": -10,
+          "karma": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "bribe_cau_du",
+        "text": "Đưa cho hắn lượng lớn Linh Thạch đổi lấy bình yên.",
+        "effects": {
+          "money": -500,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "npc_ke_sinh_ton",
+      "danger"
+    ]
+  },
+  {
+    "id": "golden_core_trial",
+    "title": "Thử Thách Hoàng Kim",
+    "description": "Bạn phát hiện một thử thách ẩn do một cao thủ Kim Đan để lại, được thiết kế để kiểm tra xem một tu sĩ đã sẵn sàng đột phá hay chưa.",
+    "minAge": 40,
+    "maxAge": 90,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_trial",
+        "text": "Vào thử thách và đánh cược tất cả cho đột phá.",
+        "effects": {
+          "cultivation": 4,
+          "health": -4,
+          "comprehension": 2,
+          "gainItem": {
+            "itemId": "item_luan_hoi_thach",
+            "quantity": 1
+          },
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defer_trial",
+        "text": "Chờ thêm, chuẩn bị kỹ hơn.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "high_risk_reward",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "spirit_mine_collapse",
+    "title": "Sập Hầm Linh Quặng",
+    "description": "Do tông môn bất ổn và thiếu bảo trì, hầm linh quặng ngoại môn đột nhiên đổ sập xung quanh bạn. Những khoáng thạch vô giá lộ ra trong đống đổ nát.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "risk_digging",
+        "text": "Liều mạng đào bới lấy linh quặng quý giá.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "flee_mine",
+        "text": "Bỏ của chạy lấy người, lập tức thoát thân.",
+        "effects": {
+          "luck": 1,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "berserk_spirit_beast",
+    "title": "Linh Thú Bạo Động",
+    "description": "Một con linh thú vốn ngoan ngoãn ở chuồng ngoại môn đột nhiên bạo động do nhiễm ma khí, nó bẻ gãy xích và tấn công đệ tử.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "subdue_gently",
+        "text": "Dùng Đạo Tâm để trấn an và thu phục nó.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2,
+          "money": 30
+        }
+      },
+      {
+        "id": "kill_for_parts",
+        "text": "Giết nó nhanh chóng để lấy nguyên liệu quý giá.",
+        "effects": {
+          "karma": -5,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "beast",
+      "combat"
+    ]
+  },
+  {
+    "id": "ten_thousand_immortals_war",
+    "title": "Chiến Tranh Tông Môn Bùng Nổ",
+    "description": "Vạn Tiên Giáo chính thức tuyên chiến với Thiên Đạo Tông! Tông môn rơi vào hỗn loạn, mọi đệ tử đều bị lệnh phải ra tiền tuyến tham chiến.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": "Tuân lệnh và quyết chiến trên chiến trường.",
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "daoMind": 5,
+          "money": 100
+        }
+      },
+      {
+        "id": "desert_sect",
+        "text": "Trở thành đào binh và bỏ trốn khỏi tông môn.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect_chaos",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "sect_internal_strife",
+    "title": "Nội Bộ Bất Ổn",
+    "description": "Đấu đá phe phái đã lên đến đỉnh điểm. Một chấp sự vừa bị ám sát, tông môn hiện tại vô cùng nguy hiểm và rủi ro bị phản bội rất cao.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_faction",
+        "text": "Chọn một phe phái mạnh và tiêu diệt kẻ thù.",
+        "effects": {
+          "health": -15,
+          "karma": -5,
+          "money": 120,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "hide_in_cave",
+        "text": "Đóng chặt cửa động phủ và tránh xa xung đột.",
+        "effects": {
+          "health": 5,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_outer_tournament",
+    "title": "Đại Hội Tỷ Thí Ngoại Môn",
+    "description": "Tông môn đang trong thời kỳ ổn định và tổ chức Đại Hội Tỷ Thí Ngoại Môn thập niên. Đệ tử các phong tụ tập để chứng minh võ lực và giành lấy đan dược quý giá.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "participate_tournament",
+        "text": "Bước lên lôi đài và chiến đấu giành ngôi vô địch!",
+        "effects": {
+          "health": -15,
+          "cultivation": 5,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "observe_tournament",
+        "text": "Tọa sơn quan hổ đấu, làm khán giả học hỏi.",
+        "effects": {
+          "comprehension": 3,
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "tournament",
+      "combat",
+      "sect"
+    ]
+  },
+  {
+    "id": "sect_resource_famine",
+    "title": "Tông Môn Khô Kiệt Tài Nguyên",
+    "description": "Kho tài nguyên của tông môn đã cạn kiệt đến mức báo động. Bổng lộc bị cắt giảm, các đệ tử ngoại môn tuyệt vọng đang cấu xé nhau vì những mảnh linh thảo vụn vặt.",
+    "minAge": 12,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_for_scraps",
+        "text": "Lao vào hỗn chiến để tranh giành tài nguyên tu luyện.",
+        "effects": {
+          "health": -10,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "bribe_for_ration",
+        "text": "Lén đút lót cho chấp sự kho bạc để lấy phần của mình.",
+        "effects": {
+          "money": -50,
+          "luck": 1,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "spirit_beast_mutation",
+    "title": "Linh Thú Đột Biến",
+    "description": "Trong lúc làm nhiệm vụ chăn nuôi linh thú, một con thú nuốt phải côn trùng phát sáng kỳ lạ và bắt đầu đột biến dữ dội, tỏa ra linh khí mãnh liệt.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "help_assimilate",
+        "text": "Dùng Đạo Tâm để giúp nó dung hợp sức mạnh.",
+        "effects": {
+          "daoMind": 2,
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_van_thu_huyet_lenh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "kill_mutant",
+        "text": "Giết nó trước khi nó hoàn toàn mất kiểm soát.",
+        "effects": {
+          "karma": -2,
+          "money": 80,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "sect",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "outer_sect_herb_theft",
+    "title": "Trộm Cắp Dược Viên",
+    "description": "Tài nguyên tông môn cạn kiệt. Bạn bắt quả tang một đệ tử ngoại môn đang tuyệt vọng ăn trộm linh thảo ở dược viên để cứu người mẹ phàm nhân đang hấp hối.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "look_away",
+        "text": "Nhắm mắt làm ngơ và coi như không thấy gì.",
+        "effects": {
+          "karma": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "report_theft",
+        "text": "Bắt giữ và báo cáo cho chấp sự để lấy thưởng.",
+        "effects": {
+          "karma": -5,
+          "money": 50,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "corrupt_promotion_offer",
+    "title": "Lời Đề Nghị Hủ Bại",
+    "description": "Một vị Trưởng lão Nội Môn tham lam bí mật tiếp cận bạn. Lão đề nghị bẻ cong luật lệ và đặc cách bạn vào Nội Môn sớm, nhưng với một cái giá cắt cổ.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_bribe",
+        "text": "Trả khoản hối lộ khổng lồ để được đặc cách.",
+        "effects": {
+          "money": -300,
+          "cultivation": 10,
+          "daoMind": -5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "refuse_bribe",
+        "text": "Từ chối và kiên định dựa vào thực lực của bản thân.",
+        "effects": {
+          "daoMind": 10,
+          "karma": 5,
+          "comprehension": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_beast_feeding_frenzy",
+    "title": "Linh Thú Cuồng Nộ",
+    "description": "Trong lúc thực hiện nhiệm vụ tông môn cho linh thú ngoại môn ăn, một con thú bị tha hóa bởi luồng ma khí đột ngột tăng cao đã phá lồng và lao thẳng vào bạn.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "calm_the_beast",
+        "text": "Dùng Đạo Tâm và tu vi để cưỡng chế trấn an con thú.",
+        "effects": {
+          "health": -5,
+          "daoMind": 5,
+          "karma": 2,
+          "money": 20
+        }
+      },
+      {
+        "id": "slay_the_beast",
+        "text": "Rút vũ khí tiêu diệt nó trước khi nó làm hại người khác.",
+        "effects": {
+          "health": -15,
+          "karma": -2,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "beast",
+      "danger"
+    ]
+  },
+  {
+    "id": "strict_deacon_inspection",
+    "title": "Chấp Sự Tuần Tra Kiểm Điểm",
+    "description": "Tông môn đang siết chặt kỷ luật. Một vị chấp sự nghiêm khắc chặn bạn lại để kiểm tra điểm cống hiến hàng năm. Hắn trừng mắt nhìn bạn, đòi bằng chứng làm việc hoặc một khoản 'tiền phạt' lớn.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_deacon_fine",
+        "text": "Cắn răng nộp khoản tiền phạt lớn bằng Linh Thạch.",
+        "effects": {
+          "money": -100,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "accept_physical_punishment",
+        "text": "Từ chối nộp phạt và chấp nhận chịu nhục hình.",
+        "effects": {
+          "health": -15,
+          "cultivation": -2,
+          "daoMind": 5,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "danger"
+    ]
+  },
+  {
+    "id": "traitorous_deacon",
+    "title": "Chấp Sự Phản Bội",
+    "description": "Sự ổn định của tông môn đang sụp đổ. Bạn bắt gặp một vị chấp sự cấp cao đang lén lút mang theo bí kíp cốt lõi của tông môn để đào tẩu sang phe địch.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": "Chặn hắn lại để bảo vệ di sản tông môn!",
+        "effects": {
+          "health": -25,
+          "karma": 5,
+          "money": 200,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "extort_traitor",
+        "text": "Tống tiền bịt miệng để cho hắn trót lọt đi qua.",
+        "effects": {
+          "money": 300,
+          "karma": -10,
+          "daoMind": -5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_debt_collector",
+    "title": "Chấp Sự Đòi Nợ",
+    "description": "Tài nguyên tông môn cạn kiệt. Một vị chấp sự đòi nợ đang đi tuần, cưỡng ép đệ tử ngoại môn 'tự nguyện quyên góp' để lấp đầy kho bạc.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_contribution",
+        "text": "Nộp tiền cống hiến để tránh rắc rối.",
+        "effects": {
+          "money": -80,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "refuse_and_hide",
+        "text": "Từ chối và lén giấu tài sản đi.",
+        "effects": {
+          "health": -10,
+          "daoMind": 5,
+          "karma": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "money"
+    ]
+  },
+  {
+    "id": "elder_funeral_conspiracy",
+    "title": "Tang Lễ Trưởng Lão",
+    "description": "Một vị trưởng lão nội môn vừa tạ thế, sự ổn định của tông môn bị lung lay. Tin đồn về một di sản ẩn giấu để lại cho đệ tử ngoại môn đang lan truyền chóng mặt.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "investigate_legacy",
+        "text": "Lén lút đột nhập vào cấm phong của trưởng lão để điều tra.",
+        "effects": {
+          "health": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "attend_honorably",
+        "text": "Tham gia tang lễ một cách đường hoàng để thể hiện lòng trung thành.",
+        "effects": {
+          "daoMind": 5,
+          "karma": 5,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "lore",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "captured_sect_rebel",
+    "title": "Bắt Giữ Phản Đồ",
+    "description": "Nội bộ bất ổn trầm trọng. Bạn đã dồn vào đường cùng một đồng môn bị bắt quả tang trộm cắp bí kíp cốt lõi. Hắn van xin bạn tha mạng, nói rằng chỉ muốn cứu gia đình.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "execute_rebel",
+        "text": "Hành quyết kẻ phản bội để giữ nghiêm môn quy.",
+        "effects": {
+          "karma": -5,
+          "reputation": 10,
+          "money": 50,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "release_for_bribe",
+        "text": "Nhận một bảo vật ẩn giấu để đổi lấy sự tự do của hắn.",
+        "effects": {
+          "money": 100,
+          "karma": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "sect_manual_preservation",
+    "title": "Bảo Tồn Bí Kíp Tông Môn",
+    "description": "Tàng Kinh Các đã bốc cháy trong một cuộc bạo loạn. Những mảnh tàn quyển hiếm hoi vương vãi trong khói lửa. Bạn chỉ có thể cứu được một vài bản.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "save_high_grade",
+        "text": "Bất chấp hỏa hoạn để cứu lấy một mảnh tàn quyển Địa Cấp.",
+        "effects": {
+          "health": -12,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "save_many_basic",
+        "text": "Cứu càng nhiều bí kíp cơ bản càng tốt cho tương lai tông môn.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "sect_resource_leak",
+    "title": "Rò Rỉ Tài Nguyên Tông Môn",
+    "description": "Tài nguyên tông môn cạn kiệt, việc quản lý lỏng lẻo. Bạn phát hiện một lỗ hổng bí mật trong kho tài nguyên, nơi linh thạch và đan dược cấp thấp đang bị rò rỉ ra ngoài.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pocket_the_leak",
+        "text": "Lặng lẽ bỏ túi những tài nguyên bị rò rỉ.",
+        "effects": {
+          "money": 100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "report_the_leak",
+        "text": "Báo cáo lỗ hổng cho trưởng lão để thể hiện lòng trung thành.",
+        "effects": {
+          "reputation": 10,
+          "karma": 5,
+          "money": 30
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "resource_gathering",
+      "crime"
+    ]
+  },
+  {
+    "id": "alchemy_hall_explosion",
+    "title": "Nổ Lò Luyện Đan",
+    "description": "Khi đi ngang qua Đan Dược Đường, một vụ nổ kinh hoàng làm rung chuyển tòa nhà. Khói bụi mù mịt, những mảnh linh thảo quý hiếm bị thiêu cháy văng khắp nơi.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "scavenge_smoke",
+        "text": "Lao vào khói bụi để nhặt nhạnh tàn dư linh thảo còn dùng được.",
+        "effects": {
+          "health": -10,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 4
+          }
+        }
+      },
+      {
+        "id": "help_extinguish",
+        "text": "Dùng linh khí của bản thân để giúp dập tắt đám cháy.",
+        "effects": {
+          "cultivation": -2,
+          "reputation": 8,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "alchemy",
+      "danger",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "sect_treasury_betrayal",
+    "title": "Phản Bội Tại Kho Báu Tông Môn",
+    "description": "Sự ổn định nội bộ đã sụp đổ hoàn toàn. Bạn bắt gặp một nhóm đệ tử cao cấp và một trưởng lão đang cố gắng vét sạch kho báu trước khi đào tẩu sang tông môn đối địch,.",
+    "minAge": 40,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "extort_the_betrayers",
+        "text": "Đe dọa sẽ rung chuông báo động trừ khi chúng chia sẻ các pháp bảo ăn trộm cho bạn,.",
+        "effects": {
+          "money": 500,
+          "karma": -15,
+          "daoMind": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_legacy",
+        "text": "Rút kiếm bảo vệ di sản cuối cùng của tông môn, ngay cả khi phải đối đầu với đồng môn,.",
+        "effects": {
+          "health": -40,
+          "cultivation": 10,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_meridian_cleansing_pool",
+    "title": "Linh Trì Tẩy Tủy",
+    "description": "Linh khí trong tông môn đang dày đặc bất thường. Hồ tẩy tủy truyền thuyết đã mở cửa cho đệ tử ngoại môn trong một thời gian ngắn.",
+    "minAge": 10,
+    "maxAge": 100,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "deep_soak",
+        "text": "Ngâm mình sâu trong linh trì để tẩy rửa tạp chất.",
+        "effects": {
+          "cultivation": 8,
+          "health": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "gather_pool_essence",
+        "text": "Nhanh chóng thu thập linh trì tinh hoa vào bình ngọc.",
+        "effects": {
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "sect",
+      "rare"
+    ]
+  },
+  {
+    "id": "forced_labor_duty",
+    "title": "Lao Dịch Khổ Sai",
+    "description": "Ổn định tông môn thấp, các trưởng lão yêu cầu nhiều hơn từ đệ tử ngoại môn. Bạn bị điều động đến khu vực nguy hiểm nhất của linh quặng hầm như một hình thức 'đóng góp bắt buộc'.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "accept_labor",
+        "text": "Chấp nhận lao dịch và làm việc bất chấp kiệt sức.",
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "money": 30,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "bribe_supervisor",
+        "text": "Hối lộ giám sát hầm quặng để nhận nhiệm vụ nhẹ nhàng hơn.",
+        "effects": {
+          "money": -100,
+          "daoMind": -5,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "danger",
+      "punishment"
+    ]
+  },
+  {
+    "id": "hidden_jade_chamber",
+    "title": "Mật Thất Ngọc Bích",
+    "description": "Tông môn đang trong thời kỳ ổn định và phồn vinh. Tông Chủ quyết định mở cửa 'Mật Thất Ngọc Bích' cho những đệ tử ưu tú nhất, cho phép tiếp cận với những bí pháp cấm kỵ.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "study_forbidden_scroll",
+        "text": "Nghiên cứu một tàn quyển Địa Cấp cấm kỵ.",
+        "effects": {
+          "cultivation": 12,
+          "comprehension": 5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "claim_spiritual_bounty",
+        "text": "Nhận linh thạch bổng lộc thay vì nghiên cứu.",
+        "effects": {
+          "money": 250,
+          "reputation": -5,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "great_sect_war_frontline",
+    "title": "Tiền Tuyến Đại Chiến Tông Môn",
+    "description": "Chiến sự tông môn đã lên đến đỉnh điểm. Bạn bị điều động ra tiền tuyến để bảo vệ Linh Quặng trước đội tiên phong tinh nhuệ của Vạn Tiên Giáo.",
+    "minAge": 18,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "brave_the_charge",
+        "text": "Dẫn đầu cuộc phản công để phá vỡ đội hình địch.",
+        "effects": {
+          "health": -30,
+          "cultivation": 15,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "desert_battlefield",
+        "text": "Đào ngũ khỏi chiến trường và lẩn trốn vào phàm trần.",
+        "effects": {
+          "karma": -20,
+          "luck": 5,
+          "daoMind": -15,
+          "reputation": -50,
+          "sect.stability": -2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "deacon_infiltration_scandal",
+    "title": "Nội Gián Ma Đạo Lộ Diện",
+    "description": "Ma đạo thâm nhập sâu rộng đã khiến một Chấp Sự cao cấp sa ngã. Bạn bắt quả tang hắn đang truyền tin mật tông môn thông qua một khối truyền tin huyết ngọc.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "expose_the_traitor",
+        "text": "Công khai vạch trần kẻ phản bội trước Hình Phạt Đường.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 100,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "blackmail_the_traitor",
+        "text": "Tống tiền hắn lấy tài nguyên ma đạo để giữ im lặng.",
+        "effects": {
+          "money": 300,
+          "karma": -25,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "crime"
+    ]
+  },
+  {
+    "id": "sect_coup_attempt",
+    "title": "Âm Mưu Đảo Chính Ngoại Môn",
+    "description": "Sự ổn định của tông môn chạm mức báo động. Một nhóm đệ tử cực đoan, bị kích động bởi sự khan hiếm tài nguyên, đang âm mưu lật đổ các chấp sự kho bạc.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "suppress_rebels_for_loyalty",
+        "text": "Đứng về phía chấp sự và trấn áp cuộc nổi loạn.",
+        "effects": {
+          "health": -20,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "join_the_overthrow",
+        "text": "Gia nhập quân phản loạn để đòi lại 'phần công bằng' từ kho bạc.",
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "sect_war_raiding_party",
+    "title": "Tông Môn Chiến: Đội Đột Kích",
+    "description": "Chiến sự tông môn leo thang. Bạn bị lệnh tham gia một đội đột kích mạo hiểm nhằm phá hoại dược viên linh thảo của tông môn đối địch.",
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "lead_the_sabotage",
+        "text": "Dẫn đầu cuộc tấn công phá vỡ đội hình địch.",
+        "effects": {
+          "health": -25,
+          "cultivation": 10,
+          "reputation": 25,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "bribe_to_stay_back",
+        "text": "Hối lộ chấp sự để được phân công ở lại hậu phương.",
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_merit_hoarding",
+    "title": "Đầu Cơ Điểm Cống Hiến",
+    "description": "Tông môn đang dồi dào tài nguyên. Một chấp sự tham lam đang bí mật cho phép đệ tử 'mua' điểm cống hiến bằng một lượng lớn linh thạch.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_merit_points",
+        "text": "Dùng tiền tiết kiệm để tăng nhanh điểm cống hiến.",
+        "effects": {
+          "money": -200,
+          "reputation": 20,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "report_the_deacon",
+        "text": "Báo cáo sự hủ bại này cho Hình Phạt Đường.",
+        "effects": {
+          "karma": 15,
+          "daoMind": 10,
+          "reputation": 5,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "market",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_manual_leak",
+    "title": "Rò Rỉ Bí Kíp Tông Môn",
+    "description": "Sự ổn định của tông môn đang thấp [4]. Một thủ thư hủ bại đang lén lút bán các mảnh tàn quyển công pháp cao cấp của tông môn cho người trả giá cao nhất.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_earth_fragment",
+        "text": "Trả giá đắt để đoạt lấy mảnh tàn quyển Địa Cấp [5].",
+        "effects": {
+          "money": -400,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          },
+          "karma": -10
+        }
+      },
+      {
+        "id": "report_to_elders",
+        "text": "Báo cáo vị thủ thư để tăng danh vọng tông môn.",
+        "effects": {
+          "reputation": 25,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "sect_heritage_trial",
+    "title": "Thử Thách Di Sản Tông Môn",
+    "description": "Với danh vọng tông môn đang ở đỉnh cao, Đại Trưởng Lão mở ra 'Di Sản Chi Lộ'—một thử thách được thiết kế để kiểm tra ngộ tính và lòng trung thành của đệ tử đối với Đạo tổ sáng lập.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "walk_the_path",
+        "text": "Tập trung tâm trí và cố gắng bước đi trên con đường của tổ tiên.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 10,
+          "reputation": 10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "memorize_runes",
+        "text": "Không tiến vào nhưng cố gắng ghi nhớ các cổ phù từ bên ngoài.",
+        "effects": {
+          "comprehension": 3,
+          "luck": 1,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "comprehension"
+    ]
+  },
+  {
+    "id": "spirit_root_resonance_test",
+    "title": "Thử Thách Cộng Hưởng Linh Căn",
+    "description": "Khi linh khí thiên địa đạt đỉnh, tinh thể cộng hưởng của tông môn đã được kích hoạt. Đây là cơ hội hiếm có để tôi luyện độ tinh khiết của Linh Căn và tăng cường hệ số tu luyện của bạn [1, 2].",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "refine_spirit_root",
+        "text": "Tập trung linh hồn để tôi luyện hiệu suất Linh Căn.",
+        "effects": {
+          "cultivation": 5,
+          "comprehension": 3,
+          "health": -10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_raw_energy",
+        "text": "Trực tiếp hấp thụ năng lượng thô của tinh thể để tăng tu vi ngay lập tức.",
+        "effects": {
+          "cultivation": 15,
+          "health": -5,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_internal_betrayal",
+    "title": "Nội Gián Xuất Hiện",
+    "description": "Sự ổn định tông môn thấp và ma đạo thâm nhập cao. Bạn bắt quả tang một sư huynh đang định hạ độc ma khí vào linh tuyền của môn phái [7-9].",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": "Quyết chiến với kẻ phản bội để bảo vệ linh tuyền.",
+        "effects": {
+          "health": -25,
+          "reputation": 20,
+          "karma": 15,
+          "daoMind": 10,
+          "money": 120
+        }
+      },
+      {
+        "id": "blackmail_traitor",
+        "text": "Hứa giữ im lặng để đổi lấy ma đan cấm kỵ.",
+        "effects": {
+          "karma": -40,
+          "daoMind": -15,
+          "luck": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "demonic",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_pill_warehouse_chaos",
+    "title": "Kho Linh Dược Thất Thủ",
+    "description": "Sự ổn định nội bộ sụp đổ! Một cuộc bạo loạn bùng nổ, kho linh dược của tông môn đang bị các đệ tử tuyệt vọng xâu xé [cite: 52, 59].",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_looting",
+        "text": "Lao vào và vơ vét bất kỳ viên đan dược nào bạn thấy.",
+        "effects": {
+          "karma": -15,
+          "reputation": -30,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_gates",
+        "text": "Đứng về phía trưởng lão để bảo vệ tài nguyên còn sót lại.",
+        "effects": {
+          "health": -25,
+          "reputation": 40,
+          "karma": 10,
+          "money": 150,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "sect_ancestor_statue_awakening",
+    "title": "Tượng Tổ Sư Thức Tỉnh",
+    "description": "Dưới sự thúc đẩy của danh vọng tông môn cao và linh khí nồng đậm, bức tượng của tổ sư khai phái bắt đầu tỏa ánh kim quang, ban truyền chỉ điểm cho những đệ tử thành tâm [cite: 52, 57].",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "receive_guidance",
+        "text": "Quỳ lạy và tiếp nhận truyền thừa tâm linh từ tổ sư.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "offer_sacrifices",
+        "text": "Dâng hiến linh thảo hiếm lên tổ sư để nhận được sự che chở của tông môn.",
+        "effects": {
+          "reputation": 30,
+          "luck": 5,
+          "karma": 10
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "demonic_possession_scandal",
+    "title": "Chấp Sự Bị Đoạt Xá",
+    "description": "Ma đạo thâm nhập và ma khí cực cao đã dẫn đến thảm họa: một chấp sự cao cấp đã bị ma vật đoạt xá và đang gây hỗn loạn tại ngoại môn [cite: 59, 55].",
+    "minAge": 25,
+    "maxAge": 180,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "exorcise_the_demon",
+        "text": "Liều mạng thực hiện nghi lễ trục xuất ma vật để cứu chấp sự.",
+        "effects": {
+          "health": -30,
+          "karma": 40,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "slay_the_possessed",
+        "text": "Hành quyết chấp sự bị đoạt xá ngay lập tức để ngăn chặn lây lan.",
+        "effects": {
+          "health": -20,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          },
+          "karma": -10
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "sect_chaos"
+    ]
+  }
+]

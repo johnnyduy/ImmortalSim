@@ -1,0 +1,15 @@
+{
+  "id": "npc_hong_nhan_ma_dao",
+  "name": "Huyết Mân Côi",
+  "archetype": "Hồng Nhan Ma Đạo",
+  "spiritualRoot": "Hỏa Thủy Song Linh Căn",
+  "karma": -50,
+  "meta_memory_id": "grudge_huyet_man_coi",
+  "description": "Kẻ nằm vùng của Ma Đạo. Thích rủ rê tu sĩ trẻ tuổi xuống núi thám hiểm rồi cướp đoạt.",
+  "sect": "Huyết Tông",
+  "role": {
+    "vi": "Thánh Nữ Ma Đạo",
+    "en": "Demonic Saintess"
+  },
+  "avatar": "🧛‍♀️"
+}

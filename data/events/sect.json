@@ -1,0 +1,2203 @@
+[
+  {
+    "id": "event_thien_kieu_chan_chinh_thach_dau",
+    "title": {
+      "en": "Tournament Finals",
+      "vi": "Chung Kết Đại Hội Tỷ Thí"
+    },
+    "description": {
+      "en": "Long Ngao Thien, the child of heaven, stands on the arena waiting for you. Spiritual energy violently swirls around him.",
+      "vi": "Long Ngạo Thiên, con cưng thiên đạo, đứng trên lôi đài chờ bạn. Linh khí quanh hắn bạo động dữ dội."
+    },
+    "minAge": 18,
+    "maxAge": 25,
+    "weight": 2,
+    "tags": [
+      "npc_thien_kieu_chan_chinh",
+      "tournament"
+    ],
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": {
+          "en": "Go all out and prove who the real prodigy is!",
+          "vi": "Dốc toàn lực, chứng minh ai mới là thiên kiêu!"
+        },
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "sectPrestige": 100,
+          "worldState": {
+            "sect": {
+              "reputation": 10
+            },
+            "global": {
+              "daoFluctuation": 5
+            }
+          },
+          "npcFavorability": {
+            "npc_thien_kieu_chan_chinh": 20
+          }
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": {
+          "en": "Know when to retreat, surrender to save your life.",
+          "vi": "Biết khó lui bước, nhận thua bảo toàn tính mạng."
+        },
+        "effects": {
+          "daoHeart": -5,
+          "health": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "corrupt_sect_deacon",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "sect_chaos",
+      "npc_interaction"
+    ],
+    "title": {
+      "en": "Corrupt Sect Deacon",
+      "vi": "Chấp Sự Lũng Đoạn"
+    },
+    "description": {
+      "en": "When you arrive at the Deacon Hall to receive your mandatory annual sect quest, the fat Deacon winks at you: 50 Spirit Stones for an easy herb-gathering task. Otherwise, you go to the deepest mining tunnels.",
+      "vi": "Khi bạn đến Chấp Sự Đường để nhận nhiệm vụ tông môn bắt buộc hàng năm, tên Chấp Sự béo ú nháy mắt ám chỉ: nếu bạn nộp 50 Linh thạch 'bôi trơn', hắn sẽ giao cho bạn nhiệm vụ hái thuốc nhàn hạ. Nếu không, bạn sẽ phải xuống hầm quặng sâu nhất đầy nguy hiểm."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 35"
+    },
+    "choices": [
+      {
+        "id": "bribe_deacon",
+        "text": {
+          "en": "Grit your teeth and bribe him with 50 Spirit Stones.",
+          "vi": "Cắn răng hối lộ 50 Linh thạch."
+        },
+        "effects": {
+          "money": -50,
+          "health": 5,
+          "daoMind": -2
+        }
+      },
+      {
+        "id": "refuse_and_mine",
+        "text": {
+          "en": "Better to break than bend, go to the mines!",
+          "vi": "Thà gãy không chịu cong, xuống hầm quặng!"
+        },
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "immortal_guidance",
+    "location": "sect",
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ],
+    "title": {
+      "en": "Immortal's Guidance",
+      "vi": "Tiên Nhân Chỉ Lộ"
+    },
+    "description": {
+      "en": "Heavenly Dao fluctuates wildly. An illusion of an ancient immortal appears in your mind, preaching the supreme Dao.",
+      "vi": "Thiên Đạo dị động cuốn tâm trí bạn vào một không gian kỳ ảo, nơi một ảo ảnh tiên nhân đang giảng đạo."
+    },
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "conditions": {
+      "daoFluctuation": "> 78"
+    },
+    "choices": [
+      {
+        "id": "listen_respectfully",
+        "text": {
+          "en": "Listen respectfully, clearing all mundane thoughts.",
+          "vi": "Cung kính lắng nghe, không màng tạp niệm."
+        },
+        "effects": {
+          "comprehension": 5,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "beg_for_treasures",
+        "text": {
+          "en": "Give in to greed and beg for treasures.",
+          "vi": "Lòng tham nổi lên, vội vã cầu xin bảo vật."
+        },
+        "effects": {
+          "luck": -5,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_rebellion",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "rebel"
+    ],
+    "title": {
+      "en": "Sect Rebellion",
+      "vi": "Nội Loạn Môn Phái"
+    },
+    "description": {
+      "en": "The sect's stability has plummeted. A deacon is assassinated in broad daylight, and rogue disciples are burning the outer sect pavilions to loot resources.",
+      "vi": "Sự ổn định của môn phái đã chạm đáy. Một vị chấp sự bị ám sát giữa ban ngày, và các đệ tử phản loạn đang đốt phá các các viện ngoại môn để cướp bóc tài nguyên."
+    },
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 20"
+    },
+    "choices": [
+      {
+        "id": "defend_sect",
+        "text": {
+          "en": "Draw your sword and defend the sect!",
+          "vi": "Rút kiếm bảo vệ môn phái!"
+        },
+        "effects": {
+          "health": -15,
+          "karma": 10,
+          "daoMind": 5,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "loot_chaos",
+        "text": {
+          "en": "Take advantage of the chaos to loot the storage.",
+          "vi": "Đục nước béo cò, lẻn vào kho để vơ vét."
+        },
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_conscription",
+    "location": "sect",
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ],
+    "title": {
+      "en": "Sect Conscription",
+      "vi": "Bắt Lính Ra Trận"
+    },
+    "description": {
+      "en": "Sect warfare has escalated drastically. Deacons are forcefully conscripting outer disciples to serve as cannon fodder at the frontline.",
+      "vi": "Chiến sự tông môn leo thang tột độ. Các chấp sự đang cưỡng ép bắt đệ tử ngoại môn ra tiền tuyến làm bia đỡ đạn cho đại chiến."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.warLevel": "> 60"
+    },
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": {
+          "en": "Draw your sword and fight bravely for the sect!",
+          "vi": "Rút kiếm, dũng cảm chiến đấu bảo vệ tông môn!"
+        },
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "daoMind": 5,
+          "money": 80,
+          "karma": 5
+        }
+      },
+      {
+        "id": "bribe_to_hide",
+        "text": {
+          "en": "Bribe the deacon heavily to stay in the rear.",
+          "vi": "Hối lộ đậm cho chấp sự để được ở lại hậu phương."
+        },
+        "effects": {
+          "money": -150,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "possessed_deacon",
+    "location": "sect",
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "danger"
+    ],
+    "title": {
+      "en": "Possessed Deacon",
+      "vi": "Chấp Sự Bị Đoạt Xá"
+    },
+    "description": {
+      "en": "Demonic infiltration is severe. Late at night, you accidentally spot a highly respected Sect Deacon practicing a forbidden blood art. He notices you.",
+      "vi": "Ma đạo thâm nhập nghiêm trọng. Đêm khuya, bạn vô tình bắt gặp một vị Chấp Sự tông môn đạo mạo đang lén lút tu luyện huyết công cấm kỵ. Hắn đã phát hiện ra bạn."
+    },
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "demonic.infiltration": "> 50"
+    },
+    "choices": [
+      {
+        "id": "flee_and_report",
+        "text": {
+          "en": "Flee desperately and report to the Sect Leader.",
+          "vi": "Liều mạng bỏ chạy và bẩm báo cho Tông Chủ."
+        },
+        "effects": {
+          "health": -18,
+          "daoMind": 5,
+          "money": 100,
+          "karma": 5
+        }
+      },
+      {
+        "id": "join_demonic_path",
+        "text": {
+          "en": "Swear loyalty to him and embrace the Demonic path.",
+          "vi": "Quỳ xuống thề trung thành và gia nhập Ma đạo."
+        },
+        "effects": {
+          "karma": -15,
+          "cultivation": 10,
+          "daoMind": -5,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "event_ke_sinh_ton_phan_boi",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "npc_ke_sinh_ton",
+      "danger"
+    ],
+    "title": {
+      "en": "Cau Du's Betrayal",
+      "vi": "Cẩu Dư Phản Bội"
+    },
+    "description": {
+      "en": "Taking advantage of sect instability, Cau Du secretly leads a group of rebel disciples to raid your cave dwelling.",
+      "vi": "Trong lúc Tông môn có nội loạn, Cẩu Dư lén dẫn một nhóm phản đồ đến động phủ của bạn cướp bóc."
+    },
+    "minAge": 30,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 40"
+    },
+    "choices": [
+      {
+        "id": "kill_cau_du",
+        "text": {
+          "en": "Cleanse the sect, show no mercy!",
+          "vi": "Thanh lý môn hộ, giết không tha!"
+        },
+        "effects": {
+          "health": -10,
+          "karma": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "bribe_cau_du",
+        "text": {
+          "en": "Bribe him heavily to leave you in peace.",
+          "vi": "Đưa cho hắn lượng lớn Linh Thạch đổi lấy bình yên."
+        },
+        "effects": {
+          "money": -500,
+          "karma": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "golden_core_trial",
+    "location": "sect",
+    "tags": [
+      "cultivation",
+      "high_risk_reward",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Golden Core Trial",
+      "vi": "Thử Thách Hoàng Kim"
+    },
+    "description": {
+      "en": "You discover a hidden trial left by a Golden Core master, designed to test a cultivator's readiness to break through.",
+      "vi": "Bạn phát hiện một thử thách ẩn do một cao thủ Kim Đan để lại, được thiết kế để kiểm tra xem một tu sĩ đã sẵn sàng đột phá hay chưa."
+    },
+    "minAge": 40,
+    "maxAge": 90,
+    "weight": 1,
+    "conditions": {
+      "spiritualQi": "> 50"
+    },
+    "choices": [
+      {
+        "id": "enter_trial",
+        "text": {
+          "en": "Enter the trial and risk everything for a breakthrough.",
+          "vi": "Vào thử thách và đánh cược tất cả cho đột phá."
+        },
+        "effects": {
+          "cultivation": 4,
+          "health": -4,
+          "comprehension": 2,
+          "gainItem": {
+            "itemId": "item_luan_hoi_thach",
+            "quantity": 1
+          },
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defer_trial",
+        "text": {
+          "en": "Wait and prepare yourself better.",
+          "vi": "Chờ thêm, chuẩn bị kỹ hơn."
+        },
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "spirit_mine_collapse",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "danger",
+      "resource_gathering"
+    ],
+    "title": {
+      "en": "Spirit Mine Collapse",
+      "vi": "Sập Hầm Linh Quặng"
+    },
+    "description": {
+      "en": "Due to sect instability and poor maintenance, the outer sect spirit mine suddenly starts collapsing around you. Priceless ores are revealed in the rubble.",
+      "vi": "Do tông môn bất ổn và thiếu bảo trì, hầm linh quặng ngoại môn đột nhiên đổ sập xung quanh bạn. Những khoáng thạch vô giá lộ ra trong đống đổ nát."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 60"
+    },
+    "choices": [
+      {
+        "id": "risk_digging",
+        "text": {
+          "en": "Risk your life to dig out the precious ores.",
+          "vi": "Liều mạng đào bới lấy linh quặng quý giá."
+        },
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "flee_mine",
+        "text": {
+          "en": "Flee the mine immediately to survive.",
+          "vi": "Bỏ của chạy lấy người, lập tức thoát thân."
+        },
+        "effects": {
+          "luck": 1,
+          "daoMind": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "berserk_spirit_beast",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "beast",
+      "combat"
+    ],
+    "title": {
+      "en": "Berserk Spirit Beast",
+      "vi": "Linh Thú Bạo Động"
+    },
+    "description": {
+      "en": "A usually docile spirit beast in the outer sect's pens has gone berserk due to a demonic aura, breaking its chains and attacking disciples.",
+      "vi": "Một con linh thú vốn ngoan ngoãn ở chuồng ngoại môn đột nhiên bạo động do nhiễm ma khí, nó bẻ gãy xích và tấn công đệ tử."
+    },
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 40"
+    },
+    "choices": [
+      {
+        "id": "subdue_gently",
+        "text": {
+          "en": "Use your Dao Mind to calm and subdue it.",
+          "vi": "Dùng Đạo Tâm để trấn an và thu phục nó."
+        },
+        "effects": {
+          "daoMind": 2,
+          "karma": 2,
+          "money": 30
+        }
+      },
+      {
+        "id": "kill_for_parts",
+        "text": {
+          "en": "Kill it swiftly to harvest its valuable materials.",
+          "vi": "Giết nó nhanh chóng để lấy nguyên liệu quý giá."
+        },
+        "effects": {
+          "karma": -5,
+          "money": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "ten_thousand_immortals_war",
+    "location": "sect",
+    "tags": [
+      "war",
+      "sect_chaos",
+      "danger",
+      "combat"
+    ],
+    "title": {
+      "en": "Ten Thousand Immortals War",
+      "vi": "Chiến Tranh Tông Môn Bùng Nổ"
+    },
+    "description": {
+      "en": "The Ten Thousand Immortals Sect has officially declared war on the Heavenly Dao Sect! The sect is in chaos, and all disciples are ordered to the frontlines.",
+      "vi": "Vạn Tiên Giáo chính thức tuyên chiến với Thiên Đạo Tông! Tông môn rơi vào hỗn loạn, mọi đệ tử đều bị lệnh phải ra tiền tuyến tham chiến."
+    },
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "sect.warLevel": "> 70"
+    },
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": {
+          "en": "Follow the orders and fight fiercely on the frontline.",
+          "vi": "Tuân lệnh và quyết chiến trên chiến trường."
+        },
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "daoMind": 5,
+          "money": 100
+        }
+      },
+      {
+        "id": "desert_sect",
+        "text": {
+          "en": "Become a deserter and flee the sect.",
+          "vi": "Trở thành đào binh và bỏ trốn khỏi tông môn."
+        },
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_internal_strife",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "danger"
+    ],
+    "title": {
+      "en": "Sect Internal Strife",
+      "vi": "Nội Bộ Bất Ổn"
+    },
+    "description": {
+      "en": "Factional infighting has reached its peak. A sect deacon was assassinated, and the sect is highly dangerous with a high risk of betrayal.",
+      "vi": "Đấu đá phe phái đã lên đến đỉnh điểm. Một chấp sự vừa bị ám sát, tông môn hiện tại vô cùng nguy hiểm và rủi ro bị phản bội rất cao."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 30"
+    },
+    "choices": [
+      {
+        "id": "join_faction",
+        "text": {
+          "en": "Pick a strong faction and eliminate rivals.",
+          "vi": "Chọn một phe phái mạnh và tiêu diệt kẻ thù."
+        },
+        "effects": {
+          "health": -15,
+          "karma": -5,
+          "money": 120,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "hide_in_cave",
+        "text": {
+          "en": "Seal your cave dwelling and avoid the conflict.",
+          "vi": "Đóng chặt cửa động phủ và tránh xa xung đột."
+        },
+        "effects": {
+          "health": 5,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_outer_tournament",
+    "location": "sect",
+    "tags": [
+      "tournament",
+      "combat",
+      "sect"
+    ],
+    "title": {
+      "en": "Outer Sect Tournament",
+      "vi": "Đại Hội Tỷ Thí Ngoại Môn"
+    },
+    "description": {
+      "en": "The sect is stable and hosting its decennial Outer Sect Tournament. Disciples from all peaks gather to prove their martial prowess and win supreme pills.",
+      "vi": "Tông môn đang trong thời kỳ ổn định và tổ chức Đại Hội Tỷ Thí Ngoại Môn thập niên. Đệ tử các phong tụ tập để chứng minh võ lực và giành lấy đan dược quý giá."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "> 50"
+    },
+    "choices": [
+      {
+        "id": "participate_tournament",
+        "text": {
+          "en": "Enter the arena and fight for the championship!",
+          "vi": "Bước lên lôi đài và chiến đấu giành ngôi vô địch!"
+        },
+        "effects": {
+          "health": -15,
+          "cultivation": 5,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "observe_tournament",
+        "text": {
+          "en": "Sit on the mountain and watch the tigers fight.",
+          "vi": "Tọa sơn quan hổ đấu, làm khán giả học hỏi."
+        },
+        "effects": {
+          "comprehension": 3,
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_resource_famine",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ],
+    "title": {
+      "en": "Sect Resource Famine",
+      "vi": "Tông Môn Khô Kiệt Tài Nguyên"
+    },
+    "description": {
+      "en": "The sect's resource reserves have plummeted to a critical low. Allowances are cut, and desperate outer disciples are fighting each other over meager scraps of spirit herbs.",
+      "vi": "Kho tài nguyên của tông môn đã cạn kiệt đến mức báo động. Bổng lộc bị cắt giảm, các đệ tử ngoại môn tuyệt vọng đang cấu xé nhau vì những mảnh linh thảo vụn vặt."
+    },
+    "minAge": 12,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.resources": "< 30"
+    },
+    "choices": [
+      {
+        "id": "fight_for_scraps",
+        "text": {
+          "en": "Join the brawl to secure your cultivation resources.",
+          "vi": "Lao vào hỗn chiến để tranh giành tài nguyên tu luyện."
+        },
+        "effects": {
+          "health": -10,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "bribe_for_ration",
+        "text": {
+          "en": "Secretly bribe the treasury deacon for your portion.",
+          "vi": "Lén đút lót cho chấp sự kho bạc để lấy phần của mình."
+        },
+        "effects": {
+          "money": -50,
+          "luck": 1,
+          "daoMind": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "spirit_beast_mutation",
+    "location": "sect",
+    "tags": [
+      "beast",
+      "sect",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Spirit Beast Mutation",
+      "vi": "Linh Thú Đột Biến"
+    },
+    "description": {
+      "en": "While tending to the sect's spirit beasts, one of them swallows a strange glowing insect and begins to mutate violently, radiating intense spiritual energy.",
+      "vi": "Trong lúc làm nhiệm vụ chăn nuôi linh thú, một con thú nuốt phải côn trùng phát sáng kỳ lạ và bắt đầu đột biến dữ dội, tỏa ra linh khí mãnh liệt."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "spiritualQi": "> 50"
+    },
+    "choices": [
+      {
+        "id": "help_assimilate",
+        "text": {
+          "en": "Use your Dao Mind to help it assimilate the power.",
+          "vi": "Dùng Đạo Tâm để giúp nó dung hợp sức mạnh."
+        },
+        "effects": {
+          "daoMind": 2,
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_van_thu_huyet_lenh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "kill_mutant",
+        "text": {
+          "en": "Kill it before it completely loses control.",
+          "vi": "Giết nó trước khi nó hoàn toàn mất kiểm soát."
+        },
+        "effects": {
+          "karma": -2,
+          "money": 80,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "outer_sect_herb_theft",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Herb Garden Theft",
+      "vi": "Trộm Cắp Dược Viên"
+    },
+    "description": {
+      "en": "Sect resources are dwindling. You catch a fellow outer disciple desperately stealing a spirit herb to save their dying mortal mother.",
+      "vi": "Tài nguyên tông môn cạn kiệt. Bạn bắt quả tang một đệ tử ngoại môn đang tuyệt vọng ăn trộm linh thảo ở dược viên để cứu người mẹ phàm nhân đang hấp hối."
+    },
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "sect.resources": "< 40"
+    },
+    "choices": [
+      {
+        "id": "look_away",
+        "text": {
+          "en": "Look the other way and pretend you saw nothing.",
+          "vi": "Nhắm mắt làm ngơ và coi như không thấy gì."
+        },
+        "effects": {
+          "karma": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "report_theft",
+        "text": {
+          "en": "Arrest them and report to the deacon for a reward.",
+          "vi": "Bắt giữ và báo cáo cho chấp sự để lấy thưởng."
+        },
+        "effects": {
+          "karma": -5,
+          "money": 50,
+          "daoMind": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "corrupt_promotion_offer",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Corrupt Promotion Offer",
+      "vi": "Lời Đề Nghị Hủ Bại"
+    },
+    "description": {
+      "en": "A greedy Inner Sect Elder approaches you in secret. He offers to bend the rules and promote you to the Inner Sect early, but for a steep price.",
+      "vi": "Một vị Trưởng lão Nội Môn tham lam bí mật tiếp cận bạn. Lão đề nghị bẻ cong luật lệ và đặc cách bạn vào Nội Môn sớm, nhưng với một cái giá cắt cổ."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 50"
+    },
+    "choices": [
+      {
+        "id": "pay_bribe",
+        "text": {
+          "en": "Pay the massive bribe for early promotion.",
+          "vi": "Trả khoản hối lộ khổng lồ để được đặc cách."
+        },
+        "effects": {
+          "money": -300,
+          "cultivation": 10,
+          "daoMind": -5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "refuse_bribe",
+        "text": {
+          "en": "Refuse and rely firmly on your own strength.",
+          "vi": "Từ chối và kiên định dựa vào thực lực của bản thân."
+        },
+        "effects": {
+          "daoMind": 10,
+          "karma": 5,
+          "comprehension": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_beast_feeding_frenzy",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "beast",
+      "danger"
+    ],
+    "title": {
+      "en": "Frenzied Spirit Beast",
+      "vi": "Linh Thú Cuồng Nộ"
+    },
+    "description": {
+      "en": "While performing your mandatory sect quest to feed the outer sect's spirit beasts, one of them, corrupted by a sudden spike in demonic energy, breaks its cage and lunges at you.",
+      "vi": "Trong lúc thực hiện nhiệm vụ tông môn cho linh thú ngoại môn ăn, một con thú bị tha hóa bởi luồng ma khí đột ngột tăng cao đã phá lồng và lao thẳng vào bạn."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 30"
+    },
+    "choices": [
+      {
+        "id": "calm_the_beast",
+        "text": {
+          "en": "Use your Dao Mind and cultivation to forcefully calm the beast.",
+          "vi": "Dùng Đạo Tâm và tu vi để cưỡng chế trấn an con thú."
+        },
+        "effects": {
+          "health": -5,
+          "daoMind": 5,
+          "karma": 2,
+          "money": 20
+        }
+      },
+      {
+        "id": "slay_the_beast",
+        "text": {
+          "en": "Draw your weapon and slay it before it hurts others.",
+          "vi": "Rút vũ khí tiêu diệt nó trước khi nó làm hại người khác."
+        },
+        "effects": {
+          "health": -15,
+          "karma": -2,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "strict_deacon_inspection",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "danger"
+    ],
+    "title": {
+      "en": "Strict Deacon Inspection",
+      "vi": "Chấp Sự Tuần Tra Kiểm Điểm"
+    },
+    "description": {
+      "en": "The sect is tightening its rules. A strict deacon stops you to inspect your annual sect contributions. He glares at you, demanding either proof of hard work or a hefty 'fine'.",
+      "vi": "Tông môn đang siết chặt kỷ luật. Một vị chấp sự nghiêm khắc chặn bạn lại để kiểm tra điểm cống hiến hàng năm. Hắn trừng mắt nhìn bạn, đòi bằng chứng làm việc hoặc một khoản 'tiền phạt' lớn."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "> 40"
+    },
+    "choices": [
+      {
+        "id": "pay_deacon_fine",
+        "text": {
+          "en": "Bite your tongue and pay the hefty fine in Spirit Stones.",
+          "vi": "Cắn răng nộp khoản tiền phạt lớn bằng Linh Thạch."
+        },
+        "effects": {
+          "money": -100,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "accept_physical_punishment",
+        "text": {
+          "en": "Refuse to pay and accept the physical punishment.",
+          "vi": "Từ chối nộp phạt và chấp nhận chịu nhục hình."
+        },
+        "effects": {
+          "health": -15,
+          "cultivation": -2,
+          "daoMind": 5,
+          "karma": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "traitorous_deacon",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "danger"
+    ],
+    "title": {
+      "en": "Traitorous Deacon",
+      "vi": "Chấp Sự Phản Bội"
+    },
+    "description": {
+      "en": "Sect stability is crumbling. You catch a senior deacon sneaking out with the sect's core technique manual, planning to defect to a rival sect.",
+      "vi": "Sự ổn định của tông môn đang sụp đổ. Bạn bắt gặp một vị chấp sự cấp cao đang lén lút mang theo bí kíp cốt lõi của tông môn để đào tẩu sang phe địch."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 25"
+    },
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": {
+          "en": "Intercept him to protect the sect's legacy!",
+          "vi": "Chặn hắn lại để bảo vệ di sản tông môn!"
+        },
+        "effects": {
+          "health": -25,
+          "karma": 5,
+          "money": 200,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "extort_traitor",
+        "text": {
+          "en": "Extort him for hush money to let him pass.",
+          "vi": "Tống tiền bịt miệng để cho hắn trót lọt đi qua."
+        },
+        "effects": {
+          "money": 300,
+          "karma": -10,
+          "daoMind": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_debt_collector",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "money"
+    ],
+    "title": {
+      "en": "Sect Debt Collector",
+      "vi": "Chấp Sự Đòi Nợ"
+    },
+    "description": {
+      "en": "Sect resources are depleted. A debt-collecting deacon is making rounds, forcefully demanding 'voluntary contributions' from outer disciples to fill the treasury.",
+      "vi": "Tài nguyên tông môn cạn kiệt. Một vị chấp sự đòi nợ đang đi tuần, cưỡng ép đệ tử ngoại môn 'tự nguyện quyên góp' để lấp đầy kho bạc."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.resources": "< 30"
+    },
+    "choices": [
+      {
+        "id": "pay_contribution",
+        "text": {
+          "en": "Pay the contribution to avoid trouble.",
+          "vi": "Nộp tiền cống hiến để tránh rắc rối."
+        },
+        "effects": {
+          "money": -80,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "refuse_and_hide",
+        "text": {
+          "en": "Refuse and hide your valuables.",
+          "vi": "Từ chối và lén giấu tài sản đi."
+        },
+        "effects": {
+          "health": -10,
+          "daoMind": 5,
+          "karma": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "elder_funeral_conspiracy",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "lore",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Sect Elder's Funeral",
+      "vi": "Tang Lễ Trưởng Lão"
+    },
+    "description": {
+      "en": "An inner sect elder has passed away, and the sect's stability is shaken. Rumors of a hidden legacy left to an outer disciple are spreading like wildfire.",
+      "vi": "Một vị trưởng lão nội môn vừa tạ thế, sự ổn định của tông môn bị lung lay. Tin đồn về một di sản ẩn giấu để lại cho đệ tử ngoại môn đang lan truyền chóng mặt."
+    },
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 50"
+    },
+    "choices": [
+      {
+        "id": "investigate_legacy",
+        "text": {
+          "en": "Sneak into the elder's forbidden peak to investigate.",
+          "vi": "Lén lút đột nhập vào cấm phong của trưởng lão để điều tra."
+        },
+        "effects": {
+          "health": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "attend_honorably",
+        "text": {
+          "en": "Attend the funeral honorably to show your loyalty.",
+          "vi": "Tham gia tang lễ một cách đường hoàng để thể hiện lòng trung thành."
+        },
+        "effects": {
+          "daoMind": 5,
+          "karma": 5,
+          "reputation": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "captured_sect_rebel",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Captured Sect Rebel",
+      "vi": "Bắt Giữ Phản Đồ"
+    },
+    "description": {
+      "en": "Internal strife is high. You've cornered a fellow disciple who was caught stealing core scriptures. They beg you to let them go, claiming they only wanted to save their family.",
+      "vi": "Nội bộ bất ổn trầm trọng. Bạn đã dồn vào đường cùng một đồng môn bị bắt quả tang trộm cắp bí kíp cốt lõi. Hắn van xin bạn tha mạng, nói rằng chỉ muốn cứu gia đình."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 35"
+    },
+    "choices": [
+      {
+        "id": "execute_rebel",
+        "text": {
+          "en": "Execute the traitor to uphold sect law.",
+          "vi": "Hành quyết kẻ phản bội để giữ nghiêm môn quy."
+        },
+        "effects": {
+          "karma": -5,
+          "reputation": 10,
+          "money": 50,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "release_for_bribe",
+        "text": {
+          "en": "Accept a hidden treasure in exchange for their freedom.",
+          "vi": "Nhận một bảo vật ẩn giấu để đổi lấy sự tự do của hắn."
+        },
+        "effects": {
+          "money": 100,
+          "karma": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_manual_preservation",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ],
+    "title": {
+      "en": "Sect Manual Preservation",
+      "vi": "Bảo Tồn Bí Kíp Tông Môn"
+    },
+    "description": {
+      "en": "The Library Pavilion has caught fire during a riot. Rare manual fragments are scattered in the smoke and flames. You can only save a few.",
+      "vi": "Tàng Kinh Các đã bốc cháy trong một cuộc bạo loạn. Những mảnh tàn quyển hiếm hoi vương vãi trong khói lửa. Bạn chỉ có thể cứu được một vài bản."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 25"
+    },
+    "choices": [
+      {
+        "id": "save_high_grade",
+        "text": {
+          "en": "Risk the flames to save an Earth-grade fragment.",
+          "vi": "Bất chấp hỏa hoạn để cứu lấy một mảnh tàn quyển Địa Cấp."
+        },
+        "effects": {
+          "health": -12,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "save_many_basic",
+        "text": {
+          "en": "Save as many basic manuals as possible for the sect's future.",
+          "vi": "Cứu càng nhiều bí kíp cơ bản càng tốt cho tương lai tông môn."
+        },
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_resource_leak",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "resource_gathering",
+      "crime"
+    ],
+    "title": {
+      "en": "Sect Resource Leak",
+      "vi": "Rò Rỉ Tài Nguyên Tông Môn"
+    },
+    "description": {
+      "en": "The sect's resources are at a critical low, and management is in shambles. You discover a hidden hole in the resource warehouse where spirit stones and low-grade pills are leaking out.",
+      "vi": "Tài nguyên tông môn cạn kiệt, việc quản lý lỏng lẻo. Bạn phát hiện một lỗ hổng bí mật trong kho tài nguyên, nơi linh thạch và đan dược cấp thấp đang bị rò rỉ ra ngoài."
+    },
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "sect.resources": "< 25",
+      "sect.stability": "< 40"
+    },
+    "choices": [
+      {
+        "id": "pocket_the_leak",
+        "text": {
+          "en": "Quietly pocket the leaking resources for yourself.",
+          "vi": "Lặng lẽ bỏ túi những tài nguyên bị rò rỉ."
+        },
+        "effects": {
+          "money": 100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "report_the_leak",
+        "text": {
+          "en": "Report the leak to the elders to show your loyalty.",
+          "vi": "Báo cáo lỗ hổng cho trưởng lão để thể hiện lòng trung thành."
+        },
+        "effects": {
+          "reputation": 10,
+          "karma": 5,
+          "money": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "alchemy_hall_explosion",
+    "location": "sect",
+    "tags": [
+      "alchemy",
+      "danger",
+      "luck_event"
+    ],
+    "title": {
+      "en": "Alchemy Hall Explosion",
+      "vi": "Nổ Lò Luyện Đan"
+    },
+    "description": {
+      "en": "While passing the Alchemy Hall, a massive explosion rocks the building. Smoke fills the air, and scorched remains of rare spirit herbs are scattered everywhere.",
+      "vi": "Khi đi ngang qua Đan Dược Đường, một vụ nổ kinh hoàng làm rung chuyển tòa nhà. Khói bụi mù mịt, những mảnh linh thảo quý hiếm bị thiêu cháy văng khắp nơi."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 50"
+    },
+    "choices": [
+      {
+        "id": "scavenge_smoke",
+        "text": {
+          "en": "Rush into the smoke to scavenge usable herb remains.",
+          "vi": "Lao vào khói bụi để nhặt nhạnh tàn dư linh thảo còn dùng được."
+        },
+        "effects": {
+          "health": -10,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 4
+          }
+        }
+      },
+      {
+        "id": "help_extinguish",
+        "text": {
+          "en": "Use your spiritual Qi to help extinguish the fires.",
+          "vi": "Dùng linh khí của bản thân để giúp dập tắt đám cháy."
+        },
+        "effects": {
+          "cultivation": -2,
+          "reputation": 8,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_treasury_betrayal",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "danger"
+    ],
+    "title": {
+      "en": "Sect Treasury Betrayal",
+      "vi": "Phản Bội Tại Kho Báu Tông Môn"
+    },
+    "description": {
+      "en": "Internal stability has collapsed. You find a group of high-ranking disciples and an elder attempting to empty the treasury before defecting to a rival sect,.",
+      "vi": "Sự ổn định nội bộ đã sụp đổ hoàn toàn. Bạn bắt gặp một nhóm đệ tử cao cấp và một trưởng lão đang cố gắng vét sạch kho báu trước khi đào tẩu sang tông môn đối địch,."
+    },
+    "minAge": 40,
+    "maxAge": 250,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 20"
+    },
+    "choices": [
+      {
+        "id": "extort_the_betrayers",
+        "text": {
+          "en": "Threaten to sound the alarm unless they share the stolen artifacts with you,.",
+          "vi": "Đe dọa sẽ rung chuông báo động trừ khi chúng chia sẻ các pháp bảo ăn trộm cho bạn,."
+        },
+        "effects": {
+          "money": 500,
+          "karma": -15,
+          "daoMind": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_legacy",
+        "text": {
+          "en": "Draw your sword to protect the sect's last legacy, even if it means fighting your brothers,.",
+          "vi": "Rút kiếm bảo vệ di sản cuối cùng của tông môn, ngay cả khi phải đối đầu với đồng môn,."
+        },
+        "effects": {
+          "health": -40,
+          "cultivation": 10,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_meridian_cleansing_pool",
+    "location": "sect",
+    "tags": [
+      "cultivation",
+      "sect",
+      "rare"
+    ],
+    "title": {
+      "en": "Meridian Cleansing Pool",
+      "vi": "Linh Trì Tẩy Tủy"
+    },
+    "description": {
+      "en": "The spiritual Qi in the sect is exceptionally dense. The legendary cleansing pool has opened its doors to outer disciples for a limited time.",
+      "vi": "Linh khí trong tông môn đang dày đặc bất thường. Hồ tẩy tủy truyền thuyết đã mở cửa cho đệ tử ngoại môn trong một thời gian ngắn."
+    },
+    "minAge": 10,
+    "maxAge": 100,
+    "weight": 1,
+    "conditions": {
+      "spiritualQi": "> 75"
+    },
+    "choices": [
+      {
+        "id": "deep_soak",
+        "text": {
+          "en": "Soak deeply to cleanse your internal impurities.",
+          "vi": "Ngâm mình sâu trong linh trì để tẩy rửa tạp chất."
+        },
+        "effects": {
+          "cultivation": 8,
+          "health": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "gather_pool_essence",
+        "text": {
+          "en": "Quickly gather the pool's essence into a jade vial.",
+          "vi": "Nhanh chóng thu thập linh trì tinh hoa vào bình ngọc."
+        },
+        "effects": {
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "forced_labor_duty",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "danger",
+      "punishment"
+    ],
+    "title": {
+      "en": "Forced Labor Duty",
+      "vi": "Lao Dịch Khổ Sai"
+    },
+    "description": {
+      "en": "The sect's stability is low, and the elders are demanding more from outer disciples. You have been assigned to the most dangerous section of the spirit mines as a 'mandatory contribution'.",
+      "vi": "Ổn định tông môn thấp, các trưởng lão yêu cầu nhiều hơn từ đệ tử ngoại môn. Bạn bị điều động đến khu vực nguy hiểm nhất của linh quặng hầm như một hình thức 'đóng góp bắt buộc'."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 40"
+    },
+    "choices": [
+      {
+        "id": "accept_labor",
+        "text": {
+          "en": "Accept the labor and work through the exhaustion.",
+          "vi": "Chấp nhận lao dịch và làm việc bất chấp kiệt sức."
+        },
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "money": 30,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "bribe_supervisor",
+        "text": {
+          "en": "Bribe the mine supervisor to give you a lighter task.",
+          "vi": "Hối lộ giám sát hầm quặng để nhận nhiệm vụ nhẹ nhàng hơn."
+        },
+        "effects": {
+          "money": -100,
+          "daoMind": -5,
+          "luck": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "hidden_jade_chamber",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "opportunity",
+      "cultivation"
+    ],
+    "title": {
+      "en": "The Hidden Jade Chamber",
+      "vi": "Mật Thất Ngọc Bích"
+    },
+    "description": {
+      "en": "The sect is stable and prosperous. The Sect Leader decides to open the 'Hidden Jade Chamber' for the most promising disciples, offering access to restricted knowledge.",
+      "vi": "Tông môn đang trong thời kỳ ổn định và phồn vinh. Tông Chủ quyết định mở cửa 'Mật Thất Ngọc Bích' cho những đệ tử ưu tú nhất, cho phép tiếp cận với những bí pháp cấm kỵ."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "> 70",
+      "sect.resources": "> 60"
+    },
+    "choices": [
+      {
+        "id": "study_forbidden_scroll",
+        "text": {
+          "en": "Study a forbidden Earth-grade scroll.",
+          "vi": "Nghiên cứu một tàn quyển Địa Cấp cấm kỵ."
+        },
+        "effects": {
+          "cultivation": 12,
+          "comprehension": 5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "claim_spiritual_bounty",
+        "text": {
+          "en": "Claim a bounty of spirit stones instead of studying.",
+          "vi": "Nhận linh thạch bổng lộc thay vì nghiên cứu."
+        },
+        "effects": {
+          "money": 250,
+          "reputation": -5,
+          "luck": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "great_sect_war_frontline",
+    "location": "sect",
+    "tags": [
+      "war",
+      "combat",
+      "danger"
+    ],
+    "title": {
+      "en": "Frontline of the Great War",
+      "vi": "Tiền Tuyến Đại Chiến Tông Môn"
+    },
+    "description": {
+      "en": "Sect war has reached a fever pitch. You are drafted to the frontline to defend the Spirit Mine against the Ten Thousand Immortals Sect's elite vanguard.",
+      "vi": "Chiến sự tông môn đã lên đến đỉnh điểm. Bạn bị điều động ra tiền tuyến để bảo vệ Linh Quặng trước đội tiên phong tinh nhuệ của Vạn Tiên Giáo."
+    },
+    "minAge": 18,
+    "maxAge": 250,
+    "weight": 2,
+    "conditions": {
+      "sect.warLevel": "> 75"
+    },
+    "choices": [
+      {
+        "id": "brave_the_charge",
+        "text": {
+          "en": "Lead a counter-charge to break their formations.",
+          "vi": "Dẫn đầu cuộc phản công để phá vỡ đội hình địch."
+        },
+        "effects": {
+          "health": -30,
+          "cultivation": 15,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "desert_battlefield",
+        "text": {
+          "en": "Desert the battlefield and hide in the mortal world.",
+          "vi": "Đào ngũ khỏi chiến trường và lẩn trốn vào phàm trần."
+        },
+        "effects": {
+          "karma": -20,
+          "luck": 5,
+          "daoMind": -15,
+          "reputation": -50,
+          "sect.stability": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "deacon_infiltration_scandal",
+    "location": "sect",
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "crime"
+    ],
+    "title": {
+      "en": "Demonic Mole Revealed",
+      "vi": "Nội Gián Ma Đạo Lộ Diện"
+    },
+    "description": {
+      "en": "High demonic infiltration has compromised a Senior Deacon. You catch them transmitting sect secrets via a blood-red transmission jade.",
+      "vi": "Ma đạo thâm nhập sâu rộng đã khiến một Chấp Sự cao cấp sa ngã. Bạn bắt quả tang hắn đang truyền tin mật tông môn thông qua một khối truyền tin huyết ngọc."
+    },
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "demonic.infiltration": "> 70"
+    },
+    "choices": [
+      {
+        "id": "expose_the_traitor",
+        "text": {
+          "en": "Publicly expose the traitor to the Law Enforcement Hall.",
+          "vi": "Công khai vạch trần kẻ phản bội trước Hình Phạt Đường."
+        },
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 100,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "blackmail_the_traitor",
+        "text": {
+          "en": "Blackmail them for demonic resources to keep silent.",
+          "vi": "Tống tiền hắn lấy tài nguyên ma đạo để giữ im lặng."
+        },
+        "effects": {
+          "money": 300,
+          "karma": -25,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_coup_attempt",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "combat"
+    ],
+    "title": {
+      "en": "Outer Sect Coup Attempt",
+      "vi": "Âm Mưu Đảo Chính Ngoại Môn"
+    },
+    "description": {
+      "en": "Sect stability has reached a critical low. A group of radical disciples, fueled by the resource famine, is attempting to overthrow the treasury deacons.",
+      "vi": "Sự ổn định của tông môn chạm mức báo động. Một nhóm đệ tử cực đoan, bị kích động bởi sự khan hiếm tài nguyên, đang âm mưu lật đổ các chấp sự kho bạc."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 25",
+      "sect.resources": "< 30"
+    },
+    "choices": [
+      {
+        "id": "suppress_rebels_for_loyalty",
+        "text": {
+          "en": "Stand with the deacons and suppress the rebellion.",
+          "vi": "Đứng về phía chấp sự và trấn áp cuộc nổi loạn."
+        },
+        "effects": {
+          "health": -20,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "join_the_overthrow",
+        "text": {
+          "en": "Join the rebels to claim your 'fair share' of the treasury.",
+          "vi": "Gia nhập quân phản loạn để đòi lại 'phần công bằng' từ kho bạc."
+        },
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_war_raiding_party",
+    "location": "sect",
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ],
+    "title": {
+      "en": "Sect War: Raiding Party",
+      "vi": "Tông Môn Chiến: Đội Đột Kích"
+    },
+    "description": {
+      "en": "Sect warfare has escalated. You are ordered to join a high-risk raiding party to sabotage the enemy sect's spirit herb garden.",
+      "vi": "Chiến sự tông môn leo thang. Bạn bị lệnh tham gia một đội đột kích mạo hiểm nhằm phá hoại dược viên linh thảo của tông môn đối địch."
+    },
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "sect.warLevel": "> 80"
+    },
+    "choices": [
+      {
+        "id": "lead_the_sabotage",
+        "text": {
+          "en": "Lead the charge into the enemy's formation.",
+          "vi": "Dẫn đầu cuộc tấn công phá vỡ đội hình địch."
+        },
+        "effects": {
+          "health": -25,
+          "cultivation": 10,
+          "reputation": 25,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "bribe_to_stay_back",
+        "text": {
+          "en": "Bribe the task official to assign you to the rear guards.",
+          "vi": "Hối lộ chấp sự để được phân công ở lại hậu phương."
+        },
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_merit_hoarding",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "market",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Sect Merit Hoarding",
+      "vi": "Đầu Cơ Điểm Cống Hiến"
+    },
+    "description": {
+      "en": "The sect is flourishing with resources. A greedy deacon is secretly allowing disciples to 'buy' merit points with large sums of spirit stones.",
+      "vi": "Tông môn đang dồi dào tài nguyên. Một chấp sự tham lam đang bí mật cho phép đệ tử 'mua' điểm cống hiến bằng một lượng lớn linh thạch."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "sect.resources": "> 70",
+      "sect.stability": "> 60"
+    },
+    "choices": [
+      {
+        "id": "buy_merit_points",
+        "text": {
+          "en": "Spend your savings to boost your sect reputation.",
+          "vi": "Dùng tiền tiết kiệm để tăng nhanh điểm cống hiến."
+        },
+        "effects": {
+          "money": -200,
+          "reputation": 20,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "report_the_deacon",
+        "text": {
+          "en": "Report this corruption to the Law Enforcement Hall.",
+          "vi": "Báo cáo sự hủ bại này cho Hình Phạt Đường."
+        },
+        "effects": {
+          "karma": 15,
+          "daoMind": 10,
+          "reputation": 5,
+          "luck": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_manual_leak",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ],
+    "title": {
+      "en": "Sect Manual Leak",
+      "vi": "Rò Rỉ Bí Kíp Tông Môn"
+    },
+    "description": {
+      "en": "Internal stability is low. A corrupted librarian is secretly selling fragments of the sect's high-grade manuals to the highest bidder.",
+      "vi": "Sự ổn định của tông môn đang thấp [4]. Một thủ thư hủ bại đang lén lút bán các mảnh tàn quyển công pháp cao cấp của tông môn cho người trả giá cao nhất."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 35"
+    },
+    "choices": [
+      {
+        "id": "buy_earth_fragment",
+        "text": {
+          "en": "Pay a heavy price to acquire an Earth-grade manual fragment.",
+          "vi": "Trả giá đắt để đoạt lấy mảnh tàn quyển Địa Cấp [5]."
+        },
+        "effects": {
+          "money": -400,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          },
+          "karma": -10
+        }
+      },
+      {
+        "id": "report_to_elders",
+        "text": {
+          "en": "Report the librarian to increase your reputation.",
+          "vi": "Báo cáo vị thủ thư để tăng danh vọng tông môn."
+        },
+        "effects": {
+          "reputation": 25,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_heritage_trial",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "opportunity",
+      "comprehension"
+    ],
+    "title": {
+      "en": "Sect Heritage Trial",
+      "vi": "Thử Thách Di Sản Tông Môn"
+    },
+    "description": {
+      "en": "With the sect's reputation at an all-time high, the Grand Elder opens the 'Heritage Path'—a trial designed to test a disciple's core comprehension and loyalty to the sect's founding Dao.",
+      "vi": "Với danh vọng tông môn đang ở đỉnh cao, Đại Trưởng Lão mở ra 'Di Sản Chi Lộ'—một thử thách được thiết kế để kiểm tra ngộ tính và lòng trung thành của đệ tử đối với Đạo tổ sáng lập."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.reputation": "> 75"
+    },
+    "choices": [
+      {
+        "id": "walk_the_path",
+        "text": {
+          "en": "Focus your mind and attempt to walk the path of the ancestors.",
+          "vi": "Tập trung tâm trí và cố gắng bước đi trên con đường của tổ tiên."
+        },
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 10,
+          "reputation": 10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "memorize_runes",
+        "text": {
+          "en": "Don't enter the path, but try to memorize the ancient runes from the side.",
+          "vi": "Không tiến vào nhưng cố gắng ghi nhớ các cổ phù từ bên ngoài."
+        },
+        "effects": {
+          "comprehension": 3,
+          "luck": 1,
+          "money": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "spirit_root_resonance_test",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "cultivation",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Spirit Root Resonance Test",
+      "vi": "Thử Thách Cộng Hưởng Linh Căn"
+    },
+    "description": {
+      "en": "With global spiritual Qi peaking, the sect's resonance crystal has activated. It offers a rare chance to refine your Spirit Root's purity and enhance your cultivation multiplier.",
+      "vi": "Khi linh khí thiên địa đạt đỉnh, tinh thể cộng hưởng của tông môn đã được kích hoạt. Đây là cơ hội hiếm có để tôi luyện độ tinh khiết của Linh Căn và tăng cường hệ số tu luyện của bạn [1, 2]."
+    },
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "spiritualQi": "> 80",
+      "sect.reputation": "> 60"
+    },
+    "choices": [
+      {
+        "id": "refine_spirit_root",
+        "text": {
+          "en": "Focus your soul to refine your Spirit Root's efficiency.",
+          "vi": "Tập trung linh hồn để tôi luyện hiệu suất Linh Căn."
+        },
+        "effects": {
+          "cultivation": 5,
+          "comprehension": 3,
+          "health": -10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_raw_energy",
+        "text": {
+          "en": "Directly absorb the crystal's raw energy for immediate cultivation.",
+          "vi": "Trực tiếp hấp thụ năng lượng thô của tinh thể để tăng tu vi ngay lập tức."
+        },
+        "effects": {
+          "cultivation": 15,
+          "health": -5,
+          "luck": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_internal_betrayal",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "demonic",
+      "danger"
+    ],
+    "title": {
+      "en": "Sect Internal Betrayal",
+      "vi": "Nội Gián Xuất Hiện"
+    },
+    "description": {
+      "en": "Sect stability is low and demonic infiltration is high. You catch a senior disciple attempting to poison the spirit well with demonic energy.",
+      "vi": "Sự ổn định tông môn thấp và ma đạo thâm nhập cao. Bạn bắt quả tang một sư huynh đang định hạ độc ma khí vào linh tuyền của môn phái [7-9]."
+    },
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 30",
+      "demonic.infiltration": "> 60"
+    },
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": {
+          "en": "Engage the traitor in a deadly duel to protect the well.",
+          "vi": "Quyết chiến với kẻ phản bội để bảo vệ linh tuyền."
+        },
+        "effects": {
+          "health": -25,
+          "reputation": 20,
+          "karma": 15,
+          "daoMind": 10,
+          "money": 120
+        }
+      },
+      {
+        "id": "blackmail_traitor",
+        "text": {
+          "en": "Promise silence in exchange for forbidden demonic pills.",
+          "vi": "Hứa giữ im lặng để đổi lấy ma đan cấm kỵ."
+        },
+        "effects": {
+          "karma": -40,
+          "daoMind": -15,
+          "luck": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_pill_warehouse_chaos",
+    "location": "sect",
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ],
+    "title": {
+      "en": "Sect Pill Warehouse Breach",
+      "vi": "Kho Linh Dược Thất Thủ"
+    },
+    "description": {
+      "en": "Internal stability has collapsed! A riot has broken out, and the sect's pill warehouse is being looted by desperate disciples [cite: 52, 59].",
+      "vi": "Sự ổn định nội bộ sụp đổ! Một cuộc bạo loạn bùng nổ, kho linh dược của tông môn đang bị các đệ tử tuyệt vọng xâu xé [cite: 52, 59]."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "sect.stability": "< 25"
+    },
+    "choices": [
+      {
+        "id": "join_the_looting",
+        "text": {
+          "en": "Rush in and seize whatever pills you can carry.",
+          "vi": "Lao vào và vơ vét bất kỳ viên đan dược nào bạn thấy."
+        },
+        "effects": {
+          "karma": -15,
+          "reputation": -30,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_gates",
+        "text": {
+          "en": "Stand with the elders to defend the sect's remaining resources.",
+          "vi": "Đứng về phía trưởng lão để bảo vệ tài nguyên còn sót lại."
+        },
+        "effects": {
+          "health": -25,
+          "reputation": 40,
+          "karma": 10,
+          "money": 150,
+          "daoMind": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "sect_ancestor_statue_awakening",
+    "location": "sect",
+    "tags": [
+      "sect",
+      "opportunity",
+      "lore"
+    ],
+    "title": {
+      "en": "Sect Ancestor's Statue Awakening",
+      "vi": "Tượng Tổ Sư Thức Tỉnh"
+    },
+    "description": {
+      "en": "Fueled by the sect's high reputation and spiritual Qi, the statue of the founding ancestor begins to radiate a golden light, offering guidance to the faithful [cite: 52, 57].",
+      "vi": "Dưới sự thúc đẩy của danh vọng tông môn cao và linh khí nồng đậm, bức tượng của tổ sư khai phái bắt đầu tỏa ánh kim quang, ban truyền chỉ điểm cho những đệ tử thành tâm [cite: 52, 57]."
+    },
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "sect.reputation": "> 80",
+      "spiritualQi": "> 70"
+    },
+    "choices": [
+      {
+        "id": "receive_guidance",
+        "text": {
+          "en": "Kneel and receive the ancestor's spiritual transmission.",
+          "vi": "Quỳ lạy và tiếp nhận truyền thừa tâm linh từ tổ sư."
+        },
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "offer_sacrifices",
+        "text": {
+          "en": "Offer rare spirit herbs to the statue to gain the sect's favor.",
+          "vi": "Dâng hiến linh thảo hiếm lên tổ sư để nhận được sự che chở của tông môn."
+        },
+        "effects": {
+          "reputation": 30,
+          "luck": 5,
+          "karma": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_possession_scandal",
+    "location": "sect",
+    "tags": [
+      "demonic",
+      "danger",
+      "sect_chaos"
+    ],
+    "title": {
+      "en": "Possession of the Deacon",
+      "vi": "Chấp Sự Bị Đoạt Xá"
+    },
+    "description": {
+      "en": "Extremely high demonic infiltration and energy have led to a catastrophe: a senior deacon has been possessed by a demonic entity and is wreaking havoc in the outer sect [cite: 59, 55].",
+      "vi": "Ma đạo thâm nhập và ma khí cực cao đã dẫn đến thảm họa: một chấp sự cao cấp đã bị ma vật đoạt xá và đang gây hỗn loạn tại ngoại môn [cite: 59, 55]."
+    },
+    "minAge": 25,
+    "maxAge": 180,
+    "weight": 2,
+    "conditions": {
+      "demonic.infiltration": "> 75",
+      "demonicEnergy": "> 80"
+    },
+    "choices": [
+      {
+        "id": "exorcise_the_demon",
+        "text": {
+          "en": "Risk your life to perform an exorcism and save the deacon.",
+          "vi": "Liều mạng thực hiện nghi lễ trục xuất ma vật để cứu chấp sự."
+        },
+        "effects": {
+          "health": -30,
+          "karma": 40,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "slay_the_possessed",
+        "text": {
+          "en": "Slay the possessed deacon immediately to stop the spread.",
+          "vi": "Hành quyết chấp sự bị đoạt xá ngay lập tức để ngăn chặn lây lan."
+        },
+        "effects": {
+          "health": -20,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          },
+          "karma": -10
+        }
+      }
+    ]
+  }
+]

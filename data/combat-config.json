@@ -1,0 +1,2726 @@
+{
+  "realms": [
+    {
+      "id": "mortal",
+      "label": "Phàm Nhân",
+      "tier": 0,
+      "bonus": {
+        "hp": 0,
+        "max_hp": 0,
+        "qi": 0,
+        "max_qi": 0,
+        "attack": 0
+      }
+    },
+    {
+      "id": "qi_1",
+      "label": "Luyện Khí Tầng 1",
+      "tier": 1.01,
+      "bonus": {
+        "hp": 2,
+        "max_hp": 2,
+        "qi": 2,
+        "max_qi": 2,
+        "attack": 0.5
+      }
+    },
+    {
+      "id": "qi_2",
+      "label": "Luyện Khí Tầng 2",
+      "tier": 1.02,
+      "bonus": {
+        "hp": 4,
+        "max_hp": 4,
+        "qi": 4,
+        "max_qi": 4,
+        "attack": 1
+      }
+    },
+    {
+      "id": "qi_3",
+      "label": "Luyện Khí Tầng 3",
+      "tier": 1.03,
+      "bonus": {
+        "hp": 6,
+        "max_hp": 6,
+        "qi": 6,
+        "max_qi": 6,
+        "attack": 1.5
+      }
+    },
+    {
+      "id": "qi_4",
+      "label": "Luyện Khí Tầng 4",
+      "tier": 1.04,
+      "bonus": {
+        "hp": 8,
+        "max_hp": 8,
+        "qi": 8,
+        "max_qi": 8,
+        "attack": 2
+      }
+    },
+    {
+      "id": "qi_5",
+      "label": "Luyện Khí Tầng 5",
+      "tier": 1.05,
+      "bonus": {
+        "hp": 10,
+        "max_hp": 10,
+        "qi": 10,
+        "max_qi": 10,
+        "attack": 2.5
+      }
+    },
+    {
+      "id": "qi_6",
+      "label": "Luyện Khí Tầng 6",
+      "tier": 1.06,
+      "bonus": {
+        "hp": 12,
+        "max_hp": 12,
+        "qi": 12,
+        "max_qi": 12,
+        "attack": 3
+      }
+    },
+    {
+      "id": "qi_7",
+      "label": "Luyện Khí Tầng 7",
+      "tier": 1.07,
+      "bonus": {
+        "hp": 14,
+        "max_hp": 14,
+        "qi": 14,
+        "max_qi": 14,
+        "attack": 3.5
+      }
+    },
+    {
+      "id": "qi_8",
+      "label": "Luyện Khí Tầng 8",
+      "tier": 1.08,
+      "bonus": {
+        "hp": 16,
+        "max_hp": 16,
+        "qi": 16,
+        "max_qi": 16,
+        "attack": 4
+      }
+    },
+    {
+      "id": "qi_9",
+      "label": "Luyện Khí Tầng 9",
+      "tier": 1.09,
+      "bonus": {
+        "hp": 18,
+        "max_hp": 18,
+        "qi": 18,
+        "max_qi": 18,
+        "attack": 4.5
+      }
+    },
+    {
+      "id": "qi_10",
+      "label": "Luyện Khí Tầng 10",
+      "tier": 1.1,
+      "bonus": {
+        "hp": 20,
+        "max_hp": 20,
+        "qi": 20,
+        "max_qi": 20,
+        "attack": 5
+      }
+    },
+    {
+      "id": "qi_11",
+      "label": "Luyện Khí Tầng 11",
+      "tier": 1.11,
+      "bonus": {
+        "hp": 22,
+        "max_hp": 22,
+        "qi": 22,
+        "max_qi": 22,
+        "attack": 5.5
+      }
+    },
+    {
+      "id": "qi_12",
+      "label": "Luyện Khí Tầng 12 (Viên Mãn)",
+      "tier": 1.12,
+      "bonus": {
+        "hp": 24,
+        "max_hp": 24,
+        "qi": 24,
+        "max_qi": 24,
+        "attack": 6
+      }
+    },
+    {
+      "id": "foundation_early",
+      "label": "Trúc Cơ Sơ Kỳ",
+      "tier": 2.01,
+      "bonus": {
+        "hp": 35,
+        "max_hp": 35,
+        "qi": 30,
+        "max_qi": 30,
+        "attack": 8
+      }
+    },
+    {
+      "id": "foundation_mid",
+      "label": "Trúc Cơ Trung Kỳ",
+      "tier": 2.02,
+      "bonus": {
+        "hp": 45,
+        "max_hp": 45,
+        "qi": 40,
+        "max_qi": 40,
+        "attack": 10.5
+      }
+    },
+    {
+      "id": "foundation_late",
+      "label": "Trúc Cơ Hậu Kỳ",
+      "tier": 2.03,
+      "bonus": {
+        "hp": 55,
+        "max_hp": 55,
+        "qi": 50,
+        "max_qi": 50,
+        "attack": 13
+      }
+    },
+    {
+      "id": "foundation_consummate",
+      "label": "Trúc Cơ Viên Mãn",
+      "tier": 2.04,
+      "bonus": {
+        "hp": 65,
+        "max_hp": 65,
+        "qi": 60,
+        "max_qi": 60,
+        "attack": 15.5
+      }
+    },
+    {
+      "id": "golden_core_early",
+      "label": "Kim Đan Sơ Kỳ",
+      "tier": 3.01,
+      "bonus": {
+        "hp": 80,
+        "max_hp": 80,
+        "qi": 70,
+        "max_qi": 70,
+        "attack": 18
+      }
+    },
+    {
+      "id": "golden_core_mid",
+      "label": "Kim Đan Trung Kỳ",
+      "tier": 3.02,
+      "bonus": {
+        "hp": 95,
+        "max_hp": 95,
+        "qi": 85,
+        "max_qi": 85,
+        "attack": 21.5
+      }
+    },
+    {
+      "id": "golden_core_late",
+      "label": "Kim Đan Hậu Kỳ",
+      "tier": 3.03,
+      "bonus": {
+        "hp": 110,
+        "max_hp": 110,
+        "qi": 100,
+        "max_qi": 100,
+        "attack": 25
+      }
+    },
+    {
+      "id": "golden_core_consummate",
+      "label": "Kim Đan Viên Mãn",
+      "tier": 3.04,
+      "bonus": {
+        "hp": 125,
+        "max_hp": 125,
+        "qi": 115,
+        "max_qi": 115,
+        "attack": 28.5
+      }
+    },
+    {
+      "id": "nascent_soul_early",
+      "label": "Nguyên Anh Sơ Kỳ",
+      "tier": 4.01,
+      "bonus": {
+        "hp": 150,
+        "max_hp": 150,
+        "qi": 140,
+        "max_qi": 140,
+        "attack": 35
+      }
+    },
+    {
+      "id": "nascent_soul_mid",
+      "label": "Nguyên Anh Trung Kỳ",
+      "tier": 4.02,
+      "bonus": {
+        "hp": 180,
+        "max_hp": 180,
+        "qi": 170,
+        "max_qi": 170,
+        "attack": 42
+      }
+    },
+    {
+      "id": "nascent_soul_late",
+      "label": "Nguyên Anh Hậu Kỳ",
+      "tier": 4.03,
+      "bonus": {
+        "hp": 210,
+        "max_hp": 210,
+        "qi": 200,
+        "max_qi": 200,
+        "attack": 49
+      }
+    },
+    {
+      "id": "nascent_soul_consummate",
+      "label": "Nguyên Anh Viên Mãn",
+      "tier": 4.04,
+      "bonus": {
+        "hp": 250,
+        "max_hp": 250,
+        "qi": 240,
+        "max_qi": 240,
+        "attack": 58
+      }
+    }
+  ],
+  "physiques": [
+    {
+      "id": "balanced",
+      "label": "Cân bằng",
+      "description": "Chỉ số ổn định, không có điểm yếu rõ.",
+      "bonus": {
+        "hp": 0,
+        "max_hp": 0,
+        "qi": 0,
+        "max_qi": 0,
+        "speed": 0,
+        "attack": 0,
+        "qi_control": 0
+      },
+      "tags": []
+    },
+    {
+      "id": "iron_body",
+      "label": "Thiết cốt thần",
+      "description": "Nhiều sinh lực, chậm hơn một chút.",
+      "bonus": {
+        "hp": 40,
+        "max_hp": 40,
+        "speed": -1,
+        "attack": 4
+      },
+      "tags": [
+        "iron_body"
+      ]
+    },
+    {
+      "id": "spirit_root",
+      "label": "Thiên linh căn",
+      "description": "Nhiều linh lực và khả năng điều khiển khí.",
+      "bonus": {
+        "qi": 45,
+        "max_qi": 45,
+        "qi_control": 10,
+        "comprehension": 3
+      },
+      "tags": [
+        "spirit_root"
+      ]
+    },
+    {
+      "id": "shadow_step",
+      "label": "Ảnh bộ thân",
+      "description": "Tốc độ cao, sinh lực thấp hơn.",
+      "bonus": {
+        "hp": -20,
+        "max_hp": -20,
+        "speed": 5,
+        "attack": 3
+      },
+      "tags": [
+        "shadow_step"
+      ]
+    }
+  ],
+  "techniques": [
+    {
+      "id": "sword",
+      "label": "Thanh liên kiếm quyết",
+      "type": "vũ_kỹ",
+      "tier": "địa",
+      "fragments_required": 3,
+      "learning_requirements": {
+        "realm": "Qi Refinement",
+        "comprehension": 6,
+        "age": 5
+      },
+      "description": "Sát thương ổn định dựa vào tấn công và ngộ tính.",
+      "choiceText": "Vận kiếm khí, chém thẳng vào đối thủ.",
+      "action": {
+        "id": "act_player_sword",
+        "name": "Thanh Liên Kiếm",
+        "narrativeTags": [
+          "sword",
+          "calm"
+        ],
+        "intentType": "sword",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 8
+        },
+        "narrative_template": "{source.name} dẫn khí vào mũi kiếm, ánh sáng xanh quét qua {env.name}.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.35 + self.comprehension * 1.2",
+            "target": "enemy",
+            "narrative_template": "Kiếm quang chém trúng {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "add_tension",
+            "formula": "4",
+            "target": "self",
+            "narrative_template": "Kiếm ý vang lên, sát khí trong {env.name} dày thêm {amount} phần."
+          }
+        ]
+      }
+    },
+    {
+      "id": "flame",
+      "label": "Xích viêm chân công",
+      "type": "vũ_kỹ",
+      "tier": "thiên",
+      "fragments_required": 3,
+      "learning_requirements": {
+        "realm": "Foundation Establishment",
+        "comprehension": 8,
+        "age": 10
+      },
+      "description": "Bùng nổ mạnh, tiêu hao nhiều linh lực.",
+      "choiceText": "Đốt linh lực, phóng ra xích viêm.",
+      "action": {
+        "id": "act_player_flame",
+        "name": "Xích Viêm",
+        "narrativeTags": [
+          "flame",
+          "forbidden"
+        ],
+        "intentType": "flame",
+        "dangerRating": 7,
+        "costs": {
+          "qi": 14
+        },
+        "narrative_template": "{source.name} kết ấn, hỏa khí cuộn lên thành biển lửa.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.65 + self.qi_control * 1.4",
+            "target": "enemy",
+            "narrative_template": "Xích viêm nuốt lấy {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "add_tension",
+            "formula": "8",
+            "target": "self",
+            "narrative_template": "Biển lửa bùng lên, thế trận căng như dây đàn."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lotus",
+      "label": "Tịnh liên tâm pháp",
+      "type": "tâm_pháp",
+      "tier": "huyền",
+      "fragments_required": 3,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 4,
+        "age": 3
+      },
+      "description": "Thiên về hồi phục và kéo dài giao chiến.",
+      "choiceText": "Thủ tâm thanh tịnh, vừa thủ vừa phản công.",
+      "action": {
+        "id": "act_player_lotus",
+        "name": "Tịnh Liên",
+        "narrativeTags": [
+          "lotus",
+          "calm"
+        ],
+        "intentType": "lotus",
+        "dangerRating": 3,
+        "costs": {
+          "qi": 6
+        },
+        "narrative_template": "{source.name} giữ tâm như mặt nước, linh quang hóa thành cánh sen.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.12 + self.qi_control",
+            "target": "self",
+            "narrative_template": "{target.name} hồi phục {amount} sinh lực."
+          },
+          {
+            "type": "damage",
+            "formula": "self.attack * 0.75 + self.qi_control",
+            "target": "enemy",
+            "narrative_template": "Cánh sen sắc như dao cắt vào {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.qi_control * 0.4",
+            "target": "self",
+            "narrative_template": "{target.name} điều hòa khí mạch, hồi phục {amount} {stat}."
+          }
+        ]
+      },
+      "m_manual": 1.5
+    },
+    {
+      "id": "liet_duong_hoa",
+      "label": "Liệt Dương Chân Hỏa Quyết",
+      "type": "vũ_kỹ",
+      "tier": "hoàng",
+      "fragments_required": 3,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 3,
+        "age": 1
+      },
+      "description": "Hỏa hệ Luyện Khí công pháp. Ngưng tụ tinh thuần hỏa khí thiêu đốt đối thủ.",
+      "choiceText": "Vận chuyển Liệt Dương Chân Hỏa, oanh tạc kẻ địch.",
+      "action": {
+        "id": "act_player_liet_duong_hoa",
+        "name": "Liệt Dương Hỏa",
+        "narrativeTags": [
+          "flame",
+          "burn"
+        ],
+        "intentType": "flame",
+        "dangerRating": 5,
+        "costs": {
+          "qi": 8
+        },
+        "narrative_template": "{source.name} tụ khí thành hỏa cầu rực sáng như mặt trời nhỏ oanh tạc {env.name}.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.3 + self.comprehension * 1.1",
+            "target": "enemy",
+            "narrative_template": "Liệt Dương Hỏa đánh trúng {target.name}, thiêu cháy hộ thể linh khí gây {amount} sát thương."
+          },
+          {
+            "type": "add_tension",
+            "formula": "5",
+            "target": "self",
+            "narrative_template": "Sức nóng tỏa ra dữ dội làm chấn động tinh thần đối thủ."
+          }
+        ]
+      }
+    },
+    {
+      "id": "manual_kiem_tong_kim",
+      "label": "Canh Kim Kiếm Quyết",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Canh Kim Kiếm Quyết hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Kim",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_metal.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_kim",
+        "name": "⚡ Kim Linh Trảm",
+        "narrativeTags": [
+          "kim",
+          "calm"
+        ],
+        "intentType": "kim",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} tụ canh kim linh lực vào đầu ngón tay, phóng ra một đạo kim mang sắc bén chém về phía {target.name}.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.25 + self.comprehension * 0.8",
+            "target": "enemy",
+            "narrative_template": "Đạo kim mang chém trúng {target.name}, để lại một vết thương sâu hoắm gây {amount} sát thương."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_kiem_tong_moc",
+      "label": "Hương Mộc Kiếm Ca",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Hương Mộc Kiếm Ca hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Mộc",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wood.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_moc",
+        "name": "🌱 Mộc Linh Thuật",
+        "narrativeTags": [
+          "moc",
+          "calm"
+        ],
+        "intentType": "moc",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vận chuyển mộc hệ chân khí thổ nạp sinh mệnh lực của thiên địa hồi sinh.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.12 + self.qi_control",
+            "target": "self",
+            "narrative_template": "Linh mạch toàn thân được ôn dưỡng, hồi phục {amount} sinh lực."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.6",
+            "target": "self",
+            "narrative_template": "Chu thiên khí huyết tuần hoàn, hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_kiem_tong_thuy",
+      "label": "Nhược Thủy Kiếm Kinh",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Nhược Thủy Kiếm Kinh hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Thủy",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_water.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_thuy",
+        "name": "💧 Thủy Lưu Chưởng",
+        "narrativeTags": [
+          "thuy",
+          "calm"
+        ],
+        "intentType": "thuy",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} nhẹ nhàng đẩy ra một chưởng thủy triều nhu hòa chấn kích mục tiêu.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 0.8 + self.qi_control * 0.6",
+            "target": "enemy",
+            "narrative_template": "Thủy triều oanh kích lên thân thể {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.8",
+            "target": "self",
+            "narrative_template": "Lực lượng nhu thủy bổ khuyết linh mạch, phục hồi {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_kiem_tong_hoa",
+      "label": "Ly Hỏa Kiếm Thuật",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Ly Hỏa Kiếm Thuật hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Hỏa",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_fire.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_hoa",
+        "name": "🔥 Hỏa Diễm Ba",
+        "narrativeTags": [
+          "hoa",
+          "calm"
+        ],
+        "intentType": "hoa",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} kết ấn phóng ra ngọn lửa đỏ rực thiêu đốt đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.4 + self.qi_control * 0.5",
+            "target": "enemy",
+            "narrative_template": "Ngọn lửa bao phủ thiêu đốt kinh mạch {target.name}, gây {amount} sát thương chí mạng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_kiem_tong_tho",
+      "label": "Mậu Thổ Kiếm Đồ",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Mậu Thổ Kiếm Đồ hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Thổ",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_earth.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_tho",
+        "name": "🪨 Thạch Giáp Thuật",
+        "narrativeTags": [
+          "tho",
+          "calm"
+        ],
+        "intentType": "tho",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} lẩm nhẩm thần chú, thổ hệ linh lực ngưng kết thành lớp giáp đá vững chãi.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.15 + self.qi_control * 0.5",
+            "target": "self",
+            "narrative_template": "Giáp đá bao phủ bảo vệ cơ thể, giúp phục hồi {amount} sinh lực."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_kiem_tong_loi",
+      "label": "Cửu Thiên Lôi Kiếm",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Cửu Thiên Lôi Kiếm hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Lôi",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_thunder.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_loi",
+        "name": "⚡ Lôi Đình Oanh",
+        "narrativeTags": [
+          "loi",
+          "calm"
+        ],
+        "intentType": "loi",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} chỉ tay lên trời dẫn động một tia lôi điện uốn lượn giáng xuống.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.5",
+            "target": "enemy",
+            "narrative_template": "Tia sét đánh thẳng vào đỉnh đầu {target.name}, gây {amount} sát thương tê dại."
+          },
+          {
+            "type": "add_tension",
+            "formula": "6",
+            "target": "self",
+            "narrative_template": "Sấm sét nổ vang làm tinh thần chấn động, chiến trường thêm {amount}% căng thẳng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_kiem_tong_bang",
+      "label": "Hàn Băng Kiếm Kính",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Hàn Băng Kiếm Kính hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Băng",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_ice.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_bang",
+        "name": "❄️ Hàn Băng Kiếp",
+        "narrativeTags": [
+          "bang",
+          "calm"
+        ],
+        "intentType": "bang",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vung tay tạo ra luồng gió tuyết thấu xương cuộn về phía đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.0 + self.qi_control * 0.8",
+            "target": "enemy",
+            "narrative_template": "Hàn khí xâm nhập làm {target.name} run rẩy, chịu {amount} sát thương băng hàn."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_kiem_tong_phong",
+      "label": "Ngự Phong Kiếm Hải",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Ngự Phong Kiếm Hải hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Kiếm Tông",
+      "spiritual_root": "Phong",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wind.png",
+      "action": {
+        "id": "act_player_manual_kiem_tong_phong",
+        "name": "🌪️ Phong Nhận Pháp",
+        "narrativeTags": [
+          "phong",
+          "calm"
+        ],
+        "intentType": "phong",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} triệu hồi luồng cuồng phong hóa thành những lưỡi gió vô hình quét qua.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.1 + self.speed * 0.4",
+            "target": "enemy",
+            "narrative_template": "Lưỡi gió xé rách phòng ngự của {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.speed * 0.5",
+            "target": "self",
+            "narrative_template": "Thân pháp nhẹ nhàng như gió giúp hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_kim",
+      "label": "Ma Ảnh Kim Thần Luân",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Ma Ảnh Kim Thần Luân hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Kim",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_metal.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_kim",
+        "name": "⚡ Kim Linh Trảm",
+        "narrativeTags": [
+          "kim",
+          "calm"
+        ],
+        "intentType": "kim",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} tụ canh kim linh lực vào đầu ngón tay, phóng ra một đạo kim mang sắc bén chém về phía {target.name}.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.25 + self.comprehension * 0.8",
+            "target": "enemy",
+            "narrative_template": "Đạo kim mang chém trúng {target.name}, để lại một vết thương sâu hoắm gây {amount} sát thương."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_moc",
+      "label": "Vạn Độc Thần Ma Công",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Vạn Độc Thần Ma Công hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Mộc",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wood.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_moc",
+        "name": "🌱 Mộc Linh Thuật",
+        "narrativeTags": [
+          "moc",
+          "calm"
+        ],
+        "intentType": "moc",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vận chuyển mộc hệ chân khí thổ nạp sinh mệnh lực của thiên địa hồi sinh.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.12 + self.qi_control",
+            "target": "self",
+            "narrative_template": "Linh mạch toàn thân được ôn dưỡng, hồi phục {amount} sinh lực."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.6",
+            "target": "self",
+            "narrative_template": "Chu thiên khí huyết tuần hoàn, hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_thuy",
+      "label": "Hắc Thủy Ma Sát Phép",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Hắc Thủy Ma Sát Phép hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Thủy",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_water.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_thuy",
+        "name": "💧 Thủy Lưu Chưởng",
+        "narrativeTags": [
+          "thuy",
+          "calm"
+        ],
+        "intentType": "thuy",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} nhẹ nhàng đẩy ra một chưởng thủy triều nhu hòa chấn kích mục tiêu.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 0.8 + self.qi_control * 0.6",
+            "target": "enemy",
+            "narrative_template": "Thủy triều oanh kích lên thân thể {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.8",
+            "target": "self",
+            "narrative_template": "Lực lượng nhu thủy bổ khuyết linh mạch, phục hồi {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_hoa",
+      "label": "Ma Hỏa U Minh Thuật",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Ma Hỏa U Minh Thuật hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Hỏa",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_fire.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_hoa",
+        "name": "🔥 Hỏa Diễm Ba",
+        "narrativeTags": [
+          "hoa",
+          "calm"
+        ],
+        "intentType": "hoa",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} kết ấn phóng ra ngọn lửa đỏ rực thiêu đốt đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.4 + self.qi_control * 0.5",
+            "target": "enemy",
+            "narrative_template": "Ngọn lửa bao phủ thiêu đốt kinh mạch {target.name}, gây {amount} sát thương chí mạng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_tho",
+      "label": "Hắc Thổ Ma Hoàng Ấn",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Hắc Thổ Ma Hoàng Ấn hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Thổ",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_earth.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_tho",
+        "name": "🪨 Thạch Giáp Thuật",
+        "narrativeTags": [
+          "tho",
+          "calm"
+        ],
+        "intentType": "tho",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} lẩm nhẩm thần chú, thổ hệ linh lực ngưng kết thành lớp giáp đá vững chãi.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.15 + self.qi_control * 0.5",
+            "target": "self",
+            "narrative_template": "Giáp đá bao phủ bảo vệ cơ thể, giúp phục hồi {amount} sinh lực."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_loi",
+      "label": "Ma Lôi Phá Thiên Đạo",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Ma Lôi Phá Thiên Đạo hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Lôi",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_thunder.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_loi",
+        "name": "⚡ Lôi Đình Oanh",
+        "narrativeTags": [
+          "loi",
+          "calm"
+        ],
+        "intentType": "loi",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} chỉ tay lên trời dẫn động một tia lôi điện uốn lượn giáng xuống.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.5",
+            "target": "enemy",
+            "narrative_template": "Tia sét đánh thẳng vào đỉnh đầu {target.name}, gây {amount} sát thương tê dại."
+          },
+          {
+            "type": "add_tension",
+            "formula": "6",
+            "target": "self",
+            "narrative_template": "Sấm sét nổ vang làm tinh thần chấn động, chiến trường thêm {amount}% căng thẳng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_bang",
+      "label": "Huyền Băng Ma Tiên Pháp",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyền Băng Ma Tiên Pháp hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Băng",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_ice.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_bang",
+        "name": "❄️ Hàn Băng Kiếp",
+        "narrativeTags": [
+          "bang",
+          "calm"
+        ],
+        "intentType": "bang",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vung tay tạo ra luồng gió tuyết thấu xương cuộn về phía đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.0 + self.qi_control * 0.8",
+            "target": "enemy",
+            "narrative_template": "Hàn khí xâm nhập làm {target.name} run rẩy, chịu {amount} sát thương băng hàn."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_ma_dao_phong",
+      "label": "Ma Phong Vô Ảnh Bộ",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Ma Phong Vô Ảnh Bộ hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Ma Đạo",
+      "spiritual_root": "Phong",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wind.png",
+      "action": {
+        "id": "act_player_manual_ma_dao_phong",
+        "name": "🌪️ Phong Nhận Pháp",
+        "narrativeTags": [
+          "phong",
+          "calm"
+        ],
+        "intentType": "phong",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} triệu hồi luồng cuồng phong hóa thành những lưỡi gió vô hình quét qua.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.1 + self.speed * 0.4",
+            "target": "enemy",
+            "narrative_template": "Lưỡi gió xé rách phòng ngự của {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.speed * 0.5",
+            "target": "self",
+            "narrative_template": "Thân pháp nhẹ nhàng như gió giúp hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_kim",
+      "label": "Huyết Kim Sát Trận",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Kim Sát Trận hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Kim",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_metal.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_kim",
+        "name": "⚡ Kim Linh Trảm",
+        "narrativeTags": [
+          "kim",
+          "calm"
+        ],
+        "intentType": "kim",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} tụ canh kim linh lực vào đầu ngón tay, phóng ra một đạo kim mang sắc bén chém về phía {target.name}.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.25 + self.comprehension * 0.8",
+            "target": "enemy",
+            "narrative_template": "Đạo kim mang chém trúng {target.name}, để lại một vết thương sâu hoắm gây {amount} sát thương."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_moc",
+      "label": "Huyết Mộc Cổ Sinh Pháp",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Mộc Cổ Sinh Pháp hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Mộc",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wood.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_moc",
+        "name": "🌱 Mộc Linh Thuật",
+        "narrativeTags": [
+          "moc",
+          "calm"
+        ],
+        "intentType": "moc",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vận chuyển mộc hệ chân khí thổ nạp sinh mệnh lực của thiên địa hồi sinh.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.12 + self.qi_control",
+            "target": "self",
+            "narrative_template": "Linh mạch toàn thân được ôn dưỡng, hồi phục {amount} sinh lực."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.6",
+            "target": "self",
+            "narrative_template": "Chu thiên khí huyết tuần hoàn, hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_thuy",
+      "label": "Huyết Hải Triều Sinh Thuật",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Hải Triều Sinh Thuật hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Thủy",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_water.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_thuy",
+        "name": "💧 Thủy Lưu Chưởng",
+        "narrativeTags": [
+          "thuy",
+          "calm"
+        ],
+        "intentType": "thuy",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} nhẹ nhàng đẩy ra một chưởng thủy triều nhu hòa chấn kích mục tiêu.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 0.8 + self.qi_control * 0.6",
+            "target": "enemy",
+            "narrative_template": "Thủy triều oanh kích lên thân thể {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.8",
+            "target": "self",
+            "narrative_template": "Lực lượng nhu thủy bổ khuyết linh mạch, phục hồi {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_hoa",
+      "label": "Huyết Hỏa Thiêu Thần Quyết",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Hỏa Thiêu Thần Quyết hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Hỏa",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_fire.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_hoa",
+        "name": "🔥 Hỏa Diễm Ba",
+        "narrativeTags": [
+          "hoa",
+          "calm"
+        ],
+        "intentType": "hoa",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} kết ấn phóng ra ngọn lửa đỏ rực thiêu đốt đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.4 + self.qi_control * 0.5",
+            "target": "enemy",
+            "narrative_template": "Ngọn lửa bao phủ thiêu đốt kinh mạch {target.name}, gây {amount} sát thương chí mạng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_tho",
+      "label": "Huyết Thổ Quy Nguyên Pháp",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Thổ Quy Nguyên Pháp hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Thổ",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_earth.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_tho",
+        "name": "🪨 Thạch Giáp Thuật",
+        "narrativeTags": [
+          "tho",
+          "calm"
+        ],
+        "intentType": "tho",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} lẩm nhẩm thần chú, thổ hệ linh lực ngưng kết thành lớp giáp đá vững chãi.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.15 + self.qi_control * 0.5",
+            "target": "self",
+            "narrative_template": "Giáp đá bao phủ bảo vệ cơ thể, giúp phục hồi {amount} sinh lực."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_loi",
+      "label": "Huyết Lôi Ma Kiếp Điển",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Lôi Ma Kiếp Điển hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Lôi",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_thunder.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_loi",
+        "name": "⚡ Lôi Đình Oanh",
+        "narrativeTags": [
+          "loi",
+          "calm"
+        ],
+        "intentType": "loi",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} chỉ tay lên trời dẫn động một tia lôi điện uốn lượn giáng xuống.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.5",
+            "target": "enemy",
+            "narrative_template": "Tia sét đánh thẳng vào đỉnh đầu {target.name}, gây {amount} sát thương tê dại."
+          },
+          {
+            "type": "add_tension",
+            "formula": "6",
+            "target": "self",
+            "narrative_template": "Sấm sét nổ vang làm tinh thần chấn động, chiến trường thêm {amount}% căng thẳng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_bang",
+      "label": "Huyết Băng Ngưng Phách Trận",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Băng Ngưng Phách Trận hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Băng",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_ice.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_bang",
+        "name": "❄️ Hàn Băng Kiếp",
+        "narrativeTags": [
+          "bang",
+          "calm"
+        ],
+        "intentType": "bang",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vung tay tạo ra luồng gió tuyết thấu xương cuộn về phía đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.0 + self.qi_control * 0.8",
+            "target": "enemy",
+            "narrative_template": "Hàn khí xâm nhập làm {target.name} run rẩy, chịu {amount} sát thương băng hàn."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_huyet_tong_phong",
+      "label": "Huyết Phong Ảnh Độn Pháp",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Huyết Phong Ảnh Độn Pháp hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Huyết Tông",
+      "spiritual_root": "Phong",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wind.png",
+      "action": {
+        "id": "act_player_manual_huyet_tong_phong",
+        "name": "🌪️ Phong Nhận Pháp",
+        "narrativeTags": [
+          "phong",
+          "calm"
+        ],
+        "intentType": "phong",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} triệu hồi luồng cuồng phong hóa thành những lưỡi gió vô hình quét qua.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.1 + self.speed * 0.4",
+            "target": "enemy",
+            "narrative_template": "Lưỡi gió xé rách phòng ngự của {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.speed * 0.5",
+            "target": "self",
+            "narrative_template": "Thân pháp nhẹ nhàng như gió giúp hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_kim",
+      "label": "Kim Đan Luyện Cốt Pháp",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Kim Đan Luyện Cốt Pháp hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Kim",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_metal.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_kim",
+        "name": "⚡ Kim Linh Trảm",
+        "narrativeTags": [
+          "kim",
+          "calm"
+        ],
+        "intentType": "kim",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} tụ canh kim linh lực vào đầu ngón tay, phóng ra một đạo kim mang sắc bén chém về phía {target.name}.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.25 + self.comprehension * 0.8",
+            "target": "enemy",
+            "narrative_template": "Đạo kim mang chém trúng {target.name}, để lại một vết thương sâu hoắm gây {amount} sát thương."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_moc",
+      "label": "Thanh Mộc Luyện Đan Ca",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Thanh Mộc Luyện Đan Ca hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Mộc",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wood.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_moc",
+        "name": "🌱 Mộc Linh Thuật",
+        "narrativeTags": [
+          "moc",
+          "calm"
+        ],
+        "intentType": "moc",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vận chuyển mộc hệ chân khí thổ nạp sinh mệnh lực của thiên địa hồi sinh.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.12 + self.qi_control",
+            "target": "self",
+            "narrative_template": "Linh mạch toàn thân được ôn dưỡng, hồi phục {amount} sinh lực."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.6",
+            "target": "self",
+            "narrative_template": "Chu thiên khí huyết tuần hoàn, hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_thuy",
+      "label": "Linh Thủy Luyện Dược Kinh",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Linh Thủy Luyện Dược Kinh hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Thủy",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_water.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_thuy",
+        "name": "💧 Thủy Lưu Chưởng",
+        "narrativeTags": [
+          "thuy",
+          "calm"
+        ],
+        "intentType": "thuy",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} nhẹ nhàng đẩy ra một chưởng thủy triều nhu hòa chấn kích mục tiêu.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 0.8 + self.qi_control * 0.6",
+            "target": "enemy",
+            "narrative_template": "Thủy triều oanh kích lên thân thể {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.comprehension * 0.8",
+            "target": "self",
+            "narrative_template": "Lực lượng nhu thủy bổ khuyết linh mạch, phục hồi {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_hoa",
+      "label": "Hỏa Phách Luyện Đan Thuật",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Hỏa Phách Luyện Đan Thuật hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Hỏa",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_fire.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_hoa",
+        "name": "🔥 Hỏa Diễm Ba",
+        "narrativeTags": [
+          "hoa",
+          "calm"
+        ],
+        "intentType": "hoa",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} kết ấn phóng ra ngọn lửa đỏ rực thiêu đốt đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.4 + self.qi_control * 0.5",
+            "target": "enemy",
+            "narrative_template": "Ngọn lửa bao phủ thiêu đốt kinh mạch {target.name}, gây {amount} sát thương chí mạng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_tho",
+      "label": "Thần Thổ Dưỡng Thảo Quyết",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Thần Thổ Dưỡng Thảo Quyết hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Thổ",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_earth.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_tho",
+        "name": "🪨 Thạch Giáp Thuật",
+        "narrativeTags": [
+          "tho",
+          "calm"
+        ],
+        "intentType": "tho",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} lẩm nhẩm thần chú, thổ hệ linh lực ngưng kết thành lớp giáp đá vững chãi.",
+        "effects": [
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.15 + self.qi_control * 0.5",
+            "target": "self",
+            "narrative_template": "Giáp đá bao phủ bảo vệ cơ thể, giúp phục hồi {amount} sinh lực."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_loi",
+      "label": "Lôi Luyện Đan Tâm Quyết",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Lôi Luyện Đan Tâm Quyết hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Lôi",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_thunder.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_loi",
+        "name": "⚡ Lôi Đình Oanh",
+        "narrativeTags": [
+          "loi",
+          "calm"
+        ],
+        "intentType": "loi",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} chỉ tay lên trời dẫn động một tia lôi điện uốn lượn giáng xuống.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.5",
+            "target": "enemy",
+            "narrative_template": "Tia sét đánh thẳng vào đỉnh đầu {target.name}, gây {amount} sát thương tê dại."
+          },
+          {
+            "type": "add_tension",
+            "formula": "6",
+            "target": "self",
+            "narrative_template": "Sấm sét nổ vang làm tinh thần chấn động, chiến trường thêm {amount}% căng thẳng."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_bang",
+      "label": "Hàn Đan Ngưng Linh Pháp",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Hàn Đan Ngưng Linh Pháp hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Băng",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_ice.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_bang",
+        "name": "❄️ Hàn Băng Kiếp",
+        "narrativeTags": [
+          "bang",
+          "calm"
+        ],
+        "intentType": "bang",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} vung tay tạo ra luồng gió tuyết thấu xương cuộn về phía đối thủ.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.0 + self.qi_control * 0.8",
+            "target": "enemy",
+            "narrative_template": "Hàn khí xâm nhập làm {target.name} run rẩy, chịu {amount} sát thương băng hàn."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    },
+    {
+      "id": "manual_dan_tong_phong",
+      "label": "Thần Phong Dẫn Dược Quyết",
+      "type": "tâm_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 1,
+        "age": 11
+      },
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "choiceText": "Vận chuyển chu thiên Thần Phong Dẫn Dược Quyết hấp thu thiên địa tinh khí.",
+      "is_basic_manual": true,
+      "sect": "Đan Tông",
+      "spiritual_root": "Phong",
+      "max_cultivation_level": 26,
+      "image": "/images/sects/book_wind.png",
+      "action": {
+        "id": "act_player_manual_dan_tong_phong",
+        "name": "🌪️ Phong Nhận Pháp",
+        "narrativeTags": [
+          "phong",
+          "calm"
+        ],
+        "intentType": "phong",
+        "dangerRating": 4,
+        "costs": {
+          "qi": 4
+        },
+        "narrative_template": "{source.name} triệu hồi luồng cuồng phong hóa thành những lưỡi gió vô hình quét qua.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.1 + self.speed * 0.4",
+            "target": "enemy",
+            "narrative_template": "Lưỡi gió xé rách phòng ngự của {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "restore_resource",
+            "resource": "qi",
+            "formula": "self.speed * 0.5",
+            "target": "self",
+            "narrative_template": "Thân pháp nhẹ nhàng như gió giúp hồi phục {amount} linh khí."
+          }
+        ]
+      },
+      "m_manual": 1.0
+    }
+  ],
+  "enemy_arts": [
+    {
+      "id": "claw",
+      "label": "Ma trảo đoạt hồn",
+      "type": "vũ_kỹ",
+      "description": "Tấn công nhanh và đều.",
+      "action": {
+        "id": "act_enemy_claw",
+        "name": "Ma Trảo",
+        "narrativeTags": [
+          "demonic",
+          "heart_demon",
+          "suppression"
+        ],
+        "intentType": "demonic",
+        "dangerRating": 5,
+        "narrative_template": "{source.name} lao tới bằng ma trảo mờ ảo.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack * 1.15 + self.speed",
+            "target": "enemy",
+            "narrative_template": "Ma trảo xé qua thần hồn {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "add_tension",
+            "formula": "5",
+            "target": "self",
+            "narrative_template": "Âm phong rít lên, tâm ma ép sát hơn."
+          }
+        ]
+      }
+    },
+    {
+      "id": "curse",
+      "label": "Tâm ma chú ấn",
+      "type": "bí_kỹ",
+      "description": "Sát thương dựa vào khả năng điều khiển khí.",
+      "action": {
+        "id": "act_enemy_curse",
+        "name": "Tâm Ma Chú",
+        "narrativeTags": [
+          "curse",
+          "heart_demon",
+          "dao_pressure"
+        ],
+        "intentType": "curse",
+        "dangerRating": 6,
+        "narrative_template": "{source.name} đọc chú, ám ảnh bám vào linh đài đối phương.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.qi_control * 1.8 + self.comprehension",
+            "target": "enemy",
+            "narrative_template": "Chú ấn đánh vào {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "add_tension",
+            "formula": "7",
+            "target": "self",
+            "narrative_template": "Chú ấn làm linh đài dao động, trận chiến thêm bất định."
+          }
+        ]
+      }
+    },
+    {
+      "id": "blood",
+      "label": "Huyết sát ma công",
+      "type": "cấm_thuật",
+      "description": "Ít sát thương hơn nhưng có khả năng hồi phục.",
+      "action": {
+        "id": "act_enemy_blood",
+        "name": "Huyết Sát",
+        "narrativeTags": [
+          "blood",
+          "demonic",
+          "forbidden"
+        ],
+        "intentType": "blood",
+        "dangerRating": 6,
+        "narrative_template": "{source.name} đốt huyết khí, khí tức đỏ thẫm tràn ra.",
+        "effects": [
+          {
+            "type": "damage",
+            "formula": "self.attack + self.qi_control",
+            "target": "enemy",
+            "narrative_template": "Huyết khí đánh vào {target.name}, gây {amount} sát thương."
+          },
+          {
+            "type": "heal",
+            "formula": "self.max_hp * 0.08",
+            "target": "self",
+            "narrative_template": "{target.name} hút lại huyết khí, hồi phục {amount} sinh lực."
+          },
+          {
+            "type": "add_tension",
+            "formula": "6",
+            "target": "self",
+            "narrative_template": "Mùi huyết khí khiến chiến trường nặng như thiết."
+          }
+        ]
+      }
+    }
+  ],
+  "tactics": [
+    {
+      "id": "balanced",
+      "label": "Cân bằng",
+      "description": "Giao chiến theo nhịp thông thường."
+    },
+    {
+      "id": "aggressive",
+      "label": "Cuồng công",
+      "description": "Tăng tấn công, giảm sinh lực."
+    },
+    {
+      "id": "defensive",
+      "label": "Thủ thế",
+      "description": "Tăng sinh lực, giảm tấn công."
+    },
+    {
+      "id": "swift",
+      "label": "Tốc chiến",
+      "description": "Tăng tốc độ và tấn công nhẹ."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "enemy_shadow_demon",
+      "name": "Ảo ảnh Tâm Ma",
+      "realm": "qi_12",
+      "physique": "iron_body",
+      "technique": "claw",
+      "tactic": "aggressive",
+      "description": "Ảo ảnh của lòng ma khởi nguồn từ con đường tu luyện sản sinh."
+    },
+    {
+      "id": "enemy_sword_elder",
+      "name": "Kiếm Tông Trưởng Lão",
+      "realm": "golden_core_consummate",
+      "physique": "spirit_root",
+      "technique": "curse",
+      "tactic": "defensive",
+      "description": "Lão già vẻ mặt nghiêm nghị, giữ kiếm ý lạnh lùng sẵn sàng thử sát."
+    },
+    {
+      "id": "enemy_ta_tieu",
+      "name": "Tạ Tiêu",
+      "realm": "qi_12",
+      "physique": "shadow_step",
+      "technique": "claw",
+      "tactic": "swift",
+      "description": "Cháu ruột Ngoại môn Chấp sự Tạ Trần tại Kiếm Tông. Ăn chơi sa đọa, hay cậy thế hiếp người."
+    },
+    {
+      "id": "enemy_khau_vo_ky",
+      "name": "Khấu Vô Kỵ",
+      "realm": "foundation_1",
+      "physique": "spirit_root",
+      "technique": "curse",
+      "tactic": "defensive",
+      "description": "Chấp sự Ngoại môn Ma Đạo. Mặt sạm đen chặn đường chặn lối, tính tình hung ác tham lam."
+    },
+    {
+      "id": "enemy_ta_tran",
+      "name": "Tạ Trần",
+      "realm": "foundation_3",
+      "physique": "iron_body",
+      "technique": "claw",
+      "tactic": "balanced",
+      "description": "Chấp sự Ngoại môn Kiếm Tông. Vẻ ngoài lạnh lùng thiết diện nhưng thực chất rất bao che người nhà."
+    },
+    {
+      "id": "enemy_linh_duong",
+      "name": "Linh Dương",
+      "realm": "foundation_2",
+      "physique": "spirit_root",
+      "technique": "claw",
+      "tactic": "balanced",
+      "description": "Chấp sự Ngoại môn Đan Tông. Say mê luyện đan, có phần điên cuồng thích bắt đệ tử làm vật thử thuốc."
+    },
+    {
+      "id": "enemy_xich_liet",
+      "name": "Xích Liệt",
+      "realm": "foundation_3",
+      "physique": "iron_body",
+      "technique": "blood",
+      "tactic": "aggressive",
+      "description": "Chấp sự Ngoại môn Huyết Tông. Thích thu thập yêu cốt thú huyết, tu luyện huyết ma công thô bạo."
+    }
+  ],
+  "cultivation_states": {
+    "realms": {
+      "qi": {
+        "label": "Luyện Khí",
+        "hp_label": "Khí huyết",
+        "def_label": "Kinh mạch",
+        "qi_label": "Linh tức",
+        "hp_tiers": [
+          {
+            "min": 90,
+            "max": 100,
+            "text": "Khí huyết xung mãn"
+          },
+          {
+            "min": 75,
+            "max": 90,
+            "text": "Khí tức ổn định"
+          },
+          {
+            "min": 60,
+            "max": 75,
+            "text": "Huyết khí hơi dao động"
+          },
+          {
+            "min": 45,
+            "max": 60,
+            "text": "Kinh mạch chịu chấn"
+          },
+          {
+            "min": 30,
+            "max": 45,
+            "text": "Hơi thở dần nặng nề"
+          },
+          {
+            "min": 20,
+            "max": 30,
+            "text": "Khí huyết hỗn loạn"
+          },
+          {
+            "min": 10,
+            "max": 20,
+            "text": "Sinh cơ suy yếu"
+          },
+          {
+            "min": 0,
+            "max": 10,
+            "text": "Sinh mệnh như đèn trước gió"
+          }
+        ]
+      },
+      "foundation": {
+        "label": "Trúc Cơ",
+        "hp_label": "Đạo cơ",
+        "def_label": "Hộ thể linh quang",
+        "qi_label": "Chân nguyên",
+        "hp_tiers": [
+          {
+            "min": 90,
+            "max": 100,
+            "text": "Đạo cơ xung mãn"
+          },
+          {
+            "min": 75,
+            "max": 90,
+            "text": "Đạo cơ vững chắc"
+          },
+          {
+            "min": 60,
+            "max": 75,
+            "text": "Đạo cơ chấn động nhẹ"
+          },
+          {
+            "min": 45,
+            "max": 60,
+            "text": "Chân nguyên hỗn loạn"
+          },
+          {
+            "min": 30,
+            "max": 45,
+            "text": "Đạo cơ xuất hiện khe nứt"
+          },
+          {
+            "min": 20,
+            "max": 30,
+            "text": "Đạo cơ lung lay sắp sụp"
+          },
+          {
+            "min": 10,
+            "max": 20,
+            "text": "Chân nguyên cạn kiệt"
+          },
+          {
+            "min": 0,
+            "max": 10,
+            "text": "Đạo cơ vỡ vụn, sinh cơ tiêu tán"
+          }
+        ]
+      },
+      "golden_core": {
+        "label": "Kim Đan",
+        "hp_label": "Kim đan",
+        "def_label": "Đan khí",
+        "qi_label": "Linh áp",
+        "hp_tiers": [
+          {
+            "min": 90,
+            "max": 100,
+            "text": "Kim đan xung mãn"
+          },
+          {
+            "min": 75,
+            "max": 90,
+            "text": "Kim đan bình ổn, linh áp tràn trề"
+          },
+          {
+            "min": 60,
+            "max": 75,
+            "text": "Kim đan mờ dần quang mang"
+          },
+          {
+            "min": 45,
+            "max": 60,
+            "text": "Linh áp quanh thân nhiễu loạn"
+          },
+          {
+            "min": 30,
+            "max": 45,
+            "text": "Đan hải rung chuyển dữ dội"
+          },
+          {
+            "min": 20,
+            "max": 30,
+            "text": "Kim đan xuất hiện vết nứt"
+          },
+          {
+            "min": 10,
+            "max": 20,
+            "text": "Linh áp tán loạn, đan khí tiêu tán"
+          },
+          {
+            "min": 0,
+            "max": 10,
+            "text": "Kim đan sắp vỡ, đan điền đổ nát"
+          }
+        ]
+      },
+      "nascent_soul": {
+        "label": "Nguyên Anh",
+        "hp_label": "Nguyên anh",
+        "def_label": "Thần hồn",
+        "qi_label": "Linh đài",
+        "hp_tiers": [
+          {
+            "min": 90,
+            "max": 100,
+            "text": "Nguyên anh xung mãn"
+          },
+          {
+            "min": 75,
+            "max": 90,
+            "text": "Nguyên anh thanh tĩnh"
+          },
+          {
+            "min": 60,
+            "max": 75,
+            "text": "Nguyên anh ảm đạm quang mang"
+          },
+          {
+            "min": 45,
+            "max": 60,
+            "text": "Thần hồn chấn động dữ dội"
+          },
+          {
+            "min": 30,
+            "max": 45,
+            "text": "Linh đài rung chuyển bất định"
+          },
+          {
+            "min": 20,
+            "max": 30,
+            "text": "Nguyên anh xuất hiện rạn nứt"
+          },
+          {
+            "min": 10,
+            "max": 20,
+            "text": "Thần hồn như sắp tan biến"
+          },
+          {
+            "min": 0,
+            "max": 10,
+            "text": "Nguyên anh tiêu biến, thức hải sụp đổ"
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "item_huyen_nguyen_dan",
+      "name": "Huyền Nguyên Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "huyền",
+      "description": "Đan dược ngưng tụ chân nguyên mạch, tăng mạnh tu vi tức thời (+8 Tu vi).",
+      "effects": {
+        "cultivation": 8,
+        "health": 2
+      }
+    },
+    {
+      "id": "item_tho_nguyen_dan",
+      "name": "Thọ Nguyên Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "địa",
+      "description": "Đan dược linh thiêng gia tăng thọ nguyên giới hạn tuổi thọ (+50 Thọ nguyên).",
+      "effects": {
+        "lifespan": 50,
+        "health": 5
+      }
+    },
+    {
+      "id": "item_nhien_huyet_dan",
+      "name": "Nhiên Huyết Đan",
+      "category": "consumable",
+      "type": "secret_medicine",
+      "tier": "huyền",
+      "description": "Bí dược cấm kỵ. Tăng vọt tu vi nhưng tổn hao tuổi thọ và làm lung lay đạo tâm (+25 Tu vi, -15 Thọ nguyên, -10 Đạo tâm).",
+      "effects": {
+        "cultivation": 25,
+        "lifespan": -15,
+        "daoHeart": -10,
+        "health": -5
+      }
+    },
+    {
+      "id": "item_thanh_phong_kiem",
+      "name": "Thanh Phong Kiếm",
+      "category": "equipment",
+      "type": "weapon",
+      "tier": "địa",
+      "description": "Thanh kiếm gió linh hoạt, sắc bén. Tăng mạnh thuộc tính tấn công (+12 Tấn công).",
+      "combatStats": {
+        "attack": 12,
+        "speed": 2
+      },
+      "soulbound": true,
+      "sealLevel": "Qi Refinement"
+    },
+    {
+      "id": "item_thien_to_phap_bao",
+      "name": "Thiên Tơ Pháp Bào",
+      "category": "equipment",
+      "type": "armor",
+      "tier": "thiên",
+      "description": "Lưới tơ trời bảo hộ nhục thân khỏi các đòn công kích vật lý (+15 Phòng thủ, +20 Sinh mệnh tối đa).",
+      "combatStats": {
+        "defense": 15,
+        "maxHp": 20
+      },
+      "soulbound": true,
+      "sealLevel": "Foundation Establishment"
+    },
+    {
+      "id": "item_luan_hoi_thach",
+      "name": "Luân Hồi Thạch",
+      "category": "relic",
+      "type": "relic",
+      "tier": "thánh",
+      "description": "Đá luân hồi kỳ bí lưu lại ký ức, được liên kết linh hồn vĩnh viễn mang sang kiếp sau.",
+      "soulbound": true
+    },
+    {
+      "id": "item_linh_thao",
+      "name": "Linh Thảo",
+      "category": "material",
+      "type": "material",
+      "tier": "hoàng",
+      "description": "Thảo dược chứa linh khí mọc hoang dã dã ngoại hoặc dược điền tông môn.",
+      "quantity": 1
+    },
+    {
+      "id": "item_linh_quang",
+      "name": "Linh Quặng",
+      "category": "material",
+      "type": "material",
+      "tier": "hoàng",
+      "description": "Quặng thô chứa linh lực sắt bén dùng làm nguyên liệu rèn đúc pháp khí.",
+      "quantity": 1
+    },
+    {
+      "id": "item_tuyet_lien",
+      "name": "Tuyết Liên",
+      "category": "material",
+      "type": "material",
+      "tier": "huyền",
+      "description": "Băng Tuyết Liên sinh trưởng nơi tuyết sơn đỉnh cực kỳ quý giá.",
+      "quantity": 1
+    },
+    {
+      "id": "item_than_cot",
+      "name": "Linh Thú Thần Cốt",
+      "category": "material",
+      "type": "material",
+      "tier": "huyền",
+      "description": "Mảnh thần cốt quý hiếm thu thập khi săn lùng yêu thú biến dị.",
+      "quantity": 1
+    },
+    {
+      "id": "item_truc_co_dan",
+      "name": "Trúc Cơ Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "huyền",
+      "description": "Đan dược đột phá cảnh giới dùng khi đạt Luyện Khí Viên Mãn (29.99 tu vi) để tiến nhập Trúc Cơ Kỳ.",
+      "quantity": 1
+    },
+    {
+      "id": "item_kim_dan_dan",
+      "name": "Kim Đan Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "địa",
+      "description": "Đan dược đột phá cảnh giới dùng khi đạt Trúc Cơ Viên Mãn (49.99 tu vi) để tiến nhập Kim Đan Kỳ.",
+      "quantity": 1
+    },
+    {
+      "id": "item_nguyen_anh_dan",
+      "name": "Nguyên Anh Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "thiên",
+      "description": "Đan dược đột phá cảnh giới dùng khi đạt Kim Đan Viên Mãn (89.99 tu vi) để tiến nhập Nguyên Anh Kỳ.",
+      "quantity": 1
+    },
+    {
+      "id": "item_tu_khi_dan",
+      "name": "Tụ Khí Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "hoàng",
+      "description": "Đan dược bổ trợ gia tăng nhẹ tu vi (+1.5 Tu vi).",
+      "effects": {
+        "cultivation": 1.5,
+        "health": 1
+      },
+      "quantity": 1
+    },
+    {
+      "id": "item_boi_nguyen_dan",
+      "name": "Bồi Nguyên Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "huyền",
+      "description": "Đan dược tích lũy tu vi cho tu sĩ Trúc Cơ Kỳ (+3.0 Tu vi).",
+      "effects": {
+        "cultivation": 3.0,
+        "health": 2
+      },
+      "quantity": 1
+    },
+    {
+      "id": "item_ngung_nguyen_dan",
+      "name": "Ngưng Nguyên Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "địa",
+      "description": "Đan dược tăng mạnh tích lũy chân nguyên cho tu sĩ Kim Đan Kỳ (+15.0 Tu vi).",
+      "effects": {
+        "cultivation": 15.0,
+        "health": 5
+      },
+      "quantity": 1
+    },
+    {
+      "id": "item_de_anh_dan",
+      "name": "Đế Anh Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "thiên",
+      "description": "Đan dược cấp cao giúp tăng vọt tích lũy tu vi cho Nguyên Anh Kỳ (+60.0 Tu vi).",
+      "effects": {
+        "cultivation": 60.0,
+        "health": 10
+      },
+      "quantity": 1
+    },
+    {
+      "id": "item_huyet_lien",
+      "name": "Huyết Liên",
+      "category": "material",
+      "type": "herb",
+      "tier": "địa",
+      "description": "Đóa Huyết Liên ngàn năm cực quý hiếm mọc nơi hiểm địa của Yêu Thú Sơn Mạch.",
+      "quantity": 1
+    },
+    {
+      "id": "item_linh_quang_tho",
+      "name": "Linh Quặng thô",
+      "category": "material",
+      "type": "material",
+      "tier": "hoàng",
+      "description": "Quặng thô chứa linh lực thu hoạch từ mỏ sâu tông môn.",
+      "quantity": 1
+    },
+    {
+      "id": "item_tan_quyen_ma_cong",
+      "name": "Tàn quyển Ma công",
+      "category": "material",
+      "type": "relic",
+      "tier": "huyền",
+      "description": "Bản tàn quyển ghi chép phương pháp luyện ma công kỳ dị.",
+      "quantity": 1
+    },
+    {
+      "id": "item_hoi_huyet_dan",
+      "name": "Hồi Huyết Đan",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "hoàng",
+      "description": "Đan dược phục hồi sinh lực và trị liệu ngoại thương nhẹ (+20 HP).",
+      "effects": {
+        "health": 20
+      },
+      "quantity": 1
+    },
+    {
+      "id": "item_truc_co_dan_ha_pham",
+      "name": "Trúc Cơ Đan (Hạ Phẩm)",
+      "category": "consumable",
+      "type": "elixir",
+      "tier": "hoàng",
+      "description": "Viên Trúc Cơ Đan chứa nhiều đan độc, có thể giúp đột phá bình cảnh Trúc Cơ nhưng tổn hao 5 năm thọ nguyên.",
+      "quantity": 1
+    }
+  ],
+  "time_gear": {
+    "tick_interval_seconds": 3,
+    "event_chance_denominator": 5,
+    "starting_age": 11,
+    "starting_spirit_stones": 10,
+    "travel_cost_hp": 2,
+    "travel_cost_stones": 10
+  },
+  "cultivation_system": {
+    "base_gain": {
+      "passive": 0.02,
+      "active_retreat": 0.8,
+      "annual_quest_average": 0.12
+    },
+    "spiritual_roots": [
+      {
+        "id": "thien",
+        "name": "Thiên Linh Căn",
+        "multiplier": 2.5,
+        "damage_bonus_pct": 100
+      },
+      {
+        "id": "don",
+        "name": "Đơn Linh Căn",
+        "multiplier": 1.2,
+        "damage_bonus_pct": 30
+      },
+      {
+        "id": "song",
+        "name": "Song Linh Căn",
+        "multiplier": 0.9,
+        "damage_bonus_pct": 0
+      },
+      {
+        "id": "tam",
+        "name": "Tam Linh Căn",
+        "multiplier": 0.7,
+        "damage_bonus_pct": 0
+      },
+      {
+        "id": "tap",
+        "name": "Tạp Linh Căn",
+        "multiplier": 0.4,
+        "damage_bonus_pct": 5,
+        "defense_bonus_pct": 15
+      }
+    ],
+    "manual_tiers": [
+      {
+        "tier": "hoàng",
+        "label": "Hoàng Cấp",
+        "multiplier": 1.0,
+        "max_level_no_pill": 26.99
+      },
+      {
+        "tier": "huyền",
+        "label": "Huyền Cấp",
+        "multiplier": 1.5,
+        "max_level_no_pill": 49.99
+      },
+      {
+        "tier": "địa",
+        "label": "Địa Cấp",
+        "multiplier": 2.2,
+        "max_level_no_pill": 89.99
+      },
+      {
+        "tier": "thiên",
+        "label": "Thiên Cấp",
+        "multiplier": 3.5,
+        "max_level_no_pill": 149.99
+      }
+    ],
+    "bottlenecks": [
+      {
+        "realm_from": "Qi Refinement",
+        "realm_to": "Foundation Establishment",
+        "threshold": 29.99,
+        "pill_item_id": "item_truc_co_dan",
+        "success_rate_no_pill": 0.01,
+        "backlash_cultivation_loss": 3.0,
+        "next_cult": 30.0,
+        "label": "Trúc Cơ"
+      },
+      {
+        "realm_from": "Foundation Establishment",
+        "realm_to": "Golden Core",
+        "threshold": 49.99,
+        "pill_item_id": "item_kim_dan_dan",
+        "success_rate_no_pill": 0.01,
+        "backlash_cultivation_loss": 5.0,
+        "next_cult": 50.0,
+        "label": "Kim Đan"
+      },
+      {
+        "realm_from": "Golden Core",
+        "realm_to": "Nascent Soul",
+        "threshold": 89.99,
+        "pill_item_id": "item_nguyen_anh_dan",
+        "success_rate_no_pill": 0.01,
+        "backlash_cultivation_loss": 10.0,
+        "next_cult": 90.0,
+        "label": "Nguyên Anh"
+      }
+    ]
+  }
+}

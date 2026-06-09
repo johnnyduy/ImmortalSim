@@ -1,0 +1,29 @@
+{
+  "id": "story_4",
+  "title": {
+    "vi": "Mộc Linh Dược Hương",
+    "en": "Scent of the Wood Spirit"
+  },
+  "description": {
+    "vi": "Chào đời là một {gender_term} tại Làng Bách Thảo ngát hương linh dược, bạn may mắn sở hữu thiên phú {spiritualRoot} thượng phẩm. Từ lúc chập chững biết đi, bạn đã biểu lộ sự thân cận tuyệt đối với giới thảo mộc. Những bông hoa dại héo úa sẽ tươi trở lại khi bạn chạm vào, những hạt giống vô danh nảy mầm thần tốc trong lòng bàn tay nhỏ nhắn của bạn. \n\nTrong mười năm ấu thơ, bạn rong ruổi khắp rừng sâu hái thuốc, học cách phân biệt hàng ngàn loại linh chi, củ sâm cổ và trò chuyện cùng linh hồn của các cây đại thụ. Ngộ tính ngộ đạo thiên nhiên của bạn phát triển vượt bậc nhờ mùi thơm đan hương nhẹ nhàng nuôi dưỡng linh hồn. Bạn sống hòa mình với thiên nhiên, tích lũy công đức và khí vận vô cùng trong sạch. \n\nVào năm {starting_age} tuổi, Chưởng môn Đan Tông ẩn danh đi tìm linh dược đi ngang qua làng, ngỡ ngàng chứng kiến cảnh một đứa trẻ dùng mộc linh lực làm sống lại đóa dược hoa ngàn năm tuổi. Ông lập tức đón nhận bạn làm đệ tử truyền thừa trực tiếp đưa về sơn môn. Bạn trở thành đệ tử ngoại môn của Đan Tông, khởi đầu cuộc đời luyện đan cầu trường sinh!",
+    "en": "Born as a {gender_term} in the fragrant Hundred Herbs Village, you were blessed with a high-grade {spiritualRoot}. From your toddler days, you showed an absolute affinity with flora. Wilted wildflowers bloomed at your touch, and nameless seeds sprouted instantly in your tiny palms.\n\nDuring your first ten years, you wandered deep forests collecting herbs, learning to classify thousands of wild roots and talking to ancient forest spirits. Your comprehension of natural principles grew rapidly under the healing scent of medicinal flora. You lived in harmony with the wild, gathering pure fortune.\n\nAt age {starting_age}, the Sect Master of the Alchemy Sect passed through the village and witnessed a child reviving a withered millennium herb with wood energy. Stunned, he took you back to the sect mountain. You entered the Alchemy Sect as an Outer Disciple, starting your path of pill refinement and immortality!"
+  },
+  "choices": [
+    {
+      "id": "begin_journey",
+      "text": {
+        "vi": "Bắt đầu hành trình",
+        "en": "Begin Journey"
+      },
+      "effects": {
+        "cultivation": 3,
+        "comprehension": 2,
+        "karma": 3,
+        "gainItem": {
+          "itemId": "item_huyen_nguyen_dan",
+          "quantity": 1
+        }
+      }
+    }
+  ]
+}

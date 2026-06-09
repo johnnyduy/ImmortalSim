@@ -1,0 +1,2050 @@
+[
+  {
+    "id": "auction_house_conflict",
+    "location": "city",
+    "tags": [
+      "city",
+      "market",
+      "npc_thieu_gia",
+      "combat"
+    ],
+    "title": {
+      "en": "Auction House Conflict",
+      "vi": "Đấu Giá Hội Lục Đục"
+    },
+    "description": {
+      "en": "At the decennial auction in Qingyang City, you spent all your Spirit Stones on a Foundation Establishment Pill. As you step out, Young Master Wang blocks your path, tosses 10 Spirit Stones at you, and demands the pill.",
+      "vi": "Tại buổi đấu giá thập niên của Thanh Dương Thành, bạn vừa dốc cạn Linh thạch để mua được một viên Trúc Cơ Đan. Khi bước ra khỏi cửa, Vương Thiếu Gia của gia tộc tu tiên bản địa chặn đường, ném cho bạn 10 Linh thạch và yêu cầu giao nộp viên đan dược."
+    },
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "conditions": {
+      "city.prosperity": "> 70"
+    },
+    "choices": [
+      {
+        "id": "slap_young_master",
+        "text": {
+          "en": "Use your strength to slap the young master's face!",
+          "vi": "Dùng thực lực vả mặt thiếu gia!"
+        },
+        "effects": {
+          "cultivation": 2,
+          "daoMind": 5,
+          "health": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "endure_humiliation",
+        "text": {
+          "en": "Endure the humiliation and hand over the pill.",
+          "vi": "Nhẫn nhịn nuốt hận, giao nộp Trúc Cơ Đan."
+        },
+        "effects": {
+          "daoMind": -10,
+          "luck": -1,
+          "karma": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "slum_black_market",
+    "location": "city",
+    "tags": [
+      "city",
+      "market",
+      "crime",
+      "demonic"
+    ],
+    "title": {
+      "en": "Slum Black Market",
+      "vi": "Chợ Đen Góc Tối"
+    },
+    "description": {
+      "en": "Sneaking into the city's slums, you find a hidden black market. A masked merchant offers a 'Supreme Foundation Establishment Pill' for half the market price, but it reeks of blood.",
+      "vi": "Len lỏi vào khu ổ chuột của thành thị, bạn tìm thấy một phiên chợ đen chuyên tiêu thụ hàng hóa không rõ nguồn gốc. Một tên thương nhân che mặt chào bán 'Trúc Cơ Đan Cực Phẩm' với giá chỉ bằng một nửa thị trường, nhưng đan dược tỏa ra mùi tanh nồng."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 40"
+    },
+    "choices": [
+      {
+        "id": "buy_bloody_pill",
+        "text": {
+          "en": "Buy the blood-reeking pill.",
+          "vi": "Mua Trúc Cơ Đan tanh máu."
+        },
+        "effects": {
+          "money": -150,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "rob_the_merchant",
+        "text": {
+          "en": "Draw your weapon and rob the pill!",
+          "vi": "Rút vũ khí đe dọa, cướp luôn đan dược!"
+        },
+        "effects": {
+          "health": -12,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mortal_plague",
+    "location": "city",
+    "tags": [
+      "karma_extreme",
+      "demonic",
+      "city_interaction"
+    ],
+    "title": {
+      "en": "Mortal Plague",
+      "vi": "Ôn Dịch Phàm Trần"
+    },
+    "description": {
+      "en": "Passing through a mortal village at the foot of the mountain, you discover a strange plague spreading due to leaking demonic energy. Hundreds are crying out in agony.",
+      "vi": "Đi qua một ngôi làng phàm nhân dưới chân núi, bạn phát hiện nơi này đang lây lan một loại ôn dịch kỳ lạ do ma khí rò rỉ. Hàng trăm người đang kêu la thảm thiết, thây chất thành đống."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 40"
+    },
+    "choices": [
+      {
+        "id": "heal_mortals",
+        "text": {
+          "en": "Consume herbs to brew an antidote and save them.",
+          "vi": "Tiêu hao linh thảo để luyện thuốc giải cứu người."
+        },
+        "effects": {
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "collect_plague",
+        "text": {
+          "en": "Collect the plague aura to refine a Poison Pill.",
+          "vi": "Thu thập khí tức ôn dịch để luyện Độc Đan."
+        },
+        "effects": {
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_doc_chuong_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "rogue_cultivator_scam",
+    "location": "city",
+    "tags": [
+      "market",
+      "random_chance"
+    ],
+    "title": {
+      "en": "Rogue Cultivator Scam",
+      "vi": "Tán Tu Lừa Đảo"
+    },
+    "description": {
+      "en": "Wandering the market, a mysterious ragged old man pulls you aside, offering to sell the 'Nine Turns Divine Art' for only 50 Spirit Stones.",
+      "vi": "Đang dạo quanh phường thị, một lão giả thần bí rách rưới kéo bạn lại, gạ bán 'Cửu Chuyển Thần Công' với giá chỉ 50 Linh thạch."
+    },
+    "minAge": 12,
+    "maxAge": 80,
+    "weight": 2,
+    "conditions": {
+      "city.prosperity": "> 50"
+    },
+    "choices": [
+      {
+        "id": "buy_scam_manual",
+        "text": {
+          "en": "Gamble and buy it.",
+          "vi": "Đánh cược mua thử."
+        },
+        "effects": {
+          "money": -50,
+          "comprehension": -1,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "expose_scammer",
+        "text": {
+          "en": "Coldly expose and chase away the old man.",
+          "vi": "Lạnh lùng vạch mặt, đánh đuổi lão giả."
+        },
+        "effects": {
+          "daoMind": 1,
+          "karma": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "beast_tide_mortals",
+    "location": "city",
+    "tags": [
+      "beast",
+      "karma_event",
+      "combat"
+    ],
+    "title": {
+      "en": "Beast Tide Sweeps Mortals",
+      "vi": "Thú Triều Quét Qua Phàm Trần"
+    },
+    "description": {
+      "en": "Violent beasts swarm down the mountain, slaughtering a mortal village. You happen to be passing by.",
+      "vi": "Yêu thú bạo động tràn xuống chân núi, tàn sát một ngôi làng phàm nhân. Bạn vừa vặn đi ngang qua."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "mountain.beastActivity": "> 65"
+    },
+    "choices": [
+      {
+        "id": "defend_mortals",
+        "text": {
+          "en": "Set up a defensive array to protect the mortals.",
+          "vi": "Lập trận pháp cản hậu, bảo vệ phàm nhân."
+        },
+        "effects": {
+          "health": -10,
+          "karma": 8
+        }
+      },
+      {
+        "id": "loot_beasts",
+        "text": {
+          "en": "Ignore the mortals and harvest beast corpses.",
+          "vi": "Bỏ mặc phàm nhân, thu thập xác thú."
+        },
+        "effects": {
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_invasion",
+    "location": "city",
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ],
+    "title": {
+      "en": "Demonic Invasion",
+      "vi": "Ma Đạo Đại Xâm Nhập"
+    },
+    "description": {
+      "en": "The sky turns blood red as dense demonic energy suffocates the area. A horde of demonic cultivators breaches the defenses, slaughtering everyone in sight.",
+      "vi": "Bầu trời nhuốm màu máu khi ma khí dày đặc bao trùm. Một đội quân tà tu đã phá vỡ trận pháp phòng ngự, tàn sát tất cả những ai chúng nhìn thấy."
+    },
+    "minAge": 18,
+    "maxAge": 250,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 80"
+    },
+    "choices": [
+      {
+        "id": "fight_demonic_horde",
+        "text": {
+          "en": "Fight to the death to protect the innocent.",
+          "vi": "Quyết chiến đến cùng để bảo vệ kẻ yếu."
+        },
+        "effects": {
+          "health": -25,
+          "karma": 15,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "join_demons",
+        "text": {
+          "en": "Surrender and offer them mortal blood to survive.",
+          "vi": "Đầu hàng và dâng máu phàm nhân để sống sót."
+        },
+        "effects": {
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "grand_decennial_auction",
+    "location": "city",
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Grand Decennial Auction",
+      "vi": "Đại Đấu Giá Thập Niên"
+    },
+    "description": {
+      "en": "The city is highly prosperous, hosting a grand auction. Rare treasures and supreme martial fragments are displayed, but the prices are astronomical.",
+      "vi": "Thành thị đang cực kỳ phồn hoa, tổ chức một buổi đại đấu giá. Các dị bảo và tàn quyển công pháp tối thượng được trưng bày, nhưng giá cả ở mức trên trời."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 1,
+    "conditions": {
+      "city.prosperity": "> 85"
+    },
+    "choices": [
+      {
+        "id": "buy_supreme_fragment",
+        "text": {
+          "en": "Spend a fortune to buy a Supreme Manual Fragment.",
+          "vi": "Tiêu tốn gia tài để mua Mảnh tàn quyển Thiên Cấp."
+        },
+        "effects": {
+          "money": -300,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_vip",
+        "text": {
+          "en": "Try to pickpocket a distracted VIP guest.",
+          "vi": "Thử móc túi một vị khách VIP đang lơ đễnh."
+        },
+        "effects": {
+          "health": -15,
+          "luck": -3,
+          "money": 150,
+          "karma": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "market_crash_scavenging",
+    "location": "city",
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Market Crash Scavenging",
+      "vi": "Thị Trường Sụp Đổ"
+    },
+    "description": {
+      "en": "Due to a surplus of goods, the market has crashed. Desperate merchants are dumping raw spirit herbs on the streets at dirt-cheap prices to cut losses.",
+      "vi": "Thị trường dư thừa khiến giá cả sụp đổ. Các thương nhân đang tuyệt vọng bán tháo linh thảo thô ngay trên phố với giá rẻ như cho để cắt lỗ."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "< 75"
+    },
+    "choices": [
+      {
+        "id": "buy_cheap_herbs",
+        "text": {
+          "en": "Spend a little money to hoard cheap herbs.",
+          "vi": "Bỏ ra chút tiền để gom hàng linh thảo giá rẻ."
+        },
+        "effects": {
+          "money": -30,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "extort_merchants",
+        "text": {
+          "en": "Threaten the bankrupt merchants to hand over goods for free.",
+          "vi": "Đe dọa các thương nhân phá sản phải giao nộp hàng miễn phí."
+        },
+        "effects": {
+          "karma": -8,
+          "daoMind": -2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "event_thieu_gia_gay_su",
+    "location": "city",
+    "tags": [
+      "market",
+      "auction",
+      "npc_thieu_gia",
+      "combat"
+    ],
+    "title": {
+      "en": "Young Master's Oppression",
+      "vi": "Vương Thiếu Gia Chèn Ép"
+    },
+    "description": {
+      "en": "At the grand auction, Young Master Wang uses his overwhelming wealth to maliciously outbid and humiliate you over a supreme treasure.",
+      "vi": "Tại đấu giá hội, Vương Thiếu Gia dùng tiền đè người, ác ý nâng giá để tranh đoạt bảo vật của bạn."
+    },
+    "minAge": 15,
+    "maxAge": 40,
+    "weight": 2,
+    "conditions": {
+      "city.prosperity": "> 60"
+    },
+    "choices": [
+      {
+        "id": "slap_thieu_gia",
+        "text": {
+          "en": "Slap his face and ambush him outside the city to take the treasure back!",
+          "vi": "Đánh mặt thiếu gia, phục kích cướp lại bảo vật bên ngoài thành!"
+        },
+        "effects": {
+          "health": -5,
+          "money": 200,
+          "karma": -5
+        }
+      },
+      {
+        "id": "endure_thieu_gia",
+        "text": {
+          "en": "Swallow your anger and endure the humiliation.",
+          "vi": "Nhẫn nhịn nuốt giận, quân tử trả thù mười năm chưa muộn."
+        },
+        "effects": {
+          "daoMind": 2,
+          "karma": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "soul_festival",
+    "location": "city",
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "market"
+    ],
+    "title": {
+      "en": "Soul Festival",
+      "vi": "Lễ Hội Hồn Linh"
+    },
+    "description": {
+      "en": "You stumble upon a rare Soul Festival in the city where spirits and mortals gather, overflowing with mystical energies.",
+      "vi": "Bạn tình cờ tham gia một Lễ Hội Hồn Linh hiếm gặp trong thành, nơi tinh linh và phàm nhân tụ tập với nguồn năng lượng huyền bí."
+    },
+    "minAge": 12,
+    "maxAge": 22,
+    "weight": 1,
+    "conditions": {
+      "city.prosperity": "> 50"
+    },
+    "choices": [
+      {
+        "id": "join_festival",
+        "text": {
+          "en": "Join the spirits and build relationships.",
+          "vi": "Hòa mình cùng tinh linh và xây dựng quan hệ."
+        },
+        "effects": {
+          "luck": 2,
+          "karma": -1,
+          "health": -1,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "study_scripture",
+        "text": {
+          "en": "Study the sacred scriptures left at the altar.",
+          "vi": "Nghiên cứu kinh điển thiêng liêng."
+        },
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "herb_price_surge",
+    "location": "city",
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Skyrocketing Herb Prices",
+      "vi": "Giá Linh Dược Leo Thang"
+    },
+    "description": {
+      "en": "Due to a severe shortage, the price of spirit herbs has skyrocketed! The market is in a frenzy, offering a perfect opportunity for hoarding and speculation.",
+      "vi": "Do khan hiếm trầm trọng, giá linh dược leo thang chóng mặt! Thị trường đang hỗn loạn, tạo ra cơ hội hoàn hảo để đầu cơ tích trữ."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "> 140"
+    },
+    "choices": [
+      {
+        "id": "speculate_market",
+        "text": {
+          "en": "Take advantage of the chaos to speculate and profit.",
+          "vi": "Lợi dụng sự hỗn loạn để đầu cơ trục lợi."
+        },
+        "effects": {
+          "money": 300,
+          "luck": -1,
+          "karma": -2
+        }
+      },
+      {
+        "id": "rob_merchant_convoy",
+        "text": {
+          "en": "Rob a merchant convoy carrying rare herbs.",
+          "vi": "Cướp bóc một đoàn thương nhân chở linh thảo quý."
+        },
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_town_activity",
+    "location": "city",
+    "tags": [
+      "demonic",
+      "danger",
+      "combat",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Demonic Activity in Town",
+      "vi": "Tà Tu Xuất Hiện Tại Trấn"
+    },
+    "description": {
+      "en": "Demonic cultivators have appeared in the town's outskirts, significantly reducing security. Cultivators are warned to stay away.",
+      "vi": "Tà tu đã xuất hiện tại vùng ven thị trấn, làm suy giảm an ninh nghiêm trọng. Các tu sĩ được cảnh báo nên tránh đi xa."
+    },
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "demonic.activity": "> 60"
+    },
+    "choices": [
+      {
+        "id": "hunt_demonic_cultivators",
+        "text": {
+          "en": "Hunt down the demonic cultivators to protect the town.",
+          "vi": "Truy lùng tà tu để bảo vệ thị trấn."
+        },
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "ignore_warning",
+        "text": {
+          "en": "Ignore the warning and go about your business.",
+          "vi": "Phớt lờ cảnh báo và tiếp tục công việc của bạn."
+        },
+        "effects": {
+          "health": -5,
+          "luck": -2,
+          "daoMind": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "illicit_demonic_caravan",
+    "location": "city",
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ],
+    "title": {
+      "en": "Illicit Demonic Caravan",
+      "vi": "Thương Đội Tà Tu"
+    },
+    "description": {
+      "en": "Due to poor city security and rising demonic infiltration, a suspicious merchant caravan sets up shop in an alley, secretly selling forbidden Demonic path materials.",
+      "vi": "Do an ninh kém và ma đạo thâm nhập, một đoàn thương nhân khả nghi lập sạp trong hẻm tối, lén lút bán các vật liệu hiến tế cấm kỵ của Ma đạo."
+    },
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "demonic.infiltration": "> 40",
+      "city.security": "< 50"
+    },
+    "choices": [
+      {
+        "id": "buy_blood_crystal",
+        "text": {
+          "en": "Quietly buy a Blood Crystal to accelerate your progress.",
+          "vi": "Lặng lẽ mua một viên Huyết Tinh để tăng tốc tu luyện."
+        },
+        "effects": {
+          "money": -100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_guards",
+        "text": {
+          "en": "Report them to the city guards for a bounty.",
+          "vi": "Báo cáo cho thành vệ để nhận tiền thưởng."
+        },
+        "effects": {
+          "money": 50,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "mortal_rebellion",
+    "location": "city",
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "danger"
+    ],
+    "title": {
+      "en": "Mortal Rebellion",
+      "vi": "Phàm Nhân Bạo Loạn"
+    },
+    "description": {
+      "en": "City morale has hit rock bottom. Starving mortals are violently rebelling against the corrupt city lord who serves the cultivation sects.",
+      "vi": "Dân tâm thành thị đã chạm đáy. Những phàm nhân chết đói đang bạo loạn chống lại tên thành chủ tham nhũng làm tay sai cho tu chân giả."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.morale": "< 30"
+    },
+    "choices": [
+      {
+        "id": "distribute_wealth",
+        "text": {
+          "en": "Distribute your spirit stones to buy them food.",
+          "vi": "Phân phát linh thạch của bạn để mua lương thực cứu tế."
+        },
+        "effects": {
+          "money": -100,
+          "karma": 15,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "suppress_rebels",
+        "text": {
+          "en": "Help the city lord brutally suppress the mortals.",
+          "vi": "Giúp thành chủ ra tay tàn nhẫn trấn áp phàm nhân."
+        },
+        "effects": {
+          "money": 150,
+          "karma": -15,
+          "health": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "corrupted_pill_vendor",
+    "location": "city",
+    "tags": [
+      "city",
+      "market",
+      "demonic",
+      "crime"
+    ],
+    "title": {
+      "en": "Corrupted Pill Vendor",
+      "vi": "Thương Nhân Đan Dược Ô Uế"
+    },
+    "description": {
+      "en": "Taking advantage of the high demonic infiltration in the city, a hooded vendor in a dark alley offers you a Foundation Establishment Pill. It's cheap, but it reeks of heavy pill-toxins and dark arts.",
+      "vi": "Lợi dụng sự thâm nhập của ma đạo trong thành, một kẻ trùm đầu trong hẻm tối gạ bán cho bạn một viên Trúc Cơ Đan. Giá rất rẻ, nhưng nó nồng nặc mùi đan độc và tà thuật."
+    },
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "demonic.infiltration": "> 30"
+    },
+    "choices": [
+      {
+        "id": "buy_corrupted_pill",
+        "text": {
+          "en": "Buy it! A breakthrough is worth any risk.",
+          "vi": "Mua nó! Đột phá cảnh giới xứng đáng với mọi rủi ro."
+        },
+        "effects": {
+          "money": -100,
+          "karma": -5,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "refuse_corrupted_pill",
+        "text": {
+          "en": "Refuse the wicked temptation and leave immediately.",
+          "vi": "Từ chối cám dỗ tà ác và rời đi ngay lập tức."
+        },
+        "effects": {
+          "daoMind": 3,
+          "karma": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_blood_raid",
+    "location": "city",
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ],
+    "title": {
+      "en": "Demonic Blood Raid",
+      "vi": "Tà Tu Huyết Tế"
+    },
+    "description": {
+      "en": "Demonic activity is peaking. A group of masked demonic cultivators sets up a blood array in the city outskirts, attempting to refine passing mortals into pills.",
+      "vi": "Hoạt động tà tu đang ở đỉnh điểm. Một nhóm ma tu bịt mặt lập huyết trận ở vùng ven thành thị, cố gắng luyện hóa phàm nhân qua đường thành đan dược."
+    },
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "demonic.activity": "> 70"
+    },
+    "choices": [
+      {
+        "id": "destroy_blood_array",
+        "text": {
+          "en": "Risk your life to break the array and save the mortals.",
+          "vi": "Liều mạng phá trận pháp cứu phàm nhân."
+        },
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": {
+          "en": "Wait in the shadows and steal the finished Blood Pill.",
+          "vi": "Núp trong bóng tối và trộm viên Huyết Đan vừa luyện thành."
+        },
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "underground_black_auction",
+    "location": "city",
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Underground Black Auction",
+      "vi": "Đấu Giá Ngầm Hắc Ám"
+    },
+    "description": {
+      "en": "City security is lax. You receive a secret invitation to an underground black auction selling stolen sect artifacts and forbidden pills.",
+      "vi": "An ninh thành thị lỏng lẻo. Bạn nhận được thư mời bí mật tham gia một buổi đấu giá ngầm, nơi bày bán các pháp bảo tông môn bị ăn cắp và đan dược cấm kỵ."
+    },
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 50"
+    },
+    "choices": [
+      {
+        "id": "buy_forbidden_item",
+        "text": {
+          "en": "Spend heavily to buy a forbidden artifact.",
+          "vi": "Vung tiền mua một ma khí cấm kỵ."
+        },
+        "effects": {
+          "money": -250,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_black_market",
+        "text": {
+          "en": "Report the location to the righteous sects.",
+          "vi": "Báo cáo địa điểm cho các danh môn chính phái."
+        },
+        "effects": {
+          "karma": 10,
+          "money": 100,
+          "luck": -2,
+          "daoMind": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "counterfeit_manual_scam",
+    "location": "city",
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Counterfeit Manual Scam",
+      "vi": "Bí Kíp Giả Mạo"
+    },
+    "description": {
+      "en": "With city security failing, scammers are rampant. A merchant tries to sell you a 'Heavenly Grade' manual fragment for a suspiciously low price.",
+      "vi": "An ninh thành thị lỏng lẻo, kẻ lừa đảo lộng hành. Một thương nhân gạ bán cho bạn mảnh tàn quyển 'Thiên Cấp' với giá rẻ bất ngờ."
+    },
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 40"
+    },
+    "choices": [
+      {
+        "id": "buy_fake_manual",
+        "text": {
+          "en": "Take the risk and buy it.",
+          "vi": "Liều lĩnh mua thử xem sao."
+        },
+        "effects": {
+          "money": -120,
+          "comprehension": -2,
+          "luck": -5
+        }
+      },
+      {
+        "id": "intimidate_scammer",
+        "text": {
+          "en": "Threaten the scammer to reveal his real goods.",
+          "vi": "Đe dọa kẻ lừa đảo phải nộp ra hàng thật."
+        },
+        "effects": {
+          "money": 50,
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "herb_monopoly_challenge",
+    "location": "city",
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ],
+    "title": {
+      "en": "Herb Monopoly Challenge",
+      "vi": "Thách Thức Độc Quyền Linh Dược"
+    },
+    "description": {
+      "en": "With the price index skyrocketing, a local merchant guild has monopolized all spirit herbs, driving prices even higher. A group of rogue cultivators plans to raid their warehouse.",
+      "vi": "Với chỉ số giá cả leo thang, một thương hội địa phương đã độc chiếm toàn bộ linh dược, đẩy giá lên cao hơn nữa. Một nhóm tán tu đang lên kế hoạch đột kích kho hàng của chúng."
+    },
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "> 160"
+    },
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": {
+          "en": "Join the raid to secure herbs for yourself.",
+          "vi": "Tham gia đột kích để giành linh dược cho bản thân."
+        },
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 6
+          }
+        }
+      },
+      {
+        "id": "protect_merchant",
+        "text": {
+          "en": "Protect the warehouse to earn the guild's favor.",
+          "vi": "Bảo vệ kho hàng để nhận được sự ưu ái của thương hội."
+        },
+        "effects": {
+          "health": -10,
+          "money": 200,
+          "reputation": 5,
+          "karma": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_merchant_trap",
+    "location": "city",
+    "tags": [
+      "demonic",
+      "danger",
+      "trap"
+    ],
+    "title": {
+      "en": "Demonic Merchant Trap",
+      "vi": "Cạm Bẫy Thương Nhân Ma Đạo"
+    },
+    "description": {
+      "en": "Demonic activity is high. A merchant offers you a 'Breakthrough Pill' at an impossibly low price, but you notice a faint, dark aura emanating from him.",
+      "vi": "Hoạt động tà tu dâng cao. Một thương nhân gạ bán cho bạn 'Phá Cảnh Đan' với giá rẻ không tưởng, nhưng bạn nhận thấy một luồng ma khí mờ nhạt tỏa ra từ hắn."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "demonic.activity": "> 60",
+      "city.security": "< 40"
+    },
+    "choices": [
+      {
+        "id": "accept_and_test",
+        "text": {
+          "en": "Buy the pill and test its efficacy.",
+          "vi": "Mua đan dược và thử nghiệm hiệu quả của nó."
+        },
+        "effects": {
+          "money": -50,
+          "health": -15,
+          "cultivation": -5,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expose_merchant",
+        "text": {
+          "en": "Call out the merchant's demonic identity and engage in combat.",
+          "vi": "Vạch trần thân phận ma đạo của thương nhân và tham chiến."
+        },
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "karma": 10,
+          "reputation": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "corrupt_speculation_frenzy",
+    "location": "city",
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ],
+    "title": {
+      "en": "Corrupt Speculation Frenzy",
+      "vi": "Cơn Cuồng Đầu Cơ Hủ Bại"
+    },
+    "description": {
+      "en": "Due to skyrocketing spirit herb prices, a group of corrupt merchants is hoarding life-saving pills to sell at ten times the cost. The city's morale is plummeting as phantoms of hunger haunt the streets,.",
+      "vi": "Do giá linh dược leo thang, một nhóm thương nhân hủ bại đang đầu cơ tích trữ đan dược cứu mạng để bán với giá gấp mười lần. Dân tâm thành thị đang chạm đáy khi bóng ma đói khát ám ảnh khắp phố phường,."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "> 150",
+      "city.morale": "< 40"
+    },
+    "choices": [
+      {
+        "id": "join_speculators",
+        "text": {
+          "en": "Use your sect influence to join the monopoly for massive profit,.",
+          "vi": "Dùng thế lực tông môn để gia nhập nhóm độc quyền nhằm trục lợi lớn,."
+        },
+        "effects": {
+          "money": 400,
+          "karma": -20,
+          "daoMind": -5,
+          "city.morale": -5
+        }
+      },
+      {
+        "id": "raid_merchant_vault",
+        "text": {
+          "en": "Raid their hidden vault and distribute the pills to the poor,.",
+          "vi": "Đột kích kho mật của chúng và phân phát đan dược cho dân nghèo,."
+        },
+        "effects": {
+          "health": -15,
+          "karma": 25,
+          "city.morale": 10,
+          "reputation": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "the_shadow_ritual",
+    "location": "city",
+    "tags": [
+      "demonic",
+      "karma_extreme",
+      "danger"
+    ],
+    "title": {
+      "en": "The Shadow Ritual",
+      "vi": "Nghi Lễ Trong Bóng Tối"
+    },
+    "description": {
+      "en": "Demonic activity has reached a fever pitch. In the city's slums, you find a ritual using phàm nhân (mortal) children to birth a new Demonic Seed,.",
+      "vi": "Hoạt động ma đạo đã đạt đến đỉnh điểm. Tại khu ổ chuột của thành phố, bạn phát hiện một nghi lễ dùng trẻ em phàm nhân để hạ sinh một Ma Chủng mới,."
+    },
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "demonic.activity": "> 80",
+      "city.security": "< 30"
+    },
+    "choices": [
+      {
+        "id": "purify_the_slums",
+        "text": {
+          "en": "Risk a direct clash with the cult to stop the ritual and save the mortals,.",
+          "vi": "Mạo hiểm đối đầu trực tiếp với tà giáo để ngăn chặn nghi lễ và cứu phàm nhân,."
+        },
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 15,
+          "city.security": 10
+        }
+      },
+      {
+        "id": "harvest_the_ma_chung",
+        "text": {
+          "en": "Wait for the ritual to conclude, then kill the cultists and take the Demonic Seed for yourself,.",
+          "vi": "Đợi nghi lễ kết thúc, sau đó giết lũ tà tu và đoạt lấy Ma Chủng cho riêng mình,."
+        },
+        "effects": {
+          "karma": -100,
+          "daoMind": -20,
+          "cultivation": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mysterious_wandering_merchant",
+    "location": "city",
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ],
+    "title": {
+      "en": "Mysterious Wandering Merchant",
+      "vi": "Thương Nhân Lang Thang Bí Ẩn"
+    },
+    "description": {
+      "en": "The city's price index is low. A wandering merchant from a distant land offers rare spiritual materials at prices that seem too good to be true.",
+      "vi": "Chỉ số giá cả của thành phố đang thấp. Một thương nhân lang thang từ vùng đất xa xôi chào mời các linh vật hiếm với mức giá hời đến khó tin."
+    },
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "< 80"
+    },
+    "choices": [
+      {
+        "id": "buy_bulk_materials",
+        "text": {
+          "en": "Invest your spirit stones and buy materials in bulk.",
+          "vi": "Dùng linh thạch để gom linh vật số lượng lớn."
+        },
+        "effects": {
+          "money": -150,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 4
+          },
+          "luck": 1
+        }
+      },
+      {
+        "id": "haggle_for_pills",
+        "text": {
+          "en": "Haggle aggressively for a rare cultivation pill.",
+          "vi": "Mặc cả quyết liệt để đổi lấy một viên đan dược tu luyện hiếm."
+        },
+        "effects": {
+          "money": -80,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "corrupt_guard_extortion",
+    "location": "city",
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Corrupt Guard Extortion",
+      "vi": "Vệ Binh Tống Tiền"
+    },
+    "description": {
+      "en": "City security is low. A corrupt captain of the guard accuses you of smuggling forbidden demonic artifacts and demands a 'settlement' fee.",
+      "vi": "An ninh thành thị lỏng lẻo. Một đội trưởng vệ binh hủ bại cáo buộc bạn buôn lậu ma cụ cấm và đòi một khoản tiền 'dàn xếp'."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 40"
+    },
+    "choices": [
+      {
+        "id": "pay_the_bribe",
+        "text": {
+          "en": "Pay the bribe to avoid legal trouble with the city.",
+          "vi": "Nộp tiền hối lộ để tránh rắc rối với pháp luật thành thị."
+        },
+        "effects": {
+          "money": -100,
+          "karma": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "fight_the_guards",
+        "text": {
+          "en": "Defend your honor and fight the corrupt guards.",
+          "vi": "Bảo vệ danh dự và quyết chiến với lũ vệ binh hủ bại."
+        },
+        "effects": {
+          "health": -15,
+          "karma": 5,
+          "daoMind": 5,
+          "reputation": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "starving_mob_riot",
+    "location": "city",
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ],
+    "title": {
+      "en": "The Starving Mob",
+      "vi": "Đám Đông Đói Khát"
+    },
+    "description": {
+      "en": "City morale has reached a critical low. A desperate mob of starving mortals is blocking your path, demanding spirit stones to buy food from the price-gouging merchants.",
+      "vi": "Dân tâm thành thị chạm mức báo động. Một đám đông phàm nhân đói khát đang chặn đường bạn, đòi linh thạch để mua lương thực từ những thương nhân đang đầu cơ tăng giá."
+    },
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.morale": "< 35"
+    },
+    "choices": [
+      {
+        "id": "give_alms",
+        "text": {
+          "en": "Generously distribute your spirit stones to feed them.",
+          "vi": "Hào phóng phân phát linh thạch để cứu đói cho họ."
+        },
+        "effects": {
+          "money": -150,
+          "karma": 20,
+          "daoMind": 10,
+          "reputation": 10
+        }
+      },
+      {
+        "id": "disperse_mob",
+        "text": {
+          "en": "Use your spiritual pressure to forcefully disperse the mob.",
+          "vi": "Dùng linh áp để cưỡng chế giải tán đám đông."
+        },
+        "effects": {
+          "karma": -15,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "city_guard_mutiny",
+    "location": "city",
+    "tags": [
+      "city",
+      "crime",
+      "danger"
+    ],
+    "title": {
+      "en": "City Guard Mutiny",
+      "vi": "Binh Biến Vệ Thành"
+    },
+    "description": {
+      "en": "City security and morale have collapsed. The guards, unpaid for months, have turned into looters, terrorizing the merchants they once protected.",
+      "vi": "An ninh và dân tâm thành thị đã sụp đổ. Đội vệ binh không được trả lương trong nhiều tháng đã biến thành những kẻ cướp bóc, khủng bố chính những thương nhân mà chúng từng bảo vệ."
+    },
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 30",
+      "city.morale": "< 40"
+    },
+    "choices": [
+      {
+        "id": "suppress_mutiny",
+        "text": {
+          "en": "Slay the rogue guards to restore order.",
+          "vi": "Tiêu diệt đám vệ binh phản loạn để khôi phục trật tự."
+        },
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "reputation": 10,
+          "money": 80
+        }
+      },
+      {
+        "id": "loot_with_guards",
+        "text": {
+          "en": "Join the guards and raid the local merchant guild.",
+          "vi": "Gia nhập cùng đám vệ binh và cướp phá thương hội địa phương."
+        },
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "luck": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "mortal_hunger_riot",
+    "location": "city",
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ],
+    "title": {
+      "en": "Riot of the Starving Phantoms",
+      "vi": "Cuộc Bạo Loạn Của Những Bóng Ma Đói"
+    },
+    "description": {
+      "en": "City morale has collapsed due to price-gouging. Starving mortals are attacking cultivator convoys for any scraps of spirit energy.",
+      "vi": "Dân tâm thành thị sụp đổ do tình trạng đầu cơ tăng giá. Những phàm nhân đói khát đang tấn công các đoàn xe của tu sĩ để cướp bóc linh khí vụn vặt."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.morale": "< 25"
+    },
+    "choices": [
+      {
+        "id": "distribute_rations",
+        "text": {
+          "en": "Distribute your spirit herbs to appease the mob.",
+          "vi": "Phân phát linh thảo của bạn để xoa dịu đám đông."
+        },
+        "effects": {
+          "money": -150,
+          "karma": 30,
+          "daoMind": 10,
+          "city.morale": 15
+        }
+      },
+      {
+        "id": "ruthless_suppression",
+        "text": {
+          "en": "Brutally suppress the riot to restore market order.",
+          "vi": "Trấn áp tàn nhẫn cuộc bạo loạn để khôi phục trật tự thị trường."
+        },
+        "effects": {
+          "karma": -40,
+          "money": 100,
+          "city.security": 10,
+          "reputation": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "mystical_lantern_festival",
+    "location": "city",
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ],
+    "title": {
+      "en": "Mystical Lantern Festival",
+      "vi": "Lễ Hội Hoa Đăng Huyền Bí"
+    },
+    "description": {
+      "en": "The city is highly prosperous and spiritual Qi is dense. A grand festival is held where lanterns infused with soul power fill the sky, creating a resonance with the Heavenly Dao.",
+      "vi": "Thành thị đang cực kỳ phồn hoa và linh khí nồng đậm. Một lễ hội lớn được tổ chức, nơi hàng ngàn hoa đăng chứa đựng hồn lực lấp đầy bầu trời, tạo nên sự cộng hưởng với Thiên Đạo."
+    },
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "city.prosperity": "> 75",
+      "spiritualQi": "> 70"
+    },
+    "choices": [
+      {
+        "id": "make_a_dao_wish",
+        "text": {
+          "en": "Release a lantern and make a wish for your Dao journey.",
+          "vi": "Thả hoa đăng và cầu nguyện cho con đường tu đạo."
+        },
+        "effects": {
+          "luck": 3,
+          "daoMind": 5,
+          "karma": 2,
+          "money": -20
+        }
+      },
+      {
+        "id": "collect_fallen_essence",
+        "text": {
+          "en": "Quietly collect the falling soul essence from the lanterns.",
+          "vi": "Lặng lẽ thu thập hồn lực tinh hoa rơi xuống từ các hoa đăng."
+        },
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 5,
+          "luck": -1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "black_market_smuggling",
+    "location": "city",
+    "tags": [
+      "market",
+      "crime",
+      "demonic"
+    ],
+    "title": {
+      "en": "Black Market Smuggling",
+      "vi": "Buôn Lậu Chợ Đen"
+    },
+    "description": {
+      "en": "The price index is skyrocketing and city security is low. A hidden network of smugglers is moving forbidden spirit herbs and demonic blood stones through the city sewers.",
+      "vi": "Chỉ số giá cả leo thang và an ninh thành thị lỏng lẻo. Một mạng lưới buôn lậu đang vận chuyển linh thảo cấm và huyết thạch ma đạo thông qua hệ thống cống ngầm."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "> 180",
+      "city.security": "< 45"
+    },
+    "choices": [
+      {
+        "id": "intercept_smugglers",
+        "text": {
+          "en": "Ambush the smugglers and seize their cargo.",
+          "vi": "Phục kích bọn buôn lậu và tịch thu hàng hóa của chúng."
+        },
+        "effects": {
+          "health": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 10
+          },
+          "karma": 5
+        }
+      },
+      {
+        "id": "invest_in_smuggling",
+        "text": {
+          "en": "Invest your own spirit stones to fund their next run.",
+          "vi": "Dùng linh thạch của bạn để đầu tư cho chuyến hàng tiếp theo của chúng."
+        },
+        "effects": {
+          "money": -200,
+          "luck": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "black_market_hoarding",
+    "location": "city",
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ],
+    "title": {
+      "en": "Black Market Hoarding",
+      "vi": "Đầu Cơ Chợ Đen"
+    },
+    "description": {
+      "en": "With the city's price index at an all-time high, a shadowy figure offers you a chance to join a scheme to hoard essential spiritual ores and manipulate the market.",
+      "vi": "Với chỉ số giá cả đang ở mức cao kỷ lục, một nhân vật thần bí đề nghị bạn tham gia vào kế hoạch đầu cơ tích trữ linh quặng để thao túng thị trường."
+    },
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "> 180"
+    },
+    "choices": [
+      {
+        "id": "invest_in_monopoly",
+        "text": {
+          "en": "Invest heavily to monopolize the supply of Spirit Ores.",
+          "vi": "Vung tiền để độc chiếm nguồn cung Linh Quặng."
+        },
+        "effects": {
+          "money": -300,
+          "luck": 5,
+          "karma": -15,
+          "city.priceIndex": 10
+        }
+      },
+      {
+        "id": "expose_to_authorities",
+        "text": {
+          "en": "Expose the scheme to the City Lord for a bounty.",
+          "vi": "Vạch trần âm mưu cho Thành Chủ để nhận tiền thưởng."
+        },
+        "effects": {
+          "money": 100,
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghost_market_whispers",
+    "location": "city",
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ],
+    "title": {
+      "en": "Ghost Market Whispers",
+      "vi": "Lời Thì Thầm Chợ Ma"
+    },
+    "description": {
+      "en": "City security is low. You find a hidden entrance to the Ghost Market, where rogue cultivators trade forbidden demonic artifacts. A masked dealer offers you a piece of 'Huyền Thiết' for a suspicious price.",
+      "vi": "An ninh thành thị lỏng lẻo. Bạn tìm thấy lối vào bí mật của Chợ Ma, nơi các tán tu trao đổi ma cụ cấm. Một kẻ đeo mặt nạ gạ bán cho bạn một khối 'Huyền Thiết' với giá nghi vấn."
+    },
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 40",
+      "demonic.activity": "> 50"
+    },
+    "choices": [
+      {
+        "id": "buy_huyen_thiet",
+        "text": {
+          "en": "Buy the rare ore to upgrade your weapon.",
+          "vi": "Mua khối linh quặng hiếm để nâng cấp vũ khí."
+        },
+        "effects": {
+          "money": -120,
+          "luck": -2,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_dealer",
+        "text": {
+          "en": "Wait for the dealer to leave and ambush him.",
+          "vi": "Chờ kẻ buôn lậu rời đi và ra tay phục kích."
+        },
+        "effects": {
+          "health": -15,
+          "karma": -15,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mortal_plague_curse",
+    "location": "city",
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "demonic"
+    ],
+    "title": {
+      "en": "The Wailing Plague",
+      "vi": "Lời Nguyền Dịch Bệnh"
+    },
+    "description": {
+      "en": "A mysterious plague, suspected to be a demonic curse, is ravaging the mortal population. The city's morale is at rock bottom as phàm nhân die by the hundreds.",
+      "vi": "Một trận dịch bệnh bí ẩn, nghi do ma đạo nguyền rủa, đang tàn phá dân cư phàm nhân. Dân tâm chạm đáy khi hàng trăm người chết mỗi ngày."
+    },
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "city.morale": "< 30",
+      "demonicEnergy": "> 50"
+    },
+    "choices": [
+      {
+        "id": "heal_with_spiritual_qi",
+        "text": {
+          "en": "Exhaust your Qi to heal the dying mortals.",
+          "vi": "Hao tổn linh khí để chữa trị cho phàm nhân."
+        },
+        "effects": {
+          "cultivation": -10,
+          "health": -10,
+          "karma": 40,
+          "daoMind": 15,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "ignore_mortal_suffering",
+        "text": {
+          "en": "Ignore them; mortal lives are but fleeting smoke.",
+          "vi": "Ngó lơ; sinh mạng phàm nhân chỉ như khói mây phù du."
+        },
+        "effects": {
+          "daoMind": -5,
+          "karma": -20,
+          "luck": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "city_embargo_crisis",
+    "location": "city",
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ],
+    "title": {
+      "en": "City Resource Embargo",
+      "vi": "Khủng Hoảng Cấm Vận Thành Thị"
+    },
+    "description": {
+      "en": "The city is under a resource embargo due to high demonic activity. Prices have reached extreme levels, and the black market is the only way to survive.",
+      "vi": "Thành phố đang bị cấm vận tài nguyên do hoạt động tà tu dâng cao [7, 8]. Giá cả đã chạm mức cực đoan, và chợ đen là con đường duy nhất để sinh tồn."
+    },
+    "minAge": 18,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "city.priceIndex": "> 220",
+      "demonic.activity": "> 60"
+    },
+    "choices": [
+      {
+        "id": "smuggle_goods",
+        "text": {
+          "en": "Risk smuggling essential herbs into the city for profit.",
+          "vi": "Mạo hiểm buôn lậu linh dược vào thành để trục lợi."
+        },
+        "effects": {
+          "money": 500,
+          "karma": -20,
+          "luck": -5,
+          "city.security": -5
+        }
+      },
+      {
+        "id": "defend_caravans",
+        "text": {
+          "en": "Work as a guard for the few remaining legal caravans.",
+          "vi": "Làm vệ sĩ cho những đoàn thương buôn hợp pháp hiếm hoi còn sót lại."
+        },
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "reputation": 10,
+          "karma": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "city_spirit_tide",
+    "location": "city",
+    "tags": [
+      "city",
+      "cultivation",
+      "opportunity"
+    ],
+    "title": {
+      "en": "City Spirit Tide",
+      "vi": "Linh Triều Thành Thị"
+    },
+    "description": {
+      "en": "Due to a massive surge in global spiritual Qi, the city's spiritual wells have overflowed. A literal tide of energy washes through the streets, momentarily turning the marketplace into a supreme cultivation ground.",
+      "vi": "Do linh khí thiên địa đột ngột tăng vọt, các linh tuyền trong thành bùng nổ. Một đợt linh triều tràn qua các con phố, biến khu chợ tạm thời trở thành một thánh địa tu luyện thượng hạng."
+    },
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "spiritualQi": "> 85",
+      "city.prosperity": "> 60"
+    },
+    "choices": [
+      {
+        "id": "meditate_in_public",
+        "text": {
+          "en": "Sit in the middle of the street and absorb the tide.",
+          "vi": "Ngồi ngay giữa phố và hấp thụ linh triều."
+        },
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "daoMind": -2,
+          "luck": 2
+        }
+      },
+      {
+        "id": "gather_spirit_liquid",
+        "text": {
+          "en": "Use your flasks to gather the condensed spiritual liquid to sell later.",
+          "vi": "Dùng bình ngọc thu thập linh dịch ngưng tụ để bán sau này."
+        },
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_market_raid",
+    "location": "city",
+    "tags": [
+      "city",
+      "combat",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Demonic Market Raid",
+      "vi": "Càn Quét Chợ Đen Ma Đạo"
+    },
+    "description": {
+      "en": "City security is high and demonic activity is rising. The City Lord calls for volunteers to raid a secret demonic market discovered beneath the city's slums.",
+      "vi": "An ninh thành thị đang cao trong khi hoạt động tà tu dâng trào. Thành Chủ kêu gọi tình nguyện viên càn quét một khu chợ ma đạo bí mật vừa bị phát hiện dưới khu ổ chuột."
+    },
+    "minAge": 25,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.security": "> 70",
+      "demonic.activity": "> 55"
+    },
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": {
+          "en": "Join the city guards and strike the cultists.",
+          "vi": "Gia nhập vệ binh thành thị và tấn công tà tu."
+        },
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "reputation": 10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leak_info",
+        "text": {
+          "en": "Secretly tip off the market in exchange for a 'donation'.",
+          "vi": "Lén mật báo cho khu chợ để đổi lấy một khoản 'quyên góp'."
+        },
+        "effects": {
+          "money": 300,
+          "karma": -30,
+          "daoMind": -15,
+          "luck": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "huyen_thiet_black_market",
+    "location": "city",
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Huyền Thiết Black Market",
+      "vi": "Chợ Đen Huyền Thiết"
+    },
+    "description": {
+      "en": "City security is low and the price index is rising. A rogue cultivator is secretly selling 'Huyền Thiết' stolen from a sect convoy, useful for crafting superior weapons.",
+      "vi": "An ninh thành thị thấp và chỉ số giá cả đang tăng. Một tán tu đang lén lút bán 'Huyền Thiết' đánh cắp từ đoàn xe tông môn, vật liệu cực tốt để đúc thần binh [3, 4]."
+    },
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 40",
+      "city.priceIndex": "> 140"
+    },
+    "choices": [
+      {
+        "id": "buy_huyen_thiet_cheap",
+        "text": {
+          "en": "Pay spirit stones to buy the illegal ore.",
+          "vi": "Chi linh thạch để mua khối linh quặng bất hợp pháp."
+        },
+        "effects": {
+          "money": -150,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_sect",
+        "text": {
+          "en": "Report the location to your sect deacons for a reward.",
+          "vi": "Báo cáo địa điểm cho chấp sự tông môn để nhận thưởng."
+        },
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 80,
+          "daoMind": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "corrupt_city_lord_tax",
+    "location": "city",
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Corrupt City Lord's Tax",
+      "vi": "Thuế Vô Lý Của Thành Chủ"
+    },
+    "description": {
+      "en": "City morale and security are low. The corrupt City Lord has imposed a 'Spiritual Protection Tax' on all visiting cultivators to fund his private army.",
+      "vi": "Dân tâm và an ninh thành thị đang thấp. Tên Thành Chủ hủ bại áp đặt 'Thuế Bảo Hộ Linh Khí' lên tất cả tu sĩ vãng lai để nuôi tư quân."
+    },
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.morale": "< 40",
+      "city.security": "< 50"
+    },
+    "choices": [
+      {
+        "id": "pay_the_tax",
+        "text": {
+          "en": "Pay the tax to maintain a low profile.",
+          "vi": "Nộp thuế để giữ thái độ khiêm nhường, tránh rắc rối."
+        },
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "incite_rebellion",
+        "text": {
+          "en": "Secretly incite the starving mortals to rebel against the Lord.",
+          "vi": "Bí mật kích động phàm nhân đói khát bạo động chống lại Thành Chủ."
+        },
+        "effects": {
+          "karma": 20,
+          "reputation": 10,
+          "city.morale": -10,
+          "city.security": -15,
+          "money": 100
+        }
+      }
+    ]
+  },
+  {
+    "id": "city_tax_riot_interaction",
+    "location": "city",
+    "tags": [
+      "city_interaction",
+      "economy",
+      "crime"
+    ],
+    "title": {
+      "en": "The Bread and Stone Riot",
+      "vi": "Bạo Loạn Lương Thực Và Linh Thạch"
+    },
+    "description": {
+      "en": "With skyrocketing prices and low morale, starving mortals are blocking your path, accusing cultivators of hoarding the world's lifeblood [cite: 53, 60].",
+      "vi": "Với giá cả leo thang và dân tâm sụt giảm, những phàm nhân đói khát đang chặn đường bạn, cáo buộc tu sĩ đang đầu cơ tích trữ mạch sống của thế giới [cite: 53, 60]."
+    },
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "conditions": {
+      "city.morale": "< 30",
+      "city.priceIndex": "> 170"
+    },
+    "choices": [
+      {
+        "id": "bribe_the_mob",
+        "text": {
+          "en": "Throw spirit stones to disperse the crowd and gain karma.",
+          "vi": "Vung linh thạch để giải tán đám đông và tích đức."
+        },
+        "effects": {
+          "money": -200,
+          "karma": 25,
+          "daoMind": 10,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "protect_merchant_convoy",
+        "text": {
+          "en": "Help a nearby merchant suppress the mob to earn a discount.",
+          "vi": "Giúp thương nhân gần đó trấn áp đám đông để nhận ưu đãi."
+        },
+        "effects": {
+          "karma": -20,
+          "money": 100,
+          "luck": 2,
+          "city.security": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "grand_decade_auction",
+    "location": "city",
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ],
+    "title": {
+      "en": "Grand Auction of the Decade",
+      "vi": "Đại Đấu Giá Thập Niên"
+    },
+    "description": {
+      "en": "With city prosperity at its peak, the legendary Decade Auction has opened. Rare treasures from across the continent, including breakthrough pills and supreme manuals, are being showcased [cite: 60, 18].",
+      "vi": "Với phồn vinh thành thị đạt đỉnh, Đại Đấu Giá Thập Niên huyền thoại đã khai mở. Những kỳ trân dị bảo từ khắp đại lục, bao gồm đan dược phá cảnh và bí tịch tối cao, đang được trưng bày [cite: 60, 18]."
+    },
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "city.prosperity": "> 85"
+    },
+    "choices": [
+      {
+        "id": "bid_for_breakthrough_pill",
+        "text": {
+          "en": "Spend a fortune to secure a guaranteed Breakthrough Pill.",
+          "vi": "Chi một khoản tiền khổng lồ để sở hữu Đan Dược Phá Cảnh bảo chứng."
+        },
+        "effects": {
+          "money": -500,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "sell_rare_materials",
+        "text": {
+          "en": "Take advantage of the high prices to sell your rare ores and herbs.",
+          "vi": "Tận dụng giá cao để bán các linh quặng và linh thảo hiếm của bạn."
+        },
+        "effects": {
+          "money": 400,
+          "reputation": 10,
+          "luck": 2
+        }
+      }
+    ]
+  }
+]

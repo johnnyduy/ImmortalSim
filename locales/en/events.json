@@ -1,0 +1,5611 @@
+[
+  {
+    "id": "auction_house_conflict",
+    "title": "Auction House Conflict",
+    "description": "At the decennial auction in Qingyang City, you spent all your Spirit Stones on a Foundation Establishment Pill. As you step out, Young Master Wang blocks your path, tosses 10 Spirit Stones at you, and demands the pill.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "slap_young_master",
+        "text": "Use your strength to slap the young master's face!",
+        "effects": {
+          "cultivation": 2,
+          "daoMind": 5,
+          "health": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "endure_humiliation",
+        "text": "Endure the humiliation and hand over the pill.",
+        "effects": {
+          "daoMind": -10,
+          "luck": -1,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "npc_thieu_gia",
+      "combat"
+    ]
+  },
+  {
+    "id": "slum_black_market",
+    "title": "Slum Black Market",
+    "description": "Sneaking into the city's slums, you find a hidden black market. A masked merchant offers a 'Supreme Foundation Establishment Pill' for half the market price, but it reeks of blood.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_bloody_pill",
+        "text": "Buy the blood-reeking pill.",
+        "effects": {
+          "money": -150,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "rob_the_merchant",
+        "text": "Draw your weapon and rob the pill!",
+        "effects": {
+          "health": -12,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "crime",
+      "demonic"
+    ]
+  },
+  {
+    "id": "mortal_plague",
+    "title": "Mortal Plague",
+    "description": "Passing through a mortal village at the foot of the mountain, you discover a strange plague spreading due to leaking demonic energy. Hundreds are crying out in agony.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "heal_mortals",
+        "text": "Consume herbs to brew an antidote and save them.",
+        "effects": {
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "collect_plague",
+        "text": "Collect the plague aura to refine a Poison Pill.",
+        "effects": {
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_doc_chuong_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "karma_extreme",
+      "demonic",
+      "city_interaction"
+    ]
+  },
+  {
+    "id": "rogue_cultivator_scam",
+    "title": "Rogue Cultivator Scam",
+    "description": "Wandering the market, a mysterious ragged old man pulls you aside, offering to sell the 'Nine Turns Divine Art' for only 50 Spirit Stones.",
+    "minAge": 12,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_scam_manual",
+        "text": "Gamble and buy it.",
+        "effects": {
+          "money": -50,
+          "comprehension": -1,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "expose_scammer",
+        "text": "Coldly expose and chase away the old man.",
+        "effects": {
+          "daoMind": 1,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "random_chance"
+    ]
+  },
+  {
+    "id": "beast_tide_mortals",
+    "title": "Beast Tide Sweeps Mortals",
+    "description": "Violent beasts swarm down the mountain, slaughtering a mortal village. You happen to be passing by.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_mortals",
+        "text": "Set up a defensive array to protect the mortals.",
+        "effects": {
+          "health": -10,
+          "karma": 8
+        }
+      },
+      {
+        "id": "loot_beasts",
+        "text": "Ignore the mortals and harvest beast corpses.",
+        "effects": {
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "karma_event",
+      "combat"
+    ]
+  },
+  {
+    "id": "demonic_invasion",
+    "title": "Demonic Invasion",
+    "description": "The sky turns blood red as dense demonic energy suffocates the area. A horde of demonic cultivators breaches the defenses, slaughtering everyone in sight.",
+    "minAge": 18,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_demonic_horde",
+        "text": "Fight to the death to protect the innocent.",
+        "effects": {
+          "health": -25,
+          "karma": 15,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "join_demons",
+        "text": "Surrender and offer them mortal blood to survive.",
+        "effects": {
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "grand_decennial_auction",
+    "title": "Grand Decennial Auction",
+    "description": "The city is highly prosperous, hosting a grand auction. Rare treasures and supreme martial fragments are displayed, but the prices are astronomical.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "buy_supreme_fragment",
+        "text": "Spend a fortune to buy a Supreme Manual Fragment.",
+        "effects": {
+          "money": -300,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_vip",
+        "text": "Try to pickpocket a distracted VIP guest.",
+        "effects": {
+          "health": -15,
+          "luck": -3,
+          "money": 150,
+          "karma": -5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "market_crash_scavenging",
+    "title": "Market Crash Scavenging",
+    "description": "Due to a surplus of goods, the market has crashed. Desperate merchants are dumping raw spirit herbs on the streets at dirt-cheap prices to cut losses.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_cheap_herbs",
+        "text": "Spend a little money to hoard cheap herbs.",
+        "effects": {
+          "money": -30,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "extort_merchants",
+        "text": "Threaten the bankrupt merchants to hand over goods for free.",
+        "effects": {
+          "karma": -8,
+          "daoMind": -2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thieu_gia_gay_su",
+    "title": "Young Master's Oppression",
+    "description": "At the grand auction, Young Master Wang uses his overwhelming wealth to maliciously outbid and humiliate you over a supreme treasure.",
+    "minAge": 15,
+    "maxAge": 40,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "slap_thieu_gia",
+        "text": "Slap his face and ambush him outside the city to take the treasure back!",
+        "effects": {
+          "health": -5,
+          "money": 200,
+          "karma": -5
+        }
+      },
+      {
+        "id": "endure_thieu_gia",
+        "text": "Swallow your anger and endure the humiliation.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "npc_thieu_gia",
+      "combat"
+    ]
+  },
+  {
+    "id": "soul_festival",
+    "title": "Soul Festival",
+    "description": "You stumble upon a rare Soul Festival in the city where spirits and mortals gather, overflowing with mystical energies.",
+    "minAge": 12,
+    "maxAge": 22,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "join_festival",
+        "text": "Join the spirits and build relationships.",
+        "effects": {
+          "luck": 2,
+          "karma": -1,
+          "health": -1,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "study_scripture",
+        "text": "Study the sacred scriptures left at the altar.",
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 1
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "market"
+    ]
+  },
+  {
+    "id": "herb_price_surge",
+    "title": "Skyrocketing Herb Prices",
+    "description": "Due to a severe shortage, the price of spirit herbs has skyrocketed! The market is in a frenzy, offering a perfect opportunity for hoarding and speculation.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "speculate_market",
+        "text": "Take advantage of the chaos to speculate and profit.",
+        "effects": {
+          "money": 300,
+          "luck": -1,
+          "karma": -2
+        }
+      },
+      {
+        "id": "rob_merchant_convoy",
+        "text": "Rob a merchant convoy carrying rare herbs.",
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "demonic_town_activity",
+    "title": "Demonic Activity in Town",
+    "description": "Demonic cultivators have appeared in the town's outskirts, significantly reducing security. Cultivators are warned to stay away.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "hunt_demonic_cultivators",
+        "text": "Hunt down the demonic cultivators to protect the town.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "ignore_warning",
+        "text": "Ignore the warning and go about your business.",
+        "effects": {
+          "health": -5,
+          "luck": -2,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "illicit_demonic_caravan",
+    "title": "Illicit Demonic Caravan",
+    "description": "Due to poor city security and rising demonic infiltration, a suspicious merchant caravan sets up shop in an alley, secretly selling forbidden Demonic path materials.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_blood_crystal",
+        "text": "Quietly buy a Blood Crystal to accelerate your progress.",
+        "effects": {
+          "money": -100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_guards",
+        "text": "Report them to the city guards for a bounty.",
+        "effects": {
+          "money": 50,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "mortal_rebellion",
+    "title": "Mortal Rebellion",
+    "description": "City morale has hit rock bottom. Starving mortals are violently rebelling against the corrupt city lord who serves the cultivation sects.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "distribute_wealth",
+        "text": "Distribute your spirit stones to buy them food.",
+        "effects": {
+          "money": -100,
+          "karma": 15,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "suppress_rebels",
+        "text": "Help the city lord brutally suppress the mortals.",
+        "effects": {
+          "money": 150,
+          "karma": -15,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "danger"
+    ]
+  },
+  {
+    "id": "corrupted_pill_vendor",
+    "title": "Corrupted Pill Vendor",
+    "description": "Taking advantage of the high demonic infiltration in the city, a hooded vendor in a dark alley offers you a Foundation Establishment Pill. It's cheap, but it reeks of heavy pill-toxins and dark arts.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_corrupted_pill",
+        "text": "Buy it! A breakthrough is worth any risk.",
+        "effects": {
+          "money": -100,
+          "karma": -5,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "refuse_corrupted_pill",
+        "text": "Refuse the wicked temptation and leave immediately.",
+        "effects": {
+          "daoMind": 3,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "demonic_blood_raid",
+    "title": "Demonic Blood Raid",
+    "description": "Demonic activity is peaking. A group of masked demonic cultivators sets up a blood array in the city outskirts, attempting to refine passing mortals into pills.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "destroy_blood_array",
+        "text": "Risk your life to break the array and save the mortals.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": "Wait in the shadows and steal the finished Blood Pill.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "underground_black_auction",
+    "title": "Underground Black Auction",
+    "description": "City security is lax. You receive a secret invitation to an underground black auction selling stolen sect artifacts and forbidden pills.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_forbidden_item",
+        "text": "Spend heavily to buy a forbidden artifact.",
+        "effects": {
+          "money": -250,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_black_market",
+        "text": "Report the location to the righteous sects.",
+        "effects": {
+          "karma": 10,
+          "money": 100,
+          "luck": -2,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "counterfeit_manual_scam",
+    "title": "Counterfeit Manual Scam",
+    "description": "With city security failing, scammers are rampant. A merchant tries to sell you a 'Heavenly Grade' manual fragment for a suspiciously low price.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_fake_manual",
+        "text": "Take the risk and buy it.",
+        "effects": {
+          "money": -120,
+          "comprehension": -2,
+          "luck": -5
+        }
+      },
+      {
+        "id": "intimidate_scammer",
+        "text": "Threaten the scammer to reveal his real goods.",
+        "effects": {
+          "money": 50,
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "herb_monopoly_challenge",
+    "title": "Herb Monopoly Challenge",
+    "description": "With the price index skyrocketing, a local merchant guild has monopolized all spirit herbs, driving prices even higher. A group of rogue cultivators plans to raid their warehouse.",
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": "Join the raid to secure herbs for yourself.",
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 6
+          }
+        }
+      },
+      {
+        "id": "protect_merchant",
+        "text": "Protect the warehouse to earn the guild's favor.",
+        "effects": {
+          "health": -10,
+          "money": 200,
+          "reputation": 5,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "demonic_merchant_trap",
+    "title": "Demonic Merchant Trap",
+    "description": "Demonic activity is high. A merchant offers you a 'Breakthrough Pill' at an impossibly low price, but you notice a faint, dark aura emanating from him.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "accept_and_test",
+        "text": "Buy the pill and test its efficacy.",
+        "effects": {
+          "money": -50,
+          "health": -15,
+          "cultivation": -5,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expose_merchant",
+        "text": "Call out the merchant's demonic identity and engage in combat.",
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "karma": 10,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "trap"
+    ]
+  },
+  {
+    "id": "corrupt_speculation_frenzy",
+    "title": "Corrupt Speculation Frenzy",
+    "description": "Due to skyrocketing spirit herb prices, a group of corrupt merchants is hoarding life-saving pills to sell at ten times the cost. The city's morale is plummeting as phantoms of hunger haunt the streets,.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_speculators",
+        "text": "Use your sect influence to join the monopoly for massive profit,.",
+        "effects": {
+          "money": 400,
+          "karma": -20,
+          "daoMind": -5,
+          "city.morale": -5
+        }
+      },
+      {
+        "id": "raid_merchant_vault",
+        "text": "Raid their hidden vault and distribute the pills to the poor,.",
+        "effects": {
+          "health": -15,
+          "karma": 25,
+          "city.morale": 10,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "the_shadow_ritual",
+    "title": "The Shadow Ritual",
+    "description": "Demonic activity has reached a fever pitch. In the city's slums, you find a ritual using phàm nhân (mortal) children to birth a new Demonic Seed,.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "purify_the_slums",
+        "text": "Risk a direct clash with the cult to stop the ritual and save the mortals,.",
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 15,
+          "city.security": 10
+        }
+      },
+      {
+        "id": "harvest_the_ma_chung",
+        "text": "Wait for the ritual to conclude, then kill the cultists and take the Demonic Seed for yourself,.",
+        "effects": {
+          "karma": -100,
+          "daoMind": -20,
+          "cultivation": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "karma_extreme",
+      "danger"
+    ]
+  },
+  {
+    "id": "mysterious_wandering_merchant",
+    "title": "Mysterious Wandering Merchant",
+    "description": "The city's price index is low. A wandering merchant from a distant land offers rare spiritual materials at prices that seem too good to be true.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_bulk_materials",
+        "text": "Invest your spirit stones and buy materials in bulk.",
+        "effects": {
+          "money": -150,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 4
+          },
+          "luck": 1
+        }
+      },
+      {
+        "id": "haggle_for_pills",
+        "text": "Haggle aggressively for a rare cultivation pill.",
+        "effects": {
+          "money": -80,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "corrupt_guard_extortion",
+    "title": "Corrupt Guard Extortion",
+    "description": "City security is low. A corrupt captain of the guard accuses you of smuggling forbidden demonic artifacts and demands a 'settlement' fee.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_the_bribe",
+        "text": "Pay the bribe to avoid legal trouble with the city.",
+        "effects": {
+          "money": -100,
+          "karma": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "fight_the_guards",
+        "text": "Defend your honor and fight the corrupt guards.",
+        "effects": {
+          "health": -15,
+          "karma": 5,
+          "daoMind": 5,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "starving_mob_riot",
+    "title": "The Starving Mob",
+    "description": "City morale has reached a critical low. A desperate mob of starving mortals is blocking your path, demanding spirit stones to buy food from the price-gouging merchants.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "give_alms",
+        "text": "Generously distribute your spirit stones to feed them.",
+        "effects": {
+          "money": -150,
+          "karma": 20,
+          "daoMind": 10,
+          "reputation": 10
+        }
+      },
+      {
+        "id": "disperse_mob",
+        "text": "Use your spiritual pressure to forcefully disperse the mob.",
+        "effects": {
+          "karma": -15,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ]
+  },
+  {
+    "id": "city_guard_mutiny",
+    "title": "City Guard Mutiny",
+    "description": "City security and morale have collapsed. The guards, unpaid for months, have turned into looters, terrorizing the merchants they once protected.",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "suppress_mutiny",
+        "text": "Slay the rogue guards to restore order.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "reputation": 10,
+          "money": 80
+        }
+      },
+      {
+        "id": "loot_with_guards",
+        "text": "Join the guards and raid the local merchant guild.",
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "danger"
+    ]
+  },
+  {
+    "id": "mortal_hunger_riot",
+    "title": "Riot of the Starving Phantoms",
+    "description": "City morale has collapsed due to price-gouging. Starving mortals are attacking cultivator convoys for any scraps of spirit energy.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "distribute_rations",
+        "text": "Distribute your spirit herbs to appease the mob.",
+        "effects": {
+          "money": -150,
+          "karma": 30,
+          "daoMind": 10,
+          "city.morale": 15
+        }
+      },
+      {
+        "id": "ruthless_suppression",
+        "text": "Brutally suppress the riot to restore market order.",
+        "effects": {
+          "karma": -40,
+          "money": 100,
+          "city.security": 10,
+          "reputation": -10
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ]
+  },
+  {
+    "id": "mystical_lantern_festival",
+    "title": "Mystical Lantern Festival",
+    "description": "The city is highly prosperous and spiritual Qi is dense. A grand festival is held where lanterns infused with soul power fill the sky, creating a resonance with the Heavenly Dao.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "make_a_dao_wish",
+        "text": "Release a lantern and make a wish for your Dao journey.",
+        "effects": {
+          "luck": 3,
+          "daoMind": 5,
+          "karma": 2,
+          "money": -20
+        }
+      },
+      {
+        "id": "collect_fallen_essence",
+        "text": "Quietly collect the falling soul essence from the lanterns.",
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 5,
+          "luck": -1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "black_market_smuggling",
+    "title": "Black Market Smuggling",
+    "description": "The price index is skyrocketing and city security is low. A hidden network of smugglers is moving forbidden spirit herbs and demonic blood stones through the city sewers.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_smugglers",
+        "text": "Ambush the smugglers and seize their cargo.",
+        "effects": {
+          "health": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 10
+          },
+          "karma": 5
+        }
+      },
+      {
+        "id": "invest_in_smuggling",
+        "text": "Invest your own spirit stones to fund their next run.",
+        "effects": {
+          "money": -200,
+          "luck": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "demonic"
+    ]
+  },
+  {
+    "id": "black_market_hoarding",
+    "title": "Black Market Hoarding",
+    "description": "With the city's price index at an all-time high, a shadowy figure offers you a chance to join a scheme to hoard essential spiritual ores and manipulate the market.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "invest_in_monopoly",
+        "text": "Invest heavily to monopolize the supply of Spirit Ores.",
+        "effects": {
+          "money": -300,
+          "luck": 5,
+          "karma": -15,
+          "city.priceIndex": 10
+        }
+      },
+      {
+        "id": "expose_to_authorities",
+        "text": "Expose the scheme to the City Lord for a bounty.",
+        "effects": {
+          "money": 100,
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "ghost_market_whispers",
+    "title": "Ghost Market Whispers",
+    "description": "City security is low. You find a hidden entrance to the Ghost Market, where rogue cultivators trade forbidden demonic artifacts. A masked dealer offers you a piece of 'Huyền Thiết' for a suspicious price.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_huyen_thiet",
+        "text": "Buy the rare ore to upgrade your weapon.",
+        "effects": {
+          "money": -120,
+          "luck": -2,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_dealer",
+        "text": "Wait for the dealer to leave and ambush him.",
+        "effects": {
+          "health": -15,
+          "karma": -15,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "mortal_plague_curse",
+    "title": "The Wailing Plague",
+    "description": "A mysterious plague, suspected to be a demonic curse, is ravaging the mortal population. The city's morale is at rock bottom as phàm nhân die by the hundreds.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "heal_with_spiritual_qi",
+        "text": "Exhaust your Qi to heal the dying mortals.",
+        "effects": {
+          "cultivation": -10,
+          "health": -10,
+          "karma": 40,
+          "daoMind": 15,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "ignore_mortal_suffering",
+        "text": "Ignore them; mortal lives are but fleeting smoke.",
+        "effects": {
+          "daoMind": -5,
+          "karma": -20,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "demonic"
+    ]
+  },
+  {
+    "id": "city_embargo_crisis",
+    "title": "City Resource Embargo",
+    "description": "The city is under a resource embargo due to high demonic activity. Prices have reached extreme levels, and the black market is the only way to survive.",
+    "minAge": 18,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "smuggle_goods",
+        "text": "Risk smuggling essential herbs into the city for profit.",
+        "effects": {
+          "money": 500,
+          "karma": -20,
+          "luck": -5,
+          "city.security": -5
+        }
+      },
+      {
+        "id": "defend_caravans",
+        "text": "Work as a guard for the few remaining legal caravans.",
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "reputation": 10,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "city_spirit_tide",
+    "title": "City Spirit Tide",
+    "description": "Due to a massive surge in global spiritual Qi, the city's spiritual wells have overflowed. A literal tide of energy washes through the streets, momentarily turning the marketplace into a supreme cultivation ground.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_in_public",
+        "text": "Sit in the middle of the street and absorb the tide.",
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "daoMind": -2,
+          "luck": 2
+        }
+      },
+      {
+        "id": "gather_spirit_liquid",
+        "text": "Use your flasks to gather the condensed spiritual liquid to sell later.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "demonic_market_raid",
+    "title": "Demonic Market Raid",
+    "description": "City security is high and demonic activity is rising. The City Lord calls for volunteers to raid a secret demonic market discovered beneath the city's slums.",
+    "minAge": 25,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": "Join the city guards and strike the cultists.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "reputation": 10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leak_info",
+        "text": "Secretly tip off the market in exchange for a 'donation'.",
+        "effects": {
+          "money": 300,
+          "karma": -30,
+          "daoMind": -15,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "huyen_thiet_black_market",
+    "title": "Huyền Thiết Black Market",
+    "description": "City security is low and the price index is rising. A rogue cultivator is secretly selling 'Huyền Thiết' stolen from a sect convoy, useful for crafting superior weapons.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_huyen_thiet_cheap",
+        "text": "Pay spirit stones to buy the illegal ore.",
+        "effects": {
+          "money": -150,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_sect",
+        "text": "Report the location to your sect deacons for a reward.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 80,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corrupt_city_lord_tax",
+    "title": "Corrupt City Lord's Tax",
+    "description": "City morale and security are low. The corrupt City Lord has imposed a 'Spiritual Protection Tax' on all visiting cultivators to fund his private army.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_the_tax",
+        "text": "Pay the tax to maintain a low profile.",
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "incite_rebellion",
+        "text": "Secretly incite the starving mortals to rebel against the Lord.",
+        "effects": {
+          "karma": 20,
+          "reputation": 10,
+          "city.morale": -10,
+          "city.security": -15,
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "city_tax_riot_interaction",
+    "title": "The Bread and Stone Riot",
+    "description": "With skyrocketing prices and low morale, starving mortals are blocking your path, accusing cultivators of hoarding the world's lifeblood [cite: 53, 60].",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bribe_the_mob",
+        "text": "Throw spirit stones to disperse the crowd and gain karma.",
+        "effects": {
+          "money": -200,
+          "karma": 25,
+          "daoMind": 10,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "protect_merchant_convoy",
+        "text": "Help a nearby merchant suppress the mob to earn a discount.",
+        "effects": {
+          "karma": -20,
+          "money": 100,
+          "luck": 2,
+          "city.security": 5
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "grand_decade_auction",
+    "title": "Grand Auction of the Decade",
+    "description": "With city prosperity at its peak, the legendary Decade Auction has opened. Rare treasures from across the continent, including breakthrough pills and supreme manuals, are being showcased [cite: 60, 18].",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bid_for_breakthrough_pill",
+        "text": "Spend a fortune to secure a guaranteed Breakthrough Pill.",
+        "effects": {
+          "money": -500,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "sell_rare_materials",
+        "text": "Take advantage of the high prices to sell your rare ores and herbs.",
+        "effects": {
+          "money": 400,
+          "reputation": 10,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thien_kieu_tra_xanh_gap_go",
+    "title": "Encountering Moc Uyen Thanh",
+    "description": "At the Ancient Cave, you see Moc Uyen Thanh surrounded by demonic beasts, looking weak and calling for help.",
+    "minAge": 15,
+    "maxAge": 50,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "rescue_tra_xanh",
+        "text": "Lend a hand, cannot leave her to die.",
+        "effects": {
+          "health": -5,
+          "karma": 5,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": 10
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 0
+          }
+        }
+      },
+      {
+        "id": "ignore_tra_xanh",
+        "text": "Sense something is wrong and leave quietly.",
+        "effects": {
+          "luck": 1,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": -20
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 10
+          }
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_tra_xanh",
+      "rescue"
+    ]
+  },
+  {
+    "id": "save_demonic_cultivator",
+    "title": "Saving a Demonic Cultivator",
+    "description": "In the pouring rain, you find a woman in black robes collapsed by the road, covered in blood. Her aura is cold and reeks of demonic energy. Righteous cultivators are searching nearby.",
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "save_demonic_girl",
+        "text": "Use a Blood Recovery Pill to save her.",
+        "effects": {
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "ma_cong_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "call_righteous",
+        "text": "Call the righteous cultivators to capture her.",
+        "effects": {
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "npc_hong_nhan_ma_dao",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "abyssal_whispers",
+    "title": "Abyssal Whispers",
+    "description": "While cultivating in seclusion in a remote cave, you hear murmurs echoing from an underground spring, promising unmatched power and infinite lifespan if you abandon your Dao Mind.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "resist_whisper",
+        "text": "Keep your mind clear and reject the demonic voice.",
+        "effects": {
+          "daoMind": 5,
+          "cultivation": 2,
+          "comprehension": 1
+        }
+      },
+      {
+        "id": "accept_whisper",
+        "text": "Open your mind and embrace the evil power.",
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "black_roadhouse_inn",
+    "title": "Black Roadhouse Inn",
+    "description": "In the dark wilderness, you stop at a dimly lit inn. The sly old innkeeper serves a bowl of braised meat that has a strange but incredibly appetizing spiritual aura.",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "stay_awake",
+        "text": "Carefully avoid eating and stay awake to defend yourself.",
+        "effects": {
+          "health": -2,
+          "daoMind": 2,
+          "money": 50
+        }
+      },
+      {
+        "id": "eat_and_sleep",
+        "text": "Feast on the meat and go to sleep.",
+        "effects": {
+          "health": -15,
+          "luck": -2,
+          "money": -50
+        }
+      }
+    ],
+    "tags": [
+      "trap",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "blood_sacrifice_array",
+    "title": "Blood Sacrifice Array",
+    "description": "While patrolling, you discover a wicked array absorbing mortal blood to condense a Blood Pill.",
+    "minAge": 30,
+    "maxAge": 200,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "destroy_array",
+        "text": "Risk your life to destroy the array.",
+        "effects": {
+          "health": -15,
+          "daoMind": 5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": "Wait for completion and steal the pill.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "karma_extreme"
+    ]
+  },
+  {
+    "id": "qi_deviation_crisis",
+    "title": "Qi Deviation Crisis",
+    "description": "Rising demonic energy triggers your inner demons during meditation. The spiritual Qi in your meridians turns chaotic, threatening to explode.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_breakthrough",
+        "text": "Use the chaotic energy to forcefully increase cultivation!",
+        "effects": {
+          "health": -20,
+          "cultivation": 10,
+          "daoMind": -5
+        }
+      },
+      {
+        "id": "suppress_qi",
+        "text": "Bite your tongue and brutally suppress the energy.",
+        "effects": {
+          "cultivation": -5,
+          "daoMind": 5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "demonic_qi_overload",
+    "title": "Demonic Qi Overload",
+    "description": "The world's demonic energy is so dense it begins to seep into your meridians during regular rest, causing a violent struggle between your spiritual Qi and the dark aura.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "refine_demonic_qi",
+        "text": "Attempt to refine the demonic Qi into your own power.",
+        "effects": {
+          "cultivation": 15,
+          "health": -20,
+          "daoMind": -10,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expel_darkness",
+        "text": "Focus entirely on expelling the darkness from your body.",
+        "effects": {
+          "health": -5,
+          "daoMind": 8,
+          "cultivation": -2
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ]
+  },
+  {
+    "id": "shadow_demonic_ambush",
+    "title": "Shadow of the Demonic Path",
+    "description": "High demonic energy has emboldened dark cultivators. A skilled demonic assassin ambushes you from the shadows, seeking to steal your cultivation base.",
+    "minAge": 25,
+    "maxAge": 180,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "counter_ambush",
+        "text": "React instantly and engage in a deadly duel.",
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "use_escape_talisman",
+        "text": "Use an escape talisman to flee, leaving your treasures behind.",
+        "effects": {
+          "money": -200,
+          "luck": -2,
+          "daoMind": -5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "void_visions_meditation",
+    "title": "Visions of the Void",
+    "description": "Dense demonic energy surrounds you during meditation. Visions of a dark void begin to tempt your mind, promising power in exchange for your humanity.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "embrace_the_darkness",
+        "text": "Embrace the visions and harness the void energy.",
+        "effects": {
+          "cultivation": 18,
+          "karma": -15,
+          "health": -10,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "recite_heart_sutra",
+        "text": "Recite the Heart-Cleansing Sutra to purge the corruption.",
+        "effects": {
+          "daoMind": 15,
+          "cultivation": -5,
+          "karma": 10,
+          "health": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ]
+  },
+  {
+    "id": "demonic_whisper_meditation",
+    "title": "Whispers of the Demonic Seed",
+    "description": "As demonic energy saturates the world, a dark voice begins to whisper in your mind during meditation, offering forbidden power to bypass your current bottleneck.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "listen_to_whispers",
+        "text": "Listen to the whispers and embrace the dark shortcut.",
+        "effects": {
+          "cultivation": 20,
+          "karma": -30,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "seal_the_mind",
+        "text": "Seal your senses and protect your righteous Dao Heart.",
+        "effects": {
+          "daoMind": 15,
+          "health": -10,
+          "karma": 10
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "dao_mind"
+    ]
+  },
+  {
+    "id": "demonic_blood_sacrifice_interruption",
+    "title": "Interrupting the Blood Sacrifice",
+    "description": "You stumble upon a hidden ritual where demonic cultivators are sacrificing mortals to fuel their dark energy. The atmosphere is heavy with the smell of iron and death.",
+    "minAge": 25,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "save_mortals",
+        "text": "Risk your life to slay the cultists and save the survivors.",
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 20,
+          "reputation": 15
+        }
+      },
+      {
+        "id": "wait_and_scavenge",
+        "text": "Wait for the ritual to end, then loot the abandoned demonic tools.",
+        "effects": {
+          "karma": -50,
+          "daoMind": -20,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          },
+          "money": 300
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "heart_demon_resonance",
+    "title": "Heart Demon Resonance",
+    "description": "The world's demonic energy is overflowing, triggering a resonance with the lingering 'Pill Toxins' and repressed desires in your soul, manifested as a Heart Demon [cite: 18, 56].",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "conquer_heart_demon",
+        "text": "Engage in a spiritual battle to conquer your inner darkness.",
+        "effects": {
+          "daoMind": 20,
+          "comprehension": 5,
+          "health": -20,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "surrender_to_darkness",
+        "text": "Surrender to the whispers for a sudden surge in cultivation.",
+        "effects": {
+          "cultivation": 40,
+          "daoMind": -30,
+          "karma": -50,
+          "health": -10
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "dao_mind"
+    ]
+  },
+  {
+    "id": "waking_dawn",
+    "title": "Waking Dawn",
+    "description": "A cold dawn breaks. A choice appears: cultivate steadily or chase a risky shortcut.",
+    "minAge": 1,
+    "maxAge": 5,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steady_practice",
+        "text": "Practice patiently, build your foundation.",
+        "effects": {
+          "cultivation": 2,
+          "comprehension": 1,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "liet_duong_hoa",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "shortcut_burst",
+        "text": "Use a risky shortcut to leap forward.",
+        "effects": {
+          "cultivation": 5,
+          "luck": -2,
+          "health": -3,
+          "gainItem": {
+            "itemId": "item_tho_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "chosen_one_duel",
+    "title": "Duel with the Chosen One",
+    "description": "Long Ngao Thien, the arrogant child of destiny, blocks your path. He points his glittering sword at you, demanding a duel to step on your dignity.",
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": "Go all out and prove your worth!",
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "daoMind": 10,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": "Acknowledge his superiority and back down.",
+        "effects": {
+          "daoMind": -10,
+          "health": 0
+        }
+      }
+    ],
+    "tags": [
+      "combat",
+      "npc_thien_kieu_chan_chinh"
+    ]
+  },
+  {
+    "id": "spirit_herbs",
+    "title": "Spirit Herbs",
+    "description": "You stumble upon mysterious spirit herbs. Their aura is intoxicating but slightly unstable.",
+    "minAge": 3,
+    "maxAge": 100,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "accept_herbs",
+        "text": "Refine them safely using your core techniques.",
+        "effects": {
+          "health": 2,
+          "cultivation": 1,
+          "karma": 1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "test_herbs",
+        "text": "Test the raw herbs directly on yourself.",
+        "effects": {
+          "health": -2,
+          "comprehension": 2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "decline_herbs",
+        "text": "Decline the temptation and leave silently.",
+        "effects": {
+          "karma": 1,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "duel_challenge",
+    "title": "Duel Challenge",
+    "description": "A wandering martial artist abruptly blocks your path, drawing their weapon and demanding a duel to hone their Dao.",
+    "minAge": 18,
+    "maxAge": 35,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "accept_duel",
+        "text": "Accept the duel and prove yourself.",
+        "effects": {
+          "cultivation": 2,
+          "luck": 1,
+          "health": -3,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "avoid_duel",
+        "text": "Avoid the confrontation but observe their stance.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "combat",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "heavenly_dao_quake",
+    "title": "Heavenly Dao Quake",
+    "description": "Spiritual energy fluctuates violently, reaching an alarming level! An extraordinary destiny is approaching, and a hidden secret realm might be opening.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_violent_qi",
+        "text": "Risk your life to absorb the violent spiritual Qi.",
+        "effects": {
+          "health": -25,
+          "cultivation": 30,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "seek_secret_realm",
+        "text": "Search for the entrance to the opening secret realm.",
+        "effects": {
+          "luck": 2,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "heavenly_qi_surge",
+    "title": "Heavenly Qi Surge",
+    "description": "The spiritual Qi of the world suddenly surges to an incredibly dense level! It completely suppresses demonic auras, but inhaling too much might overwhelm a weak body.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_madly",
+        "text": "Absorb the Qi madly to surge your cultivation!",
+        "effects": {
+          "health": -15,
+          "cultivation": 20,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "refine_into_pills",
+        "text": "Safely guide the Qi to refine it into spiritual pills.",
+        "effects": {
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "cultivation",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_epiphany_surge",
+    "title": "Heavenly Epiphany Surge",
+    "description": "The Heavenly Dao fluctuates wildly. A sudden surge of profound Dao rhythm washes over you, resonating with your meridians and presenting a rare chance for a sudden epiphany.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_epiphany",
+        "text": "Close your eyes and absorb the Dao rhythm to surge your cultivation.",
+        "effects": {
+          "health": -5,
+          "cultivation": 15,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "comprehend_manual",
+        "text": "Use this profound moment to deduce martial techniques.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "echoes_of_the_immortal_rift",
+    "title": "Echoes of the Immortal Rift",
+    "description": "A sudden spike in Dao fluctuations has caused a localized temporal rift. You hear echoes of a future breakthrough or a past failure resonating with your soul,.",
+    "minAge": 15,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "peer_into_destiny",
+        "text": "Force your mind through the rift to grasp a fragment of supreme knowledge,.",
+        "effects": {
+          "comprehension": 15,
+          "daoMind": -5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "sacrifice_cultivation_for_luck",
+        "text": "Offer your current cultivation base to the rift in exchange for a shift in destiny,.",
+        "effects": {
+          "cultivation": -20,
+          "luck": 10,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_thunder_tempering",
+    "title": "Heavenly Thunder Tempering",
+    "description": "Heavenly Dao is fluctuating wildly. A localized spiritual storm has summoned bolts of Heavenly Thunder. You can try to use the lightning to temper your meridians.",
+    "minAge": 30,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "face_the_thunder",
+        "text": "Face the thunder head-on to purge your body.",
+        "effects": {
+          "health": -35,
+          "cultivation": 30,
+          "comprehension": 5,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "flee_the_storm",
+        "text": "Retreat to safety and avoid the deadly lightning.",
+        "effects": {
+          "luck": 2,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "ancient_array_puzzle",
+    "title": "The Lost Array of the Ancients",
+    "description": "While exploring a remote area, you discover an ancient array carved into the rock. It flickers with a mysterious light, resonating with the current Heavenly Dao fluctuations.",
+    "minAge": 15,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "solve_with_wisdom",
+        "text": "Use your deep comprehension to solve the puzzle peacefully.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 3,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "break_with_force",
+        "text": "Use sheer martial power to shatter the array's core.",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "opportunity",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "immortal_tomb_emergence",
+    "title": "Immortal's Tomb Emergence",
+    "description": "Extreme Dao fluctuations have caused the earth to split, revealing the entrance to a majestic tomb belonging to an ancient Ascendant Immortal.",
+    "minAge": 40,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_the_core_tomb",
+        "text": "Brave the deadly traps to enter the core burial chamber.",
+        "effects": {
+          "health": -35,
+          "comprehension": 10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          },
+          "luck": 5
+        }
+      },
+      {
+        "id": "scavenge_the_outskirts",
+        "text": "Stay safe and scavenge the offerings in the outer halls.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          },
+          "luck": 2,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "danger"
+    ]
+  },
+  {
+    "id": "world_dao_epiphany",
+    "title": "Heavenly Dao Resonance",
+    "description": "The world's Dao fluctuates violently, causing spiritual energy to manifest as physical lotus petals falling from the sky.",
+    "minAge": 10,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "meditate_on_dao",
+        "text": "Focus on comprehending the laws of the universe.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 10,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_petals",
+        "text": "Quickly absorb the manifestation petals for cultivation.",
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "spiritualQi": -5
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "heavenly_karma_judgment",
+    "title": "Heavenly Karma Judgment",
+    "description": "Heavenly Dao fluctuations have triggered a moment of karmic clarity. The world judges your past actions, resonating with your soul's purity or corruption.",
+    "minAge": 10,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "embrace_the_judgment",
+        "text": "Offer your soul to the judgment of the heavens.",
+        "effects": {
+          "daoMind": 10,
+          "luck": 5,
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "defy_the_heavens",
+        "text": "Defy the judgment and rely only on your own power.",
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -20,
+          "health": -15
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "karma_event",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "pill_toxin_backlash",
+    "title": "Accumulated Pill Toxins",
+    "description": "Your over-reliance on low-grade pills to survive the lifespan race has caused 'Pill Toxins' to accumulate in your meridians. A backlash is imminent.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "cleanse_meridians",
+        "text": "Endure excruciating pain to manually cleanse the toxins.",
+        "effects": {
+          "health": -20,
+          "daoMind": 10,
+          "cultivation": -2,
+          "karma": 5
+        }
+      },
+      {
+        "id": "neutralize_with_herb",
+        "text": "Use a rare Snow Lotus to neutralize the toxins safely.",
+        "effects": {
+          "money": -150,
+          "health": 5,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "pill_toxin"
+    ]
+  },
+  {
+    "id": "pill_toxin_cleansing_ritual",
+    "title": "Pill Toxin Cleansing Ritual",
+    "description": "Your meridians are clogged with dark residues from excessive pill consumption. A wandering healer offers a dangerous ritual to burn away the toxins using pure spiritual fire.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "endure_the_fire",
+        "text": "Endure the excruciating spiritual fire to cleanse your body.",
+        "effects": {
+          "health": -30,
+          "daoMind": 10,
+          "cultivation": -5,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "refuse_and_seek_herbs",
+        "text": "Refuse the ritual and try to neutralize toxins with rare herbs.",
+        "effects": {
+          "money": -200,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ]
+  },
+  {
+    "id": "fragment_of_the_heavens",
+    "title": "Fragment of the Heavens",
+    "description": "Extreme Dao fluctuations have caused a physical fragment of the Heavenly Dao to fall from the sky. It radiates a rhythm that defies mortality.",
+    "minAge": 15,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "grasp_the_fragment",
+        "text": "Risk your body to grasp the divine fragment.",
+        "effects": {
+          "health": -40,
+          "comprehension": 20,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "watch_it_dissolve",
+        "text": "Don't touch it; simply sit nearby and observe as it dissolves.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 20,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_dao_vision_war",
+    "title": "Vision of the Eternal War",
+    "description": "Extreme Dao fluctuations have triggered a spiritual resonance. You see a vision of the founding Sect Leader battling a Great Demon, revealing a flaw in your current technique.",
+    "minAge": 30,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "correct_the_flaw",
+        "text": "Focus on correcting the technique's flaw to boost efficiency.",
+        "effects": {
+          "comprehension": 15,
+          "cultivation": 5,
+          "daoMind": 10,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "capture_demon_technique",
+        "text": "Try to memorize the Demon's forbidden moves instead.",
+        "effects": {
+          "comprehension": 10,
+          "karma": -20,
+          "daoMind": -15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "lore"
+    ]
+  },
+  {
+    "id": "pill_toxin_meridian_blockage",
+    "title": "Meridian Blockage Crisis",
+    "description": "The high spiritual Qi in the environment is reacting violently with the 'Pill Toxins' in your body, causing a localized Qi explosion within your meridians.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_suppression",
+        "text": "Forcefully suppress the explosion, risking permanent damage.",
+        "effects": {
+          "health": -40,
+          "cultivation": -5,
+          "daoMind": 15,
+          "karma": 5
+        }
+      },
+      {
+        "id": "vent_excess_qi",
+        "text": "Vent the excess energy outwards, causing a small shockwave.",
+        "effects": {
+          "health": -15,
+          "cultivation": -10,
+          "luck": -2,
+          "reputation": -5
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ]
+  },
+  {
+    "id": "ancient_spatial_rift_puzzle",
+    "title": "Ancient Spatial Rift",
+    "description": "Extreme Heavenly Dao fluctuations have opened a localized spatial rift. It leads to a pocket dimension containing ancient cultivation techniques [cite: 56, 59].",
+    "minAge": 25,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "decipher_the_rift",
+        "text": "Use your high comprehension to stabilize the rift and enter safely.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "force_entry",
+        "text": "Brave the chaotic space to snatch a supreme manual fragment.",
+        "effects": {
+          "health": -40,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "puzzle",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "heavenly_nectar_epiphany",
+    "title": "Heavenly Nectar Rain",
+    "description": "A rare phenomenon occurs when spiritual Qi peaks! Rain that directly nourishes the soul falls from the sky, bypassing ordinary bottlenecks [cite: 56, 12].",
+    "minAge": 10,
+    "maxAge": 500,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "meditate_in_rain",
+        "text": "Meditate openly to maximize tu vi gain.",
+        "effects": {
+          "cultivation": 25,
+          "health": 10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "collect_nectar",
+        "text": "Focus on collecting the rain into jade bottles for later sale.",
+        "effects": {
+          "money": 300,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "opportunity",
+      "rare"
+    ]
+  },
+  {
+    "id": "beast_king_lotus",
+    "title": "Beast King Guarding the Blood Lotus",
+    "description": "Deep in the core of the Myriad Beast Mountain Range, you discover a thousand-year Blood Lotus. However, coiled tightly beside it is a slumbering Blood Python Beast King.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steal_lotus",
+        "text": "Set up a stealth array, steal the Blood Lotus, and run.",
+        "effects": {
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_huyet_lien",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leave_safely",
+        "text": "Walk away, your life is more important.",
+        "effects": {
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "beast",
+      "danger",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corpse_in_swamp",
+    "title": "Corpse in the Swamp",
+    "description": "Deep in the Myriad Beast Mountain Range, you see a Foundation Establishment cultivator's corpse half-submerged in a swamp, with a bulging storage bag still glittering on their waist.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "loot_corpse",
+        "text": "Use sword control or a branch to hook the storage bag.",
+        "effects": {
+          "health": -15,
+          "luck": 1,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_boi_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "burn_corpse",
+        "text": "Burn the corpse from afar to avoid future trouble.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "trap",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "unfinished_go_game",
+    "title": "Unfinished Go Game",
+    "description": "Exploring a stalactite-filled cave, you find a white jade Go board. The unfinished game radiates profound Dao rhythm, likely left behind by two ascendant masters millennia ago.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "solve_go_game",
+        "text": "Sit down and dedicate your entire mind to solving the game.",
+        "effects": {
+          "cultivation": 20,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "observe_briefly",
+        "text": "Just bow respectfully, watch briefly, and leave.",
+        "effects": {
+          "comprehension": 1,
+          "cultivation": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "dao_event",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "demon_king_metamorphosis",
+    "title": "Demon King's Metamorphosis",
+    "description": "The sky darkens over the Myriad Beast Mountain Range. A Demon King is undergoing Heavenly Tribulation to take human form and is extremely weak.",
+    "minAge": 50,
+    "maxAge": 400,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "protect_demon",
+        "text": "Protect the Demon King through the tribulation.",
+        "effects": {
+          "health": -20,
+          "karma": 5,
+          "gainItem": {
+            "itemId": "item_van_thu_huyet_lenh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "sneak_attack_demon",
+        "text": "Take advantage of the situation and attack!",
+        "effects": {
+          "karma": -8,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "rare_encounter"
+    ]
+  },
+  {
+    "id": "secret_realm_opening",
+    "title": "Secret Realm Opening",
+    "description": "Heavenly Dao fluctuates violently. A spatial rift tears open in the mountains, revealing an ancient secret realm glowing with supreme spiritual energy.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_realm",
+        "text": "Risk your life and leap into the spatial rift.",
+        "effects": {
+          "health": -20,
+          "cultivation": 25,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "meditate_outside",
+        "text": "Too dangerous. Meditate outside to absorb the leaking Qi.",
+        "effects": {
+          "cultivation": 5,
+          "luck": 2,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_treasure_emerges",
+    "title": "Heavenly Treasure Emerges",
+    "description": "The mountain's resources are overflowing. A rare Snow Lotus has bloomed on a cliff, attracting numerous greedy rogue cultivators who are already fighting for it.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "sneak_and_grab",
+        "text": "Sneak through the chaos to grab the Snow Lotus.",
+        "effects": {
+          "health": -10,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_tuyet_lien",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "ambush_survivors",
+        "text": "Wait for them to kill each other, then ambush the survivors.",
+        "effects": {
+          "karma": -10,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "resource_gathering",
+      "opportunity",
+      "danger"
+    ]
+  },
+  {
+    "id": "encounter_mu_wanqing",
+    "title": "Encountering Mu Wanqing",
+    "description": "At the Ancient Ruins, you find Mu Wanqing, a famous inner sect beauty, surrounded by demonic beasts. She is crying weakly for help.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "rescue_tra_xanh",
+        "text": "Rush in to save her like a hero.",
+        "effects": {
+          "health": -15,
+          "karma": 5,
+          "money": 50
+        }
+      },
+      {
+        "id": "ignore_tra_xanh",
+        "text": "See through the trouble and walk away silently.",
+        "effects": {
+          "luck": 2,
+          "daoMind": 2,
+          "karma": -2
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_tra_xanh",
+      "rescue",
+      "beast"
+    ]
+  },
+  {
+    "id": "mountain_meditation",
+    "title": "Mountain Meditation",
+    "description": "The towering peaks of the ancient mountain invite you to sit and ponder the Heavenly Dao.",
+    "minAge": 6,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "embrace_silence",
+        "text": "Sit with the mountain's soul and listen to the silence.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 2,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "seek_fortune",
+        "text": "Search the surrounding peaks for hidden treasures.",
+        "effects": {
+          "health": -1,
+          "cultivation": 1,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "mountain"
+    ]
+  },
+  {
+    "id": "event_hong_nhan_ma_dao_am_sat",
+    "title": "Blood Rose Ambush",
+    "description": "While exploring the Myriad Beast Mountain Range, Blood Rose suddenly drops her disguise, revealing her demonic nature, and surrounds you with killing intent.",
+    "minAge": 20,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_hong_nhan",
+        "text": "Fight to the death and break out!",
+        "effects": {
+          "health": -15,
+          "cultivation": 10,
+          "luck": 2
+        }
+      },
+      {
+        "id": "flee_hong_nhan",
+        "text": "Leave your Spirit Stones behind and flee for your life.",
+        "effects": {
+          "health": -5,
+          "money": -100
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "npc_hong_nhan_ma_dao"
+    ]
+  },
+  {
+    "id": "ancestral_memory",
+    "title": "Ancestral Memory",
+    "description": "Deep within the ancient ruins, a mysterious resonance triggers a flood of ancient ancestral memories in your mind.",
+    "minAge": 1,
+    "maxAge": 100,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "remember_ancestors",
+        "text": "Embrace the ancestors and nurture the legacy.",
+        "effects": {
+          "karma": 2,
+          "cultivation": 1,
+          "comprehension": 1
+        }
+      },
+      {
+        "id": "forge_own_path",
+        "text": "Break the old path and forge your own destiny.",
+        "effects": {
+          "luck": 2,
+          "comprehension": 1,
+          "karma": -1
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "lore",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "grave_storm",
+    "title": "Grave Storm",
+    "description": "A terrifying spectral storm filled with resentful spirits suddenly sweeps across the ancient burial grounds.",
+    "minAge": 25,
+    "maxAge": 60,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "stand_firm",
+        "text": "Stand firm and protect your Dao Heart.",
+        "effects": {
+          "health": -1,
+          "karma": 2,
+          "cultivation": 1
+        }
+      },
+      {
+        "id": "evade_pain",
+        "text": "Evade the pain and conserve your energy.",
+        "effects": {
+          "luck": 2,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "danger",
+      "demonic",
+      "trap"
+    ]
+  },
+  {
+    "id": "helping_hand_daoist",
+    "title": "A Daoist in Distress",
+    "description": "You encounter a severely injured righteous cultivator being cornered by a pack of demonic wolves. They beg you for help.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "help_daoist",
+        "text": "Draw your sword and save them.",
+        "effects": {
+          "health": -10,
+          "karma": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "loot_daoist",
+        "text": "Wait for them to die, then loot their corpse.",
+        "effects": {
+          "karma": -10,
+          "money": 80,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "karma_event",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "ruined_alchemy_furnace",
+    "title": "Ruined Alchemy Furnace",
+    "description": "In a forgotten cave, you find a cracked alchemy furnace still radiating intense, unstable medicinal Qi after centuries.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_medicinal_qi",
+        "text": "Inhale the scorching Qi to temper your body.",
+        "effects": {
+          "health": -5,
+          "cultivation": 5,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "scavenge_furnace",
+        "text": "Break the furnace to search for leftover pills.",
+        "effects": {
+          "luck": -1,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "crafting",
+      "opportunity",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "ancient_array_trap",
+    "title": "Ancient Array Trap",
+    "description": "Heavenly Dao fluctuations have revealed the entrance to an Ancient Cave Dwelling, but it is protected by a deadly and complex killing array.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_break_array",
+        "text": "Use sheer martial power to break the array!",
+        "effects": {
+          "health": -25,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "decipher_array",
+        "text": "Sit down and use your comprehension to decipher the array.",
+        "effects": {
+          "comprehension": 3,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "danger",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "demonic_altar_discovery",
+    "title": "Demonic Altar Discovery",
+    "description": "Deep in the misty mountains, you stumble upon a hidden Demonic Altar. Fresh blood covers the runes, and a dark artifact throbs with forbidden power.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "take_artifact",
+        "text": "Endure the corrupted energy and take the artifact.",
+        "effects": {
+          "health": -15,
+          "karma": -15,
+          "daoMind": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "destroy_altar",
+        "text": "Purify the altar with your cultivation base.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "cultivation": 5,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "millennial_ginseng_guardian",
+    "title": "Guardian of the Millennial Ginseng",
+    "description": "Deep in the Beast Mountain Range, you discover a patch of rare spirit herbs, including a Millennial Ginseng. However, a fierce demonic wolf is aggressively guarding the area.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_wolf_for_ginseng",
+        "text": "Engage the demonic wolf in a bloody battle for the herbs.",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 4
+          }
+        }
+      },
+      {
+        "id": "sneak_and_steal_herbs",
+        "text": "Hold your breath and try to steal a few herbs without alerting it.",
+        "effects": {
+          "health": -10,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "beast",
+      "resource_gathering",
+      "combat"
+    ]
+  },
+  {
+    "id": "ancient_dao_stele",
+    "title": "Ancient Dao Stele",
+    "description": "Triggered by intense Heavenly Dao fluctuations, a massive stone stele rises from the earth, radiating ancient Dao runes that resonate with your soul.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_stele",
+        "text": "Sit beneath the stele and meditate on the runes.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 5,
+          "cultivation": 10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "pry_fragment",
+        "text": "Pry a fragment off the stele to sell.",
+        "effects": {
+          "karma": -5,
+          "luck": -2,
+          "money": 150
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "beast_king_lair",
+    "title": "Beast King's Lair",
+    "description": "With beast activity at a peak, you stumble upon the empty lair of a Beast King while it's out leading the beast tide. Treasures are scattered everywhere.",
+    "minAge": 25,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "loot_lair_quickly",
+        "text": "Loot as much as you can and run before it returns!",
+        "effects": {
+          "health": -5,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          },
+          "money": 150
+        }
+      },
+      {
+        "id": "trap_beast_king",
+        "text": "Set up a killing array to ambush the weakened Beast King.",
+        "effects": {
+          "health": -30,
+          "cultivation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "high_risk_reward",
+      "danger"
+    ]
+  },
+  {
+    "id": "miasma_mountain_trail",
+    "title": "Miasma on the Mountain Trail",
+    "description": "Rising demonic energy has created a thick, toxic miasma on the mountain trail. You hear the distorted growls of mutated beasts within the fog.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "push_through_miasma",
+        "text": "Hold your breath and push through to find rare herbs.",
+        "effects": {
+          "health": -15,
+          "cultivation": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "wait_for_clearance",
+        "text": "Wait for the miasma to clear, losing precious time.",
+        "effects": {
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "danger",
+      "demonic",
+      "beast"
+    ]
+  },
+  {
+    "id": "spiritual_spring_epiphany",
+    "title": "Spiritual Spring Epiphany",
+    "description": "High spiritual Qi in the area has manifested a hidden spiritual spring. The water is pure and radiates profound Dao energy.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "bathe_in_spring",
+        "text": "Bathe in the spring to cleanse your meridians.",
+        "effects": {
+          "health": 10,
+          "cultivation": 5,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "collect_spring_water",
+        "text": "Collect the water into jade flasks to sell or use later.",
+        "effects": {
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "opportunity",
+      "rare"
+    ]
+  },
+  {
+    "id": "ghost_battlefield_scavenging",
+    "title": "Ghost Battlefield Scavenging",
+    "description": "The mountain is littered with remains from the ongoing sect war. Ghostly wails echo as you search the area for abandoned spiritual tools and weapons.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "search_remains",
+        "text": "Deeply search the battlefield despite the spectral danger.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          },
+          "money": 120
+        }
+      },
+      {
+        "id": "purify_battlefield",
+        "text": "Use your cultivation to purify the souls of the fallen.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 20,
+          "daoMind": 10
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "ancient_battlefield_vision",
+    "title": "Ancient Battlefield Vision",
+    "description": "High Heavenly Dao fluctuations trigger a temporal rift. You see a vision of an ancient battle between Immortals and Demons, revealing profound combat techniques.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "study_vision",
+        "text": "Immerse yourself in the vision to learn the ancient ways.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "resist_vision",
+        "text": "Close your eyes to protect your mind from the brutal killing intent.",
+        "effects": {
+          "daoMind": 10,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "lore"
+    ]
+  },
+  {
+    "id": "spirit_beast_egg_discovery",
+    "title": "Spirit Beast Egg Discovery",
+    "description": "Mountain resources are abundant. You find a glowing Spirit Beast egg hidden in a crevice, but the parent beast is nearby, hunting for food.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "steal_egg",
+        "text": "Quietly steal the egg and escape.",
+        "effects": {
+          "luck": 5,
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leave_beast_alone",
+        "text": "Leave the egg undisturbed to respect the laws of nature.",
+        "effects": {
+          "karma": 10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "resource_gathering",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "night_of_the_blood_moon",
+    "title": "Night of the Blood Moon",
+    "description": "The sky turns a sickly crimson. Extreme demonic energy has driven the mountain beasts into a murderous frenzy, and the veil between worlds is thinning,.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "absorb_blood_essence",
+        "text": "Sit in the center of the slaughter and absorb the chaotic blood essence to surge your cultivation,.",
+        "effects": {
+          "cultivation": 25,
+          "health": -30,
+          "daoMind": -15,
+          "karma": -10
+        }
+      },
+      {
+        "id": "slay_frenzied_beasts",
+        "text": "Slay the frenzied beasts to harvest their mutated cores for crafting,.",
+        "effects": {
+          "health": -20,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "beast"
+    ]
+  },
+  {
+    "id": "beast_mountain_landslide",
+    "title": "Beast Mountain Landslide",
+    "description": "High danger levels in the mountains have caused a massive landslide. Ancient ores are now exposed, but the area is unstable and crawling with agitated beasts.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "mine_rare_ores",
+        "text": "Risk the falling rocks to mine the exposed ores.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "hunt_agitated_beasts",
+        "text": "Hunt the beasts confused by the landslide for their cores.",
+        "effects": {
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "beast_tide_vanguard",
+    "title": "Beast Tide Vanguard",
+    "description": "Beast activity has exploded! A massive tide of monsters is rushing down the mountain. You are caught directly in the path of the beast vanguard.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "hold_the_line",
+        "text": "Stand your ground and slay the beasts to protect the valley.",
+        "effects": {
+          "health": -30,
+          "cultivation": 10,
+          "reputation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "retreat_and_scavenge",
+        "text": "Retreat to the rear and scavenge remains of fallen beasts.",
+        "effects": {
+          "health": -5,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "combat",
+      "war"
+    ]
+  },
+  {
+    "id": "herbalist_hidden_garden",
+    "title": "The Herbalist's Hidden Garden",
+    "description": "With high spiritual Qi in the mountains, a hidden array has failed, revealing a long-forgotten herb garden once owned by a legendary herbalist.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "harvest_rare_strains",
+        "text": "Harvest the most precious and rare spiritual strains.",
+        "effects": {
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 8
+          },
+          "luck": 3,
+          "health": -5
+        }
+      },
+      {
+        "id": "transplant_to_sect",
+        "text": "Carefully transplant seedlings back to your sect's garden.",
+        "effects": {
+          "reputation": 20,
+          "karma": 10,
+          "daoMind": 5,
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "resource_gathering",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "ancient_alchemy_relic",
+    "title": "Remnants of an Immortal Alchemist",
+    "description": "High mountain resources have revealed a hidden cave in the Ancient Ruins. Inside, a furnace still burns with a faint, divine flame.",
+    "minAge": 25,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "complete_the_pill",
+        "text": "Attempt to finish the ancient pill-making process.",
+        "effects": {
+          "comprehension": 5,
+          "luck": 5,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_ngung_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "salvage_the_furnace",
+        "text": "Deconstruct the furnace for rare smelting materials.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "alchemy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "ancient_beast_seal_weakening",
+    "title": "Weakening of the Ancient Seal",
+    "description": "High demonic energy and beast activity have weakened an ancient seal in the mountains. A terrifying aura from the era of the Ancient War is leaking out.",
+    "minAge": 30,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "reinforce_seal_with_qi",
+        "text": "Sacrifice your spiritual Qi to reinforce the seal.",
+        "effects": {
+          "cultivation": -15,
+          "karma": 30,
+          "daoMind": 15,
+          "luck": 5
+        }
+      },
+      {
+        "id": "enter_leaking_fissure",
+        "text": "Enter the fissure to scavenge for ancient artifacts.",
+        "effects": {
+          "health": -35,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          },
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "ancient_weapon_awakening",
+    "title": "Awakening of the Ancient Relic",
+    "description": "Deep within the Ancient Ruins, a rusted weapon begins to resonate with the high Dao fluctuations, radiating a faint but sharp sword intent.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "awaken_with_blood",
+        "text": "Offer your essence blood to re-awaken the weapon's spirit.",
+        "effects": {
+          "health": -15,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "study_the_intent",
+        "text": "Meditate on the sword intent to enhance your comprehension.",
+        "effects": {
+          "comprehension": 8,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "weapon",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corrupted_spirit_spring",
+    "title": "Corrupted Spirit Spring",
+    "description": "A spiritual spring in the mountains has been corrupted by the rising demonic energy. The water glows with a sickly purple light, but its energy is still incredibly potent.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "absorb_corrupted_qi",
+        "text": "Absorb the dark Qi to break through your limits.",
+        "effects": {
+          "cultivation": 15,
+          "health": -20,
+          "daoMind": -10,
+          "karma": -10
+        }
+      },
+      {
+        "id": "purify_the_spring",
+        "text": "Use your spiritual power to purify the water.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 20,
+          "daoMind": 10,
+          "luck": 5
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "hibernating_beast_king",
+    "title": "Hibernating Beast King",
+    "description": "While exploring, you find the lair of a hibernating Beast King. Rare 'Linh Thảo' and 'Linh Quặng' are piled around its massive, slumbering form.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steal_materials_carefully",
+        "text": "Carefully steal the materials without waking it.",
+        "effects": {
+          "health": -10,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          }
+        }
+      },
+      {
+        "id": "slay_the_sleeping_beast",
+        "text": "Take the opportunity to slay the beast for its core.",
+        "effects": {
+          "health": -40,
+          "cultivation": 20,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          },
+          "reputation": 15
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "high_risk_reward",
+      "danger"
+    ]
+  },
+  {
+    "id": "ancient_sword_intent_ruins",
+    "title": "Sword Intent of the Ancient Master",
+    "description": "At the Ancient Ruins, high Dao fluctuations have awakened the lingering sword intent of a long-dead master. The air itself feels sharp and lethal.",
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_on_intent",
+        "text": "Meditate directly within the sword intent to sharpen your mind.",
+        "effects": {
+          "comprehension": 12,
+          "health": -15,
+          "daoMind": 10,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "protect_yourself",
+        "text": "Use your spiritual Qi to protect your body and collect spirit ores.",
+        "effects": {
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          },
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "combat",
+      "comprehension"
+    ]
+  },
+  {
+    "id": "cursed_herb_patch",
+    "title": "Cursed Herb Patch",
+    "description": "Rising demonic energy has corrupted a patch of rare herbs. The spirit herbs are glowing with a dark, pulsating light, offering immense power at the cost of your soul's purity.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "harvest_dark_herbs",
+        "text": "Harvest the corrupted herbs and refine them into dark pills.",
+        "effects": {
+          "cultivation": 20,
+          "karma": -25,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "burn_the_patch",
+        "text": "Burn the corrupted patch to prevent the spread of demonic Qi.",
+        "effects": {
+          "karma": 15,
+          "daoMind": 10,
+          "reputation": 5,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "ancient_ruins_puzzle_box",
+    "title": "Ancient Ruins: The Puzzle Box",
+    "description": "While exploring the Ancient Ruins, you find a metallic box sealed with a complex array. High Dao fluctuations have weakened its lock.",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "solve_with_comprehension",
+        "text": "Use your deep comprehension to decipher the array.",
+        "effects": {
+          "comprehension": 5,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "break_with_force",
+        "text": "Shatter the box with sheer spiritual power.",
+        "effects": {
+          "health": -15,
+          "cultivation": 2,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 4
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "puzzle",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "blood_moon_beast_tide",
+    "title": "Blood Moon Beast Tide",
+    "description": "Beast activity has reached critical levels! Driven by the blood moon, a tide of monsters is rushing towards the mortal settlements.",
+    "minAge": 20,
+    "maxAge": 300,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "protect_the_village",
+        "text": "Join the defense to save the mortals.",
+        "effects": {
+          "health": -35,
+          "karma": 30,
+          "reputation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "hunt_mutated_leaders",
+        "text": "Focus on slaying the alpha beasts for their mutated cores.",
+        "effects": {
+          "health": -25,
+          "cultivation": 10,
+          "money": 150,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "ancient_furnace_residual_fire",
+    "title": "Residual Fire of the Ancient Furnace",
+    "description": "High spiritual Qi has re-ignited a fragment of divine fire in an abandoned alchemy furnace within the Ancient Ruins. The heat is melting the surrounding stone, revealing hidden ores.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "extract_huyen_thiet",
+        "text": "Risk the divine fire to extract 'Huyền Thiết' from the molten stone.",
+        "effects": {
+          "health": -20,
+          "luck": 3,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "absorb_residual_heat",
+        "text": "Meditate near the heat to temper your fire-element spiritual root.",
+        "effects": {
+          "cultivation": 8,
+          "comprehension": 5,
+          "health": -5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "alchemy",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_war_convoy_ambush",
+    "title": "Sect War: Convoy Ambush",
+    "description": "The war level is high. You are part of an escort for a sect resource convoy that has been ambushed by elite disciples of the Ten Thousand Immortals Sect.",
+    "minAge": 18,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_the_convoy",
+        "text": "Fight to the death to protect the sect's resources.",
+        "effects": {
+          "health": -35,
+          "reputation": 30,
+          "karma": 10,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_ngung_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "seize_and_flee",
+        "text": "Seize a portion of the resources and flee in the chaos.",
+        "effects": {
+          "money": 500,
+          "karma": -30,
+          "reputation": -50,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 10
+          }
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "ma_huyet_quang_mach",
+    "title": "Demonic Blood Ore Vein",
+    "description": "High demonic energy has seeped into a spirit ore vein in the mountains. The ores are pulsing with a dark, blood-red light, offering high power but risking severe corruption [cite: 54, 56].",
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "mine_corrupted_ore",
+        "text": "Mine the corrupted ore to craft demonic weapons.",
+        "effects": {
+          "health": -15,
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "purify_with_righteous_qi",
+        "text": "Use your spiritual base to purify a small portion of the vein.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 15,
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "mountain",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "lost_huyen_thiet_vein",
+    "title": "Lost Huyền Thiết Vein",
+    "description": "Abundant mountain resources have revealed a hidden cave containing a pure vein of 'Huyền Thiết'—the supreme material for crafting Earth-grade weapons [cite: 19, 54].",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intensive_mining",
+        "text": "Dedicate months to mining as much Huyền Thiết as possible.",
+        "effects": {
+          "health": -15,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "report_location_for_merit",
+        "text": "Report the vein to the sect in exchange for massive merit points.",
+        "effects": {
+          "reputation": 50,
+          "money": 150,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "resource_gathering",
+      "mountain",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thien_kieu_chan_chinh_thach_dau",
+    "title": "Tournament Finals",
+    "description": "Long Ngao Thien, the child of heaven, stands on the arena waiting for you. Spiritual energy violently swirls around him.",
+    "minAge": 18,
+    "maxAge": 25,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": "Go all out and prove who the real prodigy is!",
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "sectPrestige": 100,
+          "worldState": {
+            "sect": {
+              "reputation": 10
+            },
+            "global": {
+              "daoFluctuation": 5
+            }
+          },
+          "npcFavorability": {
+            "npc_thien_kieu_chan_chinh": 20
+          }
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": "Know when to retreat, surrender to save your life.",
+        "effects": {
+          "daoHeart": -5,
+          "health": 0
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_chan_chinh",
+      "tournament"
+    ]
+  },
+  {
+    "id": "corrupt_sect_deacon",
+    "title": "Corrupt Sect Deacon",
+    "description": "When you arrive at the Deacon Hall to receive your mandatory annual sect quest, the fat Deacon winks at you: 50 Spirit Stones for an easy herb-gathering task. Otherwise, you go to the deepest mining tunnels.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bribe_deacon",
+        "text": "Grit your teeth and bribe him with 50 Spirit Stones.",
+        "effects": {
+          "money": -50,
+          "health": 5,
+          "daoMind": -2
+        }
+      },
+      {
+        "id": "refuse_and_mine",
+        "text": "Better to break than bend, go to the mines!",
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "sect_chaos",
+      "npc_interaction"
+    ]
+  },
+  {
+    "id": "immortal_guidance",
+    "title": "Immortal's Guidance",
+    "description": "Heavenly Dao fluctuates wildly. An illusion of an ancient immortal appears in your mind, preaching the supreme Dao.",
+    "minAge": 10,
+    "maxAge": 300,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "listen_respectfully",
+        "text": "Listen respectfully, clearing all mundane thoughts.",
+        "effects": {
+          "comprehension": 5,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "beg_for_treasures",
+        "text": "Give in to greed and beg for treasures.",
+        "effects": {
+          "luck": -5,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "sect_rebellion",
+    "title": "Sect Rebellion",
+    "description": "The sect's stability has plummeted. A deacon is assassinated in broad daylight, and rogue disciples are burning the outer sect pavilions to loot resources.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_sect",
+        "text": "Draw your sword and defend the sect!",
+        "effects": {
+          "health": -15,
+          "karma": 10,
+          "daoMind": 5,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "loot_chaos",
+        "text": "Take advantage of the chaos to loot the storage.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "rebel"
+    ]
+  },
+  {
+    "id": "sect_conscription",
+    "title": "Sect Conscription",
+    "description": "Sect warfare has escalated drastically. Deacons are forcefully conscripting outer disciples to serve as cannon fodder at the frontline.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": "Draw your sword and fight bravely for the sect!",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "daoMind": 5,
+          "money": 80,
+          "karma": 5
+        }
+      },
+      {
+        "id": "bribe_to_hide",
+        "text": "Bribe the deacon heavily to stay in the rear.",
+        "effects": {
+          "money": -150,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ]
+  },
+  {
+    "id": "possessed_deacon",
+    "title": "Possessed Deacon",
+    "description": "Demonic infiltration is severe. Late at night, you accidentally spot a highly respected Sect Deacon practicing a forbidden blood art. He notices you.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "flee_and_report",
+        "text": "Flee desperately and report to the Sect Leader.",
+        "effects": {
+          "health": -18,
+          "daoMind": 5,
+          "money": 100,
+          "karma": 5
+        }
+      },
+      {
+        "id": "join_demonic_path",
+        "text": "Swear loyalty to him and embrace the Demonic path.",
+        "effects": {
+          "karma": -15,
+          "cultivation": 10,
+          "daoMind": -5,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "danger"
+    ]
+  },
+  {
+    "id": "event_ke_sinh_ton_phan_boi",
+    "title": "Cau Du's Betrayal",
+    "description": "Taking advantage of sect instability, Cau Du secretly leads a group of rebel disciples to raid your cave dwelling.",
+    "minAge": 30,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "kill_cau_du",
+        "text": "Cleanse the sect, show no mercy!",
+        "effects": {
+          "health": -10,
+          "karma": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "bribe_cau_du",
+        "text": "Bribe him heavily to leave you in peace.",
+        "effects": {
+          "money": -500,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "npc_ke_sinh_ton",
+      "danger"
+    ]
+  },
+  {
+    "id": "golden_core_trial",
+    "title": "Golden Core Trial",
+    "description": "You discover a hidden trial left by a Golden Core master, designed to test a cultivator's readiness to break through.",
+    "minAge": 40,
+    "maxAge": 90,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_trial",
+        "text": "Enter the trial and risk everything for a breakthrough.",
+        "effects": {
+          "cultivation": 4,
+          "health": -4,
+          "comprehension": 2,
+          "gainItem": {
+            "itemId": "item_luan_hoi_thach",
+            "quantity": 1
+          },
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defer_trial",
+        "text": "Wait and prepare yourself better.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "high_risk_reward",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "spirit_mine_collapse",
+    "title": "Spirit Mine Collapse",
+    "description": "Due to sect instability and poor maintenance, the outer sect spirit mine suddenly starts collapsing around you. Priceless ores are revealed in the rubble.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "risk_digging",
+        "text": "Risk your life to dig out the precious ores.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "flee_mine",
+        "text": "Flee the mine immediately to survive.",
+        "effects": {
+          "luck": 1,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "berserk_spirit_beast",
+    "title": "Berserk Spirit Beast",
+    "description": "A usually docile spirit beast in the outer sect's pens has gone berserk due to a demonic aura, breaking its chains and attacking disciples.",
+    "minAge": 15,
+    "maxAge": 80,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "subdue_gently",
+        "text": "Use your Dao Mind to calm and subdue it.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2,
+          "money": 30
+        }
+      },
+      {
+        "id": "kill_for_parts",
+        "text": "Kill it swiftly to harvest its valuable materials.",
+        "effects": {
+          "karma": -5,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "beast",
+      "combat"
+    ]
+  },
+  {
+    "id": "ten_thousand_immortals_war",
+    "title": "Ten Thousand Immortals War",
+    "description": "The Ten Thousand Immortals Sect has officially declared war on the Heavenly Dao Sect! The sect is in chaos, and all disciples are ordered to the frontlines.",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": "Follow the orders and fight fiercely on the frontline.",
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "daoMind": 5,
+          "money": 100
+        }
+      },
+      {
+        "id": "desert_sect",
+        "text": "Become a deserter and flee the sect.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect_chaos",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "sect_internal_strife",
+    "title": "Sect Internal Strife",
+    "description": "Factional infighting has reached its peak. A sect deacon was assassinated, and the sect is highly dangerous with a high risk of betrayal.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_faction",
+        "text": "Pick a strong faction and eliminate rivals.",
+        "effects": {
+          "health": -15,
+          "karma": -5,
+          "money": 120,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "hide_in_cave",
+        "text": "Seal your cave dwelling and avoid the conflict.",
+        "effects": {
+          "health": 5,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_outer_tournament",
+    "title": "Outer Sect Tournament",
+    "description": "The sect is stable and hosting its decennial Outer Sect Tournament. Disciples from all peaks gather to prove their martial prowess and win supreme pills.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "participate_tournament",
+        "text": "Enter the arena and fight for the championship!",
+        "effects": {
+          "health": -15,
+          "cultivation": 5,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "observe_tournament",
+        "text": "Sit on the mountain and watch the tigers fight.",
+        "effects": {
+          "comprehension": 3,
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "tournament",
+      "combat",
+      "sect"
+    ]
+  },
+  {
+    "id": "sect_resource_famine",
+    "title": "Sect Resource Famine",
+    "description": "The sect's resource reserves have plummeted to a critical low. Allowances are cut, and desperate outer disciples are fighting each other over meager scraps of spirit herbs.",
+    "minAge": 12,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_for_scraps",
+        "text": "Join the brawl to secure your cultivation resources.",
+        "effects": {
+          "health": -10,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "bribe_for_ration",
+        "text": "Secretly bribe the treasury deacon for your portion.",
+        "effects": {
+          "money": -50,
+          "luck": 1,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "spirit_beast_mutation",
+    "title": "Spirit Beast Mutation",
+    "description": "While tending to the sect's spirit beasts, one of them swallows a strange glowing insect and begins to mutate violently, radiating intense spiritual energy.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "help_assimilate",
+        "text": "Use your Dao Mind to help it assimilate the power.",
+        "effects": {
+          "daoMind": 2,
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_van_thu_huyet_lenh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "kill_mutant",
+        "text": "Kill it before it completely loses control.",
+        "effects": {
+          "karma": -2,
+          "money": 80,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "sect",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "outer_sect_herb_theft",
+    "title": "Herb Garden Theft",
+    "description": "Sect resources are dwindling. You catch a fellow outer disciple desperately stealing a spirit herb to save their dying mortal mother.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "look_away",
+        "text": "Look the other way and pretend you saw nothing.",
+        "effects": {
+          "karma": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "report_theft",
+        "text": "Arrest them and report to the deacon for a reward.",
+        "effects": {
+          "karma": -5,
+          "money": 50,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "corrupt_promotion_offer",
+    "title": "Corrupt Promotion Offer",
+    "description": "A greedy Inner Sect Elder approaches you in secret. He offers to bend the rules and promote you to the Inner Sect early, but for a steep price.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_bribe",
+        "text": "Pay the massive bribe for early promotion.",
+        "effects": {
+          "money": -300,
+          "cultivation": 10,
+          "daoMind": -5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "refuse_bribe",
+        "text": "Refuse and rely firmly on your own strength.",
+        "effects": {
+          "daoMind": 10,
+          "karma": 5,
+          "comprehension": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_beast_feeding_frenzy",
+    "title": "Frenzied Spirit Beast",
+    "description": "While performing your mandatory sect quest to feed the outer sect's spirit beasts, one of them, corrupted by a sudden spike in demonic energy, breaks its cage and lunges at you.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "calm_the_beast",
+        "text": "Use your Dao Mind and cultivation to forcefully calm the beast.",
+        "effects": {
+          "health": -5,
+          "daoMind": 5,
+          "karma": 2,
+          "money": 20
+        }
+      },
+      {
+        "id": "slay_the_beast",
+        "text": "Draw your weapon and slay it before it hurts others.",
+        "effects": {
+          "health": -15,
+          "karma": -2,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "beast",
+      "danger"
+    ]
+  },
+  {
+    "id": "strict_deacon_inspection",
+    "title": "Strict Deacon Inspection",
+    "description": "The sect is tightening its rules. A strict deacon stops you to inspect your annual sect contributions. He glares at you, demanding either proof of hard work or a hefty 'fine'.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_deacon_fine",
+        "text": "Bite your tongue and pay the hefty fine in Spirit Stones.",
+        "effects": {
+          "money": -100,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "accept_physical_punishment",
+        "text": "Refuse to pay and accept the physical punishment.",
+        "effects": {
+          "health": -15,
+          "cultivation": -2,
+          "daoMind": 5,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "danger"
+    ]
+  },
+  {
+    "id": "traitorous_deacon",
+    "title": "Traitorous Deacon",
+    "description": "Sect stability is crumbling. You catch a senior deacon sneaking out with the sect's core technique manual, planning to defect to a rival sect.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": "Intercept him to protect the sect's legacy!",
+        "effects": {
+          "health": -25,
+          "karma": 5,
+          "money": 200,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "extort_traitor",
+        "text": "Extort him for hush money to let him pass.",
+        "effects": {
+          "money": 300,
+          "karma": -10,
+          "daoMind": -5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_debt_collector",
+    "title": "Sect Debt Collector",
+    "description": "Sect resources are depleted. A debt-collecting deacon is making rounds, forcefully demanding 'voluntary contributions' from outer disciples to fill the treasury.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_contribution",
+        "text": "Pay the contribution to avoid trouble.",
+        "effects": {
+          "money": -80,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "refuse_and_hide",
+        "text": "Refuse and hide your valuables.",
+        "effects": {
+          "health": -10,
+          "daoMind": 5,
+          "karma": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "money"
+    ]
+  },
+  {
+    "id": "elder_funeral_conspiracy",
+    "title": "Sect Elder's Funeral",
+    "description": "An inner sect elder has passed away, and the sect's stability is shaken. Rumors of a hidden legacy left to an outer disciple are spreading like wildfire.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "investigate_legacy",
+        "text": "Sneak into the elder's forbidden peak to investigate.",
+        "effects": {
+          "health": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "attend_honorably",
+        "text": "Attend the funeral honorably to show your loyalty.",
+        "effects": {
+          "daoMind": 5,
+          "karma": 5,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "lore",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "captured_sect_rebel",
+    "title": "Captured Sect Rebel",
+    "description": "Internal strife is high. You've cornered a fellow disciple who was caught stealing core scriptures. They beg you to let them go, claiming they only wanted to save their family.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "execute_rebel",
+        "text": "Execute the traitor to uphold sect law.",
+        "effects": {
+          "karma": -5,
+          "reputation": 10,
+          "money": 50,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "release_for_bribe",
+        "text": "Accept a hidden treasure in exchange for their freedom.",
+        "effects": {
+          "money": 100,
+          "karma": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "sect_manual_preservation",
+    "title": "Sect Manual Preservation",
+    "description": "The Library Pavilion has caught fire during a riot. Rare manual fragments are scattered in the smoke and flames. You can only save a few.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "save_high_grade",
+        "text": "Risk the flames to save an Earth-grade fragment.",
+        "effects": {
+          "health": -12,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "save_many_basic",
+        "text": "Save as many basic manuals as possible for the sect's future.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "sect_resource_leak",
+    "title": "Sect Resource Leak",
+    "description": "The sect's resources are at a critical low, and management is in shambles. You discover a hidden hole in the resource warehouse where spirit stones and low-grade pills are leaking out.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pocket_the_leak",
+        "text": "Quietly pocket the leaking resources for yourself.",
+        "effects": {
+          "money": 100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "report_the_leak",
+        "text": "Report the leak to the elders to show your loyalty.",
+        "effects": {
+          "reputation": 10,
+          "karma": 5,
+          "money": 30
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "resource_gathering",
+      "crime"
+    ]
+  },
+  {
+    "id": "alchemy_hall_explosion",
+    "title": "Alchemy Hall Explosion",
+    "description": "While passing the Alchemy Hall, a massive explosion rocks the building. Smoke fills the air, and scorched remains of rare spirit herbs are scattered everywhere.",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "scavenge_smoke",
+        "text": "Rush into the smoke to scavenge usable herb remains.",
+        "effects": {
+          "health": -10,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 4
+          }
+        }
+      },
+      {
+        "id": "help_extinguish",
+        "text": "Use your spiritual Qi to help extinguish the fires.",
+        "effects": {
+          "cultivation": -2,
+          "reputation": 8,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "alchemy",
+      "danger",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "sect_treasury_betrayal",
+    "title": "Sect Treasury Betrayal",
+    "description": "Internal stability has collapsed. You find a group of high-ranking disciples and an elder attempting to empty the treasury before defecting to a rival sect,.",
+    "minAge": 40,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "extort_the_betrayers",
+        "text": "Threaten to sound the alarm unless they share the stolen artifacts with you,.",
+        "effects": {
+          "money": 500,
+          "karma": -15,
+          "daoMind": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_legacy",
+        "text": "Draw your sword to protect the sect's last legacy, even if it means fighting your brothers,.",
+        "effects": {
+          "health": -40,
+          "cultivation": 10,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_meridian_cleansing_pool",
+    "title": "Meridian Cleansing Pool",
+    "description": "The spiritual Qi in the sect is exceptionally dense. The legendary cleansing pool has opened its doors to outer disciples for a limited time.",
+    "minAge": 10,
+    "maxAge": 100,
+    "weight": 1,
+    "choices": [
+      {
+        "id": "deep_soak",
+        "text": "Soak deeply to cleanse your internal impurities.",
+        "effects": {
+          "cultivation": 8,
+          "health": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "gather_pool_essence",
+        "text": "Quickly gather the pool's essence into a jade vial.",
+        "effects": {
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "sect",
+      "rare"
+    ]
+  },
+  {
+    "id": "forced_labor_duty",
+    "title": "Forced Labor Duty",
+    "description": "The sect's stability is low, and the elders are demanding more from outer disciples. You have been assigned to the most dangerous section of the spirit mines as a 'mandatory contribution'.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "accept_labor",
+        "text": "Accept the labor and work through the exhaustion.",
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "money": 30,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "bribe_supervisor",
+        "text": "Bribe the mine supervisor to give you a lighter task.",
+        "effects": {
+          "money": -100,
+          "daoMind": -5,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "danger",
+      "punishment"
+    ]
+  },
+  {
+    "id": "hidden_jade_chamber",
+    "title": "The Hidden Jade Chamber",
+    "description": "The sect is stable and prosperous. The Sect Leader decides to open the 'Hidden Jade Chamber' for the most promising disciples, offering access to restricted knowledge.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "study_forbidden_scroll",
+        "text": "Study a forbidden Earth-grade scroll.",
+        "effects": {
+          "cultivation": 12,
+          "comprehension": 5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "claim_spiritual_bounty",
+        "text": "Claim a bounty of spirit stones instead of studying.",
+        "effects": {
+          "money": 250,
+          "reputation": -5,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "great_sect_war_frontline",
+    "title": "Frontline of the Great War",
+    "description": "Sect war has reached a fever pitch. You are drafted to the frontline to defend the Spirit Mine against the Ten Thousand Immortals Sect's elite vanguard.",
+    "minAge": 18,
+    "maxAge": 250,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "brave_the_charge",
+        "text": "Lead a counter-charge to break their formations.",
+        "effects": {
+          "health": -30,
+          "cultivation": 15,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "desert_battlefield",
+        "text": "Desert the battlefield and hide in the mortal world.",
+        "effects": {
+          "karma": -20,
+          "luck": 5,
+          "daoMind": -15,
+          "reputation": -50,
+          "sect.stability": -2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "deacon_infiltration_scandal",
+    "title": "Demonic Mole Revealed",
+    "description": "High demonic infiltration has compromised a Senior Deacon. You catch them transmitting sect secrets via a blood-red transmission jade.",
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "expose_the_traitor",
+        "text": "Publicly expose the traitor to the Law Enforcement Hall.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 100,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "blackmail_the_traitor",
+        "text": "Blackmail them for demonic resources to keep silent.",
+        "effects": {
+          "money": 300,
+          "karma": -25,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "crime"
+    ]
+  },
+  {
+    "id": "sect_coup_attempt",
+    "title": "Outer Sect Coup Attempt",
+    "description": "Sect stability has reached a critical low. A group of radical disciples, fueled by the resource famine, is attempting to overthrow the treasury deacons.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "suppress_rebels_for_loyalty",
+        "text": "Stand with the deacons and suppress the rebellion.",
+        "effects": {
+          "health": -20,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "join_the_overthrow",
+        "text": "Join the rebels to claim your 'fair share' of the treasury.",
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "sect_war_raiding_party",
+    "title": "Sect War: Raiding Party",
+    "description": "Sect warfare has escalated. You are ordered to join a high-risk raiding party to sabotage the enemy sect's spirit herb garden.",
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "lead_the_sabotage",
+        "text": "Lead the charge into the enemy's formation.",
+        "effects": {
+          "health": -25,
+          "cultivation": 10,
+          "reputation": 25,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "bribe_to_stay_back",
+        "text": "Bribe the task official to assign you to the rear guards.",
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_merit_hoarding",
+    "title": "Sect Merit Hoarding",
+    "description": "The sect is flourishing with resources. A greedy deacon is secretly allowing disciples to 'buy' merit points with large sums of spirit stones.",
+    "minAge": 15,
+    "maxAge": 100,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_merit_points",
+        "text": "Spend your savings to boost your sect reputation.",
+        "effects": {
+          "money": -200,
+          "reputation": 20,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "report_the_deacon",
+        "text": "Report this corruption to the Law Enforcement Hall.",
+        "effects": {
+          "karma": 15,
+          "daoMind": 10,
+          "reputation": 5,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "market",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_manual_leak",
+    "title": "Sect Manual Leak",
+    "description": "Internal stability is low. A corrupted librarian is secretly selling fragments of the sect's high-grade manuals to the highest bidder.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_earth_fragment",
+        "text": "Pay a heavy price to acquire an Earth-grade manual fragment.",
+        "effects": {
+          "money": -400,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          },
+          "karma": -10
+        }
+      },
+      {
+        "id": "report_to_elders",
+        "text": "Report the librarian to increase your reputation.",
+        "effects": {
+          "reputation": 25,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "sect_heritage_trial",
+    "title": "Sect Heritage Trial",
+    "description": "With the sect's reputation at an all-time high, the Grand Elder opens the 'Heritage Path'—a trial designed to test a disciple's core comprehension and loyalty to the sect's founding Dao.",
+    "minAge": 20,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "walk_the_path",
+        "text": "Focus your mind and attempt to walk the path of the ancestors.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 10,
+          "reputation": 10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "memorize_runes",
+        "text": "Don't enter the path, but try to memorize the ancient runes from the side.",
+        "effects": {
+          "comprehension": 3,
+          "luck": 1,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "comprehension"
+    ]
+  },
+  {
+    "id": "spirit_root_resonance_test",
+    "title": "Spirit Root Resonance Test",
+    "description": "With global spiritual Qi peaking, the sect's resonance crystal has activated. It offers a rare chance to refine your Spirit Root's purity and enhance your cultivation multiplier.",
+    "minAge": 15,
+    "maxAge": 120,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "refine_spirit_root",
+        "text": "Focus your soul to refine your Spirit Root's efficiency.",
+        "effects": {
+          "cultivation": 5,
+          "comprehension": 3,
+          "health": -10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_raw_energy",
+        "text": "Directly absorb the crystal's raw energy for immediate cultivation.",
+        "effects": {
+          "cultivation": 15,
+          "health": -5,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_internal_betrayal",
+    "title": "Sect Internal Betrayal",
+    "description": "Sect stability is low and demonic infiltration is high. You catch a senior disciple attempting to poison the spirit well with demonic energy.",
+    "minAge": 25,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": "Engage the traitor in a deadly duel to protect the well.",
+        "effects": {
+          "health": -25,
+          "reputation": 20,
+          "karma": 15,
+          "daoMind": 10,
+          "money": 120
+        }
+      },
+      {
+        "id": "blackmail_traitor",
+        "text": "Promise silence in exchange for forbidden demonic pills.",
+        "effects": {
+          "karma": -40,
+          "daoMind": -15,
+          "luck": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "demonic",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_pill_warehouse_chaos",
+    "title": "Sect Pill Warehouse Breach",
+    "description": "Internal stability has collapsed! A riot has broken out, and the sect's pill warehouse is being looted by desperate disciples [cite: 52, 59].",
+    "minAge": 15,
+    "maxAge": 150,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_looting",
+        "text": "Rush in and seize whatever pills you can carry.",
+        "effects": {
+          "karma": -15,
+          "reputation": -30,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_gates",
+        "text": "Stand with the elders to defend the sect's remaining resources.",
+        "effects": {
+          "health": -25,
+          "reputation": 40,
+          "karma": 10,
+          "money": 150,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "sect_ancestor_statue_awakening",
+    "title": "Sect Ancestor's Statue Awakening",
+    "description": "Fueled by the sect's high reputation and spiritual Qi, the statue of the founding ancestor begins to radiate a golden light, offering guidance to the faithful [cite: 52, 57].",
+    "minAge": 15,
+    "maxAge": 200,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "receive_guidance",
+        "text": "Kneel and receive the ancestor's spiritual transmission.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "offer_sacrifices",
+        "text": "Offer rare spirit herbs to the statue to gain the sect's favor.",
+        "effects": {
+          "reputation": 30,
+          "luck": 5,
+          "karma": 10
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "demonic_possession_scandal",
+    "title": "Possession of the Deacon",
+    "description": "Extremely high demonic infiltration and energy have led to a catastrophe: a senior deacon has been possessed by a demonic entity and is wreaking havoc in the outer sect [cite: 59, 55].",
+    "minAge": 25,
+    "maxAge": 180,
+    "weight": 2,
+    "choices": [
+      {
+        "id": "exorcise_the_demon",
+        "text": "Risk your life to perform an exorcism and save the deacon.",
+        "effects": {
+          "health": -30,
+          "karma": 40,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "slay_the_possessed",
+        "text": "Slay the possessed deacon immediately to stop the spread.",
+        "effects": {
+          "health": -20,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          },
+          "karma": -10
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "sect_chaos"
+    ]
+  }
+]

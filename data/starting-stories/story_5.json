@@ -1,0 +1,29 @@
+{
+  "id": "story_5",
+  "title": {
+    "vi": "Lôi Đình Kiếm Vũ",
+    "en": "Dance of the Lightning Blade"
+  },
+  "description": {
+    "vi": "Chào đời là một {gender_term} tại Làng Tàn Kiếm dưới bóng sấm sét thường xuyên oanh tạc đỉnh Kiếm Sơn, cơ thể của bạn chứa đựng {spiritualRoot} vô cùng cuồng bạo. Năm lên 8 tuổi, trong một trận dông bão khủng khiếp oanh tạc bãi phế kiếm, bạn trèo lên đỉnh núi cao nhất chơi đùa, vô tình bị một luồng thiên lôi từ đỉnh trời giáng thẳng xuống thanh gỗ trên tay bạn. \n\nLôi điện cuồng bạo không giết chết bạn mà luồn sâu vào kinh mạch linh căn, gột rửa nhục thân và để lại những hoa văn lôi vân lấp lánh dọc xương tủy. Từ đó, bạn luyện tập múa kiếm dưới những trận dông sét, dùng lôi đình làm nóng khí huyết và rèn giũa ý chí phản xạ nhanh như chớp. \n\nVào năm {starting_age} tuổi, tuyển trạch trưởng lão của Kiếm Tông bắt gặp một thiếu nữ dùng lôi quang bao bọc phế kiếm, chém đứt đôi cả một khối đá cổ linh thạch. Nhận ra mầm non biến dị lôi hệ hiếm thấy trăm năm có một, ông lập tức nhận bạn và đưa về sơn môn. Bạn trở thành đệ tử ngoại môn của Kiếm Tông, chuẩn bị oanh tạc toàn bộ giới tu chân!",
+    "en": "Born as a {gender_term} in the Ruined Sword Village under the constant roar of lightning over Sword Peak, your body carried the violent {spiritualRoot}. At age 8, during a massive thunderstorm, you climbed the highest ridge and were struck by a bolt of lightning channeling through your wooden sword.\n\nThe lightning did not kill you; instead, it surged into your meridians, cleansing your physical body and leaving crackling lightning runes along your bones. Since then, you practiced your blade dance under stormy skies, using thunder to warm your blood and forge reflexes fast as lightning.\n\nAt age {starting_age}, the recruiting elder of the Sword Sect witnessed a young girl shrouding a broken blade with lightning, cleaving a spirit stone in half. Recognizing a legendary lightning-variant sword talent, he brought you to the sect. You entered the Sword Sect as an Outer Disciple!"
+  },
+  "choices": [
+    {
+      "id": "begin_journey",
+      "text": {
+        "vi": "Bắt đầu hành trình",
+        "en": "Begin Journey"
+      },
+      "effects": {
+        "cultivation": 3,
+        "daoHeart": 4,
+        "health": 2,
+        "gainFragment": {
+          "techniqueId": "liet_duong_hoa",
+          "amount": 1
+        }
+      }
+    }
+  ]
+}

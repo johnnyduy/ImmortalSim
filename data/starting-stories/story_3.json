@@ -1,0 +1,28 @@
+{
+  "id": "story_3",
+  "title": {
+    "vi": "Huyết Nguyệt Minh Thủy",
+    "en": "Blood Moon Over Crimson Waters"
+  },
+  "description": {
+    "vi": "Bạn lớn lên là một {gender_term} ở Làng Xích Huyết nghèo khó, nơi có dòng sông mang sắc đỏ huyền bí chảy qua thung lũng. Mang sẵn {spiritualRoot}, bạn sở hữu khả năng kỳ diệu để thấu cảm dòng nước. Tuy nhiên dưới sức ảnh hưởng kỳ bí của ánh trăng đỏ treo cao nơi làng quê, linh lực thủy hệ trong người bạn biến dị nhẹ, cộng hưởng sâu sắc cùng lực lượng khí huyết và sinh mệnh lực cuồn cuộn. \n\nMười năm ấu thơ trôi qua khi bạn ngồi bên dòng nước đỏ, cảm thụ huyết khí trôi lơ lửng, học cách lắng nghe nhịp tim của thiên nhiên và tích lũy thọ mệnh dồi dào nhờ điều hòa tuần hoàn máu. Đạo tâm cầu sinh của bạn lớn mạnh từng ngày khi chứng kiến các đợt thú triều huyết thú tấn công bảo vệ làng. \n\nVào năm {starting_age} tuổi, sứ giả của Huyết Tông phát hiện ra khả năng khống chế huyết thủy dị biệt độc nhất vô nhị của bạn. Nhận thấy thiên tài hiếm có của một huyết tu tương lai, họ mang bạn về huyết môn sơn cốc. Bạn trở thành đệ tử ngoại môn của Huyết Tông, mở ra cuộc đời tu chân chém giết cuồng bạo!",
+    "en": "You grew up as a {gender_term} in the impoverished Crimson Blood Village, where a mysterious red river flows through the valley. Endowed with the {spiritualRoot}, you possessed an innate ability to sense liquids. However, under the red moon of the village, your water spirit root mutated, gaining deep resonance with vital blood energy.\n\nYour first ten years were spent sitting by the crimson river, sensing the vital flows, learning to synchronize with the pulse of nature, and expanding your lifespan limits by refining your health. Your will to survive grew stronger watching bloody beasts raid the borders.\n\nAt age {starting_age}, scouts from the Blood Sect discovered your unique blood-water manipulation. Recognizing a future blood master, they brought you to the valley. You entered the Blood Sect as an Outer Disciple, starting your path of life and death!"
+  },
+  "choices": [
+    {
+      "id": "begin_journey",
+      "text": {
+        "vi": "Bắt đầu hành trình",
+        "en": "Begin Journey"
+      },
+      "effects": {
+        "health": 5,
+        "lifespan": 10,
+        "gainItem": {
+          "itemId": "item_tho_nguyen_dan",
+          "quantity": 1
+        }
+      }
+    }
+  ]
+}

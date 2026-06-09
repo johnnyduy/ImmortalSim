@@ -1,0 +1,623 @@
+[
+  {
+    "id": "event_thien_kieu_tra_xanh_gap_go",
+    "title": {
+      "en": "Encountering Moc Uyen Thanh",
+      "vi": "Gặp Gỡ Mộc Uyển Thanh"
+    },
+    "description": {
+      "en": "At the Ancient Cave, you see Moc Uyen Thanh surrounded by demonic beasts, looking weak and calling for help.",
+      "vi": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh đang bị yêu thú bao vây, dáng vẻ yếu đuối cầu cứu."
+    },
+    "minAge": 15,
+    "maxAge": 50,
+    "weight": 2,
+    "tags": [
+      "npc_thien_kieu_tra_xanh",
+      "rescue"
+    ],
+    "choices": [
+      {
+        "id": "rescue_tra_xanh",
+        "text": {
+          "en": "Lend a hand, cannot leave her to die.",
+          "vi": "Ra tay cứu giúp, không thể thấy chết không cứu."
+        },
+        "effects": {
+          "health": -5,
+          "karma": 5,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": 10
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 0
+          }
+        }
+      },
+      {
+        "id": "ignore_tra_xanh",
+        "text": {
+          "en": "Sense something is wrong and leave quietly.",
+          "vi": "Nhận ra sự bất thường, lẳng lặng rời đi."
+        },
+        "effects": {
+          "luck": 1,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": -20
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 10
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "save_demonic_cultivator",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "npc_hong_nhan_ma_dao",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Saving a Demonic Cultivator",
+      "vi": "Cứu Giúp Tà Tu"
+    },
+    "description": {
+      "en": "In the pouring rain, you find a woman in black robes collapsed by the road, covered in blood. Her aura is cold and reeks of demonic energy. Righteous cultivators are searching nearby.",
+      "vi": "Trời mưa tầm tã, bạn phát hiện một nữ tử mặc áo bào đen bê bết máu ngã gục bên đường. Khí tức của nàng ta lạnh lẽo và sặc mùi ma khí. Đám tu sĩ chính đạo đang lùng sục gần đó."
+    },
+    "minAge": 18,
+    "maxAge": 120,
+    "weight": 1,
+    "conditions": {
+      "demonicEnergy": "> 50"
+    },
+    "choices": [
+      {
+        "id": "save_demonic_girl",
+        "text": {
+          "en": "Use a Blood Recovery Pill to save her.",
+          "vi": "Dùng Hồi Huyết Đan cứu giúp nàng ta."
+        },
+        "effects": {
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "ma_cong_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "call_righteous",
+        "text": {
+          "en": "Call the righteous cultivators to capture her.",
+          "vi": "Hô hoán tu sĩ chính đạo đến vây bắt."
+        },
+        "effects": {
+          "money": 100
+        }
+      }
+    ]
+  },
+  {
+    "id": "abyssal_whispers",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "cultivation",
+      "dao_event"
+    ],
+    "title": {
+      "en": "Abyssal Whispers",
+      "vi": "Tiếng Gọi Từ Vực Thẳm"
+    },
+    "description": {
+      "en": "While cultivating in seclusion in a remote cave, you hear murmurs echoing from an underground spring, promising unmatched power and infinite lifespan if you abandon your Dao Mind.",
+      "vi": "Đang bế quan tĩnh tu tại một hang động hẻo lánh, bạn bỗng nghe thấy những tiếng nỉ non thì thầm vọng lên từ mạch nước ngầm, hứa hẹn ban cho bạn sức mạnh vô song và tuổi thọ vô tận nếu bạn chịu buông bỏ Đạo Tâm."
+    },
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 50"
+    },
+    "choices": [
+      {
+        "id": "resist_whisper",
+        "text": {
+          "en": "Keep your mind clear and reject the demonic voice.",
+          "vi": "Giữ vững linh đài, cự tuyệt ma âm."
+        },
+        "effects": {
+          "daoMind": 5,
+          "cultivation": 2,
+          "comprehension": 1
+        }
+      },
+      {
+        "id": "accept_whisper",
+        "text": {
+          "en": "Open your mind and embrace the evil power.",
+          "vi": "Mở rộng tâm trí, tiếp nhận sức mạnh tà ác."
+        },
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "black_roadhouse_inn",
+    "location": "any",
+    "tags": [
+      "trap",
+      "danger",
+      "demonic"
+    ],
+    "title": {
+      "en": "Black Roadhouse Inn",
+      "vi": "Hắc Điếm Ven Đường"
+    },
+    "description": {
+      "en": "In the dark wilderness, you stop at a dimly lit inn. The sly old innkeeper serves a bowl of braised meat that has a strange but incredibly appetizing spiritual aura.",
+      "vi": "Trời tối mịt giữa hoang dã, bạn tấp vào một khách điếm leo lét ánh đèn. Chưởng quỹ là một bà lão xảo quyệt mỉm cười bưng lên một bát thịt kho có mùi linh khí rất kỳ lạ nhưng vô cùng hấp dẫn."
+    },
+    "minAge": 18,
+    "maxAge": 100,
+    "weight": 2,
+    "conditions": {
+      "city.security": "< 50"
+    },
+    "choices": [
+      {
+        "id": "stay_awake",
+        "text": {
+          "en": "Carefully avoid eating and stay awake to defend yourself.",
+          "vi": "Cẩn thận không ăn, ban đêm thức trắng phòng thủ."
+        },
+        "effects": {
+          "health": -2,
+          "daoMind": 2,
+          "money": 50
+        }
+      },
+      {
+        "id": "eat_and_sleep",
+        "text": {
+          "en": "Feast on the meat and go to sleep.",
+          "vi": "Đánh chén no nê rồi đi ngủ."
+        },
+        "effects": {
+          "health": -15,
+          "luck": -2,
+          "money": -50
+        }
+      }
+    ]
+  },
+  {
+    "id": "blood_sacrifice_array",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "danger",
+      "karma_extreme"
+    ],
+    "title": {
+      "en": "Blood Sacrifice Array",
+      "vi": "Huyết Tế Trận Pháp"
+    },
+    "description": {
+      "en": "While patrolling, you discover a wicked array absorbing mortal blood to condense a Blood Pill.",
+      "vi": "Trong lúc đi tuần, bạn phát hiện một trận pháp tà ác đang hút máu của phàm nhân để ngưng tụ Huyết Đan."
+    },
+    "minAge": 30,
+    "maxAge": 200,
+    "weight": 1,
+    "conditions": {
+      "demonicEnergy": "> 70"
+    },
+    "choices": [
+      {
+        "id": "destroy_array",
+        "text": {
+          "en": "Risk your life to destroy the array.",
+          "vi": "Liều mạng phá hủy trận pháp."
+        },
+        "effects": {
+          "health": -15,
+          "daoMind": 5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": {
+          "en": "Wait for completion and steal the pill.",
+          "vi": "Đợi trận pháp hoàn tất rồi nẫng tay trên."
+        },
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "qi_deviation_crisis",
+    "location": "any",
+    "tags": [
+      "cultivation",
+      "danger",
+      "demonic"
+    ],
+    "title": {
+      "en": "Qi Deviation Crisis",
+      "vi": "Nguy Cơ Tẩu Hỏa"
+    },
+    "description": {
+      "en": "Rising demonic energy triggers your inner demons during meditation. The spiritual Qi in your meridians turns chaotic, threatening to explode.",
+      "vi": "Ma khí dâng cao kích phát tâm ma trong lúc bạn tĩnh tu. Linh khí trong kinh mạch trở nên bạo loạn, đe dọa nổ tung."
+    },
+    "minAge": 20,
+    "maxAge": 200,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 30"
+    },
+    "choices": [
+      {
+        "id": "force_breakthrough",
+        "text": {
+          "en": "Use the chaotic energy to forcefully increase cultivation!",
+          "vi": "Mượn cỗ lực lượng bạo loạn này để cưỡng ép tăng tu vi!"
+        },
+        "effects": {
+          "health": -20,
+          "cultivation": 10,
+          "daoMind": -5
+        }
+      },
+      {
+        "id": "suppress_qi",
+        "text": {
+          "en": "Bite your tongue and brutally suppress the energy.",
+          "vi": "Cắn chóp lưỡi, tàn nhẫn áp chế linh khí xao động."
+        },
+        "effects": {
+          "cultivation": -5,
+          "daoMind": 5,
+          "health": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_qi_overload",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ],
+    "title": {
+      "en": "Demonic Qi Overload",
+      "vi": "Ma Khí Quá Tải"
+    },
+    "description": {
+      "en": "The world's demonic energy is so dense it begins to seep into your meridians during regular rest, causing a violent struggle between your spiritual Qi and the dark aura.",
+      "vi": "Ma khí thiên địa quá dày đặc bắt đầu thấm vào kinh mạch của bạn ngay cả khi đang nghỉ ngơi, gây ra một cuộc xung đột dữ dội giữa linh khí và hắc ám khí tức."
+    },
+    "minAge": 20,
+    "maxAge": 250,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 75"
+    },
+    "choices": [
+      {
+        "id": "refine_demonic_qi",
+        "text": {
+          "en": "Attempt to refine the demonic Qi into your own power.",
+          "vi": "Cố gắng tinh luyện ma khí thành sức mạnh của bản thân."
+        },
+        "effects": {
+          "cultivation": 15,
+          "health": -20,
+          "daoMind": -10,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expel_darkness",
+        "text": {
+          "en": "Focus entirely on expelling the darkness from your body.",
+          "vi": "Tập trung toàn lực để trục xuất hắc khí khỏi cơ thể."
+        },
+        "effects": {
+          "health": -5,
+          "daoMind": 8,
+          "cultivation": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "shadow_demonic_ambush",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ],
+    "title": {
+      "en": "Shadow of the Demonic Path",
+      "vi": "Bóng Ma Ma Đạo"
+    },
+    "description": {
+      "en": "High demonic energy has emboldened dark cultivators. A skilled demonic assassin ambushes you from the shadows, seeking to steal your cultivation base.",
+      "vi": "Ma khí dâng cao khiến các tà tu bạo dạn hơn. Một sát thủ ma đạo lão luyện phục kích bạn từ bóng tối, âm mưu cướp đoạt tu vi của bạn."
+    },
+    "minAge": 25,
+    "maxAge": 180,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 55"
+    },
+    "choices": [
+      {
+        "id": "counter_ambush",
+        "text": {
+          "en": "React instantly and engage in a deadly duel.",
+          "vi": "Phản ứng tức thì và bước vào cuộc quyết chiến sinh tử."
+        },
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "use_escape_talisman",
+        "text": {
+          "en": "Use an escape talisman to flee, leaving your treasures behind.",
+          "vi": "Dùng độn phù để tẩu thoát, bỏ lại tài sản để giữ mạng."
+        },
+        "effects": {
+          "money": -200,
+          "luck": -2,
+          "daoMind": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "void_visions_meditation",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ],
+    "title": {
+      "en": "Visions of the Void",
+      "vi": "Ảo Ảnh Hư Không"
+    },
+    "description": {
+      "en": "Dense demonic energy surrounds you during meditation. Visions of a dark void begin to tempt your mind, promising power in exchange for your humanity.",
+      "vi": "Ma khí dày đặc bao vây bạn trong lúc bế quan. Những ảo ảnh về một hư không đen tối bắt đầu cám dỗ tâm trí, hứa hẹn sức mạnh để đổi lấy nhân tính."
+    },
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 65"
+    },
+    "choices": [
+      {
+        "id": "embrace_the_darkness",
+        "text": {
+          "en": "Embrace the visions and harness the void energy.",
+          "vi": "Tiếp nhận ảo ảnh và khai thác năng lượng hư không."
+        },
+        "effects": {
+          "cultivation": 18,
+          "karma": -15,
+          "health": -10,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "recite_heart_sutra",
+        "text": {
+          "en": "Recite the Heart-Cleansing Sutra to purge the corruption.",
+          "vi": "Tụng trì Băng Tâm Quyết để thanh tẩy sự ô nhiễm."
+        },
+        "effects": {
+          "daoMind": 15,
+          "cultivation": -5,
+          "karma": 10,
+          "health": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_whisper_meditation",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "danger",
+      "dao_mind"
+    ],
+    "title": {
+      "en": "Whispers of the Demonic Seed",
+      "vi": "Tiếng Thì Thầm Của Ma Chủng"
+    },
+    "description": {
+      "en": "As demonic energy saturates the world, a dark voice begins to whisper in your mind during meditation, offering forbidden power to bypass your current bottleneck.",
+      "vi": "Khi ma khí thiên địa bão hòa, một giọng nói hắc ám bắt đầu thì thầm trong tâm trí bạn lúc tĩnh tu, hứa hẹn sức mạnh cấm kỵ để vượt qua bình cảnh hiện tại."
+    },
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 60"
+    },
+    "choices": [
+      {
+        "id": "listen_to_whispers",
+        "text": {
+          "en": "Listen to the whispers and embrace the dark shortcut.",
+          "vi": "Lắng nghe tiếng thì thầm và chấp nhận con đường tắt ma đạo."
+        },
+        "effects": {
+          "cultivation": 20,
+          "karma": -30,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "seal_the_mind",
+        "text": {
+          "en": "Seal your senses and protect your righteous Dao Heart.",
+          "vi": "Phong tỏa ngũ quan, kiên trì bảo vệ đạo tâm chính đạo."
+        },
+        "effects": {
+          "daoMind": 15,
+          "health": -10,
+          "karma": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonic_blood_sacrifice_interruption",
+    "location": "any",
+    "tags": [
+      "demonic",
+      "combat",
+      "karma_event"
+    ],
+    "title": {
+      "en": "Interrupting the Blood Sacrifice",
+      "vi": "Phá Hoại Huyết Tế"
+    },
+    "description": {
+      "en": "You stumble upon a hidden ritual where demonic cultivators are sacrificing mortals to fuel their dark energy. The atmosphere is heavy with the smell of iron and death.",
+      "vi": "Bạn vô tình bắt gặp một nghi lễ ẩn giấu: các tà tu đang dùng phàm nhân làm vật hiến tế để gia tăng ma khí [6, 8]. Không khí nồng nặc mùi máu và tử vong."
+    },
+    "minAge": 25,
+    "maxAge": 250,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 70"
+    },
+    "choices": [
+      {
+        "id": "save_mortals",
+        "text": {
+          "en": "Risk your life to slay the cultists and save the survivors.",
+          "vi": "Liều mạng tiêu diệt lũ tà tu và cứu những người sống sót."
+        },
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 20,
+          "reputation": 15
+        }
+      },
+      {
+        "id": "wait_and_scavenge",
+        "text": {
+          "en": "Wait for the ritual to end, then loot the abandoned demonic tools.",
+          "vi": "Đợi nghi lễ kết thúc, sau đó nhặt nhạnh các ma cụ bị bỏ lại."
+        },
+        "effects": {
+          "karma": -50,
+          "daoMind": -20,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          },
+          "money": 300
+        }
+      }
+    ]
+  },
+  {
+    "id": "heart_demon_resonance",
+    "location": "any",
+    "tags": [
+      "cultivation",
+      "danger",
+      "dao_mind"
+    ],
+    "title": {
+      "en": "Heart Demon Resonance",
+      "vi": "Tâm Ma Cộng Hưởng"
+    },
+    "description": {
+      "en": "The world's demonic energy is overflowing, triggering a resonance with the lingering 'Pill Toxins' and repressed desires in your soul, manifested as a Heart Demon [cite: 18, 56].",
+      "vi": "Ma khí thiên địa tràn trề, kích phát sự cộng hưởng với 'Đan Độc' tích tụ và những dục vọng kìm nén trong linh hồn bạn, hóa thành một đợt Tâm Ma bùng phát [cite: 18, 56]."
+    },
+    "minAge": 25,
+    "maxAge": 300,
+    "weight": 2,
+    "conditions": {
+      "demonicEnergy": "> 75"
+    },
+    "choices": [
+      {
+        "id": "conquer_heart_demon",
+        "text": {
+          "en": "Engage in a spiritual battle to conquer your inner darkness.",
+          "vi": "Bước vào cuộc chiến tâm linh để chinh phục bóng tối trong lòng."
+        },
+        "effects": {
+          "daoMind": 20,
+          "comprehension": 5,
+          "health": -20,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "surrender_to_darkness",
+        "text": {
+          "en": "Surrender to the whispers for a sudden surge in cultivation.",
+          "vi": "Đầu hàng trước những tiếng thì thầm để tăng vọt tu vi trong chớp mắt."
+        },
+        "effects": {
+          "cultivation": 40,
+          "daoMind": -30,
+          "karma": -50,
+          "health": -10
+        }
+      }
+    ]
+  }
+]

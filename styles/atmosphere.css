@@ -1,0 +1,238 @@
+/* Atmospheric Effects - Refined for Meditative Experience */
+
+/* Subtle fog drift - barely perceptible */
+@keyframes fog-drift {
+  0% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.12;
+  }
+  100% {
+    opacity: 0.08;
+  }
+}
+
+.atmosphere-fog {
+  background: radial-gradient(ellipse at 50% 50%, rgba(212, 206, 189, 0.08) 0%, transparent 70%),
+              radial-gradient(ellipse at 30% 30%, rgba(109, 105, 84, 0.04) 0%, transparent 60%);
+  animation: fog-drift 60s ease-in-out infinite;
+}
+
+/* Distant mountain mist - very subtle */
+@keyframes mist-float {
+  0% {
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.06;
+  }
+}
+
+.atmosphere-mist {
+  background: linear-gradient(to bottom, rgba(168, 159, 125, 0.06) 0%, transparent 40%);
+  animation: mist-float 40s ease-in-out infinite;
+}
+
+/* Cloud parallax - far layer (very subtle) */
+@keyframes clouds-far {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+.atmosphere-clouds-far {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgba(168,159,125,0.08);stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:rgba(168,159,125,0.04);stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='200' cy='50' r='120' fill='url(%23g)' opacity='0.3'/%3E%3Ccircle cx='600' cy='80' r='100' fill='url(%23g)' opacity='0.25'/%3E%3Ccircle cx='1000' cy='60' r='110' fill='url(%23g)' opacity='0.28'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 1200px 400px;
+  animation: clouds-far 180s linear infinite;
+}
+
+/* Cloud parallax - mid layer */
+@keyframes clouds-mid {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+.atmosphere-clouds-mid {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='500'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:rgba(168,159,125,0.12);stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:rgba(168,159,125,0.05);stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='300' cy='100' r='150' fill='url(%23g2)' opacity='0.25'/%3E%3Ccircle cx='800' cy='120' r='130' fill='url(%23g2)' opacity='0.22'/%3E%3Ccircle cx='1300' cy='90' r='140' fill='url(%23g2)' opacity='0.24'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 1400px 500px;
+  animation: clouds-mid 120s linear infinite;
+}
+
+/* Rain effect */
+@keyframes rain-fall {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 600px;
+  }
+}
+
+.atmosphere-rain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='600'%3E%3Cline x1='10' y1='0' x2='5' y2='100' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3Cline x1='30' y1='0' x2='25' y2='100' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3Cline x1='50' y1='0' x2='45' y2='100' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3Cline x1='70' y1='0' x2='65' y2='100' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3Cline x1='90' y1='0' x2='85' y2='100' stroke='rgba(255,255,255,0.3)' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 100px 600px;
+  animation: rain-fall 6s linear infinite;
+}
+
+/* Shimmer effect for death/reincarnation */
+@keyframes shimmer {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+.atmosphere-shimmer {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Mystical glow */
+@keyframes glow-pulse {
+  0% {
+    filter: brightness(1) blur(0);
+  }
+  50% {
+    filter: brightness(1.1) blur(1px);
+  }
+  100% {
+    filter: brightness(1) blur(0);
+  }
+}
+
+.atmosphere-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+
+/* Smooth transitions for mode changes */
+.atmosphere-village,
+.atmosphere-mountain,
+.atmosphere-sect,
+.atmosphere-meditation,
+.atmosphere-mystery,
+.atmosphere-death,
+.atmosphere-reincarnation,
+.atmosphere-forbidden {
+  transition: background 3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtle pulse for meditation */
+@keyframes meditation-pulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.05);
+  }
+}
+
+.atmosphere-meditation {
+  animation: meditation-pulse 8s ease-in-out infinite;
+}
+
+/* Death fade */
+@keyframes death-fade {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  100% {
+    opacity: 0.8;
+    filter: brightness(0.9);
+  }
+}
+
+.atmosphere-death {
+  animation: death-fade 3s ease-out forwards;
+}
+
+/* Reincarnation bloom */
+@keyframes reincarnation-bloom {
+  0% {
+    filter: brightness(1);
+    opacity: 0.8;
+  }
+  50% {
+    filter: brightness(1.2);
+    opacity: 1;
+  }
+  100% {
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+
+.atmosphere-reincarnation {
+  animation: reincarnation-bloom 3s ease-out forwards;
+}
+
+/* Responsive - reduce animations on low-power devices */
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere-fog,
+  .atmosphere-clouds-far,
+  .atmosphere-clouds-mid,
+  .atmosphere-rain,
+  .atmosphere-shimmer,
+  .atmosphere-glow,
+  .atmosphere-village,
+  .atmosphere-mountain,
+  .atmosphere-sect,
+  .atmosphere-meditation,
+  .atmosphere-mystery,
+  .atmosphere-death,
+  .atmosphere-reincarnation,
+  .atmosphere-forbidden {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .atmosphere-clouds-far {
+    animation: clouds-far 180s linear infinite;
+  }
+
+  .atmosphere-clouds-mid {
+    animation: clouds-mid 120s linear infinite;
+  }
+
+  .atmosphere-fog {
+    animation: fog-drift 60s ease-in-out infinite;
+  }
+}
+
+/* Safari compatibility */
+@supports (-webkit-appearance: none) {
+  .atmosphere-fog,
+  .atmosphere-clouds-far,
+  .atmosphere-clouds-mid,
+  .atmosphere-rain,
+  .atmosphere-shimmer,
+  .atmosphere-glow {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}

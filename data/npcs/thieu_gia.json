@@ -1,0 +1,15 @@
+{
+  "id": "npc_thieu_gia",
+  "name": "Vương Tư Thông",
+  "archetype": "Thiếu Gia Cậy Thế",
+  "spiritualRoot": "Kim Thủy Hỏa Tam Linh Căn",
+  "karma": -30,
+  "meta_memory_id": "grudge_vuong_thieu_gia",
+  "description": "Gia thế hiển hách, tiền bạc vô lượng. Thích dùng linh thạch đè người, thù dai nhớ lâu.",
+  "sect": "Gia Tộc",
+  "role": {
+    "vi": "Thiếu Chủ Gia Tộc",
+    "en": "Clan Young Master"
+  },
+  "avatar": "🤴"
+}

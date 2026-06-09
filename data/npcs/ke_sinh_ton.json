@@ -1,0 +1,15 @@
+{
+  "id": "npc_ke_sinh_ton",
+  "name": "Cẩu Dư",
+  "archetype": "Kẻ Sinh Tồn Tàn Nhẫn",
+  "spiritualRoot": "Tạp Linh Căn",
+  "karma": -10,
+  "meta_memory_id": "grudge_cau_du",
+  "description": "Thọ nguyên sắp cạn, sẵn sàng làm mọi thứ kể cả bán đứng đồng môn để lấy Trúc Cơ Đan.",
+  "sect": "Tán Tu",
+  "role": {
+    "vi": "Tán Tu Lang Thang",
+    "en": "Wandering Cultivator"
+  },
+  "avatar": "🥷"
+}

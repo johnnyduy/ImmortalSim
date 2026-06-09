@@ -1,0 +1,15 @@
+{
+  "id": "npc_thien_kieu_chan_chinh",
+  "name": "Long Ngạo Thiên",
+  "archetype": "Thiên Kiêu Chân Chính",
+  "spiritualRoot": "Thiên Linh Căn",
+  "karma": 50,
+  "meta_memory_id": "grudge_long_ngao_thien",
+  "description": "Con cưng thiên đạo, tu luyện như uống nước, cơ duyên ngập tràn. Thường là trùm cuối tại Đại Hội Tỷ Thí.",
+  "sect": "Kiếm Tông",
+  "role": {
+    "vi": "Chân Truyền Đệ Tử",
+    "en": "Core Disciple"
+  },
+  "avatar": "🦸‍♂️"
+}
