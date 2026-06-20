@@ -243,6 +243,36 @@ export default function TimeGearPanel({
         ))}
       </div>
 
+      {/* Tournament countdown badge */}
+      {(() => {
+        const monthsLeft = month < 12 ? 12 - month : 0;
+        const isThisMonth = month === 12;
+        const urgentGlow = monthsLeft <= 2;
+        return (
+          <div
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-bold font-serif tracking-wider relative z-10 transition-all duration-500"
+            style={{
+              borderColor: isThisMonth ? '#fbbf24' : urgentGlow ? '#f87171' : '#c5a059',
+              color: isThisMonth ? '#fbbf24' : urgentGlow ? '#f87171' : '#c5a059bb',
+              background: isThisMonth ? 'rgba(251,191,36,0.08)' : urgentGlow ? 'rgba(248,113,113,0.06)' : 'rgba(197,160,89,0.05)',
+              boxShadow: isThisMonth ? '0 0 12px rgba(251,191,36,0.35)' : urgentGlow ? '0 0 8px rgba(248,113,113,0.25)' : 'none',
+              animation: isThisMonth ? 'pulse 1.5s ease-in-out infinite' : undefined
+            }}
+          >
+            <span style={{ fontSize: '12px' }}>⚔️</span>
+            <span>
+              {language === 'vi'
+                ? isThisMonth
+                  ? 'ĐẠI BỈ ĐANG DIỄN RA!'
+                  : `ĐẠI BỈ: ${monthsLeft} tháng`
+                : isThisMonth
+                  ? 'TOURNAMENT NOW!'
+                  : `TOURNAMENT: ${monthsLeft}mo`}
+            </span>
+          </div>
+        );
+      })()}
+
       {/* Destiny Plate Title */}
       <div className="text-center space-y-1 relative z-10">
         <span className="text-[10px] uppercase tracking-[0.25em] text-[#847764] font-serif font-semibold">

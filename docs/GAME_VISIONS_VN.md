@@ -40,11 +40,12 @@ Chỉ số/Thuộc tính:
 - Tu vi (cultivation)
 
 Cảnh giới tu luyện:
-- Phàm nhân (Mortal)
-- Luyện Khí (Qi Refinement - chia làm 12 tầng, riêng tầng 12 gọi là Viên Mãn)
-- Trúc Cơ (Foundation Establishment - chia làm 4 giai đoạn: Sơ kỳ, Trung kỳ, Hậu kỳ, Viên Mãn)
-- Kim Đan (Golden Core - chia làm 4 giai đoạn: Sơ kỳ, Trung kỳ, Hậu kỳ, Viên Mãn)
-- Nguyên Anh (Nascent Soul - chia làm 4 giai đoạn: Sơ kỳ, Trung kỳ, Hậu kỳ, Viên Mãn)
+- Phàm nhân (Mortal - Tu vi từ 0 đến 9.99)
+- Luyện Khí (Qi Refinement - chia làm 9 tầng từ 1->9, với tầng 9 là Viên Mãn. Yêu cầu đột phá tiểu bình cảnh 3->4, 6->7 và đại bình cảnh 9->Trúc Cơ. Ngưỡng tu vi các tầng tăng theo cấp số nhân với hệ số x, mặc định 1.3)
+- Trúc Cơ (Foundation Establishment - chia làm 3 giai đoạn: Sơ kỳ, Trung kỳ, Hậu kỳ. Khi đột phá lên Trúc Cơ, tu vi reset về 0, giới hạn tu vi từ 0 đến 20)
+- Kim Đan (Golden Core - chia làm 4 giai đoạn: Sơ kỳ, Trung kỳ, Hậu kỳ, Viên Mãn. Đột phá lên Kim Đan reset tu vi về 0, giới hạn từ 0 đến 40)
+- Nguyên Anh (Nascent Soul - chia làm 4 giai đoạn: Sơ kỳ, Trung kỳ, Hậu kỳ, Viên Mãn. Đột phá lên Nguyên Anh reset tu vi về 0)
+- Hệ thống công pháp: Đột phá/nâng cấp công pháp tiêu tốn tu vi của nhân vật. Công pháp càng tốt hao tốn tu vi càng cao hơn tâm pháp thông thường y% (Ví dụ y = 10%).
 
 Cảm nhận của người chơi:
 - Mỗi cái chết đều có giá trị

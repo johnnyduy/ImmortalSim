@@ -9,8 +9,6 @@
       "en": "At the Ancient Cave, you see Moc Uyen Thanh surrounded by demonic beasts, looking weak and calling for help.",
       "vi": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh đang bị yêu thú bao vây, dáng vẻ yếu đuối cầu cứu."
     },
-    "minAge": 15,
-    "maxAge": 50,
     "weight": 2,
     "tags": [
       "npc_thien_kieu_tra_xanh",
@@ -50,7 +48,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "save_demonic_cultivator",
@@ -68,8 +67,6 @@
       "en": "In the pouring rain, you find a woman in black robes collapsed by the road, covered in blood. Her aura is cold and reeks of demonic energy. Righteous cultivators are searching nearby.",
       "vi": "Trời mưa tầm tã, bạn phát hiện một nữ tử mặc áo bào đen bê bết máu ngã gục bên đường. Khí tức của nàng ta lạnh lẽo và sặc mùi ma khí. Đám tu sĩ chính đạo đang lùng sục gần đó."
     },
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 1,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -99,7 +96,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "abyssal_whispers",
@@ -117,8 +115,6 @@
       "en": "While cultivating in seclusion in a remote cave, you hear murmurs echoing from an underground spring, promising unmatched power and infinite lifespan if you abandon your Dao Mind.",
       "vi": "Đang bế quan tĩnh tu tại một hang động hẻo lánh, bạn bỗng nghe thấy những tiếng nỉ non thì thầm vọng lên từ mạch nước ngầm, hứa hẹn ban cho bạn sức mạnh vô song và tuổi thọ vô tận nếu bạn chịu buông bỏ Đạo Tâm."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -152,7 +148,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "black_roadhouse_inn",
@@ -170,8 +167,6 @@
       "en": "In the dark wilderness, you stop at a dimly lit inn. The sly old innkeeper serves a bowl of braised meat that has a strange but incredibly appetizing spiritual aura.",
       "vi": "Trời tối mịt giữa hoang dã, bạn tấp vào một khách điếm leo lét ánh đèn. Chưởng quỹ là một bà lão xảo quyệt mỉm cười bưng lên một bát thịt kho có mùi linh khí rất kỳ lạ nhưng vô cùng hấp dẫn."
     },
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.security": "< 50"
@@ -201,7 +196,8 @@
           "money": -50
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "blood_sacrifice_array",
@@ -219,8 +215,6 @@
       "en": "While patrolling, you discover a wicked array absorbing mortal blood to condense a Blood Pill.",
       "vi": "Trong lúc đi tuần, bạn phát hiện một trận pháp tà ác đang hút máu của phàm nhân để ngưng tụ Huyết Đan."
     },
-    "minAge": 30,
-    "maxAge": 200,
     "weight": 1,
     "conditions": {
       "demonicEnergy": "> 70"
@@ -253,7 +247,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "qi_deviation_crisis",
@@ -271,8 +266,6 @@
       "en": "Rising demonic energy triggers your inner demons during meditation. The spiritual Qi in your meridians turns chaotic, threatening to explode.",
       "vi": "Ma khí dâng cao kích phát tâm ma trong lúc bạn tĩnh tu. Linh khí trong kinh mạch trở nên bạo loạn, đe dọa nổ tung."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 30"
@@ -302,7 +295,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_qi_overload",
@@ -320,8 +314,6 @@
       "en": "The world's demonic energy is so dense it begins to seep into your meridians during regular rest, causing a violent struggle between your spiritual Qi and the dark aura.",
       "vi": "Ma khí thiên địa quá dày đặc bắt đầu thấm vào kinh mạch của bạn ngay cả khi đang nghỉ ngơi, gây ra một cuộc xung đột dữ dội giữa linh khí và hắc ám khí tức."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 75"
@@ -352,7 +344,8 @@
           "cultivation": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "shadow_demonic_ambush",
@@ -370,8 +363,6 @@
       "en": "High demonic energy has emboldened dark cultivators. A skilled demonic assassin ambushes you from the shadows, seeking to steal your cultivation base.",
       "vi": "Ma khí dâng cao khiến các tà tu bạo dạn hơn. Một sát thủ ma đạo lão luyện phục kích bạn từ bóng tối, âm mưu cướp đoạt tu vi của bạn."
     },
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 55"
@@ -405,7 +396,8 @@
           "daoMind": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "void_visions_meditation",
@@ -423,8 +415,6 @@
       "en": "Dense demonic energy surrounds you during meditation. Visions of a dark void begin to tempt your mind, promising power in exchange for your humanity.",
       "vi": "Ma khí dày đặc bao vây bạn trong lúc bế quan. Những ảo ảnh về một hư không đen tối bắt đầu cám dỗ tâm trí, hứa hẹn sức mạnh để đổi lấy nhân tính."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 65"
@@ -460,7 +450,8 @@
           "health": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_whisper_meditation",
@@ -478,8 +469,6 @@
       "en": "As demonic energy saturates the world, a dark voice begins to whisper in your mind during meditation, offering forbidden power to bypass your current bottleneck.",
       "vi": "Khi ma khí thiên địa bão hòa, một giọng nói hắc ám bắt đầu thì thầm trong tâm trí bạn lúc tĩnh tu, hứa hẹn sức mạnh cấm kỵ để vượt qua bình cảnh hiện tại."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 60"
@@ -513,7 +502,8 @@
           "karma": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_blood_sacrifice_interruption",
@@ -531,8 +521,6 @@
       "en": "You stumble upon a hidden ritual where demonic cultivators are sacrificing mortals to fuel their dark energy. The atmosphere is heavy with the smell of iron and death.",
       "vi": "Bạn vô tình bắt gặp một nghi lễ ẩn giấu: các tà tu đang dùng phàm nhân làm vật hiến tế để gia tăng ma khí [6, 8]. Không khí nồng nặc mùi máu và tử vong."
     },
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 70"
@@ -567,7 +555,8 @@
           "money": 300
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heart_demon_resonance",
@@ -585,8 +574,6 @@
       "en": "The world's demonic energy is overflowing, triggering a resonance with the lingering 'Pill Toxins' and repressed desires in your soul, manifested as a Heart Demon [cite: 18, 56].",
       "vi": "Ma khí thiên địa tràn trề, kích phát sự cộng hưởng với 'Đan Độc' tích tụ và những dục vọng kìm nén trong linh hồn bạn, hóa thành một đợt Tâm Ma bùng phát [cite: 18, 56]."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 75"
@@ -618,6 +605,7 @@
           "health": -10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   }
 ]

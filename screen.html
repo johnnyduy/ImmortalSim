@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Thức Hải Tiểu Nhân – Ngộ Đạo Tâm Pháp</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;700&amp;family=Space+Grotesk:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4)); }
+            50% { filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.8)); }
+        }
+        @keyframes particle-drift {
+            from { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            to { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes combo-pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px #ffdb3c); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 20px #ffdb3c); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 5px #ffdb3c); }
+        }
+        @keyframes ripple-out {
+            from { transform: scale(0); opacity: 0.8; }
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        .floating-cultivator { animation: float 4s ease-in-out infinite; }
+        .spirit-aura { animation: pulse-glow 3s ease-in-out infinite; }
+        .spirit-particle { position: absolute; pointer-events: none; animation: particle-drift var(--d) linear infinite; }
+        .combo-aura { animation: combo-pulse 0.8s ease-in-out infinite; }
+        .shimmer-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        .glass-panel {
+            background: rgba(15, 16, 47, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        body {
+            overflow: hidden;
+            background: #0f102f;
+            height: 100vh;
+            width: 100vw;
+            touch-action: none;
+        }
+
+        .sea-of-consciousness {
+            background: radial-gradient(circle at center, #1b1c3c 0%, #090a2a 100%);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(0, 240, 255, 0.5);
+            pointer-events: none;
+            animation: ripple-out 0.6s ease-out forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#3a3000",
+                        "surface-container-high": "#262747",
+                        "outline-variant": "#3b494b",
+                        "on-tertiary-fixed-variant": "#910030",
+                        "on-secondary-fixed-variant": "#544600",
+                        "on-secondary-fixed": "#221b00",
+                        "outline": "#849495",
+                        "primary-container": "#00f0ff",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#002022",
+                        "secondary-container": "#ffdb3c",
+                        "secondary": "#fff9ef",
+                        "secondary-fixed-dim": "#e9c400",
+                        "tertiary-container": "#ffcdd1",
+                        "background": "#0f102f",
+                        "inverse-surface": "#e1e0ff",
+                        "surface-container-low": "#171838",
+                        "tertiary-fixed-dim": "#ffb2ba",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-container": "#1b1c3c",
+                        "surface-variant": "#313253",
+                        "secondary-fixed": "#ffe16d",
+                        "on-background": "#e1e0ff",
+                        "on-primary": "#00363a",
+                        "primary": "#dbfcff",
+                        "inverse-on-surface": "#2c2d4e",
+                        "on-tertiary-fixed": "#400010",
+                        "on-tertiary": "#67001f",
+                        "tertiary-fixed": "#ffd9dc",
+                        "tertiary": "#fff3f3",
+                        "primary-fixed": "#7df4ff",
+                        "on-error-container": "#ffdad6",
+                        "on-surface-variant": "#b9cacb",
+                        "on-primary-container": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface-dim": "#0f102f",
+                        "on-secondary-container": "#725f00",
+                        "on-surface": "#e1e0ff",
+                        "on-tertiary-container": "#be0041",
+                        "surface-tint": "#00dbe9",
+                        "surface": "#0f102f",
+                        "surface-container-highest": "#313253",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#006970",
+                        "surface-container-lowest": "#090a2a",
+                        "surface-bright": "#353658"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "32px",
+                        "touch-target": "48px",
+                        "md": "20px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "container-padding": "16px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Be Vietnam Pro"],
+                        "calligraphy-accent": ["Bricolage Grotesque"],
+                        "headline-sm": ["Bricolage Grotesque"],
+                        "headline-lg": ["Bricolage Grotesque"],
+                        "body-md": ["Be Vietnam Pro"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-md": ["Bricolage Grotesque"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "calligraphy-accent": ["24px", {"lineHeight": "30px", "fontWeight": "300"}],
+                        "headline-sm": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["28px", {"lineHeight": "34px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="dark font-body-md text-on-surface select-none">
+<!-- Sea of Consciousness Background -->
+<div class="sea-of-consciousness fixed inset-0 -z-10 overflow-hidden">
+<!-- Spirit Particles Container -->
+<div class="absolute inset-0" id="particle-container"></div>
+</div>
+<!-- Gameplay Overlay -->
+<main class="relative h-screen w-full max-w-[500px] mx-auto flex flex-col justify-between items-center py-sm pointer-events-none">
+<!-- Top UI: Linh Lực & Stats -->
+<section class="w-full px-container-padding flex flex-col gap-xs pt-touch-target pointer-events-auto">
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding h-touch-target bg-surface/40 backdrop-blur-xl border-b border-primary/10">
+<div class="flex items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden border border-primary/20 shadow-[0_0_10px_rgba(0,240,255,0.3)]">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQheS9K6vggPL61SMAFWzz82_CSgMeqKOY3Z22cw6iDPD-qliHsc8nzl6en3hXyGAfPPtu6lk6ZDVJuWtrmOAcE429oegRswNE5JfBIQW0zs-KoXPNqxyjIw8TCGrhn-BkX5BoVb2GYxzKUZe20Ff3N_lK57xqlE27pD_sAVjodFu70gGlgBw9tUHjBISQSLdiPtyopDdh-pg_teKmzBr_zygbDfA0V7fROf7Jsmzb-DBBmuP9-ZxodP1E0pW4LQavTn2S5iyOej1s"/>
+</div>
+<span class="font-headline-sm text-headline-sm font-extrabold text-primary shadow-[0_0_10px_rgba(0,240,255,0.5)]">Thức Hải</span>
+</div>
+<button class="w-touch-target h-touch-target flex items-center justify-center text-primary hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Progress Bar -->
+<div class="mt-touch-target flex flex-col gap-base">
+<div class="flex justify-between items-end">
+<span class="font-label-caps text-label-caps text-primary tracking-widest">LINH LỰC</span>
+<span class="font-label-caps text-label-caps text-secondary-fixed">TẦNG 15/100</span>
+</div>
+<div class="h-3 w-full bg-surface-container rounded-full overflow-hidden border border-white/5 p-[1px]">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container rounded-full shadow-[0_0_10px_rgba(0,240,255,0.5)] transition-all duration-500 shimmer-effect" style="width: 65%;"></div>
+</div>
+</div>
+</section>
+<!-- Central Character & Gameplay Area -->
+<section class="relative flex-1 w-full flex items-center justify-center overflow-visible" id="interaction-layer">
+<!-- Combo Counter -->
+<div class="absolute top-10 flex flex-col items-center z-20 pointer-events-none">
+<div class="combo-aura font-headline-lg text-headline-lg text-secondary-container drop-shadow-lg scale-125">
+                    Combo x15
+                </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/80 uppercase tracking-tighter">Tuyệt Thế Kiêu Hùng</span>
+</div>
+<!-- Chibi Cultivator -->
+<div class="relative w-64 h-64 floating-cultivator flex items-center justify-center">
+<!-- Aura rings -->
+<div class="absolute inset-0 rounded-full border border-primary/20 animate-[ping_3s_linear_infinite] opacity-30"></div>
+<div class="absolute inset-8 rounded-full border border-secondary/10 animate-[pulse_2s_ease-in-out_infinite]"></div>
+<div class="spirit-aura rounded-full">
+<img alt="Chibi Cultivator" class="w-48 h-48 object-contain z-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIQ-00j54rueU2ftxwp57C5BegSCfWEt3ffLfENHRnmLVAUNU02NAnnWp8HtTrNGTY5qn1uI1CSuQBa55qaZ-K6p-pHeY0dE78yN-Q4XPL4JlRgO00r1l0Zu7bRkl0gFbxn4s_mwtcuBlGN9dUndLpFwGUCAtd007L-fc7rf3P3vnidqnQKIZM0F4hayUMtHulnoE0fCbJBnHMrOvTCezyYKXy9I0ySEtiTV1felZ7vXvBWesAh2c0mXHlQg6eC3uvu0Ij1Zx1ahn6"/>
+</div>
+</div>
+<!-- Dynamic Entities Container -->
+<div class="absolute inset-0 overflow-hidden pointer-events-auto" id="gameplay-entities"></div>
+</section>
+<!-- Bottom Controls -->
+<footer class="w-full px-container-padding pb-lg flex flex-col items-center gap-md pointer-events-auto">
+<div class="flex gap-sm w-full">
+<button class="flex-1 bg-primary/10 border border-primary/30 backdrop-blur-md text-primary font-headline-sm py-sm rounded-xl active:scale-95 transition-transform flex items-center justify-center gap-xs shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+<span class="material-symbols-outlined">auto_awesome</span>
+                    Đột Phá
+                </button>
+<button class="w-16 h-16 glass-panel rounded-xl flex items-center justify-center text-on-tertiary-container border-error/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">healing</span>
+</button>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant/50 animate-pulse text-center">
+                CHẠM ĐỂ THU THẬP LINH TỰ • TRƯỢT ĐỂ XUA TAN TÂM MA
+            </p>
+</footer>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-container-padding pb-safe pt-base bg-surface/60 backdrop-blur-2xl border-t border-primary/20 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl p-xs shadow-[0_0_10px_rgba(0,240,255,0.2)]" href="#">
+<span class="material-symbols-outlined">self_improvement</span>
+<span class="font-label-caps text-[10px]">Tu Luyện</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 p-xs" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-caps text-[10px]">Linh Bảo</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 p-xs" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-caps text-[10px]">Xếp Hạng</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/70 p-xs" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[10px]">Cá Nhân</span>
+</a>
+</nav>
+<script>
+        // Background Particles
+        const particleContainer = document.getElementById('particle-container');
+        function createParticles() {
+            for(let i=0; i<40; i++) {
+                const p = document.createElement('div');
+                p.className = 'spirit-particle w-1 h-1 bg-primary-container rounded-full shadow-[0_0_5px_#00f0ff]';
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.top = (Math.random() * 100 + 100) + 'vh';
+                p.style.setProperty('--d', (Math.random() * 10 + 5) + 's');
+                p.style.opacity = Math.random();
+                particleContainer.appendChild(p);
+            }
+        }
+        createParticles();
+
+        // Gameplay Interaction: Ripple Effect
+        document.body.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            createRipple(touch.clientX, touch.clientY);
+        });
+
+        function createRipple(x, y) {
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            const size = 30;
+            ripple.style.width = size + 'px';
+            ripple.style.height = size + 'px';
+            ripple.style.left = (x - size/2) + 'px';
+            ripple.style.top = (y - size/2) + 'px';
+            document.body.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        // Gameplay Entities (Linh Tự & Tâm Ma)
+        const entitiesContainer = document.getElementById('gameplay-entities');
+        const spiritualWords = ['悟', '道', '法', '玄', '灵'];
+
+        function spawnEntity() {
+            const isSpiritual = Math.random() > 0.4;
+            const entity = document.createElement('div');
+            
+            // Random spawn side
+            const side = Math.floor(Math.random() * 4);
+            let startX, startY;
+            if(side === 0) { startX = Math.random() * 100; startY = -10; } // Top
+            else if(side === 1) { startX = 110; startY = Math.random() * 100; } // Right
+            else if(side === 2) { startX = Math.random() * 100; startY = 110; } // Bottom
+            else { startX = -10; startY = Math.random() * 100; } // Left
+
+            entity.className = 'absolute transition-all duration-[4000ms] ease-in-out pointer-events-auto flex items-center justify-center';
+            entity.style.left = startX + '%';
+            entity.style.top = startY + '%';
+            
+            if(isSpiritual) {
+                entity.innerHTML = `
+                    <div class="relative group cursor-pointer">
+                        <div class="absolute inset-0 bg-secondary-container/20 blur-md rounded-full group-hover:scale-150 transition-transform"></div>
+                        <div class="w-12 h-12 glass-panel border-secondary-container/40 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(255,219,60,0.4)]">
+                            <span class="text-secondary-container font-headline-md font-bold">${spiritualWords[Math.floor(Math.random() * spiritualWords.length)]}</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                entity.innerHTML = `
+                    <div class="relative group cursor-pointer">
+                        <div class="absolute inset-0 bg-error/20 blur-xl rounded-full animate-pulse"></div>
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center border-error/30 bg-error-container/10 border-2">
+                            <span class="material-symbols-outlined text-error text-3xl">noise_control_off</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            entitiesContainer.appendChild(entity);
+
+            // Move towards center with slight offset
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    entity.style.left = (45 + Math.random() * 10) + '%';
+                    entity.style.top = (45 + Math.random() * 10) + '%';
+                    entity.style.transform = 'scale(0.5)';
+                    entity.style.opacity = '0';
+                }, 100);
+            });
+
+            entity.addEventListener('touchstart', (e) => {
+                e.stopPropagation();
+                entity.style.display = 'none';
+                createRipple(e.touches[0].clientX, e.touches[0].clientY);
+                // In a real game, logic for points/damage would go here
+            });
+
+            setTimeout(() => entity.remove(), 4100);
+        }
+
+        // Spawn loop
+        setInterval(spawnEntity, 1200);
+
+    </script>
+</body></html>

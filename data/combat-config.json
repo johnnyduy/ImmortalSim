@@ -456,7 +456,7 @@
         "comprehension": 4,
         "age": 3
       },
-      "description": "Thiên về hồi phục và kéo dài giao chiến.",
+      "description": "Thiên về hồi phục và kéo dài giao chiến. (Đột phá tiêu hao +10% Tu vi) (Đột phá tiêu hao +10% Tu vi)",
       "choiceText": "Thủ tâm thanh tịnh, vừa thủ vừa phản công.",
       "action": {
         "id": "act_player_lotus",
@@ -493,7 +493,8 @@
           }
         ]
       },
-      "m_manual": 1.5
+      "m_manual": 1.5,
+      "breakthrough_cost_increase_pct": 10
     },
     {
       "id": "liet_duong_hoa",
@@ -548,12 +549,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Canh Kim Kiếm Quyết hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Kim",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_metal.png",
       "action": {
         "id": "act_player_manual_kiem_tong_kim",
@@ -577,7 +578,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_kiem_tong_moc",
@@ -590,12 +591,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Hương Mộc Kiếm Ca hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Mộc",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wood.png",
       "action": {
         "id": "act_player_manual_kiem_tong_moc",
@@ -626,7 +627,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_kiem_tong_thuy",
@@ -639,12 +640,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Nhược Thủy Kiếm Kinh hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Thủy",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_water.png",
       "action": {
         "id": "act_player_manual_kiem_tong_thuy",
@@ -675,7 +676,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_kiem_tong_hoa",
@@ -688,12 +689,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Ly Hỏa Kiếm Thuật hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Hỏa",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_fire.png",
       "action": {
         "id": "act_player_manual_kiem_tong_hoa",
@@ -717,7 +718,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_kiem_tong_tho",
@@ -730,12 +731,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Mậu Thổ Kiếm Đồ hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Thổ",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_earth.png",
       "action": {
         "id": "act_player_manual_kiem_tong_tho",
@@ -759,7 +760,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_kiem_tong_loi",
@@ -772,12 +773,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Cửu Thiên Lôi Kiếm hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Lôi",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_thunder.png",
       "action": {
         "id": "act_player_manual_kiem_tong_loi",
@@ -807,7 +808,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_kiem_tong_bang",
@@ -820,12 +821,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Hàn Băng Kiếm Kính hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Băng",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_ice.png",
       "action": {
         "id": "act_player_manual_kiem_tong_bang",
@@ -849,7 +850,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_kiem_tong_phong",
@@ -862,12 +863,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Kiếm Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Ngự Phong Kiếm Hải hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Kiếm Tông",
       "spiritual_root": "Phong",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wind.png",
       "action": {
         "id": "act_player_manual_kiem_tong_phong",
@@ -898,7 +899,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_kim",
@@ -911,12 +912,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Ma Ảnh Kim Thần Luân hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Kim",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_metal.png",
       "action": {
         "id": "act_player_manual_ma_dao_kim",
@@ -940,7 +941,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_moc",
@@ -953,12 +954,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Vạn Độc Thần Ma Công hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Mộc",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wood.png",
       "action": {
         "id": "act_player_manual_ma_dao_moc",
@@ -989,7 +990,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_thuy",
@@ -1002,12 +1003,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Hắc Thủy Ma Sát Phép hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Thủy",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_water.png",
       "action": {
         "id": "act_player_manual_ma_dao_thuy",
@@ -1038,7 +1039,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_hoa",
@@ -1051,12 +1052,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Ma Hỏa U Minh Thuật hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Hỏa",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_fire.png",
       "action": {
         "id": "act_player_manual_ma_dao_hoa",
@@ -1080,7 +1081,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_tho",
@@ -1093,12 +1094,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Hắc Thổ Ma Hoàng Ấn hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Thổ",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_earth.png",
       "action": {
         "id": "act_player_manual_ma_dao_tho",
@@ -1122,7 +1123,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_loi",
@@ -1135,12 +1136,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Ma Lôi Phá Thiên Đạo hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Lôi",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_thunder.png",
       "action": {
         "id": "act_player_manual_ma_dao_loi",
@@ -1170,7 +1171,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_bang",
@@ -1183,12 +1184,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyền Băng Ma Tiên Pháp hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Băng",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_ice.png",
       "action": {
         "id": "act_player_manual_ma_dao_bang",
@@ -1212,7 +1213,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_ma_dao_phong",
@@ -1225,12 +1226,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Ma Đạo dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Ma Phong Vô Ảnh Bộ hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Ma Đạo",
       "spiritual_root": "Phong",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wind.png",
       "action": {
         "id": "act_player_manual_ma_dao_phong",
@@ -1261,7 +1262,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_kim",
@@ -1274,12 +1275,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Kim Sát Trận hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Kim",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_metal.png",
       "action": {
         "id": "act_player_manual_huyet_tong_kim",
@@ -1303,7 +1304,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_moc",
@@ -1316,12 +1317,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Mộc Cổ Sinh Pháp hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Mộc",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wood.png",
       "action": {
         "id": "act_player_manual_huyet_tong_moc",
@@ -1352,7 +1353,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_thuy",
@@ -1365,12 +1366,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Hải Triều Sinh Thuật hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Thủy",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_water.png",
       "action": {
         "id": "act_player_manual_huyet_tong_thuy",
@@ -1401,7 +1402,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_hoa",
@@ -1414,12 +1415,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Hỏa Thiêu Thần Quyết hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Hỏa",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_fire.png",
       "action": {
         "id": "act_player_manual_huyet_tong_hoa",
@@ -1443,7 +1444,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_tho",
@@ -1456,12 +1457,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Thổ Quy Nguyên Pháp hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Thổ",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_earth.png",
       "action": {
         "id": "act_player_manual_huyet_tong_tho",
@@ -1485,7 +1486,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_loi",
@@ -1498,12 +1499,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Lôi Ma Kiếp Điển hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Lôi",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_thunder.png",
       "action": {
         "id": "act_player_manual_huyet_tong_loi",
@@ -1533,7 +1534,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_bang",
@@ -1546,12 +1547,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Băng Ngưng Phách Trận hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Băng",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_ice.png",
       "action": {
         "id": "act_player_manual_huyet_tong_bang",
@@ -1575,7 +1576,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_huyet_tong_phong",
@@ -1588,12 +1589,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Huyết Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Huyết Phong Ảnh Độn Pháp hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Huyết Tông",
       "spiritual_root": "Phong",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wind.png",
       "action": {
         "id": "act_player_manual_huyet_tong_phong",
@@ -1624,7 +1625,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_kim",
@@ -1637,12 +1638,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Kim Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Kim Đan Luyện Cốt Pháp hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Kim",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_metal.png",
       "action": {
         "id": "act_player_manual_dan_tong_kim",
@@ -1666,7 +1667,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_moc",
@@ -1679,12 +1680,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Mộc Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Thanh Mộc Luyện Đan Ca hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Mộc",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wood.png",
       "action": {
         "id": "act_player_manual_dan_tong_moc",
@@ -1715,7 +1716,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_thuy",
@@ -1728,12 +1729,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Thủy Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Linh Thủy Luyện Dược Kinh hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Thủy",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_water.png",
       "action": {
         "id": "act_player_manual_dan_tong_thuy",
@@ -1764,7 +1765,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_hoa",
@@ -1777,12 +1778,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Hỏa Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Hỏa Phách Luyện Đan Thuật hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Hỏa",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_fire.png",
       "action": {
         "id": "act_player_manual_dan_tong_hoa",
@@ -1806,7 +1807,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_tho",
@@ -1819,12 +1820,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Thổ Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Thần Thổ Dưỡng Thảo Quyết hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Thổ",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_earth.png",
       "action": {
         "id": "act_player_manual_dan_tong_tho",
@@ -1848,7 +1849,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_loi",
@@ -1861,12 +1862,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Lôi Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Lôi Luyện Đan Tâm Quyết hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Lôi",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_thunder.png",
       "action": {
         "id": "act_player_manual_dan_tong_loi",
@@ -1896,7 +1897,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_bang",
@@ -1909,12 +1910,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Băng Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Hàn Đan Ngưng Linh Pháp hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Băng",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_ice.png",
       "action": {
         "id": "act_player_manual_dan_tong_bang",
@@ -1938,7 +1939,7 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
     },
     {
       "id": "manual_dan_tong_phong",
@@ -1951,12 +1952,12 @@
         "comprehension": 1,
         "age": 11
       },
-      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 12 (Viên Mãn).",
+      "description": "Tâm pháp sơ cấp của Đan Tông dành cho đệ tử có Phong Linh Căn. Giúp ổn định khí huyết, chỉ hỗ trợ tu luyện tối đa đến Luyện Khí Tầng 9 (Viên Mãn).",
       "choiceText": "Vận chuyển chu thiên Thần Phong Dẫn Dược Quyết hấp thu thiên địa tinh khí.",
       "is_basic_manual": true,
       "sect": "Đan Tông",
       "spiritual_root": "Phong",
-      "max_cultivation_level": 26,
+      "max_cultivation_level": 106.03,
       "image": "/images/sects/book_wind.png",
       "action": {
         "id": "act_player_manual_dan_tong_phong",
@@ -1987,7 +1988,58 @@
           }
         ]
       },
-      "m_manual": 1.0
+      "m_manual": 1
+    },
+    {
+      "id": "tat_phong_bo",
+      "label": "Tật Phong Bộ",
+      "type": "thân_pháp",
+      "tier": "hoàng",
+      "fragments_required": 1,
+      "learning_requirements": {
+        "realm": "Mortal",
+        "comprehension": 2,
+        "age": 5
+      },
+      "description": "Bộ pháp cơ bản tựa như gió cuốn. (Passive: +15 Tốc độ)",
+      "choiceText": "Học Tật Phong Bộ",
+      "passive_bonus": {
+        "speed": 15
+      }
+    },
+    {
+      "id": "loi_chop_than",
+      "label": "Lôi Chớp Thân",
+      "type": "thân_pháp",
+      "tier": "huyền",
+      "fragments_required": 2,
+      "learning_requirements": {
+        "realm": "Qi Refinement",
+        "comprehension": 5,
+        "age": 10
+      },
+      "description": "Thân pháp chớp giật như sấm sét. (Passive: +30 Tốc độ)",
+      "choiceText": "Học Lôi Chớp Thân",
+      "passive_bonus": {
+        "speed": 30
+      }
+    },
+    {
+      "id": "ao_anh_di_hinh",
+      "label": "Ảo Ảnh Di Hình",
+      "type": "thân_pháp",
+      "tier": "địa",
+      "fragments_required": 3,
+      "learning_requirements": {
+        "realm": "Foundation Establishment",
+        "comprehension": 8,
+        "age": 20
+      },
+      "description": "Bước đi để lại tàn ảnh, quỷ thần khó lường. (Passive: +50 Tốc độ)",
+      "choiceText": "Học Ảo Ảnh Di Hình",
+      "passive_bonus": {
+        "speed": 50
+      }
     }
   ],
   "enemy_arts": [
@@ -2377,246 +2429,6 @@
       }
     }
   },
-  "items": [
-    {
-      "id": "item_huyen_nguyen_dan",
-      "name": "Huyền Nguyên Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "huyền",
-      "description": "Đan dược ngưng tụ chân nguyên mạch, tăng mạnh tu vi tức thời (+8 Tu vi).",
-      "effects": {
-        "cultivation": 8,
-        "health": 2
-      }
-    },
-    {
-      "id": "item_tho_nguyen_dan",
-      "name": "Thọ Nguyên Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "địa",
-      "description": "Đan dược linh thiêng gia tăng thọ nguyên giới hạn tuổi thọ (+50 Thọ nguyên).",
-      "effects": {
-        "lifespan": 50,
-        "health": 5
-      }
-    },
-    {
-      "id": "item_nhien_huyet_dan",
-      "name": "Nhiên Huyết Đan",
-      "category": "consumable",
-      "type": "secret_medicine",
-      "tier": "huyền",
-      "description": "Bí dược cấm kỵ. Tăng vọt tu vi nhưng tổn hao tuổi thọ và làm lung lay đạo tâm (+25 Tu vi, -15 Thọ nguyên, -10 Đạo tâm).",
-      "effects": {
-        "cultivation": 25,
-        "lifespan": -15,
-        "daoHeart": -10,
-        "health": -5
-      }
-    },
-    {
-      "id": "item_thanh_phong_kiem",
-      "name": "Thanh Phong Kiếm",
-      "category": "equipment",
-      "type": "weapon",
-      "tier": "địa",
-      "description": "Thanh kiếm gió linh hoạt, sắc bén. Tăng mạnh thuộc tính tấn công (+12 Tấn công).",
-      "combatStats": {
-        "attack": 12,
-        "speed": 2
-      },
-      "soulbound": true,
-      "sealLevel": "Qi Refinement"
-    },
-    {
-      "id": "item_thien_to_phap_bao",
-      "name": "Thiên Tơ Pháp Bào",
-      "category": "equipment",
-      "type": "armor",
-      "tier": "thiên",
-      "description": "Lưới tơ trời bảo hộ nhục thân khỏi các đòn công kích vật lý (+15 Phòng thủ, +20 Sinh mệnh tối đa).",
-      "combatStats": {
-        "defense": 15,
-        "maxHp": 20
-      },
-      "soulbound": true,
-      "sealLevel": "Foundation Establishment"
-    },
-    {
-      "id": "item_luan_hoi_thach",
-      "name": "Luân Hồi Thạch",
-      "category": "relic",
-      "type": "relic",
-      "tier": "thánh",
-      "description": "Đá luân hồi kỳ bí lưu lại ký ức, được liên kết linh hồn vĩnh viễn mang sang kiếp sau.",
-      "soulbound": true
-    },
-    {
-      "id": "item_linh_thao",
-      "name": "Linh Thảo",
-      "category": "material",
-      "type": "material",
-      "tier": "hoàng",
-      "description": "Thảo dược chứa linh khí mọc hoang dã dã ngoại hoặc dược điền tông môn.",
-      "quantity": 1
-    },
-    {
-      "id": "item_linh_quang",
-      "name": "Linh Quặng",
-      "category": "material",
-      "type": "material",
-      "tier": "hoàng",
-      "description": "Quặng thô chứa linh lực sắt bén dùng làm nguyên liệu rèn đúc pháp khí.",
-      "quantity": 1
-    },
-    {
-      "id": "item_tuyet_lien",
-      "name": "Tuyết Liên",
-      "category": "material",
-      "type": "material",
-      "tier": "huyền",
-      "description": "Băng Tuyết Liên sinh trưởng nơi tuyết sơn đỉnh cực kỳ quý giá.",
-      "quantity": 1
-    },
-    {
-      "id": "item_than_cot",
-      "name": "Linh Thú Thần Cốt",
-      "category": "material",
-      "type": "material",
-      "tier": "huyền",
-      "description": "Mảnh thần cốt quý hiếm thu thập khi săn lùng yêu thú biến dị.",
-      "quantity": 1
-    },
-    {
-      "id": "item_truc_co_dan",
-      "name": "Trúc Cơ Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "huyền",
-      "description": "Đan dược đột phá cảnh giới dùng khi đạt Luyện Khí Viên Mãn (29.99 tu vi) để tiến nhập Trúc Cơ Kỳ.",
-      "quantity": 1
-    },
-    {
-      "id": "item_kim_dan_dan",
-      "name": "Kim Đan Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "địa",
-      "description": "Đan dược đột phá cảnh giới dùng khi đạt Trúc Cơ Viên Mãn (49.99 tu vi) để tiến nhập Kim Đan Kỳ.",
-      "quantity": 1
-    },
-    {
-      "id": "item_nguyen_anh_dan",
-      "name": "Nguyên Anh Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "thiên",
-      "description": "Đan dược đột phá cảnh giới dùng khi đạt Kim Đan Viên Mãn (89.99 tu vi) để tiến nhập Nguyên Anh Kỳ.",
-      "quantity": 1
-    },
-    {
-      "id": "item_tu_khi_dan",
-      "name": "Tụ Khí Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "hoàng",
-      "description": "Đan dược bổ trợ gia tăng nhẹ tu vi (+1.5 Tu vi).",
-      "effects": {
-        "cultivation": 1.5,
-        "health": 1
-      },
-      "quantity": 1
-    },
-    {
-      "id": "item_boi_nguyen_dan",
-      "name": "Bồi Nguyên Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "huyền",
-      "description": "Đan dược tích lũy tu vi cho tu sĩ Trúc Cơ Kỳ (+3.0 Tu vi).",
-      "effects": {
-        "cultivation": 3.0,
-        "health": 2
-      },
-      "quantity": 1
-    },
-    {
-      "id": "item_ngung_nguyen_dan",
-      "name": "Ngưng Nguyên Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "địa",
-      "description": "Đan dược tăng mạnh tích lũy chân nguyên cho tu sĩ Kim Đan Kỳ (+15.0 Tu vi).",
-      "effects": {
-        "cultivation": 15.0,
-        "health": 5
-      },
-      "quantity": 1
-    },
-    {
-      "id": "item_de_anh_dan",
-      "name": "Đế Anh Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "thiên",
-      "description": "Đan dược cấp cao giúp tăng vọt tích lũy tu vi cho Nguyên Anh Kỳ (+60.0 Tu vi).",
-      "effects": {
-        "cultivation": 60.0,
-        "health": 10
-      },
-      "quantity": 1
-    },
-    {
-      "id": "item_huyet_lien",
-      "name": "Huyết Liên",
-      "category": "material",
-      "type": "herb",
-      "tier": "địa",
-      "description": "Đóa Huyết Liên ngàn năm cực quý hiếm mọc nơi hiểm địa của Yêu Thú Sơn Mạch.",
-      "quantity": 1
-    },
-    {
-      "id": "item_linh_quang_tho",
-      "name": "Linh Quặng thô",
-      "category": "material",
-      "type": "material",
-      "tier": "hoàng",
-      "description": "Quặng thô chứa linh lực thu hoạch từ mỏ sâu tông môn.",
-      "quantity": 1
-    },
-    {
-      "id": "item_tan_quyen_ma_cong",
-      "name": "Tàn quyển Ma công",
-      "category": "material",
-      "type": "relic",
-      "tier": "huyền",
-      "description": "Bản tàn quyển ghi chép phương pháp luyện ma công kỳ dị.",
-      "quantity": 1
-    },
-    {
-      "id": "item_hoi_huyet_dan",
-      "name": "Hồi Huyết Đan",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "hoàng",
-      "description": "Đan dược phục hồi sinh lực và trị liệu ngoại thương nhẹ (+20 HP).",
-      "effects": {
-        "health": 20
-      },
-      "quantity": 1
-    },
-    {
-      "id": "item_truc_co_dan_ha_pham",
-      "name": "Trúc Cơ Đan (Hạ Phẩm)",
-      "category": "consumable",
-      "type": "elixir",
-      "tier": "hoàng",
-      "description": "Viên Trúc Cơ Đan chứa nhiều đan độc, có thể giúp đột phá bình cảnh Trúc Cơ nhưng tổn hao 5 năm thọ nguyên.",
-      "quantity": 1
-    }
-  ],
   "time_gear": {
     "tick_interval_seconds": 3,
     "event_chance_denominator": 5,
@@ -2668,59 +2480,78 @@
       {
         "tier": "hoàng",
         "label": "Hoàng Cấp",
-        "multiplier": 1.0,
-        "max_level_no_pill": 26.99
+        "multiplier": 1,
+        "max_level_no_pill": 106.03
       },
       {
         "tier": "huyền",
         "label": "Huyền Cấp",
         "multiplier": 1.5,
-        "max_level_no_pill": 49.99
+        "max_level_no_pill": 19.99
       },
       {
         "tier": "địa",
         "label": "Địa Cấp",
         "multiplier": 2.2,
-        "max_level_no_pill": 89.99
+        "max_level_no_pill": 39.99
       },
       {
         "tier": "thiên",
         "label": "Thiên Cấp",
         "multiplier": 3.5,
-        "max_level_no_pill": 149.99
+        "max_level_no_pill": 999
       }
     ],
     "bottlenecks": [
       {
         "realm_from": "Qi Refinement",
+        "realm_to": "Qi Refinement",
+        "threshold": 21.96,
+        "pill_item_id": null,
+        "success_rate_no_pill": 0.5,
+        "next_cult": 21.970000000000002,
+        "label": "Luyện Khí Tầng 4"
+      },
+      {
+        "realm_from": "Qi Refinement",
+        "realm_to": "Qi Refinement",
+        "threshold": 48.26,
+        "pill_item_id": null,
+        "success_rate_no_pill": 0.4,
+        "next_cult": 48.269999999999996,
+        "label": "Luyện Khí Tầng 7"
+      },
+      {
+        "realm_from": "Qi Refinement",
         "realm_to": "Foundation Establishment",
-        "threshold": 29.99,
+        "threshold": 106.03,
         "pill_item_id": "item_truc_co_dan",
         "success_rate_no_pill": 0.01,
-        "backlash_cultivation_loss": 3.0,
-        "next_cult": 30.0,
+        "backlash_cultivation_loss": 3,
+        "next_cult": 0,
         "label": "Trúc Cơ"
       },
       {
         "realm_from": "Foundation Establishment",
         "realm_to": "Golden Core",
-        "threshold": 49.99,
+        "threshold": 19.99,
         "pill_item_id": "item_kim_dan_dan",
         "success_rate_no_pill": 0.01,
-        "backlash_cultivation_loss": 5.0,
-        "next_cult": 50.0,
+        "backlash_cultivation_loss": 5,
+        "next_cult": 0,
         "label": "Kim Đan"
       },
       {
         "realm_from": "Golden Core",
         "realm_to": "Nascent Soul",
-        "threshold": 89.99,
+        "threshold": 39.99,
         "pill_item_id": "item_nguyen_anh_dan",
         "success_rate_no_pill": 0.01,
-        "backlash_cultivation_loss": 10.0,
-        "next_cult": 90.0,
+        "backlash_cultivation_loss": 10,
+        "next_cult": 0,
         "label": "Nguyên Anh"
       }
-    ]
+    ],
+    "qi_refinement_layer_multiplier": 1.3
   }
 }

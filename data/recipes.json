@@ -1,0 +1,40 @@
+[
+  {
+    "id": "recipe_tu_khi_dan",
+    "name": "Tụ Khí Đan",
+    "description": "Tăng tu vi Luyện Khí Kỳ",
+    "requiredLevel": 1,
+    "ingredients": [
+      { "itemId": "item_linh_thao", "quantity": 3 }
+    ],
+    "resultItemId": "item_tu_khi_dan",
+    "baseSuccessRate": 0.8,
+    "baseToxicity": 10
+  },
+  {
+    "id": "recipe_truc_co_dan",
+    "name": "Trúc Cơ Đan",
+    "description": "Hỗ trợ đột phá Trúc Cơ",
+    "requiredLevel": 2,
+    "ingredients": [
+      { "itemId": "item_tuyet_lien", "quantity": 1 },
+      { "itemId": "item_linh_thao", "quantity": 5 }
+    ],
+    "resultItemId": "item_truc_co_dan",
+    "baseSuccessRate": 0.5,
+    "baseToxicity": 15
+  },
+  {
+    "id": "recipe_boi_nguyen_dan",
+    "name": "Bồi Nguyên Đan",
+    "description": "Phục hồi sinh lực và tăng tốc tu luyện",
+    "requiredLevel": 1,
+    "ingredients": [
+      { "itemId": "item_cuu_diep_thao", "quantity": 1 },
+      { "itemId": "item_linh_thao", "quantity": 2 }
+    ],
+    "resultItemId": "item_boi_nguyen_dan",
+    "baseSuccessRate": 0.7,
+    "baseToxicity": 5
+  }
+]

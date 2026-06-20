@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import type { Inheritance, Stats, TechniqueInstance, Lang, ItemInstance, WorldState } from '../types';
+import type { Inheritance, Stats, TechniqueInstance, Lang, ItemInstance, WorldState, Realm } from '../types';
 import { getCultivationStatus, getRealmSubStage, calculateCombatPower } from '../lib/cultivation-states';
 import combatConfig from '../data/combat-config.json';
-import { getNpcFavorabilityLabel } from '../lib/engine';
+import { getNpcFavorabilityLabel, getSubStageMaxCultivation } from '../lib/engine';
 import WorldNewsPanel from './WorldNewsPanel';
 import { npcs } from '../data/npcs/index';
 
@@ -29,6 +29,8 @@ type LabelSet = {
 type Props = {
   stats: Stats;
   realm: string;
+  rawRealm?: Realm;
+  subStageIndex?: number;
   inheritance: Inheritance;
   age: number;
   life: number;
@@ -46,6 +48,7 @@ type Props = {
   sectRank?: 'ngoại_môn' | 'nội_môn' | 'chân_truyền' | 'trưởng_lão';
   sectPrestige?: number;
   onViewDetail?: (item: any) => void;
+  onLearnTechnique?: (tech: TechniqueInstance) => void;
   npcFavorability?: Record<string, number>;
   worldState?: WorldState;
   currentLocation?: 'sect' | 'mountain' | 'city' | 'secret_realm';
@@ -89,6 +92,8 @@ export const getLocationName = (loc: string, sectName: string, lang: string) => 
 export default function StatsPanel({
   stats,
   realm,
+  rawRealm,
+  subStageIndex,
   inheritance,
   age,
   life,
@@ -105,6 +110,7 @@ export default function StatsPanel({
   sectRank = 'ngoại_môn',
   sectPrestige = 0,
   onViewDetail,
+  onLearnTechnique,
   npcFavorability,
   worldState,
   currentLocation = 'sect',
@@ -117,7 +123,7 @@ export default function StatsPanel({
   const monthName = language === 'vi' ? monthsVi[month - 1] : monthsEn[month - 1];
 
   // calculate sub-stage and dynamic combat stats
-  const subStageInfo = getRealmSubStage(stats.cultivation);
+  const subStageInfo = getRealmSubStage(stats.cultivation, rawRealm, subStageIndex);
   const detailedRealm = language === 'vi' ? subStageInfo.subStageName.vi : subStageInfo.subStageName.en;
 
   // Calculate cultivation speed multiplier for UI display
@@ -135,11 +141,10 @@ export default function StatsPanel({
     }
   });
 
-  const maxCultivation = 
-    subStageInfo.majorRealm === 'Mortal' ? 15 :
-    subStageInfo.majorRealm === 'Qi Refinement' ? 30 :
-    subStageInfo.majorRealm === 'Foundation Establishment' ? 50 :
-    subStageInfo.majorRealm === 'Golden Core' ? 90 : 150;
+  const maxCultivation = getSubStageMaxCultivation(
+    subStageInfo.majorRealm,
+    subStageInfo.subStageIndex
+  );
   const cultivationPercent = Math.min(100, Math.floor((stats.cultivation / maxCultivation) * 100));
 
   const equipHpBonus = inventory
@@ -218,165 +223,139 @@ export default function StatsPanel({
 
   return (
     <>
-      {/* Sticky Top HUD - Thiết kế lại kiểu viền vàng ngọc bích sang trọng */}
-      <header 
-        className="sticky top-0 z-50 w-full max-w-5xl mx-auto pl-4 pr-16 sm:pr-4 py-3 bg-gradient-to-r from-[#173a30]/90 via-[#0e241e]/95 to-[#173a30]/90 border-2 border-[#b89f65] rounded-xl flex items-center justify-between gap-4 shadow-[0_8px_25px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.15)] mt-2 select-none"
-        style={{
-          outline: '1px solid rgba(229, 193, 123, 0.35)',
-          outlineOffset: '-4px'
-        }}
-      >
-        {/* Avatar Profile Trigger */}
-        <button
-          type="button"
-          onClick={() => setIsOpen(true)}
-          className="relative group focus:outline-none flex-shrink-0"
-        >
-          <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#b89f65] bg-[#1a1512] shadow-md group-hover:border-[#e5c17b] group-hover:scale-105 transition-all duration-300 ring-1 ring-[#e5c17b] ring-inset relative">
-            <img
-              src="/images/avatar.png"
-              alt="Avatar"
-              className="w-full h-full object-cover object-center"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-          </div>
-          <div className="absolute -bottom-1.5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#c5a059] to-[#e5c17b] text-[#0b0908] text-[10px] font-bold px-2 py-0.5 rounded-full border border-black uppercase tracking-wider font-serif shadow-md whitespace-nowrap">
-            INFO
-          </div>
-        </button>
-
-        {/* Chỉ số nhân vật */}
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 text-sm text-[#e5c17b] items-center">
-          
-          {/* Cột 1: Cảnh giới và CP */}
-          <div className="flex flex-col truncate pl-2">
-            <h1 className="font-serif text-[20px] sm:text-[22px] text-[#fbe3b5] font-bold tracking-wide leading-tight truncate drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              {detailedRealm}
-            </h1>
-            <span className="text-[12px] sm:text-[13px] text-[#e5c17b]/90 font-serif font-bold uppercase tracking-wider mt-0.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
-              {combatPower} CP
-            </span>
+      {/* 🌸 Chibi Xianxia Scroll HUD (Stitch Design - Adjusted) */}
+      <div className="w-full max-w-3xl mx-auto px-4 py-2 mt-2 select-none relative z-50">
+        <div className="relative w-full">
+          {/* Top Roller */}
+          <div 
+            className="mb-[-8px] z-10 mx-2 relative rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
+            style={{ 
+              height: '18px', 
+              background: 'linear-gradient(to right, #735c00, #ffe088, #735c00)'
+            }}
+          >
+            <div className="absolute top-1/2 left-[5%] right-[5%] h-[1px] bg-white/40 -translate-y-1/2" />
           </div>
 
-          {/* Cột 2: Khí Huyết và Linh Tức */}
-          <div className="flex flex-col gap-1.5 col-span-1 min-w-[140px]">
-            {/* Thanh Khí Huyết */}
-            <div className="flex flex-col gap-0.5">
-              <div className="flex justify-between items-center text-[10px] sm:text-[11px] uppercase font-bold tracking-wide text-[#fbe3b5]/90">
-                <span>{status.hpLabel}:</span>
-                <span className="font-serif font-normal">{stats.health}/{maxHp}</span>
-              </div>
-              <div className="h-2 w-full bg-black/55 border border-[#b89f65]/50 rounded-sm overflow-hidden p-[1px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
+          {/* Parchment Surface */}
+          <div 
+            className="w-full rounded shadow-2xl p-4 sm:p-5 border-x-4 border-[#f0e2ba] relative overflow-hidden"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255, 248, 240, 0.95), rgba(255, 248, 240, 0.95)), url('https://www.transparenttextures.com/patterns/parchment.png')`
+            }}
+          >
+            <div className="flex gap-4 sm:gap-6 items-center w-full">
+              
+              {/* Avatar Column */}
+              <button 
+                type="button"
+                onClick={() => setIsOpen(true)}
+                className="relative flex flex-col items-center shrink-0 hover:scale-105 transition-transform pb-2"
+              >
+                {/* Qi Animation Ring */}
+                <div className="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#7ed99e]/40 -top-2 animate-[pulse_3s_infinite_ease-in-out] blur-md" />
+                
+                {/* Avatar Frame */}
                 <div 
-                  className="h-full rounded-sm bg-gradient-to-r from-red-700 via-red-500 to-red-400 shadow-[0_0_8px_rgba(239,68,68,0.6)] transition-all duration-500" 
-                  style={{ width: `${Math.min(100, Math.max(0, Math.round((stats.health / maxHp) * 100)))}%` }} 
-                />
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-[#f0e2ba] z-10 border-[3px] border-[#d4af37]"
+                  style={{ boxShadow: '0 0 15px #7ed99e, inset 0 0 8px #006d3d' }}
+                >
+                  <img
+                    src="/images/avatar.png"
+                    alt="Avatar"
+                    className="w-full h-full object-cover object-center"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
+                
+                {/* Realm Pill */}
+                <div className="absolute -bottom-1 px-3 py-1 bg-gradient-to-r from-[#735c00] to-[#b38f00] text-white rounded-full text-[10px] sm:text-xs shadow-md z-20 whitespace-nowrap font-serif font-bold uppercase tracking-widest border-2 border-[#f0e2ba]">
+                  {detailedRealm}
+                </div>
+              </button>
+
+              {/* Compact Bars & Grid Column */}
+              <div className="flex-grow flex flex-col gap-3 justify-center">
+                
+                {/* Bars Row */}
+                <div className="flex flex-col gap-2 mt-1">
+                  {/* HP */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-[#ba1a1a] font-bold text-sm sm:text-base w-6 text-center font-serif drop-shadow-sm">血</span>
+                    <div className="flex-grow h-4 sm:h-5 bg-[#e8d9b2] rounded-full border border-[#d4af37]/50 relative overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]">
+                      <div 
+                        className="h-full bg-gradient-to-r from-[#ba1a1a] via-[#e53935] to-[#ff968c] transition-all duration-500 shadow-[0_0_8px_rgba(186,26,26,0.5)]"
+                        style={{ width: `${Math.min(100, Math.max(0, Math.round((stats.health / maxHp) * 100)))}%` }}
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#383015] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] font-serif tracking-wider">
+                        {stats.health} / {maxHp}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* MP */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-[#006d3d] font-bold text-sm sm:text-base w-6 text-center font-serif drop-shadow-sm">氣</span>
+                    <div className="flex-grow h-4 sm:h-5 bg-[#e8d9b2] rounded-full border border-[#d4af37]/50 relative overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]">
+                      <div 
+                        className="h-full bg-gradient-to-r from-[#006d3d] via-[#2e7d32] to-[#7ed99e] transition-all duration-500 shadow-[0_0_8px_rgba(0,109,61,0.5)]"
+                        style={{ width: `${stats.health <= 0 ? 0 : 40}%` }}
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center text-[10px] sm:text-xs font-bold text-[#383015] drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)] font-serif tracking-wider">
+                        {stats.health <= 0 ? 0 : Math.round(maxQi * 0.4)} / {maxQi}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tiny Stats Grid */}
+                <div className="grid grid-cols-4 gap-2 pt-2 border-t border-[#d4af37]/30">
+                  <div className="flex flex-col items-center justify-center gap-1">
+                    <span className="text-xs sm:text-sm drop-shadow-sm">⚔️</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-[#735c00] font-serif">{combatPower}</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-1 border-l border-[#d4af37]/30">
+                    <span className="text-xs sm:text-sm drop-shadow-sm">🌟</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-[#006d3d] font-serif">{cultivationPercent}%</span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-1 border-l border-[#d4af37]/30">
+                    <span className="text-xs sm:text-sm drop-shadow-sm">🌸</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-[#b52424] font-serif truncate max-w-[80px]" title={sect || 'Tán Tu'}>
+                      {sect ? sect : 'Tán Tu'}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-1 border-l border-[#d4af37]/30">
+                    <span className="text-xs sm:text-sm drop-shadow-sm">💰</span>
+                    <span className="text-[10px] sm:text-xs font-bold text-[#d4af37] font-serif drop-shadow-sm">{spiritStones}</span>
+                  </div>
+                </div>
+
               </div>
-              <span className="text-[10px] sm:text-[11px] text-red-400 font-serif leading-none mt-1 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] italic truncate" title={status.hpText}>
-                {status.hpText}
-              </span>
             </div>
 
-            {/* Thanh Linh Tức */}
-            <div className="flex flex-col gap-0.5">
-              <div className="flex justify-between items-center text-[10px] sm:text-[11px] uppercase font-bold tracking-wide text-[#fbe3b5]/90">
-                <span>{status.qiLabel || 'LINH TỨC'}:</span>
-                <span className="font-serif font-normal">{stats.health <= 0 ? 0 : Math.round(maxQi * 0.4)}/{maxQi}</span>
-              </div>
-              <div className="h-2 w-full bg-black/55 border border-[#b89f65]/50 rounded-sm overflow-hidden p-[1px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
-                <div 
-                  className="h-full rounded-sm bg-gradient-to-r from-blue-700 via-blue-500 to-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.6)] transition-all duration-500" 
-                  style={{ width: `${stats.health <= 0 ? 0 : 40}%` }} 
-                />
-              </div>
-              <span className="text-[10px] sm:text-[11px] text-blue-400 font-serif leading-none mt-1 font-medium drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] italic truncate" title={status.qiText}>
-                {status.qiText}
-              </span>
-            </div>
-          </div>
-
-          {/* Cột 3: Tu Vi và Môn Phái */}
-          <div className="flex flex-col gap-1.5 col-span-1 min-w-[140px]">
-            {/* Thanh Tu Vi */}
-            <div className="flex flex-col gap-0.5">
-              <div className="flex justify-between items-center text-[10px] sm:text-[11px] uppercase font-bold tracking-wide text-[#fbe3b5]/90">
-                <span>{language === 'vi' ? 'TU VI:' : 'CULTIVATION:'}</span>
-                <span className="font-serif font-normal">{cultivationPercent}%</span>
-              </div>
-              <div className="h-2 w-full bg-black/55 border border-[#b89f65]/50 rounded-sm overflow-hidden p-[1px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.6)]">
-                <div 
-                  className="h-full rounded-sm bg-gradient-to-r from-amber-700 via-amber-500 to-[#e5c17b] shadow-[0_0_8px_rgba(245,158,11,0.5)] transition-all duration-500" 
-                  style={{ width: `${cultivationPercent}%` }} 
-                />
-              </div>
-            </div>
-
-            {/* Môn phái */}
-            <div className="flex items-center gap-1.5 text-[11px] sm:text-[12px] text-[#e5c17b] font-serif mt-1 truncate">
-              <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wide text-[#fbe3b5]/90 flex-shrink-0">
-                {language === 'vi' ? 'MÔN PHÁI:' : 'SECT:'}
-              </span>
-              {sect ? (
-                <span className="text-[#fbe3b5] font-semibold flex items-center gap-1 leading-none truncate" title={`${sect} - ${sectContribution} cống hiến`}>
-                  <span className="text-amber-500">🏵️</span>
-                  <span className="truncate">
-                    {sectContribution} ({
-                      sectRank === 'ngoại_môn' ? (language === 'vi' ? 'Ngoại' : 'Outer') :
-                      sectRank === 'nội_môn' ? (language === 'vi' ? 'Nội' : 'Inner') :
-                      sectRank === 'chân_truyền' ? (language === 'vi' ? 'Chân' : 'Core') :
-                      (language === 'vi' ? 'Lão' : 'Elder')
-                    }) • {getSectPrestigeRankName(sectPrestige, language)}
-                  </span>
-                </span>
-              ) : (
-                <span className="text-[#847764] font-semibold flex items-center gap-1 leading-none truncate">
-                  <span>☯</span>
-                  <span>{language === 'vi' ? 'Tán Tu • Chưa nhập môn' : 'Rogue Cultivator'}</span>
-                </span>
-              )}
-            </div>
-
-            {/* Vị trí */}
-            <div className="flex items-center gap-1.5 text-[11px] sm:text-[12px] text-[#e5c17b] font-serif mt-1 truncate">
-              <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wide text-[#fbe3b5]/90 flex-shrink-0">
-                {language === 'vi' ? 'VỊ TRÍ:' : 'LOCATION:'}
-              </span>
-              <span className="text-emerald-400 font-semibold flex items-center gap-1 leading-none truncate" title={getLocationName(currentLocation, sect, language)}>
-                <span>📍</span>
-                <span className="truncate">{getLocationName(currentLocation, sect, language)}</span>
-              </span>
-            </div>
-          </div>
-
-          {/* Cột 4: Linh Thạch & Bảng Tin */}
-          <div className="flex items-center gap-4 sm:justify-end pr-2 h-full">
-            <div className="flex items-center gap-1.5">
-              <span className="text-[10px] sm:text-[11px] uppercase font-bold tracking-wide text-[#fbe3b5]/90">
-                {language === 'vi' ? 'LINH THẠCH:' : 'SPIRIT STONES:'}
-              </span>
-              <span className="text-base">💎</span>
-              <span className="text-[#fbe3b5] font-serif font-bold text-[18px] sm:text-[20px] leading-none">
-                {spiritStones}
-              </span>
-            </div>
-
-            {/* Bảng Tin Button */}
+            {/* Quick News Button */}
             <button
-              type="button"
               onClick={() => setIsNewsOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-[#b89f65]/40 hover:border-[#e5c17b] bg-[#0c0a08]/80 hover:bg-[#1a1512] text-text-primary hover:text-white transition-all duration-300 shadow-md cursor-pointer text-xs"
+              className="absolute -right-2 -top-2 bg-gradient-to-br from-[#ffe088] to-[#d4af37] text-[#554300] rounded-full w-8 h-8 flex items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.3)] hover:scale-110 transition-transform z-30 border-2 border-[#735c00]"
+              title="Tin Tức"
             >
-              <span>📰</span>
-              <span className="font-serif font-bold text-[#e5c17b] hidden sm:inline-block">
-                {language === 'vi' ? 'Bảng Tin' : 'World News'}
-              </span>
+              <span className="text-sm">📜</span>
             </button>
+            
           </div>
 
+          {/* Bottom Roller */}
+          <div 
+            className="mt-[-8px] z-10 mx-2 relative rounded-full shadow-[0_-2px_10px_rgba(0,0,0,0.3)]"
+            style={{ 
+              height: '18px', 
+              background: 'linear-gradient(to right, #735c00, #ffe088, #735c00)'
+            }}
+          >
+            <div className="absolute top-1/2 left-[5%] right-[5%] h-[1px] bg-white/40 -translate-y-1/2" />
+          </div>
         </div>
-      </header>
+      </div>
 
       {/* Profile Detail Sheet (Modal) */}
       {isOpen && (
@@ -439,10 +418,7 @@ export default function StatsPanel({
                 {renderBarDetail(
                   labels.cultivation,
                   stats.cultivation,
-                  subStageInfo.majorRealm === 'Mortal' ? 15 :
-                  subStageInfo.majorRealm === 'Qi Refinement' ? 30 :
-                  subStageInfo.majorRealm === 'Foundation Establishment' ? 50 :
-                  subStageInfo.majorRealm === 'Golden Core' ? 90 : 150,
+                  maxCultivation,
                   "bg-gradient-to-r from-blue-700 to-blue-400",
                   cultIcon
                 )}
@@ -713,12 +689,37 @@ export default function StatsPanel({
                           )}
                         </div>
  
-                        {!tech.isActive && reqs && (
-                          <div className="mt-1 pt-1 border-t border-[#3e3328]/35 text-[10px] text-amber-500/80 text-left w-full">
-                            {language === 'vi' ? 'Yêu cầu kích hoạt: ' : 'Requirements: '}
-                            {reqs.realm && `${reqs.realm === 'Qi Refinement' ? 'Luyện Khí' : reqs.realm === 'Foundation Establishment' ? 'Trúc Cơ' : reqs.realm === 'Golden Core' ? 'Kim Đan' : 'Phàm Nhân'}`}
-                            {reqs.comprehension && ` • Ngộ tính ${reqs.comprehension}`}
-                            {reqs.age && ` • Tuổi ${reqs.age}`}
+                        {!tech.isActive && (
+                          <div className="mt-2 pt-1 border-t border-[#3e3328]/35 w-full">
+                            {(() => {
+                              const realmTiers: Record<string, number> = { 'Mortal': 0, 'Qi Refinement': 1, 'Foundation Establishment': 2, 'Golden Core': 3, 'Nascent Soul': 4, 'Soul Formation': 5, 'Void Amalgamation': 6, 'Body Integration': 7, 'Mahayana': 8, 'Tribulation': 9, 'True Immortal': 10 };
+                              const reqRealmTier = reqs?.realm ? realmTiers[reqs.realm] ?? 0 : 0;
+                              const currRealmTier = realmTiers[rawRealm || 'Mortal'] ?? 0;
+                              const realmOk = currRealmTier >= reqRealmTier;
+                              const compOk = stats.comprehension >= (reqs?.comprehension ?? 0);
+                              const ageOk = age >= (reqs?.age ?? 0);
+
+                              if (realmOk && compOk && ageOk) {
+                                return (
+                                  <button
+                                    type="button"
+                                    onClick={(e) => { e.stopPropagation(); onLearnTechnique && onLearnTechnique(tech); }}
+                                    className="w-full px-2 py-1.5 bg-[#c5a059]/20 hover:bg-[#c5a059]/40 border border-[#c5a059]/50 text-[#e5c17b] rounded-sm text-xs font-serif uppercase tracking-widest transition"
+                                  >
+                                    {language === 'vi' ? '⚔️ Tiến Hành Nhập Môn' : '⚔️ Begin Cultivation'}
+                                  </button>
+                                );
+                              }
+
+                              return (
+                                <div className="text-[10px] text-amber-500/80 text-left">
+                                  {language === 'vi' ? 'Yêu cầu nhập môn: ' : 'Requirements: '}
+                                  {reqs?.realm && `${reqs.realm === 'Qi Refinement' ? 'Luyện Khí' : reqs.realm === 'Foundation Establishment' ? 'Trúc Cơ' : reqs.realm === 'Golden Core' ? 'Kim Đan' : 'Phàm Nhân'}`}
+                                  {reqs?.comprehension && ` • Ngộ tính ${reqs.comprehension}`}
+                                  {reqs?.age && ` • Tuổi ${reqs.age}`}
+                                </div>
+                              );
+                            })()}
                           </div>
                         )}
                       </button>

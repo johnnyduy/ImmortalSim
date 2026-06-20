@@ -3,8 +3,6 @@
     "id": "auction_house_conflict",
     "title": "Đấu Giá Hội Lục Đục",
     "description": "Tại buổi đấu giá thập niên của Thanh Dương Thành, bạn vừa dốc cạn Linh thạch để mua được một viên Trúc Cơ Đan. Khi bước ra khỏi cửa, Vương Thiếu Gia của gia tộc tu tiên bản địa chặn đường, ném cho bạn 10 Linh thạch và yêu cầu giao nộp viên đan dược.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -38,8 +36,6 @@
     "id": "slum_black_market",
     "title": "Chợ Đen Góc Tối",
     "description": "Len lỏi vào khu ổ chuột của thành thị, bạn tìm thấy một phiên chợ đen chuyên tiêu thụ hàng hóa không rõ nguồn gốc. Một tên thương nhân che mặt chào bán 'Trúc Cơ Đan Cực Phẩm' với giá chỉ bằng một nửa thị trường, nhưng đan dược tỏa ra mùi tanh nồng.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -77,8 +73,6 @@
     "id": "mortal_plague",
     "title": "Ôn Dịch Phàm Trần",
     "description": "Đi qua một ngôi làng phàm nhân dưới chân núi, bạn phát hiện nơi này đang lây lan một loại ôn dịch kỳ lạ do ma khí rò rỉ. Hàng trăm người đang kêu la thảm thiết, thây chất thành đống.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -111,8 +105,6 @@
     "id": "rogue_cultivator_scam",
     "title": "Tán Tu Lừa Đảo",
     "description": "Đang dạo quanh phường thị, một lão giả thần bí rách rưới kéo bạn lại, gạ bán 'Cửu Chuyển Thần Công' với giá chỉ 50 Linh thạch.",
-    "minAge": 12,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -145,8 +137,6 @@
     "id": "beast_tide_mortals",
     "title": "Thú Triều Quét Qua Phàm Trần",
     "description": "Yêu thú bạo động tràn xuống chân núi, tàn sát một ngôi làng phàm nhân. Bạn vừa vặn đi ngang qua.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -179,8 +169,6 @@
     "id": "demonic_invasion",
     "title": "Ma Đạo Đại Xâm Nhập",
     "description": "Bầu trời nhuốm màu máu khi ma khí dày đặc bao trùm. Một đội quân tà tu đã phá vỡ trận pháp phòng ngự, tàn sát tất cả những ai chúng nhìn thấy.",
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -216,8 +204,6 @@
     "id": "grand_decennial_auction",
     "title": "Đại Đấu Giá Thập Niên",
     "description": "Thành thị đang cực kỳ phồn hoa, tổ chức một buổi đại đấu giá. Các dị bảo và tàn quyển công pháp tối thượng được trưng bày, nhưng giá cả ở mức trên trời.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -253,8 +239,6 @@
     "id": "market_crash_scavenging",
     "title": "Thị Trường Sụp Đổ",
     "description": "Thị trường dư thừa khiến giá cả sụp đổ. Các thương nhân đang tuyệt vọng bán tháo linh thảo thô ngay trên phố với giá rẻ như cho để cắt lỗ.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -291,8 +275,6 @@
     "id": "event_thieu_gia_gay_su",
     "title": "Vương Thiếu Gia Chèn Ép",
     "description": "Tại đấu giá hội, Vương Thiếu Gia dùng tiền đè người, ác ý nâng giá để tranh đoạt bảo vật của bạn.",
-    "minAge": 15,
-    "maxAge": 40,
     "weight": 2,
     "choices": [
       {
@@ -324,8 +306,6 @@
     "id": "soul_festival",
     "title": "Lễ Hội Hồn Linh",
     "description": "Bạn tình cờ tham gia một Lễ Hội Hồn Linh hiếm gặp trong thành, nơi tinh linh và phàm nhân tụ tập với nguồn năng lượng huyền bí.",
-    "minAge": 12,
-    "maxAge": 22,
     "weight": 1,
     "choices": [
       {
@@ -360,8 +340,6 @@
     "id": "herb_price_surge",
     "title": "Giá Linh Dược Leo Thang",
     "description": "Do khan hiếm trầm trọng, giá linh dược leo thang chóng mặt! Thị trường đang hỗn loạn, tạo ra cơ hội hoàn hảo để đầu cơ tích trữ.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -396,8 +374,6 @@
     "id": "demonic_town_activity",
     "title": "Tà Tu Xuất Hiện Tại Trấn",
     "description": "Tà tu đã xuất hiện tại vùng ven thị trấn, làm suy giảm an ninh nghiêm trọng. Các tu sĩ được cảnh báo nên tránh đi xa.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -431,8 +407,6 @@
     "id": "illicit_demonic_caravan",
     "title": "Thương Đội Tà Tu",
     "description": "Do an ninh kém và ma đạo thâm nhập, một đoàn thương nhân khả nghi lập sạp trong hẻm tối, lén lút bán các vật liệu hiến tế cấm kỵ của Ma đạo.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -467,8 +441,6 @@
     "id": "mortal_rebellion",
     "title": "Phàm Nhân Bạo Loạn",
     "description": "Dân tâm thành thị đã chạm đáy. Những phàm nhân chết đói đang bạo loạn chống lại tên thành chủ tham nhũng làm tay sai cho tu chân giả.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -500,8 +472,6 @@
     "id": "corrupted_pill_vendor",
     "title": "Thương Nhân Đan Dược Ô Uế",
     "description": "Lợi dụng sự thâm nhập của ma đạo trong thành, một kẻ trùm đầu trong hẻm tối gạ bán cho bạn một viên Trúc Cơ Đan. Giá rất rẻ, nhưng nó nồng nặc mùi đan độc và tà thuật.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -537,8 +507,6 @@
     "id": "demonic_blood_raid",
     "title": "Tà Tu Huyết Tế",
     "description": "Hoạt động tà tu đang ở đỉnh điểm. Một nhóm ma tu bịt mặt lập huyết trận ở vùng ven thành thị, cố gắng luyện hóa phàm nhân qua đường thành đan dược.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -574,8 +542,6 @@
     "id": "underground_black_auction",
     "title": "Đấu Giá Ngầm Hắc Ám",
     "description": "An ninh thành thị lỏng lẻo. Bạn nhận được thư mời bí mật tham gia một buổi đấu giá ngầm, nơi bày bán các pháp bảo tông môn bị ăn cắp và đan dược cấm kỵ.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -611,8 +577,6 @@
     "id": "counterfeit_manual_scam",
     "title": "Bí Kíp Giả Mạo",
     "description": "An ninh thành thị lỏng lẻo, kẻ lừa đảo lộng hành. Một thương nhân gạ bán cho bạn mảnh tàn quyển 'Thiên Cấp' với giá rẻ bất ngờ.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -647,8 +611,6 @@
     "id": "herb_monopoly_challenge",
     "title": "Thách Thức Độc Quyền Linh Dược",
     "description": "Với chỉ số giá cả leo thang, một thương hội địa phương đã độc chiếm toàn bộ linh dược, đẩy giá lên cao hơn nữa. Một nhóm tán tu đang lên kế hoạch đột kích kho hàng của chúng.",
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -684,8 +646,6 @@
     "id": "demonic_merchant_trap",
     "title": "Cạm Bẫy Thương Nhân Ma Đạo",
     "description": "Hoạt động tà tu dâng cao. Một thương nhân gạ bán cho bạn 'Phá Cảnh Đan' với giá rẻ không tưởng, nhưng bạn nhận thấy một luồng ma khí mờ nhạt tỏa ra từ hắn.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -719,8 +679,6 @@
     "id": "corrupt_speculation_frenzy",
     "title": "Cơn Cuồng Đầu Cơ Hủ Bại",
     "description": "Do giá linh dược leo thang, một nhóm thương nhân hủ bại đang đầu cơ tích trữ đan dược cứu mạng để bán với giá gấp mười lần. Dân tâm thành thị đang chạm đáy khi bóng ma đói khát ám ảnh khắp phố phường,.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -754,8 +712,6 @@
     "id": "the_shadow_ritual",
     "title": "Nghi Lễ Trong Bóng Tối",
     "description": "Hoạt động ma đạo đã đạt đến đỉnh điểm. Tại khu ổ chuột của thành phố, bạn phát hiện một nghi lễ dùng trẻ em phàm nhân để hạ sinh một Ma Chủng mới,.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -792,8 +748,6 @@
     "id": "mysterious_wandering_merchant",
     "title": "Thương Nhân Lang Thang Bí Ẩn",
     "description": "Chỉ số giá cả của thành phố đang thấp. Một thương nhân lang thang từ vùng đất xa xôi chào mời các linh vật hiếm với mức giá hời đến khó tin.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -831,8 +785,6 @@
     "id": "corrupt_guard_extortion",
     "title": "Vệ Binh Tống Tiền",
     "description": "An ninh thành thị lỏng lẻo. Một đội trưởng vệ binh hủ bại cáo buộc bạn buôn lậu ma cụ cấm và đòi một khoản tiền 'dàn xếp'.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -865,8 +817,6 @@
     "id": "starving_mob_riot",
     "title": "Đám Đông Đói Khát",
     "description": "Dân tâm thành thị chạm mức báo động. Một đám đông phàm nhân đói khát đang chặn đường bạn, đòi linh thạch để mua lương thực từ những thương nhân đang đầu cơ tăng giá.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -899,8 +849,6 @@
     "id": "city_guard_mutiny",
     "title": "Binh Biến Vệ Thành",
     "description": "An ninh và dân tâm thành thị đã sụp đổ. Đội vệ binh không được trả lương trong nhiều tháng đã biến thành những kẻ cướp bóc, khủng bố chính những thương nhân mà chúng từng bảo vệ.",
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -934,8 +882,6 @@
     "id": "mortal_hunger_riot",
     "title": "Cuộc Bạo Loạn Của Những Bóng Ma Đói",
     "description": "Dân tâm thành thị sụp đổ do tình trạng đầu cơ tăng giá. Những phàm nhân đói khát đang tấn công các đoàn xe của tu sĩ để cướp bóc linh khí vụn vặt.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -969,8 +915,6 @@
     "id": "mystical_lantern_festival",
     "title": "Lễ Hội Hoa Đăng Huyền Bí",
     "description": "Thành thị đang cực kỳ phồn hoa và linh khí nồng đậm. Một lễ hội lớn được tổ chức, nơi hàng ngàn hoa đăng chứa đựng hồn lực lấp đầy bầu trời, tạo nên sự cộng hưởng với Thiên Đạo.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -1007,8 +951,6 @@
     "id": "black_market_smuggling",
     "title": "Buôn Lậu Chợ Đen",
     "description": "Chỉ số giá cả leo thang và an ninh thành thị lỏng lẻo. Một mạng lưới buôn lậu đang vận chuyển linh thảo cấm và huyết thạch ma đạo thông qua hệ thống cống ngầm.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1048,8 +990,6 @@
     "id": "black_market_hoarding",
     "title": "Đầu Cơ Chợ Đen",
     "description": "Với chỉ số giá cả đang ở mức cao kỷ lục, một nhân vật thần bí đề nghị bạn tham gia vào kế hoạch đầu cơ tích trữ linh quặng để thao túng thị trường.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1083,8 +1023,6 @@
     "id": "ghost_market_whispers",
     "title": "Lời Thì Thầm Chợ Ma",
     "description": "An ninh thành thị lỏng lẻo. Bạn tìm thấy lối vào bí mật của Chợ Ma, nơi các tán tu trao đổi ma cụ cấm. Một kẻ đeo mặt nạ gạ bán cho bạn một khối 'Huyền Thiết' với giá nghi vấn.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1124,8 +1062,6 @@
     "id": "mortal_plague_curse",
     "title": "Lời Nguyền Dịch Bệnh",
     "description": "Một trận dịch bệnh bí ẩn, nghi do ma đạo nguyền rủa, đang tàn phá dân cư phàm nhân. Dân tâm chạm đáy khi hàng trăm người chết mỗi ngày.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1159,8 +1095,6 @@
     "id": "city_embargo_crisis",
     "title": "Khủng Hoảng Cấm Vận Thành Thị",
     "description": "Thành phố đang bị cấm vận tài nguyên do hoạt động tà tu dâng cao [7, 8]. Giá cả đã chạm mức cực đoan, và chợ đen là con đường duy nhất để sinh tồn.",
-    "minAge": 18,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1194,8 +1128,6 @@
     "id": "city_spirit_tide",
     "title": "Linh Triều Thành Thị",
     "description": "Do linh khí thiên địa đột ngột tăng vọt, các linh tuyền trong thành bùng nổ. Một đợt linh triều tràn qua các con phố, biến khu chợ tạm thời trở thành một thánh địa tu luyện thượng hạng.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1230,8 +1162,6 @@
     "id": "demonic_market_raid",
     "title": "Càn Quét Chợ Đen Ma Đạo",
     "description": "An ninh thành thị đang cao trong khi hoạt động tà tu dâng trào. Thành Chủ kêu gọi tình nguyện viên càn quét một khu chợ ma đạo bí mật vừa bị phát hiện dưới khu ổ chuột.",
-    "minAge": 25,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1269,8 +1199,6 @@
     "id": "huyen_thiet_black_market",
     "title": "Chợ Đen Huyền Thiết",
     "description": "An ninh thành thị thấp và chỉ số giá cả đang tăng. Một tán tu đang lén lút bán 'Huyền Thiết' đánh cắp từ đoàn xe tông môn, vật liệu cực tốt để đúc thần binh [3, 4].",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1306,8 +1234,6 @@
     "id": "corrupt_city_lord_tax",
     "title": "Thuế Vô Lý Của Thành Chủ",
     "description": "Dân tâm và an ninh thành thị đang thấp. Tên Thành Chủ hủ bại áp đặt 'Thuế Bảo Hộ Linh Khí' lên tất cả tu sĩ vãng lai để nuôi tư quân.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1341,8 +1267,6 @@
     "id": "city_tax_riot_interaction",
     "title": "Bạo Loạn Lương Thực Và Linh Thạch",
     "description": "Với giá cả leo thang và dân tâm sụt giảm, những phàm nhân đói khát đang chặn đường bạn, cáo buộc tu sĩ đang đầu cơ tích trữ mạch sống của thế giới [cite: 53, 60].",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1376,8 +1300,6 @@
     "id": "grand_decade_auction",
     "title": "Đại Đấu Giá Thập Niên",
     "description": "Với phồn vinh thành thị đạt đỉnh, Đại Đấu Giá Thập Niên huyền thoại đã khai mở. Những kỳ trân dị bảo từ khắp đại lục, bao gồm đan dược phá cảnh và bí tịch tối cao, đang được trưng bày [cite: 60, 18].",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1412,8 +1334,6 @@
     "id": "event_thien_kieu_tra_xanh_gap_go",
     "title": "Gặp Gỡ Mộc Uyển Thanh",
     "description": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh đang bị yêu thú bao vây, dáng vẻ yếu đuối cầu cứu.",
-    "minAge": 15,
-    "maxAge": 50,
     "weight": 2,
     "choices": [
       {
@@ -1453,8 +1373,6 @@
     "id": "save_demonic_cultivator",
     "title": "Cứu Giúp Tà Tu",
     "description": "Trời mưa tầm tã, bạn phát hiện một nữ tử mặc áo bào đen bê bết máu ngã gục bên đường. Khí tức của nàng ta lạnh lẽo và sặc mùi ma khí. Đám tu sĩ chính đạo đang lùng sục gần đó.",
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 1,
     "choices": [
       {
@@ -1486,8 +1404,6 @@
     "id": "abyssal_whispers",
     "title": "Tiếng Gọi Từ Vực Thẳm",
     "description": "Đang bế quan tĩnh tu tại một hang động hẻo lánh, bạn bỗng nghe thấy những tiếng nỉ non thì thầm vọng lên từ mạch nước ngầm, hứa hẹn ban cho bạn sức mạnh vô song và tuổi thọ vô tận nếu bạn chịu buông bỏ Đạo Tâm.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1523,8 +1439,6 @@
     "id": "black_roadhouse_inn",
     "title": "Hắc Điếm Ven Đường",
     "description": "Trời tối mịt giữa hoang dã, bạn tấp vào một khách điếm leo lét ánh đèn. Chưởng quỹ là một bà lão xảo quyệt mỉm cười bưng lên một bát thịt kho có mùi linh khí rất kỳ lạ nhưng vô cùng hấp dẫn.",
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -1556,8 +1470,6 @@
     "id": "blood_sacrifice_array",
     "title": "Huyết Tế Trận Pháp",
     "description": "Trong lúc đi tuần, bạn phát hiện một trận pháp tà ác đang hút máu của phàm nhân để ngưng tụ Huyết Đan.",
-    "minAge": 30,
-    "maxAge": 200,
     "weight": 1,
     "choices": [
       {
@@ -1592,8 +1504,6 @@
     "id": "qi_deviation_crisis",
     "title": "Nguy Cơ Tẩu Hỏa",
     "description": "Ma khí dâng cao kích phát tâm ma trong lúc bạn tĩnh tu. Linh khí trong kinh mạch trở nên bạo loạn, đe dọa nổ tung.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1625,8 +1535,6 @@
     "id": "demonic_qi_overload",
     "title": "Ma Khí Quá Tải",
     "description": "Ma khí thiên địa quá dày đặc bắt đầu thấm vào kinh mạch của bạn ngay cả khi đang nghỉ ngơi, gây ra một cuộc xung đột dữ dội giữa linh khí và hắc ám khí tức.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -1659,8 +1567,6 @@
     "id": "shadow_demonic_ambush",
     "title": "Bóng Ma Ma Đạo",
     "description": "Ma khí dâng cao khiến các tà tu bạo dạn hơn. Một sát thủ ma đạo lão luyện phục kích bạn từ bóng tối, âm mưu cướp đoạt tu vi của bạn.",
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "choices": [
       {
@@ -1696,8 +1602,6 @@
     "id": "void_visions_meditation",
     "title": "Ảo Ảnh Hư Không",
     "description": "Ma khí dày đặc bao vây bạn trong lúc bế quan. Những ảo ảnh về một hư không đen tối bắt đầu cám dỗ tâm trí, hứa hẹn sức mạnh để đổi lấy nhân tính.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -1735,8 +1639,6 @@
     "id": "demonic_whisper_meditation",
     "title": "Tiếng Thì Thầm Của Ma Chủng",
     "description": "Khi ma khí thiên địa bão hòa, một giọng nói hắc ám bắt đầu thì thầm trong tâm trí bạn lúc tĩnh tu, hứa hẹn sức mạnh cấm kỵ để vượt qua bình cảnh hiện tại.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -1772,8 +1674,6 @@
     "id": "demonic_blood_sacrifice_interruption",
     "title": "Phá Hoại Huyết Tế",
     "description": "Bạn vô tình bắt gặp một nghi lễ ẩn giấu: các tà tu đang dùng phàm nhân làm vật hiến tế để gia tăng ma khí [6, 8]. Không khí nồng nặc mùi máu và tử vong.",
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -1810,8 +1710,6 @@
     "id": "heart_demon_resonance",
     "title": "Tâm Ma Cộng Hưởng",
     "description": "Ma khí thiên địa tràn trề, kích phát sự cộng hưởng với 'Đan Độc' tích tụ và những dục vọng kìm nén trong linh hồn bạn, hóa thành một đợt Tâm Ma bùng phát [cite: 18, 56].",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -1845,8 +1743,6 @@
     "id": "waking_dawn",
     "title": "Bình Minh Thức Giấc",
     "description": "Sương lạnh tan, một lựa chọn mở ra: tu luyện bền bỉ hay mạo hiểm nhảy vọt.",
-    "minAge": 1,
-    "maxAge": 5,
     "weight": 1,
     "choices": [
       {
@@ -1881,8 +1777,6 @@
     "id": "chosen_one_duel",
     "title": "Thiên Kiêu Chân Chính Thách Đấu",
     "description": "Long Ngạo Thiên, con cưng của thiên đạo, kiêu ngạo chặn đường bạn. Hắn chĩa thanh lân kiếm lấp lánh vào bạn, đòi quyết đấu để giẫm đạp lên tôn nghiêm của bạn.",
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -1913,8 +1807,6 @@
     "id": "spirit_herbs",
     "title": "Thảo Dược Linh Hồn",
     "description": "Bạn phát hiện những thảo dược linh hồn bí ẩn. Khí tức của chúng vô cùng hấp dẫn nhưng có phần bất ổn định.",
-    "minAge": 3,
-    "maxAge": 100,
     "weight": 1,
     "choices": [
       {
@@ -1957,8 +1849,6 @@
     "id": "duel_challenge",
     "title": "Thách Đấu Quyết Chiến",
     "description": "Một võ giả lang thang bất ngờ chặn đường, rút vũ khí và thách đấu bạn để chứng minh đạo tâm của hắn.",
-    "minAge": 18,
-    "maxAge": 35,
     "weight": 1,
     "choices": [
       {
@@ -1992,8 +1882,6 @@
     "id": "heavenly_dao_quake",
     "title": "Thiên Đạo Chấn Động",
     "description": "Năng lượng thiêng liêng dao động dữ dội ở mức báo động! Cơ duyên phi thường đang đến gần, một bí cảnh ẩn có thể sắp khai mở.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2033,8 +1921,6 @@
     "id": "heavenly_qi_surge",
     "title": "Linh Khí Bộc Phát",
     "description": "Linh khí thiên địa đột nhiên bộc phát đến mức độ dày đặc khó tin! Nó đè bẹp hoàn toàn ma khí, nhưng hít quá nhiều có thể làm quá tải một thân thể yếu ớt.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2068,8 +1954,6 @@
     "id": "heavenly_epiphany_surge",
     "title": "Thiên Đạo Đốn Ngộ",
     "description": "Thiên Đạo dao động kịch liệt. Một luồng Đạo vận uyên thâm bất ngờ gột rửa tâm trí bạn, cộng hưởng với kinh mạch và mang đến cơ hội đốn ngộ hiếm có.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2104,8 +1988,6 @@
     "id": "echoes_of_the_immortal_rift",
     "title": "Tiếng Vọng Từ Vết Nứt Tiên Giới",
     "description": "Sự gia tăng đột ngột của Thiên Đạo dị động đã gây ra một vết nứt thời gian cục bộ. Bạn nghe thấy tiếng vọng của một lần đột phá trong tương lai hoặc một thất bại trong quá khứ cộng hưởng với linh hồn,.",
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2141,8 +2023,6 @@
     "id": "heavenly_thunder_tempering",
     "title": "Thiên Lôi Tôi Thể",
     "description": "Thiên Đạo đang dao động dữ dội. Một cơn bão linh khí cục bộ đã triệu hồi Thiên Lôi. Bạn có thể thử mượn sức mạnh sấm sét để tôi luyện kinh mạch.",
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2174,8 +2054,6 @@
     "id": "ancient_array_puzzle",
     "title": "Trận Pháp Cổ Nhân Thất Lạc",
     "description": "Trong lúc thám hiểm vùng hẻo lánh, bạn phát hiện một trận pháp cổ xưa khắc trên đá. Nó nhấp nháy ánh sáng kỳ bí, cộng hưởng với những dao động của Thiên Đạo hiện tại.",
-    "minAge": 15,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -2213,8 +2091,6 @@
     "id": "immortal_tomb_emergence",
     "title": "Mộ Táng Tiên Nhân Xuất Thế",
     "description": "Thiên Đạo dị động cực độ khiến đất đai nứt nẻ, để lộ lối vào của một ngôi mộ tráng lệ thuộc về một vị Tiên Nhân phi thăng từ thời viễn cổ.",
-    "minAge": 40,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2254,8 +2130,6 @@
     "id": "world_dao_epiphany",
     "title": "Thiên Đạo Cộng Hưởng",
     "description": "Thiên Đạo dị động kịch liệt, khiến linh khí thiên địa hóa thành những cánh hoa sen rơi rụng khắp bầu trời.",
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2287,8 +2161,6 @@
     "id": "heavenly_karma_judgment",
     "title": "Thiên Đạo Nghiệp Lực Phán Quyết",
     "description": "Thiên Đạo dị động đã kích hoạt một khoảnh khắc thấu thị nghiệp lực. Thế giới phán xét những hành động trong quá khứ của bạn, cộng hưởng với sự thuần khiết hoặc ô uế của linh hồn.",
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2322,8 +2194,6 @@
     "id": "pill_toxin_backlash",
     "title": "Tích Tụ Đan Độc",
     "description": "Việc lạm dụng đan dược cấp thấp để chạy đua với thọ nguyên khiến 'Đan Độc' tích tụ trong kinh mạch. Một đợt bạo kích năng lượng đang đe dọa cơ thể bạn.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -2360,8 +2230,6 @@
     "id": "pill_toxin_cleansing_ritual",
     "title": "Nghi Lễ Tẩy Rửa Đan Độc",
     "description": "Kinh mạch của bạn bị tắc nghẽn bởi tàn dư từ việc lạm dụng đan dược [2]. Một vị lang trung lang thang đề nghị một nghi lễ nguy hiểm: dùng linh hỏa tinh khiết để thiêu cháy đan độc.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -2401,8 +2269,6 @@
     "id": "fragment_of_the_heavens",
     "title": "Mảnh Vỡ Thiên Đạo",
     "description": "Thiên Đạo dị động cực độ khiến một mảnh vỡ vật chất của Thiên Đạo rơi xuống từ bầu trời. Nó tỏa ra một giai điệu vượt xa phàm trần.",
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2438,8 +2304,6 @@
     "id": "heavenly_dao_vision_war",
     "title": "Ảo Ảnh Vĩnh Hằng Đại Chiến",
     "description": "Thiên Đạo dị động cực độ kích phát cộng hưởng linh hồn. Bạn nhìn thấy ảo ảnh Thủy Tổ tông môn đại chiến Đại Ma, hé lộ một sơ hở trong công pháp hiện tại của bạn.",
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2479,8 +2343,6 @@
     "id": "pill_toxin_meridian_blockage",
     "title": "Khủng Hoảng Tắc Nghẽn Kinh Mạch",
     "description": "Linh khí nồng đậm trong môi trường đang phản ứng dữ dội với 'Đan Độc' trong cơ thể, gây ra một vụ nổ linh khí cục bộ ngay trong kinh mạch của bạn.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -2514,8 +2376,6 @@
     "id": "ancient_spatial_rift_puzzle",
     "title": "Vết Nứt Không Gian Cổ",
     "description": "Thiên Đạo dị động cực độ đã mở ra một vết nứt không gian cục bộ. Nó dẫn đến một tiểu thế giới chứa đựng các công pháp tu luyện cổ đại [cite: 56, 59].",
-    "minAge": 25,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2553,8 +2413,6 @@
     "id": "heavenly_nectar_epiphany",
     "title": "Linh Vũ Thiên Đạo",
     "description": "Một hiện tượng hiếm gặp xảy ra khi linh khí đạt đỉnh! Những giọt mưa nuôi dưỡng linh hồn rơi xuống, giúp vượt qua các bình cảnh thông thường [cite: 56, 12].",
-    "minAge": 10,
-    "maxAge": 500,
     "weight": 1,
     "choices": [
       {
@@ -2589,8 +2447,6 @@
     "id": "beast_king_lotus",
     "title": "Yêu Vương Trấn Giữ Huyết Liên",
     "description": "Tiến sâu vào lõi Vạn Thú Sơn Mạch, bạn phát hiện một đóa Huyết Liên ngàn năm đang tỏa hương thơm ngát. Tuy nhiên, nằm khoanh tròn bên cạnh là một con Huyết Mãng Yêu Vương đang say ngủ.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -2624,8 +2480,6 @@
     "id": "corpse_in_swamp",
     "title": "Xác Chết Giữa Đầm Lầy",
     "description": "Tại sâu trong Vạn Thú Sơn Mạch, bạn thấy thi thể một tu sĩ Trúc Cơ Kỳ chìm một nửa dưới đầm lầy, bên hông vẫn còn lấp lánh một Túi trữ vật căng phồng. Xung quanh tĩnh lặng một cách đáng sợ.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -2660,8 +2514,6 @@
     "id": "unfinished_go_game",
     "title": "Tàn Cuộc Cờ Vây",
     "description": "Khám phá một hang động bám đầy nhũ đá, bạn tìm thấy một bàn cờ vây làm từ bạch ngọc. Trận cờ đang đánh dở, mỗi quân cờ đều tỏa ra Đạo Vận vô cùng thâm thúy, dường như là tàn cuộc của hai vị đại năng phi thăng từ ngàn năm trước.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2696,8 +2548,6 @@
     "id": "demon_king_metamorphosis",
     "title": "Yêu Vương Hóa Hình",
     "description": "Bầu trời Vạn Thú Sơn Mạch đen kịt. Bạn nhìn thấy một con Yêu Vương đang chịu Thiên Kiếp để hóa hình người, cơ thể đang cực kỳ suy yếu.",
-    "minAge": 50,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2735,8 +2585,6 @@
     "id": "secret_realm_opening",
     "title": "Bí Cảnh Khai Mở",
     "description": "Thiên Đạo dị động dữ dội. Một vết nứt không gian xé rách mây trời, để lộ ra một bí cảnh viễn cổ đang tỏa ra luồng linh khí tối thượng.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2772,8 +2620,6 @@
     "id": "heavenly_treasure_emerges",
     "title": "Thiên Tài Địa Bảo Xuất Thế",
     "description": "Tài nguyên sơn mạch đang cực kỳ dồi dào. Trên vách núi nở rộ một đóa Tuyết Liên ngàn năm quý hiếm, thu hút vô số tán tu tham lam đang chém giết lẫn nhau để tranh giành.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -2811,8 +2657,6 @@
     "id": "encounter_mu_wanqing",
     "title": "Gặp Gỡ Mộc Uyển Thanh",
     "description": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh (đệ tử nội môn nổi danh xinh đẹp) đang bị yêu thú bao vây, khóc lóc cầu cứu vô cùng yếu đuối.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -2844,8 +2688,6 @@
     "id": "mountain_meditation",
     "title": "Thưởng Thiền Sơn",
     "description": "Những đỉnh núi cao chót vót của ngọn núi cổ xưa mời gọi bạn ngồi xuống và suy ngẫm về Thiên Đạo.",
-    "minAge": 6,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -2885,8 +2727,6 @@
     "id": "event_hong_nhan_ma_dao_am_sat",
     "title": "Huyết Mân Côi Phục Kích",
     "description": "Đang thám hiểm Vạn Thú Sơn Mạch, Huyết Mân Côi bất ngờ hiện nguyên hình tà tu bao vây bạn với sát tâm nồng đậm.",
-    "minAge": 20,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -2917,8 +2757,6 @@
     "id": "ancestral_memory",
     "title": "Ký Ức Tổ Tiên",
     "description": "Sâu trong cổ nhân di tích, một sự cộng hưởng bí ẩn khiến luồng ký ức của tổ tiên xa xưa ùa vào tâm trí bạn.",
-    "minAge": 1,
-    "maxAge": 100,
     "weight": 1,
     "choices": [
       {
@@ -2950,8 +2788,6 @@
     "id": "grave_storm",
     "title": "Giông Mộ Linh",
     "description": "Một cơn giông lốc kinh hoàng chứa đầy oán linh bất ngờ quét qua khu mộ cổ.",
-    "minAge": 25,
-    "maxAge": 60,
     "weight": 1,
     "choices": [
       {
@@ -2982,8 +2818,6 @@
     "id": "helping_hand_daoist",
     "title": "Đạo Hữu Gặp Nạn",
     "description": "Bạn bắt gặp một tu sĩ chính đạo đang bị thương nặng và bị dồn vào đường cùng bởi bầy ma lang. Họ khẩn khoản cầu cứu bạn.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -3018,8 +2852,6 @@
     "id": "ruined_alchemy_furnace",
     "title": "Lò Luyện Đan Tàn Tích",
     "description": "Trong một hang động bị lãng quên, bạn tìm thấy một lò luyện đan nứt nẻ vẫn tỏa ra dược khí nồng đậm nhưng bất ổn dù đã qua hàng thế kỷ.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -3053,8 +2885,6 @@
     "id": "ancient_array_trap",
     "title": "Cạm Bẫy Trận Pháp Cổ",
     "description": "Thiên Đạo dị động đã làm lộ ra lối vào của một Cổ Nhân Di Tích, nhưng nó được bảo vệ bởi một sát trận vô cùng phức tạp và chết chóc.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3092,8 +2922,6 @@
     "id": "demonic_altar_discovery",
     "title": "Phát Hiện Tế Đàn Ma Đạo",
     "description": "Sâu trong vùng núi sương mù, bạn tình cờ phát hiện một Tế Đàn Ma Đạo. Máu tươi bao phủ các rune, và một ma khí hắc ám đang đập thình thịch với sức mạnh cấm kỵ.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3130,8 +2958,6 @@
     "id": "millennial_ginseng_guardian",
     "title": "Huyết Lang Trấn Giữ Linh Sâm",
     "description": "Sâu trong Vạn Thú Sơn Mạch, bạn phát hiện một bãi linh thảo hiếm, bao gồm cả một cây Nhân Sâm Ngàn Năm. Tuy nhiên, một con ma lang hung dữ đang gầm gừ bảo vệ khu vực này.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -3170,8 +2996,6 @@
     "id": "ancient_dao_stele",
     "title": "Đạo Bi Thượng Cổ",
     "description": "Được kích hoạt bởi sự dao động kịch liệt của Thiên Đạo, một tấm bia đá khổng lồ trồi lên từ lòng đất, tỏa ra những cổ tự Đạo vận cộng hưởng với linh hồn bạn.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3207,8 +3031,6 @@
     "id": "beast_king_lair",
     "title": "Sào Huyệt Yêu Vương",
     "description": "Khi yêu thú bạo động lên đỉnh điểm, bạn vô tình lạc vào sào huyệt trống rỗng của một Yêu Vương khi nó đang ra ngoài dẫn dắt thú triều. Khắp nơi vương vãi kỳ trân dị bảo.",
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3247,8 +3069,6 @@
     "id": "miasma_mountain_trail",
     "title": "Chướng Khí Đường Sơn",
     "description": "Ma khí dâng cao tạo ra một lớp chướng khí độc dày đặc trên đường núi. Bạn nghe thấy tiếng gầm rống biến dị của yêu thú bên trong màn sương.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -3282,8 +3102,6 @@
     "id": "spiritual_spring_epiphany",
     "title": "Linh Tuyền Đốn Ngộ",
     "description": "Linh khí thiên địa nồng đậm đã làm lộ ra một suối linh tuyền ẩn giấu. Dòng nước tinh khiết và tỏa ra Đạo vận thâm thúy.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -3317,8 +3135,6 @@
     "id": "ghost_battlefield_scavenging",
     "title": "Quét Dọn Chiến Trường Ma",
     "description": "Vùng núi đầy rẫy hài cốt từ cuộc chiến tông môn đang diễn ra. Tiếng oán linh gào thét vang vọng khi bạn tìm kiếm các pháp khí và vũ khí bị bỏ lại.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3353,8 +3169,6 @@
     "id": "ancient_battlefield_vision",
     "title": "Ảo Ảnh Chiến Trường Cổ",
     "description": "Thiên Đạo dị động kịch liệt kích phát một vết nứt thời gian. Bạn nhìn thấy ảo ảnh về cuộc đại chiến cổ xưa giữa Tiên và Ma, hé lộ những chiến đấu kỹ pháp thâm thúy.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -3388,8 +3202,6 @@
     "id": "spirit_beast_egg_discovery",
     "title": "Phát Hiện Trứng Linh Thú",
     "description": "Tài nguyên sơn mạch dồi dào. Bạn tìm thấy một quả trứng linh thú phát sáng ẩn trong kẽ đá, nhưng thú cha mẹ đang ở gần đó săn mồi.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -3424,8 +3236,6 @@
     "id": "night_of_the_blood_moon",
     "title": "Đêm Trăng Máu",
     "description": "Bầu trời chuyển sang màu đỏ thẫm bệnh hoạn. Ma khí cực đoan đã đẩy lũ yêu thú vào cơn cuồng sát, và bức màn giữa các thế giới đang dần mỏng đi,.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3461,8 +3271,6 @@
     "id": "beast_mountain_landslide",
     "title": "Sạt Lở Vạn Thú Sơn",
     "description": "Độ nguy hiểm sơn mạch tăng cao gây ra một vụ sạt lở lớn. Những quặng sắt cổ đại lộ ra, nhưng khu vực này vô cùng bất ổn và đầy yêu thú đang bị kích động.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3498,8 +3306,6 @@
     "id": "beast_tide_vanguard",
     "title": "Tiền Tuyến Thú Triều",
     "description": "Yêu thú bạo động bùng nổ! Một đợt thú triều khổng lồ đang tràn xuống núi. Bạn bị kẹt ngay trên đường tiến công của đội tiên phong yêu thú.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3538,8 +3344,6 @@
     "id": "herbalist_hidden_garden",
     "title": "Dược Viên Của Cổ Tu",
     "description": "Khi linh khí sơn mạch nồng đậm, một trận pháp ẩn giấu đã sụp đổ, để lộ ra dược viên bị lãng quên từ lâu của một vị đại năng luyện đan sư.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3575,8 +3379,6 @@
     "id": "ancient_alchemy_relic",
     "title": "Tàn Tích Của Tiên Đan Sư",
     "description": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn trong Cổ Nhân Di Tích. Bên trong, một lò luyện đan vẫn còn cháy ngọn lửa tiên hỏa mờ nhạt.",
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3614,8 +3416,6 @@
     "id": "ancient_beast_seal_weakening",
     "title": "Phong Ấn Cổ Thú Suy Yếu",
     "description": "Ma khí và hoạt động yêu thú dâng cao đã làm suy yếu một phong ấn cổ xưa trong núi. Một luồng khí tức kinh khủng từ thời Đại Chiến Cổ Đại đang rò rỉ ra ngoài.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3655,8 +3455,6 @@
     "id": "ancient_weapon_awakening",
     "title": "Cổ Khí Thức Tỉnh",
     "description": "Sâu trong Cổ Nhân Di Tích, một món binh khí rỉ sét bắt đầu cộng hưởng với Thiên Đạo dị động, tỏa ra một luồng kiếm ý mờ nhạt nhưng sắc bén.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3694,8 +3492,6 @@
     "id": "corrupted_spirit_spring",
     "title": "Linh Tuyền Ô Uế",
     "description": "Một con suối linh tuyền trên núi đã bị ô nhiễm bởi ma khí đang dâng cao. Dòng nước tỏa ra ánh tím bệnh hoạn, nhưng năng lượng bên trong vẫn cực kỳ mạnh mẽ.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3729,8 +3525,6 @@
     "id": "hibernating_beast_king",
     "title": "Yêu Vương Ngủ Đông",
     "description": "Trong lúc thám hiểm, bạn phát hiện sào huyệt của một Yêu Vương đang ngủ đông. 'Linh Thảo' và 'Linh Quặng' hiếm tích tụ xung quanh thân hình khổng lồ của nó.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -3769,8 +3563,6 @@
     "id": "ancient_sword_intent_ruins",
     "title": "Kiếm Ý Của Cổ Tu",
     "description": "Tại Cổ Nhân Di Tích, Thiên Đạo dị động [6] đã đánh thức kiếm ý còn sót lại của một vị đại năng cổ đại. Không khí xung quanh trở nên sắc bén và chết chóc.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3809,8 +3601,6 @@
     "id": "cursed_herb_patch",
     "title": "Bãi Linh Thảo Bị Nguyền Rủa",
     "description": "Ma khí dâng cao đã làm ô uế một bãi linh thảo hiếm. Những cây linh thảo tỏa ra ánh sáng hắc ám, hứa hẹn sức mạnh to lớn nhưng phải trả giá bằng sự thuần khiết của linh hồn.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3847,8 +3637,6 @@
     "id": "ancient_ruins_puzzle_box",
     "title": "Di Tích Cổ: Hộp Trận Pháp",
     "description": "Trong lúc thám hiểm Cổ Nhân Di Tích, bạn tìm thấy một hộp kim loại bị niêm phong bởi trận pháp phức tạp. Thiên Đạo dị động đã làm suy yếu khóa ấn của nó [5, 6].",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3887,8 +3675,6 @@
     "id": "blood_moon_beast_tide",
     "title": "Thú Triều Huyết Nguyệt",
     "description": "Hoạt động yêu thú đã đạt mức cực đoan! Dưới sự kích động của huyết nguyệt, một đợt thú triều đang tràn về phía khu dân cư phàm nhân [10, 11].",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3928,8 +3714,6 @@
     "id": "ancient_furnace_residual_fire",
     "title": "Dư Hỏa Lò Đan Cổ",
     "description": "Linh khí nồng đậm đã thắp lại một ngọn thần hỏa tàn dư trong lò luyện đan bỏ hoang tại Cổ Nhân Di Tích. Sức nóng đang nung chảy đá vây quanh, lộ ra những khối linh quặng ẩn giấu.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3965,8 +3749,6 @@
     "id": "sect_war_convoy_ambush",
     "title": "Tông Môn Chiến: Phục Kích Đoàn Xe",
     "description": "Chiến sự đang ở mức cao. Bạn đang hộ tống đoàn xe tài nguyên của tông môn thì bị các đệ tử tinh nhuệ của Vạn Tiên Giáo phục kích.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4008,8 +3790,6 @@
     "id": "ma_huyet_quang_mach",
     "title": "Quặng Mạch Ma Huyết",
     "description": "Ma khí dâng cao đã thấm vào một mạch linh quặng trên núi. Những khối quặng đang đập thình thịch với ánh sáng đỏ sẫm, hứa hẹn sức mạnh lớn nhưng đi kèm rủi ro ô uế cực cao [cite: 54, 56].",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -4050,8 +3830,6 @@
     "id": "lost_huyen_thiet_vein",
     "title": "Mạch Quặng Huyền Thiết Thất Lạc",
     "description": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn chứa mạch quặng 'Huyền Thiết' tinh khiết—nguyên liệu tối thượng để đúc vũ khí Địa Cấp [cite: 19, 54].",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4087,8 +3865,6 @@
     "id": "event_thien_kieu_chan_chinh_thach_dau",
     "title": "Chung Kết Đại Hội Tỷ Thí",
     "description": "Long Ngạo Thiên, con cưng thiên đạo, đứng trên lôi đài chờ bạn. Linh khí quanh hắn bạo động dữ dội.",
-    "minAge": 18,
-    "maxAge": 25,
     "weight": 2,
     "choices": [
       {
@@ -4129,8 +3905,6 @@
     "id": "corrupt_sect_deacon",
     "title": "Chấp Sự Lũng Đoạn",
     "description": "Khi bạn đến Chấp Sự Đường để nhận nhiệm vụ tông môn bắt buộc hàng năm, tên Chấp Sự béo ú nháy mắt ám chỉ: nếu bạn nộp 50 Linh thạch 'bôi trơn', hắn sẽ giao cho bạn nhiệm vụ hái thuốc nhàn hạ. Nếu không, bạn sẽ phải xuống hầm quặng sâu nhất đầy nguy hiểm.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4166,8 +3940,6 @@
     "id": "immortal_guidance",
     "title": "Tiên Nhân Chỉ Lộ",
     "description": "Thiên Đạo dị động cuốn tâm trí bạn vào một không gian kỳ ảo, nơi một ảo ảnh tiên nhân đang giảng đạo.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -4199,8 +3971,6 @@
     "id": "sect_rebellion",
     "title": "Nội Loạn Môn Phái",
     "description": "Sự ổn định của môn phái đã chạm đáy. Một vị chấp sự bị ám sát giữa ban ngày, và các đệ tử phản loạn đang đốt phá các các viện ngoại môn để cướp bóc tài nguyên.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4237,8 +4007,6 @@
     "id": "sect_conscription",
     "title": "Bắt Lính Ra Trận",
     "description": "Chiến sự tông môn leo thang tột độ. Các chấp sự đang cưỡng ép bắt đệ tử ngoại môn ra tiền tuyến làm bia đỡ đạn cho đại chiến.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4272,8 +4040,6 @@
     "id": "possessed_deacon",
     "title": "Chấp Sự Bị Đoạt Xá",
     "description": "Ma đạo thâm nhập nghiêm trọng. Đêm khuya, bạn vô tình bắt gặp một vị Chấp Sự tông môn đạo mạo đang lén lút tu luyện huyết công cấm kỵ. Hắn đã phát hiện ra bạn.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4310,8 +4076,6 @@
     "id": "event_ke_sinh_ton_phan_boi",
     "title": "Cẩu Dư Phản Bội",
     "description": "Trong lúc Tông môn có nội loạn, Cẩu Dư lén dẫn một nhóm phản đồ đến động phủ của bạn cướp bóc.",
-    "minAge": 30,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4343,8 +4107,6 @@
     "id": "golden_core_trial",
     "title": "Thử Thách Hoàng Kim",
     "description": "Bạn phát hiện một thử thách ẩn do một cao thủ Kim Đan để lại, được thiết kế để kiểm tra xem một tu sĩ đã sẵn sàng đột phá hay chưa.",
-    "minAge": 40,
-    "maxAge": 90,
     "weight": 1,
     "choices": [
       {
@@ -4383,8 +4145,6 @@
     "id": "spirit_mine_collapse",
     "title": "Sập Hầm Linh Quặng",
     "description": "Do tông môn bất ổn và thiếu bảo trì, hầm linh quặng ngoại môn đột nhiên đổ sập xung quanh bạn. Những khoáng thạch vô giá lộ ra trong đống đổ nát.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4417,8 +4177,6 @@
     "id": "berserk_spirit_beast",
     "title": "Linh Thú Bạo Động",
     "description": "Một con linh thú vốn ngoan ngoãn ở chuồng ngoại môn đột nhiên bạo động do nhiễm ma khí, nó bẻ gãy xích và tấn công đệ tử.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -4449,8 +4207,6 @@
     "id": "ten_thousand_immortals_war",
     "title": "Chiến Tranh Tông Môn Bùng Nổ",
     "description": "Vạn Tiên Giáo chính thức tuyên chiến với Thiên Đạo Tông! Tông môn rơi vào hỗn loạn, mọi đệ tử đều bị lệnh phải ra tiền tuyến tham chiến.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4485,8 +4241,6 @@
     "id": "sect_internal_strife",
     "title": "Nội Bộ Bất Ổn",
     "description": "Đấu đá phe phái đã lên đến đỉnh điểm. Một chấp sự vừa bị ám sát, tông môn hiện tại vô cùng nguy hiểm và rủi ro bị phản bội rất cao.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4518,8 +4272,6 @@
     "id": "sect_outer_tournament",
     "title": "Đại Hội Tỷ Thí Ngoại Môn",
     "description": "Tông môn đang trong thời kỳ ổn định và tổ chức Đại Hội Tỷ Thí Ngoại Môn thập niên. Đệ tử các phong tụ tập để chứng minh võ lực và giành lấy đan dược quý giá.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4555,8 +4307,6 @@
     "id": "sect_resource_famine",
     "title": "Tông Môn Khô Kiệt Tài Nguyên",
     "description": "Kho tài nguyên của tông môn đã cạn kiệt đến mức báo động. Bổng lộc bị cắt giảm, các đệ tử ngoại môn tuyệt vọng đang cấu xé nhau vì những mảnh linh thảo vụn vặt.",
-    "minAge": 12,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4591,8 +4341,6 @@
     "id": "spirit_beast_mutation",
     "title": "Linh Thú Đột Biến",
     "description": "Trong lúc làm nhiệm vụ chăn nuôi linh thú, một con thú nuốt phải côn trùng phát sáng kỳ lạ và bắt đầu đột biến dữ dội, tỏa ra linh khí mãnh liệt.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4630,8 +4378,6 @@
     "id": "outer_sect_herb_theft",
     "title": "Trộm Cắp Dược Viên",
     "description": "Tài nguyên tông môn cạn kiệt. Bạn bắt quả tang một đệ tử ngoại môn đang tuyệt vọng ăn trộm linh thảo ở dược viên để cứu người mẹ phàm nhân đang hấp hối.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -4662,8 +4408,6 @@
     "id": "corrupt_promotion_offer",
     "title": "Lời Đề Nghị Hủ Bại",
     "description": "Một vị Trưởng lão Nội Môn tham lam bí mật tiếp cận bạn. Lão đề nghị bẻ cong luật lệ và đặc cách bạn vào Nội Môn sớm, nhưng với một cái giá cắt cổ.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4696,8 +4440,6 @@
     "id": "sect_beast_feeding_frenzy",
     "title": "Linh Thú Cuồng Nộ",
     "description": "Trong lúc thực hiện nhiệm vụ tông môn cho linh thú ngoại môn ăn, một con thú bị tha hóa bởi luồng ma khí đột ngột tăng cao đã phá lồng và lao thẳng vào bạn.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4734,8 +4476,6 @@
     "id": "strict_deacon_inspection",
     "title": "Chấp Sự Tuần Tra Kiểm Điểm",
     "description": "Tông môn đang siết chặt kỷ luật. Một vị chấp sự nghiêm khắc chặn bạn lại để kiểm tra điểm cống hiến hàng năm. Hắn trừng mắt nhìn bạn, đòi bằng chứng làm việc hoặc một khoản 'tiền phạt' lớn.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4768,8 +4508,6 @@
     "id": "traitorous_deacon",
     "title": "Chấp Sự Phản Bội",
     "description": "Sự ổn định của tông môn đang sụp đổ. Bạn bắt gặp một vị chấp sự cấp cao đang lén lút mang theo bí kíp cốt lõi của tông môn để đào tẩu sang phe địch.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4805,8 +4543,6 @@
     "id": "sect_debt_collector",
     "title": "Chấp Sự Đòi Nợ",
     "description": "Tài nguyên tông môn cạn kiệt. Một vị chấp sự đòi nợ đang đi tuần, cưỡng ép đệ tử ngoại môn 'tự nguyện quyên góp' để lấp đầy kho bạc.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4838,8 +4574,6 @@
     "id": "elder_funeral_conspiracy",
     "title": "Tang Lễ Trưởng Lão",
     "description": "Một vị trưởng lão nội môn vừa tạ thế, sự ổn định của tông môn bị lung lay. Tin đồn về một di sản ẩn giấu để lại cho đệ tử ngoại môn đang lan truyền chóng mặt.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4874,8 +4608,6 @@
     "id": "captured_sect_rebel",
     "title": "Bắt Giữ Phản Đồ",
     "description": "Nội bộ bất ổn trầm trọng. Bạn đã dồn vào đường cùng một đồng môn bị bắt quả tang trộm cắp bí kíp cốt lõi. Hắn van xin bạn tha mạng, nói rằng chỉ muốn cứu gia đình.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4912,8 +4644,6 @@
     "id": "sect_manual_preservation",
     "title": "Bảo Tồn Bí Kíp Tông Môn",
     "description": "Tàng Kinh Các đã bốc cháy trong một cuộc bạo loạn. Những mảnh tàn quyển hiếm hoi vương vãi trong khói lửa. Bạn chỉ có thể cứu được một vài bản.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4947,8 +4677,6 @@
     "id": "sect_resource_leak",
     "title": "Rò Rỉ Tài Nguyên Tông Môn",
     "description": "Tài nguyên tông môn cạn kiệt, việc quản lý lỏng lẻo. Bạn phát hiện một lỗ hổng bí mật trong kho tài nguyên, nơi linh thạch và đan dược cấp thấp đang bị rò rỉ ra ngoài.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -4983,8 +4711,6 @@
     "id": "alchemy_hall_explosion",
     "title": "Nổ Lò Luyện Đan",
     "description": "Khi đi ngang qua Đan Dược Đường, một vụ nổ kinh hoàng làm rung chuyển tòa nhà. Khói bụi mù mịt, những mảnh linh thảo quý hiếm bị thiêu cháy văng khắp nơi.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5020,8 +4746,6 @@
     "id": "sect_treasury_betrayal",
     "title": "Phản Bội Tại Kho Báu Tông Môn",
     "description": "Sự ổn định nội bộ đã sụp đổ hoàn toàn. Bạn bắt gặp một nhóm đệ tử cao cấp và một trưởng lão đang cố gắng vét sạch kho báu trước khi đào tẩu sang tông môn đối địch,.",
-    "minAge": 40,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -5058,8 +4782,6 @@
     "id": "sect_meridian_cleansing_pool",
     "title": "Linh Trì Tẩy Tủy",
     "description": "Linh khí trong tông môn đang dày đặc bất thường. Hồ tẩy tủy truyền thuyết đã mở cửa cho đệ tử ngoại môn trong một thời gian ngắn.",
-    "minAge": 10,
-    "maxAge": 100,
     "weight": 1,
     "choices": [
       {
@@ -5093,8 +4815,6 @@
     "id": "forced_labor_duty",
     "title": "Lao Dịch Khổ Sai",
     "description": "Ổn định tông môn thấp, các trưởng lão yêu cầu nhiều hơn từ đệ tử ngoại môn. Bạn bị điều động đến khu vực nguy hiểm nhất của linh quặng hầm như một hình thức 'đóng góp bắt buộc'.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -5130,8 +4850,6 @@
     "id": "hidden_jade_chamber",
     "title": "Mật Thất Ngọc Bích",
     "description": "Tông môn đang trong thời kỳ ổn định và phồn vinh. Tông Chủ quyết định mở cửa 'Mật Thất Ngọc Bích' cho những đệ tử ưu tú nhất, cho phép tiếp cận với những bí pháp cấm kỵ.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5167,8 +4885,6 @@
     "id": "great_sect_war_frontline",
     "title": "Tiền Tuyến Đại Chiến Tông Môn",
     "description": "Chiến sự tông môn đã lên đến đỉnh điểm. Bạn bị điều động ra tiền tuyến để bảo vệ Linh Quặng trước đội tiên phong tinh nhuệ của Vạn Tiên Giáo.",
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -5204,8 +4920,6 @@
     "id": "deacon_infiltration_scandal",
     "title": "Nội Gián Ma Đạo Lộ Diện",
     "description": "Ma đạo thâm nhập sâu rộng đã khiến một Chấp Sự cao cấp sa ngã. Bạn bắt quả tang hắn đang truyền tin mật tông môn thông qua một khối truyền tin huyết ngọc.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -5242,8 +4956,6 @@
     "id": "sect_coup_attempt",
     "title": "Âm Mưu Đảo Chính Ngoại Môn",
     "description": "Sự ổn định của tông môn chạm mức báo động. Một nhóm đệ tử cực đoan, bị kích động bởi sự khan hiếm tài nguyên, đang âm mưu lật đổ các chấp sự kho bạc.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5280,8 +4992,6 @@
     "id": "sect_war_raiding_party",
     "title": "Tông Môn Chiến: Đội Đột Kích",
     "description": "Chiến sự tông môn leo thang. Bạn bị lệnh tham gia một đội đột kích mạo hiểm nhằm phá hoại dược viên linh thảo của tông môn đối địch.",
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -5317,8 +5027,6 @@
     "id": "sect_merit_hoarding",
     "title": "Đầu Cơ Điểm Cống Hiến",
     "description": "Tông môn đang dồi dào tài nguyên. Một chấp sự tham lam đang bí mật cho phép đệ tử 'mua' điểm cống hiến bằng một lượng lớn linh thạch.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -5352,8 +5060,6 @@
     "id": "sect_manual_leak",
     "title": "Rò Rỉ Bí Kíp Tông Môn",
     "description": "Sự ổn định của tông môn đang thấp [4]. Một thủ thư hủ bại đang lén lút bán các mảnh tàn quyển công pháp cao cấp của tông môn cho người trả giá cao nhất.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5389,8 +5095,6 @@
     "id": "sect_heritage_trial",
     "title": "Thử Thách Di Sản Tông Môn",
     "description": "Với danh vọng tông môn đang ở đỉnh cao, Đại Trưởng Lão mở ra 'Di Sản Chi Lộ'—một thử thách được thiết kế để kiểm tra ngộ tính và lòng trung thành của đệ tử đối với Đạo tổ sáng lập.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5426,8 +5130,6 @@
     "id": "spirit_root_resonance_test",
     "title": "Thử Thách Cộng Hưởng Linh Căn",
     "description": "Khi linh khí thiên địa đạt đỉnh, tinh thể cộng hưởng của tông môn đã được kích hoạt. Đây là cơ hội hiếm có để tôi luyện độ tinh khiết của Linh Căn và tăng cường hệ số tu luyện của bạn [1, 2].",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -5461,8 +5163,6 @@
     "id": "sect_internal_betrayal",
     "title": "Nội Gián Xuất Hiện",
     "description": "Sự ổn định tông môn thấp và ma đạo thâm nhập cao. Bạn bắt quả tang một sư huynh đang định hạ độc ma khí vào linh tuyền của môn phái [7-9].",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -5500,8 +5200,6 @@
     "id": "sect_pill_warehouse_chaos",
     "title": "Kho Linh Dược Thất Thủ",
     "description": "Sự ổn định nội bộ sụp đổ! Một cuộc bạo loạn bùng nổ, kho linh dược của tông môn đang bị các đệ tử tuyệt vọng xâu xé [cite: 52, 59].",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5538,8 +5236,6 @@
     "id": "sect_ancestor_statue_awakening",
     "title": "Tượng Tổ Sư Thức Tỉnh",
     "description": "Dưới sự thúc đẩy của danh vọng tông môn cao và linh khí nồng đậm, bức tượng của tổ sư khai phái bắt đầu tỏa ánh kim quang, ban truyền chỉ điểm cho những đệ tử thành tâm [cite: 52, 57].",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -5574,8 +5270,6 @@
     "id": "demonic_possession_scandal",
     "title": "Chấp Sự Bị Đoạt Xá",
     "description": "Ma đạo thâm nhập và ma khí cực cao đã dẫn đến thảm họa: một chấp sự cao cấp đã bị ma vật đoạt xá và đang gây hỗn loạn tại ngoại môn [cite: 59, 55].",
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "choices": [
       {

@@ -9,8 +9,6 @@
       "en": "A cold dawn breaks. A choice appears: cultivate steadily or chase a risky shortcut.",
       "vi": "Sương lạnh tan, một lựa chọn mở ra: tu luyện bền bỉ hay mạo hiểm nhảy vọt."
     },
-    "minAge": 1,
-    "maxAge": 5,
     "weight": 1,
     "choices": [
       {
@@ -45,7 +43,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "chosen_one_duel",
@@ -62,8 +61,6 @@
       "en": "Long Ngao Thien, the arrogant child of destiny, blocks your path. He points his glittering sword at you, demanding a duel to step on your dignity.",
       "vi": "Long Ngạo Thiên, con cưng của thiên đạo, kiêu ngạo chặn đường bạn. Hắn chĩa thanh lân kiếm lấp lánh vào bạn, đòi quyết đấu để giẫm đạp lên tôn nghiêm của bạn."
     },
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {},
     "choices": [
@@ -91,7 +88,8 @@
           "health": 0
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "spirit_herbs",
@@ -108,8 +106,6 @@
       "en": "You stumble upon mysterious spirit herbs. Their aura is intoxicating but slightly unstable.",
       "vi": "Bạn phát hiện những thảo dược linh hồn bí ẩn. Khí tức của chúng vô cùng hấp dẫn nhưng có phần bất ổn định."
     },
-    "minAge": 3,
-    "maxAge": 100,
     "weight": 1,
     "conditions": {},
     "choices": [
@@ -152,7 +148,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "duel_challenge",
@@ -169,8 +166,6 @@
       "en": "A wandering martial artist abruptly blocks your path, drawing their weapon and demanding a duel to hone their Dao.",
       "vi": "Một võ giả lang thang bất ngờ chặn đường, rút vũ khí và thách đấu bạn để chứng minh đạo tâm của hắn."
     },
-    "minAge": 18,
-    "maxAge": 35,
     "weight": 1,
     "conditions": {},
     "choices": [
@@ -201,7 +196,8 @@
           "karma": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_dao_quake",
@@ -220,8 +216,6 @@
       "en": "Spiritual energy fluctuates violently, reaching an alarming level! An extraordinary destiny is approaching, and a hidden secret realm might be opening.",
       "vi": "Năng lượng thiêng liêng dao động dữ dội ở mức báo động! Cơ duyên phi thường đang đến gần, một bí cảnh ẩn có thể sắp khai mở."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 65"
@@ -258,7 +252,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heavenly_qi_surge",
@@ -276,8 +271,6 @@
       "en": "The spiritual Qi of the world suddenly surges to an incredibly dense level! It completely suppresses demonic auras, but inhaling too much might overwhelm a weak body.",
       "vi": "Linh khí thiên địa đột nhiên bộc phát đến mức độ dày đặc khó tin! Nó đè bẹp hoàn toàn ma khí, nhưng hít quá nhiều có thể làm quá tải một thân thể yếu ớt."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 80"
@@ -309,7 +302,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_epiphany_surge",
@@ -327,8 +321,6 @@
       "en": "The Heavenly Dao fluctuates wildly. A sudden surge of profound Dao rhythm washes over you, resonating with your meridians and presenting a rare chance for a sudden epiphany.",
       "vi": "Thiên Đạo dao động kịch liệt. Một luồng Đạo vận uyên thâm bất ngờ gột rửa tâm trí bạn, cộng hưởng với kinh mạch và mang đến cơ hội đốn ngộ hiếm có."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 55"
@@ -361,7 +353,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "echoes_of_the_immortal_rift",
@@ -379,8 +372,6 @@
       "en": "A sudden spike in Dao fluctuations has caused a localized temporal rift. You hear echoes of a future breakthrough or a past failure resonating with your soul,.",
       "vi": "Sự gia tăng đột ngột của Thiên Đạo dị động đã gây ra một vết nứt thời gian cục bộ. Bạn nghe thấy tiếng vọng của một lần đột phá trong tương lai hoặc một thất bại trong quá khứ cộng hưởng với linh hồn,."
     },
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 80"
@@ -414,7 +405,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_thunder_tempering",
@@ -432,8 +424,6 @@
       "en": "Heavenly Dao is fluctuating wildly. A localized spiritual storm has summoned bolts of Heavenly Thunder. You can try to use the lightning to temper your meridians.",
       "vi": "Thiên Đạo đang dao động dữ dội. Một cơn bão linh khí cục bộ đã triệu hồi Thiên Lôi. Bạn có thể thử mượn sức mạnh sấm sét để tôi luyện kinh mạch."
     },
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 85"
@@ -463,7 +453,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_array_puzzle",
@@ -481,8 +472,6 @@
       "en": "While exploring a remote area, you discover an ancient array carved into the rock. It flickers with a mysterious light, resonating with the current Heavenly Dao fluctuations.",
       "vi": "Trong lúc thám hiểm vùng hẻo lánh, bạn phát hiện một trận pháp cổ xưa khắc trên đá. Nó nhấp nháy ánh sáng kỳ bí, cộng hưởng với những dao động của Thiên Đạo hiện tại."
     },
-    "minAge": 15,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 55"
@@ -518,7 +507,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "immortal_tomb_emergence",
@@ -536,8 +526,6 @@
       "en": "Extreme Dao fluctuations have caused the earth to split, revealing the entrance to a majestic tomb belonging to an ancient Ascendant Immortal.",
       "vi": "Thiên Đạo dị động cực độ khiến đất đai nứt nẻ, để lộ lối vào của một ngôi mộ tráng lệ thuộc về một vị Tiên Nhân phi thăng từ thời viễn cổ."
     },
-    "minAge": 40,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 80"
@@ -575,7 +563,8 @@
           "health": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "world_dao_epiphany",
@@ -593,8 +582,6 @@
       "en": "The world's Dao fluctuates violently, causing spiritual energy to manifest as physical lotus petals falling from the sky.",
       "vi": "Thiên Đạo dị động kịch liệt, khiến linh khí thiên địa hóa thành những cánh hoa sen rơi rụng khắp bầu trời."
     },
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 65"
@@ -624,7 +611,8 @@
           "spiritualQi": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_karma_judgment",
@@ -642,8 +630,6 @@
       "en": "Heavenly Dao fluctuations have triggered a moment of karmic clarity. The world judges your past actions, resonating with your soul's purity or corruption.",
       "vi": "Thiên Đạo dị động đã kích hoạt một khoảnh khắc thấu thị nghiệp lực. Thế giới phán xét những hành động trong quá khứ của bạn, cộng hưởng với sự thuần khiết hoặc ô uế của linh hồn."
     },
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 75"
@@ -675,7 +661,8 @@
           "health": -15
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "pill_toxin_backlash",
@@ -693,8 +680,6 @@
       "en": "Your over-reliance on low-grade pills to survive the lifespan race has caused 'Pill Toxins' to accumulate in your meridians. A backlash is imminent.",
       "vi": "Việc lạm dụng đan dược cấp thấp để chạy đua với thọ nguyên khiến 'Đan Độc' tích tụ trong kinh mạch. Một đợt bạo kích năng lượng đang đe dọa cơ thể bạn."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 50"
@@ -729,7 +714,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "pill_toxin_cleansing_ritual",
@@ -747,8 +733,6 @@
       "en": "Your meridians are clogged with dark residues from excessive pill consumption. A wandering healer offers a dangerous ritual to burn away the toxins using pure spiritual fire.",
       "vi": "Kinh mạch của bạn bị tắc nghẽn bởi tàn dư từ việc lạm dụng đan dược [2]. Một vị lang trung lang thang đề nghị một nghi lễ nguy hiểm: dùng linh hỏa tinh khiết để thiêu cháy đan độc."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 60"
@@ -786,7 +770,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "fragment_of_the_heavens",
@@ -804,8 +789,6 @@
       "en": "Extreme Dao fluctuations have caused a physical fragment of the Heavenly Dao to fall from the sky. It radiates a rhythm that defies mortality.",
       "vi": "Thiên Đạo dị động cực độ khiến một mảnh vỡ vật chất của Thiên Đạo rơi xuống từ bầu trời. Nó tỏa ra một giai điệu vượt xa phàm trần."
     },
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 85"
@@ -839,7 +822,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_dao_vision_war",
@@ -857,8 +841,6 @@
       "en": "Extreme Dao fluctuations have triggered a spiritual resonance. You see a vision of the founding Sect Leader battling a Great Demon, revealing a flaw in your current technique.",
       "vi": "Thiên Đạo dị động cực độ kích phát cộng hưởng linh hồn. Bạn nhìn thấy ảo ảnh Thủy Tổ tông môn đại chiến Đại Ma, hé lộ một sơ hở trong công pháp hiện tại của bạn."
     },
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 80"
@@ -896,7 +878,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "pill_toxin_meridian_blockage",
@@ -914,8 +897,6 @@
       "en": "The high spiritual Qi in the environment is reacting violently with the 'Pill Toxins' in your body, causing a localized Qi explosion within your meridians.",
       "vi": "Linh khí nồng đậm trong môi trường đang phản ứng dữ dội với 'Đan Độc' trong cơ thể, gây ra một vụ nổ linh khí cục bộ ngay trong kinh mạch của bạn."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 70"
@@ -947,7 +928,8 @@
           "reputation": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_spatial_rift_puzzle",
@@ -965,8 +947,6 @@
       "en": "Extreme Heavenly Dao fluctuations have opened a localized spatial rift. It leads to a pocket dimension containing ancient cultivation techniques [cite: 56, 59].",
       "vi": "Thiên Đạo dị động cực độ đã mở ra một vết nứt không gian cục bộ. Nó dẫn đến một tiểu thế giới chứa đựng các công pháp tu luyện cổ đại [cite: 56, 59]."
     },
-    "minAge": 25,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 75"
@@ -1002,7 +982,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heavenly_nectar_epiphany",
@@ -1020,8 +1001,6 @@
       "en": "A rare phenomenon occurs when spiritual Qi peaks! Rain that directly nourishes the soul falls from the sky, bypassing ordinary bottlenecks [cite: 56, 12].",
       "vi": "Một hiện tượng hiếm gặp xảy ra khi linh khí đạt đỉnh! Những giọt mưa nuôi dưỡng linh hồn rơi xuống, giúp vượt qua các bình cảnh thông thường [cite: 56, 12]."
     },
-    "minAge": 10,
-    "maxAge": 500,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 85"
@@ -1054,6 +1033,7 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   }
 ]

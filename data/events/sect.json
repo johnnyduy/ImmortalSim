@@ -9,8 +9,6 @@
       "en": "Long Ngao Thien, the child of heaven, stands on the arena waiting for you. Spiritual energy violently swirls around him.",
       "vi": "Long Ngạo Thiên, con cưng thiên đạo, đứng trên lôi đài chờ bạn. Linh khí quanh hắn bạo động dữ dội."
     },
-    "minAge": 18,
-    "maxAge": 25,
     "weight": 2,
     "tags": [
       "npc_thien_kieu_chan_chinh",
@@ -51,7 +49,8 @@
           "health": 0
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_sect_deacon",
@@ -69,8 +68,6 @@
       "en": "When you arrive at the Deacon Hall to receive your mandatory annual sect quest, the fat Deacon winks at you: 50 Spirit Stones for an easy herb-gathering task. Otherwise, you go to the deepest mining tunnels.",
       "vi": "Khi bạn đến Chấp Sự Đường để nhận nhiệm vụ tông môn bắt buộc hàng năm, tên Chấp Sự béo ú nháy mắt ám chỉ: nếu bạn nộp 50 Linh thạch 'bôi trơn', hắn sẽ giao cho bạn nhiệm vụ hái thuốc nhàn hạ. Nếu không, bạn sẽ phải xuống hầm quặng sâu nhất đầy nguy hiểm."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 35"
@@ -104,7 +101,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "immortal_guidance",
@@ -122,8 +120,6 @@
       "en": "Heavenly Dao fluctuates wildly. An illusion of an ancient immortal appears in your mind, preaching the supreme Dao.",
       "vi": "Thiên Đạo dị động cuốn tâm trí bạn vào một không gian kỳ ảo, nơi một ảo ảnh tiên nhân đang giảng đạo."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 78"
@@ -153,7 +149,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_rebellion",
@@ -171,8 +168,6 @@
       "en": "The sect's stability has plummeted. A deacon is assassinated in broad daylight, and rogue disciples are burning the outer sect pavilions to loot resources.",
       "vi": "Sự ổn định của môn phái đã chạm đáy. Một vị chấp sự bị ám sát giữa ban ngày, và các đệ tử phản loạn đang đốt phá các các viện ngoại môn để cướp bóc tài nguyên."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 20"
@@ -207,7 +202,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_conscription",
@@ -225,8 +221,6 @@
       "en": "Sect warfare has escalated drastically. Deacons are forcefully conscripting outer disciples to serve as cannon fodder at the frontline.",
       "vi": "Chiến sự tông môn leo thang tột độ. Các chấp sự đang cưỡng ép bắt đệ tử ngoại môn ra tiền tuyến làm bia đỡ đạn cho đại chiến."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 60"
@@ -258,7 +252,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "possessed_deacon",
@@ -276,8 +271,6 @@
       "en": "Demonic infiltration is severe. Late at night, you accidentally spot a highly respected Sect Deacon practicing a forbidden blood art. He notices you.",
       "vi": "Ma đạo thâm nhập nghiêm trọng. Đêm khuya, bạn vô tình bắt gặp một vị Chấp Sự tông môn đạo mạo đang lén lút tu luyện huyết công cấm kỵ. Hắn đã phát hiện ra bạn."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 50"
@@ -312,7 +305,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "event_ke_sinh_ton_phan_boi",
@@ -331,8 +325,6 @@
       "en": "Taking advantage of sect instability, Cau Du secretly leads a group of rebel disciples to raid your cave dwelling.",
       "vi": "Trong lúc Tông môn có nội loạn, Cẩu Dư lén dẫn một nhóm phản đồ đến động phủ của bạn cướp bóc."
     },
-    "minAge": 30,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 40"
@@ -361,7 +353,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "golden_core_trial",
@@ -379,8 +372,6 @@
       "en": "You discover a hidden trial left by a Golden Core master, designed to test a cultivator's readiness to break through.",
       "vi": "Bạn phát hiện một thử thách ẩn do một cao thủ Kim Đan để lại, được thiết kế để kiểm tra xem một tu sĩ đã sẵn sàng đột phá hay chưa."
     },
-    "minAge": 40,
-    "maxAge": 90,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 50"
@@ -417,7 +408,8 @@
           "karma": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "spirit_mine_collapse",
@@ -435,8 +427,6 @@
       "en": "Due to sect instability and poor maintenance, the outer sect spirit mine suddenly starts collapsing around you. Priceless ores are revealed in the rubble.",
       "vi": "Do tông môn bất ổn và thiếu bảo trì, hầm linh quặng ngoại môn đột nhiên đổ sập xung quanh bạn. Những khoáng thạch vô giá lộ ra trong đống đổ nát."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 60"
@@ -467,7 +457,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "berserk_spirit_beast",
@@ -485,8 +476,6 @@
       "en": "A usually docile spirit beast in the outer sect's pens has gone berserk due to a demonic aura, breaking its chains and attacking disciples.",
       "vi": "Một con linh thú vốn ngoan ngoãn ở chuồng ngoại môn đột nhiên bạo động do nhiễm ma khí, nó bẻ gãy xích và tấn công đệ tử."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 40"
@@ -515,7 +504,8 @@
           "money": 50
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ten_thousand_immortals_war",
@@ -534,8 +524,6 @@
       "en": "The Ten Thousand Immortals Sect has officially declared war on the Heavenly Dao Sect! The sect is in chaos, and all disciples are ordered to the frontlines.",
       "vi": "Vạn Tiên Giáo chính thức tuyên chiến với Thiên Đạo Tông! Tông môn rơi vào hỗn loạn, mọi đệ tử đều bị lệnh phải ra tiền tuyến tham chiến."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 70"
@@ -567,7 +555,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_internal_strife",
@@ -584,8 +573,6 @@
       "en": "Factional infighting has reached its peak. A sect deacon was assassinated, and the sect is highly dangerous with a high risk of betrayal.",
       "vi": "Đấu đá phe phái đã lên đến đỉnh điểm. Một chấp sự vừa bị ám sát, tông môn hiện tại vô cùng nguy hiểm và rủi ro bị phản bội rất cao."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 30"
@@ -616,7 +603,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_outer_tournament",
@@ -634,8 +622,6 @@
       "en": "The sect is stable and hosting its decennial Outer Sect Tournament. Disciples from all peaks gather to prove their martial prowess and win supreme pills.",
       "vi": "Tông môn đang trong thời kỳ ổn định và tổ chức Đại Hội Tỷ Thí Ngoại Môn thập niên. Đệ tử các phong tụ tập để chứng minh võ lực và giành lấy đan dược quý giá."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "> 50"
@@ -669,7 +655,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_resource_famine",
@@ -687,8 +674,6 @@
       "en": "The sect's resource reserves have plummeted to a critical low. Allowances are cut, and desperate outer disciples are fighting each other over meager scraps of spirit herbs.",
       "vi": "Kho tài nguyên của tông môn đã cạn kiệt đến mức báo động. Bổng lộc bị cắt giảm, các đệ tử ngoại môn tuyệt vọng đang cấu xé nhau vì những mảnh linh thảo vụn vặt."
     },
-    "minAge": 12,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 30"
@@ -721,7 +706,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "spirit_beast_mutation",
@@ -739,8 +725,6 @@
       "en": "While tending to the sect's spirit beasts, one of them swallows a strange glowing insect and begins to mutate violently, radiating intense spiritual energy.",
       "vi": "Trong lúc làm nhiệm vụ chăn nuôi linh thú, một con thú nuốt phải côn trùng phát sáng kỳ lạ và bắt đầu đột biến dữ dội, tỏa ra linh khí mãnh liệt."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 50"
@@ -776,7 +760,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "outer_sect_herb_theft",
@@ -794,8 +779,6 @@
       "en": "Sect resources are dwindling. You catch a fellow outer disciple desperately stealing a spirit herb to save their dying mortal mother.",
       "vi": "Tài nguyên tông môn cạn kiệt. Bạn bắt quả tang một đệ tử ngoại môn đang tuyệt vọng ăn trộm linh thảo ở dược viên để cứu người mẹ phàm nhân đang hấp hối."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 40"
@@ -824,7 +807,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_promotion_offer",
@@ -842,8 +826,6 @@
       "en": "A greedy Inner Sect Elder approaches you in secret. He offers to bend the rules and promote you to the Inner Sect early, but for a steep price.",
       "vi": "Một vị Trưởng lão Nội Môn tham lam bí mật tiếp cận bạn. Lão đề nghị bẻ cong luật lệ và đặc cách bạn vào Nội Môn sớm, nhưng với một cái giá cắt cổ."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 50"
@@ -874,7 +856,8 @@
           "comprehension": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_beast_feeding_frenzy",
@@ -892,8 +875,6 @@
       "en": "While performing your mandatory sect quest to feed the outer sect's spirit beasts, one of them, corrupted by a sudden spike in demonic energy, breaks its cage and lunges at you.",
       "vi": "Trong lúc thực hiện nhiệm vụ tông môn cho linh thú ngoại môn ăn, một con thú bị tha hóa bởi luồng ma khí đột ngột tăng cao đã phá lồng và lao thẳng vào bạn."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 30"
@@ -928,7 +909,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "strict_deacon_inspection",
@@ -946,8 +928,6 @@
       "en": "The sect is tightening its rules. A strict deacon stops you to inspect your annual sect contributions. He glares at you, demanding either proof of hard work or a hefty 'fine'.",
       "vi": "Tông môn đang siết chặt kỷ luật. Một vị chấp sự nghiêm khắc chặn bạn lại để kiểm tra điểm cống hiến hàng năm. Hắn trừng mắt nhìn bạn, đòi bằng chứng làm việc hoặc một khoản 'tiền phạt' lớn."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "> 40"
@@ -978,7 +958,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "traitorous_deacon",
@@ -996,8 +977,6 @@
       "en": "Sect stability is crumbling. You catch a senior deacon sneaking out with the sect's core technique manual, planning to defect to a rival sect.",
       "vi": "Sự ổn định của tông môn đang sụp đổ. Bạn bắt gặp một vị chấp sự cấp cao đang lén lút mang theo bí kíp cốt lõi của tông môn để đào tẩu sang phe địch."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25"
@@ -1031,7 +1010,8 @@
           "daoMind": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_debt_collector",
@@ -1049,8 +1029,6 @@
       "en": "Sect resources are depleted. A debt-collecting deacon is making rounds, forcefully demanding 'voluntary contributions' from outer disciples to fill the treasury.",
       "vi": "Tài nguyên tông môn cạn kiệt. Một vị chấp sự đòi nợ đang đi tuần, cưỡng ép đệ tử ngoại môn 'tự nguyện quyên góp' để lấp đầy kho bạc."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 30"
@@ -1080,7 +1058,8 @@
           "karma": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "elder_funeral_conspiracy",
@@ -1098,8 +1077,6 @@
       "en": "An inner sect elder has passed away, and the sect's stability is shaken. Rumors of a hidden legacy left to an outer disciple are spreading like wildfire.",
       "vi": "Một vị trưởng lão nội môn vừa tạ thế, sự ổn định của tông môn bị lung lay. Tin đồn về một di sản ẩn giấu để lại cho đệ tử ngoại môn đang lan truyền chóng mặt."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 50"
@@ -1132,7 +1109,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "captured_sect_rebel",
@@ -1150,8 +1128,6 @@
       "en": "Internal strife is high. You've cornered a fellow disciple who was caught stealing core scriptures. They beg you to let them go, claiming they only wanted to save their family.",
       "vi": "Nội bộ bất ổn trầm trọng. Bạn đã dồn vào đường cùng một đồng môn bị bắt quả tang trộm cắp bí kíp cốt lõi. Hắn van xin bạn tha mạng, nói rằng chỉ muốn cứu gia đình."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 35"
@@ -1186,7 +1162,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_manual_preservation",
@@ -1204,8 +1181,6 @@
       "en": "The Library Pavilion has caught fire during a riot. Rare manual fragments are scattered in the smoke and flames. You can only save a few.",
       "vi": "Tàng Kinh Các đã bốc cháy trong một cuộc bạo loạn. Những mảnh tàn quyển hiếm hoi vương vãi trong khói lửa. Bạn chỉ có thể cứu được một vài bản."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25"
@@ -1237,7 +1212,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_resource_leak",
@@ -1255,8 +1231,6 @@
       "en": "The sect's resources are at a critical low, and management is in shambles. You discover a hidden hole in the resource warehouse where spirit stones and low-grade pills are leaking out.",
       "vi": "Tài nguyên tông môn cạn kiệt, việc quản lý lỏng lẻo. Bạn phát hiện một lỗ hổng bí mật trong kho tài nguyên, nơi linh thạch và đan dược cấp thấp đang bị rò rỉ ra ngoài."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 25",
@@ -1290,7 +1264,8 @@
           "money": 30
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "alchemy_hall_explosion",
@@ -1308,8 +1283,6 @@
       "en": "While passing the Alchemy Hall, a massive explosion rocks the building. Smoke fills the air, and scorched remains of rare spirit herbs are scattered everywhere.",
       "vi": "Khi đi ngang qua Đan Dược Đường, một vụ nổ kinh hoàng làm rung chuyển tòa nhà. Khói bụi mù mịt, những mảnh linh thảo quý hiếm bị thiêu cháy văng khắp nơi."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 50"
@@ -1343,7 +1316,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_treasury_betrayal",
@@ -1361,8 +1335,6 @@
       "en": "Internal stability has collapsed. You find a group of high-ranking disciples and an elder attempting to empty the treasury before defecting to a rival sect,.",
       "vi": "Sự ổn định nội bộ đã sụp đổ hoàn toàn. Bạn bắt gặp một nhóm đệ tử cao cấp và một trưởng lão đang cố gắng vét sạch kho báu trước khi đào tẩu sang tông môn đối địch,."
     },
-    "minAge": 40,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 20"
@@ -1397,7 +1369,8 @@
           "daoMind": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "sect_meridian_cleansing_pool",
@@ -1415,8 +1388,6 @@
       "en": "The spiritual Qi in the sect is exceptionally dense. The legendary cleansing pool has opened its doors to outer disciples for a limited time.",
       "vi": "Linh khí trong tông môn đang dày đặc bất thường. Hồ tẩy tủy truyền thuyết đã mở cửa cho đệ tử ngoại môn trong một thời gian ngắn."
     },
-    "minAge": 10,
-    "maxAge": 100,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 75"
@@ -1448,7 +1419,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "forced_labor_duty",
@@ -1466,8 +1438,6 @@
       "en": "The sect's stability is low, and the elders are demanding more from outer disciples. You have been assigned to the most dangerous section of the spirit mines as a 'mandatory contribution'.",
       "vi": "Ổn định tông môn thấp, các trưởng lão yêu cầu nhiều hơn từ đệ tử ngoại môn. Bạn bị điều động đến khu vực nguy hiểm nhất của linh quặng hầm như một hình thức 'đóng góp bắt buộc'."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 40"
@@ -1501,7 +1471,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "hidden_jade_chamber",
@@ -1519,8 +1490,6 @@
       "en": "The sect is stable and prosperous. The Sect Leader decides to open the 'Hidden Jade Chamber' for the most promising disciples, offering access to restricted knowledge.",
       "vi": "Tông môn đang trong thời kỳ ổn định và phồn vinh. Tông Chủ quyết định mở cửa 'Mật Thất Ngọc Bích' cho những đệ tử ưu tú nhất, cho phép tiếp cận với những bí pháp cấm kỵ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "> 70",
@@ -1555,7 +1524,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "great_sect_war_frontline",
@@ -1573,8 +1543,6 @@
       "en": "Sect war has reached a fever pitch. You are drafted to the frontline to defend the Spirit Mine against the Ten Thousand Immortals Sect's elite vanguard.",
       "vi": "Chiến sự tông môn đã lên đến đỉnh điểm. Bạn bị điều động ra tiền tuyến để bảo vệ Linh Quặng trước đội tiên phong tinh nhuệ của Vạn Tiên Giáo."
     },
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 75"
@@ -1608,7 +1576,8 @@
           "sect.stability": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "deacon_infiltration_scandal",
@@ -1626,8 +1595,6 @@
       "en": "High demonic infiltration has compromised a Senior Deacon. You catch them transmitting sect secrets via a blood-red transmission jade.",
       "vi": "Ma đạo thâm nhập sâu rộng đã khiến một Chấp Sự cao cấp sa ngã. Bạn bắt quả tang hắn đang truyền tin mật tông môn thông qua một khối truyền tin huyết ngọc."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 70"
@@ -1662,7 +1629,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_coup_attempt",
@@ -1680,8 +1648,6 @@
       "en": "Sect stability has reached a critical low. A group of radical disciples, fueled by the resource famine, is attempting to overthrow the treasury deacons.",
       "vi": "Sự ổn định của tông môn chạm mức báo động. Một nhóm đệ tử cực đoan, bị kích động bởi sự khan hiếm tài nguyên, đang âm mưu lật đổ các chấp sự kho bạc."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25",
@@ -1717,7 +1683,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_war_raiding_party",
@@ -1735,8 +1702,6 @@
       "en": "Sect warfare has escalated. You are ordered to join a high-risk raiding party to sabotage the enemy sect's spirit herb garden.",
       "vi": "Chiến sự tông môn leo thang. Bạn bị lệnh tham gia một đội đột kích mạo hiểm nhằm phá hoại dược viên linh thảo của tông môn đối địch."
     },
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 80"
@@ -1770,7 +1735,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_merit_hoarding",
@@ -1788,8 +1754,6 @@
       "en": "The sect is flourishing with resources. A greedy deacon is secretly allowing disciples to 'buy' merit points with large sums of spirit stones.",
       "vi": "Tông môn đang dồi dào tài nguyên. Một chấp sự tham lam đang bí mật cho phép đệ tử 'mua' điểm cống hiến bằng một lượng lớn linh thạch."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.resources": "> 70",
@@ -1822,7 +1786,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_manual_leak",
@@ -1840,8 +1805,6 @@
       "en": "Internal stability is low. A corrupted librarian is secretly selling fragments of the sect's high-grade manuals to the highest bidder.",
       "vi": "Sự ổn định của tông môn đang thấp [4]. Một thủ thư hủ bại đang lén lút bán các mảnh tàn quyển công pháp cao cấp của tông môn cho người trả giá cao nhất."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 35"
@@ -1875,7 +1838,8 @@
           "money": 50
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_heritage_trial",
@@ -1893,8 +1857,6 @@
       "en": "With the sect's reputation at an all-time high, the Grand Elder opens the 'Heritage Path'—a trial designed to test a disciple's core comprehension and loyalty to the sect's founding Dao.",
       "vi": "Với danh vọng tông môn đang ở đỉnh cao, Đại Trưởng Lão mở ra 'Di Sản Chi Lộ'—một thử thách được thiết kế để kiểm tra ngộ tính và lòng trung thành của đệ tử đối với Đạo tổ sáng lập."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.reputation": "> 75"
@@ -1928,7 +1890,8 @@
           "money": 50
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "spirit_root_resonance_test",
@@ -1946,8 +1909,6 @@
       "en": "With global spiritual Qi peaking, the sect's resonance crystal has activated. It offers a rare chance to refine your Spirit Root's purity and enhance your cultivation multiplier.",
       "vi": "Khi linh khí thiên địa đạt đỉnh, tinh thể cộng hưởng của tông môn đã được kích hoạt. Đây là cơ hội hiếm có để tôi luyện độ tinh khiết của Linh Căn và tăng cường hệ số tu luyện của bạn [1, 2]."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 80",
@@ -1980,7 +1941,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_internal_betrayal",
@@ -1998,8 +1960,6 @@
       "en": "Sect stability is low and demonic infiltration is high. You catch a senior disciple attempting to poison the spirit well with demonic energy.",
       "vi": "Sự ổn định tông môn thấp và ma đạo thâm nhập cao. Bạn bắt quả tang một sư huynh đang định hạ độc ma khí vào linh tuyền của môn phái [7-9]."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 30",
@@ -2036,7 +1996,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_pill_warehouse_chaos",
@@ -2054,8 +2015,6 @@
       "en": "Internal stability has collapsed! A riot has broken out, and the sect's pill warehouse is being looted by desperate disciples [cite: 52, 59].",
       "vi": "Sự ổn định nội bộ sụp đổ! Một cuộc bạo loạn bùng nổ, kho linh dược của tông môn đang bị các đệ tử tuyệt vọng xâu xé [cite: 52, 59]."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25"
@@ -2090,7 +2049,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_ancestor_statue_awakening",
@@ -2108,8 +2068,6 @@
       "en": "Fueled by the sect's high reputation and spiritual Qi, the statue of the founding ancestor begins to radiate a golden light, offering guidance to the faithful [cite: 52, 57].",
       "vi": "Dưới sự thúc đẩy của danh vọng tông môn cao và linh khí nồng đậm, bức tượng của tổ sư khai phái bắt đầu tỏa ánh kim quang, ban truyền chỉ điểm cho những đệ tử thành tâm [cite: 52, 57]."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.reputation": "> 80",
@@ -2143,7 +2101,8 @@
           "karma": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_possession_scandal",
@@ -2161,8 +2120,6 @@
       "en": "Extremely high demonic infiltration and energy have led to a catastrophe: a senior deacon has been possessed by a demonic entity and is wreaking havoc in the outer sect [cite: 59, 55].",
       "vi": "Ma đạo thâm nhập và ma khí cực cao đã dẫn đến thảm họa: một chấp sự cao cấp đã bị ma vật đoạt xá và đang gây hỗn loạn tại ngoại môn [cite: 59, 55]."
     },
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 75",
@@ -2198,6 +2155,7 @@
           "karma": -10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   }
 ]

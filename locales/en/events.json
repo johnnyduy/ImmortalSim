@@ -3,8 +3,6 @@
     "id": "auction_house_conflict",
     "title": "Auction House Conflict",
     "description": "At the decennial auction in Qingyang City, you spent all your Spirit Stones on a Foundation Establishment Pill. As you step out, Young Master Wang blocks your path, tosses 10 Spirit Stones at you, and demands the pill.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -38,8 +36,6 @@
     "id": "slum_black_market",
     "title": "Slum Black Market",
     "description": "Sneaking into the city's slums, you find a hidden black market. A masked merchant offers a 'Supreme Foundation Establishment Pill' for half the market price, but it reeks of blood.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -77,8 +73,6 @@
     "id": "mortal_plague",
     "title": "Mortal Plague",
     "description": "Passing through a mortal village at the foot of the mountain, you discover a strange plague spreading due to leaking demonic energy. Hundreds are crying out in agony.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -111,8 +105,6 @@
     "id": "rogue_cultivator_scam",
     "title": "Rogue Cultivator Scam",
     "description": "Wandering the market, a mysterious ragged old man pulls you aside, offering to sell the 'Nine Turns Divine Art' for only 50 Spirit Stones.",
-    "minAge": 12,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -145,8 +137,6 @@
     "id": "beast_tide_mortals",
     "title": "Beast Tide Sweeps Mortals",
     "description": "Violent beasts swarm down the mountain, slaughtering a mortal village. You happen to be passing by.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -179,8 +169,6 @@
     "id": "demonic_invasion",
     "title": "Demonic Invasion",
     "description": "The sky turns blood red as dense demonic energy suffocates the area. A horde of demonic cultivators breaches the defenses, slaughtering everyone in sight.",
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -216,8 +204,6 @@
     "id": "grand_decennial_auction",
     "title": "Grand Decennial Auction",
     "description": "The city is highly prosperous, hosting a grand auction. Rare treasures and supreme martial fragments are displayed, but the prices are astronomical.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -253,8 +239,6 @@
     "id": "market_crash_scavenging",
     "title": "Market Crash Scavenging",
     "description": "Due to a surplus of goods, the market has crashed. Desperate merchants are dumping raw spirit herbs on the streets at dirt-cheap prices to cut losses.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -291,8 +275,6 @@
     "id": "event_thieu_gia_gay_su",
     "title": "Young Master's Oppression",
     "description": "At the grand auction, Young Master Wang uses his overwhelming wealth to maliciously outbid and humiliate you over a supreme treasure.",
-    "minAge": 15,
-    "maxAge": 40,
     "weight": 2,
     "choices": [
       {
@@ -324,8 +306,6 @@
     "id": "soul_festival",
     "title": "Soul Festival",
     "description": "You stumble upon a rare Soul Festival in the city where spirits and mortals gather, overflowing with mystical energies.",
-    "minAge": 12,
-    "maxAge": 22,
     "weight": 1,
     "choices": [
       {
@@ -360,8 +340,6 @@
     "id": "herb_price_surge",
     "title": "Skyrocketing Herb Prices",
     "description": "Due to a severe shortage, the price of spirit herbs has skyrocketed! The market is in a frenzy, offering a perfect opportunity for hoarding and speculation.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -396,8 +374,6 @@
     "id": "demonic_town_activity",
     "title": "Demonic Activity in Town",
     "description": "Demonic cultivators have appeared in the town's outskirts, significantly reducing security. Cultivators are warned to stay away.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -431,8 +407,6 @@
     "id": "illicit_demonic_caravan",
     "title": "Illicit Demonic Caravan",
     "description": "Due to poor city security and rising demonic infiltration, a suspicious merchant caravan sets up shop in an alley, secretly selling forbidden Demonic path materials.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -467,8 +441,6 @@
     "id": "mortal_rebellion",
     "title": "Mortal Rebellion",
     "description": "City morale has hit rock bottom. Starving mortals are violently rebelling against the corrupt city lord who serves the cultivation sects.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -500,8 +472,6 @@
     "id": "corrupted_pill_vendor",
     "title": "Corrupted Pill Vendor",
     "description": "Taking advantage of the high demonic infiltration in the city, a hooded vendor in a dark alley offers you a Foundation Establishment Pill. It's cheap, but it reeks of heavy pill-toxins and dark arts.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -537,8 +507,6 @@
     "id": "demonic_blood_raid",
     "title": "Demonic Blood Raid",
     "description": "Demonic activity is peaking. A group of masked demonic cultivators sets up a blood array in the city outskirts, attempting to refine passing mortals into pills.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -574,8 +542,6 @@
     "id": "underground_black_auction",
     "title": "Underground Black Auction",
     "description": "City security is lax. You receive a secret invitation to an underground black auction selling stolen sect artifacts and forbidden pills.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -611,8 +577,6 @@
     "id": "counterfeit_manual_scam",
     "title": "Counterfeit Manual Scam",
     "description": "With city security failing, scammers are rampant. A merchant tries to sell you a 'Heavenly Grade' manual fragment for a suspiciously low price.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -647,8 +611,6 @@
     "id": "herb_monopoly_challenge",
     "title": "Herb Monopoly Challenge",
     "description": "With the price index skyrocketing, a local merchant guild has monopolized all spirit herbs, driving prices even higher. A group of rogue cultivators plans to raid their warehouse.",
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -684,8 +646,6 @@
     "id": "demonic_merchant_trap",
     "title": "Demonic Merchant Trap",
     "description": "Demonic activity is high. A merchant offers you a 'Breakthrough Pill' at an impossibly low price, but you notice a faint, dark aura emanating from him.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -719,8 +679,6 @@
     "id": "corrupt_speculation_frenzy",
     "title": "Corrupt Speculation Frenzy",
     "description": "Due to skyrocketing spirit herb prices, a group of corrupt merchants is hoarding life-saving pills to sell at ten times the cost. The city's morale is plummeting as phantoms of hunger haunt the streets,.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -754,8 +712,6 @@
     "id": "the_shadow_ritual",
     "title": "The Shadow Ritual",
     "description": "Demonic activity has reached a fever pitch. In the city's slums, you find a ritual using phàm nhân (mortal) children to birth a new Demonic Seed,.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -792,8 +748,6 @@
     "id": "mysterious_wandering_merchant",
     "title": "Mysterious Wandering Merchant",
     "description": "The city's price index is low. A wandering merchant from a distant land offers rare spiritual materials at prices that seem too good to be true.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -831,8 +785,6 @@
     "id": "corrupt_guard_extortion",
     "title": "Corrupt Guard Extortion",
     "description": "City security is low. A corrupt captain of the guard accuses you of smuggling forbidden demonic artifacts and demands a 'settlement' fee.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -865,8 +817,6 @@
     "id": "starving_mob_riot",
     "title": "The Starving Mob",
     "description": "City morale has reached a critical low. A desperate mob of starving mortals is blocking your path, demanding spirit stones to buy food from the price-gouging merchants.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -899,8 +849,6 @@
     "id": "city_guard_mutiny",
     "title": "City Guard Mutiny",
     "description": "City security and morale have collapsed. The guards, unpaid for months, have turned into looters, terrorizing the merchants they once protected.",
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -934,8 +882,6 @@
     "id": "mortal_hunger_riot",
     "title": "Riot of the Starving Phantoms",
     "description": "City morale has collapsed due to price-gouging. Starving mortals are attacking cultivator convoys for any scraps of spirit energy.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -969,8 +915,6 @@
     "id": "mystical_lantern_festival",
     "title": "Mystical Lantern Festival",
     "description": "The city is highly prosperous and spiritual Qi is dense. A grand festival is held where lanterns infused with soul power fill the sky, creating a resonance with the Heavenly Dao.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -1007,8 +951,6 @@
     "id": "black_market_smuggling",
     "title": "Black Market Smuggling",
     "description": "The price index is skyrocketing and city security is low. A hidden network of smugglers is moving forbidden spirit herbs and demonic blood stones through the city sewers.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1048,8 +990,6 @@
     "id": "black_market_hoarding",
     "title": "Black Market Hoarding",
     "description": "With the city's price index at an all-time high, a shadowy figure offers you a chance to join a scheme to hoard essential spiritual ores and manipulate the market.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1083,8 +1023,6 @@
     "id": "ghost_market_whispers",
     "title": "Ghost Market Whispers",
     "description": "City security is low. You find a hidden entrance to the Ghost Market, where rogue cultivators trade forbidden demonic artifacts. A masked dealer offers you a piece of 'Huyền Thiết' for a suspicious price.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1124,8 +1062,6 @@
     "id": "mortal_plague_curse",
     "title": "The Wailing Plague",
     "description": "A mysterious plague, suspected to be a demonic curse, is ravaging the mortal population. The city's morale is at rock bottom as phàm nhân die by the hundreds.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1159,8 +1095,6 @@
     "id": "city_embargo_crisis",
     "title": "City Resource Embargo",
     "description": "The city is under a resource embargo due to high demonic activity. Prices have reached extreme levels, and the black market is the only way to survive.",
-    "minAge": 18,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1194,8 +1128,6 @@
     "id": "city_spirit_tide",
     "title": "City Spirit Tide",
     "description": "Due to a massive surge in global spiritual Qi, the city's spiritual wells have overflowed. A literal tide of energy washes through the streets, momentarily turning the marketplace into a supreme cultivation ground.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1230,8 +1162,6 @@
     "id": "demonic_market_raid",
     "title": "Demonic Market Raid",
     "description": "City security is high and demonic activity is rising. The City Lord calls for volunteers to raid a secret demonic market discovered beneath the city's slums.",
-    "minAge": 25,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1269,8 +1199,6 @@
     "id": "huyen_thiet_black_market",
     "title": "Huyền Thiết Black Market",
     "description": "City security is low and the price index is rising. A rogue cultivator is secretly selling 'Huyền Thiết' stolen from a sect convoy, useful for crafting superior weapons.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1306,8 +1234,6 @@
     "id": "corrupt_city_lord_tax",
     "title": "Corrupt City Lord's Tax",
     "description": "City morale and security are low. The corrupt City Lord has imposed a 'Spiritual Protection Tax' on all visiting cultivators to fund his private army.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1341,8 +1267,6 @@
     "id": "city_tax_riot_interaction",
     "title": "The Bread and Stone Riot",
     "description": "With skyrocketing prices and low morale, starving mortals are blocking your path, accusing cultivators of hoarding the world's lifeblood [cite: 53, 60].",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -1376,8 +1300,6 @@
     "id": "grand_decade_auction",
     "title": "Grand Auction of the Decade",
     "description": "With city prosperity at its peak, the legendary Decade Auction has opened. Rare treasures from across the continent, including breakthrough pills and supreme manuals, are being showcased [cite: 60, 18].",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1412,8 +1334,6 @@
     "id": "event_thien_kieu_tra_xanh_gap_go",
     "title": "Encountering Moc Uyen Thanh",
     "description": "At the Ancient Cave, you see Moc Uyen Thanh surrounded by demonic beasts, looking weak and calling for help.",
-    "minAge": 15,
-    "maxAge": 50,
     "weight": 2,
     "choices": [
       {
@@ -1453,8 +1373,6 @@
     "id": "save_demonic_cultivator",
     "title": "Saving a Demonic Cultivator",
     "description": "In the pouring rain, you find a woman in black robes collapsed by the road, covered in blood. Her aura is cold and reeks of demonic energy. Righteous cultivators are searching nearby.",
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 1,
     "choices": [
       {
@@ -1486,8 +1404,6 @@
     "id": "abyssal_whispers",
     "title": "Abyssal Whispers",
     "description": "While cultivating in seclusion in a remote cave, you hear murmurs echoing from an underground spring, promising unmatched power and infinite lifespan if you abandon your Dao Mind.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1523,8 +1439,6 @@
     "id": "black_roadhouse_inn",
     "title": "Black Roadhouse Inn",
     "description": "In the dark wilderness, you stop at a dimly lit inn. The sly old innkeeper serves a bowl of braised meat that has a strange but incredibly appetizing spiritual aura.",
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -1556,8 +1470,6 @@
     "id": "blood_sacrifice_array",
     "title": "Blood Sacrifice Array",
     "description": "While patrolling, you discover a wicked array absorbing mortal blood to condense a Blood Pill.",
-    "minAge": 30,
-    "maxAge": 200,
     "weight": 1,
     "choices": [
       {
@@ -1592,8 +1504,6 @@
     "id": "qi_deviation_crisis",
     "title": "Qi Deviation Crisis",
     "description": "Rising demonic energy triggers your inner demons during meditation. The spiritual Qi in your meridians turns chaotic, threatening to explode.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -1625,8 +1535,6 @@
     "id": "demonic_qi_overload",
     "title": "Demonic Qi Overload",
     "description": "The world's demonic energy is so dense it begins to seep into your meridians during regular rest, causing a violent struggle between your spiritual Qi and the dark aura.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -1659,8 +1567,6 @@
     "id": "shadow_demonic_ambush",
     "title": "Shadow of the Demonic Path",
     "description": "High demonic energy has emboldened dark cultivators. A skilled demonic assassin ambushes you from the shadows, seeking to steal your cultivation base.",
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "choices": [
       {
@@ -1696,8 +1602,6 @@
     "id": "void_visions_meditation",
     "title": "Visions of the Void",
     "description": "Dense demonic energy surrounds you during meditation. Visions of a dark void begin to tempt your mind, promising power in exchange for your humanity.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -1735,8 +1639,6 @@
     "id": "demonic_whisper_meditation",
     "title": "Whispers of the Demonic Seed",
     "description": "As demonic energy saturates the world, a dark voice begins to whisper in your mind during meditation, offering forbidden power to bypass your current bottleneck.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -1772,8 +1674,6 @@
     "id": "demonic_blood_sacrifice_interruption",
     "title": "Interrupting the Blood Sacrifice",
     "description": "You stumble upon a hidden ritual where demonic cultivators are sacrificing mortals to fuel their dark energy. The atmosphere is heavy with the smell of iron and death.",
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -1810,8 +1710,6 @@
     "id": "heart_demon_resonance",
     "title": "Heart Demon Resonance",
     "description": "The world's demonic energy is overflowing, triggering a resonance with the lingering 'Pill Toxins' and repressed desires in your soul, manifested as a Heart Demon [cite: 18, 56].",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -1845,8 +1743,6 @@
     "id": "waking_dawn",
     "title": "Waking Dawn",
     "description": "A cold dawn breaks. A choice appears: cultivate steadily or chase a risky shortcut.",
-    "minAge": 1,
-    "maxAge": 5,
     "weight": 1,
     "choices": [
       {
@@ -1881,8 +1777,6 @@
     "id": "chosen_one_duel",
     "title": "Duel with the Chosen One",
     "description": "Long Ngao Thien, the arrogant child of destiny, blocks your path. He points his glittering sword at you, demanding a duel to step on your dignity.",
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -1913,8 +1807,6 @@
     "id": "spirit_herbs",
     "title": "Spirit Herbs",
     "description": "You stumble upon mysterious spirit herbs. Their aura is intoxicating but slightly unstable.",
-    "minAge": 3,
-    "maxAge": 100,
     "weight": 1,
     "choices": [
       {
@@ -1957,8 +1849,6 @@
     "id": "duel_challenge",
     "title": "Duel Challenge",
     "description": "A wandering martial artist abruptly blocks your path, drawing their weapon and demanding a duel to hone their Dao.",
-    "minAge": 18,
-    "maxAge": 35,
     "weight": 1,
     "choices": [
       {
@@ -1992,8 +1882,6 @@
     "id": "heavenly_dao_quake",
     "title": "Heavenly Dao Quake",
     "description": "Spiritual energy fluctuates violently, reaching an alarming level! An extraordinary destiny is approaching, and a hidden secret realm might be opening.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2033,8 +1921,6 @@
     "id": "heavenly_qi_surge",
     "title": "Heavenly Qi Surge",
     "description": "The spiritual Qi of the world suddenly surges to an incredibly dense level! It completely suppresses demonic auras, but inhaling too much might overwhelm a weak body.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2068,8 +1954,6 @@
     "id": "heavenly_epiphany_surge",
     "title": "Heavenly Epiphany Surge",
     "description": "The Heavenly Dao fluctuates wildly. A sudden surge of profound Dao rhythm washes over you, resonating with your meridians and presenting a rare chance for a sudden epiphany.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2104,8 +1988,6 @@
     "id": "echoes_of_the_immortal_rift",
     "title": "Echoes of the Immortal Rift",
     "description": "A sudden spike in Dao fluctuations has caused a localized temporal rift. You hear echoes of a future breakthrough or a past failure resonating with your soul,.",
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2141,8 +2023,6 @@
     "id": "heavenly_thunder_tempering",
     "title": "Heavenly Thunder Tempering",
     "description": "Heavenly Dao is fluctuating wildly. A localized spiritual storm has summoned bolts of Heavenly Thunder. You can try to use the lightning to temper your meridians.",
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2174,8 +2054,6 @@
     "id": "ancient_array_puzzle",
     "title": "The Lost Array of the Ancients",
     "description": "While exploring a remote area, you discover an ancient array carved into the rock. It flickers with a mysterious light, resonating with the current Heavenly Dao fluctuations.",
-    "minAge": 15,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -2213,8 +2091,6 @@
     "id": "immortal_tomb_emergence",
     "title": "Immortal's Tomb Emergence",
     "description": "Extreme Dao fluctuations have caused the earth to split, revealing the entrance to a majestic tomb belonging to an ancient Ascendant Immortal.",
-    "minAge": 40,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2254,8 +2130,6 @@
     "id": "world_dao_epiphany",
     "title": "Heavenly Dao Resonance",
     "description": "The world's Dao fluctuates violently, causing spiritual energy to manifest as physical lotus petals falling from the sky.",
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2287,8 +2161,6 @@
     "id": "heavenly_karma_judgment",
     "title": "Heavenly Karma Judgment",
     "description": "Heavenly Dao fluctuations have triggered a moment of karmic clarity. The world judges your past actions, resonating with your soul's purity or corruption.",
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2322,8 +2194,6 @@
     "id": "pill_toxin_backlash",
     "title": "Accumulated Pill Toxins",
     "description": "Your over-reliance on low-grade pills to survive the lifespan race has caused 'Pill Toxins' to accumulate in your meridians. A backlash is imminent.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -2360,8 +2230,6 @@
     "id": "pill_toxin_cleansing_ritual",
     "title": "Pill Toxin Cleansing Ritual",
     "description": "Your meridians are clogged with dark residues from excessive pill consumption. A wandering healer offers a dangerous ritual to burn away the toxins using pure spiritual fire.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -2401,8 +2269,6 @@
     "id": "fragment_of_the_heavens",
     "title": "Fragment of the Heavens",
     "description": "Extreme Dao fluctuations have caused a physical fragment of the Heavenly Dao to fall from the sky. It radiates a rhythm that defies mortality.",
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2438,8 +2304,6 @@
     "id": "heavenly_dao_vision_war",
     "title": "Vision of the Eternal War",
     "description": "Extreme Dao fluctuations have triggered a spiritual resonance. You see a vision of the founding Sect Leader battling a Great Demon, revealing a flaw in your current technique.",
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2479,8 +2343,6 @@
     "id": "pill_toxin_meridian_blockage",
     "title": "Meridian Blockage Crisis",
     "description": "The high spiritual Qi in the environment is reacting violently with the 'Pill Toxins' in your body, causing a localized Qi explosion within your meridians.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -2514,8 +2376,6 @@
     "id": "ancient_spatial_rift_puzzle",
     "title": "Ancient Spatial Rift",
     "description": "Extreme Heavenly Dao fluctuations have opened a localized spatial rift. It leads to a pocket dimension containing ancient cultivation techniques [cite: 56, 59].",
-    "minAge": 25,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2553,8 +2413,6 @@
     "id": "heavenly_nectar_epiphany",
     "title": "Heavenly Nectar Rain",
     "description": "A rare phenomenon occurs when spiritual Qi peaks! Rain that directly nourishes the soul falls from the sky, bypassing ordinary bottlenecks [cite: 56, 12].",
-    "minAge": 10,
-    "maxAge": 500,
     "weight": 1,
     "choices": [
       {
@@ -2589,8 +2447,6 @@
     "id": "beast_king_lotus",
     "title": "Beast King Guarding the Blood Lotus",
     "description": "Deep in the core of the Myriad Beast Mountain Range, you discover a thousand-year Blood Lotus. However, coiled tightly beside it is a slumbering Blood Python Beast King.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -2624,8 +2480,6 @@
     "id": "corpse_in_swamp",
     "title": "Corpse in the Swamp",
     "description": "Deep in the Myriad Beast Mountain Range, you see a Foundation Establishment cultivator's corpse half-submerged in a swamp, with a bulging storage bag still glittering on their waist.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -2660,8 +2514,6 @@
     "id": "unfinished_go_game",
     "title": "Unfinished Go Game",
     "description": "Exploring a stalactite-filled cave, you find a white jade Go board. The unfinished game radiates profound Dao rhythm, likely left behind by two ascendant masters millennia ago.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2696,8 +2548,6 @@
     "id": "demon_king_metamorphosis",
     "title": "Demon King's Metamorphosis",
     "description": "The sky darkens over the Myriad Beast Mountain Range. A Demon King is undergoing Heavenly Tribulation to take human form and is extremely weak.",
-    "minAge": 50,
-    "maxAge": 400,
     "weight": 1,
     "choices": [
       {
@@ -2735,8 +2585,6 @@
     "id": "secret_realm_opening",
     "title": "Secret Realm Opening",
     "description": "Heavenly Dao fluctuates violently. A spatial rift tears open in the mountains, revealing an ancient secret realm glowing with supreme spiritual energy.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -2772,8 +2620,6 @@
     "id": "heavenly_treasure_emerges",
     "title": "Heavenly Treasure Emerges",
     "description": "The mountain's resources are overflowing. A rare Snow Lotus has bloomed on a cliff, attracting numerous greedy rogue cultivators who are already fighting for it.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -2811,8 +2657,6 @@
     "id": "encounter_mu_wanqing",
     "title": "Encountering Mu Wanqing",
     "description": "At the Ancient Ruins, you find Mu Wanqing, a famous inner sect beauty, surrounded by demonic beasts. She is crying weakly for help.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -2844,8 +2688,6 @@
     "id": "mountain_meditation",
     "title": "Mountain Meditation",
     "description": "The towering peaks of the ancient mountain invite you to sit and ponder the Heavenly Dao.",
-    "minAge": 6,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -2885,8 +2727,6 @@
     "id": "event_hong_nhan_ma_dao_am_sat",
     "title": "Blood Rose Ambush",
     "description": "While exploring the Myriad Beast Mountain Range, Blood Rose suddenly drops her disguise, revealing her demonic nature, and surrounds you with killing intent.",
-    "minAge": 20,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -2917,8 +2757,6 @@
     "id": "ancestral_memory",
     "title": "Ancestral Memory",
     "description": "Deep within the ancient ruins, a mysterious resonance triggers a flood of ancient ancestral memories in your mind.",
-    "minAge": 1,
-    "maxAge": 100,
     "weight": 1,
     "choices": [
       {
@@ -2950,8 +2788,6 @@
     "id": "grave_storm",
     "title": "Grave Storm",
     "description": "A terrifying spectral storm filled with resentful spirits suddenly sweeps across the ancient burial grounds.",
-    "minAge": 25,
-    "maxAge": 60,
     "weight": 1,
     "choices": [
       {
@@ -2982,8 +2818,6 @@
     "id": "helping_hand_daoist",
     "title": "A Daoist in Distress",
     "description": "You encounter a severely injured righteous cultivator being cornered by a pack of demonic wolves. They beg you for help.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -3018,8 +2852,6 @@
     "id": "ruined_alchemy_furnace",
     "title": "Ruined Alchemy Furnace",
     "description": "In a forgotten cave, you find a cracked alchemy furnace still radiating intense, unstable medicinal Qi after centuries.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "choices": [
       {
@@ -3053,8 +2885,6 @@
     "id": "ancient_array_trap",
     "title": "Ancient Array Trap",
     "description": "Heavenly Dao fluctuations have revealed the entrance to an Ancient Cave Dwelling, but it is protected by a deadly and complex killing array.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3092,8 +2922,6 @@
     "id": "demonic_altar_discovery",
     "title": "Demonic Altar Discovery",
     "description": "Deep in the misty mountains, you stumble upon a hidden Demonic Altar. Fresh blood covers the runes, and a dark artifact throbs with forbidden power.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3130,8 +2958,6 @@
     "id": "millennial_ginseng_guardian",
     "title": "Guardian of the Millennial Ginseng",
     "description": "Deep in the Beast Mountain Range, you discover a patch of rare spirit herbs, including a Millennial Ginseng. However, a fierce demonic wolf is aggressively guarding the area.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -3170,8 +2996,6 @@
     "id": "ancient_dao_stele",
     "title": "Ancient Dao Stele",
     "description": "Triggered by intense Heavenly Dao fluctuations, a massive stone stele rises from the earth, radiating ancient Dao runes that resonate with your soul.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3207,8 +3031,6 @@
     "id": "beast_king_lair",
     "title": "Beast King's Lair",
     "description": "With beast activity at a peak, you stumble upon the empty lair of a Beast King while it's out leading the beast tide. Treasures are scattered everywhere.",
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3247,8 +3069,6 @@
     "id": "miasma_mountain_trail",
     "title": "Miasma on the Mountain Trail",
     "description": "Rising demonic energy has created a thick, toxic miasma on the mountain trail. You hear the distorted growls of mutated beasts within the fog.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -3282,8 +3102,6 @@
     "id": "spiritual_spring_epiphany",
     "title": "Spiritual Spring Epiphany",
     "description": "High spiritual Qi in the area has manifested a hidden spiritual spring. The water is pure and radiates profound Dao energy.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -3317,8 +3135,6 @@
     "id": "ghost_battlefield_scavenging",
     "title": "Ghost Battlefield Scavenging",
     "description": "The mountain is littered with remains from the ongoing sect war. Ghostly wails echo as you search the area for abandoned spiritual tools and weapons.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3353,8 +3169,6 @@
     "id": "ancient_battlefield_vision",
     "title": "Ancient Battlefield Vision",
     "description": "High Heavenly Dao fluctuations trigger a temporal rift. You see a vision of an ancient battle between Immortals and Demons, revealing profound combat techniques.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -3388,8 +3202,6 @@
     "id": "spirit_beast_egg_discovery",
     "title": "Spirit Beast Egg Discovery",
     "description": "Mountain resources are abundant. You find a glowing Spirit Beast egg hidden in a crevice, but the parent beast is nearby, hunting for food.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -3424,8 +3236,6 @@
     "id": "night_of_the_blood_moon",
     "title": "Night of the Blood Moon",
     "description": "The sky turns a sickly crimson. Extreme demonic energy has driven the mountain beasts into a murderous frenzy, and the veil between worlds is thinning,.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3461,8 +3271,6 @@
     "id": "beast_mountain_landslide",
     "title": "Beast Mountain Landslide",
     "description": "High danger levels in the mountains have caused a massive landslide. Ancient ores are now exposed, but the area is unstable and crawling with agitated beasts.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3498,8 +3306,6 @@
     "id": "beast_tide_vanguard",
     "title": "Beast Tide Vanguard",
     "description": "Beast activity has exploded! A massive tide of monsters is rushing down the mountain. You are caught directly in the path of the beast vanguard.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3538,8 +3344,6 @@
     "id": "herbalist_hidden_garden",
     "title": "The Herbalist's Hidden Garden",
     "description": "With high spiritual Qi in the mountains, a hidden array has failed, revealing a long-forgotten herb garden once owned by a legendary herbalist.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3575,8 +3379,6 @@
     "id": "ancient_alchemy_relic",
     "title": "Remnants of an Immortal Alchemist",
     "description": "High mountain resources have revealed a hidden cave in the Ancient Ruins. Inside, a furnace still burns with a faint, divine flame.",
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3614,8 +3416,6 @@
     "id": "ancient_beast_seal_weakening",
     "title": "Weakening of the Ancient Seal",
     "description": "High demonic energy and beast activity have weakened an ancient seal in the mountains. A terrifying aura from the era of the Ancient War is leaking out.",
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3655,8 +3455,6 @@
     "id": "ancient_weapon_awakening",
     "title": "Awakening of the Ancient Relic",
     "description": "Deep within the Ancient Ruins, a rusted weapon begins to resonate with the high Dao fluctuations, radiating a faint but sharp sword intent.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3694,8 +3492,6 @@
     "id": "corrupted_spirit_spring",
     "title": "Corrupted Spirit Spring",
     "description": "A spiritual spring in the mountains has been corrupted by the rising demonic energy. The water glows with a sickly purple light, but its energy is still incredibly potent.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3729,8 +3525,6 @@
     "id": "hibernating_beast_king",
     "title": "Hibernating Beast King",
     "description": "While exploring, you find the lair of a hibernating Beast King. Rare 'Linh Thảo' and 'Linh Quặng' are piled around its massive, slumbering form.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -3769,8 +3563,6 @@
     "id": "ancient_sword_intent_ruins",
     "title": "Sword Intent of the Ancient Master",
     "description": "At the Ancient Ruins, high Dao fluctuations have awakened the lingering sword intent of a long-dead master. The air itself feels sharp and lethal.",
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3809,8 +3601,6 @@
     "id": "cursed_herb_patch",
     "title": "Cursed Herb Patch",
     "description": "Rising demonic energy has corrupted a patch of rare herbs. The spirit herbs are glowing with a dark, pulsating light, offering immense power at the cost of your soul's purity.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3847,8 +3637,6 @@
     "id": "ancient_ruins_puzzle_box",
     "title": "Ancient Ruins: The Puzzle Box",
     "description": "While exploring the Ancient Ruins, you find a metallic box sealed with a complex array. High Dao fluctuations have weakened its lock.",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -3887,8 +3675,6 @@
     "id": "blood_moon_beast_tide",
     "title": "Blood Moon Beast Tide",
     "description": "Beast activity has reached critical levels! Driven by the blood moon, a tide of monsters is rushing towards the mortal settlements.",
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "choices": [
       {
@@ -3928,8 +3714,6 @@
     "id": "ancient_furnace_residual_fire",
     "title": "Residual Fire of the Ancient Furnace",
     "description": "High spiritual Qi has re-ignited a fragment of divine fire in an abandoned alchemy furnace within the Ancient Ruins. The heat is melting the surrounding stone, revealing hidden ores.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -3965,8 +3749,6 @@
     "id": "sect_war_convoy_ambush",
     "title": "Sect War: Convoy Ambush",
     "description": "The war level is high. You are part of an escort for a sect resource convoy that has been ambushed by elite disciples of the Ten Thousand Immortals Sect.",
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4008,8 +3790,6 @@
     "id": "ma_huyet_quang_mach",
     "title": "Demonic Blood Ore Vein",
     "description": "High demonic energy has seeped into a spirit ore vein in the mountains. The ores are pulsing with a dark, blood-red light, offering high power but risking severe corruption [cite: 54, 56].",
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -4050,8 +3830,6 @@
     "id": "lost_huyen_thiet_vein",
     "title": "Lost Huyền Thiết Vein",
     "description": "Abundant mountain resources have revealed a hidden cave containing a pure vein of 'Huyền Thiết'—the supreme material for crafting Earth-grade weapons [cite: 19, 54].",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4087,8 +3865,6 @@
     "id": "event_thien_kieu_chan_chinh_thach_dau",
     "title": "Tournament Finals",
     "description": "Long Ngao Thien, the child of heaven, stands on the arena waiting for you. Spiritual energy violently swirls around him.",
-    "minAge": 18,
-    "maxAge": 25,
     "weight": 2,
     "choices": [
       {
@@ -4129,8 +3905,6 @@
     "id": "corrupt_sect_deacon",
     "title": "Corrupt Sect Deacon",
     "description": "When you arrive at the Deacon Hall to receive your mandatory annual sect quest, the fat Deacon winks at you: 50 Spirit Stones for an easy herb-gathering task. Otherwise, you go to the deepest mining tunnels.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4166,8 +3940,6 @@
     "id": "immortal_guidance",
     "title": "Immortal's Guidance",
     "description": "Heavenly Dao fluctuates wildly. An illusion of an ancient immortal appears in your mind, preaching the supreme Dao.",
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "choices": [
       {
@@ -4199,8 +3971,6 @@
     "id": "sect_rebellion",
     "title": "Sect Rebellion",
     "description": "The sect's stability has plummeted. A deacon is assassinated in broad daylight, and rogue disciples are burning the outer sect pavilions to loot resources.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4237,8 +4007,6 @@
     "id": "sect_conscription",
     "title": "Sect Conscription",
     "description": "Sect warfare has escalated drastically. Deacons are forcefully conscripting outer disciples to serve as cannon fodder at the frontline.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4272,8 +4040,6 @@
     "id": "possessed_deacon",
     "title": "Possessed Deacon",
     "description": "Demonic infiltration is severe. Late at night, you accidentally spot a highly respected Sect Deacon practicing a forbidden blood art. He notices you.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4310,8 +4076,6 @@
     "id": "event_ke_sinh_ton_phan_boi",
     "title": "Cau Du's Betrayal",
     "description": "Taking advantage of sect instability, Cau Du secretly leads a group of rebel disciples to raid your cave dwelling.",
-    "minAge": 30,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4343,8 +4107,6 @@
     "id": "golden_core_trial",
     "title": "Golden Core Trial",
     "description": "You discover a hidden trial left by a Golden Core master, designed to test a cultivator's readiness to break through.",
-    "minAge": 40,
-    "maxAge": 90,
     "weight": 1,
     "choices": [
       {
@@ -4383,8 +4145,6 @@
     "id": "spirit_mine_collapse",
     "title": "Spirit Mine Collapse",
     "description": "Due to sect instability and poor maintenance, the outer sect spirit mine suddenly starts collapsing around you. Priceless ores are revealed in the rubble.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4417,8 +4177,6 @@
     "id": "berserk_spirit_beast",
     "title": "Berserk Spirit Beast",
     "description": "A usually docile spirit beast in the outer sect's pens has gone berserk due to a demonic aura, breaking its chains and attacking disciples.",
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "choices": [
       {
@@ -4449,8 +4207,6 @@
     "id": "ten_thousand_immortals_war",
     "title": "Ten Thousand Immortals War",
     "description": "The Ten Thousand Immortals Sect has officially declared war on the Heavenly Dao Sect! The sect is in chaos, and all disciples are ordered to the frontlines.",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4485,8 +4241,6 @@
     "id": "sect_internal_strife",
     "title": "Sect Internal Strife",
     "description": "Factional infighting has reached its peak. A sect deacon was assassinated, and the sect is highly dangerous with a high risk of betrayal.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4518,8 +4272,6 @@
     "id": "sect_outer_tournament",
     "title": "Outer Sect Tournament",
     "description": "The sect is stable and hosting its decennial Outer Sect Tournament. Disciples from all peaks gather to prove their martial prowess and win supreme pills.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4555,8 +4307,6 @@
     "id": "sect_resource_famine",
     "title": "Sect Resource Famine",
     "description": "The sect's resource reserves have plummeted to a critical low. Allowances are cut, and desperate outer disciples are fighting each other over meager scraps of spirit herbs.",
-    "minAge": 12,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4591,8 +4341,6 @@
     "id": "spirit_beast_mutation",
     "title": "Spirit Beast Mutation",
     "description": "While tending to the sect's spirit beasts, one of them swallows a strange glowing insect and begins to mutate violently, radiating intense spiritual energy.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4630,8 +4378,6 @@
     "id": "outer_sect_herb_theft",
     "title": "Herb Garden Theft",
     "description": "Sect resources are dwindling. You catch a fellow outer disciple desperately stealing a spirit herb to save their dying mortal mother.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -4662,8 +4408,6 @@
     "id": "corrupt_promotion_offer",
     "title": "Corrupt Promotion Offer",
     "description": "A greedy Inner Sect Elder approaches you in secret. He offers to bend the rules and promote you to the Inner Sect early, but for a steep price.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4696,8 +4440,6 @@
     "id": "sect_beast_feeding_frenzy",
     "title": "Frenzied Spirit Beast",
     "description": "While performing your mandatory sect quest to feed the outer sect's spirit beasts, one of them, corrupted by a sudden spike in demonic energy, breaks its cage and lunges at you.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4734,8 +4476,6 @@
     "id": "strict_deacon_inspection",
     "title": "Strict Deacon Inspection",
     "description": "The sect is tightening its rules. A strict deacon stops you to inspect your annual sect contributions. He glares at you, demanding either proof of hard work or a hefty 'fine'.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4768,8 +4508,6 @@
     "id": "traitorous_deacon",
     "title": "Traitorous Deacon",
     "description": "Sect stability is crumbling. You catch a senior deacon sneaking out with the sect's core technique manual, planning to defect to a rival sect.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4805,8 +4543,6 @@
     "id": "sect_debt_collector",
     "title": "Sect Debt Collector",
     "description": "Sect resources are depleted. A debt-collecting deacon is making rounds, forcefully demanding 'voluntary contributions' from outer disciples to fill the treasury.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4838,8 +4574,6 @@
     "id": "elder_funeral_conspiracy",
     "title": "Sect Elder's Funeral",
     "description": "An inner sect elder has passed away, and the sect's stability is shaken. Rumors of a hidden legacy left to an outer disciple are spreading like wildfire.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -4874,8 +4608,6 @@
     "id": "captured_sect_rebel",
     "title": "Captured Sect Rebel",
     "description": "Internal strife is high. You've cornered a fellow disciple who was caught stealing core scriptures. They beg you to let them go, claiming they only wanted to save their family.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -4912,8 +4644,6 @@
     "id": "sect_manual_preservation",
     "title": "Sect Manual Preservation",
     "description": "The Library Pavilion has caught fire during a riot. Rare manual fragments are scattered in the smoke and flames. You can only save a few.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -4947,8 +4677,6 @@
     "id": "sect_resource_leak",
     "title": "Sect Resource Leak",
     "description": "The sect's resources are at a critical low, and management is in shambles. You discover a hidden hole in the resource warehouse where spirit stones and low-grade pills are leaking out.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -4983,8 +4711,6 @@
     "id": "alchemy_hall_explosion",
     "title": "Alchemy Hall Explosion",
     "description": "While passing the Alchemy Hall, a massive explosion rocks the building. Smoke fills the air, and scorched remains of rare spirit herbs are scattered everywhere.",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5020,8 +4746,6 @@
     "id": "sect_treasury_betrayal",
     "title": "Sect Treasury Betrayal",
     "description": "Internal stability has collapsed. You find a group of high-ranking disciples and an elder attempting to empty the treasury before defecting to a rival sect,.",
-    "minAge": 40,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -5058,8 +4782,6 @@
     "id": "sect_meridian_cleansing_pool",
     "title": "Meridian Cleansing Pool",
     "description": "The spiritual Qi in the sect is exceptionally dense. The legendary cleansing pool has opened its doors to outer disciples for a limited time.",
-    "minAge": 10,
-    "maxAge": 100,
     "weight": 1,
     "choices": [
       {
@@ -5093,8 +4815,6 @@
     "id": "forced_labor_duty",
     "title": "Forced Labor Duty",
     "description": "The sect's stability is low, and the elders are demanding more from outer disciples. You have been assigned to the most dangerous section of the spirit mines as a 'mandatory contribution'.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -5130,8 +4850,6 @@
     "id": "hidden_jade_chamber",
     "title": "The Hidden Jade Chamber",
     "description": "The sect is stable and prosperous. The Sect Leader decides to open the 'Hidden Jade Chamber' for the most promising disciples, offering access to restricted knowledge.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5167,8 +4885,6 @@
     "id": "great_sect_war_frontline",
     "title": "Frontline of the Great War",
     "description": "Sect war has reached a fever pitch. You are drafted to the frontline to defend the Spirit Mine against the Ten Thousand Immortals Sect's elite vanguard.",
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "choices": [
       {
@@ -5204,8 +4920,6 @@
     "id": "deacon_infiltration_scandal",
     "title": "Demonic Mole Revealed",
     "description": "High demonic infiltration has compromised a Senior Deacon. You catch them transmitting sect secrets via a blood-red transmission jade.",
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -5242,8 +4956,6 @@
     "id": "sect_coup_attempt",
     "title": "Outer Sect Coup Attempt",
     "description": "Sect stability has reached a critical low. A group of radical disciples, fueled by the resource famine, is attempting to overthrow the treasury deacons.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5280,8 +4992,6 @@
     "id": "sect_war_raiding_party",
     "title": "Sect War: Raiding Party",
     "description": "Sect warfare has escalated. You are ordered to join a high-risk raiding party to sabotage the enemy sect's spirit herb garden.",
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -5317,8 +5027,6 @@
     "id": "sect_merit_hoarding",
     "title": "Sect Merit Hoarding",
     "description": "The sect is flourishing with resources. A greedy deacon is secretly allowing disciples to 'buy' merit points with large sums of spirit stones.",
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "choices": [
       {
@@ -5352,8 +5060,6 @@
     "id": "sect_manual_leak",
     "title": "Sect Manual Leak",
     "description": "Internal stability is low. A corrupted librarian is secretly selling fragments of the sect's high-grade manuals to the highest bidder.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5389,8 +5095,6 @@
     "id": "sect_heritage_trial",
     "title": "Sect Heritage Trial",
     "description": "With the sect's reputation at an all-time high, the Grand Elder opens the 'Heritage Path'—a trial designed to test a disciple's core comprehension and loyalty to the sect's founding Dao.",
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5426,8 +5130,6 @@
     "id": "spirit_root_resonance_test",
     "title": "Spirit Root Resonance Test",
     "description": "With global spiritual Qi peaking, the sect's resonance crystal has activated. It offers a rare chance to refine your Spirit Root's purity and enhance your cultivation multiplier.",
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "choices": [
       {
@@ -5461,8 +5163,6 @@
     "id": "sect_internal_betrayal",
     "title": "Sect Internal Betrayal",
     "description": "Sect stability is low and demonic infiltration is high. You catch a senior disciple attempting to poison the spirit well with demonic energy.",
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -5500,8 +5200,6 @@
     "id": "sect_pill_warehouse_chaos",
     "title": "Sect Pill Warehouse Breach",
     "description": "Internal stability has collapsed! A riot has broken out, and the sect's pill warehouse is being looted by desperate disciples [cite: 52, 59].",
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "choices": [
       {
@@ -5538,8 +5236,6 @@
     "id": "sect_ancestor_statue_awakening",
     "title": "Sect Ancestor's Statue Awakening",
     "description": "Fueled by the sect's high reputation and spiritual Qi, the statue of the founding ancestor begins to radiate a golden light, offering guidance to the faithful [cite: 52, 57].",
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "choices": [
       {
@@ -5574,8 +5270,6 @@
     "id": "demonic_possession_scandal",
     "title": "Possession of the Deacon",
     "description": "Extremely high demonic infiltration and energy have led to a catastrophe: a senior deacon has been possessed by a demonic entity and is wreaking havoc in the outer sect [cite: 59, 55].",
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "choices": [
       {

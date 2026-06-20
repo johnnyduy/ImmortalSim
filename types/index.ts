@@ -28,7 +28,10 @@ export type Stats = {
   karma: number; // Nghiệp lực (- là ác, + là thiện)
   lifespan: number; // Thọ nguyên (hết tuổi thọ là chết)
   daoHeart: number; // Đạo tâm (quyết tâm tu luyện)
+  speed: number; // Tốc độ (thân pháp)
+  toxicity: number; // Đan độc (tích tụ khi dùng thuốc)
   spiritualRoot?: string; // Linh căn (chỉ định phẩm chất)
+  alchemyLevel?: number; // Cấp độ/Tiến trình luyện đan
 };
 
 export type TechniqueCompleteness = 'tàn_quyển' | 'khuyết_thiên' | 'hoàn_chỉnh' | 'viên_mãn';
@@ -52,6 +55,9 @@ export interface ItemInstance {
   type: 'elixir' | 'secret_medicine' | 'weapon' | 'armor' | 'herb' | 'relic';
   tier: 'hoàng' | 'huyền' | 'địa' | 'thiên' | 'thánh' | 'tiên' | 'đế' | 'đạo';
   quantity: number;
+  quality?: 'phàm_phẩm' | 'tinh_phẩm' | 'cực_phẩm' | 'tiên_phẩm'; // Phẩm chất đan dược
+  toxicity?: number; // Lượng đan độc chứa trong đan dược
+  basePrice?: number; // Giá trị gốc của vật phẩm (để chợ đêm/thành thị định giá)
   combatStats?: {
     attack?: number;
     defense?: number;
@@ -64,6 +70,19 @@ export interface ItemInstance {
   sealLevel?: Realm;
   effects?: GameEffect;
 }
+
+export interface AlchemyRecipe {
+  id: string;
+  name: string;
+  description: string;
+  requiredLevel: number;
+  ingredients: { itemId: string; quantity: number }[];
+  resultItemId: string;
+  baseSuccessRate: number; // 0.0 - 1.0
+  baseToxicity: number; // Đan độc cơ bản
+}
+
+export type FireMethod = 'văn_hỏa' | 'vũ_hỏa' | 'thiên_lôi' | 'huyết_luyện';
 
 export type Inheritance = {
   legacyPower: number; // Sức mạnh di sản thừa kế truyền từ kiếp trước
@@ -102,6 +121,8 @@ export type GameEffect = Partial<Stats> & {
   age?: number;
   daoMind?: number;
   money?: number;
+  speed?: number;
+  toxicity?: number;
   gainFragment?: {
     techniqueId: string;
     amount: number;
@@ -152,8 +173,8 @@ export type EventDefinition = {
   id: string;
   title: TextResource;
   description: TextResource;
-  minAge: number;
-  maxAge: number;
+  minRealm: Realm;
+  maxRealm?: Realm;
   weight: number;
   choices: EventChoice[];
   tags?: string[];
@@ -172,12 +193,34 @@ export type LogEntry = {
   message: LocalizedText;
 };
 
+export type CombatEnemy = {
+  id: string;
+  name: string;
+  avatar: string;
+  maxHp: number;
+  currentHp: number;
+  speed: number;
+  attack: number;
+  defense: number;
+  description: string;
+};
+
+export type CombatState = {
+  enemy: CombatEnemy;
+  log: string[]; // Battle Log
+  isFinished: boolean;
+  result?: 'win' | 'loss' | 'escape';
+  onWinEffects?: GameEffect;
+  onLossEffects?: GameEffect;
+};
+
 export type GameState = {
   run: number;
   life: number;
   age: number;
   alive: boolean;
   realm: Realm;
+  subStageIndex: number;
   stats: Stats;
   inheritance: Inheritance;
   log: LogEntry[];
@@ -205,6 +248,7 @@ export type GameState = {
     monthsRemaining: number;
     progressLogs: string[];
     isParty: boolean;
+    accumulatedCultivation?: number;
   } | null;
   ambition?: 'truong_sinh' | 'ba_chu' | 'dan_dao' | 'kiem_tien' | 'phu_quoc' | 'ma_dao';
   menuStack?: string[];
@@ -212,6 +256,7 @@ export type GameState = {
   npcFavorability?: Record<string, number>;
   worldState?: WorldState;
   currentLocation: 'sect' | 'mountain' | 'city' | 'secret_realm';
+  activeCombat?: CombatState;
 };
 
 // ════════════════════════════════════════════════════════════

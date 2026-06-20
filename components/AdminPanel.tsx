@@ -1666,43 +1666,71 @@ function EventList({
   onImportJSON: () => void;
   onFastTest: () => void;
 }) {
+  const [filterLocation, setFilterLocation] = useState('all');
+
+  const filteredEvents = events
+    .map((ev, index) => ({ ev, originalIndex: index }))
+    .filter(({ ev }) => filterLocation === 'all' || (ev.location || 'sect') === filterLocation);
+
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between border-b border-[#3e3328]/50 pb-2">
-        <h4 className="font-serif text-md text-[#e5c17b]">Các Sự Kiện Tu Chân Đời Người</h4>
-        <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={onFastTest}
-            className="px-3 py-1 text-xs border border-red-500/40 text-red-400 hover:bg-red-500/10 rounded-sm transition font-serif uppercase tracking-wider"
+      <div className="flex flex-col gap-3 border-b border-[#3e3328]/50 pb-3">
+        <div className="flex items-center justify-between">
+          <h4 className="font-serif text-md text-[#e5c17b]">Các Sự Kiện Tu Chân Đời Người</h4>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={onFastTest}
+              className="px-3 py-1 text-xs border border-red-500/40 text-red-400 hover:bg-red-500/10 rounded-sm transition font-serif uppercase tracking-wider"
+            >
+              ⚡ Chạy Fast Test (Giả lập)
+            </button>
+            <button
+              type="button"
+              onClick={onImportJSON}
+              className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#c5a059] hover:bg-[#c5a059]/10 rounded-sm transition font-serif uppercase tracking-wider"
+            >
+              📥 Nhập JSON sự kiện
+            </button>
+            <button
+              type="button"
+              onClick={onAdd}
+              className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition font-serif uppercase tracking-wider"
+            >
+              + Dệt thêm sự kiện mới
+            </button>
+          </div>
+        </div>
+
+        {/* Filter Bar */}
+        <div className="flex items-center gap-3">
+          <span className="text-xs uppercase tracking-widest text-[#847764]">Lọc theo loại:</span>
+          <select
+            value={filterLocation}
+            onChange={(e) => setFilterLocation(e.target.value)}
+            className="bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-1.5 text-[#e5c17b] text-xs outline-none focus:border-[#c5a059]"
           >
-            ⚡ Chạy Fast Test (Giả lập)
-          </button>
-          <button
-            type="button"
-            onClick={onImportJSON}
-            className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#c5a059] hover:bg-[#c5a059]/10 rounded-sm transition font-serif uppercase tracking-wider"
-          >
-            📥 Nhập JSON sự kiện
-          </button>
-          <button
-            type="button"
-            onClick={onAdd}
-            className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition font-serif uppercase tracking-wider"
-          >
-            + Dệt thêm sự kiện mới
-          </button>
+            <option value="all">Tất cả (All)</option>
+            <option value="sect">Tông môn (Sect)</option>
+            <option value="city">Thành thị (City)</option>
+            <option value="mountain">Sơn mạch (Mountain)</option>
+            <option value="secret_realm">Bí cảnh (Secret Realm)</option>
+            <option value="any">Tự do (Any)</option>
+          </select>
+          <span className="text-[10px] text-text-tertiary ml-auto">
+            Hiển thị {filteredEvents.length} / {events.length} sự kiện
+          </span>
         </div>
       </div>
 
       <div className="space-y-3">
-        {events.map((ev, index) => {
+        {filteredEvents.map(({ ev, originalIndex }) => {
           const titleText = typeof ev.title === 'object' ? `${ev.title.vi} (${ev.title.en})` : ev.title;
           const descText = typeof ev.description === 'object' ? ev.description.vi : ev.description;
           const locationLabel = ev.location ? `[${ev.location.toUpperCase()}] ` : '';
           
           return (
-            <div key={ev.id || index} className="bg-[#14110f] border border-[#3e3328]/60 p-4 space-y-2 flex items-center justify-between gap-6">
+            <div key={ev.id || originalIndex} className="bg-[#14110f] border border-[#3e3328]/60 p-4 space-y-2 flex items-center justify-between gap-6">
               <div className="flex-1 space-y-1">
                 <div className="flex items-baseline gap-4 flex-wrap">
                   <h5 className="font-serif text-[#e5c17b] text-base">{locationLabel}{titleText}</h5>
@@ -1723,14 +1751,14 @@ function EventList({
               <div className="flex gap-2">
                 <button
                   type="button"
-                  onClick={() => onEdit(index)}
+                  onClick={() => onEdit(originalIndex)}
                   className="px-2.5 py-2 text-xs text-[#c5a059] hover:bg-[#c5a059]/10 border border-[#3e3328] rounded-sm transition"
                 >
                   Sửa
                 </button>
                 <button
                   type="button"
-                  onClick={() => onDelete(index)}
+                  onClick={() => onDelete(originalIndex)}
                   className="px-2.5 py-2 text-xs text-red-400 hover:bg-red-950/20 border border-[#3e3328] rounded-sm transition"
                 >
                   Xóa
@@ -3012,6 +3040,7 @@ function CultivationConfig({
   const [activeRetreat, setActiveRetreat] = useState(cs.base_gain?.active_retreat ?? 0.80);
   const [annualAverage, setAnnualAverage] = useState(cs.base_gain?.annual_quest_average ?? 0.12);
 
+  const [qiRefinementMultiplier, setQiRefinementMultiplier] = useState(cs.qi_refinement_layer_multiplier ?? 1.3);
   const [roots, setRoots] = useState<any[]>(cs.spiritual_roots ?? []);
   const [manuals, setManuals] = useState<any[]>(cs.manual_tiers ?? []);
   const [bottlenecks, setBottlenecks] = useState<any[]>(cs.bottlenecks ?? []);
@@ -3058,6 +3087,7 @@ function CultivationConfig({
         threshold: Number(b.threshold),
         next_cult: Number(b.next_cult),
       })),
+      qi_refinement_layer_multiplier: Number(qiRefinementMultiplier),
     });
   };
 
@@ -3095,6 +3125,23 @@ function CultivationConfig({
               step="0.01"
               value={annualAverage}
               onChange={(e) => setAnnualAverage(Number(e.target.value))}
+              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+              required
+            />
+          </label>
+        </div>
+      </div>
+
+      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">⚡ Quy tắc Tăng trưởng Cảnh giới (Cultivation Progression)</h4>
+        <div className="grid grid-cols-2 gap-4">
+          <label className="block space-y-2">
+            <span className="text-xs uppercase tracking-widest text-[#847764]">Hệ số nhân tu vi Luyện Khí (x - mỗi tầng sau hơn tầng trước)</span>
+            <input
+              type="number"
+              step="0.05"
+              value={qiRefinementMultiplier}
+              onChange={(e) => setQiRefinementMultiplier(Number(e.target.value))}
               className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
               required
             />

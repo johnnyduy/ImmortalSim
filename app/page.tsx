@@ -8,22 +8,28 @@ import StatsPanel from '../components/StatsPanel';
 import TestCombatPanel from '../components/TestCombatPanel';
 import AdminPanel from '../components/AdminPanel';
 import SettingsModal from '../components/SettingsModal';
-import { applyChoiceToState, createNewGame, getInitialInheritance, reincarnate, useItemInState, equipItemInState, tickMonth, getPlayerStat, getRandomEvent, addItem, getMenuEvent, addFragment, SectPunishmentEvent, changeLocation, setDynamicEvents } from '../lib/engine';
+import { applyChoiceToState, createNewGame, getInitialInheritance, reincarnate, useItemInState, equipItemInState, tickMonth, getPlayerStat, getRandomEvent, addItem, getMenuEvent, addFragment, SectPunishmentEvent, changeLocation, setDynamicEvents, completeTechniqueLearning } from '../lib/engine';
 import { getRealmSubStage } from '../lib/cultivation-states';
 import { getLocalizedText, uiText, translatedRealms } from '../lib/i18n';
 import { useAtmosphere } from '../hooks/useAtmosphere';
 import TimeGearPanel from '../components/TimeGearPanel';
 import OutcomeTransition from '../components/OutcomeTransition';
-import type { GameState, Inheritance, Lang, SectQuest, EventDefinition } from '../types';
+import type { GameState, Inheritance, Lang, SectQuest, EventDefinition, TechniqueInstance } from '../types';
 import SectMissionsPanel from '../components/SectMissionsPanel';
 import { audioManager } from '../styles/AudioManager';
 import TypewriterText from '../components/TypewriterText';
 import CombatPanel from '../components/CombatPanel';
 import LevelRewardAnimation, { type LevelRewardAnimationPayload } from '../components/LevelRewardAnimation';
 import SubStageBreakthrough from '../components/SubStageBreakthrough';
+import MajorBreakthrough from '../components/MajorBreakthrough';
+import MountainExploration from '../components/MountainExploration';
 import combatConfig from '../data/combat-config.json';
 import type { Character, CombatEnvironment, StatSnapshot } from '../docs/CombatState';
-
+import CultivationMinigame from '../components/CultivationMinigame';
+import CombatModal from '../components/CombatModal';
+import AlchemyModal from '../components/AlchemyModal';
+import BlackMarketModal from '../components/BlackMarketModal';
+import { resolveCombatAction, finishCombat } from '../lib/combat-system';
 // Fallback image helper component for event backgrounds (thiết kế hình tròn viền ngọc bích mảnh)
 function EventIllustration({ id, sect }: { id: string; sect?: string }) {
   const [src, setSrc] = useState(`/images/events/${id}.png`);
@@ -131,8 +137,8 @@ const buildLevelRewardPayload = (
 ): LevelRewardAnimationPayload | null => {
   if (!previous || !previous.alive || !next.alive) return null;
 
-  const prevStage = getRealmSubStage(previous.stats.cultivation);
-  const nextStage = getRealmSubStage(next.stats.cultivation);
+  const prevStage = getRealmSubStage(previous.stats.cultivation, previous.realm, previous.subStageIndex);
+  const nextStage = getRealmSubStage(next.stats.cultivation, next.realm, next.subStageIndex);
   const leveledUp =
     nextStage.majorRealm !== prevStage.majorRealm ||
     nextStage.subStageIndex > prevStage.subStageIndex;
@@ -179,9 +185,10 @@ const buildLevelRewardPayload = (
       };
 
   const cultivationGain = next.stats.cultivation - previous.stats.cultivation;
-  if (cultivationGain > 0 && leveledUp) {
-    rewards.push(`${labels.cultivation} ${formatSignedGain(cultivationGain)}`);
-  }
+  // Bỏ đi phần thưởng Tu vi khi đột phá theo yêu cầu
+  // if (cultivationGain > 0 && leveledUp) {
+  //   rewards.push(`${labels.cultivation} +${formatSignedGain(cultivationGain)}`);
+  // }
 
   const statDiffs: Array<[keyof Pick<GameState['stats'], 'health' | 'luck' | 'comprehension' | 'lifespan' | 'daoHeart'>, string]> = [
     ['health', labels.health],
@@ -249,6 +256,7 @@ export default function HomePage() {
   const [audioMuted, setAudioMuted] = useState(false);
   const [audioVolume, setAudioVolume] = useState(0.3);
   const [showTestCombat, setShowTestCombat] = useState(false);
+  const [mountainExploreDays, setMountainExploreDays] = useState(0);
   
   // Dynamic config from Admin Panel
   const [activeCombatConfig, setActiveCombatConfig] = useState<any>(null);
@@ -280,22 +288,26 @@ export default function HomePage() {
   const [creationAmbition, setCreationAmbition] = useState<'truong_sinh' | 'ba_chu' | 'dan_dao' | 'kiem_tien' | 'phu_quoc' | 'ma_dao'>('truong_sinh');
   const [isIntroTextFinished, setIsIntroTextFinished] = useState(false);
   const [showSectMissions, setShowSectMissions] = useState(false);
+  const [showBlackMarket, setShowBlackMarket] = useState(false);
+  const [showAlchemy, setShowAlchemy] = useState(false);
   const [activeCombat, setActiveCombat] = useState<{
     player: Character;
     enemy: Character;
     env: CombatEnvironment;
-    type: 'beast_herb' | 'beast_hunt' | 'demonic' | 'tournament_1' | 'tournament_2' | 'tournament_3' | 'npc_ta_tieu' | 'npc_khau_vo_ky';
+    type: 'beast_herb' | 'beast_hunt' | 'demonic' | 'tournament_1' | 'tournament_2' | 'tournament_3' | 'tournament_ngao_thien' | 'npc_ta_tieu' | 'npc_khau_vo_ky';
   } | null>(null);
   const [showAudioPaths, setShowAudioPaths] = useState<boolean>(false);
   const [lastAudioTriggered, setLastAudioTriggered] = useState<string>('');
   const [selectedDetailItem, setSelectedDetailItem] = useState<{
-    type: 'manual' | 'item' | 'currency';
+    type: 'manual' | 'currency' | 'elixir';
     title: string;
     description: string;
     details?: string[];
     image?: string;
     icon?: string;
   } | null>(null);
+  const [learningTechnique, setLearningTechnique] = useState<TechniqueInstance | null>(null);
+  const [isFatalMinigame, setIsFatalMinigame] = useState(false);
   const [levelRewardAnimation, setLevelRewardAnimation] = useState<LevelRewardAnimationPayload | null>(null);
   const rewardAnimationIdRef = useRef(0);
   const lastRewardGameRef = useRef<GameState | null>(null);
@@ -304,6 +316,7 @@ export default function HomePage() {
     oldStageName: string;
     newStageName: string;
     majorRealm: string;
+    isMajor?: boolean;
   } | null>(null);
   const lastSubStageRef = useRef<number | null>(null);
 
@@ -314,7 +327,7 @@ export default function HomePage() {
   } | null>(null);
 
   // Dynamic max HP calculation for actions
-  const subStageInfo = game ? getRealmSubStage(game.stats.cultivation) : null;
+  const subStageInfo = game ? getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex) : null;
   const equipHpBonus = game ? (game.inventory || [])
     .filter(item => item.category === 'equipment' && item.equipped)
     .reduce((sum, item) => sum + (item.combatStats?.maxHp ?? 0), 0) : 0;
@@ -343,31 +356,41 @@ export default function HomePage() {
       lastSubStageRef.current = null;
       return;
     }
-    const currentSubStage = getRealmSubStage(game.stats.cultivation);
-    const currentIdx = currentSubStage.subStageIndex; // e.g. 0 to 24
+    const currentSubStage = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
+    const currentIdx = currentSubStage.subStageIndex;
     
+    // Nếu đang Bế Quan (auto-ticking), không hiển thị popup đột phá tiểu cảnh giới để tránh spam.
+    // Giữ nguyên lastSubStageRef.current để so sánh toàn bộ tiến trình sau khi hoàn thành bế quan.
+    // Nếu lastSubStageRef.current chưa được khởi tạo (khi F5 trang), gán bằng cảnh giới hiện tại.
+    if (game.isTicking) {
+      if (lastSubStageRef.current === null) {
+        lastSubStageRef.current = currentIdx;
+      }
+      return;
+    }
+
     if (lastSubStageRef.current !== null && currentIdx > lastSubStageRef.current) {
       const getSubStageNameByIndex = (idx: number) => {
         if (idx === 0) return { vi: 'Phàm Nhân', en: 'Mortal' };
-        if (idx <= 12) {
+        if (idx <= 9) {
           const layer = idx;
-          const labelVi = layer === 12 ? 'Luyện Khí Tầng 12 (Viên Mãn)' : `Luyện Khí Tầng ${layer}`;
-          const labelEn = layer === 12 ? 'Qi Refinement Layer 12 (Consummate)' : `Qi Refinement Layer ${layer}`;
+          const labelVi = layer === 9 ? 'Luyện Khí Tầng 9 (Viên Mãn)' : `Luyện Khí Tầng ${layer}`;
+          const labelEn = layer === 9 ? 'Qi Refinement Layer 9 (Consummate)' : `Qi Refinement Layer ${layer}`;
           return { vi: labelVi, en: labelEn };
+        }
+        if (idx <= 12) {
+          const subIdx = idx - 10;
+          const namesVi = ['Trúc Cơ Sơ Kỳ', 'Trúc Cơ Trung Kỳ', 'Trúc Cơ Hậu Kỳ'];
+          const namesEn = ['Foundation Establishment Early', 'Foundation Establishment Middle', 'Foundation Establishment Late'];
+          return { vi: namesVi[subIdx], en: namesEn[subIdx] };
         }
         if (idx <= 16) {
           const subIdx = idx - 13;
-          const namesVi = ['Trúc Cơ Sơ Kỳ', 'Trúc Cơ Trung Kỳ', 'Trúc Cơ Hậu Kỳ', 'Trúc Cơ Viên Mãn'];
-          const namesEn = ['Foundation Establishment Early', 'Foundation Establishment Middle', 'Foundation Establishment Late', 'Foundation Establishment Consummate'];
-          return { vi: namesVi[subIdx], en: namesEn[subIdx] };
-        }
-        if (idx <= 20) {
-          const subIdx = idx - 17;
           const namesVi = ['Kim Đan Sơ Kỳ', 'Kim Đan Trung Kỳ', 'Kim Đan Hậu Kỳ', 'Kim Đan Viên Mãn'];
           const namesEn = ['Golden Core Early', 'Golden Core Middle', 'Golden Core Late', 'Golden Core Consummate'];
           return { vi: namesVi[subIdx], en: namesEn[subIdx] };
         }
-        const subIdx = idx - 21;
+        const subIdx = idx - 17;
         const namesVi = ['Nguyên Anh Sơ Kỳ', 'Nguyên Anh Trung Kỳ', 'Nguyên Anh Hậu Kỳ', 'Nguyên Anh Viên Mãn'];
         const namesEn = ['Nascent Soul Early', 'Nascent Soul Middle', 'Nascent Soul Late', 'Nascent Soul Consummate'];
         return { vi: namesVi[subIdx], en: namesEn[subIdx] };
@@ -375,11 +398,14 @@ export default function HomePage() {
 
       const oldStageName = getSubStageNameByIndex(lastSubStageRef.current);
       const newStageName = currentSubStage.subStageName;
+      const oldSubStageInfo = getRealmSubStage(0, undefined, lastSubStageRef.current);
+      const isMajor = oldSubStageInfo.majorRealm !== currentSubStage.majorRealm;
 
       setBreakthroughData({
         oldStageName: oldStageName[language],
         newStageName: newStageName[language],
         majorRealm: currentSubStage.majorRealm,
+        isMajor,
       });
 
       // Play custom audio breakthrough SFX
@@ -389,7 +415,7 @@ export default function HomePage() {
       }, 2000);
     }
     lastSubStageRef.current = currentIdx;
-  }, [game?.stats?.cultivation, game?.alive, language, playSfxWithPath]);
+  }, [game?.stats?.cultivation, game?.alive, game?.isTicking, language, playSfxWithPath]);
 
   useEffect(() => {
     const handleGlobalClick = (e: MouseEvent) => {
@@ -524,9 +550,12 @@ export default function HomePage() {
     }
 
     const previous = lastRewardGameRef.current;
-    const payload = buildLevelRewardPayload(previous, game, language, rewardAnimationIdRef.current + 1);
     lastRewardGameRef.current = game;
+    
+    // Bỏ qua hiển thị animation phần thưởng/lên cấp nếu đang Bế Quan (auto-ticking)
+    if (game.isTicking) return;
 
+    const payload = buildLevelRewardPayload(previous, game, language, rewardAnimationIdRef.current + 1);
     if (!payload) return;
 
     rewardAnimationIdRef.current = payload.id;
@@ -721,6 +750,93 @@ export default function HomePage() {
     setShowTestCombat(true);
   };
 
+  const handleMountainExploreTimePass = useCallback((days: number) => {
+    setMountainExploreDays(prev => {
+      const nextDays = prev + days;
+      if (nextDays >= 30) {
+        setGame(g => {
+          if (!g) return g;
+          // Deduct travel cost HP and Stones
+          const newHp = Math.max(0, g.stats.health - (activeCombatConfigRef.current?.time_gear?.travel_cost_hp ?? 2));
+          const newStones = Math.max(0, (g.spiritStones ?? 0) - (activeCombatConfigRef.current?.time_gear?.travel_cost_stones ?? 10));
+          const nextGame = { ...g, stats: { ...g.stats, health: newHp }, spiritStones: newStones };
+          return tickMonth(nextGame, languageRef.current, activeCombatConfigRef.current);
+        });
+        return nextDays - 30;
+      }
+      return nextDays;
+    });
+  }, []);
+
+  const handleMountainExploreEventResult = useCallback((effect: any) => {
+    setGame(g => {
+      if (!g) return g;
+      const nextGame = { ...g, stats: { ...g.stats } };
+      if (effect.spiritStones) nextGame.spiritStones = (nextGame.spiritStones ?? 0) + effect.spiritStones;
+      if (effect.luck) nextGame.stats.luck += effect.luck;
+      if (effect.cultivation) nextGame.stats.cultivation += effect.cultivation;
+      if (effect.comprehension) nextGame.stats.comprehension += effect.comprehension;
+      if (effect.daoHeart) nextGame.stats.daoHeart = Math.min(100, nextGame.stats.daoHeart + effect.daoHeart);
+      return nextGame;
+    });
+  }, []);
+
+  const handleMountainExploreCombat = useCallback((type: 'beast_herb' | 'npc_ta_tieu') => {
+    if (!gameRef.current) return;
+    
+    // Setup combat
+    let env: CombatEnvironment = { id: 'forest', name: 'Vạn Thú Sơn Mạch', innate_auras: [], unlocked_choices: [] };
+    let enemyChar: Character;
+    
+    if (type === 'beast_herb') {
+      enemyChar = {
+        id: 'beast_herb',
+        name: 'Dã Linh Hổ (Spirit Tiger)',
+        realm_tier: 1,
+        base_stats: { hp: 110, max_hp: 110, qi: 40, max_qi: 40, speed: 12, attack: 24, qi_control: 8, comprehension: 5 },
+        tags: ['iron_body'],
+        buffs: [],
+        ai_rules: [{ condition: 'always', action_id: 'act_enemy_claw', weight: 10 }]
+      };
+    } else {
+      enemyChar = {
+        id: 'npc_ta_tieu',
+        name: 'Tà Tu (Evil Cultivator)',
+        realm_tier: 1,
+        base_stats: { hp: 150, max_hp: 150, qi: 80, max_qi: 80, speed: 15, attack: 30, qi_control: 20, comprehension: 10 },
+        tags: ['demonic_aura'],
+        buffs: [],
+        ai_rules: [{ condition: 'always', action_id: 'act_enemy_claw', weight: 10 }]
+      };
+    }
+
+    const playerChar: Character = {
+      id: 'player',
+      name: 'Player',
+      realm_tier: 1,
+      base_stats: {
+        hp: gameRef.current.stats.health,
+        max_hp: 100,
+        qi: 100,
+        max_qi: 100,
+        speed: 10,
+        attack: 20,
+        qi_control: 10,
+        comprehension: gameRef.current.stats.comprehension
+      },
+      tags: [],
+      buffs: [],
+      ai_rules: []
+    };
+
+    setActiveCombat({
+      player: playerChar,
+      enemy: enemyChar,
+      env,
+      type
+    });
+  }, []);
+
   const handleConfirmCharacter = () => {
     setShowCharacterCreation(false);
     if (isReincarnationFlow) {
@@ -885,6 +1001,28 @@ export default function HomePage() {
     ]
   };
 
+  const ngaoThienChar: Character = {
+    id: 'enemy_ngao_thien',
+    name: 'Long Ngạo Thiên (天驕天才)',
+    realm_tier: 1,
+    base_stats: {
+      hp: 180,
+      max_hp: 180,
+      qi: 120,
+      max_qi: 120,
+      speed: 18,
+      attack: 35,
+      qi_control: 20,
+      comprehension: 15
+    },
+    tags: ['spirit_root'],
+    buffs: [],
+    ai_rules: [
+      { condition: 'always', action_id: 'act_enemy_curse', weight: 6 },
+      { condition: 'always', action_id: 'act_enemy_claw', weight: 4 }
+    ]
+  };
+
   const beastEnv: CombatEnvironment = {
     id: 'beast_mountain',
     name: 'Vạn Thú Sơn Mạch (Beast Mountains)',
@@ -900,7 +1038,7 @@ export default function HomePage() {
   };
 
   const buildPlayerCharacter = (game: GameState): Character => {
-    const subStageInfo = getRealmSubStage(game.stats.cultivation);
+    const subStageInfo = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
     const inventory = game.inventory || [];
     
     const equipHpBonus = inventory
@@ -981,7 +1119,7 @@ export default function HomePage() {
     };
 
     if (winner === 'escaped') {
-      const subStageInfo = getRealmSubStage(game.stats.cultivation);
+      const subStageInfo = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
       const equipHpBonus = nextInventory
         .filter(item => item.category === 'equipment' && item.equipped)
         .reduce((sum, item) => sum + (item.combatStats?.maxHp ?? 0), 0);
@@ -1078,8 +1216,8 @@ export default function HomePage() {
             vi: 'Chiến thắng Lâm Phong thuyết phục! Vòng bán kết tiếp tục: Đối thủ tiếp theo của bạn là Diệp Phàm (Luyện Khí tầng 3). Hãy tập trung linh hỏa giao chiến!',
             en: 'Slew Lâm Phong decisively! Semi-finals match: Next opponent is Diệp Phàm (Qi Refinement Layer 3). Gather your Qi!'
           },
-          minAge: 0,
-          maxAge: 9999,
+          minRealm: 'Mortal',
+          
           weight: 1,
           choices: [
             { id: 'start_combat_tournament_2', text: { vi: '⚔️ Bước Vào Trận Đấu', en: '⚔️ Step onto the Ring' }, effects: {} },
@@ -1105,8 +1243,8 @@ export default function HomePage() {
             vi: 'Đại chiến chấn động đài tỷ võ! Bạn bước vào trận Chung kết tranh đoạt chức Quán Quân: Đối thủ tối thượng là Sở Hạo (Luyện Khí tầng 4). Trận đấu quyết định vinh quang!',
             en: 'Stunning victory! You enter the Championship Finals: The final opponent is Sở Hạo (Qi Refinement Layer 4). The ultimate clash!'
           },
-          minAge: 0,
-          maxAge: 9999,
+          minRealm: 'Mortal',
+          
           weight: 1,
           choices: [
             { id: 'start_combat_tournament_3', text: { vi: '⚔️ Đại Chiến Tranh Quán Quân', en: '⚔️ Fight for the Championship' }, effects: {} },
@@ -1166,11 +1304,34 @@ export default function HomePage() {
         });
         return;
       }
+      else if (type === 'tournament_ngao_thien') {
+        // Player WINS vs Ngao Thien → Top 10!
+        const result = addItem(nextInventory, 'item_truc_co_dan', 1, game.age);
+        nextInventory = result.inventory;
+        nextLog = [...nextLog, ...result.logs];
+        nextSectContribution += 150;
+        nextSpiritStones += 50;
+
+        combatOutcomeLog(true,
+          `🏆 Kỳ tích! Bạn đánh bại Long Ngạo Thiên trước sự kinh ngạc của toàn bộ sơn môn! Trưởng lão đích thân tặng 1x Trúc Cơ Đan + 150 Cống hiến + 50 Linh thạch!`,
+          `🏆 Miracle! You defeated Long Ngao Thien to the shock of the entire sect! An Elder personally awards 1x Foundation Pill + 150 Contribution + 50 Spirit Stones!`
+        );
+        setGame({
+          ...game,
+          stats: nextStats,
+          currentEvent: getMenuEvent('menu_monthly_plan', { ...game, stats: nextStats }, language),
+          inventory: nextInventory,
+          spiritStones: nextSpiritStones,
+          sectContribution: nextSectContribution,
+          log: nextLog
+        });
+        return;
+      }
 
       nextEvent = getMenuEvent('menu_monthly_plan', { ...game, stats: nextStats }, language);
     } 
     else {
-      nextStats.health = 0;
+      if (type !== 'tournament_ngao_thien') nextStats.health = 0;
       let deathMsgVi = '';
       let deathMsgEn = '';
       
@@ -1201,6 +1362,35 @@ export default function HomePage() {
 
         deathMsgVi = `Bị Tạ Tiêu đánh bại và cướp mất ${stonesLost} Linh thạch. Do chấn thương quá nặng, bạn đã tử vong sau trận chiến.`;
         deathMsgEn = `Defeated by Tạ Tiêu and looted of ${stonesLost} Stones. You died from severe injuries.`;
+      }
+      else if (type === 'tournament_ngao_thien') {
+        // Player LOSES vs Ngao Thien → heavy injury but not necessarily dead
+        const hpPenalty = 50;
+        nextStats.health = Math.max(0, nextStats.health - hpPenalty);
+        if (nextStats.health > 0) {
+          // Survived – just heavily injured, return to monthly plan
+          nextLog.push({
+            type: 'info',
+            age: game.age,
+            message: {
+              vi: `❌ Thất bại trước Long Ngạo Thiên! Hắn dừng tay trước khi bạn hấp hối. Tuy thua nhưng bạn vẫn nhận được ghi nhận của tông môn. Chấn thương kiên mạch: -${hpPenalty} HP.`,
+              en: `❌ Defeated by Long Ngao Thien! He stayed his hand before you fell. Despite losing, the sect acknowledged your courage. Meridian injury: -${hpPenalty} HP.`
+            }
+          });
+          setGame({
+            ...game,
+            stats: nextStats,
+            currentEvent: getMenuEvent('menu_monthly_plan', { ...game, stats: nextStats }, language),
+            inventory: nextInventory,
+            spiritStones: nextSpiritStones,
+            sectContribution: nextSectContribution,
+            log: nextLog
+          });
+          return;
+        }
+        // HP reached 0 → death
+        deathMsgVi = `Tử thương trên lôi đài: Long Ngạo Thiên tung đòn tiệt diệt khính vong kiên mạch của bạn. Kí huyết suy kiệt, chỉ còn một hơi thở cuối cùng.`;
+        deathMsgEn = `Fatal wounds on the arena: Long Ngao Thien\'s final strike shattered your meridians. Qi exhausted, only one last breath remains.`;
       }
       else if (type === 'npc_khau_vo_ky') {
         const stonesLost = Math.min(nextSpiritStones, 30);
@@ -1340,6 +1530,15 @@ export default function HomePage() {
     if (!game || !game.alive) return;
     setPreviousGame(game);
 
+    if (choiceId === 'action_mortal_breakthrough_minigame') {
+      const manual = game.techniques?.find(t => !t.isActive);
+      if (manual) {
+        setLearningTechnique(manual);
+        setIsFatalMinigame(true);
+      }
+      return;
+    }
+
     if (choiceId === 'start_combat_npc_ta_tieu') {
       const player = buildPlayerCharacter(game);
       const fallback: Character = {
@@ -1437,6 +1636,13 @@ export default function HomePage() {
       setActiveCombat({ player, enemy, env, type: 'tournament_3' });
       return;
     }
+    if (choiceId === 'start_combat_tournament_ngao_thien') {
+      const player = buildPlayerCharacter(game);
+      const enemy = ngaoThienChar;
+      const env = tournamentEnv;
+      setActiveCombat({ player, enemy, env, type: 'tournament_ngao_thien' });
+      return;
+    }
 
     const next = applyChoiceToState(game, choiceId, language);
     setGame(next);
@@ -1450,6 +1656,16 @@ export default function HomePage() {
     setCreationSect('Kiếm Tông');
     setIsReincarnationFlow(true);
     setShowCharacterCreation(true);
+  };
+
+  const handleCombatModalAction = (action: 'brute_force' | 'tactical' | 'stall' | 'demonic' | 'escape') => {
+    if (!game) return;
+    setGame(resolveCombatAction(game, action));
+  };
+
+  const handleCombatModalClose = () => {
+    if (!game) return;
+    setGame(finishCombat(game));
   };
 
   const handleUseItem = (itemIndex: number) => {
@@ -1488,7 +1704,7 @@ export default function HomePage() {
     setPreviousGame(game);
 
     // Calculate max HP
-    const subStageInfo = getRealmSubStage(game.stats.cultivation);
+    const subStageInfo = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
     const equipHpBonus = (game.inventory || [])
       .filter(item => item.category === 'equipment' && item.equipped)
       .reduce((sum, item) => sum + (item.combatStats?.maxHp ?? 0), 0);
@@ -1740,6 +1956,11 @@ export default function HomePage() {
 
     let transitionType: 'ink_fade' | 'karma_good' | 'karma_bad' | 'destiny_win' | 'destiny_lose' | 'combat_win' | 'combat_lose' | 'combat_start' = 'ink_fade';
     
+    if (choiceId === 'action_mortal_breakthrough_minigame') {
+      handleChoice(choiceId);
+      return;
+    }
+
     if (choiceId.startsWith('start_combat_')) {
       transitionType = 'combat_start';
     } else {
@@ -1913,14 +2134,55 @@ export default function HomePage() {
   return (
     <>
       <AtmosphereBackground gameState={game} previousGameState={previousGame} />
-      {breakthroughData ? (
-        <SubStageBreakthrough
-          oldStageName={breakthroughData.oldStageName}
-          newStageName={breakthroughData.newStageName}
-          majorRealm={breakthroughData.majorRealm}
-          language={language}
-          onClose={() => setBreakthroughData(null)}
+      {game?.activeCombat && (
+        <CombatModal state={game} onAction={handleCombatModalAction} onClose={handleCombatModalClose} />
+      )}
+      {game && showAlchemy && (
+        <AlchemyModal 
+          state={game} 
+          onFinished={(res) => {
+            if (!game) return;
+            const nextState = { ...game };
+            nextState.log = [...nextState.log, { type: 'info', message: { vi: "Kết thúc luyện đan.", en: "Finished alchemy." } }];
+            
+            if (res.healthLost) {
+              nextState.stats.health = Math.max(0, nextState.stats.health - res.healthLost);
+              if (nextState.stats.health <= 0) nextState.alive = false;
+            }
+            if (res.outputItem) {
+              nextState.inventory = [...(nextState.inventory || []), res.outputItem];
+            }
+            setGame(nextState);
+            setShowAlchemy(false);
+          }}
+          onClose={() => setShowAlchemy(false)}
         />
+      )}
+      {game && showBlackMarket && (
+        <BlackMarketModal 
+          state={game} 
+          onUpdateState={setGame}
+          onClose={() => setShowBlackMarket(false)}
+        />
+      )}
+      {breakthroughData ? (
+        breakthroughData.isMajor ? (
+          <MajorBreakthrough
+            oldStageName={breakthroughData.oldStageName}
+            newStageName={breakthroughData.newStageName}
+            majorRealm={breakthroughData.majorRealm}
+            language={language}
+            onClose={() => setBreakthroughData(null)}
+          />
+        ) : (
+          <SubStageBreakthrough
+            oldStageName={breakthroughData.oldStageName}
+            newStageName={breakthroughData.newStageName}
+            majorRealm={breakthroughData.majorRealm}
+            language={language}
+            onClose={() => setBreakthroughData(null)}
+          />
+        )
       ) : (
         levelRewardAnimation && (
           <LevelRewardAnimation
@@ -1950,6 +2212,8 @@ export default function HomePage() {
         <StatsPanel
           stats={game.stats}
           realm={getLocalizedText(translatedRealms[game.realm] || game.realm, language)}
+          rawRealm={game.realm}
+          subStageIndex={game.subStageIndex}
           inheritance={game.inheritance}
           age={game.age}
           life={game.life}
@@ -1966,6 +2230,7 @@ export default function HomePage() {
           sectRank={game.sectRank}
           sectPrestige={game.sectPrestige}
           onViewDetail={setSelectedDetailItem}
+          onLearnTechnique={setLearningTechnique}
           npcFavorability={game.npcFavorability}
           worldState={game.worldState}
           currentLocation={game.currentLocation}
@@ -2204,12 +2469,36 @@ export default function HomePage() {
               {/* Cột phải: Cuộn sớ cổ trang trúc lục bảo viền vàng kim */}
               {game.alive && game.currentEvent && (
                 <article 
-                  className="relative flex flex-col w-full max-w-md bg-[#eae1c8] text-neutral-800 rounded-sm py-8 px-7 sm:px-9 border-x-2 border-[#b89f65]/35 animate-portal-entry shadow-[0_15px_35px_rgba(0,0,0,0.65)]"
+                  className="relative flex flex-col w-full max-w-md bg-[#eae1c8] text-neutral-800 rounded-sm py-8 px-7 sm:px-9 border-x-2 border-[#b89f65]/35 animate-portal-entry shadow-[0_15px_35px_rgba(0,0,0,0.65)] mt-8 md:mt-10"
                   style={{
                     backgroundImage: "radial-gradient(circle, #fcfaf2 20%, #f3ead0 100%)",
                     boxShadow: "inset 0 0 40px rgba(130, 95, 45, 0.2), 0 15px 35px rgba(0,0,0,0.65)"
                   }}
                 >
+                  {/* Floating badges on top-right of scroll container */}
+                  <div className="absolute top-3 right-4 sm:top-4 sm:right-6 flex flex-row gap-3 z-30">
+                    {game.sect && (game.sectRank === 'ngoại_môn' || game.sectRank === undefined) && (
+                      <div className={`flex items-center gap-2 px-4 py-1.5 rounded-full border-2 text-[16px] sm:text-[18px] font-bold font-serif shadow-md ${
+                        game.month === 12 
+                          ? 'border-yellow-600/60 bg-yellow-500/20 text-yellow-800 animate-pulse' 
+                          : 'border-red-950/40 bg-red-900/10 text-red-900'
+                      }`}>
+                        <span>
+                          ⚔️ {game.month === 12 
+                            ? (language === 'vi' ? 'Đại Bỉ: Đang Diễn Ra!' : 'Tournament: Active!') 
+                            : (language === 'vi' ? `Đại Bỉ: ${12 - game.month} tháng` : `Tournament: ${12 - game.month}mo`)}
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-amber-950/40 bg-amber-900/10 text-[16px] sm:text-[18px] font-bold text-amber-900 font-serif shadow-md">
+                      <span>
+                        ⚖️ {language === 'vi' 
+                          ? `Đấu giá: ${10 - (game.age % 10)} năm` 
+                          : `Auction: ${10 - (game.age % 10)}yr`}
+                      </span>
+                    </div>
+                  </div>
+
                   {/* Thanh tre cuộn tròn ở trên */}
                   <div className="absolute -top-3.5 left-[-16px] right-[-16px] h-5 bamboo-horizontal rounded-full z-20">
                     <div className="absolute -left-2.5 top-1/2 transform -translate-y-1/2 w-2.5 h-6 gold-cap rounded-l-sm" />
@@ -2378,6 +2667,7 @@ export default function HomePage() {
                     {(!game.currentEvent.id.includes('birth_and_recruitment') || isIntroTextFinished || game.currentEvent.id.startsWith('menu_') || game.currentEvent.id === 'monthly_plan') && (
                       <div className="pt-2">
                         <ChoiceButtons
+                          eventId={game.currentEvent.id}
                           choices={game.currentEvent.choices}
                           onSelect={handleChoiceWithTransition}
                           language={language}
@@ -2489,15 +2779,34 @@ export default function HomePage() {
                           className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           {getCityBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏙️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏘️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Đến Thanh Dương Thành' : 'Travel to Thanh Duong City'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
                               {language === 'vi' 
-                                ? `Di chuyển đến phàm nhân thành thị sầm uất (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
+                                ? `Đến nơi đô hội sầm uất trao đổi kỳ trân dị bảo (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
                                 : `Travel to the bustling city (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
+                            </p>
+                          </div>
+                        </button>
+
+                        {/* Option 5: Luyện Đan */}
+                        <button
+                          type="button"
+                          onClick={() => setShowAlchemy(true)}
+                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                        >
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">⚗️</span>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                              {language === 'vi' ? 'Lập Trận Luyện Đan' : 'Alchemy Array'}
+                            </h4>
+                            <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
+                              {language === 'vi' 
+                                ? 'Nung luyện dược thảo, đoạt thiên địa tạo hóa, nhưng coi chừng nổ lò mất mạng.' 
+                                : 'Refine herbs and seize creation, but beware of furnace explosion.'}
                             </p>
                           </div>
                         </button>
@@ -2530,7 +2839,7 @@ export default function HomePage() {
                         {/* Option 1: Dạo Chợ Đen */}
                         <button
                           type="button"
-                          onClick={() => handleLeaveSectForEventWithTransition('black_market')}
+                          onClick={() => setShowBlackMarket(true)}
                           className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏪</span>
@@ -2561,89 +2870,6 @@ export default function HomePage() {
                               {language === 'vi' 
                                 ? 'Tham gia lâu đài đấu giá tìm kiếm các pháp bảo quý hiếm tuyệt bản (Tốn 1 tháng).' 
                                 : 'Join the auction house to bid on rare unique treasures (Costs 1 month).'}
-                            </p>
-                          </div>
-                        </button>
-
-                        {/* Option 3: Về Tông Môn */}
-                        <button
-                          type="button"
-                          onClick={() => handleMoveLocationWithTransition('sect')}
-                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
-                        >
-                          {getSectBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏵️</span>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Trở Về Tông Môn' : 'Return to Sect'}
-                            </h4>
-                            <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? `Đi đường dài quay trở lại động phủ môn phái an toàn (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
-                                : `Travel back to the safety of your sect (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
-                            </p>
-                          </div>
-                        </button>
-
-                        {/* Option 4: Đến Sơn Mạch */}
-                        <button
-                          type="button"
-                          onClick={() => handleMoveLocationWithTransition('mountain')}
-                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
-                        >
-                          {getMountainBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏔️</span>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Đến Vạn Thú Sơn Mạch' : 'Go to Beast Mountain Range'}
-                            </h4>
-                            <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? `Băng qua phàm trần đến dãy núi đầy thú dữ (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
-                                : `Cross realms to reach the beast mountain range (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
-                            </p>
-                          </div>
-                        </button>
-                      </>
-                    )}
-
-                    {/* HÀNH ĐỘNG TẠI SƠN MẠCH (MOUNTAIN) */}
-                    {game.currentLocation === 'mountain' && (
-                      <>
-                        {/* Option 1: Tiến Sâu Vào Sơn Mạch */}
-                        <button
-                          type="button"
-                          onClick={() => handleLeaveSectForEventWithTransition('explore_mountain')}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
-                        >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🌲</span>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Tiến Sâu Vào Sơn Mạch' : 'Venture Deep Into Mountain'}
-                            </h4>
-                            <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Đi vào vùng lõi sơn mạch tìm di tích cổ, có thể gặp yêu thú mạnh (Tốn 1 tháng).' 
-                                : 'Go into the core range looking for ancient ruins, might face strong beasts (Costs 1 month).'}
-                            </p>
-                          </div>
-                        </button>
-
-                        {/* Option 2: Săn Thú & Hái Thuốc */}
-                        <button
-                          type="button"
-                          onClick={() => handleLeaveSectForEventWithTransition('hunt_beast')}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
-                        >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🌿</span>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Săn Thú & Hái Thuốc' : 'Hunt Beasts & Gather Herbs'}
-                            </h4>
-                            <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Thu thập tinh huyết thú dữ, tìm kiếm thiên tài địa bảo để luyện đan (Tốn 1 tháng).' 
-                                : 'Collect beast blood and search for precious herbs to refine pills (Costs 1 month).'}
                             </p>
                           </div>
                         </button>
@@ -3128,6 +3354,18 @@ export default function HomePage() {
         )}
 
         </div>
+        
+        {game?.currentLocation === 'mountain' && !activeCombat && (
+          <MountainExploration
+            language={languageRef.current}
+            onReturn={() => handleMoveLocationWithTransition('sect')}
+            onEventResult={handleMountainExploreEventResult}
+            onCombat={handleMountainExploreCombat}
+            onTimePass={handleMountainExploreTimePass}
+            travelCostStones={activeCombatConfigRef.current?.time_gear?.travel_cost_stones ?? 10}
+            travelCostHp={activeCombatConfigRef.current?.time_gear?.travel_cost_hp ?? 2}
+          />
+        )}
       </main>
 
       {isAdminPortalVisible && (
@@ -3254,6 +3492,61 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      )}
+
+      {learningTechnique && game && (
+        <CultivationMinigame
+          technique={learningTechnique}
+          isFatal={isFatalMinigame}
+          onFatalFail={() => {
+            const deathCause = { vi: 'Tẩu hoả nhập ma bạo thể tử vong khi lần đầu vận hành linh khí.', en: 'Qi deviation during first manual initiation.' };
+            const newState = {
+              ...game,
+              alive: false,
+              deathCause,
+              lastMessage: deathCause,
+              log: [...game.log, { type: 'death' as const, age: game.age, message: deathCause }]
+            };
+            setGame(newState);
+            setLearningTechnique(null);
+            setIsFatalMinigame(false);
+          }}
+          onSuccess={(perfect) => {
+            let newState = completeTechniqueLearning(game, learningTechnique.id, perfect, language);
+            
+            if (newState.realm === 'Mortal') {
+              const nextStats = { ...newState.stats, cultivation: 0, lifespan: newState.stats.lifespan + 40 };
+              const newRealm = 'Qi Refinement';
+              const logEntry = {
+                type: 'technique_breakthrough' as const,
+                age: newState.age,
+                message: {
+                  vi: `🌟 Chúc mừng! Bạn đã đột phá từ Phàm Nhân thành công bước vào Luyện Khí Tầng 1! Thọ nguyên gia tăng +40 năm.`,
+                  en: `🌟 Congratulations! You broke through from Mortal to Qi Refinement Layer 1! Lifespan increased by +40 years.`
+                }
+              };
+              newState = {
+                ...newState,
+                stats: nextStats,
+                realm: newRealm,
+                subStageIndex: 1,
+                log: [...newState.log, logEntry]
+              };
+            }
+            
+            if (newState.currentEvent?.id.startsWith('menu_')) {
+              newState.currentEvent = getMenuEvent(newState.currentEvent.id, newState, language) || newState.currentEvent;
+            }
+
+            setGame(newState);
+            setLearningTechnique(null);
+            setIsFatalMinigame(false);
+          }}
+          onCancel={() => {
+            setLearningTechnique(null);
+            setIsFatalMinigame(false);
+          }}
+        />
       )}
 
       {transitionOutcome && (

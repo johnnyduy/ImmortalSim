@@ -1,0 +1,285 @@
+[
+  {
+    "id": "item_huyen_nguyen_dan",
+    "name": "Huyền Nguyên Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "huyền",
+    "description": "Đan dược ngưng tụ chân nguyên mạch, tăng mạnh tu vi tức thời (+8 Tu vi).",
+    "effects": {
+      "cultivation": 8,
+      "health": 2
+    }
+  },
+  {
+    "id": "item_tho_nguyen_dan",
+    "name": "Thọ Nguyên Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "địa",
+    "description": "Đan dược linh thiêng gia tăng thọ nguyên giới hạn tuổi thọ (+50 Thọ nguyên).",
+    "effects": {
+      "lifespan": 50,
+      "health": 5
+    }
+  },
+  {
+    "id": "item_nhien_huyet_dan",
+    "name": "Nhiên Huyết Đan",
+    "category": "consumable",
+    "type": "secret_medicine",
+    "tier": "huyền",
+    "description": "Bí dược cấm kỵ. Tăng vọt tu vi nhưng tổn hao tuổi thọ và làm lung lay đạo tâm (+25 Tu vi, -15 Thọ nguyên, -10 Đạo tâm).",
+    "effects": {
+      "cultivation": 25,
+      "lifespan": -15,
+      "daoHeart": -10,
+      "health": -5
+    }
+  },
+  {
+    "id": "item_thanh_phong_kiem",
+    "name": "Thanh Phong Kiếm",
+    "category": "equipment",
+    "type": "weapon",
+    "tier": "địa",
+    "description": "Thanh kiếm gió linh hoạt, sắc bén. Tăng mạnh thuộc tính tấn công (+12 Tấn công).",
+    "combatStats": {
+      "attack": 12,
+      "speed": 2
+    },
+    "soulbound": true,
+    "sealLevel": "Qi Refinement"
+  },
+  {
+    "id": "item_thien_to_phap_bao",
+    "name": "Thiên Tơ Pháp Bào",
+    "category": "equipment",
+    "type": "armor",
+    "tier": "thiên",
+    "description": "Lưới tơ trời bảo hộ nhục thân khỏi các đòn công kích vật lý (+15 Phòng thủ, +20 Sinh mệnh tối đa).",
+    "combatStats": {
+      "defense": 15,
+      "maxHp": 20
+    },
+    "soulbound": true,
+    "sealLevel": "Foundation Establishment"
+  },
+  {
+    "id": "item_luan_hoi_thach",
+    "name": "Luân Hồi Thạch",
+    "category": "relic",
+    "type": "relic",
+    "tier": "thánh",
+    "description": "Đá luân hồi kỳ bí lưu lại ký ức, được liên kết linh hồn vĩnh viễn mang sang kiếp sau.",
+    "soulbound": true
+  },
+  {
+    "id": "item_linh_thao",
+    "name": "Linh Thảo",
+    "category": "material",
+    "type": "material",
+    "tier": "hoàng",
+    "description": "Thảo dược chứa linh khí mọc hoang dã dã ngoại hoặc dược điền tông môn.",
+    "quantity": 1
+  },
+  {
+    "id": "item_linh_quang",
+    "name": "Linh Quặng",
+    "category": "material",
+    "type": "material",
+    "tier": "hoàng",
+    "description": "Quặng thô chứa linh lực sắt bén dùng làm nguyên liệu rèn đúc pháp khí.",
+    "quantity": 1
+  },
+  {
+    "id": "item_tuyet_lien",
+    "name": "Tuyết Liên",
+    "category": "material",
+    "type": "material",
+    "tier": "huyền",
+    "description": "Băng Tuyết Liên sinh trưởng nơi tuyết sơn đỉnh cực kỳ quý giá.",
+    "quantity": 1
+  },
+  {
+    "id": "item_than_cot",
+    "name": "Linh Thú Thần Cốt",
+    "category": "material",
+    "type": "material",
+    "tier": "huyền",
+    "description": "Mảnh thần cốt quý hiếm thu thập khi săn lùng yêu thú biến dị.",
+    "quantity": 1
+  },
+  {
+    "id": "item_truc_co_dan",
+    "name": "Trúc Cơ Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "huyền",
+    "description": "Đan dược đột phá cảnh giới dùng khi đạt Luyện Khí Tầng 9 Viên Mãn (106.03 tu vi) để tiến nhập Trúc Cơ Kỳ.",
+    "quantity": 1
+  },
+  {
+    "id": "item_kim_dan_dan",
+    "name": "Kim Đan Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "địa",
+    "description": "Đan dược đột phá cảnh giới dùng khi đạt Trúc Cơ Hậu Kỳ (19.99 tu vi) để tiến nhập Kim Đan Kỳ.",
+    "quantity": 1
+  },
+  {
+    "id": "item_nguyen_anh_dan",
+    "name": "Nguyên Anh Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "thiên",
+    "description": "Đan dược đột phá cảnh giới dùng khi đạt Kim Đan Viên Mãn (39.99 tu vi) để tiến nhập Nguyên Anh Kỳ.",
+    "quantity": 1
+  },
+  {
+    "id": "item_tu_khi_dan",
+    "name": "Tụ Khí Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "hoàng",
+    "description": "Đan dược bổ trợ gia tăng nhẹ tu vi (+1.5 Tu vi).",
+    "effects": {
+      "cultivation": 1.5,
+      "health": 1
+    },
+    "quantity": 1
+  },
+  {
+    "id": "item_boi_nguyen_dan",
+    "name": "Bồi Nguyên Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "huyền",
+    "description": "Đan dược tích lũy tu vi cho tu sĩ Trúc Cơ Kỳ (+3.0 Tu vi).",
+    "effects": {
+      "cultivation": 3,
+      "health": 2
+    },
+    "quantity": 1
+  },
+  {
+    "id": "item_ngung_nguyen_dan",
+    "name": "Ngưng Nguyên Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "địa",
+    "description": "Đan dược tăng mạnh tích lũy chân nguyên cho tu sĩ Kim Đan Kỳ (+15.0 Tu vi).",
+    "effects": {
+      "cultivation": 15,
+      "health": 5
+    },
+    "quantity": 1
+  },
+  {
+    "id": "item_de_anh_dan",
+    "name": "Đế Anh Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "thiên",
+    "description": "Đan dược cấp cao giúp tăng vọt tích lũy tu vi cho Nguyên Anh Kỳ (+60.0 Tu vi).",
+    "effects": {
+      "cultivation": 60,
+      "health": 10
+    },
+    "quantity": 1
+  },
+  {
+    "id": "item_huyet_lien",
+    "name": "Huyết Liên",
+    "category": "material",
+    "type": "herb",
+    "tier": "địa",
+    "description": "Đóa Huyết Liên ngàn năm cực quý hiếm mọc nơi hiểm địa của Yêu Thú Sơn Mạch.",
+    "quantity": 1
+  },
+  {
+    "id": "item_linh_quang_tho",
+    "name": "Linh Quặng thô",
+    "category": "material",
+    "type": "material",
+    "tier": "hoàng",
+    "description": "Quặng thô chứa linh lực thu hoạch từ mỏ sâu tông môn.",
+    "quantity": 1
+  },
+  {
+    "id": "item_tan_quyen_ma_cong",
+    "name": "Tàn quyển Ma công",
+    "category": "material",
+    "type": "relic",
+    "tier": "huyền",
+    "description": "Bản tàn quyển ghi chép phương pháp luyện ma công kỳ dị.",
+    "quantity": 1
+  },
+  {
+    "id": "item_hoi_huyet_dan",
+    "name": "Hồi Huyết Đan",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "hoàng",
+    "description": "Đan dược phục hồi sinh lực và trị liệu ngoại thương nhẹ (+20 HP).",
+    "effects": {
+      "health": 20
+    },
+    "quantity": 1
+  },
+  {
+    "id": "item_truc_co_dan_ha_pham",
+    "name": "Trúc Cơ Đan (Hạ Phẩm)",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "hoàng",
+    "description": "Viên Trúc Cơ Đan chứa nhiều đan độc, có thể giúp đột phá bình cảnh Trúc Cơ nhưng tổn hao 5 năm thọ nguyên.",
+    "quantity": 1
+  },
+  {
+    "id": "item_pha_tran_chuy",
+    "name": "Phá Trận Chùy",
+    "category": "consumable",
+    "type": "relic",
+    "tier": "huyền",
+    "description": "Bảo vật phá giải trận pháp, hỗ trợ đắc lực trong chiến thuật Bày Trận/Dùng Trí.",
+    "effects": {
+      "money": -50
+    }
+  },
+  {
+    "id": "item_don_tho_phu",
+    "name": "Độn Thổ Phù",
+    "category": "consumable",
+    "type": "relic",
+    "tier": "hoàng",
+    "description": "Phù chú cho phép chạy trốn khỏi trận chiến tức thì, nhưng làm tổn thương Đạo Tâm.",
+    "effects": {
+      "daoMind": -5
+    }
+  },
+  {
+    "id": "item_oan_hon_chau",
+    "name": "Oán Hồn Châu",
+    "category": "consumable",
+    "type": "relic",
+    "tier": "địa",
+    "description": "Tà vật chứa đầy oán khí, sử dụng để Huyết Tế đổi lấy sức mạnh, trừ nặng Nghiệp Lực.",
+    "effects": {
+      "karma": -20
+    }
+  },
+  {
+    "id": "item_huyet_tinh",
+    "name": "Huyết Tinh",
+    "category": "consumable",
+    "type": "relic",
+    "tier": "huyền",
+    "description": "Kết tinh từ máu tươi, dùng để thiêu đốt sinh mệnh lấy sức mạnh tạm thời.",
+    "effects": {
+      "karma": -10,
+      "health": -20
+    }
+  }
+]

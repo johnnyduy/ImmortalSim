@@ -3,6 +3,7 @@ import { getLocalizedText } from '../lib/i18n';
 import { motion } from 'framer-motion';
 
 type Props = {
+  eventId?: string;
   choices: EventChoice[];
   onSelect: (value: string) => void;
   language: Lang;
@@ -67,15 +68,76 @@ const getBadgeGlowColor = (icon: string): string => {
   return 'rgba(197, 160, 89, 0.6)'; // Default gold
 };
 
-export default function ChoiceButtons({ choices, onSelect, disabled = false, language }: Props) {
+export default function ChoiceButtons({ eventId, choices, onSelect, disabled = false, language }: Props) {
+  const isSectMenu = eventId === 'menu_monthly_plan';
+
   return (
-    <div className="flex flex-col gap-3.5 mt-4 w-full max-w-xl mx-auto px-2">
+    <div className="flex flex-col gap-4 mt-4 w-full max-w-xl mx-auto px-2">
       {choices.map((choice, index) => {
         const rawText = getLocalizedText(choice.text, language);
         const icon = getChoiceIcon(choice.id, rawText);
         const cleanText = getCleanText(rawText);
         const glowColor = getBadgeGlowColor(icon);
         
+        if (isSectMenu) {
+          return (
+            <motion.button
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
+              key={choice.id}
+              type="button"
+              disabled={disabled}
+              onClick={() => onSelect(choice.id)}
+              className="relative w-full py-[18px] px-6 overflow-visible rounded-lg shadow-[0_10px_20px_rgba(0,0,0,0.6)] active:scale-[0.98] transition-all group flex items-center justify-center border-x border-[#846b3f]/30"
+              style={{
+                background: 'linear-gradient(90deg, #182a29 0%, #1f3230 20%, #292630 50%, #1f3230 80%, #182a29 100%)',
+                boxShadow: 'inset 0 2px 5px rgba(255,255,255,0.08), inset 0 -4px 10px rgba(0,0,0,0.8), 0 8px 15px rgba(0,0,0,0.5)',
+                borderTop: '2px solid #c5a059',
+                borderBottom: '2px solid #c5a059',
+              }}
+            >
+              {/* Marble Noise Overlay */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay rounded-lg" style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+              }} />
+
+              {/* Decorative Corner Curls */}
+              <div className="absolute -left-[3px] -top-[3px] w-5 h-5 border-t-[3px] border-l-[3px] border-[#e5c17b] rounded-tl-[12px] opacity-90 shadow-sm" />
+              <div className="absolute -left-[3px] -bottom-[3px] w-5 h-5 border-b-[3px] border-l-[3px] border-[#e5c17b] rounded-bl-[12px] opacity-90 shadow-sm" />
+              <div className="absolute -right-[3px] -top-[3px] w-5 h-5 border-t-[3px] border-r-[3px] border-[#e5c17b] rounded-tr-[12px] opacity-90 shadow-sm" />
+              <div className="absolute -right-[3px] -bottom-[3px] w-5 h-5 border-b-[3px] border-r-[3px] border-[#e5c17b] rounded-br-[12px] opacity-90 shadow-sm" />
+
+              {/* Inner ambient glow on edges */}
+              <div className="absolute inset-0 rounded-lg pointer-events-none border border-white/5" />
+
+              {/* Icon Container with Glow */}
+              <div 
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-[52px] sm:h-[52px] rounded-full flex items-center justify-center bg-black/40 border border-[#b89f65]/50 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 z-10"
+                style={{ 
+                  boxShadow: `0 0 15px ${glowColor}, inset 0 0 10px ${glowColor}`,
+                  background: 'radial-gradient(circle, rgba(20,30,30,0.8) 0%, rgba(0,0,0,0.9) 100%)'
+                }}
+              >
+                <span className="text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{icon}</span>
+              </div>
+
+              {/* Text */}
+              <span className="font-serif text-[#fbe3b5] font-bold text-[17px] sm:text-xl tracking-wide drop-shadow-[0_2px_5px_rgba(0,0,0,1)] group-hover:text-white transition-colors duration-200 z-10 pl-14 sm:pl-16 pr-8 text-center flex-1">
+                {cleanText}
+              </span>
+
+              {/* Chevron */}
+              <span className="absolute right-5 text-[#c5a059] font-black text-xl drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)] z-10 group-hover:translate-x-1 group-hover:text-[#fbe3b5] transition-all">
+                ❯
+              </span>
+              
+              {/* Optional Shimmer Effect on hover */}
+              <div className="absolute inset-y-0 -left-full w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none rounded-lg z-0" style={{ transform: 'skewX(-20deg)' }} />
+            </motion.button>
+          );
+        }
+
         return (
           <motion.button
             initial={{ opacity: 0, y: 10 }}

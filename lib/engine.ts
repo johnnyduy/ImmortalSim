@@ -13,16 +13,14 @@ import type {
   TechniqueCompleteness,
   ItemInstance,
   SectQuest,
-  WorldState,
-} from '../types';
+  WorldState} from '../types';
 import { getRealmSubStage, calculateCombatPower } from './cultivation-states';
 import {
   defaultLanguage,
   defaultMessages,
   getLocalizedText,
   renderLocalizedTemplate,
-  translateDeathReason,
-} from '../lib/i18n';
+  translateDeathReason} from '../lib/i18n';
 import enEvents from '../locales/en/events.json';
 import viEvents from '../locales/vi/events.json';
 import combatConfig from '../data/combat-config.json';
@@ -32,6 +30,7 @@ import story2 from '../data/starting-stories/story_2.json';
 import story3 from '../data/starting-stories/story_3.json';
 import story4 from '../data/starting-stories/story_4.json';
 import story5 from '../data/starting-stories/story_5.json';
+import itemsData from '../data/items.json';
 
 const startingStories = [story1, story2, story3, story4, story5];
 
@@ -53,6 +52,8 @@ const baseStats = (inheritance: Inheritance, spiritualRoot?: string, sect?: stri
   let cultivation = 0 + Math.min(8, Math.floor(inheritance.ancestralMemory / 3));
   let lifespan = 80 + Math.max(0, Math.floor(inheritance.blessing * 1.5));
   let daoHeart = 10 + Math.max(0, Math.floor(inheritance.ancestralMemory / 2));
+  let speed = 10 + Math.floor(luck * 0.2);
+  let toxicity = 0;
 
   // Determine root
   let finalRoot = spiritualRoot || '';
@@ -110,8 +111,9 @@ const baseStats = (inheritance: Inheritance, spiritualRoot?: string, sect?: stri
     cultivation,
     lifespan,
     daoHeart,
-    spiritualRoot: finalRoot,
-  };
+    speed,
+    toxicity,
+    spiritualRoot: finalRoot};
 };
 
 const buildStartingEvent = (
@@ -143,8 +145,8 @@ const buildStartingEvent = (
       vi: descriptionVi,
       en: descriptionEn
     },
-    minAge: startingAge,
-    maxAge: startingAge,
+    minRealm: 'Mortal',
+    
     weight: 1,
     choices: story.choices.map((choice: any) => ({
       id: choice.id,
@@ -160,32 +162,36 @@ export const getCultivationCap = (state: GameState, configData?: any): number =>
   const activeTampHap = activeTechs.filter(t => t.type === 'tâm_pháp');
   
   if (activeTampHap.length === 0) {
-    // Nếu không có bất kì tâm pháp nào đang luyện, kẹt ở Phàm Nhân tối đa
-    return 14.99;
+    return 9.99; // Mortal max
   }
 
-  let maxCap = 0;
   let hasUncapped = false;
-  const cs = activeConfig?.cultivation_system;
+  const realmOrder: Realm[] = ['Mortal', 'Qi Refinement', 'Foundation Establishment', 'Golden Core', 'Nascent Soul'];
+  const getManualMaxSupportedRealm = (tier: string): Realm => {
+    const t = tier.toLowerCase();
+    if (t === 'hoàng') return 'Qi Refinement';
+    if (t === 'huyền') return 'Foundation Establishment';
+    if (t === 'địa') return 'Golden Core';
+    return 'Nascent Soul';
+  };
 
   activeTampHap.forEach(tech => {
     const configTech = (activeConfig.techniques || []).find((t: any) => t.id === tech.id);
     if (configTech) {
-      if (configTech.max_cultivation_level !== undefined) {
-        maxCap = Math.max(maxCap, configTech.max_cultivation_level);
-      } else {
-        const tier = configTech.tier || 'hoàng';
-        const tierConfig = cs?.manual_tiers?.find((m: any) => m.tier === tier);
-        if (tierConfig) {
-          maxCap = Math.max(maxCap, tierConfig.max_level_no_pill);
-        } else {
-          const fallbacks: Record<string, number> = {
-            'hoàng': 26.99,
-            'huyền': 49.99,
-            'địa': 89.99,
-            'thiên': 149.99
-          };
-          maxCap = Math.max(maxCap, fallbacks[tier] ?? 26.99);
+      const tier = configTech.tier || 'hoàng';
+      const maxRealm = getManualMaxSupportedRealm(tier);
+      const currentRealmIdx = realmOrder.indexOf(state.realm);
+      const maxRealmIdx = realmOrder.indexOf(maxRealm);
+      
+      if (currentRealmIdx < maxRealmIdx) {
+        hasUncapped = true;
+      } else if (currentRealmIdx === maxRealmIdx) {
+        if (state.realm === 'Qi Refinement' && state.subStageIndex <= 9) {
+          hasUncapped = true;
+        } else if (state.realm === 'Foundation Establishment' && state.subStageIndex <= 12) {
+          hasUncapped = true;
+        } else if (state.realm === 'Golden Core' && state.subStageIndex <= 16) {
+          hasUncapped = true;
         }
       }
     } else {
@@ -193,29 +199,32 @@ export const getCultivationCap = (state: GameState, configData?: any): number =>
     }
   });
 
-  if (hasUncapped) {
-    maxCap = 999999.0;
+  if (!hasUncapped) {
+    return 0.0;
   }
 
-  // Apply bottleneck limits if player does NOT possess the required pill in inventory
+  let subStageCap = getSubStageMaxCultivation(state.realm, state.subStageIndex, activeConfig);
+
   const currentCult = state.stats?.cultivation ?? 0;
   const inventory = state.inventory || [];
-  const bottlenecks = cs?.bottlenecks || [
-    { realm_from: "Qi Refinement", threshold: 29.99, pill_item_id: "item_truc_co_dan" },
-    { realm_from: "Foundation Establishment", threshold: 49.99, pill_item_id: "item_kim_dan_dan" },
-    { realm_from: "Golden Core", threshold: 89.99, pill_item_id: "item_nguyen_anh_dan" }
-  ];
+  const bottlenecks = getBottlenecks(state, activeConfig);
 
   for (const b of bottlenecks) {
-    if (currentCult <= b.threshold && maxCap > b.threshold) {
-      const hasPill = inventory.some(item => (item.id === b.pill_item_id || (b.pill_item_id === 'item_truc_co_dan' && item.id === 'item_truc_co_dan_ha_pham')) && item.quantity > 0);
-      if (!hasPill) {
-        maxCap = Math.min(maxCap, b.threshold);
+    if (state.realm === b.realm_from && state.subStageIndex === b.subStageIndex) {
+      if (currentCult <= b.threshold) {
+        if (b.pill_item_id) {
+          const hasPill = inventory.some(i => i.id === b.pill_item_id && i.quantity > 0);
+          if (!hasPill) {
+            subStageCap = Math.min(subStageCap, b.threshold);
+          }
+        } else {
+          subStageCap = Math.min(subStageCap, b.threshold);
+        }
       }
     }
   }
 
-  return maxCap;
+  return subStageCap;
 };
 
 export const getCultivationGainMultiplier = (state: GameState, configData?: any): number => {
@@ -307,15 +316,184 @@ const applyEffects = (stats: Stats, effects: GameEffect, state?: GameState): Sta
     cultivation: Math.max(0, stats.cultivation + cultivationGain),
     lifespan: Math.max(10, stats.lifespan + (effects.lifespan ?? 0)),
     daoHeart: Math.max(0, Math.min(100, stats.daoHeart + (effects.daoHeart ?? effects.daoMind ?? 0))),
+    speed: Math.max(0, stats.speed + (effects.speed ?? 0)),
+    toxicity: Math.max(0, stats.toxicity + (effects.toxicity ?? 0)),
     spiritualRoot: stats.spiritualRoot, // Linh căn cố định xuyên suốt kiếp sống
   };
 };
 
-const determineRealm = (cultivation: number): Realm => {
-  for (let i = realmThresholds.length - 1; i >= 0; i -= 1) {
-    if (cultivation >= realmThresholds[i][0]) {
-      return realmThresholds[i][1];
+export const getSubStageMaxCultivation = (realm: Realm, subStageIndex: number, config?: any): number => {
+  const activeConfig = config || combatConfig;
+  const mult = activeConfig.cultivation_system?.qi_refinement_layer_multiplier ?? 1.3;
+  
+  if (realm === 'Mortal') {
+    return 10.0;
+  }
+  if (realm === 'Qi Refinement') {
+    const N = Math.max(1, Math.min(9, subStageIndex));
+    return Math.round((10 * Math.pow(mult, N - 1)) * 100) / 100;
+  }
+  if (realm === 'Foundation Establishment') {
+    const N = Math.max(1, Math.min(3, subStageIndex - 10 + 1));
+    return Math.round((100 * Math.pow(mult, N - 1)) * 100) / 100;
+  }
+  if (realm === 'Golden Core') {
+    return 20.0;
+  }
+  return 30.0;
+};
+
+export const checkAndApplySubStageTransition = (
+  state: GameState,
+  stats: Stats,
+  logs: LogEntry[],
+  language: Lang,
+  config?: any
+): { stats: Stats; subStageIndex: number; realm: Realm; logs: LogEntry[] } => {
+  const activeConfig = config || combatConfig;
+  let currentRealm = state.realm;
+  let currentSubStageIndex = state.subStageIndex;
+  let currentCultivation = stats.cultivation;
+  const updatedLogs = [...logs];
+  
+  let safetyCount = 0;
+  while (safetyCount < 10) {
+    safetyCount++;
+    const cap = getCultivationCap({ ...state, realm: currentRealm, subStageIndex: currentSubStageIndex, stats: { ...stats, cultivation: currentCultivation } }, activeConfig);
+    if (currentCultivation >= cap - 0.005) {
+      const bottlenecks = getBottlenecks({ ...state, realm: currentRealm, subStageIndex: currentSubStageIndex }, activeConfig);
+      const isBottleneck = bottlenecks.some(b => b.realm_from === currentRealm && b.subStageIndex === currentSubStageIndex);
+      
+      if (isBottleneck) {
+        currentCultivation = cap;
+        break;
+      } else {
+        const nextSubStageIndex = currentSubStageIndex + 1;
+        let nextRealm = currentRealm;
+        if (currentRealm === 'Mortal' && nextSubStageIndex === 1) {
+          nextRealm = 'Qi Refinement';
+        }
+        
+        const subStageInfoBefore = getRealmSubStage(0, currentRealm, currentSubStageIndex);
+        const subStageInfoAfter = getRealmSubStage(0, nextRealm, nextSubStageIndex);
+        
+        updatedLogs.push({
+          type: 'info',
+          message: {
+            vi: `✨ Đột phá! Bạn đã tích lũy đầy đủ linh lực, tự động nâng cấp từ [${subStageInfoBefore.subStageName.vi}] lên [${subStageInfoAfter.subStageName.vi}]!`,
+            en: `✨ Breakthrough! You accumulated enough spiritual energy, automatically upgrading from [${subStageInfoBefore.subStageName.en}] to [${subStageInfoAfter.subStageName.en}]!`
+          }
+        });
+        
+        currentSubStageIndex = nextSubStageIndex;
+        currentRealm = nextRealm;
+        currentCultivation = Math.max(0, currentCultivation - cap);
+      }
+    } else {
+      break;
     }
+  }
+  
+  return {
+    stats: {
+      ...stats,
+      cultivation: currentCultivation
+    },
+    subStageIndex: currentSubStageIndex,
+    realm: currentRealm,
+    logs: updatedLogs
+  };
+};
+
+export const getBottlenecks = (state: GameState, config?: any) => {
+  const activeConfig = config || combatConfig;
+  const mult = activeConfig.cultivation_system?.qi_refinement_layer_multiplier ?? 1.3;
+  const b1 = Math.round((10 * Math.pow(mult, 2)) * 100) / 100;
+  const b2 = Math.round((10 * Math.pow(mult, 5)) * 100) / 100;
+  const b3 = Math.round((10 * Math.pow(mult, 8)) * 100) / 100;
+
+  const t1 = Math.round((100 * Math.pow(mult, 2)) * 100) / 100;
+
+  return [
+    {
+      realm_from: "Qi Refinement" as Realm,
+      realm_to: "Qi Refinement" as Realm,
+      subStageIndex: 3,
+      threshold: b1,
+      pill_item_id: null,
+      success_rate_no_pill: 0.5,
+      next_cult: 0.0,
+      label: "Luyện Khí Tầng 4"
+    },
+    {
+      realm_from: "Qi Refinement" as Realm,
+      realm_to: "Qi Refinement" as Realm,
+      subStageIndex: 6,
+      threshold: b2,
+      pill_item_id: null,
+      success_rate_no_pill: 0.4,
+      next_cult: 0.0,
+      label: "Luyện Khí Tầng 7"
+    },
+    {
+      realm_from: "Qi Refinement" as Realm,
+      realm_to: "Foundation Establishment" as Realm,
+      subStageIndex: 9,
+      threshold: b3,
+      pill_item_id: "item_truc_co_dan",
+      success_rate_no_pill: 0.01,
+      backlash_cultivation_loss: 3.0,
+      next_cult: 0.0,
+      label: "Trúc Cơ"
+    },
+    {
+      realm_from: "Foundation Establishment" as Realm,
+      realm_to: "Golden Core" as Realm,
+      subStageIndex: 12,
+      threshold: t1,
+      pill_item_id: "item_kim_dan_dan",
+      success_rate_no_pill: 0.01,
+      backlash_cultivation_loss: 5.0,
+      next_cult: 0.0,
+      label: "Kim Đan"
+    },
+    {
+      realm_from: "Golden Core" as Realm,
+      realm_to: "Nascent Soul" as Realm,
+      subStageIndex: 16,
+      threshold: 20.0,
+      pill_item_id: "item_nguyen_anh_dan",
+      success_rate_no_pill: 0.01,
+      backlash_cultivation_loss: 10.0,
+      next_cult: 0.0,
+      label: "Nguyên Anh"
+    }
+  ];
+};
+
+export const getTechniqueBreakthroughCost = (tier: string, costIncreasePct?: number): number => {
+  const baseCosts: Record<string, number> = {
+    'hoàng': 5.0,
+    'huyền': 15.0,
+    'địa': 40.0,
+    'thiên': 100.0
+  };
+  const base = baseCosts[tier.toLowerCase()] ?? 5.0;
+  const pct = costIncreasePct ?? 0;
+  return base * (1 + pct / 100);
+};
+
+const determineRealm = (cultivation: number, currentRealm: Realm): Realm => {
+  if (
+    currentRealm === 'Qi Refinement' ||
+    currentRealm === 'Foundation Establishment' ||
+    currentRealm === 'Golden Core' ||
+    currentRealm === 'Nascent Soul'
+  ) {
+    return currentRealm;
+  }
+  if (cultivation >= 10.0) {
+    return 'Qi Refinement';
   }
   return 'Mortal';
 };
@@ -344,8 +522,7 @@ export const changeNpcFavorability = (
     npc_kiem_tong_ta_tieu: 0,
     npc_dan_tong_chap_su: 0,
     npc_ma_dao_chap_su: 0,
-    npc_huyet_tong_chap_su: 0,
-  }) };
+    npc_huyet_tong_chap_su: 0}) };
 
   const keys = ['npc_kiem_tong_chap_su', 'npc_kiem_tong_ta_tieu', 'npc_dan_tong_chap_su', 'npc_ma_dao_chap_su', 'npc_huyet_tong_chap_su'];
   keys.forEach(k => {
@@ -397,8 +574,7 @@ export const setDynamicEvents = (events: any[]) => {
 
 const localeEvents: Record<string, EventDefinition[]> = {
   en: enEvents as EventDefinition[],
-  vi: viEvents as EventDefinition[],
-};
+  vi: viEvents as EventDefinition[]};
 
 const getLocalizedEvents = (language: Lang): EventDefinition[] => {
   if (dynamicLocaleEvents) {
@@ -422,30 +598,24 @@ export const createInitialWorldState = (randomize = true): WorldState => {
       reputation: jitter(65),
       resources:  jitter(72),
       stability:  jitter(80),
-      warLevel:   jitter(12, 10),
-    },
+      warLevel:   jitter(12, 10)},
     city: {
       prosperity: jitter(65),
       security:   jitter(68),
       priceIndex: randomize ? clamp(100 + (Math.random() * 30 - 15), 50, 300) : 100,
-      morale:     jitter(70),
-    },
+      morale:     jitter(70)},
     mountain: {
       beastActivity: jitter(38, 12),
       resources:     jitter(72),
-      danger:        jitter(42, 12),
-    },
+      danger:        jitter(42, 12)},
     demonic: {
       infiltration: jitter(15, 10),
-      activity:     jitter(18, 10),
-    },
+      activity:     jitter(18, 10)},
     global: {
       spiritualQi:    jitter(70),
       daoFluctuation: jitter(20, 10),
-      demonicEnergy:  jitter(18, 10),
-    },
-    history: [],
-  };
+      demonicEnergy:  jitter(18, 10)},
+    history: []};
 };
 
 /**
@@ -564,8 +734,7 @@ export const tickWorldState = (
     city:     { prosperity, security, priceIndex, morale },
     mountain: { beastActivity, resources: mountainResources, danger },
     demonic:  { infiltration, activity: demonicActivity },
-    global:   { spiritualQi, daoFluctuation, demonicEnergy },
-  };
+    global:   { spiritualQi, daoFluctuation, demonicEnergy }};
 
   // Lưu snapshot lịch sử (tối đa 24 tháng)
   const history = [
@@ -652,7 +821,7 @@ export const generateWorldThresholdEvent = (
         vi: `Vạn Thú Sơn Mạch bỗng dậy sóng — yêu thú từng đàn tràn xuống tấn công thành trì. Tiếng gầm vang trời, linh lực khắp nơi hỗn loạn. An ninh thành giảm xuống thấp nguy hiểm. Môn phái huy động đệ tử cơ hội lập công.`,
         en: `The Beast Mountains erupt — waves of demonic beasts storm the city. Roars shake the sky, spiritual energy fluctuates wildly. Security plummets. The sect mobilizes disciples to earn merit.`
       },
-      minAge: 0, maxAge: 9999, weight: 1,
+      minRealm: 'Mortal', weight: 1,
       tags: ['beast', 'world_event'],
       choices: [
         {
@@ -683,7 +852,7 @@ export const generateWorldThresholdEvent = (
         vi: `Nội bộ ${state.sect} bùng phát tranh đoạt quyền lực — các trưởng lão kéo bè phái đấu đá, chấp sự có kẻ bị ám sát. Cả tông môn rơi vào cảnh hỗn loạn. Đây là thời cơ hoặc hiểm họa tùy người.`,
         en: `${state.sect} erupts in power struggles — elders form factions, a sect supervisor is assassinated. The whole sect falls into chaos. This is either opportunity or peril.`
       },
-      minAge: 0, maxAge: 9999, weight: 1,
+      minRealm: 'Mortal', weight: 1,
       tags: ['sect_chaos', 'world_event'],
       choices: [
         {
@@ -714,7 +883,7 @@ export const generateWorldThresholdEvent = (
         vi: `Thiên đạo dị động cực mạnh — không trung xuất hiện dị tượng thất sắc, một bí cảnh cổ đại từ từ mở ra nơi sơn mạch. Khắp tu tiên giới xôn xao. Cơ duyên thiên địa bên trong không thể đo lường.`,
         en: `Extreme Dao fluctuations — a seven-colored aurora appears in the sky as an ancient secret realm slowly opens in the mountains. The entire cultivation world buzzes with excitement.`
       },
-      minAge: 0, maxAge: 9999, weight: 1,
+      minRealm: 'Mortal', weight: 1,
       tags: ['secret_realm', 'opportunity', 'world_event'],
       choices: [
         {
@@ -745,7 +914,7 @@ export const generateWorldThresholdEvent = (
         vi: `Ma khí khắp trời đất tràn ngập — đại ma tu giấu mặt bộc lộ thân phận, chân truyền bị đoạt xá, nhiều chấp sự là nội gián. ${state.sect || 'Tông môn'} đứng trước hiểm họa tiêu vong!`,
         en: `Demonic energy floods the world — hidden great demons reveal themselves, true disciples are possessed, supervisors exposed as spies. ${state.sect || 'The sect'} faces existential danger!`
       },
-      minAge: 0, maxAge: 9999, weight: 1,
+      minRealm: 'Mortal', weight: 1,
       tags: ['demonic', 'war', 'world_event'],
       choices: [
         {
@@ -776,7 +945,7 @@ export const generateWorldThresholdEvent = (
         vi: `Thành phố phồn hoa tột bậc, thương hội lớn tổ chức đại đấu giá mười năm một lần. Dị bảo, công pháp cổ đại, thần dược trân phẩm bày la liệt. Đây là cơ hội mua bán nghìn năm có một.`,
         en: `The thriving city hosts its grand decennial auction. Rare treasures, ancient techniques, divine pills on display. A once-in-a-millennium trading opportunity.`
       },
-      minAge: 0, maxAge: 9999, weight: 1,
+      minRealm: 'Mortal', weight: 1,
       tags: ['market', 'auction', 'opportunity', 'world_event'],
       choices: [
         {
@@ -843,8 +1012,20 @@ export const filterEventsForState = (
   age: number
 ): EventDefinition[] => {
   return events.filter((event) => {
-    // 1. Check Age Limits
-    if (age < event.minAge || age > event.maxAge) return false;
+    // 1. Check Realm Limits
+    const realmTiers: Record<string, number> = {
+      'Mortal': 0, 'Qi Refinement': 1, 'Foundation Establishment': 2, 'Golden Core': 3,
+      'Nascent Soul': 4, 'Soul Formation': 5, 'Void Amalgamation': 6, 'Body Integration': 7,
+      'Mahayana': 8, 'Tribulation': 9, 'True Immortal': 10
+    };
+    const reqTier = event.minRealm ? (realmTiers[event.minRealm as string] ?? 0) : 0;
+    const currentTier = realmTiers[state.realm] ?? 0;
+    if (currentTier < reqTier) return false;
+    
+    if (event.maxRealm) {
+      const maxTier = realmTiers[event.maxRealm as string] ?? 99;
+      if (currentTier > maxTier) return false;
+    }
 
     // 2. Check Sect Prestige Requirements if they are sect-specific events
     const eventMetadata = event.metadata || {};
@@ -913,34 +1094,27 @@ export const getRandomEvent = (
       id: 'quiet_reflection',
       title: getLocalizedText({
         en: 'Quiet Reflection',
-        vi: 'Suy ngẫm tĩnh lặng',
-      }, language),
+        vi: 'Suy ngẫm tĩnh lặng'}, language),
       description: getLocalizedText({
         en: 'A quiet period passes, and you reflect on your cultivation path.',
-        vi: 'Một khoảng tĩnh lặng trôi qua, bạn suy tư về con đường tu chân.',
-      }, language),
-      minAge: age,
-      maxAge: age,
+        vi: 'Một khoảng tĩnh lặng trôi qua, bạn suy tư về con đường tu chân.'}, language),
+      minRealm: 'Mortal',
+      
       weight: 1,
       choices: [
         {
           id: 'keep_training',
           text: getLocalizedText({
             en: 'Keep training through the quiet.',
-            vi: 'Tiếp tục tu luyện trong tĩnh lặng.',
-          }, language),
-          effects: { cultivation: 1, comprehension: 1 },
-        },
+            vi: 'Tiếp tục tu luyện trong tĩnh lặng.'}, language),
+          effects: { cultivation: 1, comprehension: 1 }},
         {
           id: 'rest',
           text: getLocalizedText({
             en: 'Rest and restore your spirit.',
-            vi: 'Nghỉ ngơi và hồi phục tinh thần.',
-          }, language),
-          effects: { health: 2, luck: 1 },
-        },
-      ],
-    };
+            vi: 'Nghỉ ngơi và hồi phục tinh thần.'}, language),
+          effects: { health: 2, luck: 1 }},
+      ]};
   }
 
   const getEventWeight = (event: EventDefinition) => {
@@ -992,64 +1166,48 @@ const checkAndActivateTechniques = (
   realm: Realm,
   language: Lang
 ): { techniques: TechniqueInstance[]; activatedLogs: LogEntry[] } => {
-  const activatedLogs: LogEntry[] = [];
-  const realmTiers: Record<Realm, number> = {
-    'Mortal': 0,
-    'Qi Refinement': 1,
-    'Foundation Establishment': 2,
-    'Golden Core': 3,
-    'Nascent Soul': 4,
-    'Soul Formation': 5,
-    'Void Amalgamation': 6,
-    'Body Integration': 7,
-    'Mahayana': 8,
-    'Tribulation': 9,
-    'True Immortal': 10
+  // Bỏ auto-activate, việc nhập môn sẽ thông qua UI Mini Game
+  // Hàm này giờ chỉ trả về techniques nguyên vẹn, 
+  // giữ lại interface để khỏi sửa nhiều chỗ gọi hàm.
+  return { techniques, activatedLogs: [] };
+};
+
+export const completeTechniqueLearning = (
+  state: GameState,
+  techniqueId: string,
+  perfect: boolean,
+  language: Lang
+): GameState => {
+  const techniques = state.techniques ? [...state.techniques] : [];
+  const techIndex = techniques.findIndex(t => t.id === techniqueId);
+  if (techIndex === -1) return state;
+
+  const tech = techniques[techIndex];
+  if (tech.isActive) return state;
+
+  const configTech = (combatConfig.techniques || []).find((t: any) => t.id === techniqueId);
+  if (!configTech) return state;
+
+  techniques[techIndex] = { ...tech, isActive: true };
+
+  const bonusComprehension = perfect ? 2 : 1;
+  const newStats = { ...state.stats, comprehension: state.stats.comprehension + bonusComprehension };
+
+  const logEntry: LogEntry = {
+    type: 'technique_breakthrough',
+    age: state.age,
+    message: {
+      en: `Successfully cultivated [${tech.name}]! Gained ${bonusComprehension} Comprehension.`,
+      vi: `Nhập môn thành công [${tech.name}]! Khí huyết lưu thông, tăng ${bonusComprehension} Ngộ tính.`
+    }
   };
 
-  const updated = techniques.map((tech) => {
-    if (tech.isActive) return tech;
-
-    const configTech = (combatConfig.techniques || []).find((t: any) => t.id === tech.id);
-    if (!configTech) return tech;
-
-    const reqs = configTech.learning_requirements;
-    if (!reqs) {
-      activatedLogs.push({
-        type: 'technique_breakthrough',
-        age,
-        message: {
-          en: `You have awakened and activated the technique [${tech.name}] (${tech.completeness})!`,
-          vi: `Bạn đã thức tỉnh và kích hoạt công pháp [${tech.name}] (${tech.completeness.replace('_', ' ')})!`
-        }
-      });
-      return { ...tech, isActive: true };
-    }
-
-    const requiredRealm = reqs.realm as Realm;
-    const reqRealmTier = realmTiers[requiredRealm] ?? 0;
-    const currRealmTier = realmTiers[realm] ?? 0;
-
-    const realmOk = currRealmTier >= reqRealmTier;
-    const compOk = stats.comprehension >= (reqs.comprehension ?? 0);
-    const ageOk = age >= (reqs.age ?? 0);
-
-    if (realmOk && compOk && ageOk) {
-      activatedLogs.push({
-        type: 'technique_breakthrough',
-        age,
-        message: {
-          en: `Inherited memories awakened! You activated [${tech.name}] (${tech.completeness})!`,
-          vi: `Thức tỉnh ký ức truyền thừa! Bạn đã kích hoạt thành công công pháp [${tech.name}] (${tech.completeness.replace('_', ' ')})!`
-        }
-      });
-      return { ...tech, isActive: true };
-    }
-
-    return tech;
-  });
-
-  return { techniques: updated, activatedLogs };
+  return {
+    ...state,
+    techniques,
+    stats: newStats,
+    log: [...state.log, logEntry]
+  };
 };
 
 export const addFragment = (
@@ -1057,14 +1215,18 @@ export const addFragment = (
   techniqueId: string,
   amount: number,
   age: number,
-  language: Lang
-): { techniques: TechniqueInstance[]; logs: LogEntry[] } => {
+  language: Lang,
+  stats?: Stats
+): { techniques: TechniqueInstance[]; logs: LogEntry[]; cultivationDeducted: number } => {
   const logs: LogEntry[] = [];
+  let cultivationDeducted = 0;
   const configTech = (combatConfig.techniques || []).find((t: any) => t.id === techniqueId);
-  if (!configTech) return { techniques, logs };
+  if (!configTech) return { techniques, logs, cultivationDeducted };
 
   let techIndex = techniques.findIndex((t) => t.id === techniqueId);
   let updated = [...techniques];
+
+  const completenessOrder: TechniqueCompleteness[] = ['tàn_quyển', 'khuyết_thiên', 'hoàn_chỉnh', 'viên_mãn'];
 
   if (techIndex === -1) {
     const newTech: TechniqueInstance = {
@@ -1088,6 +1250,49 @@ export const addFragment = (
         vi: `Bạn nhặt được mảnh tàn quyển của [${configTech.label}] (đã thu thập ${amount}/${newTech.fragmentsRequired} mảnh).`
       }
     });
+
+    let newFragments = amount;
+    let newCompleteness: TechniqueCompleteness = 'tàn_quyển';
+    let upgraded = false;
+    let currentIdx = 0;
+
+    while (newFragments >= newTech.fragmentsRequired && currentIdx < completenessOrder.length - 1) {
+      const cost = getTechniqueBreakthroughCost(newTech.tier, configTech.breakthrough_cost_increase_pct);
+      const currentCult = stats ? (stats.cultivation - cultivationDeducted) : 999999;
+      if (currentCult >= cost) {
+        newFragments -= newTech.fragmentsRequired;
+        currentIdx += 1;
+        newCompleteness = completenessOrder[currentIdx];
+        upgraded = true;
+        cultivationDeducted += cost;
+      } else {
+        logs.push({
+          type: 'info',
+          age,
+          message: {
+            en: `Breakthrough blocked! You need ${cost.toFixed(1)} Cultivation to upgrade [${newTech.name}] to ${completenessOrder[currentIdx + 1].replace('_', ' ')}, currently have ${currentCult.toFixed(2)}.`,
+            vi: `Đột phá bị chặn! Bạn cần ${cost.toFixed(1)} Tu Vi để nâng cấp [${newTech.name}] lên ${completenessOrder[currentIdx + 1].replace('_', ' ')}, hiện có ${currentCult.toFixed(2)}.`
+          }
+        });
+        break;
+      }
+    }
+
+    if (upgraded) {
+      updated[updated.length - 1] = {
+        ...newTech,
+        fragmentsCollected: newFragments,
+        completeness: newCompleteness
+      };
+      logs.push({
+        type: 'technique_breakthrough',
+        age,
+        message: {
+          en: `Great! You merged fragments and upgraded [${newTech.name}] to ${newCompleteness.replace('_', ' ')}! Deducted ${cultivationDeducted.toFixed(1)} Cultivation.`,
+          vi: `Đại cơ duyên! Bạn đã hợp nhất các mảnh và nâng cấp [${newTech.name}] lên cảnh giới ${newCompleteness.replace('_', ' ')}! Khấu trừ ${cultivationDeducted.toFixed(1)} Tu Vi.`
+        }
+      });
+    }
   } else {
     const tech = updated[techIndex];
     if (tech.completeness === 'viên_mãn') {
@@ -1099,21 +1304,34 @@ export const addFragment = (
           vi: `Bạn nhặt được mảnh tàn quyển của [${tech.name}], nhưng công pháp này đã đạt cảnh giới Viên Mãn.`
         }
       });
-      return { techniques, logs };
+      return { techniques, logs, cultivationDeducted };
     }
 
     let newFragments = tech.fragmentsCollected + amount;
     let newCompleteness: TechniqueCompleteness = tech.completeness;
     let upgraded = false;
-
-    const completenessOrder: TechniqueCompleteness[] = ['tàn_quyển', 'khuyết_thiên', 'hoàn_chỉnh', 'viên_mãn'];
     let currentIdx = completenessOrder.indexOf(tech.completeness);
 
     while (newFragments >= tech.fragmentsRequired && currentIdx < completenessOrder.length - 1) {
-      newFragments -= tech.fragmentsRequired;
-      currentIdx += 1;
-      newCompleteness = completenessOrder[currentIdx];
-      upgraded = true;
+      const cost = getTechniqueBreakthroughCost(tech.tier, configTech.breakthrough_cost_increase_pct);
+      const currentCult = stats ? (stats.cultivation - cultivationDeducted) : 999999;
+      if (currentCult >= cost) {
+        newFragments -= tech.fragmentsRequired;
+        currentIdx += 1;
+        newCompleteness = completenessOrder[currentIdx];
+        upgraded = true;
+        cultivationDeducted += cost;
+      } else {
+        logs.push({
+          type: 'info',
+          age,
+          message: {
+            en: `Breakthrough blocked! You need ${cost.toFixed(1)} Cultivation to upgrade [${tech.name}] to ${completenessOrder[currentIdx + 1].replace('_', ' ')}, currently have ${currentCult.toFixed(2)}.`,
+            vi: `Đột phá bị chặn! Bạn cần ${cost.toFixed(1)} Tu Vi để nâng cấp [${tech.name}] lên ${completenessOrder[currentIdx + 1].replace('_', ' ')}, hiện có ${currentCult.toFixed(2)}.`
+          }
+        });
+        break;
+      }
     }
 
     updated[techIndex] = {
@@ -1127,8 +1345,8 @@ export const addFragment = (
         type: 'technique_breakthrough',
         age,
         message: {
-          en: `Great! You merged fragments and upgraded [${tech.name}] to ${newCompleteness}!`,
-          vi: `Đại cơ duyên! Bạn đã hợp nhất các mảnh và nâng cấp [${tech.name}] lên cảnh giới ${newCompleteness.replace('_', ' ')}!`
+          en: `Great! You merged fragments and upgraded [${tech.name}] to ${newCompleteness.replace('_', ' ')}! Deducted ${cultivationDeducted.toFixed(1)} Cultivation.`,
+          vi: `Đại cơ duyên! Bạn đã hợp nhất các mảnh và nâng cấp [${tech.name}] lên cảnh giới ${newCompleteness.replace('_', ' ')}! Khấu trừ ${cultivationDeducted.toFixed(1)} Tu Vi.`
         }
       });
     } else {
@@ -1143,7 +1361,7 @@ export const addFragment = (
     }
   }
 
-  return { techniques: updated, logs };
+  return { techniques: updated, logs, cultivationDeducted };
 };
 
 const initItemsFromInheritance = (inheritance: Inheritance): ItemInstance[] => {
@@ -1161,7 +1379,7 @@ export const addItem = (
   age: number
 ): { inventory: ItemInstance[]; logs: LogEntry[] } => {
   const logs: LogEntry[] = [];
-  const configItem = (combatConfig.items || []).find((i: any) => i.id === itemId);
+  const configItem = (itemsData || []).find((i: any) => i.id === itemId);
   if (!configItem) return { inventory, logs };
 
   let updated = [...inventory];
@@ -1256,7 +1474,7 @@ export const useItemInState = (state: GameState, itemIndexInInventory: number): 
         updatedInventory.splice(itemIndexInInventory, 1);
       }
       
-      const newRealm = determineRealm(newStats.cultivation);
+      const newRealm = determineRealm(newStats.cultivation, state.realm);
       const oldRealm = state.realm;
       if (oldRealm !== newRealm) {
         if (newRealm === 'Qi Refinement') newStats.lifespan += 40;
@@ -1348,7 +1566,7 @@ export const useItemInState = (state: GameState, itemIndexInInventory: number): 
     }
   };
 
-  const newRealm = determineRealm(newStats.cultivation);
+  const newRealm = determineRealm(newStats.cultivation, state.realm);
   const oldRealm = state.realm;
   if (oldRealm !== newRealm) {
     if (newRealm === 'Qi Refinement') {
@@ -1423,8 +1641,7 @@ export const getInitialInheritance = (): Inheritance => ({
   ancestralMemory: 0,
   blessing: 0,
   unlockedTechniques: {},
-  unlockedItems: [],
-});
+  unlockedItems: []});
 
 // calculateInheritance (Tính toán tích lũy di sản sau khi kiếp sống kết thúc để truyền lại cho kiếp sau)
 export const calculateInheritance = (state: GameState): Inheritance => {
@@ -1458,8 +1675,7 @@ export const calculateInheritance = (state: GameState): Inheritance => {
     ancestralMemory: newAncestral,
     blessing: newBlessing,
     unlockedTechniques: unlocked,
-    unlockedItems: inheritedItems,
-  };
+    unlockedItems: inheritedItems};
 };
 
 // createNewGame (Khởi tạo một giả lập game hoàn toàn mới, reset cuộc đời từ xuất thế tuổi 11)
@@ -1489,7 +1705,7 @@ export const createNewGame = (
   const currentEvent = buildStartingEvent(gender, spiritualRoot, sect, startingAge, startingStoryId);
   
   let techniques = initTechniquesFromInheritance(inheritance);
-  const checkResult = checkAndActivateTechniques(techniques, stats, startingAge, determineRealm(stats.cultivation), language);
+  const checkResult = checkAndActivateTechniques(techniques, stats, startingAge, determineRealm(stats.cultivation, 'Mortal'), language);
   techniques = checkResult.techniques;
  
   const inventory = initItemsFromInheritance(inheritance);
@@ -1499,7 +1715,8 @@ export const createNewGame = (
     life: 1,
     age: startingAge,
     alive: true,
-    realm: determineRealm(stats.cultivation),
+    realm: determineRealm(stats.cultivation, 'Mortal'),
+    subStageIndex: determineRealm(stats.cultivation, 'Mortal') === 'Qi Refinement' ? 1 : 0,
     stats,
     inheritance,
     log: [
@@ -1508,8 +1725,7 @@ export const createNewGame = (
         message: {
           vi: `Kiếp sống mới bắt đầu tại ${sect === 'Kiếm Tông' ? 'Làng Tàn Kiếm' : sect === 'Ma Đạo' ? 'Làng Hắc Thạch' : sect === 'Huyết Tông' ? 'Làng Xích Huyết' : 'Làng Bách Thảo'}.`,
           en: `A new life starts at your village.`
-        },
-      },
+        }},
       ...checkResult.activatedLogs
     ],
     currentEvent,
@@ -1539,11 +1755,9 @@ export const createNewGame = (
       npc_kiem_tong_ta_tieu: 0,
       npc_dan_tong_chap_su: 0,
       npc_ma_dao_chap_su: 0,
-      npc_huyet_tong_chap_su: 0,
-    },
+      npc_huyet_tong_chap_su: 0},
     worldState: createInitialWorldState(true),
-    currentLocation: 'sect',
-  };
+    currentLocation: 'sect'};
 };
 
 const beQuanQuest = (months: number): SectQuest => ({
@@ -1555,7 +1769,7 @@ const beQuanQuest = (months: number): SectQuest => ({
   minRank: 'ngoại_môn',
   rewards: {
     contribution: 0,
-    cultivation: months * 0.8
+    cultivation: 0 // Tu vi sẽ được cộng dần mỗi tháng trong tickMonth
   },
   progressLogs: {
     vi: [
@@ -1606,8 +1820,7 @@ export const SectPunishmentEvent: EventDefinition = {
     vi: 'Năm vừa qua bạn lười biếng không hoàn thành bất kỳ nhiệm vụ tông môn nào. Theo môn quy của đệ tử Luyện Khí, Chấp Pháp Đường giáng xuống trừng phạt!',
     en: 'In the past year, you did not complete any sect quests. According to the rules of Qi Refinement disciples, the Law Hall inflicts punishment!'
   },
-  minAge: 0,
-  maxAge: 9999,
+  minRealm: 'Mortal',
   weight: 0,
   choices: [
     {
@@ -1637,10 +1850,84 @@ export const SectPunishmentEvent: EventDefinition = {
   ]
 };
 
+export const TournamentAnnualStartEvent: EventDefinition = {
+  id: 'tournament_annual_start',
+  title: {
+    vi: '🏟️ Ngoại Môn Đại Bỉ Khai Mở!',
+    en: '🏟️ Outer Sect Tournament Begins!'
+  },
+  description: {
+    vi: 'Tháng 12 hàng năm, Đại Hội Tỷ Thí Ngoại Môn chính thức khai mở! Trống lôi đài vang rền khắp sơn môn, các đệ tử Luyện Khí từ khắp các phong tập hợp. Đây là cơ hội lấy Trúc Cơ Đan phá cảnh và chứng minh thực lực của bản thân trước toàn tông môn!\n\n💎 Phần thưởng: Top 10 → 1x Trúc Cơ Đan. Top 50 → 50-100 Điểm cống hiến.\n⚠️ Lưu ý: Nếu không tham gia, trừ 30 Điểm cống hiến tông môn vì thiếu sự hiện diện.',
+    en: 'Every year in December, the Outer Sect Tournament officially opens! War drums echo across the mountain gates as Qi Refinement disciples from every peak gather. This is your chance to claim a Foundation Pill and prove your might before the whole sect!\n\n💎 Rewards: Top 10 → 1x Foundation Pill. Top 50 → 50-100 Contribution Points.\n⚠️ Warning: Skipping the tournament costs 30 Sect Contribution Points for absence.'
+  },
+  minRealm: 'Mortal',
+  weight: 0,
+  choices: [
+    {
+      id: 'action_tournament_participate',
+      text: {
+        vi: '⚔️ Báo danh thi đấu (Tham gia Đại Bỉ)',
+        en: '⚔️ Register to compete (Enter Tournament)'
+      },
+      effects: {}
+    },
+    {
+      id: 'action_tournament_watch',
+      text: {
+        vi: '👁️ Tọa sơn quan hổ đấu (Đứng ngoài quan sát)',
+        en: '👁️ Observe from the sidelines (Watch & Bet)'
+      },
+      effects: {}
+    },
+    {
+      id: 'action_tournament_skip',
+      text: {
+        vi: '🚶 Bỏ qua không tham gia (-30 Cống Hiến)',
+        en: '🚶 Skip the tournament (-30 Contribution)'
+      },
+      effects: {}
+    }
+  ]
+};
+
 export const getMenuEvent = (menuId: string, state: GameState, language: Lang): EventDefinition => {
   const monthLabel = language === 'vi' ? getVietnameseMonthName(state.month) : `Month ${state.month}`;
   
   if (menuId === 'menu_monthly_plan') {
+    const isMortalWithManual = state.realm === 'Mortal' && state.techniques && state.techniques.some(t => !t.isActive);
+    let choices: any[] = [];
+    
+    if (isMortalWithManual) {
+      choices = [
+        {
+          id: 'action_mortal_breakthrough_minigame',
+          text: { vi: 'Vạn dặm tiên lộ, bắt đầu từ bước chân đầu tiên.', en: 'A thousand miles journey begins with a single step.' },
+          effects: {}
+        }
+      ];
+    } else {
+      choices = [
+        { id: 'goto_menu_tinh_tu', text: { vi: '🧘 [1] Tĩnh Tu (Meditation)', en: '🧘 [1] Tĩnh Tu (Meditation)' }, effects: {} },
+        { id: 'goto_menu_nhan_nhiem_vu', text: { vi: '📜 [2] Nhận Nhiệm Vụ Tông Môn', en: '📜 [2] Accept Sect Quests' }, effects: {} },
+        { id: 'goto_menu_hoat_dong_tong_mon', text: { vi: '🏛️ [3] Hoạt Động Tông Môn', en: '🏛️ [3] Sect Activities' }, effects: {} },
+        { id: 'goto_menu_kiem_tai_nguyen', text: { vi: '⛏️ [4] Kiếm Tài Nguyên (Tại tông môn)', en: '⛏️ [4] Gather Resources (Inside Sect)' }, effects: {} },
+        { id: 'goto_menu_quan_he_xa_hoi', text: { vi: '👥 [5] Quan Hệ Xã Hội', en: '👥 [5] Social Relations' }, effects: {} },
+        { id: 'goto_menu_lich_luyen', text: { vi: '🗺️ [6] Lịch Luyện Thế Giới', en: '🗺️ [6] World Travel' }, effects: {} }
+      ];
+
+      const cap = getCultivationCap(state);
+      const bottlenecks = getBottlenecks(state, combatConfig);
+      const isBottleneck = bottlenecks.some(b => b.realm_from === state.realm && b.subStageIndex === state.subStageIndex);
+
+      if (state.stats.cultivation >= cap && isBottleneck) {
+        choices.unshift({
+          id: 'action_trigger_breakthrough',
+          text: { vi: '🌟 Đột Phá Bình Cảnh (Breakthrough)', en: '🌟 Breakthrough Bottleneck' },
+          effects: {}
+        });
+      }
+    }
+
     return {
       id: 'menu_monthly_plan',
       title: {
@@ -1651,20 +1938,11 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: `Thời gian khả dụng trong tháng này: 1 tháng. Bạn muốn lên kế hoạch hoạt động nào cho tháng này?`,
         en: `Time available for this month: 1 month. What actions do you want to plan for this month?`
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
-      choices: [
-        { id: 'goto_menu_tinh_tu', text: { vi: '🧘 [1] Tĩnh Tu (Meditation)', en: '🧘 [1] Tĩnh Tu (Meditation)' }, effects: {} },
-        { id: 'goto_menu_nhan_nhiem_vu', text: { vi: '📜 [2] Nhận Nhiệm Vụ Tông Môn', en: '📜 [2] Accept Sect Quests' }, effects: {} },
-        { id: 'goto_menu_lich_luyen', text: { vi: '🗺️ [3] Ra Ngoài Lịch Luyện', en: '🗺️ [3] Travel & Adventure' }, effects: {} },
-        { id: 'goto_menu_kiem_tai_nguyen', text: { vi: '💎 [4] Kiếm Thêm Tài Nguyên', en: '💎 [4] Earn Resources' }, effects: {} },
-        { id: 'goto_menu_quan_he_xa_hoi', text: { vi: '🤝 [5] Kết Giao Nhân Mạch', en: '🤝 [5] Social Networks' }, effects: {} },
-        { id: 'goto_menu_hoat_dong_tong_mon', text: { vi: '⚔️ [6] Hoạt Động Tông Môn', en: '⚔️ [6] Sect Events' }, effects: {} }
-      ]
+      choices
     };
   }
-
   if (menuId === 'menu_tinh_tu') {
     return {
       id: 'menu_tinh_tu',
@@ -1673,8 +1951,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Linh khí xung quanh hội tụ. Việc tu luyện đòi hỏi sự kiên trì và tập trung cao độ.',
         en: 'Spiritual energy gathers around. Cultivation demands persistence and absolute focus.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_tinh_tu_binh_thuong', text: { vi: '✨ Tĩnh tu bình thường (An toàn, +Tu vi)', en: '✨ Normal Meditation (Safe, +Cultivation)' }, effects: {} },
@@ -1694,13 +1971,12 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Chọn khoảng thời gian bế quan. Trong suốt thời gian này thời gian sẽ trôi tự động và không có sự kiện ngoài cắt ngang.',
         en: 'Select the retreat duration. Time will pass automatically without external events during this period.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
-        { id: 'action_be_quan_3', text: { vi: '⏳ Bế quan 3 tháng (+2.4 Tu Vi)', en: '⏳ Retreat for 3 months (+2.4 Cultivation)' }, effects: {} },
-        { id: 'action_be_quan_6', text: { vi: '⏳ Bế quan 6 tháng (+4.8 Tu Vi)', en: '⏳ Retreat for 6 months (+4.8 Cultivation)' }, effects: {} },
-        { id: 'action_be_quan_12', text: { vi: '⏳ Bế quan 1 năm (+9.6 Tu Vi)', en: '⏳ Retreat for 1 year (+9.6 Cultivation)' }, effects: {} },
+        { id: 'action_be_quan_3', text: { vi: '⏳ Bế quan 3 tháng (+2 Tu Vi)', en: '⏳ Retreat for 3 months (+2 Cultivation)' }, effects: {} },
+        { id: 'action_be_quan_6', text: { vi: '⏳ Bế quan 6 tháng (+5 Tu Vi)', en: '⏳ Retreat for 6 months (+5 Cultivation)' }, effects: {} },
+        { id: 'action_be_quan_12', text: { vi: '⏳ Bế quan 1 năm (+10 Tu Vi)', en: '⏳ Retreat for 1 year (+10 Cultivation)' }, effects: {} },
         { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
       ]
     };
@@ -1715,8 +1991,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: `Sử dụng Linh thạch hoặc Đan dược để tăng tốc độ hấp thu linh năng. Linh thạch hiện có: ${state.spiritStones} 💎.`,
         en: `Use Spirit Stones or Elixirs to boost Qi absorption. Spirit Stones owned: ${state.spiritStones} 💎.`
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_dot_tai_nguyen_it', text: { vi: '🔹 Tiêu hao ít (Tốn 5 Linh thạch, +0.8 Tu vi)', en: '🔹 Low cost (Costs 5 Stones, +0.8 Cultivation)' }, effects: {} },
@@ -1735,8 +2010,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Không tăng tu vi bản thân, nhưng tăng độ thuần thục công pháp và nâng cao Ngộ tính/Đạo tâm.',
         en: 'Does not increase cultivation, but increases technique mastery and Comprehension/Dao Heart.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_nghien_cuu_kiem', text: { vi: '⚔️ Nghiên cứu Kiếm Quyết (+1 Ngộ Tính)', en: '⚔️ Study Sword Secrets (+1 Comprehension)' }, effects: {} },
@@ -1754,8 +2028,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Bảng gỗ nhiệm vụ tông môn chứa nhiều ủy thác khác nhau giúp tích lũy cống hiến môn phái.',
         en: 'The sect bulletin board displays various requests to accumulate contribution.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'goto_menu_quest_lao_vu', text: { vi: '🧹 Lao dịch tông môn (An toàn, tẻ nhạt)', en: '🧹 Sect Chores (Safe, tedious)' }, effects: {} },
@@ -1811,8 +2084,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       description: isChores
         ? { vi: 'Nhiệm vụ tay chân giúp rèn luyện cơ thể một cách vững chãi.', en: 'Manual labor that trains the physical body steadily.' }
         : { vi: 'Chiến đấu bảo vệ tài sản tông môn và trừ yêu diệt ma.', en: 'Fight against demons and guard sect assets.' },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices
     };
@@ -1826,8 +2098,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Trưởng lão giao nhiệm vụ riêng: Điều tra một đệ tử ngoại môn có biểu hiện khả nghi buôn lậu đan dược tông môn.',
         en: 'The Elder gives you a secret request: Investigate an outer disciple suspected of smuggling sect pills.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_quest_bi_mat_trung_thanh', text: { vi: '⚖️ Báo cáo trung thực tông môn (+30 Cống Hiến, +1 Đạo Tâm)', en: '⚖️ Honestly report it (+30 Contrib, +1 Dao Heart)' }, effects: {} },
@@ -1846,8 +2117,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Rời tông môn tầm bảo, đi săn yêu thú hoặc giao thương tại thành thị tu chân.',
         en: 'Leave the sect gates to search for treasures, hunt monsters, or trade in cultivator towns.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'goto_menu_lich_luyen_nui_rung', text: { vi: '⛰️ Vào Vạn Thú Sơn Mạch (Săn bắn, hái thuốc)', en: '⛰️ Enter Beast Mountain Range (Hunting, herbs)' }, effects: {} },
@@ -1866,8 +2136,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Sơn mạch trùng điệp đầy linh thảo hoang dã nhưng cũng đầy rẫy thú dữ săn mồi.',
         en: 'Endless mountain ranges filled with wild spiritual herbs but also fearsome predators.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_hunt_herbs', text: { vi: '🌿 Tìm linh dược (Có tỷ lệ nhận Linh Thảo/Tuyết Liên)', en: '🌿 Search for herbs (Chance to gain Spirit Herbs/Tuyết Liên)' }, effects: {} },
@@ -1886,8 +2155,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Chợ giao dịch sầm uất. Nơi tu sĩ tụ tập trao đổi tin tức và vật phẩm.',
         en: 'Busy trading market where cultivators gather to trade news and items.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_town_auction', text: { vi: '🏛️ Vào Đấu Giá Hội (Mua Đan dược bằng Linh thạch)', en: '🏛️ Enter Auction Hall (Buy Elixirs with Gold)' }, effects: {} },
@@ -1905,8 +2173,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Vượt vạn dặm núi rừng để sang quốc gia tu chân khác. Chuyến đi tốn nhiều thời gian và tiền bạc.',
         en: 'Cross ten thousand miles of wilderness to another cultivation empire. Takes time and gold.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_travel_caravan', text: { vi: '🐫 Đi theo thương đoàn (Tốn 10 Linh thạch, 6 tháng, Thưởng: +3 Ngộ tính, +3 Vận may)', en: '🐫 Go with caravan (Costs 10 Gold, 6 months, Reward: +3 Comp, +3 Luck)' }, effects: {} },
@@ -1925,8 +2192,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Lao động làm thuê đan dược, rèn khí cụ hoặc đấu pháp cá cược để trang trải cuộc sống.',
         en: 'Work making elixirs, forging tools, or betting on fights to make a living.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_work_alchemy', text: { vi: `🧪 Luyện đan thuê (+20 Linh thạch) ${isAlchEligible ? '✓' : '❌ (Cần Ngộ Tính >= 10)'}`, en: `🧪 Alchemy work (+20 Gold) ${isAlchEligible ? '✓' : '❌ (Requires Comp >= 10)'}` }, effects: {} },
@@ -1946,8 +2212,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Kết hảo hữu, chọn phe cánh trong nội bộ môn phái để thuận lợi tu hành.',
         en: 'Make friends and join factions within the sect to facilitate cultivation.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_social_gift', text: { vi: '🎁 Tặng lễ kết giao đồng môn (Tốn 15 Linh thạch, Thưởng: +10 Cống Hiến)', en: '🎁 Give gift to fellow disciples (Costs 15 Gold, Reward: +10 Contrib)' }, effects: {} },
@@ -1966,8 +2231,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         vi: 'Đại hội so tài hoặc thám hiểm bí cảnh do tông môn tổ chức hàng năm.',
         en: 'Arena tournament or secret realm expedition organized by the sect.'
       },
-      minAge: 0,
-      maxAge: 9999,
+      minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_event_tournament', text: { vi: '🏟️ Đăng ký tham gia Ngoại Môn Đại Bỉ', en: '🏟️ Register for Outer Sect Tournament' }, effects: {} },
@@ -2109,7 +2373,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     };
 
     const newLog = [...state.log, choiceLogEntry, ...tempLogs];
-    const newRealm = determineRealm(nextStats.cultivation);
+    const newRealm = determineRealm(nextStats.cultivation, state.realm);
 
     if (!alive) {
       return {
@@ -2190,6 +2454,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     const configTech = (combatConfig.techniques || []).find((t: any) => t.id === targetManualId);
     let nextTechniques = state.techniques ? [...state.techniques] : [];
     let tempLogs: LogEntry[] = [];
+    let nextStats = { ...state.stats };
 
     if (configTech) {
       const hasTech = nextTechniques.some(t => t.id === targetManualId);
@@ -2202,14 +2467,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           completeness: 'hoàn_chỉnh',
           fragmentsCollected: 1,
           fragmentsRequired: 1,
-          isActive: true
+          isActive: false
         });
         tempLogs.push({
           type: 'technique_breakthrough',
           age: state.age,
           message: {
-            vi: `Chúc mừng! Bạn đã nhận và kích hoạt tâm pháp sơ cấp nhập môn [${configTech.label}]!`,
-            en: `Congratulations! You received and activated the basic manual [${configTech.label}]!`
+            vi: `Đã nhận tâm pháp sơ cấp nhập môn [${configTech.label}], hãy vận công để nhập môn!`,
+            en: `Received the basic manual [${configTech.label}], begin your cultivation to initiate!`
           }
         });
       }
@@ -2224,12 +2489,18 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       }
     });
 
-    return {
+    const nextState = {
       ...state,
+      stats: nextStats,
+      realm: state.realm,
       spiritStones: nextSpiritStones,
       techniques: nextTechniques,
-      log: [...state.log, ...tempLogs],
-      currentEvent: getMenuEvent('menu_monthly_plan', { ...state, spiritStones: nextSpiritStones, techniques: nextTechniques }, language),
+      log: [...state.log, ...tempLogs]
+    };
+
+    return {
+      ...nextState,
+      currentEvent: getMenuEvent('menu_monthly_plan', nextState, language),
       lastMessage: {
         vi: `Chính thức nhập môn ${state.sect}, bắt đầu quá trình tu luyện đệ tử ngoại môn.`,
         en: `Officially entered ${state.sect}, beginning outer disciple cultivation.`
@@ -2311,6 +2582,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     // 3. Final Actions (action_)
     if (choiceId.startsWith('action_')) {
       let nextStats = { ...state.stats };
+      let nextRealmOverride: Realm | null = null;
+      let nextSubStageIndexOverride: number | null = null;
       let nextSpiritStones = state.spiritStones ?? 0;
       let nextSectContribution = state.sectContribution ?? 0;
       let nextSectPrestige = state.sectPrestige ?? 0;
@@ -2331,8 +2604,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         tempLogs.push({
           type: 'info',
           message: {
-            vi: `Bế quan tĩnh tu hồi khí: Tu vi +${gain.toFixed(2)}, Khí huyết +2.`,
-            en: `Meditating inside chamber: Cultivation +${gain.toFixed(2)}, HP +2.`
+            vi: `Bế quan tĩnh tu hồi khí: Tu vi +${Number(gain.toFixed(2))}, Khí huyết +2.`,
+            en: `Meditating inside chamber: Cultivation +${Number(gain.toFixed(2))}, HP +2.`
           }
         });
       }
@@ -2342,7 +2615,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           quest: beQuanQuest(months),
           monthsRemaining: months,
           progressLogs: [],
-          isParty: false
+          isParty: false,
+          accumulatedCultivation: 0
         };
         nextIsTicking = true;
         durationMonths = 0; // ticking advances time
@@ -2357,7 +2631,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         choiceText = { vi: 'Đốt tài nguyên ít', en: 'Low-cost resource cultivation' };
         tempLogs.push({
           type: 'info',
-          message: { vi: `Đốt 5 Linh Thạch luyện khí: Tu vi +${gain.toFixed(2)}.`, en: `Spent 5 Stones: Cultivation +${gain.toFixed(2)}.` }
+          message: { vi: `Đốt 5 Linh Thạch luyện khí: Tu vi +${Number(gain.toFixed(2))}.`, en: `Spent 5 Stones: Cultivation +${Number(gain.toFixed(2))}.` }
         });
       }
       else if (choiceId === 'action_dot_tai_nguyen_vua') {
@@ -2369,7 +2643,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         choiceText = { vi: 'Đốt tài nguyên vừa', en: 'Moderate-cost resource cultivation' };
         tempLogs.push({
           type: 'info',
-          message: { vi: `Đốt 15 Linh Thạch luyện khí: Tu vi +${gain.toFixed(2)}.`, en: `Spent 15 Stones: Cultivation +${gain.toFixed(2)}.` }
+          message: { vi: `Đốt 15 Linh Thạch luyện khí: Tu vi +${Number(gain.toFixed(2))}.`, en: `Spent 15 Stones: Cultivation +${Number(gain.toFixed(2))}.` }
         });
       }
       else if (choiceId === 'action_dot_tai_nguyen_toan_luc') {
@@ -2390,7 +2664,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         choiceText = { vi: 'Đốt lực lượng tối đa', en: 'All-out resource cultivation' };
         tempLogs.push({
           type: 'info',
-          message: { vi: `Đốt 30 Linh Thạch và 1 Huyền Nguyên Đan: Tu vi +${gain.toFixed(2)}.`, en: `Spent 30 Stones & 1 Pill: Cultivation +${gain.toFixed(2)}.` }
+          message: { vi: `Đốt 30 Linh Thạch và 1 Huyền Nguyên Đan: Tu vi +${Number(gain.toFixed(2))}.`, en: `Spent 30 Stones & 1 Pill: Cultivation +${Number(gain.toFixed(2))}.` }
         });
       }
       else if (choiceId === 'action_nghien_cuu_kiem') {
@@ -2548,8 +2822,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
               vi: 'Một con Dã Linh Hổ hung tợn đang nhe nanh bảo vệ cụm Linh Thảo ở gốc sồi cổ thụ. Bạn có muốn giao chiến để đoạt lấy?',
               en: 'A ferocious Spirit Tiger is snarling, guarding the Spirit Herbs under the ancient oak tree. Will you fight to claim them?'
             },
-            minAge: 0,
-            maxAge: 9999,
+            minRealm: 'Mortal',
             weight: 1,
             choices: [
               { id: 'start_combat_beast_herb', text: { vi: '⚔️ Giao Chiến Đoạt Dược', en: '⚔️ Fight to Claim Herbs' }, effects: {} },
@@ -2580,8 +2853,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
               vi: 'Một con Lôi Tê yêu thú hung dữ bỗng nhảy ra từ bụi rậm rít gào, lao thẳng về phía bạn!',
               en: 'A fearsome Thunder Rhino jumps out of the brush growling, charging directly at you!'
             },
-            minAge: 0,
-            maxAge: 9999,
+            minRealm: 'Mortal',
             weight: 1,
             choices: [
               { id: 'start_combat_beast_hunt', text: { vi: '⚔️ Quyết Chiến Sinh Tử', en: '⚔️ Fight to the Death' }, effects: {} },
@@ -2612,8 +2884,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
               vi: 'Lối vào động phủ sụp đổ bỗng trào ra ma khí cuồn cuộn. Một Ma Tu mặt quỷ rít lên: "Đệ tử danh môn chính phái, nộp mạng!"',
               en: 'Thick demonic aura overflows from the ruined cave. A demonic cultivator shrieks: "Righteous disciple, pay with your life!"'
             },
-            minAge: 0,
-            maxAge: 9999,
+            minRealm: 'Mortal',
             weight: 1,
             choices: [
               { id: 'start_combat_demonic', text: { vi: '⚔️ Trảm Sát Ma Tu', en: '⚔️ Fight the Demonic Cultivator' }, effects: {} },
@@ -2711,6 +2982,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
               en: 'Outer Sect Tournament is only open to Outer Disciples in Qi Refinement.'
             }
           });
+        } else if (state.month !== 12) {
+          tempLogs.push({
+            type: 'info',
+            message: {
+              vi: 'Ngoại môn đại bỉ chỉ khai mạc vào tháng 12 hàng năm. Hãy tích lũy thọ nguyên và tu vi.',
+              en: 'Outer Sect Tournament only starts in December. Prepare yourself.'
+            }
+          });
         } else {
           const combatEvent: EventDefinition = {
             id: 'combat_encounter_tournament_1',
@@ -2719,8 +2998,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
               vi: 'Đến hẹn lại lên, Đại Hội Tỷ Thí sơn môn khai mở. Vòng đầu tiên: Bạn gặp đối thủ Lâm Phong (Luyện Khí tầng 2). Hãy chứng tỏ thực lực của mình!',
               en: 'The Mount Gates open for the Sect Tournament. Round 1: Opponent is Lâm Phong (Qi Refinement Layer 2). Show your strength!'
             },
-            minAge: 0,
-            maxAge: 9999,
+            minRealm: 'Mortal',
             weight: 1,
             choices: [
               { id: 'start_combat_tournament_1', text: { vi: '⚔️ Vào Võ Đài Tỷ Thí', en: '⚔️ Step onto the Ring' }, effects: {} },
@@ -2753,6 +3031,88 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           });
           tempLogs = [...tempLogs, ...result.logs];
         }
+      }
+      else if (choiceId === 'action_trigger_breakthrough') {
+        const breakthroughEvent = generateBreakthroughEvent(state, nextStats, combatConfig, language);
+        if (breakthroughEvent) {
+          return {
+            ...state,
+            currentEvent: breakthroughEvent,
+            isTicking: false
+          };
+        }
+      }
+      else if (choiceId === 'action_breakthrough_natural' || choiceId === 'action_breakthrough_pill') {
+        const bottlenecks = getBottlenecks(state, combatConfig);
+        const matching = bottlenecks.find((b: any) => 
+          state.realm === b.realm_from && 
+          nextStats.cultivation >= b.threshold - 0.005
+        );
+        
+        if (matching) {
+          if (choiceId === 'action_breakthrough_pill') {
+             const pillIdx = nextInventory.findIndex(i => i.id === matching.pill_item_id);
+             if (pillIdx !== -1) {
+                const item = nextInventory[pillIdx];
+                if (item.quantity > 1) {
+                  nextInventory[pillIdx] = { ...item, quantity: item.quantity - 1 };
+                } else {
+                  nextInventory.splice(pillIdx, 1);
+                }
+                nextStats.cultivation = matching.next_cult;
+                 nextRealmOverride = matching.realm_to as Realm;
+                 nextSubStageIndexOverride = matching.subStageIndex + 1;
+                choiceText = { vi: 'Dùng đan dược đột phá', en: 'Breakthrough with Pill' };
+                tempLogs.push({
+                  type: 'info',
+                  message: { vi: `✨ Hoàn mỹ! Sử dụng đan dược phá vỡ bình cảnh, tu vi chuyển biến cảnh giới mới!`, en: `✨ Perfect! Used pill to break the bottleneck, transitioned to the next realm!` }
+                });
+             }
+          } else {
+            let baseChance = 0;
+            if (matching.realm_to === 'Foundation Establishment') baseChance = 8;
+            else if (matching.realm_to === 'Golden Core') baseChance = 4;
+            else if (matching.realm_to === 'Nascent Soul') baseChance = 1;
+            else {
+              baseChance = (matching.success_rate_no_pill ?? 0.5) * 100;
+            }
+
+            const compMod = nextStats.comprehension * 0.4;
+            const luckMod = nextStats.luck * 0.3;
+            const daoMod = nextStats.daoHeart * 0.3;
+            const karmaMod = nextStats.karma * 0.2;
+            const totalChance = Math.max(1, baseChance + compMod + luckMod + daoMod + karmaMod);
+            const roll = Math.random() * 100;
+            
+            if (roll <= totalChance) {
+              nextStats.cultivation = matching.next_cult;
+                 nextRealmOverride = matching.realm_to as Realm;
+                 nextSubStageIndexOverride = matching.subStageIndex + 1;
+              choiceText = { vi: 'Thuận Thiên Đột Phá', en: 'Natural Breakthrough' };
+              tempLogs.push({
+                type: 'info',
+                message: {
+                  vi: `✨ Thành công! Ngộ ra chân lý đất trời, tự nhiên đột phá bình cảnh ${matching.label}!`,
+                  en: `✨ Success! Grasped worldly truth, naturally broke ${matching.label} bottleneck!`
+                }
+              });
+            } else {
+              nextStats.health = Math.max(1, nextStats.health - 20); // recoil
+              choiceText = { vi: 'Đột phá thất bại', en: 'Breakthrough Failed' };
+              tempLogs.push({
+                type: 'info',
+                message: { vi: `🔥 Thất bại! Linh lực bạo động cắn trả, tổn thương kinh mạch (-20 HP). Bình cảnh vẫn chưa thể phá vỡ.`, en: `🔥 Failed! Spiritual backlash damaged meridians (-20 HP). The bottleneck remains.` }
+              });
+            }
+          }
+        }
+      }
+      else if (choiceId === 'action_breakthrough_wait' || choiceId === 'action_breakthrough_pill_disabled') {
+        choiceText = { vi: 'Chờ đợi thời cơ', en: 'Wait for opportunity' };
+        tempLogs.push({
+          type: 'info',
+          message: { vi: 'Tạm thời áp chế tu vi, chờ cơ hội đột phá tốt hơn.', en: 'Suppressed cultivation, waiting for a better breakthrough opportunity.' }
+        });
       }
       
       let nextMonth = state.month;
@@ -2796,17 +3156,70 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         }
       }
       
+      // Auto-upgrade techniques if player has enough fragments and cultivation
+      let currentTechniques = state.techniques ? [...state.techniques] : [];
+      let techniquesUpdated = false;
+      const completenessOrder: TechniqueCompleteness[] = ["tàn_quyển", "khuyết_thiên", "hoàn_chỉnh", "viên_mãn"];
+
+      currentTechniques = currentTechniques.map((tech) => {
+        if (tech.completeness === "viên_mãn") return tech;
+        
+        const configTech = (combatConfig.techniques || []).find((t) => t.id === tech.id);
+        if (!configTech) return tech;
+
+        let newFragments = tech.fragmentsCollected;
+        let newCompleteness: TechniqueCompleteness = tech.completeness;
+        let currentIdx = completenessOrder.indexOf(tech.completeness);
+        let upgraded = false;
+        let totalDeduction = 0;
+
+        while (newFragments >= tech.fragmentsRequired && currentIdx < completenessOrder.length - 1) {
+          const cost = getTechniqueBreakthroughCost(tech.tier, configTech.breakthrough_cost_increase_pct);
+          if (nextStats.cultivation - totalDeduction >= cost) {
+            newFragments -= tech.fragmentsRequired;
+            currentIdx += 1;
+            newCompleteness = completenessOrder[currentIdx];
+            totalDeduction += cost;
+            upgraded = true;
+          } else {
+            break;
+          }
+        }
+
+        if (upgraded) {
+          nextStats.cultivation = Math.max(0, Math.round((nextStats.cultivation - totalDeduction) * 100) / 100);
+          techniquesUpdated = true;
+          tempLogs.push({
+            type: "technique_breakthrough",
+            age: state.age,
+            message: {
+              en: "Auto Breakthrough! Upgraded [" + tech.name + "] to " + newCompleteness.replace("_", " ") + "! Deducted " + totalDeduction.toFixed(1) + " Cultivation.",
+              vi: "Tự Động Đột Phá! Đã nâng cấp [" + tech.name + "] lên cảnh giới " + newCompleteness.replace("_", " ") + "! Khấu trừ " + totalDeduction.toFixed(1) + " Tu Vi."
+            }
+          });
+          return {
+            ...tech,
+            fragmentsCollected: newFragments,
+            completeness: newCompleteness
+          };
+        }
+        return tech;
+      });
+
       menuStack = [];
       const oldRealm = state.realm;
-      const newRealm = determineRealm(nextStats.cultivation);
+      const newRealm = nextRealmOverride || determineRealm(nextStats.cultivation, state.realm);
       if (oldRealm !== newRealm) {
-        if (newRealm === 'Qi Refinement') nextStats.lifespan += 40;
-        else if (newRealm === 'Foundation Establishment') nextStats.lifespan += 80;
-        else if (newRealm === 'Golden Core') nextStats.lifespan += 200;
-        else if (newRealm === 'Nascent Soul') nextStats.lifespan += 500;
+        if (newRealm === "Qi Refinement") nextStats.lifespan += 40;
+        else if (newRealm === "Foundation Establishment") nextStats.lifespan += 80;
+        else if (newRealm === "Golden Core") nextStats.lifespan += 200;
+        else if (newRealm === "Nascent Soul") nextStats.lifespan += 500;
       }
       
-      nextStats.cultivation = Math.min(getCultivationCap(state), nextStats.cultivation);
+      const cap = getCultivationCap(state);
+      if (nextStats.cultivation >= cap) {
+        nextStats.cultivation = cap;
+      }
       
       const choiceLogEntry: LogEntry = {
         type: 'choice',
@@ -2836,31 +3249,59 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           activeQuest: null,
           spiritStones: nextSpiritStones,
           sectContribution: nextSectContribution,
-          inventory: nextInventory
+          inventory: nextInventory,
+          techniques: currentTechniques
         };
       }
       
       let nextEvent: EventDefinition | null = null;
-      if (triggerPunishment) {
+      
+      const hitCapThisTurn = state.stats.cultivation < cap && nextStats.cultivation >= cap;
+      if (hitCapThisTurn && !choiceId.startsWith('action_breakthrough_')) {
+        nextEvent = generateBreakthroughEvent(state, nextStats, combatConfig, language) || null;
+        if (nextEvent) {
+          nextIsTicking = false;
+          nextActiveQuest = null;
+        }
+      }
+
+      if (!nextEvent && triggerPunishment) {
         nextEvent = SectPunishmentEvent;
         nextIsTicking = false;
         nextActiveQuest = null;
-      } else if (!nextIsTicking) {
-        const activeConfig = combatConfig;
-        const configDenom = activeConfig?.time_gear?.event_chance_denominator ?? 5;
-        const rollEvent = Math.random() < (1 / configDenom);
-        if (rollEvent) {
-          nextEvent = getRandomEvent({
-            ...state,
+      } else if (!nextEvent && !nextIsTicking) {
+        const isEligibleForTournament = 
+          nextMonth === 12 &&
+          state.sect &&
+          (state.sectRank === 'ngoại_môn' || state.sectRank === undefined);
+        
+        if (isEligibleForTournament) {
+          nextEvent = TournamentAnnualStartEvent;
+          tempLogs.push({
+            type: 'info',
             age: nextAge,
-            stats: nextStats,
-            realm: newRealm,
-            sectContribution: nextSectContribution,
-            spiritStones: nextSpiritStones,
-            sectPrestige: nextSectPrestige
-          }, language);
+            message: {
+              vi: '🏟️ Ngoại Môn Đại Bỉ năm nay khai mở! Trống lôi đài vang rền toàn tông môn.',
+              en: '🏟️ The annual Outer Sect Tournament has begun! War drums echo across the whole sect.'
+            }
+          });
         } else {
-          nextEvent = getMenuEvent('menu_monthly_plan', { ...state, age: nextAge, month: nextMonth, stats: nextStats }, language);
+          const activeConfig = combatConfig;
+          const configDenom = activeConfig?.time_gear?.event_chance_denominator ?? 5;
+          const rollEvent = Math.random() < (1 / configDenom);
+          if (rollEvent) {
+            nextEvent = getRandomEvent({
+              ...state,
+              age: nextAge,
+              stats: nextStats,
+              realm: newRealm,
+              sectContribution: nextSectContribution,
+              spiritStones: nextSpiritStones,
+              sectPrestige: nextSectPrestige
+            }, language);
+          } else {
+            nextEvent = getMenuEvent('menu_monthly_plan', { ...state, age: nextAge, month: nextMonth, stats: nextStats }, language);
+          }
         }
       }
       
@@ -2881,7 +3322,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         age: nextAge,
         month: nextMonth,
         menuStack,
-        questsCompletedThisYear: nextQuestsCompletedThisYear
+        questsCompletedThisYear: nextQuestsCompletedThisYear,
+        techniques: currentTechniques
       };
     }
   }
@@ -2891,8 +3333,21 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     return state;
   }
 
-  const newStats = applyEffects(state.stats, choice.effects, state);
-  newStats.cultivation = Math.min(getCultivationCap(state), newStats.cultivation);
+  let tempLogs: LogEntry[] = [];
+  const activeConfig = combatConfig;
+
+  let newStats = applyEffects(state.stats, choice.effects, state);
+  const transitionResult = checkAndApplySubStageTransition(
+    state,
+    newStats,
+    tempLogs,
+    language,
+    activeConfig
+  );
+  newStats = transitionResult.stats;
+  let newRealm = transitionResult.realm;
+  let nextSubStageIndex = transitionResult.subStageIndex;
+  tempLogs = transitionResult.logs;
 
   // Generic Handling for WorldState, NpcFavorability, NpcGrudges
   let nextWorldState = state.worldState ? { ...state.worldState } : createInitialWorldState(false);
@@ -2926,8 +3381,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     npc_kiem_tong_ta_tieu: 0,
     npc_dan_tong_chap_su: 0,
     npc_ma_dao_chap_su: 0,
-    npc_huyet_tong_chap_su: 0,
-  };
+    npc_huyet_tong_chap_su: 0};
   
   if (choice.effects.npcFavorability) {
     for (const [npcId, val] of Object.entries(choice.effects.npcFavorability)) {
@@ -2941,12 +3395,10 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     npc_kiem_tong_ta_tieu: 0,
     npc_dan_tong_chap_su: 0,
     npc_ma_dao_chap_su: 0,
-    npc_huyet_tong_chap_su: 0,
-  };
+    npc_huyet_tong_chap_su: 0};
 
   let currentTechniques = state.techniques ? [...state.techniques] : [];
   let currentInventory = state.inventory ? [...state.inventory] : [];
-  let tempLogs: LogEntry[] = [];
 
   let newSectContribution = (state.sectContribution ?? 0) + (choice.effects.sectContribution ?? 0);
   let newSectPrestige = (state.sectPrestige ?? 0) + (choice.effects.sectPrestige ?? 0);
@@ -2955,7 +3407,218 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
 
   let npcLogEntries: LogEntry[] = [];
   
-  if (choiceId === 'slap_young_master') {
+  if (choiceId === 'action_tournament_participate') {
+    // ── Tham gia Ngoại Môn Đại Bỉ ──
+    if (state.realm !== 'Qi Refinement') {
+      tempLogs.push({
+        type: 'info',
+        message: {
+          vi: '⚠️ Bạn chưa đột phá cảnh giới Luyện Khí (Qi Refinement), không đủ điều kiện báo danh thi đấu! Buộc chuyển sang quan sát.',
+          en: '⚠️ You are not in Qi Refinement realm, not eligible to compete! Forced to observe instead.'
+        }
+      });
+      const bettingEvent: EventDefinition = {
+        id: 'tournament_betting',
+        title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament' },
+        description: {
+          vi: 'Bạn ngồi trên khán đài quan sát các cao thủ tỷ thí. Linh khí trên lôi đài giao thoa mãnh liệt, từng thức chiêu đều chứa đựng cơ hội ngộ đạo. Bạn có muốn cá cược không?',
+          en: 'You watch from the stands as masters compete. Spiritual energy clashes intensely on the arena – every technique holds enlightenment. Do you want to bet?'
+        },
+        minRealm: 'Mortal', weight: 0,
+        choices: [
+          { id: 'action_bet_tournament_20', text: { vi: '🎲 Đặt cược 20 Linh thạch (50% x2, 50% mất)', en: '🎲 Bet 20 Stones (50% x2, 50% mất)' }, effects: {} },
+          { id: 'action_bet_tournament_50', text: { vi: '🎲 Đặt cược 50 Linh thạch (50% x2, 50% mất)', en: '🎲 Bet 50 Stones (50% x2, 50% mất)' }, effects: {} },
+          { id: 'action_bet_tournament_none', text: { vi: '🧘 Không cá cược, chỉ quan sát (+3 Ngộ Tính)', en: '🧘 Just watch (+3 Comprehension)' }, effects: {} }
+        ]
+      };
+      return {
+        ...state,
+        currentEvent: bettingEvent,
+        stats: newStats,
+        isTicking: false,
+        log: [...state.log, ...tempLogs.map(l => ({ ...l, age: state.age }))]
+      };
+    }
+
+    if (newStats.health < 15) {
+      // Too injured – forced to watch
+      tempLogs.push({
+        type: 'info',
+        message: {
+          vi: '⚠️ Khí huyết quá thấp (< 15), không đủ sức thi đấu! Buộc chuyển sang quan sát.',
+          en: '⚠️ HP too low (< 15) to compete! Forced to observe instead.'
+        }
+      });
+      const bettingEvent: EventDefinition = {
+        id: 'tournament_betting',
+        title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament' },
+        description: {
+          vi: 'Bạn ngồi trên khán đài quan sát các cao thủ tỷ thí. Linh khí trên lôi đài giao thoa mãnh liệt, từng thức chiêu đều chứa đựng cơ hội ngộ đạo. Bạn có muốn cá cược không?',
+          en: 'You watch from the stands as masters compete. Spiritual energy clashes intensely on the arena – every technique holds enlightenment. Do you want to bet?'
+        },
+        minRealm: 'Mortal', weight: 0,
+        choices: [
+          { id: 'action_bet_tournament_20', text: { vi: '🎲 Đặt cược 20 Linh thạch (50% x2, 50% mất)', en: '🎲 Bet 20 Stones (50% x2, 50% mất)' }, effects: {} },
+          { id: 'action_bet_tournament_50', text: { vi: '🎲 Đặt cược 50 Linh thạch (50% x2, 50% mất)', en: '🎲 Bet 50 Stones (50% x2, 50% mất)' }, effects: {} },
+          { id: 'action_bet_tournament_none', text: { vi: '🧘 Không cá cược, chỉ quan sát (+3 Ngộ Tính)', en: '🧘 Just watch (+3 Comprehension)' }, effects: {} }
+        ]
+      };
+      return {
+        ...state,
+        currentEvent: bettingEvent,
+        stats: newStats,
+        isTicking: false,
+        log: [...state.log, ...tempLogs.map(l => ({ ...l, age: state.age }))]
+      };
+    }
+
+    // Deduct HP for fighting
+    newStats.health = Math.max(1, newStats.health - 15);
+
+    // RNG outcome based on luck and cultivation
+    const luck = newStats.luck;
+    const cult = newStats.cultivation;
+    const roll = Math.random();
+
+    // High realm + high luck → semi-finalist, trigger Vương Tư Thông bribe
+    if (cult >= 25 && luck >= 10 && roll < 0.5) {
+      const briberEvent: EventDefinition = {
+        id: 'tournament_bribe_vuong_thieu_gia',
+        title: { vi: '💰 Vương Tư Thông Hối Lộ', en: '💰 Vuong Tu Thong\\\'s Bribe' },
+        description: {
+          vi: 'Trước khi vào bán kết, Vương Tư Thông – con trai của Vương trưởng lão – chặn đường bạn trong hành lang tối. Hắn ném túi linh thạch xuống sàn nói lạnh lùng: "500 Linh thạch và ta đảm bảo ngươi được chứng nhận Top 10 mà không cần đánh trận chung kết. Còn không... ngươi đấu với Long Ngạo Thiên mà xem!"',
+          en: 'Before the semi-finals, Vuong Tu Thong – son of Elder Wang – intercepts you in a dark corridor. He drops a pouch of stones and says coldly: "500 Spirit Stones and I guarantee you a Top 10 certification without fighting the final. Or face Long Ngao Thien... your choice!"'
+        },
+        minRealm: 'Mortal', weight: 0,
+        choices: [
+          { id: 'action_bribe_accept', text: { vi: '💰 Chấp nhận tiền hối lộ (+500 Linh thạch, +50 Cống hiến, -10 Đạo Tâm)', en: '💰 Accept bribe (+500 Stones, +50 Contribution, -10 Dao Heart)' }, effects: {} },
+          { id: 'action_bribe_refuse', text: { vi: '⚔️ Cự tuyệt! Đối mặt Long Ngạo Thiên trong trận chung kết!', en: '⚔️ Refuse! Face Long Ngao Thien in the final!' }, effects: {} }
+        ]
+      };
+      tempLogs.push({
+        type: 'info',
+        message: { vi: '🏟️ Bạn vượt qua các vòng đầu xuất sắc, tiến vào bán kết! Nhưng trước cổng lôi đài chính...', en: '🏟️ You advanced through the early rounds brilliantly, reaching the semi-finals! But before the main arena gate...' }
+      });
+      return {
+        ...state,
+        stats: newStats,
+        currentEvent: briberEvent,
+        log: [...state.log, ...tempLogs.map(l => ({ ...l, age: state.age }))],
+        isTicking: false
+      };
+    }
+
+    // Low luck/cult → Top 50, contribution reward
+    const contribution = 50 + Math.floor(Math.random() * 51); // 50-100
+    newSectContribution += contribution;
+    tempLogs.push({
+      type: 'info',
+      message: {
+        vi: '🏟️ Tham gia Ngoại Môn Đại Bỉ, lực bất tòng tâm bạn dừng lại ở Top 50. Nhận cống hiến tông môn +' + contribution + '.',
+        en: '🏟️ Participated in the Outer Sect Tournament, stopped at Top 50. Received +' + contribution + ' Sect Contribution.'
+      }
+    });
+  }
+  else if (choiceId === 'action_tournament_watch') {
+    // ── Quan sát & cá cược ──
+    const bettingEvent: EventDefinition = {
+      id: 'tournament_betting',
+      title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament' },
+      description: {
+        vi: 'Bạn ngồi trên khán đài quan sát các cao thủ tỷ thí. Linh khí trên lôi đài giao thoa mãnh liệt, từng thức chiêu đều chứa đựng cơ hội ngộ đạo. Bạn có muốn cá cược không?',
+        en: 'You watch from the stands as masters compete. Spiritual energy clashes intensely on the arena – every technique holds enlightenment. Do you want to bet?'
+      },
+      minRealm: 'Mortal', weight: 0,
+      choices: [
+        { id: 'action_bet_tournament_20', text: { vi: '🎲 Đặt cược 20 Linh thạch (50% x2, 50% mất)', en: '🎲 Bet 20 Stones (50% x2, 50% lose)' }, effects: {} },
+        { id: 'action_bet_tournament_50', text: { vi: '🎲 Đặt cược 50 Linh thạch (50% x2, 50% mất)', en: '🎲 Bet 50 Stones (50% x2, 50% lose)' }, effects: {} },
+        { id: 'action_bet_tournament_none', text: { vi: '🧘 Không cá cược, chỉ quan sát (+3 Ngộ Tính)', en: '🧘 Just watch (+3 Comprehension)' }, effects: {} }
+      ]
+    };
+    return { ...state, currentEvent: bettingEvent, isTicking: false };
+  }
+  else if (choiceId === 'action_bet_tournament_20' || choiceId === 'action_bet_tournament_50' || choiceId === 'action_bet_tournament_none') {
+    // ── Cá cược / quan sát ──
+    // Always gain +3 comprehension from watching
+    newStats.comprehension += 3;
+
+    if (choiceId === 'action_bet_tournament_none') {
+      tempLogs.push({
+        type: 'info',
+        message: { vi: 'Tọa sơn quan hổ đấu: Tham ngộ chiêu thức của các cao thủ trên đài tỷ võ (+3 Ngộ Tính).', en: 'Observed the tournament masters\\\'s techniques without betting (+3 Comprehension).' }
+      });
+    } else {
+      const betAmount = choiceId === 'action_bet_tournament_20' ? 20 : 50;
+      if (newSpiritStones < betAmount) {
+        // Not enough stones – just watch
+        tempLogs.push({
+          type: 'info',
+          message: { vi: 'Không đủ Linh thạch để cá cược! Đành ngồi quan sát tích lũy kinh nghiệm (+3 Ngộ Tính).', en: 'Insufficient Stones to bet! Observed and gained experience instead (+3 Comprehension).' }
+        });
+      } else {
+        newSpiritStones -= betAmount;
+        const win = Math.random() < 0.5 + (newStats.luck * 0.01); // luck improves odds slightly
+        if (win) {
+          newSpiritStones += betAmount * 2;
+          tempLogs.push({
+            type: 'info',
+            message: { vi: 'Cá cược ' + betAmount + ' Linh thạch: Thắng cược! Nhận lại +' + (betAmount * 2) + ' Linh thạch (lời ' + betAmount + '). Quan sát đài tỷ võ (+3 Ngộ Tính).', en: 'Bet ' + betAmount + ' Stones: Won! Received +' + (betAmount * 2) + ' Stones (profit ' + betAmount + '). Observed the arena (+3 Comprehension).' }
+          });
+        } else {
+          tempLogs.push({
+            type: 'info',
+            message: { vi: 'Cá cược ' + betAmount + ' Linh thạch: Thua cược! Mất trắng ' + betAmount + ' Linh thạch. Quan sát đài tỷ võ (+3 Ngộ Tính).', en: 'Bet ' + betAmount + ' Stones: Lost! Lost ' + betAmount + ' Stones. Observed the arena (+3 Comprehension).' }
+          });
+        }
+      }
+    }
+  }
+  else if (choiceId === 'action_tournament_skip') {
+    // ── Bỏ qua đại bỉ ──
+    newSectContribution = Math.max(0, newSectContribution - 30);
+    tempLogs.push({
+      type: 'info',
+      message: {
+        vi: '⚠️ Bạn vắng mặt Ngoại Môn Đại Bỉ, Chấp Pháp Đường ghi nhận và trừ đi 30 Điểm cống hiến vì thiếu sự hiện diện.',
+        en: '⚠️ You were absent from the Outer Sect Tournament. The Law Hall noted your absence and deducted 30 Contribution Points.'
+      }
+    });
+  }
+  else if (choiceId === 'action_bribe_accept') {
+    // ── Nhận hối lộ từ Vương Tư Thông ──
+    newSpiritStones += 500;
+    newSectContribution += 50;
+    newStats.daoHeart = Math.max(0, newStats.daoHeart - 10);
+    tempLogs.push({
+      type: 'info',
+      message: {
+        vi: 'Bạn nuốt tự trọng nhận túi linh thạch của Vương Tư Thông. Hắn cười khinh thường rồi đi. Bạn nhận +500 Linh thạch, +50 Cống hiến nhưng Đạo Tâm suy yếu -10.',
+        en: 'Bạn nhận hối lộ từ Vương Tư Thông. Gained +500 Spirit Stones, +50 Contribution but Dao Heart weakened -10.'
+      }
+    });
+  }
+  else if (choiceId === 'action_bribe_refuse') {
+    // ── Cự tuyệt → chiến đấu Long Ngạo Thiên ──
+    const ngaoThienEvent: EventDefinition = {
+      id: 'combat_encounter_ngao_thien',
+      title: { vi: '⚔️ Trận Chung Kết: Long Ngạo Thiên!', en: '⚔️ Championship Final: Long Ngao Thien!' },
+      description: {
+        vi: 'Long Ngạo Thiên – Thiên Kiêu đương đại của ngoại môn, Luyện Khí tầng 12 viên mãn. Hắn đứng trên lôi đài áo trắng phất phơ, linh khí bạo động cuộn xoáy. "Ngươi dám đến? Tốt lắm. Ta sẽ không nương tay!"',
+        en: 'Long Ngao Thien – the top genius of the outer sect, Qi Refinement Layer 12 Consummate. He stands on the arena in white robes, spiritual energy raging. "You dare come? Very well. I will show no mercy!"'
+      },
+      minRealm: 'Mortal', weight: 0,
+      choices: [
+        { id: 'start_combat_tournament_ngao_thien', text: { vi: '⚔️ Dốc toàn lực quyết chiến!', en: '⚔️ Fight with all your strength!' }, effects: {} }
+      ]
+    };
+    return {
+      ...state,
+      stats: newStats,
+      currentEvent: ngaoThienEvent,
+      isTicking: false
+    };
+  }
+  else if (choiceId === 'slap_young_master') {
     const cp = getPlayerStat(state, 'combatPower');
     if (cp >= 150) {
       npcLogEntries.push({
@@ -3405,7 +4068,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
 
   // Kiểm tra đột phá Cảnh giới (Realm) để tăng Thọ Nguyên (Lifespan)
   const oldRealm = state.realm;
-  const newRealm = determineRealm(newStats.cultivation);
+  const determinedRealm = determineRealm(newStats.cultivation, state.realm);
+  newRealm = determinedRealm;
   if (oldRealm !== newRealm) {
     if (newRealm === 'Qi Refinement') {
       newStats.lifespan += 40; // Đột phá Luyện Khí tăng 40 năm thọ nguyên
@@ -3455,8 +4119,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
 
   const eventMessage: LocalizedText = renderLocalizedTemplate(defaultMessages.choiceSummary, {
     choice: choice.text,
-    age: state.age,
-  });
+    age: state.age});
 
   const choiceLogEntry: LogEntry = {
     type: 'choice',
@@ -3466,9 +4129,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     message: renderLocalizedTemplate(defaultMessages.choiceProgress, {
       age: state.age,
       event: state.currentEvent.title,
-      choice: choice.text,
-    }),
-  };
+      choice: choice.text})};
 
   const newLog = [...state.log, choiceLogEntry, ...tempLogs, ...npcLogEntries];
   const updatedHistory = [
@@ -3483,6 +4144,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       alive: false,
       stats: newStats,
       realm: newRealm,
+      subStageIndex: nextSubStageIndex,
       currentEvent: null,
       lastMessage: deathText,
       log: [
@@ -3491,8 +4153,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         {
           type: 'death',
           age: state.age,
-          message: renderLocalizedTemplate(defaultMessages.deathAtAge, { age: state.age }),
-        },
+          message: renderLocalizedTemplate(defaultMessages.deathAtAge, { age: state.age })},
       ],
       deathCause: deathText,
       history: updatedHistory,
@@ -3504,8 +4165,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       sectRank: newRank,
       npcFavorability: nextNpcFavorability,
       worldState: nextWorldState,
-      inheritance: { ...(state.inheritance || {}), npc_grudges: nextNpcGrudges } as any,
-    };
+      inheritance: { ...(state.inheritance || {}), npc_grudges: nextNpcGrudges } as any};
     return deadState;
   }
 
@@ -3522,8 +4182,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         vi: `Sơn môn sừng sững hiện ra giữa ngàn khơi vân ảnh. Phù hợp với tôn phong của ${state.sect}, một hành trình nghịch thiên mới bắt đầu.\n\nNhập môn Đệ tử Ngoại môn, Chấp pháp Chấp sự đã chuẩn bị sẵn phúc lợi cho bạn bao gồm: ${startingStones} hạ phẩm linh thạch (tinh chỉnh tại Thần Điện) và 1 quyển tâm pháp luyện khí sơ cấp tương ứng với Linh Căn của bản thể.`,
         en: `The grand gates rise high into the swirling clouds. In accordance with the way of ${state.sect}, a new path opens before you.\n\nOfficially joining as an Outer Disciple, you receive your entry welfare: ${startingStones} low-grade spirit stones and 1 basic qi refinement manual matching your spiritual root.`
       },
-      minAge: state.age,
-      maxAge: state.age,
+      minRealm: 'Mortal',
+      
       weight: 1,
       choices: [
         {
@@ -3541,6 +4201,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     ...state,
     stats: newStats,
     realm: newRealm,
+    subStageIndex: nextSubStageIndex,
     currentEvent: nextEvent,
     lastMessage: eventMessage,
     log: [...newLog, ...rankLogEntries],
@@ -3555,8 +4216,140 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     sectRank: newRank,
     npcFavorability: nextNpcFavorability,
       worldState: nextWorldState,
-      inheritance: { ...(state.inheritance || {}), npc_grudges: nextNpcGrudges } as any,
+      inheritance: { ...(state.inheritance || {}), npc_grudges: nextNpcGrudges } as any};
+};
+
+export const generateBreakthroughEvent = (state: GameState, stats: Stats, activeConfig: any, language: Lang): EventDefinition | null => {
+  const cs = activeConfig?.cultivation_system;
+  const bottlenecks = getBottlenecks(state, activeConfig);
+  
+  const matching = bottlenecks.find((b: any) => 
+    state.realm === b.realm_from && 
+    stats.cultivation >= b.threshold - 0.005
+  );
+  if (!matching) return null;
+
+  let baseChance = 0;
+  if (matching.realm_to === 'Foundation Establishment') baseChance = 8;
+  else if (matching.realm_to === 'Golden Core') baseChance = 4;
+  else if (matching.realm_to === 'Nascent Soul') baseChance = 1;
+  else {
+    baseChance = (matching.success_rate_no_pill ?? 0.5) * 100;
+  }
+
+  const compMod = stats.comprehension * 0.4;
+  const luckMod = stats.luck * 0.3;
+  const daoMod = stats.daoHeart * 0.3;
+  const karmaMod = stats.karma * 0.2;
+  const totalChance = Math.max(1, baseChance + compMod + luckMod + daoMod + karmaMod);
+  const thanh = (totalChance / 10).toFixed(1);
+
+  const pillNameVi = matching.label === 'Trúc Cơ' ? 'Trúc Cơ Đan' : matching.label === 'Kim Đan' ? 'Kim Đan Đan' : 'Nguyên Anh Đan';
+  const pillNameEn = matching.label === 'Trúc Cơ' ? 'Foundation Pill' : matching.label === 'Kim Đan' ? 'Golden Core Pill' : 'Nascent Soul Pill';
+
+  const choices = [
+    {
+      id: 'action_breakthrough_natural',
+      text: { vi: '🔥 Quyết định đột phá (Tự nhiên)', en: '🔥 Decide to Breakthrough (Natural)' },
+      effects: {}
+    }
+  ];
+
+  if (matching.pill_item_id) {
+    const hasPill = (state.inventory || []).some(i => i.id === matching.pill_item_id && i.quantity > 0);
+    choices.push(hasPill ? {
+      id: 'action_breakthrough_pill',
+      text: { vi: `💊 Sử dụng đan dược (${pillNameVi})`, en: `💊 Use Pill (${pillNameEn})` },
+      effects: {}
+    } : {
+      id: 'action_breakthrough_pill_disabled',
+      text: { vi: `💊 Chưa có ${pillNameVi} (Đột phá thất bại nếu ép dùng)`, en: `💊 Need ${pillNameEn} (Not owned)` },
+      effects: {}
+    });
+  }
+
+  choices.push({
+    id: 'action_breakthrough_wait',
+    text: { vi: '🧘 Nghỉ ngơi chờ thời cơ tốt hơn', en: '🧘 Rest and wait for a better chance' },
+    effects: {}
+  });
+
+  return {
+    id: 'event_breakthrough_' + matching.threshold,
+    title: { vi: `Đột Phá Bình Cảnh: ${matching.label}`, en: `Breakthrough Bottleneck: ${matching.label}` },
+    description: {
+      vi: `Bạn đã tu luyện đến đỉnh phong, chạm đến bình cảnh ${matching.label}. Khí hải trong cơ thể cuồn cuộn không ngừng, đây là lúc quyết định đột phá hay chờ đợi cơ hội tốt hơn.\n\nPhân tích tỉ lệ thành công tự nhiên: **${thanh} thành** (${totalChance.toFixed(1)}%).\n*(Ngộ tính, Vận may, Đạo tâm và Nghiệp lực ảnh hưởng trực tiếp đến tỉ lệ này)*.`,
+      en: `You have reached the peak of your realm, touching the ${matching.label} bottleneck. Your spiritual sea is boiling, it's time to decide whether to breakthrough or wait.\n\nEstimated natural success rate: **${thanh} out of 10** (${totalChance.toFixed(1)}%).\n*(Comprehension, Luck, Dao Heart, and Karma directly affect this rate)*.`
+    },
+    minRealm: 'Mortal', weight: 1,
+    choices
   };
+};
+
+// Hàm xử lý đột phá tự nhiên dùng chung
+const attemptNaturalBreakthrough = (
+  stats: Stats, 
+  age: number, 
+  log: LogEntry[], 
+  activeConfig: any, 
+  isQuest: boolean,
+  currentRealm: Realm = 'Mortal'
+): { success: boolean, lastMessage?: LocalizedText } => {
+  const cs = activeConfig?.cultivation_system;
+  const bottlenecks = getBottlenecks({ realm: currentRealm } as any, activeConfig);
+  
+  const matching = bottlenecks.find((b: any) => 
+    currentRealm === b.realm_from && 
+    stats.cultivation >= b.threshold - 0.005
+  );
+  if (matching) {
+    let baseChance = 0;
+    if (matching.realm_to === 'Foundation Establishment') baseChance = 8;
+    else if (matching.realm_to === 'Golden Core') baseChance = 4;
+    else if (matching.realm_to === 'Nascent Soul') baseChance = 1;
+    else {
+      baseChance = (matching.success_rate_no_pill ?? 0.5) * 100;
+    }
+
+    const compMod = stats.comprehension * 0.4;
+    const luckMod = stats.luck * 0.3;
+    const daoMod = stats.daoHeart * 0.3;
+    const karmaMod = stats.karma * 0.2;
+    const totalChance = Math.max(1, baseChance + compMod + luckMod + daoMod + karmaMod);
+    const roll = Math.random() * 100;
+
+    if (roll <= totalChance) {
+      stats.cultivation = matching.next_cult ?? (matching.threshold + 0.01);
+      const newRealm = matching.realm_to || determineRealm(stats.cultivation, currentRealm);
+      if (newRealm === 'Foundation Establishment') stats.lifespan += 80;
+      else if (newRealm === 'Golden Core') stats.lifespan += 200;
+      else if (newRealm === 'Nascent Soul') stats.lifespan += 500;
+
+      const successLog: LogEntry = {
+        type: 'info',
+        age: age,
+        message: {
+          vi: `✨ Đạo pháp tự nhiên! Trong lúc tĩnh tu bạn ngộ ra chân lý, đột phá bình cảnh [${matching.label}] mà không cần đan dược!`,
+          en: `✨ Natural Dao! During meditation you grasped the truth, naturally breaking the [${matching.label}] bottleneck without pills!`
+        }
+      };
+      log.push(successLog);
+      return { success: true, lastMessage: successLog.message };
+    } else {
+      if (isQuest) {
+        const failLog: LogEntry = {
+          type: 'info',
+          age: age,
+          message: {
+            vi: `Bạn cảm nhận được bình cảnh [${matching.label}], nhưng chưa đủ cơ duyên để tự nhiên đột phá. (Tỷ lệ: ${totalChance.toFixed(1)}%)`,
+            en: `You sense the [${matching.label}] bottleneck, but lack the karma to naturally break through. (Chance: ${totalChance.toFixed(1)}%)`
+          }
+        };
+        log.push(failLog);
+      }
+    }
+  }
+  return { success: false };
 };
 
 const getMenuLocation = (menuId: string): 'sect' | 'mountain' | 'city' | 'secret_realm' | null => {
@@ -3622,7 +4415,7 @@ export const reincarnate = (
   const currentEvent = buildStartingEvent(gender, spiritualRoot, sect, startingAge, startingStoryId);
 
   let techniques = initTechniquesFromInheritance(nextInheritance);
-  const checkResult = checkAndActivateTechniques(techniques, stats, startingAge, determineRealm(stats.cultivation), language);
+  const checkResult = checkAndActivateTechniques(techniques, stats, startingAge, determineRealm(stats.cultivation, 'Mortal'), language);
   techniques = checkResult.techniques;
 
   const inventory = initItemsFromInheritance(nextInheritance);
@@ -3632,15 +4425,15 @@ export const reincarnate = (
     life: state.life + 1,
     age: startingAge,
     alive: true,
-    realm: determineRealm(stats.cultivation),
+    realm: determineRealm(stats.cultivation, 'Mortal'),
+    subStageIndex: determineRealm(stats.cultivation, 'Mortal') === 'Qi Refinement' ? 1 : 0,
     stats,
     inheritance: nextInheritance,
     log: [
       ...state.log,
       {
         type: 'reincarnation',
-        message: defaultMessages.reincarnation,
-      },
+        message: defaultMessages.reincarnation},
       ...checkResult.activatedLogs
     ],
     currentEvent,
@@ -3667,10 +4460,8 @@ export const reincarnate = (
       npc_kiem_tong_ta_tieu: 0,
       npc_dan_tong_chap_su: 0,
       npc_ma_dao_chap_su: 0,
-      npc_huyet_tong_chap_su: 0,
-    },
-    currentLocation: 'sect',
-  };
+      npc_huyet_tong_chap_su: 0},
+    currentLocation: 'sect'};
 };
 
 const monthlyNarrativesVi = [
@@ -3699,11 +4490,25 @@ const monthlyNarrativesEn = [
   "You meditated listening to the wind sweeping through clouds, mind untroubled."
 ];
 
-export const getPlayerStat = (state: GameState, stat: 'combatPower' | 'luck' | 'comprehension' | 'daoHeart' | 'health'): number => {
+export const getPlayerStat = (state: GameState, stat: 'combatPower' | 'luck' | 'comprehension' | 'daoHeart' | 'health' | 'speed'): number => {
   if (stat === 'health') return state.stats.health;
   if (stat === 'luck') return state.stats.luck;
   if (stat === 'comprehension') return state.stats.comprehension;
   if (stat === 'daoHeart') return state.stats.daoHeart;
+
+  const equipSpdBonus = (state.inventory || [])
+    .filter(item => item.category === 'equipment' && item.equipped)
+    .reduce((sum, item) => sum + (item.combatStats?.speed ?? 0), 0);
+    
+  const techSpdBonus = (state.techniques || [])
+    .filter(tech => tech.isActive && tech.type === 'thân_pháp')
+    .reduce((sum, tech) => {
+      const configTech = combatConfig.techniques?.find((t: any) => t.id === tech.id);
+      return sum + (configTech?.passive_bonus?.speed ?? 0);
+    }, 0);
+
+  const speed = (state.stats.speed || 10) + Math.floor(state.stats.luck * 0.2) + equipSpdBonus + techSpdBonus;
+  if (stat === 'speed') return speed;
   
   if (stat === 'combatPower') {
     const subStageInfo = getRealmSubStage(state.stats.cultivation);
@@ -3725,10 +4530,7 @@ export const getPlayerStat = (state: GameState, stat: 'combatPower' | 'luck' | '
       .reduce((sum, item) => sum + (item.combatStats?.attack ?? 0), 0);
     const attack = 15 + Math.floor(state.stats.cultivation * 0.4) + subStageInfo.bonus.attack + equipAtkBonus;
 
-    const equipSpdBonus = inventory
-      .filter(item => item.category === 'equipment' && item.equipped)
-      .reduce((sum, item) => sum + (item.combatStats?.speed ?? 0), 0);
-    const speed = 10 + Math.floor(state.stats.luck * 0.2) + equipSpdBonus;
+
 
     const equipDefBonus = inventory
       .filter(item => item.category === 'equipment' && item.equipped)
@@ -3757,8 +4559,8 @@ const buildQuestCompleteEvent = (quest: SectQuest, language: Lang, isParty: bool
   const goldReward = quest.rewards.gold ? (isParty ? Math.max(1, Math.floor(quest.rewards.gold * 0.5)) : quest.rewards.gold) : 0;
   
   const desc = language === 'vi' 
-    ? `Chúc mừng! Bạn đã hoàn thành xuất sắc nhiệm vụ "${quest.title.vi}" (${isParty ? 'Tổ Đội' : 'Độc Hành'}).\n\nPhần thưởng nhận được:\n- Cống hiến Tông môn: +${contributionReward}\n- Linh thạch: +${goldReward}\n${quest.rewards.health ? `- Sinh lực: +${quest.rewards.health}\n` : ''}${quest.rewards.comprehension ? `- Ngộ tính: +${quest.rewards.comprehension}\n` : ''}${quest.rewards.cultivation ? `- Tu vi: +${quest.rewards.cultivation}\n` : ''}${quest.rewards.daoHeart ? `- Đạo tâm: +${quest.rewards.daoHeart}\n` : ''}${quest.rewards.item ? `- Vật phẩm: Nhận được [${quest.rewards.item.itemId}]\n` : ''}`
-    : `Congratulations! You have successfully completed the quest "${quest.title.en}" (${isParty ? 'Party' : 'Solo'}).\n\nRewards claimed:\n- Sect Contribution: +${contributionReward}\n- Spirit Stones: +${goldReward}\n${quest.rewards.health ? `- Health: +${quest.rewards.health}\n` : ''}${quest.rewards.comprehension ? `- Comprehension: +${quest.rewards.comprehension}\n` : ''}${quest.rewards.cultivation ? `- Cultivation: +${quest.rewards.cultivation}\n` : ''}${quest.rewards.daoHeart ? `- Dao Heart: +${quest.rewards.daoHeart}\n` : ''}${quest.rewards.item ? `- Item: Acquired [${quest.rewards.item.itemId}]\n` : ''}`;
+    ? `Chúc mừng! Bạn đã hoàn thành xuất sắc nhiệm vụ "${quest.title.vi}" (${isParty ? 'Tổ Đội' : 'Độc Hành'}).\n\nPhần thưởng nhận được:\n- Cống hiến Tông môn: +${contributionReward}\n- Linh thạch: +${goldReward}\n${quest.rewards.health ? `- Sinh lực: +${quest.rewards.health}\n` : ''}${quest.rewards.comprehension ? `- Ngộ tính: +${quest.rewards.comprehension}\n` : ''}${quest.rewards.cultivation ? `- Tu vi: +${Math.floor(quest.rewards.cultivation)}\n` : ''}${quest.rewards.daoHeart ? `- Đạo tâm: +${quest.rewards.daoHeart}\n` : ''}${quest.rewards.item ? `- Vật phẩm: Nhận được [${quest.rewards.item.itemId}]\n` : ''}`
+    : `Congratulations! You have successfully completed the quest "${quest.title.en}" (${isParty ? 'Party' : 'Solo'}).\n\nRewards claimed:\n- Sect Contribution: +${contributionReward}\n- Spirit Stones: +${goldReward}\n${quest.rewards.health ? `- Health: +${quest.rewards.health}\n` : ''}${quest.rewards.comprehension ? `- Comprehension: +${quest.rewards.comprehension}\n` : ''}${quest.rewards.cultivation ? `- Cultivation: +${Math.floor(quest.rewards.cultivation)}\n` : ''}${quest.rewards.daoHeart ? `- Dao Heart: +${quest.rewards.daoHeart}\n` : ''}${quest.rewards.item ? `- Item: Acquired [${quest.rewards.item.itemId}]\n` : ''}`;
 
   const fillEffects: GameEffect = {
     sectContribution: contributionReward,
@@ -3766,14 +4568,12 @@ const buildQuestCompleteEvent = (quest: SectQuest, language: Lang, isParty: bool
     health: quest.rewards.health,
     comprehension: quest.rewards.comprehension,
     cultivation: quest.rewards.cultivation,
-    daoHeart: quest.rewards.daoHeart,
-  };
+    daoHeart: quest.rewards.daoHeart};
 
   if (quest.rewards.item && quest.id !== 'quest_cleanup') {
     fillEffects.gainItem = {
       itemId: quest.rewards.item.itemId,
-      quantity: quest.rewards.item.quantity,
-    };
+      quantity: quest.rewards.item.quantity};
   }
 
   // Apply macro updates and custom rewards for the 7 new quests
@@ -3800,8 +4600,7 @@ const buildQuestCompleteEvent = (quest: SectQuest, language: Lang, isParty: bool
     id: `quest_complete_${quest.id}`,
     title: { vi: title, en: title },
     description: { vi: desc, en: desc },
-    minAge: 0,
-    maxAge: 9999,
+    minRealm: 'Mortal',
     weight: 1,
     choices: [
       {
@@ -3842,8 +4641,7 @@ const buildQuestFailedEvent = (quest: SectQuest, language: Lang, isParty: boolea
     id: `quest_failed_${quest.id}`,
     title: { vi: title, en: title },
     description: { vi: desc, en: desc },
-    minAge: 0,
-    maxAge: 9999,
+    minRealm: 'Mortal',
     weight: 1,
     choices: [
       {
@@ -3865,8 +4663,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     npc_kiem_tong_ta_tieu: 0,
     npc_dan_tong_chap_su: 0,
     npc_ma_dao_chap_su: 0,
-    npc_huyet_tong_chap_su: 0,
-  };
+    npc_huyet_tong_chap_su: 0};
 
   const sect = state.sect;
 
@@ -3883,7 +4680,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
             vi: `Tạ Tiêu mang vẻ mặt oán hận chặn đường bạn cùng hai tên đệ tử ngoại môn khác. Hắn cười lạnh: "Lần trước dám làm ta bẽ mặt, hôm nay ta phải phế đi tu vi của ngươi!" Cả ba rút kiếm lao vào oanh kích.`,
             en: `Tạ Tiêu blocks your path with two other outer disciples. He sneers: "You humiliated me last time, today I will ruin your cultivation!" They draw swords.`
           },
-          minAge: 0, maxAge: 9999, weight: 1,
+          minRealm: 'Mortal', weight: 1,
           choices: [
             {
               id: 'start_combat_npc_ta_tieu',
@@ -3905,7 +4702,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
             vi: `Tạ Tiêu hồ hởi chạy đến vỗ vai bạn: "Đạo hữu! Hôm nay ta vừa kiếm được bình Bách Hoa Tửu cực ngon, lại đây đàm đạo uống rượu cùng ta!"`,
             en: `Tạ Tiêu runs up and pats your shoulder: "Daoist brother! I just got a flask of fine Hundred Flowers Wine, come drink and talk with me!"`
           },
-          minAge: 0, maxAge: 9999, weight: 1,
+          minRealm: 'Mortal', weight: 1,
           choices: [
             {
               id: 'action_npc_ta_tieu_drink',
@@ -3929,7 +4726,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
               vi: `Tạ Tiêu chặn đường bạn, bộ dáng ngả ngớn nói: "Đạo hữu, gần đây ta túng thiếu quá, cho ta mượn tạm 10 Linh thạch tiêu xài, vài ngày nữa ta trả!" (Ai cũng biết hắn mượn không bao giờ trả).`,
               en: `Tạ Tiêu blocks you, saying casually: "Daoist brother, I am short on cash, lend me 10 Spirit Stones for fun, I will return it soon!" (Everyone knows he never returns money).`
             },
-            minAge: 0, maxAge: 9999, weight: 1,
+            minRealm: 'Mortal', weight: 1,
             choices: [
               {
                 id: 'action_npc_ta_tieu_lend',
@@ -3956,7 +4753,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
               vi: `Bạn bắt gặp Tạ Tiêu đang bắt một tên đệ tử ngoại môn mới nhập môn phải quỳ xuống nộp linh thạch phí bảo kê. Tên đệ tử tội nghiệp đang khóc lóc cầu xin.`,
               en: `You catch Tạ Tiêu forcing a newly entered outer disciple to kneel and hand over spirit stones as protection fee. The poor disciple is crying.`
             },
-            minAge: 0, maxAge: 9999, weight: 1,
+            minRealm: 'Mortal', weight: 1,
             choices: [
               {
                 id: 'action_npc_ta_tieu_save',
@@ -3988,7 +4785,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
             vi: `Chấp sự Tạ Trần nhìn bạn bằng ánh mắt lạnh lùng: "Đệ tử ngoại môn phải siêng năng, ngươi tu luyện chểnh mảng, đi quét dọn Tẩy Kiếm Trì 3 tháng cho ta!"`,
             en: `Chấp sự Tạ Trần looks at you coldly: "Outer disciples must work hard, you are lazy, clean the Sword Washing Pool for 3 months!"`
           },
-          minAge: 0, maxAge: 9999, weight: 1,
+          minRealm: 'Mortal', weight: 1,
           choices: [
             {
               id: 'action_npc_ta_tran_accept_punish',
@@ -4010,7 +4807,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
             vi: `Chấp sự Tạ Trần vẻ mặt nhu hòa, gọi bạn lại: "Ngươi gần đây có tiến bộ, kiếm ý vững vàng. Quyển kiếm quyết tàn thiên này ta vô tình có được, ban cho ngươi tham ngộ."`,
             en: `Chấp sự Tạ Trần looks pleased: "You have shown progress, sword intent is firm. I found this fragment of sword manual, I bestow it upon you."`
           },
-          minAge: 0, maxAge: 9999, weight: 1,
+          minRealm: 'Mortal', weight: 1,
           choices: [
             {
               id: 'action_npc_ta_tran_receive_manual',
@@ -4027,7 +4824,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
             vi: `Chấp sự Tạ Trần đi tuần ngang qua động phủ của bạn, dừng chân hỏi thăm: "Tiến độ tu luyện gần đây thế nào? Môn phái chuẩn bị kiểm tra đệ tử ngoại môn đấy."`,
             en: `Chấp sự Tạ Trần patrols past your cave, asking: "How is your cultivation progressing? The sect exam for outer disciples is coming."`
           },
-          minAge: 0, maxAge: 9999, weight: 1,
+          minRealm: 'Mortal', weight: 1,
           choices: [
             {
               id: 'action_npc_ta_tran_gift',
@@ -4055,7 +4852,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Linh Dương đưa cho bạn một viên đan dược đen xì, tỏa ra mùi hăng hắc: "Ta đang luyện chế độc môn đan dược, ngươi đi thử thuốc cho ta!"`,
           en: `Chấp sự Linh Dương hands you a dark, pungent pill: "I am refining a custom pill, test it for me!"`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_linh_duong_eat',
@@ -4077,7 +4874,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Linh Dương vẻ mặt vui cười, đưa cho bạn một lọ thuốc ngọc bích: "Đạo hữu, viên đan dược này ta luyện chế dư ra, tặng cho ngươi ôn dưỡng kinh mạch."`,
           en: `Chấp sự Linh Dương smiles, handing you a jade bottle: "Daoist brother, I refined this extra pill, take it to soothe your meridians."`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_linh_duong_receive',
@@ -4094,7 +4891,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Linh Dương đang cần gấp một số Linh Thảo để luyện đan, hỏi xem bạn có bán lại cho lão không.`,
           en: `Chấp sự Linh Dương urgently needs some Spirit Herbs for alchemy, asking if you can sell them to him.`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_linh_duong_sell_herbs',
@@ -4126,7 +4923,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Khấu Vô Kỵ mặt sạm đen chặn đường bạn tại ngách núi hoang vắng. Lão cười khặc khặc âm hiểm: "Ngươi đắc tội với bản chấp sự, hôm nay lấy hồn của ngươi luyện cờ!"`,
           en: `Chấp sự Khấu Vô Kỵ blocks you in a deserted canyon. He cackles: "You offended me, today I will take your soul to refine my banner!"`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'start_combat_npc_khau_vo_ky',
@@ -4148,7 +4945,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Khấu Vô Kỵ cười lớn vỗ vai bạn: "Hắc hắc, ta vừa nghe nói đệ tử Đan Tông vận chuyển một lô dược liệu đi ngang phụ cận. Ngươi có gan cùng ta đi cướp một chuyến không?"`,
           en: `Chấp sự Khấu Vô Kỵ laughs and pats you: "Heh, I heard a Dan sect disciple carrying pill materials is passing by. Dare to raid them with me?"`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_khau_vo_ky_raid',
@@ -4170,7 +4967,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Khấu Vô Kỵ chìa bàn tay xương xẩu ra trước mặt bạn: "Tuần này thu phí bảo kê ngoại môn, nộp 10 Linh thạch ra đây, nếu không đừng trách ta không che chở ngươi."`,
           en: `Chấp sự Khấu Vô Kỵ stretches out his bony hand: "Weekly outer sect fee, hand over 10 Stones, or don't blame me for not protecting you."`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_khau_vo_ky_pay',
@@ -4197,7 +4994,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Xích Liệt toàn thân mùi huyết tinh rống lên: "Lò luyện huyết hải của ta đang thiếu huyết khí, ngươi tự nộp ra tinh huyết nhục thân tế luyện cho ta!"`,
           en: `Chấp sự Xích Liệt, smelling of fresh blood, roars: "My blood sea furnace lacks energy, hand over your vital blood to refine!"`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_xich_liet_give_blood',
@@ -4219,7 +5016,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Xích Liệt ném cho bạn viên đan dược đỏ lòm như máu: "Tốt lắm, đệ tử đắc lực của ta. Viên Huyết Phách Đan này rèn luyện nhục thân rất tốt, cầm lấy tu luyện!"`,
           en: `Chấp sự Xích Liệt tosses you a bloody red pill: "Very well, my disciple. This Blood Soul Pill is great for the physical body, take it!"`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_xich_liet_eat_pill',
@@ -4236,7 +5033,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           vi: `Chấp sự Xích Liệt đang rèn đúc Huyết Sát Ma khí, yêu cầu bạn nộp cho hắn Linh Thú Thần Cốt hoặc Linh Quặng thô để chế luyện.`,
           en: `Chấp sự Xích Liệt is forging blood weapons, demanding you to bring him Beast Bones or Ore.`
         },
-        minAge: 0, maxAge: 9999, weight: 1,
+        minRealm: 'Mortal', weight: 1,
         choices: [
           {
             id: 'action_npc_xich_liet_give_bone',
@@ -4259,10 +5056,13 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
 export const tickMonth = (state: GameState, language: Lang, customConfig?: any): GameState => {
   if (!state.alive) return state;
 
-  const cap = getCultivationCap(state);
+  const activeConfig = customConfig || combatConfig;
+  const cap = getCultivationCap(state, activeConfig);
   let nextMonth = state.month + 1;
   let nextAge = state.age;
   let nextStats = { ...state.stats };
+  let nextRealm = state.realm;
+  let nextSubStageIndex = state.subStageIndex;
   let alive: boolean = state.alive;
   let deathCause = state.deathCause;
   let lastMessage = state.lastMessage;
@@ -4276,9 +5076,70 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
   let questSuccess = false;
   let questEvent: EventDefinition | null = null;
   let triggerLog: LogEntry | null = null;
+  let monthlyCultivationGain = 0;
 
   if (nextActiveQuest) {
     nextActiveQuest.monthsRemaining -= 1;
+    
+    // Tĩnh tu bế quan: Cộng tu vi mỗi tháng
+    if (nextActiveQuest.quest.id.startsWith('quest_be_quan_')) {
+      const mult = getCultivationGainMultiplier(state, customConfig);
+      // Giống như tĩnh tu bình thường nhưng hiệu quả cao hơn một chút vì liên tục
+      const gain = (0.8 + (nextStats.comprehension * 0.02)) * mult;
+      monthlyCultivationGain = gain;
+      const currentAccumulated = nextActiveQuest.accumulatedCultivation ?? 0;
+      nextActiveQuest.accumulatedCultivation = currentAccumulated + gain;
+
+      // Cộng trực tiếp vào tu vi mỗi tháng để hiển thị tiến trình tu luyện tăng dần trên giao diện
+      nextStats.cultivation = Math.round((nextStats.cultivation + gain) * 100) / 100;
+      
+      const transitionResult = checkAndApplySubStageTransition(
+        state,
+        nextStats,
+        newLog,
+        language,
+        activeConfig
+      );
+      nextStats = transitionResult.stats;
+      nextRealm = transitionResult.realm;
+      nextSubStageIndex = transitionResult.subStageIndex;
+      newLog.length = 0;
+      newLog.push(...transitionResult.logs);
+      
+      const bottlenecks = getBottlenecks({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex }, activeConfig);
+      const isBottleneck = bottlenecks.some(b => b.realm_from === nextRealm && b.subStageIndex === nextSubStageIndex);
+      const localCap = getCultivationCap({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats }, activeConfig);
+      
+      if (nextStats.cultivation >= localCap && isBottleneck) {
+        nextStats.cultivation = localCap;
+        const breakthroughEvent = generateBreakthroughEvent(
+          { ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats },
+          nextStats,
+          activeConfig,
+          language
+        );
+        if (breakthroughEvent) {
+          const monthLabel = language === 'vi' ? getVietnameseMonthName(nextMonth) : getEnglishMonthName(nextMonth);
+          const desc = language === 'vi' ? `Tĩnh tu bế quan (Tu vi +${gain.toFixed(2)})` : `Closed-door retreat (Cultivation +${gain.toFixed(2)})`;
+          return {
+            ...state,
+            age: nextAge,
+            month: nextMonth,
+            isTicking: false,
+            activeQuest: null,
+            currentEvent: breakthroughEvent,
+            monthlyLog: [...(state.monthlyLog || []), `[${monthLabel} - Tuổi ${nextAge}]: ${desc}`].slice(-5),
+            worldState: state.worldState,
+            log: [...newLog],
+            stats: nextStats,
+            realm: nextRealm,
+            subStageIndex: nextSubStageIndex,
+            lastMessage: breakthroughEvent.description as LocalizedText
+          };
+        }
+      }
+    }
+    
     if (nextActiveQuest.monthsRemaining === 0) {
       questJustCompleted = true;
       const quest = nextActiveQuest.quest;
@@ -4354,8 +5215,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       newLog.push({
         type: 'death',
         age: nextAge,
-        message: renderLocalizedTemplate(defaultMessages.deathAtAge, { age: nextAge }),
-      });
+        message: renderLocalizedTemplate(defaultMessages.deathAtAge, { age: nextAge })});
     }
   }
 
@@ -4366,6 +5226,8 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       month: nextMonth,
       alive: false,
       stats: nextStats,
+      realm: nextRealm,
+      subStageIndex: nextSubStageIndex,
       currentEvent: null,
       isTicking: false,
       deathCause,
@@ -4375,22 +5237,63 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
     };
   }
 
-  let desc = '';
   if (nextActiveQuest) {
     const duration = nextActiveQuest.quest.durationMonths;
     const elapsed = duration - nextActiveQuest.monthsRemaining - 1;
     const langKey = language === 'vi' ? 'vi' : 'en';
     const logs = nextActiveQuest.quest.progressLogs[langKey] || nextActiveQuest.quest.progressLogs.vi;
     const logIdx = Math.max(0, Math.min(elapsed, (logs.length ?? 1) - 1));
-    desc = logs[logIdx] || '';
+    let desc = logs[logIdx] || '';
+    if (monthlyCultivationGain > 0) {
+      desc += language === 'vi' ? ` (Tu vi +${monthlyCultivationGain.toFixed(2)})` : ` (Cultivation +${monthlyCultivationGain.toFixed(2)})`;
+    }
   } else {
     const pool = language === 'vi' ? monthlyNarrativesVi : monthlyNarrativesEn;
-    desc = pool[Math.floor(Math.random() * pool.length)];
+    let desc = pool[Math.floor(Math.random() * pool.length)];
+  }
+  
+  // Tránh lỗi khi scope thay đổi, lấy lại desc chung
+  let finalDesc = '';
+  if (nextActiveQuest) {
+    const duration = nextActiveQuest.quest.durationMonths;
+    const elapsed = duration - nextActiveQuest.monthsRemaining - 1;
+    const langKey = language === 'vi' ? 'vi' : 'en';
+    const logs = nextActiveQuest.quest.progressLogs[langKey] || nextActiveQuest.quest.progressLogs.vi;
+    const logIdx = Math.max(0, Math.min(elapsed, (logs.length ?? 1) - 1));
+    finalDesc = logs[logIdx] || '';
+    if (monthlyCultivationGain > 0) {
+      finalDesc += language === 'vi' ? ` (Tu vi +${monthlyCultivationGain.toFixed(2)})` : ` (Cultivation +${monthlyCultivationGain.toFixed(2)})`;
+    }
+  } else {
+    const pool = language === 'vi' ? monthlyNarrativesVi : monthlyNarrativesEn;
+    finalDesc = pool[Math.floor(Math.random() * pool.length)];
   }
 
   const monthLabel = language === 'vi' ? getVietnameseMonthName(nextMonth) : getEnglishMonthName(nextMonth);
-  const logLine = `[${monthLabel} - Tuổi ${nextAge}]: ${desc}`;
+  const logLine = `[${monthLabel} - Tuổi ${nextAge}]: ${finalDesc}`;
   const nextMonthlyLog = [...(state.monthlyLog || []), logLine].slice(-5);
+
+  // Nếu đụng nóc tu vi, trả về trang Đột Phá
+  const hitCapThisTurn = nextStats.cultivation >= cap;
+  if (monthlyCultivationGain > 0 && hitCapThisTurn) {
+    nextStats.cultivation = cap;
+    const breakthroughEvent = generateBreakthroughEvent(state, nextStats, activeConfig, language);
+    if (breakthroughEvent) {
+      return {
+        ...state,
+        age: nextAge,
+        month: nextMonth,
+        isTicking: false,
+        activeQuest: null,
+        currentEvent: breakthroughEvent,
+        monthlyLog: nextMonthlyLog,
+        worldState: state.worldState,
+        log: newLog,
+        stats: nextStats,
+        lastMessage: breakthroughEvent.description as LocalizedText
+      };
+    }
+  }
 
   if (triggerPunishment) {
     const punishmentLog: LogEntry = {
@@ -4411,11 +5314,56 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       activeQuest: null,
       log: [...state.log, punishmentLog],
       lastMessage: punishmentLog.message,
-      questsCompletedThisYear: 0
+      questsCompletedThisYear: 0,
+      realm: nextRealm,
+      subStageIndex: nextSubStageIndex,
+      stats: nextStats
+    };
+  }
+
+  // ── Ngoại Môn Đại Bỉ Annual December Trigger ──
+  if (
+    nextMonth === 12 &&
+    !nextActiveQuest &&
+    !questJustCompleted &&
+    state.sect &&
+    (state.sectRank === 'ngoại_môn' || state.sectRank === undefined)
+  ) {
+    const tourLog: LogEntry = {
+      type: 'info',
+      age: nextAge,
+      message: {
+        vi: '🏟️ Ngoại Môn Đại Bỉ năm nay khai mở! Trống lôi đài vang rền toàn tông môn.',
+        en: '🏟️ The annual Outer Sect Tournament has begun! War drums echo across the whole sect.'
+      }
+    };
+
+    return {
+      ...state,
+      age: nextAge,
+      month: nextMonth,
+      isTicking: false,
+      currentEvent: TournamentAnnualStartEvent,
+      monthlyLog: nextMonthlyLog,
+      questsCompletedThisYear: nextQuestsCompletedThisYear,
+      log: [...state.log, tourLog],
+      lastMessage: tourLog.message,
+      realm: nextRealm,
+      subStageIndex: nextSubStageIndex,
+      stats: nextStats
     };
   }
 
   if (questJustCompleted) {
+    const oldRealm = state.realm;
+    const newRealm = determineRealm(nextStats.cultivation, state.realm);
+    if (oldRealm !== newRealm) {
+      if (newRealm === 'Qi Refinement') nextStats.lifespan += 40;
+      else if (newRealm === 'Foundation Establishment') nextStats.lifespan += 80;
+      else if (newRealm === 'Golden Core') nextStats.lifespan += 200;
+      else if (newRealm === 'Nascent Soul') nextStats.lifespan += 500;
+    }
+
     return {
       ...state,
       age: nextAge,
@@ -4426,11 +5374,65 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       activeQuest: null,
       log: [...state.log, triggerLog!],
       lastMessage: triggerLog!.message,
-      questsCompletedThisYear: nextQuestsCompletedThisYear
+      questsCompletedThisYear: nextQuestsCompletedThisYear,
+      stats: nextStats,
+      realm: nextRealm,
+      subStageIndex: nextSubStageIndex
     };
   }
 
   if (nextActiveQuest) {
+    let passiveGain = 0;
+    if (!nextActiveQuest.quest.id.startsWith('quest_be_quan_')) {
+      passiveGain = 0.02 * getCultivationGainMultiplier(state, customConfig);
+      nextStats.cultivation = Math.round((nextStats.cultivation + passiveGain) * 100) / 100;
+      
+      const transitionResult = checkAndApplySubStageTransition(
+        state,
+        nextStats,
+        newLog,
+        language,
+        activeConfig
+      );
+      nextStats = transitionResult.stats;
+      nextRealm = transitionResult.realm;
+      nextSubStageIndex = transitionResult.subStageIndex;
+      newLog.length = 0;
+      newLog.push(...transitionResult.logs);
+      
+      const bottlenecks = getBottlenecks({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex }, activeConfig);
+      const isBottleneck = bottlenecks.some(b => b.realm_from === nextRealm && b.subStageIndex === nextSubStageIndex);
+      const localCap = getCultivationCap({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats }, activeConfig);
+      
+      if (nextStats.cultivation >= localCap && isBottleneck) {
+        nextStats.cultivation = localCap;
+        const breakthroughEvent = generateBreakthroughEvent(
+          { ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats },
+          nextStats,
+          activeConfig,
+          language
+        );
+        if (breakthroughEvent) {
+          return {
+            ...state,
+            age: nextAge,
+            month: nextMonth,
+            isTicking: false,
+            activeQuest: null,
+            currentEvent: breakthroughEvent,
+            monthlyLog: nextMonthlyLog,
+            worldState: state.worldState,
+            log: [...newLog],
+            stats: nextStats,
+            realm: nextRealm,
+            subStageIndex: nextSubStageIndex,
+            lastMessage: breakthroughEvent.description as LocalizedText
+          };
+        }
+      }
+    }
+
+
     return {
       ...state,
       age: nextAge,
@@ -4438,11 +5440,11 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       monthlyLog: nextMonthlyLog,
       activeQuest: nextActiveQuest,
       questsCompletedThisYear: nextQuestsCompletedThisYear,
-      // Still gain a tiny bit of cultivation
-      stats: {
-        ...nextStats,
-        cultivation: Math.min(cap, Math.round((nextStats.cultivation + 0.02 * getCultivationGainMultiplier(state, customConfig)) * 100) / 100)
-      }
+      stats: nextStats,
+      realm: nextRealm,
+      subStageIndex: nextSubStageIndex,
+      log: newLog,
+      lastMessage
     };
   }
 
@@ -4525,7 +5527,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
   }] : [];
 
   // Roll standard random event (only if NOT on a quest!)
-  const activeConfig = customConfig || combatConfig;
+  // activeConfig is already defined above
   const configDenom = activeConfig?.time_gear?.event_chance_denominator ?? 12;
   const rollEvent = Math.random() < (1 / configDenom);
 
@@ -4592,9 +5594,59 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       currentEvent: event,
       monthlyLog: nextMonthlyLog,
       worldState: nextWorldState,
-      log: [...state.log, ...worldNewsLog, ...voiceLogEntries, triggerLog],
-      lastMessage: triggerLog.message
+      log: [...newLog, ...worldNewsLog, ...voiceLogEntries, triggerLog],
+      lastMessage: triggerLog.message,
+      stats: nextStats,
+      realm: nextRealm,
+      subStageIndex: nextSubStageIndex
     };
+  }
+
+  let passiveGain = 0.02 * getCultivationGainMultiplier(state, customConfig);
+  nextStats.cultivation = Math.round((nextStats.cultivation + passiveGain) * 100) / 100;
+  
+  const transitionResult = checkAndApplySubStageTransition(
+    state,
+    nextStats,
+    newLog,
+    language,
+    activeConfig
+  );
+  nextStats = transitionResult.stats;
+  nextRealm = transitionResult.realm;
+  nextSubStageIndex = transitionResult.subStageIndex;
+  newLog.length = 0;
+  newLog.push(...transitionResult.logs);
+  
+  const bottlenecks = getBottlenecks({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex }, activeConfig);
+  const isBottleneck = bottlenecks.some(b => b.realm_from === nextRealm && b.subStageIndex === nextSubStageIndex);
+  const localCap = getCultivationCap({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats }, activeConfig);
+  
+  if (nextStats.cultivation >= localCap && isBottleneck) {
+    nextStats.cultivation = localCap;
+    const breakthroughEvent = generateBreakthroughEvent(
+      { ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats },
+      nextStats,
+      activeConfig,
+      language
+    );
+    if (breakthroughEvent) {
+      return {
+        ...state,
+        age: nextAge,
+        month: nextMonth,
+        isTicking: false,
+        activeQuest: null,
+        currentEvent: breakthroughEvent,
+        monthlyLog: nextMonthlyLog,
+        worldState: state.worldState,
+        log: [...newLog],
+        stats: nextStats,
+        realm: nextRealm,
+        subStageIndex: nextSubStageIndex,
+        lastMessage: breakthroughEvent.description as LocalizedText
+      };
+    }
   }
 
   return {
@@ -4603,11 +5655,11 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
     month: nextMonth,
     monthlyLog: nextMonthlyLog,
     worldState: nextWorldState,
-    log: [...state.log, ...worldNewsLog, ...voiceLogEntries],
-    stats: {
-      ...nextStats,
-      cultivation: Math.min(cap, Math.round((nextStats.cultivation + 0.02 * getCultivationGainMultiplier(state, customConfig)) * 100) / 100)
-    }
+    log: [...newLog, ...worldNewsLog, ...voiceLogEntries],
+    stats: nextStats,
+    realm: nextRealm,
+    subStageIndex: nextSubStageIndex,
+    lastMessage
   };
 };
 
@@ -4668,4 +5720,27 @@ export const changeLocation = (
   };
 
   return tickMonth(intermediateState, language, customConfig);
+};
+
+export const getItemPrice = (item: ItemInstance, worldState?: WorldState, isBuying: boolean = true): number => {
+  const basePrice = item.basePrice || 10;
+  let priceIndex = worldState?.city?.priceIndex || 100;
+  
+  // Các vật phẩm tà đạo, tạp đan thường có giá rẻ mạt nếu bán cho tiệm thường, 
+  // nhưng nếu ở chợ đen thì giá sẽ khác. Hiện tại ta nhân với priceIndex.
+  let finalPrice = (basePrice * priceIndex) / 100;
+
+  if (item.category === 'material') {
+    // Dược liệu bị ảnh hưởng bởi beastActivity (thú dữ phong tỏa núi)
+    if (worldState && worldState.mountain && worldState.mountain.beastActivity > 70) {
+      finalPrice *= 1.5;
+    }
+  }
+
+  // Khi người chơi mua, giá cao hơn. Khi bán, giá thấp hơn.
+  if (isBuying) {
+    return Math.max(1, Math.floor(finalPrice));
+  } else {
+    return Math.max(1, Math.floor(finalPrice * 0.5)); // Bán lại chỉ được 50% giá
+  }
 };

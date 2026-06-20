@@ -16,8 +16,6 @@
       "en": "Deep in the core of the Myriad Beast Mountain Range, you discover a thousand-year Blood Lotus. However, coiled tightly beside it is a slumbering Blood Python Beast King.",
       "vi": "Tiến sâu vào lõi Vạn Thú Sơn Mạch, bạn phát hiện một đóa Huyết Liên ngàn năm đang tỏa hương thơm ngát. Tuy nhiên, nằm khoanh tròn bên cạnh là một con Huyết Mãng Yêu Vương đang say ngủ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "mountain.beastActivity": "> 65"
@@ -48,7 +46,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "corpse_in_swamp",
@@ -66,8 +65,6 @@
       "en": "Deep in the Myriad Beast Mountain Range, you see a Foundation Establishment cultivator's corpse half-submerged in a swamp, with a bulging storage bag still glittering on their waist.",
       "vi": "Tại sâu trong Vạn Thú Sơn Mạch, bạn thấy thi thể một tu sĩ Trúc Cơ Kỳ chìm một nửa dưới đầm lầy, bên hông vẫn còn lấp lánh một Túi trữ vật căng phồng. Xung quanh tĩnh lặng một cách đáng sợ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 50"
@@ -100,7 +97,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "unfinished_go_game",
@@ -118,8 +116,6 @@
       "en": "Exploring a stalactite-filled cave, you find a white jade Go board. The unfinished game radiates profound Dao rhythm, likely left behind by two ascendant masters millennia ago.",
       "vi": "Khám phá một hang động bám đầy nhũ đá, bạn tìm thấy một bàn cờ vây làm từ bạch ngọc. Trận cờ đang đánh dở, mỗi quân cờ đều tỏa ra Đạo Vận vô cùng thâm thúy, dường như là tàn cuộc của hai vị đại năng phi thăng từ ngàn năm trước."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 50"
@@ -152,7 +148,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demon_king_metamorphosis",
@@ -170,8 +167,6 @@
       "en": "The sky darkens over the Myriad Beast Mountain Range. A Demon King is undergoing Heavenly Tribulation to take human form and is extremely weak.",
       "vi": "Bầu trời Vạn Thú Sơn Mạch đen kịt. Bạn nhìn thấy một con Yêu Vương đang chịu Thiên Kiếp để hóa hình người, cơ thể đang cực kỳ suy yếu."
     },
-    "minAge": 50,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "mountain.beastActivity": "> 85"
@@ -207,7 +202,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "secret_realm_opening",
@@ -225,8 +221,6 @@
       "en": "Heavenly Dao fluctuates violently. A spatial rift tears open in the mountains, revealing an ancient secret realm glowing with supreme spiritual energy.",
       "vi": "Thiên Đạo dị động dữ dội. Một vết nứt không gian xé rách mây trời, để lộ ra một bí cảnh viễn cổ đang tỏa ra luồng linh khí tối thượng."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 78"
@@ -260,7 +254,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heavenly_treasure_emerges",
@@ -278,8 +273,6 @@
       "en": "The mountain's resources are overflowing. A rare Snow Lotus has bloomed on a cliff, attracting numerous greedy rogue cultivators who are already fighting for it.",
       "vi": "Tài nguyên sơn mạch đang cực kỳ dồi dào. Trên vách núi nở rộ một đóa Tuyết Liên ngàn năm quý hiếm, thu hút vô số tán tu tham lam đang chém giết lẫn nhau để tranh giành."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 80"
@@ -315,7 +308,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "encounter_mu_wanqing",
@@ -333,8 +327,6 @@
       "en": "At the Ancient Ruins, you find Mu Wanqing, a famous inner sect beauty, surrounded by demonic beasts. She is crying weakly for help.",
       "vi": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh (đệ tử nội môn nổi danh xinh đẹp) đang bị yêu thú bao vây, khóc lóc cầu cứu vô cùng yếu đuối."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "mountain.danger": "> 40"
@@ -364,7 +356,8 @@
           "karma": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mountain_meditation",
@@ -382,8 +375,6 @@
       "en": "The towering peaks of the ancient mountain invite you to sit and ponder the Heavenly Dao.",
       "vi": "Những đỉnh núi cao chót vót của ngọn núi cổ xưa mời gọi bạn ngồi xuống và suy ngẫm về Thiên Đạo."
     },
-    "minAge": 6,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 40"
@@ -421,7 +412,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "event_hong_nhan_ma_dao_am_sat",
@@ -439,8 +431,6 @@
       "en": "While exploring the Myriad Beast Mountain Range, Blood Rose suddenly drops her disguise, revealing her demonic nature, and surrounds you with killing intent.",
       "vi": "Đang thám hiểm Vạn Thú Sơn Mạch, Huyết Mân Côi bất ngờ hiện nguyên hình tà tu bao vây bạn với sát tâm nồng đậm."
     },
-    "minAge": 20,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -469,7 +459,8 @@
           "money": -100
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancestral_memory",
@@ -487,8 +478,6 @@
       "en": "Deep within the ancient ruins, a mysterious resonance triggers a flood of ancient ancestral memories in your mind.",
       "vi": "Sâu trong cổ nhân di tích, một sự cộng hưởng bí ẩn khiến luồng ký ức của tổ tiên xa xưa ùa vào tâm trí bạn."
     },
-    "minAge": 1,
-    "maxAge": 100,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 30"
@@ -518,7 +507,8 @@
           "karma": -1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "grave_storm",
@@ -536,8 +526,6 @@
       "en": "A terrifying spectral storm filled with resentful spirits suddenly sweeps across the ancient burial grounds.",
       "vi": "Một cơn giông lốc kinh hoàng chứa đầy oán linh bất ngờ quét qua khu mộ cổ."
     },
-    "minAge": 25,
-    "maxAge": 60,
     "weight": 1,
     "conditions": {
       "demonicEnergy": "> 40"
@@ -566,7 +554,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "helping_hand_daoist",
@@ -584,8 +573,6 @@
       "en": "You encounter a severely injured righteous cultivator being cornered by a pack of demonic wolves. They beg you for help.",
       "vi": "Bạn bắt gặp một tu sĩ chính đạo đang bị thương nặng và bị dồn vào đường cùng bởi bầy ma lang. Họ khẩn khoản cầu cứu bạn."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.danger": "> 40"
@@ -618,7 +605,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ruined_alchemy_furnace",
@@ -636,8 +624,6 @@
       "en": "In a forgotten cave, you find a cracked alchemy furnace still radiating intense, unstable medicinal Qi after centuries.",
       "vi": "Trong một hang động bị lãng quên, bạn tìm thấy một lò luyện đan nứt nẻ vẫn tỏa ra dược khí nồng đậm nhưng bất ổn dù đã qua hàng thế kỷ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 50"
@@ -669,7 +655,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_array_trap",
@@ -687,8 +674,6 @@
       "en": "Heavenly Dao fluctuations have revealed the entrance to an Ancient Cave Dwelling, but it is protected by a deadly and complex killing array.",
       "vi": "Thiên Đạo dị động đã làm lộ ra lối vào của một Cổ Nhân Di Tích, nhưng nó được bảo vệ bởi một sát trận vô cùng phức tạp và chết chóc."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 40"
@@ -724,7 +709,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_altar_discovery",
@@ -742,8 +728,6 @@
       "en": "Deep in the misty mountains, you stumble upon a hidden Demonic Altar. Fresh blood covers the runes, and a dark artifact throbs with forbidden power.",
       "vi": "Sâu trong vùng núi sương mù, bạn tình cờ phát hiện một Tế Đàn Ma Đạo. Máu tươi bao phủ các rune, và một ma khí hắc ám đang đập thình thịch với sức mạnh cấm kỵ."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -778,7 +762,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "millennial_ginseng_guardian",
@@ -797,8 +782,6 @@
       "en": "Deep in the Beast Mountain Range, you discover a patch of rare spirit herbs, including a Millennial Ginseng. However, a fierce demonic wolf is aggressively guarding the area.",
       "vi": "Sâu trong Vạn Thú Sơn Mạch, bạn phát hiện một bãi linh thảo hiếm, bao gồm cả một cây Nhân Sâm Ngàn Năm. Tuy nhiên, một con ma lang hung dữ đang gầm gừ bảo vệ khu vực này."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 50"
@@ -834,7 +817,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ancient_dao_stele",
@@ -852,8 +836,6 @@
       "en": "Triggered by intense Heavenly Dao fluctuations, a massive stone stele rises from the earth, radiating ancient Dao runes that resonate with your soul.",
       "vi": "Được kích hoạt bởi sự dao động kịch liệt của Thiên Đạo, một tấm bia đá khổng lồ trồi lên từ lòng đất, tỏa ra những cổ tự Đạo vận cộng hưởng với linh hồn bạn."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 60"
@@ -887,7 +869,8 @@
           "money": 150
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "beast_king_lair",
@@ -905,8 +888,6 @@
       "en": "With beast activity at a peak, you stumble upon the empty lair of a Beast King while it's out leading the beast tide. Treasures are scattered everywhere.",
       "vi": "Khi yêu thú bạo động lên đỉnh điểm, bạn vô tình lạc vào sào huyệt trống rỗng của một Yêu Vương khi nó đang ra ngoài dẫn dắt thú triều. Khắp nơi vương vãi kỳ trân dị bảo."
     },
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 80"
@@ -943,7 +924,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "miasma_mountain_trail",
@@ -961,8 +943,6 @@
       "en": "Rising demonic energy has created a thick, toxic miasma on the mountain trail. You hear the distorted growls of mutated beasts within the fog.",
       "vi": "Ma khí dâng cao tạo ra một lớp chướng khí độc dày đặc trên đường núi. Bạn nghe thấy tiếng gầm rống biến dị của yêu thú bên trong màn sương."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 60"
@@ -994,7 +974,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "spiritual_spring_epiphany",
@@ -1012,8 +993,6 @@
       "en": "High spiritual Qi in the area has manifested a hidden spiritual spring. The water is pure and radiates profound Dao energy.",
       "vi": "Linh khí thiên địa nồng đậm đã làm lộ ra một suối linh tuyền ẩn giấu. Dòng nước tinh khiết và tỏa ra Đạo vận thâm thúy."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 75"
@@ -1045,7 +1024,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ghost_battlefield_scavenging",
@@ -1063,8 +1043,6 @@
       "en": "The mountain is littered with remains from the ongoing sect war. Ghostly wails echo as you search the area for abandoned spiritual tools and weapons.",
       "vi": "Vùng núi đầy rẫy hài cốt từ cuộc chiến tông môn đang diễn ra. Tiếng oán linh gào thét vang vọng khi bạn tìm kiếm các pháp khí và vũ khí bị bỏ lại."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 60"
@@ -1097,7 +1075,8 @@
           "daoMind": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_battlefield_vision",
@@ -1115,8 +1094,6 @@
       "en": "High Heavenly Dao fluctuations trigger a temporal rift. You see a vision of an ancient battle between Immortals and Demons, revealing profound combat techniques.",
       "vi": "Thiên Đạo dị động kịch liệt kích phát một vết nứt thời gian. Bạn nhìn thấy ảo ảnh về cuộc đại chiến cổ xưa giữa Tiên và Ma, hé lộ những chiến đấu kỹ pháp thâm thúy."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 70"
@@ -1148,7 +1125,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "spirit_beast_egg_discovery",
@@ -1166,8 +1144,6 @@
       "en": "Mountain resources are abundant. You find a glowing Spirit Beast egg hidden in a crevice, but the parent beast is nearby, hunting for food.",
       "vi": "Tài nguyên sơn mạch dồi dào. Bạn tìm thấy một quả trứng linh thú phát sáng ẩn trong kẽ đá, nhưng thú cha mẹ đang ở gần đó săn mồi."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 75"
@@ -1200,7 +1176,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "night_of_the_blood_moon",
@@ -1218,8 +1195,6 @@
       "en": "The sky turns a sickly crimson. Extreme demonic energy has driven the mountain beasts into a murderous frenzy, and the veil between worlds is thinning,.",
       "vi": "Bầu trời chuyển sang màu đỏ thẫm bệnh hoạn. Ma khí cực đoan đã đẩy lũ yêu thú vào cơn cuồng sát, và bức màn giữa các thế giới đang dần mỏng đi,."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 70",
@@ -1254,7 +1229,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "beast_mountain_landslide",
@@ -1272,8 +1248,6 @@
       "en": "High danger levels in the mountains have caused a massive landslide. Ancient ores are now exposed, but the area is unstable and crawling with agitated beasts.",
       "vi": "Độ nguy hiểm sơn mạch tăng cao gây ra một vụ sạt lở lớn. Những quặng sắt cổ đại lộ ra, nhưng khu vực này vô cùng bất ổn và đầy yêu thú đang bị kích động."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.danger": "> 60"
@@ -1307,7 +1281,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "beast_tide_vanguard",
@@ -1325,8 +1300,6 @@
       "en": "Beast activity has exploded! A massive tide of monsters is rushing down the mountain. You are caught directly in the path of the beast vanguard.",
       "vi": "Yêu thú bạo động bùng nổ! Một đợt thú triều khổng lồ đang tràn xuống núi. Bạn bị kẹt ngay trên đường tiến công của đội tiên phong yêu thú."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 80"
@@ -1363,7 +1336,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "herbalist_hidden_garden",
@@ -1381,8 +1355,6 @@
       "en": "With high spiritual Qi in the mountains, a hidden array has failed, revealing a long-forgotten herb garden once owned by a legendary herbalist.",
       "vi": "Khi linh khí sơn mạch nồng đậm, một trận pháp ẩn giấu đã sụp đổ, để lộ ra dược viên bị lãng quên từ lâu của một vị đại năng luyện đan sư."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 75",
@@ -1417,7 +1389,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ancient_alchemy_relic",
@@ -1435,8 +1408,6 @@
       "en": "High mountain resources have revealed a hidden cave in the Ancient Ruins. Inside, a furnace still burns with a faint, divine flame.",
       "vi": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn trong Cổ Nhân Di Tích. Bên trong, một lò luyện đan vẫn còn cháy ngọn lửa tiên hỏa mờ nhạt."
     },
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 75"
@@ -1472,7 +1443,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_beast_seal_weakening",
@@ -1490,8 +1462,6 @@
       "en": "High demonic energy and beast activity have weakened an ancient seal in the mountains. A terrifying aura from the era of the Ancient War is leaking out.",
       "vi": "Ma khí và hoạt động yêu thú dâng cao đã làm suy yếu một phong ấn cổ xưa trong núi. Một luồng khí tức kinh khủng từ thời Đại Chiến Cổ Đại đang rò rỉ ra ngoài."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 80",
@@ -1530,7 +1500,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_weapon_awakening",
@@ -1548,8 +1519,6 @@
       "en": "Deep within the Ancient Ruins, a rusted weapon begins to resonate with the high Dao fluctuations, radiating a faint but sharp sword intent.",
       "vi": "Sâu trong Cổ Nhân Di Tích, một món binh khí rỉ sét bắt đầu cộng hưởng với Thiên Đạo dị động, tỏa ra một luồng kiếm ý mờ nhạt nhưng sắc bén."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 65"
@@ -1585,7 +1554,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "corrupted_spirit_spring",
@@ -1603,8 +1573,6 @@
       "en": "A spiritual spring in the mountains has been corrupted by the rising demonic energy. The water glows with a sickly purple light, but its energy is still incredibly potent.",
       "vi": "Một con suối linh tuyền trên núi đã bị ô nhiễm bởi ma khí đang dâng cao. Dòng nước tỏa ra ánh tím bệnh hoạn, nhưng năng lượng bên trong vẫn cực kỳ mạnh mẽ."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 60",
@@ -1637,7 +1605,8 @@
           "luck": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "hibernating_beast_king",
@@ -1655,8 +1624,6 @@
       "en": "While exploring, you find the lair of a hibernating Beast King. Rare 'Linh Thảo' and 'Linh Quặng' are piled around its massive, slumbering form.",
       "vi": "Trong lúc thám hiểm, bạn phát hiện sào huyệt của một Yêu Vương đang ngủ đông. 'Linh Thảo' và 'Linh Quặng' hiếm tích tụ xung quanh thân hình khổng lồ của nó."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "mountain.beastActivity": "> 70",
@@ -1694,7 +1661,8 @@
           "reputation": 15
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_sword_intent_ruins",
@@ -1712,8 +1680,6 @@
       "en": "At the Ancient Ruins, high Dao fluctuations have awakened the lingering sword intent of a long-dead master. The air itself feels sharp and lethal.",
       "vi": "Tại Cổ Nhân Di Tích, Thiên Đạo dị động [6] đã đánh thức kiếm ý còn sót lại của một vị đại năng cổ đại. Không khí xung quanh trở nên sắc bén và chết chóc."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 70"
@@ -1750,7 +1716,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "cursed_herb_patch",
@@ -1768,8 +1735,6 @@
       "en": "Rising demonic energy has corrupted a patch of rare herbs. The spirit herbs are glowing with a dark, pulsating light, offering immense power at the cost of your soul's purity.",
       "vi": "Ma khí dâng cao đã làm ô uế một bãi linh thảo hiếm. Những cây linh thảo tỏa ra ánh sáng hắc ám, hứa hẹn sức mạnh to lớn nhưng phải trả giá bằng sự thuần khiết của linh hồn."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 65",
@@ -1805,7 +1770,8 @@
           "health": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_ruins_puzzle_box",
@@ -1823,8 +1789,6 @@
       "en": "While exploring the Ancient Ruins, you find a metallic box sealed with a complex array. High Dao fluctuations have weakened its lock.",
       "vi": "Trong lúc thám hiểm Cổ Nhân Di Tích, bạn tìm thấy một hộp kim loại bị niêm phong bởi trận pháp phức tạp. Thiên Đạo dị động đã làm suy yếu khóa ấn của nó [5, 6]."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 60"
@@ -1861,7 +1825,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "blood_moon_beast_tide",
@@ -1879,8 +1844,6 @@
       "en": "Beast activity has reached critical levels! Driven by the blood moon, a tide of monsters is rushing towards the mortal settlements.",
       "vi": "Hoạt động yêu thú đã đạt mức cực đoan! Dưới sự kích động của huyết nguyệt, một đợt thú triều đang tràn về phía khu dân cư phàm nhân [10, 11]."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 85"
@@ -1918,7 +1881,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_furnace_residual_fire",
@@ -1936,8 +1900,6 @@
       "en": "High spiritual Qi has re-ignited a fragment of divine fire in an abandoned alchemy furnace within the Ancient Ruins. The heat is melting the surrounding stone, revealing hidden ores.",
       "vi": "Linh khí nồng đậm đã thắp lại một ngọn thần hỏa tàn dư trong lò luyện đan bỏ hoang tại Cổ Nhân Di Tích. Sức nóng đang nung chảy đá vây quanh, lộ ra những khối linh quặng ẩn giấu."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 70",
@@ -1972,7 +1934,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_war_convoy_ambush",
@@ -1990,8 +1953,6 @@
       "en": "The war level is high. You are part of an escort for a sect resource convoy that has been ambushed by elite disciples of the Ten Thousand Immortals Sect.",
       "vi": "Chiến sự đang ở mức cao. Bạn đang hộ tống đoàn xe tài nguyên của tông môn thì bị các đệ tử tinh nhuệ của Vạn Tiên Giáo phục kích."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 70"
@@ -2031,7 +1992,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ma_huyet_quang_mach",
@@ -2050,8 +2012,6 @@
       "en": "High demonic energy has seeped into a spirit ore vein in the mountains. The ores are pulsing with a dark, blood-red light, offering high power but risking severe corruption [cite: 54, 56].",
       "vi": "Ma khí dâng cao đã thấm vào một mạch linh quặng trên núi. Những khối quặng đang đập thình thịch với ánh sáng đỏ sẫm, hứa hẹn sức mạnh lớn nhưng đi kèm rủi ro ô uế cực cao [cite: 54, 56]."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 65",
@@ -2090,7 +2050,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "lost_huyen_thiet_vein",
@@ -2108,8 +2069,6 @@
       "en": "Abundant mountain resources have revealed a hidden cave containing a pure vein of 'Huyền Thiết'—the supreme material for crafting Earth-grade weapons [cite: 19, 54].",
       "vi": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn chứa mạch quặng 'Huyền Thiết' tinh khiết—nguyên liệu tối thượng để đúc vũ khí Địa Cấp [cite: 19, 54]."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 80"
@@ -2143,6 +2102,7 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   }
 ]

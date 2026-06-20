@@ -16,8 +16,6 @@
       "en": "At the decennial auction in Qingyang City, you spent all your Spirit Stones on a Foundation Establishment Pill. As you step out, Young Master Wang blocks your path, tosses 10 Spirit Stones at you, and demands the pill.",
       "vi": "Tại buổi đấu giá thập niên của Thanh Dương Thành, bạn vừa dốc cạn Linh thạch để mua được một viên Trúc Cơ Đan. Khi bước ra khỏi cửa, Vương Thiếu Gia của gia tộc tu tiên bản địa chặn đường, ném cho bạn 10 Linh thạch và yêu cầu giao nộp viên đan dược."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 70"
@@ -48,7 +46,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "slum_black_market",
@@ -67,8 +66,6 @@
       "en": "Sneaking into the city's slums, you find a hidden black market. A masked merchant offers a 'Supreme Foundation Establishment Pill' for half the market price, but it reeks of blood.",
       "vi": "Len lỏi vào khu ổ chuột của thành thị, bạn tìm thấy một phiên chợ đen chuyên tiêu thụ hàng hóa không rõ nguồn gốc. Một tên thương nhân che mặt chào bán 'Trúc Cơ Đan Cực Phẩm' với giá chỉ bằng một nửa thị trường, nhưng đan dược tỏa ra mùi tanh nồng."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -103,7 +100,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_plague",
@@ -121,8 +119,6 @@
       "en": "Passing through a mortal village at the foot of the mountain, you discover a strange plague spreading due to leaking demonic energy. Hundreds are crying out in agony.",
       "vi": "Đi qua một ngôi làng phàm nhân dưới chân núi, bạn phát hiện nơi này đang lây lan một loại ôn dịch kỳ lạ do ma khí rò rỉ. Hàng trăm người đang kêu la thảm thiết, thây chất thành đống."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -153,7 +149,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "rogue_cultivator_scam",
@@ -170,8 +167,6 @@
       "en": "Wandering the market, a mysterious ragged old man pulls you aside, offering to sell the 'Nine Turns Divine Art' for only 50 Spirit Stones.",
       "vi": "Đang dạo quanh phường thị, một lão giả thần bí rách rưới kéo bạn lại, gạ bán 'Cửu Chuyển Thần Công' với giá chỉ 50 Linh thạch."
     },
-    "minAge": 12,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 50"
@@ -203,7 +198,8 @@
           "karma": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "beast_tide_mortals",
@@ -221,8 +217,6 @@
       "en": "Violent beasts swarm down the mountain, slaughtering a mortal village. You happen to be passing by.",
       "vi": "Yêu thú bạo động tràn xuống chân núi, tàn sát một ngôi làng phàm nhân. Bạn vừa vặn đi ngang qua."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 65"
@@ -253,7 +247,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_invasion",
@@ -271,8 +266,6 @@
       "en": "The sky turns blood red as dense demonic energy suffocates the area. A horde of demonic cultivators breaches the defenses, slaughtering everyone in sight.",
       "vi": "Bầu trời nhuốm màu máu khi ma khí dày đặc bao trùm. Một đội quân tà tu đã phá vỡ trận pháp phòng ngự, tàn sát tất cả những ai chúng nhìn thấy."
     },
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 80"
@@ -306,7 +299,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "grand_decennial_auction",
@@ -324,8 +318,6 @@
       "en": "The city is highly prosperous, hosting a grand auction. Rare treasures and supreme martial fragments are displayed, but the prices are astronomical.",
       "vi": "Thành thị đang cực kỳ phồn hoa, tổ chức một buổi đại đấu giá. Các dị bảo và tàn quyển công pháp tối thượng được trưng bày, nhưng giá cả ở mức trên trời."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "city.prosperity": "> 85"
@@ -359,7 +351,8 @@
           "karma": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "market_crash_scavenging",
@@ -377,8 +370,6 @@
       "en": "Due to a surplus of goods, the market has crashed. Desperate merchants are dumping raw spirit herbs on the streets at dirt-cheap prices to cut losses.",
       "vi": "Thị trường dư thừa khiến giá cả sụp đổ. Các thương nhân đang tuyệt vọng bán tháo linh thảo thô ngay trên phố với giá rẻ như cho để cắt lỗ."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "< 75"
@@ -413,7 +404,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "event_thieu_gia_gay_su",
@@ -432,8 +424,6 @@
       "en": "At the grand auction, Young Master Wang uses his overwhelming wealth to maliciously outbid and humiliate you over a supreme treasure.",
       "vi": "Tại đấu giá hội, Vương Thiếu Gia dùng tiền đè người, ác ý nâng giá để tranh đoạt bảo vật của bạn."
     },
-    "minAge": 15,
-    "maxAge": 40,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 60"
@@ -462,7 +452,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "soul_festival",
@@ -480,8 +471,6 @@
       "en": "You stumble upon a rare Soul Festival in the city where spirits and mortals gather, overflowing with mystical energies.",
       "vi": "Bạn tình cờ tham gia một Lễ Hội Hồn Linh hiếm gặp trong thành, nơi tinh linh và phàm nhân tụ tập với nguồn năng lượng huyền bí."
     },
-    "minAge": 12,
-    "maxAge": 22,
     "weight": 1,
     "conditions": {
       "city.prosperity": "> 50"
@@ -514,7 +503,8 @@
           "cultivation": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "herb_price_surge",
@@ -532,8 +522,6 @@
       "en": "Due to a severe shortage, the price of spirit herbs has skyrocketed! The market is in a frenzy, offering a perfect opportunity for hoarding and speculation.",
       "vi": "Do khan hiếm trầm trọng, giá linh dược leo thang chóng mặt! Thị trường đang hỗn loạn, tạo ra cơ hội hoàn hảo để đầu cơ tích trữ."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 140"
@@ -566,7 +554,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_town_activity",
@@ -585,8 +574,6 @@
       "en": "Demonic cultivators have appeared in the town's outskirts, significantly reducing security. Cultivators are warned to stay away.",
       "vi": "Tà tu đã xuất hiện tại vùng ven thị trấn, làm suy giảm an ninh nghiêm trọng. Các tu sĩ được cảnh báo nên tránh đi xa."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 60"
@@ -617,7 +604,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "illicit_demonic_caravan",
@@ -635,8 +623,6 @@
       "en": "Due to poor city security and rising demonic infiltration, a suspicious merchant caravan sets up shop in an alley, secretly selling forbidden Demonic path materials.",
       "vi": "Do an ninh kém và ma đạo thâm nhập, một đoàn thương nhân khả nghi lập sạp trong hẻm tối, lén lút bán các vật liệu hiến tế cấm kỵ của Ma đạo."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 40",
@@ -670,7 +656,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_rebellion",
@@ -688,8 +675,6 @@
       "en": "City morale has hit rock bottom. Starving mortals are violently rebelling against the corrupt city lord who serves the cultivation sects.",
       "vi": "Dân tâm thành thị đã chạm đáy. Những phàm nhân chết đói đang bạo loạn chống lại tên thành chủ tham nhũng làm tay sai cho tu chân giả."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 30"
@@ -719,7 +704,8 @@
           "health": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupted_pill_vendor",
@@ -738,8 +724,6 @@
       "en": "Taking advantage of the high demonic infiltration in the city, a hooded vendor in a dark alley offers you a Foundation Establishment Pill. It's cheap, but it reeks of heavy pill-toxins and dark arts.",
       "vi": "Lợi dụng sự thâm nhập của ma đạo trong thành, một kẻ trùm đầu trong hẻm tối gạ bán cho bạn một viên Trúc Cơ Đan. Giá rất rẻ, nhưng nó nồng nặc mùi đan độc và tà thuật."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 30"
@@ -772,7 +756,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_blood_raid",
@@ -790,8 +775,6 @@
       "en": "Demonic activity is peaking. A group of masked demonic cultivators sets up a blood array in the city outskirts, attempting to refine passing mortals into pills.",
       "vi": "Hoạt động tà tu đang ở đỉnh điểm. Một nhóm ma tu bịt mặt lập huyết trận ở vùng ven thành thị, cố gắng luyện hóa phàm nhân qua đường thành đan dược."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 70"
@@ -825,7 +808,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "underground_black_auction",
@@ -843,8 +827,6 @@
       "en": "City security is lax. You receive a secret invitation to an underground black auction selling stolen sect artifacts and forbidden pills.",
       "vi": "An ninh thành thị lỏng lẻo. Bạn nhận được thư mời bí mật tham gia một buổi đấu giá ngầm, nơi bày bán các pháp bảo tông môn bị ăn cắp và đan dược cấm kỵ."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 50"
@@ -878,7 +860,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "counterfeit_manual_scam",
@@ -896,8 +879,6 @@
       "en": "With city security failing, scammers are rampant. A merchant tries to sell you a 'Heavenly Grade' manual fragment for a suspiciously low price.",
       "vi": "An ninh thành thị lỏng lẻo, kẻ lừa đảo lộng hành. Một thương nhân gạ bán cho bạn mảnh tàn quyển 'Thiên Cấp' với giá rẻ bất ngờ."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -930,7 +911,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "herb_monopoly_challenge",
@@ -948,8 +930,6 @@
       "en": "With the price index skyrocketing, a local merchant guild has monopolized all spirit herbs, driving prices even higher. A group of rogue cultivators plans to raid their warehouse.",
       "vi": "Với chỉ số giá cả leo thang, một thương hội địa phương đã độc chiếm toàn bộ linh dược, đẩy giá lên cao hơn nữa. Một nhóm tán tu đang lên kế hoạch đột kích kho hàng của chúng."
     },
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 160"
@@ -983,7 +963,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_merchant_trap",
@@ -1001,8 +982,6 @@
       "en": "Demonic activity is high. A merchant offers you a 'Breakthrough Pill' at an impossibly low price, but you notice a faint, dark aura emanating from him.",
       "vi": "Hoạt động tà tu dâng cao. Một thương nhân gạ bán cho bạn 'Phá Cảnh Đan' với giá rẻ không tưởng, nhưng bạn nhận thấy một luồng ma khí mờ nhạt tỏa ra từ hắn."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 60",
@@ -1035,7 +1014,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "corrupt_speculation_frenzy",
@@ -1053,8 +1033,6 @@
       "en": "Due to skyrocketing spirit herb prices, a group of corrupt merchants is hoarding life-saving pills to sell at ten times the cost. The city's morale is plummeting as phantoms of hunger haunt the streets,.",
       "vi": "Do giá linh dược leo thang, một nhóm thương nhân hủ bại đang đầu cơ tích trữ đan dược cứu mạng để bán với giá gấp mười lần. Dân tâm thành thị đang chạm đáy khi bóng ma đói khát ám ảnh khắp phố phường,."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 150",
@@ -1087,7 +1065,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "the_shadow_ritual",
@@ -1105,8 +1084,6 @@
       "en": "Demonic activity has reached a fever pitch. In the city's slums, you find a ritual using phàm nhân (mortal) children to birth a new Demonic Seed,.",
       "vi": "Hoạt động ma đạo đã đạt đến đỉnh điểm. Tại khu ổ chuột của thành phố, bạn phát hiện một nghi lễ dùng trẻ em phàm nhân để hạ sinh một Ma Chủng mới,."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 80",
@@ -1142,7 +1119,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "mysterious_wandering_merchant",
@@ -1160,8 +1138,6 @@
       "en": "The city's price index is low. A wandering merchant from a distant land offers rare spiritual materials at prices that seem too good to be true.",
       "vi": "Chỉ số giá cả của thành phố đang thấp. Một thương nhân lang thang từ vùng đất xa xôi chào mời các linh vật hiếm với mức giá hời đến khó tin."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "< 80"
@@ -1197,7 +1173,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_guard_extortion",
@@ -1215,8 +1192,6 @@
       "en": "City security is low. A corrupt captain of the guard accuses you of smuggling forbidden demonic artifacts and demands a 'settlement' fee.",
       "vi": "An ninh thành thị lỏng lẻo. Một đội trưởng vệ binh hủ bại cáo buộc bạn buôn lậu ma cụ cấm và đòi một khoản tiền 'dàn xếp'."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -1247,7 +1222,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "starving_mob_riot",
@@ -1265,8 +1241,6 @@
       "en": "City morale has reached a critical low. A desperate mob of starving mortals is blocking your path, demanding spirit stones to buy food from the price-gouging merchants.",
       "vi": "Dân tâm thành thị chạm mức báo động. Một đám đông phàm nhân đói khát đang chặn đường bạn, đòi linh thạch để mua lương thực từ những thương nhân đang đầu cơ tăng giá."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 35"
@@ -1297,7 +1271,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "city_guard_mutiny",
@@ -1315,8 +1290,6 @@
       "en": "City security and morale have collapsed. The guards, unpaid for months, have turned into looters, terrorizing the merchants they once protected.",
       "vi": "An ninh và dân tâm thành thị đã sụp đổ. Đội vệ binh không được trả lương trong nhiều tháng đã biến thành những kẻ cướp bóc, khủng bố chính những thương nhân mà chúng từng bảo vệ."
     },
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.security": "< 30",
@@ -1349,7 +1322,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_hunger_riot",
@@ -1367,8 +1341,6 @@
       "en": "City morale has collapsed due to price-gouging. Starving mortals are attacking cultivator convoys for any scraps of spirit energy.",
       "vi": "Dân tâm thành thị sụp đổ do tình trạng đầu cơ tăng giá. Những phàm nhân đói khát đang tấn công các đoàn xe của tu sĩ để cướp bóc linh khí vụn vặt."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 25"
@@ -1400,7 +1372,8 @@
           "reputation": -10
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mystical_lantern_festival",
@@ -1418,8 +1391,6 @@
       "en": "The city is highly prosperous and spiritual Qi is dense. A grand festival is held where lanterns infused with soul power fill the sky, creating a resonance with the Heavenly Dao.",
       "vi": "Thành thị đang cực kỳ phồn hoa và linh khí nồng đậm. Một lễ hội lớn được tổ chức, nơi hàng ngàn hoa đăng chứa đựng hồn lực lấp đầy bầu trời, tạo nên sự cộng hưởng với Thiên Đạo."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 75",
@@ -1455,7 +1426,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "black_market_smuggling",
@@ -1473,8 +1445,6 @@
       "en": "The price index is skyrocketing and city security is low. A hidden network of smugglers is moving forbidden spirit herbs and demonic blood stones through the city sewers.",
       "vi": "Chỉ số giá cả leo thang và an ninh thành thị lỏng lẻo. Một mạng lưới buôn lậu đang vận chuyển linh thảo cấm và huyết thạch ma đạo thông qua hệ thống cống ngầm."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 180",
@@ -1513,7 +1483,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "black_market_hoarding",
@@ -1531,8 +1502,6 @@
       "en": "With the city's price index at an all-time high, a shadowy figure offers you a chance to join a scheme to hoard essential spiritual ores and manipulate the market.",
       "vi": "Với chỉ số giá cả đang ở mức cao kỷ lục, một nhân vật thần bí đề nghị bạn tham gia vào kế hoạch đầu cơ tích trữ linh quặng để thao túng thị trường."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 180"
@@ -1564,7 +1533,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ghost_market_whispers",
@@ -1582,8 +1552,6 @@
       "en": "City security is low. You find a hidden entrance to the Ghost Market, where rogue cultivators trade forbidden demonic artifacts. A masked dealer offers you a piece of 'Huyền Thiết' for a suspicious price.",
       "vi": "An ninh thành thị lỏng lẻo. Bạn tìm thấy lối vào bí mật của Chợ Ma, nơi các tán tu trao đổi ma cụ cấm. Một kẻ đeo mặt nạ gạ bán cho bạn một khối 'Huyền Thiết' với giá nghi vấn."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40",
@@ -1622,7 +1590,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_plague_curse",
@@ -1640,8 +1609,6 @@
       "en": "A mysterious plague, suspected to be a demonic curse, is ravaging the mortal population. The city's morale is at rock bottom as phàm nhân die by the hundreds.",
       "vi": "Một trận dịch bệnh bí ẩn, nghi do ma đạo nguyền rủa, đang tàn phá dân cư phàm nhân. Dân tâm chạm đáy khi hàng trăm người chết mỗi ngày."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "city.morale": "< 30",
@@ -1674,7 +1641,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "city_embargo_crisis",
@@ -1692,8 +1660,6 @@
       "en": "The city is under a resource embargo due to high demonic activity. Prices have reached extreme levels, and the black market is the only way to survive.",
       "vi": "Thành phố đang bị cấm vận tài nguyên do hoạt động tà tu dâng cao [7, 8]. Giá cả đã chạm mức cực đoan, và chợ đen là con đường duy nhất để sinh tồn."
     },
-    "minAge": 18,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 220",
@@ -1726,7 +1692,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "city_spirit_tide",
@@ -1744,8 +1711,6 @@
       "en": "Due to a massive surge in global spiritual Qi, the city's spiritual wells have overflowed. A literal tide of energy washes through the streets, momentarily turning the marketplace into a supreme cultivation ground.",
       "vi": "Do linh khí thiên địa đột ngột tăng vọt, các linh tuyền trong thành bùng nổ. Một đợt linh triều tràn qua các con phố, biến khu chợ tạm thời trở thành một thánh địa tu luyện thượng hạng."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 85",
@@ -1779,7 +1744,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_market_raid",
@@ -1797,8 +1763,6 @@
       "en": "City security is high and demonic activity is rising. The City Lord calls for volunteers to raid a secret demonic market discovered beneath the city's slums.",
       "vi": "An ninh thành thị đang cao trong khi hoạt động tà tu dâng trào. Thành Chủ kêu gọi tình nguyện viên càn quét một khu chợ ma đạo bí mật vừa bị phát hiện dưới khu ổ chuột."
     },
-    "minAge": 25,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "> 70",
@@ -1835,7 +1799,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "huyen_thiet_black_market",
@@ -1853,8 +1818,6 @@
       "en": "City security is low and the price index is rising. A rogue cultivator is secretly selling 'Huyền Thiết' stolen from a sect convoy, useful for crafting superior weapons.",
       "vi": "An ninh thành thị thấp và chỉ số giá cả đang tăng. Một tán tu đang lén lút bán 'Huyền Thiết' đánh cắp từ đoàn xe tông môn, vật liệu cực tốt để đúc thần binh [3, 4]."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40",
@@ -1889,7 +1852,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_city_lord_tax",
@@ -1907,8 +1871,6 @@
       "en": "City morale and security are low. The corrupt City Lord has imposed a 'Spiritual Protection Tax' on all visiting cultivators to fund his private army.",
       "vi": "Dân tâm và an ninh thành thị đang thấp. Tên Thành Chủ hủ bại áp đặt 'Thuế Bảo Hộ Linh Khí' lên tất cả tu sĩ vãng lai để nuôi tư quân."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 40",
@@ -1941,7 +1903,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "city_tax_riot_interaction",
@@ -1959,8 +1922,6 @@
       "en": "With skyrocketing prices and low morale, starving mortals are blocking your path, accusing cultivators of hoarding the world's lifeblood [cite: 53, 60].",
       "vi": "Với giá cả leo thang và dân tâm sụt giảm, những phàm nhân đói khát đang chặn đường bạn, cáo buộc tu sĩ đang đầu cơ tích trữ mạch sống của thế giới [cite: 53, 60]."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 30",
@@ -1993,7 +1954,8 @@
           "city.security": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "grand_decade_auction",
@@ -2011,8 +1973,6 @@
       "en": "With city prosperity at its peak, the legendary Decade Auction has opened. Rare treasures from across the continent, including breakthrough pills and supreme manuals, are being showcased [cite: 60, 18].",
       "vi": "Với phồn vinh thành thị đạt đỉnh, Đại Đấu Giá Thập Niên huyền thoại đã khai mở. Những kỳ trân dị bảo từ khắp đại lục, bao gồm đan dược phá cảnh và bí tịch tối cao, đang được trưng bày [cite: 60, 18]."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 85"
@@ -2045,7 +2005,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "event_thien_kieu_tra_xanh_gap_go",
@@ -2057,8 +2018,6 @@
       "en": "At the Ancient Cave, you see Moc Uyen Thanh surrounded by demonic beasts, looking weak and calling for help.",
       "vi": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh đang bị yêu thú bao vây, dáng vẻ yếu đuối cầu cứu."
     },
-    "minAge": 15,
-    "maxAge": 50,
     "weight": 2,
     "tags": [
       "npc_thien_kieu_tra_xanh",
@@ -2098,7 +2057,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "save_demonic_cultivator",
@@ -2116,8 +2076,6 @@
       "en": "In the pouring rain, you find a woman in black robes collapsed by the road, covered in blood. Her aura is cold and reeks of demonic energy. Righteous cultivators are searching nearby.",
       "vi": "Trời mưa tầm tã, bạn phát hiện một nữ tử mặc áo bào đen bê bết máu ngã gục bên đường. Khí tức của nàng ta lạnh lẽo và sặc mùi ma khí. Đám tu sĩ chính đạo đang lùng sục gần đó."
     },
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 1,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -2147,7 +2105,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "abyssal_whispers",
@@ -2165,8 +2124,6 @@
       "en": "While cultivating in seclusion in a remote cave, you hear murmurs echoing from an underground spring, promising unmatched power and infinite lifespan if you abandon your Dao Mind.",
       "vi": "Đang bế quan tĩnh tu tại một hang động hẻo lánh, bạn bỗng nghe thấy những tiếng nỉ non thì thầm vọng lên từ mạch nước ngầm, hứa hẹn ban cho bạn sức mạnh vô song và tuổi thọ vô tận nếu bạn chịu buông bỏ Đạo Tâm."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -2200,7 +2157,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "black_roadhouse_inn",
@@ -2218,8 +2176,6 @@
       "en": "In the dark wilderness, you stop at a dimly lit inn. The sly old innkeeper serves a bowl of braised meat that has a strange but incredibly appetizing spiritual aura.",
       "vi": "Trời tối mịt giữa hoang dã, bạn tấp vào một khách điếm leo lét ánh đèn. Chưởng quỹ là một bà lão xảo quyệt mỉm cười bưng lên một bát thịt kho có mùi linh khí rất kỳ lạ nhưng vô cùng hấp dẫn."
     },
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.security": "< 50"
@@ -2249,7 +2205,8 @@
           "money": -50
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "blood_sacrifice_array",
@@ -2267,8 +2224,6 @@
       "en": "While patrolling, you discover a wicked array absorbing mortal blood to condense a Blood Pill.",
       "vi": "Trong lúc đi tuần, bạn phát hiện một trận pháp tà ác đang hút máu của phàm nhân để ngưng tụ Huyết Đan."
     },
-    "minAge": 30,
-    "maxAge": 200,
     "weight": 1,
     "conditions": {
       "demonicEnergy": "> 70"
@@ -2301,7 +2256,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "qi_deviation_crisis",
@@ -2319,8 +2275,6 @@
       "en": "Rising demonic energy triggers your inner demons during meditation. The spiritual Qi in your meridians turns chaotic, threatening to explode.",
       "vi": "Ma khí dâng cao kích phát tâm ma trong lúc bạn tĩnh tu. Linh khí trong kinh mạch trở nên bạo loạn, đe dọa nổ tung."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 30"
@@ -2350,7 +2304,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_qi_overload",
@@ -2368,8 +2323,6 @@
       "en": "The world's demonic energy is so dense it begins to seep into your meridians during regular rest, causing a violent struggle between your spiritual Qi and the dark aura.",
       "vi": "Ma khí thiên địa quá dày đặc bắt đầu thấm vào kinh mạch của bạn ngay cả khi đang nghỉ ngơi, gây ra một cuộc xung đột dữ dội giữa linh khí và hắc ám khí tức."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 75"
@@ -2400,7 +2353,8 @@
           "cultivation": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "shadow_demonic_ambush",
@@ -2418,8 +2372,6 @@
       "en": "High demonic energy has emboldened dark cultivators. A skilled demonic assassin ambushes you from the shadows, seeking to steal your cultivation base.",
       "vi": "Ma khí dâng cao khiến các tà tu bạo dạn hơn. Một sát thủ ma đạo lão luyện phục kích bạn từ bóng tối, âm mưu cướp đoạt tu vi của bạn."
     },
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 55"
@@ -2453,7 +2405,8 @@
           "daoMind": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "void_visions_meditation",
@@ -2471,8 +2424,6 @@
       "en": "Dense demonic energy surrounds you during meditation. Visions of a dark void begin to tempt your mind, promising power in exchange for your humanity.",
       "vi": "Ma khí dày đặc bao vây bạn trong lúc bế quan. Những ảo ảnh về một hư không đen tối bắt đầu cám dỗ tâm trí, hứa hẹn sức mạnh để đổi lấy nhân tính."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 65"
@@ -2508,7 +2459,8 @@
           "health": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_whisper_meditation",
@@ -2526,8 +2478,6 @@
       "en": "As demonic energy saturates the world, a dark voice begins to whisper in your mind during meditation, offering forbidden power to bypass your current bottleneck.",
       "vi": "Khi ma khí thiên địa bão hòa, một giọng nói hắc ám bắt đầu thì thầm trong tâm trí bạn lúc tĩnh tu, hứa hẹn sức mạnh cấm kỵ để vượt qua bình cảnh hiện tại."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 60"
@@ -2561,7 +2511,8 @@
           "karma": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_blood_sacrifice_interruption",
@@ -2579,8 +2530,6 @@
       "en": "You stumble upon a hidden ritual where demonic cultivators are sacrificing mortals to fuel their dark energy. The atmosphere is heavy with the smell of iron and death.",
       "vi": "Bạn vô tình bắt gặp một nghi lễ ẩn giấu: các tà tu đang dùng phàm nhân làm vật hiến tế để gia tăng ma khí [6, 8]. Không khí nồng nặc mùi máu và tử vong."
     },
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 70"
@@ -2615,7 +2564,8 @@
           "money": 300
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heart_demon_resonance",
@@ -2633,8 +2583,6 @@
       "en": "The world's demonic energy is overflowing, triggering a resonance with the lingering 'Pill Toxins' and repressed desires in your soul, manifested as a Heart Demon [cite: 18, 56].",
       "vi": "Ma khí thiên địa tràn trề, kích phát sự cộng hưởng với 'Đan Độc' tích tụ và những dục vọng kìm nén trong linh hồn bạn, hóa thành một đợt Tâm Ma bùng phát [cite: 18, 56]."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 75"
@@ -2666,7 +2614,8 @@
           "health": -10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "waking_dawn",
@@ -2678,8 +2627,6 @@
       "en": "A cold dawn breaks. A choice appears: cultivate steadily or chase a risky shortcut.",
       "vi": "Sương lạnh tan, một lựa chọn mở ra: tu luyện bền bỉ hay mạo hiểm nhảy vọt."
     },
-    "minAge": 1,
-    "maxAge": 5,
     "weight": 1,
     "choices": [
       {
@@ -2714,7 +2661,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "chosen_one_duel",
@@ -2731,8 +2679,6 @@
       "en": "Long Ngao Thien, the arrogant child of destiny, blocks your path. He points his glittering sword at you, demanding a duel to step on your dignity.",
       "vi": "Long Ngạo Thiên, con cưng của thiên đạo, kiêu ngạo chặn đường bạn. Hắn chĩa thanh lân kiếm lấp lánh vào bạn, đòi quyết đấu để giẫm đạp lên tôn nghiêm của bạn."
     },
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {},
     "choices": [
@@ -2760,7 +2706,8 @@
           "health": 0
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "spirit_herbs",
@@ -2777,8 +2724,6 @@
       "en": "You stumble upon mysterious spirit herbs. Their aura is intoxicating but slightly unstable.",
       "vi": "Bạn phát hiện những thảo dược linh hồn bí ẩn. Khí tức của chúng vô cùng hấp dẫn nhưng có phần bất ổn định."
     },
-    "minAge": 3,
-    "maxAge": 100,
     "weight": 1,
     "conditions": {},
     "choices": [
@@ -2821,7 +2766,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "duel_challenge",
@@ -2838,8 +2784,6 @@
       "en": "A wandering martial artist abruptly blocks your path, drawing their weapon and demanding a duel to hone their Dao.",
       "vi": "Một võ giả lang thang bất ngờ chặn đường, rút vũ khí và thách đấu bạn để chứng minh đạo tâm của hắn."
     },
-    "minAge": 18,
-    "maxAge": 35,
     "weight": 1,
     "conditions": {},
     "choices": [
@@ -2870,7 +2814,8 @@
           "karma": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_dao_quake",
@@ -2889,8 +2834,6 @@
       "en": "Spiritual energy fluctuates violently, reaching an alarming level! An extraordinary destiny is approaching, and a hidden secret realm might be opening.",
       "vi": "Năng lượng thiêng liêng dao động dữ dội ở mức báo động! Cơ duyên phi thường đang đến gần, một bí cảnh ẩn có thể sắp khai mở."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 65"
@@ -2927,7 +2870,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heavenly_qi_surge",
@@ -2945,8 +2889,6 @@
       "en": "The spiritual Qi of the world suddenly surges to an incredibly dense level! It completely suppresses demonic auras, but inhaling too much might overwhelm a weak body.",
       "vi": "Linh khí thiên địa đột nhiên bộc phát đến mức độ dày đặc khó tin! Nó đè bẹp hoàn toàn ma khí, nhưng hít quá nhiều có thể làm quá tải một thân thể yếu ớt."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 80"
@@ -2978,7 +2920,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_epiphany_surge",
@@ -2996,8 +2939,6 @@
       "en": "The Heavenly Dao fluctuates wildly. A sudden surge of profound Dao rhythm washes over you, resonating with your meridians and presenting a rare chance for a sudden epiphany.",
       "vi": "Thiên Đạo dao động kịch liệt. Một luồng Đạo vận uyên thâm bất ngờ gột rửa tâm trí bạn, cộng hưởng với kinh mạch và mang đến cơ hội đốn ngộ hiếm có."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 55"
@@ -3030,7 +2971,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "echoes_of_the_immortal_rift",
@@ -3048,8 +2990,6 @@
       "en": "A sudden spike in Dao fluctuations has caused a localized temporal rift. You hear echoes of a future breakthrough or a past failure resonating with your soul,.",
       "vi": "Sự gia tăng đột ngột của Thiên Đạo dị động đã gây ra một vết nứt thời gian cục bộ. Bạn nghe thấy tiếng vọng của một lần đột phá trong tương lai hoặc một thất bại trong quá khứ cộng hưởng với linh hồn,."
     },
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 80"
@@ -3083,7 +3023,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_thunder_tempering",
@@ -3101,8 +3042,6 @@
       "en": "Heavenly Dao is fluctuating wildly. A localized spiritual storm has summoned bolts of Heavenly Thunder. You can try to use the lightning to temper your meridians.",
       "vi": "Thiên Đạo đang dao động dữ dội. Một cơn bão linh khí cục bộ đã triệu hồi Thiên Lôi. Bạn có thể thử mượn sức mạnh sấm sét để tôi luyện kinh mạch."
     },
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 85"
@@ -3132,7 +3071,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_array_puzzle",
@@ -3150,8 +3090,6 @@
       "en": "While exploring a remote area, you discover an ancient array carved into the rock. It flickers with a mysterious light, resonating with the current Heavenly Dao fluctuations.",
       "vi": "Trong lúc thám hiểm vùng hẻo lánh, bạn phát hiện một trận pháp cổ xưa khắc trên đá. Nó nhấp nháy ánh sáng kỳ bí, cộng hưởng với những dao động của Thiên Đạo hiện tại."
     },
-    "minAge": 15,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 55"
@@ -3187,7 +3125,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "immortal_tomb_emergence",
@@ -3205,8 +3144,6 @@
       "en": "Extreme Dao fluctuations have caused the earth to split, revealing the entrance to a majestic tomb belonging to an ancient Ascendant Immortal.",
       "vi": "Thiên Đạo dị động cực độ khiến đất đai nứt nẻ, để lộ lối vào của một ngôi mộ tráng lệ thuộc về một vị Tiên Nhân phi thăng từ thời viễn cổ."
     },
-    "minAge": 40,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 80"
@@ -3244,7 +3181,8 @@
           "health": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "world_dao_epiphany",
@@ -3262,8 +3200,6 @@
       "en": "The world's Dao fluctuates violently, causing spiritual energy to manifest as physical lotus petals falling from the sky.",
       "vi": "Thiên Đạo dị động kịch liệt, khiến linh khí thiên địa hóa thành những cánh hoa sen rơi rụng khắp bầu trời."
     },
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 65"
@@ -3293,7 +3229,8 @@
           "spiritualQi": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_karma_judgment",
@@ -3311,8 +3248,6 @@
       "en": "Heavenly Dao fluctuations have triggered a moment of karmic clarity. The world judges your past actions, resonating with your soul's purity or corruption.",
       "vi": "Thiên Đạo dị động đã kích hoạt một khoảnh khắc thấu thị nghiệp lực. Thế giới phán xét những hành động trong quá khứ của bạn, cộng hưởng với sự thuần khiết hoặc ô uế của linh hồn."
     },
-    "minAge": 10,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 75"
@@ -3344,7 +3279,8 @@
           "health": -15
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "pill_toxin_backlash",
@@ -3362,8 +3298,6 @@
       "en": "Your over-reliance on low-grade pills to survive the lifespan race has caused 'Pill Toxins' to accumulate in your meridians. A backlash is imminent.",
       "vi": "Việc lạm dụng đan dược cấp thấp để chạy đua với thọ nguyên khiến 'Đan Độc' tích tụ trong kinh mạch. Một đợt bạo kích năng lượng đang đe dọa cơ thể bạn."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 50"
@@ -3398,7 +3332,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "pill_toxin_cleansing_ritual",
@@ -3416,8 +3351,6 @@
       "en": "Your meridians are clogged with dark residues from excessive pill consumption. A wandering healer offers a dangerous ritual to burn away the toxins using pure spiritual fire.",
       "vi": "Kinh mạch của bạn bị tắc nghẽn bởi tàn dư từ việc lạm dụng đan dược [2]. Một vị lang trung lang thang đề nghị một nghi lễ nguy hiểm: dùng linh hỏa tinh khiết để thiêu cháy đan độc."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 60"
@@ -3455,7 +3388,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "fragment_of_the_heavens",
@@ -3473,8 +3407,6 @@
       "en": "Extreme Dao fluctuations have caused a physical fragment of the Heavenly Dao to fall from the sky. It radiates a rhythm that defies mortality.",
       "vi": "Thiên Đạo dị động cực độ khiến một mảnh vỡ vật chất của Thiên Đạo rơi xuống từ bầu trời. Nó tỏa ra một giai điệu vượt xa phàm trần."
     },
-    "minAge": 15,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 85"
@@ -3508,7 +3440,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "heavenly_dao_vision_war",
@@ -3526,8 +3459,6 @@
       "en": "Extreme Dao fluctuations have triggered a spiritual resonance. You see a vision of the founding Sect Leader battling a Great Demon, revealing a flaw in your current technique.",
       "vi": "Thiên Đạo dị động cực độ kích phát cộng hưởng linh hồn. Bạn nhìn thấy ảo ảnh Thủy Tổ tông môn đại chiến Đại Ma, hé lộ một sơ hở trong công pháp hiện tại của bạn."
     },
-    "minAge": 30,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 80"
@@ -3565,7 +3496,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "pill_toxin_meridian_blockage",
@@ -3583,8 +3515,6 @@
       "en": "The high spiritual Qi in the environment is reacting violently with the 'Pill Toxins' in your body, causing a localized Qi explosion within your meridians.",
       "vi": "Linh khí nồng đậm trong môi trường đang phản ứng dữ dội với 'Đan Độc' trong cơ thể, gây ra một vụ nổ linh khí cục bộ ngay trong kinh mạch của bạn."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 70"
@@ -3616,7 +3546,8 @@
           "reputation": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_spatial_rift_puzzle",
@@ -3634,8 +3565,6 @@
       "en": "Extreme Heavenly Dao fluctuations have opened a localized spatial rift. It leads to a pocket dimension containing ancient cultivation techniques [cite: 56, 59].",
       "vi": "Thiên Đạo dị động cực độ đã mở ra một vết nứt không gian cục bộ. Nó dẫn đến một tiểu thế giới chứa đựng các công pháp tu luyện cổ đại [cite: 56, 59]."
     },
-    "minAge": 25,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 75"
@@ -3671,7 +3600,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heavenly_nectar_epiphany",
@@ -3689,8 +3619,6 @@
       "en": "A rare phenomenon occurs when spiritual Qi peaks! Rain that directly nourishes the soul falls from the sky, bypassing ordinary bottlenecks [cite: 56, 12].",
       "vi": "Một hiện tượng hiếm gặp xảy ra khi linh khí đạt đỉnh! Những giọt mưa nuôi dưỡng linh hồn rơi xuống, giúp vượt qua các bình cảnh thông thường [cite: 56, 12]."
     },
-    "minAge": 10,
-    "maxAge": 500,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 85"
@@ -3723,7 +3651,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "beast_king_lotus",
@@ -3742,8 +3671,6 @@
       "en": "Deep in the core of the Myriad Beast Mountain Range, you discover a thousand-year Blood Lotus. However, coiled tightly beside it is a slumbering Blood Python Beast King.",
       "vi": "Tiến sâu vào lõi Vạn Thú Sơn Mạch, bạn phát hiện một đóa Huyết Liên ngàn năm đang tỏa hương thơm ngát. Tuy nhiên, nằm khoanh tròn bên cạnh là một con Huyết Mãng Yêu Vương đang say ngủ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "mountain.beastActivity": "> 65"
@@ -3774,7 +3701,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "corpse_in_swamp",
@@ -3792,8 +3720,6 @@
       "en": "Deep in the Myriad Beast Mountain Range, you see a Foundation Establishment cultivator's corpse half-submerged in a swamp, with a bulging storage bag still glittering on their waist.",
       "vi": "Tại sâu trong Vạn Thú Sơn Mạch, bạn thấy thi thể một tu sĩ Trúc Cơ Kỳ chìm một nửa dưới đầm lầy, bên hông vẫn còn lấp lánh một Túi trữ vật căng phồng. Xung quanh tĩnh lặng một cách đáng sợ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 50"
@@ -3826,7 +3752,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "unfinished_go_game",
@@ -3844,8 +3771,6 @@
       "en": "Exploring a stalactite-filled cave, you find a white jade Go board. The unfinished game radiates profound Dao rhythm, likely left behind by two ascendant masters millennia ago.",
       "vi": "Khám phá một hang động bám đầy nhũ đá, bạn tìm thấy một bàn cờ vây làm từ bạch ngọc. Trận cờ đang đánh dở, mỗi quân cờ đều tỏa ra Đạo Vận vô cùng thâm thúy, dường như là tàn cuộc của hai vị đại năng phi thăng từ ngàn năm trước."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 50"
@@ -3878,7 +3803,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demon_king_metamorphosis",
@@ -3896,8 +3822,6 @@
       "en": "The sky darkens over the Myriad Beast Mountain Range. A Demon King is undergoing Heavenly Tribulation to take human form and is extremely weak.",
       "vi": "Bầu trời Vạn Thú Sơn Mạch đen kịt. Bạn nhìn thấy một con Yêu Vương đang chịu Thiên Kiếp để hóa hình người, cơ thể đang cực kỳ suy yếu."
     },
-    "minAge": 50,
-    "maxAge": 400,
     "weight": 1,
     "conditions": {
       "mountain.beastActivity": "> 85"
@@ -3933,7 +3857,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "secret_realm_opening",
@@ -3951,8 +3876,6 @@
       "en": "Heavenly Dao fluctuates violently. A spatial rift tears open in the mountains, revealing an ancient secret realm glowing with supreme spiritual energy.",
       "vi": "Thiên Đạo dị động dữ dội. Một vết nứt không gian xé rách mây trời, để lộ ra một bí cảnh viễn cổ đang tỏa ra luồng linh khí tối thượng."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 78"
@@ -3986,7 +3909,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "heavenly_treasure_emerges",
@@ -4004,8 +3928,6 @@
       "en": "The mountain's resources are overflowing. A rare Snow Lotus has bloomed on a cliff, attracting numerous greedy rogue cultivators who are already fighting for it.",
       "vi": "Tài nguyên sơn mạch đang cực kỳ dồi dào. Trên vách núi nở rộ một đóa Tuyết Liên ngàn năm quý hiếm, thu hút vô số tán tu tham lam đang chém giết lẫn nhau để tranh giành."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 80"
@@ -4041,7 +3963,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "encounter_mu_wanqing",
@@ -4059,8 +3982,6 @@
       "en": "At the Ancient Ruins, you find Mu Wanqing, a famous inner sect beauty, surrounded by demonic beasts. She is crying weakly for help.",
       "vi": "Tại Cổ Nhân Động Phủ, bạn thấy Mộc Uyển Thanh (đệ tử nội môn nổi danh xinh đẹp) đang bị yêu thú bao vây, khóc lóc cầu cứu vô cùng yếu đuối."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "mountain.danger": "> 40"
@@ -4090,7 +4011,8 @@
           "karma": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mountain_meditation",
@@ -4108,8 +4030,6 @@
       "en": "The towering peaks of the ancient mountain invite you to sit and ponder the Heavenly Dao.",
       "vi": "Những đỉnh núi cao chót vót của ngọn núi cổ xưa mời gọi bạn ngồi xuống và suy ngẫm về Thiên Đạo."
     },
-    "minAge": 6,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 40"
@@ -4147,7 +4067,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "event_hong_nhan_ma_dao_am_sat",
@@ -4165,8 +4086,6 @@
       "en": "While exploring the Myriad Beast Mountain Range, Blood Rose suddenly drops her disguise, revealing her demonic nature, and surrounds you with killing intent.",
       "vi": "Đang thám hiểm Vạn Thú Sơn Mạch, Huyết Mân Côi bất ngờ hiện nguyên hình tà tu bao vây bạn với sát tâm nồng đậm."
     },
-    "minAge": 20,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -4195,7 +4114,8 @@
           "money": -100
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancestral_memory",
@@ -4213,8 +4133,6 @@
       "en": "Deep within the ancient ruins, a mysterious resonance triggers a flood of ancient ancestral memories in your mind.",
       "vi": "Sâu trong cổ nhân di tích, một sự cộng hưởng bí ẩn khiến luồng ký ức của tổ tiên xa xưa ùa vào tâm trí bạn."
     },
-    "minAge": 1,
-    "maxAge": 100,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 30"
@@ -4244,7 +4162,8 @@
           "karma": -1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "grave_storm",
@@ -4262,8 +4181,6 @@
       "en": "A terrifying spectral storm filled with resentful spirits suddenly sweeps across the ancient burial grounds.",
       "vi": "Một cơn giông lốc kinh hoàng chứa đầy oán linh bất ngờ quét qua khu mộ cổ."
     },
-    "minAge": 25,
-    "maxAge": 60,
     "weight": 1,
     "conditions": {
       "demonicEnergy": "> 40"
@@ -4292,7 +4209,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "helping_hand_daoist",
@@ -4310,8 +4228,6 @@
       "en": "You encounter a severely injured righteous cultivator being cornered by a pack of demonic wolves. They beg you for help.",
       "vi": "Bạn bắt gặp một tu sĩ chính đạo đang bị thương nặng và bị dồn vào đường cùng bởi bầy ma lang. Họ khẩn khoản cầu cứu bạn."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.danger": "> 40"
@@ -4344,7 +4260,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ruined_alchemy_furnace",
@@ -4362,8 +4279,6 @@
       "en": "In a forgotten cave, you find a cracked alchemy furnace still radiating intense, unstable medicinal Qi after centuries.",
       "vi": "Trong một hang động bị lãng quên, bạn tìm thấy một lò luyện đan nứt nẻ vẫn tỏa ra dược khí nồng đậm nhưng bất ổn dù đã qua hàng thế kỷ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 50"
@@ -4395,7 +4310,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_array_trap",
@@ -4413,8 +4329,6 @@
       "en": "Heavenly Dao fluctuations have revealed the entrance to an Ancient Cave Dwelling, but it is protected by a deadly and complex killing array.",
       "vi": "Thiên Đạo dị động đã làm lộ ra lối vào của một Cổ Nhân Di Tích, nhưng nó được bảo vệ bởi một sát trận vô cùng phức tạp và chết chóc."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 40"
@@ -4450,7 +4364,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "demonic_altar_discovery",
@@ -4468,8 +4383,6 @@
       "en": "Deep in the misty mountains, you stumble upon a hidden Demonic Altar. Fresh blood covers the runes, and a dark artifact throbs with forbidden power.",
       "vi": "Sâu trong vùng núi sương mù, bạn tình cờ phát hiện một Tế Đàn Ma Đạo. Máu tươi bao phủ các rune, và một ma khí hắc ám đang đập thình thịch với sức mạnh cấm kỵ."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 50"
@@ -4504,7 +4417,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "millennial_ginseng_guardian",
@@ -4523,8 +4437,6 @@
       "en": "Deep in the Beast Mountain Range, you discover a patch of rare spirit herbs, including a Millennial Ginseng. However, a fierce demonic wolf is aggressively guarding the area.",
       "vi": "Sâu trong Vạn Thú Sơn Mạch, bạn phát hiện một bãi linh thảo hiếm, bao gồm cả một cây Nhân Sâm Ngàn Năm. Tuy nhiên, một con ma lang hung dữ đang gầm gừ bảo vệ khu vực này."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 50"
@@ -4560,7 +4472,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ancient_dao_stele",
@@ -4578,8 +4491,6 @@
       "en": "Triggered by intense Heavenly Dao fluctuations, a massive stone stele rises from the earth, radiating ancient Dao runes that resonate with your soul.",
       "vi": "Được kích hoạt bởi sự dao động kịch liệt của Thiên Đạo, một tấm bia đá khổng lồ trồi lên từ lòng đất, tỏa ra những cổ tự Đạo vận cộng hưởng với linh hồn bạn."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 60"
@@ -4613,7 +4524,8 @@
           "money": 150
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "beast_king_lair",
@@ -4631,8 +4543,6 @@
       "en": "With beast activity at a peak, you stumble upon the empty lair of a Beast King while it's out leading the beast tide. Treasures are scattered everywhere.",
       "vi": "Khi yêu thú bạo động lên đỉnh điểm, bạn vô tình lạc vào sào huyệt trống rỗng của một Yêu Vương khi nó đang ra ngoài dẫn dắt thú triều. Khắp nơi vương vãi kỳ trân dị bảo."
     },
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 80"
@@ -4669,7 +4579,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "miasma_mountain_trail",
@@ -4687,8 +4598,6 @@
       "en": "Rising demonic energy has created a thick, toxic miasma on the mountain trail. You hear the distorted growls of mutated beasts within the fog.",
       "vi": "Ma khí dâng cao tạo ra một lớp chướng khí độc dày đặc trên đường núi. Bạn nghe thấy tiếng gầm rống biến dị của yêu thú bên trong màn sương."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 60"
@@ -4720,7 +4629,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "spiritual_spring_epiphany",
@@ -4738,8 +4648,6 @@
       "en": "High spiritual Qi in the area has manifested a hidden spiritual spring. The water is pure and radiates profound Dao energy.",
       "vi": "Linh khí thiên địa nồng đậm đã làm lộ ra một suối linh tuyền ẩn giấu. Dòng nước tinh khiết và tỏa ra Đạo vận thâm thúy."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 75"
@@ -4771,7 +4679,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ghost_battlefield_scavenging",
@@ -4789,8 +4698,6 @@
       "en": "The mountain is littered with remains from the ongoing sect war. Ghostly wails echo as you search the area for abandoned spiritual tools and weapons.",
       "vi": "Vùng núi đầy rẫy hài cốt từ cuộc chiến tông môn đang diễn ra. Tiếng oán linh gào thét vang vọng khi bạn tìm kiếm các pháp khí và vũ khí bị bỏ lại."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 60"
@@ -4823,7 +4730,8 @@
           "daoMind": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_battlefield_vision",
@@ -4841,8 +4749,6 @@
       "en": "High Heavenly Dao fluctuations trigger a temporal rift. You see a vision of an ancient battle between Immortals and Demons, revealing profound combat techniques.",
       "vi": "Thiên Đạo dị động kịch liệt kích phát một vết nứt thời gian. Bạn nhìn thấy ảo ảnh về cuộc đại chiến cổ xưa giữa Tiên và Ma, hé lộ những chiến đấu kỹ pháp thâm thúy."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 70"
@@ -4874,7 +4780,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "spirit_beast_egg_discovery",
@@ -4892,8 +4799,6 @@
       "en": "Mountain resources are abundant. You find a glowing Spirit Beast egg hidden in a crevice, but the parent beast is nearby, hunting for food.",
       "vi": "Tài nguyên sơn mạch dồi dào. Bạn tìm thấy một quả trứng linh thú phát sáng ẩn trong kẽ đá, nhưng thú cha mẹ đang ở gần đó săn mồi."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 75"
@@ -4926,7 +4831,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "night_of_the_blood_moon",
@@ -4944,8 +4850,6 @@
       "en": "The sky turns a sickly crimson. Extreme demonic energy has driven the mountain beasts into a murderous frenzy, and the veil between worlds is thinning,.",
       "vi": "Bầu trời chuyển sang màu đỏ thẫm bệnh hoạn. Ma khí cực đoan đã đẩy lũ yêu thú vào cơn cuồng sát, và bức màn giữa các thế giới đang dần mỏng đi,."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 70",
@@ -4980,7 +4884,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "beast_mountain_landslide",
@@ -4998,8 +4903,6 @@
       "en": "High danger levels in the mountains have caused a massive landslide. Ancient ores are now exposed, but the area is unstable and crawling with agitated beasts.",
       "vi": "Độ nguy hiểm sơn mạch tăng cao gây ra một vụ sạt lở lớn. Những quặng sắt cổ đại lộ ra, nhưng khu vực này vô cùng bất ổn và đầy yêu thú đang bị kích động."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.danger": "> 60"
@@ -5033,7 +4936,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "beast_tide_vanguard",
@@ -5051,8 +4955,6 @@
       "en": "Beast activity has exploded! A massive tide of monsters is rushing down the mountain. You are caught directly in the path of the beast vanguard.",
       "vi": "Yêu thú bạo động bùng nổ! Một đợt thú triều khổng lồ đang tràn xuống núi. Bạn bị kẹt ngay trên đường tiến công của đội tiên phong yêu thú."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 80"
@@ -5089,7 +4991,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "herbalist_hidden_garden",
@@ -5107,8 +5010,6 @@
       "en": "With high spiritual Qi in the mountains, a hidden array has failed, revealing a long-forgotten herb garden once owned by a legendary herbalist.",
       "vi": "Khi linh khí sơn mạch nồng đậm, một trận pháp ẩn giấu đã sụp đổ, để lộ ra dược viên bị lãng quên từ lâu của một vị đại năng luyện đan sư."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 75",
@@ -5143,7 +5044,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ancient_alchemy_relic",
@@ -5161,8 +5063,6 @@
       "en": "High mountain resources have revealed a hidden cave in the Ancient Ruins. Inside, a furnace still burns with a faint, divine flame.",
       "vi": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn trong Cổ Nhân Di Tích. Bên trong, một lò luyện đan vẫn còn cháy ngọn lửa tiên hỏa mờ nhạt."
     },
-    "minAge": 25,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 75"
@@ -5198,7 +5098,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_beast_seal_weakening",
@@ -5216,8 +5117,6 @@
       "en": "High demonic energy and beast activity have weakened an ancient seal in the mountains. A terrifying aura from the era of the Ancient War is leaking out.",
       "vi": "Ma khí và hoạt động yêu thú dâng cao đã làm suy yếu một phong ấn cổ xưa trong núi. Một luồng khí tức kinh khủng từ thời Đại Chiến Cổ Đại đang rò rỉ ra ngoài."
     },
-    "minAge": 30,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 80",
@@ -5256,7 +5155,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_weapon_awakening",
@@ -5274,8 +5174,6 @@
       "en": "Deep within the Ancient Ruins, a rusted weapon begins to resonate with the high Dao fluctuations, radiating a faint but sharp sword intent.",
       "vi": "Sâu trong Cổ Nhân Di Tích, một món binh khí rỉ sét bắt đầu cộng hưởng với Thiên Đạo dị động, tỏa ra một luồng kiếm ý mờ nhạt nhưng sắc bén."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 65"
@@ -5311,7 +5209,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "corrupted_spirit_spring",
@@ -5329,8 +5228,6 @@
       "en": "A spiritual spring in the mountains has been corrupted by the rising demonic energy. The water glows with a sickly purple light, but its energy is still incredibly potent.",
       "vi": "Một con suối linh tuyền trên núi đã bị ô nhiễm bởi ma khí đang dâng cao. Dòng nước tỏa ra ánh tím bệnh hoạn, nhưng năng lượng bên trong vẫn cực kỳ mạnh mẽ."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 60",
@@ -5363,7 +5260,8 @@
           "luck": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "hibernating_beast_king",
@@ -5381,8 +5279,6 @@
       "en": "While exploring, you find the lair of a hibernating Beast King. Rare 'Linh Thảo' and 'Linh Quặng' are piled around its massive, slumbering form.",
       "vi": "Trong lúc thám hiểm, bạn phát hiện sào huyệt của một Yêu Vương đang ngủ đông. 'Linh Thảo' và 'Linh Quặng' hiếm tích tụ xung quanh thân hình khổng lồ của nó."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "mountain.beastActivity": "> 70",
@@ -5420,7 +5316,8 @@
           "reputation": 15
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_sword_intent_ruins",
@@ -5438,8 +5335,6 @@
       "en": "At the Ancient Ruins, high Dao fluctuations have awakened the lingering sword intent of a long-dead master. The air itself feels sharp and lethal.",
       "vi": "Tại Cổ Nhân Di Tích, Thiên Đạo dị động [6] đã đánh thức kiếm ý còn sót lại của một vị đại năng cổ đại. Không khí xung quanh trở nên sắc bén và chết chóc."
     },
-    "minAge": 25,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 70"
@@ -5476,7 +5371,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "cursed_herb_patch",
@@ -5494,8 +5390,6 @@
       "en": "Rising demonic energy has corrupted a patch of rare herbs. The spirit herbs are glowing with a dark, pulsating light, offering immense power at the cost of your soul's purity.",
       "vi": "Ma khí dâng cao đã làm ô uế một bãi linh thảo hiếm. Những cây linh thảo tỏa ra ánh sáng hắc ám, hứa hẹn sức mạnh to lớn nhưng phải trả giá bằng sự thuần khiết của linh hồn."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 65",
@@ -5531,7 +5425,8 @@
           "health": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_ruins_puzzle_box",
@@ -5549,8 +5444,6 @@
       "en": "While exploring the Ancient Ruins, you find a metallic box sealed with a complex array. High Dao fluctuations have weakened its lock.",
       "vi": "Trong lúc thám hiểm Cổ Nhân Di Tích, bạn tìm thấy một hộp kim loại bị niêm phong bởi trận pháp phức tạp. Thiên Đạo dị động đã làm suy yếu khóa ấn của nó [5, 6]."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "daoFluctuation": "> 60"
@@ -5587,7 +5480,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "blood_moon_beast_tide",
@@ -5605,8 +5499,6 @@
       "en": "Beast activity has reached critical levels! Driven by the blood moon, a tide of monsters is rushing towards the mortal settlements.",
       "vi": "Hoạt động yêu thú đã đạt mức cực đoan! Dưới sự kích động của huyết nguyệt, một đợt thú triều đang tràn về phía khu dân cư phàm nhân [10, 11]."
     },
-    "minAge": 20,
-    "maxAge": 300,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 85"
@@ -5644,7 +5536,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "ancient_furnace_residual_fire",
@@ -5662,8 +5555,6 @@
       "en": "High spiritual Qi has re-ignited a fragment of divine fire in an abandoned alchemy furnace within the Ancient Ruins. The heat is melting the surrounding stone, revealing hidden ores.",
       "vi": "Linh khí nồng đậm đã thắp lại một ngọn thần hỏa tàn dư trong lò luyện đan bỏ hoang tại Cổ Nhân Di Tích. Sức nóng đang nung chảy đá vây quanh, lộ ra những khối linh quặng ẩn giấu."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 70",
@@ -5698,7 +5589,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_war_convoy_ambush",
@@ -5716,8 +5608,6 @@
       "en": "The war level is high. You are part of an escort for a sect resource convoy that has been ambushed by elite disciples of the Ten Thousand Immortals Sect.",
       "vi": "Chiến sự đang ở mức cao. Bạn đang hộ tống đoàn xe tài nguyên của tông môn thì bị các đệ tử tinh nhuệ của Vạn Tiên Giáo phục kích."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 70"
@@ -5757,7 +5647,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ma_huyet_quang_mach",
@@ -5776,8 +5667,6 @@
       "en": "High demonic energy has seeped into a spirit ore vein in the mountains. The ores are pulsing with a dark, blood-red light, offering high power but risking severe corruption [cite: 54, 56].",
       "vi": "Ma khí dâng cao đã thấm vào một mạch linh quặng trên núi. Những khối quặng đang đập thình thịch với ánh sáng đỏ sẫm, hứa hẹn sức mạnh lớn nhưng đi kèm rủi ro ô uế cực cao [cite: 54, 56]."
     },
-    "minAge": 20,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 65",
@@ -5816,7 +5705,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "lost_huyen_thiet_vein",
@@ -5834,8 +5724,6 @@
       "en": "Abundant mountain resources have revealed a hidden cave containing a pure vein of 'Huyền Thiết'—the supreme material for crafting Earth-grade weapons [cite: 19, 54].",
       "vi": "Tài nguyên sơn mạch dồi dào đã làm lộ ra một hang động ẩn chứa mạch quặng 'Huyền Thiết' tinh khiết—nguyên liệu tối thượng để đúc vũ khí Địa Cấp [cite: 19, 54]."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.resources": "> 80"
@@ -5869,7 +5757,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "event_thien_kieu_chan_chinh_thach_dau",
@@ -5881,8 +5770,6 @@
       "en": "Long Ngao Thien, the child of heaven, stands on the arena waiting for you. Spiritual energy violently swirls around him.",
       "vi": "Long Ngạo Thiên, con cưng thiên đạo, đứng trên lôi đài chờ bạn. Linh khí quanh hắn bạo động dữ dội."
     },
-    "minAge": 18,
-    "maxAge": 25,
     "weight": 2,
     "tags": [
       "npc_thien_kieu_chan_chinh",
@@ -5923,7 +5810,8 @@
           "health": 0
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_sect_deacon",
@@ -5941,8 +5829,6 @@
       "en": "When you arrive at the Deacon Hall to receive your mandatory annual sect quest, the fat Deacon winks at you: 50 Spirit Stones for an easy herb-gathering task. Otherwise, you go to the deepest mining tunnels.",
       "vi": "Khi bạn đến Chấp Sự Đường để nhận nhiệm vụ tông môn bắt buộc hàng năm, tên Chấp Sự béo ú nháy mắt ám chỉ: nếu bạn nộp 50 Linh thạch 'bôi trơn', hắn sẽ giao cho bạn nhiệm vụ hái thuốc nhàn hạ. Nếu không, bạn sẽ phải xuống hầm quặng sâu nhất đầy nguy hiểm."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 35"
@@ -5976,7 +5862,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "immortal_guidance",
@@ -5994,8 +5881,6 @@
       "en": "Heavenly Dao fluctuates wildly. An illusion of an ancient immortal appears in your mind, preaching the supreme Dao.",
       "vi": "Thiên Đạo dị động cuốn tâm trí bạn vào một không gian kỳ ảo, nơi một ảo ảnh tiên nhân đang giảng đạo."
     },
-    "minAge": 10,
-    "maxAge": 300,
     "weight": 1,
     "conditions": {
       "daoFluctuation": "> 78"
@@ -6025,7 +5910,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_rebellion",
@@ -6043,8 +5929,6 @@
       "en": "The sect's stability has plummeted. A deacon is assassinated in broad daylight, and rogue disciples are burning the outer sect pavilions to loot resources.",
       "vi": "Sự ổn định của môn phái đã chạm đáy. Một vị chấp sự bị ám sát giữa ban ngày, và các đệ tử phản loạn đang đốt phá các các viện ngoại môn để cướp bóc tài nguyên."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 20"
@@ -6079,7 +5963,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_conscription",
@@ -6097,8 +5982,6 @@
       "en": "Sect warfare has escalated drastically. Deacons are forcefully conscripting outer disciples to serve as cannon fodder at the frontline.",
       "vi": "Chiến sự tông môn leo thang tột độ. Các chấp sự đang cưỡng ép bắt đệ tử ngoại môn ra tiền tuyến làm bia đỡ đạn cho đại chiến."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 60"
@@ -6130,7 +6013,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "possessed_deacon",
@@ -6148,8 +6032,6 @@
       "en": "Demonic infiltration is severe. Late at night, you accidentally spot a highly respected Sect Deacon practicing a forbidden blood art. He notices you.",
       "vi": "Ma đạo thâm nhập nghiêm trọng. Đêm khuya, bạn vô tình bắt gặp một vị Chấp Sự tông môn đạo mạo đang lén lút tu luyện huyết công cấm kỵ. Hắn đã phát hiện ra bạn."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 50"
@@ -6184,7 +6066,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "event_ke_sinh_ton_phan_boi",
@@ -6203,8 +6086,6 @@
       "en": "Taking advantage of sect instability, Cau Du secretly leads a group of rebel disciples to raid your cave dwelling.",
       "vi": "Trong lúc Tông môn có nội loạn, Cẩu Dư lén dẫn một nhóm phản đồ đến động phủ của bạn cướp bóc."
     },
-    "minAge": 30,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 40"
@@ -6233,7 +6114,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "golden_core_trial",
@@ -6251,8 +6133,6 @@
       "en": "You discover a hidden trial left by a Golden Core master, designed to test a cultivator's readiness to break through.",
       "vi": "Bạn phát hiện một thử thách ẩn do một cao thủ Kim Đan để lại, được thiết kế để kiểm tra xem một tu sĩ đã sẵn sàng đột phá hay chưa."
     },
-    "minAge": 40,
-    "maxAge": 90,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 50"
@@ -6289,7 +6169,8 @@
           "karma": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "spirit_mine_collapse",
@@ -6307,8 +6188,6 @@
       "en": "Due to sect instability and poor maintenance, the outer sect spirit mine suddenly starts collapsing around you. Priceless ores are revealed in the rubble.",
       "vi": "Do tông môn bất ổn và thiếu bảo trì, hầm linh quặng ngoại môn đột nhiên đổ sập xung quanh bạn. Những khoáng thạch vô giá lộ ra trong đống đổ nát."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 60"
@@ -6339,7 +6218,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "berserk_spirit_beast",
@@ -6357,8 +6237,6 @@
       "en": "A usually docile spirit beast in the outer sect's pens has gone berserk due to a demonic aura, breaking its chains and attacking disciples.",
       "vi": "Một con linh thú vốn ngoan ngoãn ở chuồng ngoại môn đột nhiên bạo động do nhiễm ma khí, nó bẻ gãy xích và tấn công đệ tử."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 40"
@@ -6387,7 +6265,8 @@
           "money": 50
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ten_thousand_immortals_war",
@@ -6406,8 +6285,6 @@
       "en": "The Ten Thousand Immortals Sect has officially declared war on the Heavenly Dao Sect! The sect is in chaos, and all disciples are ordered to the frontlines.",
       "vi": "Vạn Tiên Giáo chính thức tuyên chiến với Thiên Đạo Tông! Tông môn rơi vào hỗn loạn, mọi đệ tử đều bị lệnh phải ra tiền tuyến tham chiến."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 70"
@@ -6439,7 +6316,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_internal_strife",
@@ -6456,8 +6334,6 @@
       "en": "Factional infighting has reached its peak. A sect deacon was assassinated, and the sect is highly dangerous with a high risk of betrayal.",
       "vi": "Đấu đá phe phái đã lên đến đỉnh điểm. Một chấp sự vừa bị ám sát, tông môn hiện tại vô cùng nguy hiểm và rủi ro bị phản bội rất cao."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 30"
@@ -6488,7 +6364,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_outer_tournament",
@@ -6506,8 +6383,6 @@
       "en": "The sect is stable and hosting its decennial Outer Sect Tournament. Disciples from all peaks gather to prove their martial prowess and win supreme pills.",
       "vi": "Tông môn đang trong thời kỳ ổn định và tổ chức Đại Hội Tỷ Thí Ngoại Môn thập niên. Đệ tử các phong tụ tập để chứng minh võ lực và giành lấy đan dược quý giá."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "> 50"
@@ -6541,7 +6416,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_resource_famine",
@@ -6559,8 +6435,6 @@
       "en": "The sect's resource reserves have plummeted to a critical low. Allowances are cut, and desperate outer disciples are fighting each other over meager scraps of spirit herbs.",
       "vi": "Kho tài nguyên của tông môn đã cạn kiệt đến mức báo động. Bổng lộc bị cắt giảm, các đệ tử ngoại môn tuyệt vọng đang cấu xé nhau vì những mảnh linh thảo vụn vặt."
     },
-    "minAge": 12,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 30"
@@ -6593,7 +6467,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "spirit_beast_mutation",
@@ -6611,8 +6486,6 @@
       "en": "While tending to the sect's spirit beasts, one of them swallows a strange glowing insect and begins to mutate violently, radiating intense spiritual energy.",
       "vi": "Trong lúc làm nhiệm vụ chăn nuôi linh thú, một con thú nuốt phải côn trùng phát sáng kỳ lạ và bắt đầu đột biến dữ dội, tỏa ra linh khí mãnh liệt."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 50"
@@ -6648,7 +6521,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "outer_sect_herb_theft",
@@ -6666,8 +6540,6 @@
       "en": "Sect resources are dwindling. You catch a fellow outer disciple desperately stealing a spirit herb to save their dying mortal mother.",
       "vi": "Tài nguyên tông môn cạn kiệt. Bạn bắt quả tang một đệ tử ngoại môn đang tuyệt vọng ăn trộm linh thảo ở dược viên để cứu người mẹ phàm nhân đang hấp hối."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 40"
@@ -6696,7 +6568,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_promotion_offer",
@@ -6714,8 +6587,6 @@
       "en": "A greedy Inner Sect Elder approaches you in secret. He offers to bend the rules and promote you to the Inner Sect early, but for a steep price.",
       "vi": "Một vị Trưởng lão Nội Môn tham lam bí mật tiếp cận bạn. Lão đề nghị bẻ cong luật lệ và đặc cách bạn vào Nội Môn sớm, nhưng với một cái giá cắt cổ."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 50"
@@ -6746,7 +6617,8 @@
           "comprehension": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_beast_feeding_frenzy",
@@ -6764,8 +6636,6 @@
       "en": "While performing your mandatory sect quest to feed the outer sect's spirit beasts, one of them, corrupted by a sudden spike in demonic energy, breaks its cage and lunges at you.",
       "vi": "Trong lúc thực hiện nhiệm vụ tông môn cho linh thú ngoại môn ăn, một con thú bị tha hóa bởi luồng ma khí đột ngột tăng cao đã phá lồng và lao thẳng vào bạn."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 30"
@@ -6800,7 +6670,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "strict_deacon_inspection",
@@ -6818,8 +6689,6 @@
       "en": "The sect is tightening its rules. A strict deacon stops you to inspect your annual sect contributions. He glares at you, demanding either proof of hard work or a hefty 'fine'.",
       "vi": "Tông môn đang siết chặt kỷ luật. Một vị chấp sự nghiêm khắc chặn bạn lại để kiểm tra điểm cống hiến hàng năm. Hắn trừng mắt nhìn bạn, đòi bằng chứng làm việc hoặc một khoản 'tiền phạt' lớn."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "> 40"
@@ -6850,7 +6719,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "traitorous_deacon",
@@ -6868,8 +6738,6 @@
       "en": "Sect stability is crumbling. You catch a senior deacon sneaking out with the sect's core technique manual, planning to defect to a rival sect.",
       "vi": "Sự ổn định của tông môn đang sụp đổ. Bạn bắt gặp một vị chấp sự cấp cao đang lén lút mang theo bí kíp cốt lõi của tông môn để đào tẩu sang phe địch."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25"
@@ -6903,7 +6771,8 @@
           "daoMind": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_debt_collector",
@@ -6921,8 +6790,6 @@
       "en": "Sect resources are depleted. A debt-collecting deacon is making rounds, forcefully demanding 'voluntary contributions' from outer disciples to fill the treasury.",
       "vi": "Tài nguyên tông môn cạn kiệt. Một vị chấp sự đòi nợ đang đi tuần, cưỡng ép đệ tử ngoại môn 'tự nguyện quyên góp' để lấp đầy kho bạc."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 30"
@@ -6952,7 +6819,8 @@
           "karma": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "elder_funeral_conspiracy",
@@ -6970,8 +6838,6 @@
       "en": "An inner sect elder has passed away, and the sect's stability is shaken. Rumors of a hidden legacy left to an outer disciple are spreading like wildfire.",
       "vi": "Một vị trưởng lão nội môn vừa tạ thế, sự ổn định của tông môn bị lung lay. Tin đồn về một di sản ẩn giấu để lại cho đệ tử ngoại môn đang lan truyền chóng mặt."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 50"
@@ -7004,7 +6870,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "captured_sect_rebel",
@@ -7022,8 +6889,6 @@
       "en": "Internal strife is high. You've cornered a fellow disciple who was caught stealing core scriptures. They beg you to let them go, claiming they only wanted to save their family.",
       "vi": "Nội bộ bất ổn trầm trọng. Bạn đã dồn vào đường cùng một đồng môn bị bắt quả tang trộm cắp bí kíp cốt lõi. Hắn van xin bạn tha mạng, nói rằng chỉ muốn cứu gia đình."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 35"
@@ -7058,7 +6923,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_manual_preservation",
@@ -7076,8 +6942,6 @@
       "en": "The Library Pavilion has caught fire during a riot. Rare manual fragments are scattered in the smoke and flames. You can only save a few.",
       "vi": "Tàng Kinh Các đã bốc cháy trong một cuộc bạo loạn. Những mảnh tàn quyển hiếm hoi vương vãi trong khói lửa. Bạn chỉ có thể cứu được một vài bản."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25"
@@ -7109,7 +6973,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_resource_leak",
@@ -7127,8 +6992,6 @@
       "en": "The sect's resources are at a critical low, and management is in shambles. You discover a hidden hole in the resource warehouse where spirit stones and low-grade pills are leaking out.",
       "vi": "Tài nguyên tông môn cạn kiệt, việc quản lý lỏng lẻo. Bạn phát hiện một lỗ hổng bí mật trong kho tài nguyên, nơi linh thạch và đan dược cấp thấp đang bị rò rỉ ra ngoài."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "sect.resources": "< 25",
@@ -7162,7 +7025,8 @@
           "money": 30
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "alchemy_hall_explosion",
@@ -7180,8 +7044,6 @@
       "en": "While passing the Alchemy Hall, a massive explosion rocks the building. Smoke fills the air, and scorched remains of rare spirit herbs are scattered everywhere.",
       "vi": "Khi đi ngang qua Đan Dược Đường, một vụ nổ kinh hoàng làm rung chuyển tòa nhà. Khói bụi mù mịt, những mảnh linh thảo quý hiếm bị thiêu cháy văng khắp nơi."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 50"
@@ -7215,7 +7077,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_treasury_betrayal",
@@ -7233,8 +7096,6 @@
       "en": "Internal stability has collapsed. You find a group of high-ranking disciples and an elder attempting to empty the treasury before defecting to a rival sect,.",
       "vi": "Sự ổn định nội bộ đã sụp đổ hoàn toàn. Bạn bắt gặp một nhóm đệ tử cao cấp và một trưởng lão đang cố gắng vét sạch kho báu trước khi đào tẩu sang tông môn đối địch,."
     },
-    "minAge": 40,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 20"
@@ -7269,7 +7130,8 @@
           "daoMind": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Golden Core"
   },
   {
     "id": "sect_meridian_cleansing_pool",
@@ -7287,8 +7149,6 @@
       "en": "The spiritual Qi in the sect is exceptionally dense. The legendary cleansing pool has opened its doors to outer disciples for a limited time.",
       "vi": "Linh khí trong tông môn đang dày đặc bất thường. Hồ tẩy tủy truyền thuyết đã mở cửa cho đệ tử ngoại môn trong một thời gian ngắn."
     },
-    "minAge": 10,
-    "maxAge": 100,
     "weight": 1,
     "conditions": {
       "spiritualQi": "> 75"
@@ -7320,7 +7180,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "forced_labor_duty",
@@ -7338,8 +7199,6 @@
       "en": "The sect's stability is low, and the elders are demanding more from outer disciples. You have been assigned to the most dangerous section of the spirit mines as a 'mandatory contribution'.",
       "vi": "Ổn định tông môn thấp, các trưởng lão yêu cầu nhiều hơn từ đệ tử ngoại môn. Bạn bị điều động đến khu vực nguy hiểm nhất của linh quặng hầm như một hình thức 'đóng góp bắt buộc'."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 40"
@@ -7373,7 +7232,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "hidden_jade_chamber",
@@ -7391,8 +7251,6 @@
       "en": "The sect is stable and prosperous. The Sect Leader decides to open the 'Hidden Jade Chamber' for the most promising disciples, offering access to restricted knowledge.",
       "vi": "Tông môn đang trong thời kỳ ổn định và phồn vinh. Tông Chủ quyết định mở cửa 'Mật Thất Ngọc Bích' cho những đệ tử ưu tú nhất, cho phép tiếp cận với những bí pháp cấm kỵ."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "> 70",
@@ -7427,7 +7285,8 @@
           "luck": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "great_sect_war_frontline",
@@ -7445,8 +7304,6 @@
       "en": "Sect war has reached a fever pitch. You are drafted to the frontline to defend the Spirit Mine against the Ten Thousand Immortals Sect's elite vanguard.",
       "vi": "Chiến sự tông môn đã lên đến đỉnh điểm. Bạn bị điều động ra tiền tuyến để bảo vệ Linh Quặng trước đội tiên phong tinh nhuệ của Vạn Tiên Giáo."
     },
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 75"
@@ -7480,7 +7337,8 @@
           "sect.stability": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "deacon_infiltration_scandal",
@@ -7498,8 +7356,6 @@
       "en": "High demonic infiltration has compromised a Senior Deacon. You catch them transmitting sect secrets via a blood-red transmission jade.",
       "vi": "Ma đạo thâm nhập sâu rộng đã khiến một Chấp Sự cao cấp sa ngã. Bạn bắt quả tang hắn đang truyền tin mật tông môn thông qua một khối truyền tin huyết ngọc."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 70"
@@ -7534,7 +7390,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_coup_attempt",
@@ -7552,8 +7409,6 @@
       "en": "Sect stability has reached a critical low. A group of radical disciples, fueled by the resource famine, is attempting to overthrow the treasury deacons.",
       "vi": "Sự ổn định của tông môn chạm mức báo động. Một nhóm đệ tử cực đoan, bị kích động bởi sự khan hiếm tài nguyên, đang âm mưu lật đổ các chấp sự kho bạc."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25",
@@ -7589,7 +7444,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_war_raiding_party",
@@ -7607,8 +7463,6 @@
       "en": "Sect warfare has escalated. You are ordered to join a high-risk raiding party to sabotage the enemy sect's spirit herb garden.",
       "vi": "Chiến sự tông môn leo thang. Bạn bị lệnh tham gia một đội đột kích mạo hiểm nhằm phá hoại dược viên linh thảo của tông môn đối địch."
     },
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "sect.warLevel": "> 80"
@@ -7642,7 +7496,8 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_merit_hoarding",
@@ -7660,8 +7515,6 @@
       "en": "The sect is flourishing with resources. A greedy deacon is secretly allowing disciples to 'buy' merit points with large sums of spirit stones.",
       "vi": "Tông môn đang dồi dào tài nguyên. Một chấp sự tham lam đang bí mật cho phép đệ tử 'mua' điểm cống hiến bằng một lượng lớn linh thạch."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "sect.resources": "> 70",
@@ -7694,7 +7547,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_manual_leak",
@@ -7712,8 +7566,6 @@
       "en": "Internal stability is low. A corrupted librarian is secretly selling fragments of the sect's high-grade manuals to the highest bidder.",
       "vi": "Sự ổn định của tông môn đang thấp [4]. Một thủ thư hủ bại đang lén lút bán các mảnh tàn quyển công pháp cao cấp của tông môn cho người trả giá cao nhất."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 35"
@@ -7747,7 +7599,8 @@
           "money": 50
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_heritage_trial",
@@ -7765,8 +7618,6 @@
       "en": "With the sect's reputation at an all-time high, the Grand Elder opens the 'Heritage Path'—a trial designed to test a disciple's core comprehension and loyalty to the sect's founding Dao.",
       "vi": "Với danh vọng tông môn đang ở đỉnh cao, Đại Trưởng Lão mở ra 'Di Sản Chi Lộ'—một thử thách được thiết kế để kiểm tra ngộ tính và lòng trung thành của đệ tử đối với Đạo tổ sáng lập."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.reputation": "> 75"
@@ -7800,7 +7651,8 @@
           "money": 50
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "spirit_root_resonance_test",
@@ -7818,8 +7670,6 @@
       "en": "With global spiritual Qi peaking, the sect's resonance crystal has activated. It offers a rare chance to refine your Spirit Root's purity and enhance your cultivation multiplier.",
       "vi": "Khi linh khí thiên địa đạt đỉnh, tinh thể cộng hưởng của tông môn đã được kích hoạt. Đây là cơ hội hiếm có để tôi luyện độ tinh khiết của Linh Căn và tăng cường hệ số tu luyện của bạn [1, 2]."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 80",
@@ -7852,7 +7702,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_internal_betrayal",
@@ -7870,8 +7721,6 @@
       "en": "Sect stability is low and demonic infiltration is high. You catch a senior disciple attempting to poison the spirit well with demonic energy.",
       "vi": "Sự ổn định tông môn thấp và ma đạo thâm nhập cao. Bạn bắt quả tang một sư huynh đang định hạ độc ma khí vào linh tuyền của môn phái [7-9]."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 30",
@@ -7908,7 +7757,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "sect_pill_warehouse_chaos",
@@ -7926,8 +7776,6 @@
       "en": "Internal stability has collapsed! A riot has broken out, and the sect's pill warehouse is being looted by desperate disciples [cite: 52, 59].",
       "vi": "Sự ổn định nội bộ sụp đổ! Một cuộc bạo loạn bùng nổ, kho linh dược của tông môn đang bị các đệ tử tuyệt vọng xâu xé [cite: 52, 59]."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "sect.stability": "< 25"
@@ -7962,7 +7810,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "sect_ancestor_statue_awakening",
@@ -7980,8 +7829,6 @@
       "en": "Fueled by the sect's high reputation and spiritual Qi, the statue of the founding ancestor begins to radiate a golden light, offering guidance to the faithful [cite: 52, 57].",
       "vi": "Dưới sự thúc đẩy của danh vọng tông môn cao và linh khí nồng đậm, bức tượng của tổ sư khai phái bắt đầu tỏa ánh kim quang, ban truyền chỉ điểm cho những đệ tử thành tâm [cite: 52, 57]."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "sect.reputation": "> 80",
@@ -8015,7 +7862,8 @@
           "karma": 10
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_possession_scandal",
@@ -8033,8 +7881,6 @@
       "en": "Extremely high demonic infiltration and energy have led to a catastrophe: a senior deacon has been possessed by a demonic entity and is wreaking havoc in the outer sect [cite: 59, 55].",
       "vi": "Ma đạo thâm nhập và ma khí cực cao đã dẫn đến thảm họa: một chấp sự cao cấp đã bị ma vật đoạt xá và đang gây hỗn loạn tại ngoại môn [cite: 59, 55]."
     },
-    "minAge": 25,
-    "maxAge": 180,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 75",
@@ -8070,6 +7916,7 @@
           "karma": -10
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   }
 ]

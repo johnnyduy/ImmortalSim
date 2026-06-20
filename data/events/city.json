@@ -16,8 +16,6 @@
       "en": "At the decennial auction in Qingyang City, you spent all your Spirit Stones on a Foundation Establishment Pill. As you step out, Young Master Wang blocks your path, tosses 10 Spirit Stones at you, and demands the pill.",
       "vi": "Tại buổi đấu giá thập niên của Thanh Dương Thành, bạn vừa dốc cạn Linh thạch để mua được một viên Trúc Cơ Đan. Khi bước ra khỏi cửa, Vương Thiếu Gia của gia tộc tu tiên bản địa chặn đường, ném cho bạn 10 Linh thạch và yêu cầu giao nộp viên đan dược."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 70"
@@ -48,7 +46,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "slum_black_market",
@@ -67,8 +66,6 @@
       "en": "Sneaking into the city's slums, you find a hidden black market. A masked merchant offers a 'Supreme Foundation Establishment Pill' for half the market price, but it reeks of blood.",
       "vi": "Len lỏi vào khu ổ chuột của thành thị, bạn tìm thấy một phiên chợ đen chuyên tiêu thụ hàng hóa không rõ nguồn gốc. Một tên thương nhân che mặt chào bán 'Trúc Cơ Đan Cực Phẩm' với giá chỉ bằng một nửa thị trường, nhưng đan dược tỏa ra mùi tanh nồng."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -103,7 +100,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_plague",
@@ -121,8 +119,6 @@
       "en": "Passing through a mortal village at the foot of the mountain, you discover a strange plague spreading due to leaking demonic energy. Hundreds are crying out in agony.",
       "vi": "Đi qua một ngôi làng phàm nhân dưới chân núi, bạn phát hiện nơi này đang lây lan một loại ôn dịch kỳ lạ do ma khí rò rỉ. Hàng trăm người đang kêu la thảm thiết, thây chất thành đống."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -153,7 +149,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "rogue_cultivator_scam",
@@ -170,8 +167,6 @@
       "en": "Wandering the market, a mysterious ragged old man pulls you aside, offering to sell the 'Nine Turns Divine Art' for only 50 Spirit Stones.",
       "vi": "Đang dạo quanh phường thị, một lão giả thần bí rách rưới kéo bạn lại, gạ bán 'Cửu Chuyển Thần Công' với giá chỉ 50 Linh thạch."
     },
-    "minAge": 12,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 50"
@@ -203,7 +198,8 @@
           "karma": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "beast_tide_mortals",
@@ -221,8 +217,6 @@
       "en": "Violent beasts swarm down the mountain, slaughtering a mortal village. You happen to be passing by.",
       "vi": "Yêu thú bạo động tràn xuống chân núi, tàn sát một ngôi làng phàm nhân. Bạn vừa vặn đi ngang qua."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "mountain.beastActivity": "> 65"
@@ -253,7 +247,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_invasion",
@@ -271,8 +266,6 @@
       "en": "The sky turns blood red as dense demonic energy suffocates the area. A horde of demonic cultivators breaches the defenses, slaughtering everyone in sight.",
       "vi": "Bầu trời nhuốm màu máu khi ma khí dày đặc bao trùm. Một đội quân tà tu đã phá vỡ trận pháp phòng ngự, tàn sát tất cả những ai chúng nhìn thấy."
     },
-    "minAge": 18,
-    "maxAge": 250,
     "weight": 2,
     "conditions": {
       "demonicEnergy": "> 80"
@@ -306,7 +299,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "grand_decennial_auction",
@@ -324,8 +318,6 @@
       "en": "The city is highly prosperous, hosting a grand auction. Rare treasures and supreme martial fragments are displayed, but the prices are astronomical.",
       "vi": "Thành thị đang cực kỳ phồn hoa, tổ chức một buổi đại đấu giá. Các dị bảo và tàn quyển công pháp tối thượng được trưng bày, nhưng giá cả ở mức trên trời."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 1,
     "conditions": {
       "city.prosperity": "> 85"
@@ -359,7 +351,8 @@
           "karma": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "market_crash_scavenging",
@@ -377,8 +370,6 @@
       "en": "Due to a surplus of goods, the market has crashed. Desperate merchants are dumping raw spirit herbs on the streets at dirt-cheap prices to cut losses.",
       "vi": "Thị trường dư thừa khiến giá cả sụp đổ. Các thương nhân đang tuyệt vọng bán tháo linh thảo thô ngay trên phố với giá rẻ như cho để cắt lỗ."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "< 75"
@@ -413,7 +404,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "event_thieu_gia_gay_su",
@@ -432,8 +424,6 @@
       "en": "At the grand auction, Young Master Wang uses his overwhelming wealth to maliciously outbid and humiliate you over a supreme treasure.",
       "vi": "Tại đấu giá hội, Vương Thiếu Gia dùng tiền đè người, ác ý nâng giá để tranh đoạt bảo vật của bạn."
     },
-    "minAge": 15,
-    "maxAge": 40,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 60"
@@ -462,7 +452,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "soul_festival",
@@ -480,8 +471,6 @@
       "en": "You stumble upon a rare Soul Festival in the city where spirits and mortals gather, overflowing with mystical energies.",
       "vi": "Bạn tình cờ tham gia một Lễ Hội Hồn Linh hiếm gặp trong thành, nơi tinh linh và phàm nhân tụ tập với nguồn năng lượng huyền bí."
     },
-    "minAge": 12,
-    "maxAge": 22,
     "weight": 1,
     "conditions": {
       "city.prosperity": "> 50"
@@ -514,7 +503,8 @@
           "cultivation": 1
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "herb_price_surge",
@@ -532,8 +522,6 @@
       "en": "Due to a severe shortage, the price of spirit herbs has skyrocketed! The market is in a frenzy, offering a perfect opportunity for hoarding and speculation.",
       "vi": "Do khan hiếm trầm trọng, giá linh dược leo thang chóng mặt! Thị trường đang hỗn loạn, tạo ra cơ hội hoàn hảo để đầu cơ tích trữ."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 140"
@@ -566,7 +554,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_town_activity",
@@ -585,8 +574,6 @@
       "en": "Demonic cultivators have appeared in the town's outskirts, significantly reducing security. Cultivators are warned to stay away.",
       "vi": "Tà tu đã xuất hiện tại vùng ven thị trấn, làm suy giảm an ninh nghiêm trọng. Các tu sĩ được cảnh báo nên tránh đi xa."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 60"
@@ -617,7 +604,8 @@
           "daoMind": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "illicit_demonic_caravan",
@@ -635,8 +623,6 @@
       "en": "Due to poor city security and rising demonic infiltration, a suspicious merchant caravan sets up shop in an alley, secretly selling forbidden Demonic path materials.",
       "vi": "Do an ninh kém và ma đạo thâm nhập, một đoàn thương nhân khả nghi lập sạp trong hẻm tối, lén lút bán các vật liệu hiến tế cấm kỵ của Ma đạo."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 40",
@@ -670,7 +656,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_rebellion",
@@ -688,8 +675,6 @@
       "en": "City morale has hit rock bottom. Starving mortals are violently rebelling against the corrupt city lord who serves the cultivation sects.",
       "vi": "Dân tâm thành thị đã chạm đáy. Những phàm nhân chết đói đang bạo loạn chống lại tên thành chủ tham nhũng làm tay sai cho tu chân giả."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 30"
@@ -719,7 +704,8 @@
           "health": -5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupted_pill_vendor",
@@ -738,8 +724,6 @@
       "en": "Taking advantage of the high demonic infiltration in the city, a hooded vendor in a dark alley offers you a Foundation Establishment Pill. It's cheap, but it reeks of heavy pill-toxins and dark arts.",
       "vi": "Lợi dụng sự thâm nhập của ma đạo trong thành, một kẻ trùm đầu trong hẻm tối gạ bán cho bạn một viên Trúc Cơ Đan. Giá rất rẻ, nhưng nó nồng nặc mùi đan độc và tà thuật."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "demonic.infiltration": "> 30"
@@ -772,7 +756,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_blood_raid",
@@ -790,8 +775,6 @@
       "en": "Demonic activity is peaking. A group of masked demonic cultivators sets up a blood array in the city outskirts, attempting to refine passing mortals into pills.",
       "vi": "Hoạt động tà tu đang ở đỉnh điểm. Một nhóm ma tu bịt mặt lập huyết trận ở vùng ven thành thị, cố gắng luyện hóa phàm nhân qua đường thành đan dược."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 70"
@@ -825,7 +808,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "underground_black_auction",
@@ -843,8 +827,6 @@
       "en": "City security is lax. You receive a secret invitation to an underground black auction selling stolen sect artifacts and forbidden pills.",
       "vi": "An ninh thành thị lỏng lẻo. Bạn nhận được thư mời bí mật tham gia một buổi đấu giá ngầm, nơi bày bán các pháp bảo tông môn bị ăn cắp và đan dược cấm kỵ."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 50"
@@ -878,7 +860,8 @@
           "daoMind": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "counterfeit_manual_scam",
@@ -896,8 +879,6 @@
       "en": "With city security failing, scammers are rampant. A merchant tries to sell you a 'Heavenly Grade' manual fragment for a suspiciously low price.",
       "vi": "An ninh thành thị lỏng lẻo, kẻ lừa đảo lộng hành. Một thương nhân gạ bán cho bạn mảnh tàn quyển 'Thiên Cấp' với giá rẻ bất ngờ."
     },
-    "minAge": 15,
-    "maxAge": 80,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -930,7 +911,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "herb_monopoly_challenge",
@@ -948,8 +930,6 @@
       "en": "With the price index skyrocketing, a local merchant guild has monopolized all spirit herbs, driving prices even higher. A group of rogue cultivators plans to raid their warehouse.",
       "vi": "Với chỉ số giá cả leo thang, một thương hội địa phương đã độc chiếm toàn bộ linh dược, đẩy giá lên cao hơn nữa. Một nhóm tán tu đang lên kế hoạch đột kích kho hàng của chúng."
     },
-    "minAge": 18,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 160"
@@ -983,7 +963,8 @@
           "karma": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_merchant_trap",
@@ -1001,8 +982,6 @@
       "en": "Demonic activity is high. A merchant offers you a 'Breakthrough Pill' at an impossibly low price, but you notice a faint, dark aura emanating from him.",
       "vi": "Hoạt động tà tu dâng cao. Một thương nhân gạ bán cho bạn 'Phá Cảnh Đan' với giá rẻ không tưởng, nhưng bạn nhận thấy một luồng ma khí mờ nhạt tỏa ra từ hắn."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 60",
@@ -1035,7 +1014,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "corrupt_speculation_frenzy",
@@ -1053,8 +1033,6 @@
       "en": "Due to skyrocketing spirit herb prices, a group of corrupt merchants is hoarding life-saving pills to sell at ten times the cost. The city's morale is plummeting as phantoms of hunger haunt the streets,.",
       "vi": "Do giá linh dược leo thang, một nhóm thương nhân hủ bại đang đầu cơ tích trữ đan dược cứu mạng để bán với giá gấp mười lần. Dân tâm thành thị đang chạm đáy khi bóng ma đói khát ám ảnh khắp phố phường,."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 150",
@@ -1087,7 +1065,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "the_shadow_ritual",
@@ -1105,8 +1084,6 @@
       "en": "Demonic activity has reached a fever pitch. In the city's slums, you find a ritual using phàm nhân (mortal) children to birth a new Demonic Seed,.",
       "vi": "Hoạt động ma đạo đã đạt đến đỉnh điểm. Tại khu ổ chuột của thành phố, bạn phát hiện một nghi lễ dùng trẻ em phàm nhân để hạ sinh một Ma Chủng mới,."
     },
-    "minAge": 25,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "demonic.activity": "> 80",
@@ -1142,7 +1119,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "mysterious_wandering_merchant",
@@ -1160,8 +1138,6 @@
       "en": "The city's price index is low. A wandering merchant from a distant land offers rare spiritual materials at prices that seem too good to be true.",
       "vi": "Chỉ số giá cả của thành phố đang thấp. Một thương nhân lang thang từ vùng đất xa xôi chào mời các linh vật hiếm với mức giá hời đến khó tin."
     },
-    "minAge": 15,
-    "maxAge": 120,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "< 80"
@@ -1197,7 +1173,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_guard_extortion",
@@ -1215,8 +1192,6 @@
       "en": "City security is low. A corrupt captain of the guard accuses you of smuggling forbidden demonic artifacts and demands a 'settlement' fee.",
       "vi": "An ninh thành thị lỏng lẻo. Một đội trưởng vệ binh hủ bại cáo buộc bạn buôn lậu ma cụ cấm và đòi một khoản tiền 'dàn xếp'."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40"
@@ -1247,7 +1222,8 @@
           "reputation": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "starving_mob_riot",
@@ -1265,8 +1241,6 @@
       "en": "City morale has reached a critical low. A desperate mob of starving mortals is blocking your path, demanding spirit stones to buy food from the price-gouging merchants.",
       "vi": "Dân tâm thành thị chạm mức báo động. Một đám đông phàm nhân đói khát đang chặn đường bạn, đòi linh thạch để mua lương thực từ những thương nhân đang đầu cơ tăng giá."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 35"
@@ -1297,7 +1271,8 @@
           "health": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "city_guard_mutiny",
@@ -1315,8 +1290,6 @@
       "en": "City security and morale have collapsed. The guards, unpaid for months, have turned into looters, terrorizing the merchants they once protected.",
       "vi": "An ninh và dân tâm thành thị đã sụp đổ. Đội vệ binh không được trả lương trong nhiều tháng đã biến thành những kẻ cướp bóc, khủng bố chính những thương nhân mà chúng từng bảo vệ."
     },
-    "minAge": 18,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.security": "< 30",
@@ -1349,7 +1322,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_hunger_riot",
@@ -1367,8 +1341,6 @@
       "en": "City morale has collapsed due to price-gouging. Starving mortals are attacking cultivator convoys for any scraps of spirit energy.",
       "vi": "Dân tâm thành thị sụp đổ do tình trạng đầu cơ tăng giá. Những phàm nhân đói khát đang tấn công các đoàn xe của tu sĩ để cướp bóc linh khí vụn vặt."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 25"
@@ -1400,7 +1372,8 @@
           "reputation": -10
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mystical_lantern_festival",
@@ -1418,8 +1391,6 @@
       "en": "The city is highly prosperous and spiritual Qi is dense. A grand festival is held where lanterns infused with soul power fill the sky, creating a resonance with the Heavenly Dao.",
       "vi": "Thành thị đang cực kỳ phồn hoa và linh khí nồng đậm. Một lễ hội lớn được tổ chức, nơi hàng ngàn hoa đăng chứa đựng hồn lực lấp đầy bầu trời, tạo nên sự cộng hưởng với Thiên Đạo."
     },
-    "minAge": 15,
-    "maxAge": 100,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 75",
@@ -1455,7 +1426,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "black_market_smuggling",
@@ -1473,8 +1445,6 @@
       "en": "The price index is skyrocketing and city security is low. A hidden network of smugglers is moving forbidden spirit herbs and demonic blood stones through the city sewers.",
       "vi": "Chỉ số giá cả leo thang và an ninh thành thị lỏng lẻo. Một mạng lưới buôn lậu đang vận chuyển linh thảo cấm và huyết thạch ma đạo thông qua hệ thống cống ngầm."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 180",
@@ -1513,7 +1483,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "black_market_hoarding",
@@ -1531,8 +1502,6 @@
       "en": "With the city's price index at an all-time high, a shadowy figure offers you a chance to join a scheme to hoard essential spiritual ores and manipulate the market.",
       "vi": "Với chỉ số giá cả đang ở mức cao kỷ lục, một nhân vật thần bí đề nghị bạn tham gia vào kế hoạch đầu cơ tích trữ linh quặng để thao túng thị trường."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 180"
@@ -1564,7 +1533,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "ghost_market_whispers",
@@ -1582,8 +1552,6 @@
       "en": "City security is low. You find a hidden entrance to the Ghost Market, where rogue cultivators trade forbidden demonic artifacts. A masked dealer offers you a piece of 'Huyền Thiết' for a suspicious price.",
       "vi": "An ninh thành thị lỏng lẻo. Bạn tìm thấy lối vào bí mật của Chợ Ma, nơi các tán tu trao đổi ma cụ cấm. Một kẻ đeo mặt nạ gạ bán cho bạn một khối 'Huyền Thiết' với giá nghi vấn."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40",
@@ -1622,7 +1590,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "mortal_plague_curse",
@@ -1640,8 +1609,6 @@
       "en": "A mysterious plague, suspected to be a demonic curse, is ravaging the mortal population. The city's morale is at rock bottom as phàm nhân die by the hundreds.",
       "vi": "Một trận dịch bệnh bí ẩn, nghi do ma đạo nguyền rủa, đang tàn phá dân cư phàm nhân. Dân tâm chạm đáy khi hàng trăm người chết mỗi ngày."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "city.morale": "< 30",
@@ -1674,7 +1641,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "city_embargo_crisis",
@@ -1692,8 +1660,6 @@
       "en": "The city is under a resource embargo due to high demonic activity. Prices have reached extreme levels, and the black market is the only way to survive.",
       "vi": "Thành phố đang bị cấm vận tài nguyên do hoạt động tà tu dâng cao [7, 8]. Giá cả đã chạm mức cực đoan, và chợ đen là con đường duy nhất để sinh tồn."
     },
-    "minAge": 18,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "city.priceIndex": "> 220",
@@ -1726,7 +1692,8 @@
           "karma": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "city_spirit_tide",
@@ -1744,8 +1711,6 @@
       "en": "Due to a massive surge in global spiritual Qi, the city's spiritual wells have overflowed. A literal tide of energy washes through the streets, momentarily turning the marketplace into a supreme cultivation ground.",
       "vi": "Do linh khí thiên địa đột ngột tăng vọt, các linh tuyền trong thành bùng nổ. Một đợt linh triều tràn qua các con phố, biến khu chợ tạm thời trở thành một thánh địa tu luyện thượng hạng."
     },
-    "minAge": 15,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "spiritualQi": "> 85",
@@ -1779,7 +1744,8 @@
           }
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "demonic_market_raid",
@@ -1797,8 +1763,6 @@
       "en": "City security is high and demonic activity is rising. The City Lord calls for volunteers to raid a secret demonic market discovered beneath the city's slums.",
       "vi": "An ninh thành thị đang cao trong khi hoạt động tà tu dâng trào. Thành Chủ kêu gọi tình nguyện viên càn quét một khu chợ ma đạo bí mật vừa bị phát hiện dưới khu ổ chuột."
     },
-    "minAge": 25,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "> 70",
@@ -1835,7 +1799,8 @@
           "luck": -2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "huyen_thiet_black_market",
@@ -1853,8 +1818,6 @@
       "en": "City security is low and the price index is rising. A rogue cultivator is secretly selling 'Huyền Thiết' stolen from a sect convoy, useful for crafting superior weapons.",
       "vi": "An ninh thành thị thấp và chỉ số giá cả đang tăng. Một tán tu đang lén lút bán 'Huyền Thiết' đánh cắp từ đoàn xe tông môn, vật liệu cực tốt để đúc thần binh [3, 4]."
     },
-    "minAge": 18,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.security": "< 40",
@@ -1889,7 +1852,8 @@
           "daoMind": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "corrupt_city_lord_tax",
@@ -1907,8 +1871,6 @@
       "en": "City morale and security are low. The corrupt City Lord has imposed a 'Spiritual Protection Tax' on all visiting cultivators to fund his private army.",
       "vi": "Dân tâm và an ninh thành thị đang thấp. Tên Thành Chủ hủ bại áp đặt 'Thuế Bảo Hộ Linh Khí' lên tất cả tu sĩ vãng lai để nuôi tư quân."
     },
-    "minAge": 20,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 40",
@@ -1941,7 +1903,8 @@
           "money": 100
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   },
   {
     "id": "city_tax_riot_interaction",
@@ -1959,8 +1922,6 @@
       "en": "With skyrocketing prices and low morale, starving mortals are blocking your path, accusing cultivators of hoarding the world's lifeblood [cite: 53, 60].",
       "vi": "Với giá cả leo thang và dân tâm sụt giảm, những phàm nhân đói khát đang chặn đường bạn, cáo buộc tu sĩ đang đầu cơ tích trữ mạch sống của thế giới [cite: 53, 60]."
     },
-    "minAge": 15,
-    "maxAge": 150,
     "weight": 2,
     "conditions": {
       "city.morale": "< 30",
@@ -1993,7 +1954,8 @@
           "city.security": 5
         }
       }
-    ]
+    ],
+    "minRealm": "Qi Refinement"
   },
   {
     "id": "grand_decade_auction",
@@ -2011,8 +1973,6 @@
       "en": "With city prosperity at its peak, the legendary Decade Auction has opened. Rare treasures from across the continent, including breakthrough pills and supreme manuals, are being showcased [cite: 60, 18].",
       "vi": "Với phồn vinh thành thị đạt đỉnh, Đại Đấu Giá Thập Niên huyền thoại đã khai mở. Những kỳ trân dị bảo từ khắp đại lục, bao gồm đan dược phá cảnh và bí tịch tối cao, đang được trưng bày [cite: 60, 18]."
     },
-    "minAge": 20,
-    "maxAge": 200,
     "weight": 2,
     "conditions": {
       "city.prosperity": "> 85"
@@ -2045,6 +2005,7 @@
           "luck": 2
         }
       }
-    ]
+    ],
+    "minRealm": "Foundation Establishment"
   }
 ]

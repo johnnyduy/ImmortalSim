@@ -40,11 +40,12 @@ Stats:
 - Cultivation
 
 Cultivation realms:
-- Mortal
-- Qi Refinement (12 Layers, 12th layer is Consummate)
-- Foundation Establishment (Early, Middle, Late, Consummate)
-- Golden Core (Early, Middle, Late, Consummate)
-- Nascent Soul (Early, Middle, Late, Consummate)
+- Mortal (Cultivation from 0 to 9.99)
+- Qi Refinement (9 Layers from 1->9, 9th layer is Consummate. Minor bottlenecks at 3->4 and 6->7; major bottleneck at 9->Foundation. Layer thresholds scale exponentially by x, default 1.3)
+- Foundation Establishment (3 sub-stages: Early, Middle, Late. Upon breakthrough to Foundation, cultivation resets to 0, local limit is 0 to 20)
+- Golden Core (4 sub-stages: Early, Middle, Late, Consummate. Upon breakthrough, cultivation resets to 0, limit is 0 to 40)
+- Nascent Soul (4 sub-stages: Early, Middle, Late, Consummate. Upon breakthrough, cultivation resets to 0)
+- Manuals System: Upgrading manuals costs stats cultivation. Better manuals cost y% more cultivation to upgrade than basic manuals (e.g. y = 10%).
 
 Player should feel:
 - Every death matters
