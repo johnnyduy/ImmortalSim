@@ -93,6 +93,16 @@ export type Inheritance = {
   npc_grudges?: Record<string, number>; // Ký ức luân hồi về mối thù NPC
 };
 
+export interface SectShopItem {
+  id: string;
+  itemId?: string; // If buying an item
+  techniqueId?: string; // If buying a technique fragment
+  quantity?: number; // How many items to give, default 1
+  cost: number; // Cost in Sect Contribution
+  minRank: 'ngoại_môn' | 'nội_môn' | 'chân_truyền' | 'trưởng_lão';
+  type: 'item' | 'technique';
+}
+
 export interface SectQuest {
   id: string;
   title: LocalizedText;
@@ -131,6 +141,7 @@ export type GameEffect = Partial<Stats> & {
     itemId: string;
     quantity: number;
   };
+  openAlchemy?: boolean;
   sectContribution?: number;
   spiritStones?: number;
   sectPrestige?: number;

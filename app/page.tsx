@@ -29,6 +29,7 @@ import CultivationMinigame from '../components/CultivationMinigame';
 import CombatModal from '../components/CombatModal';
 import AlchemyModal from '../components/AlchemyModal';
 import BlackMarketModal from '../components/BlackMarketModal';
+import SectShopModal from '../components/SectShopModal';
 import { resolveCombatAction, finishCombat } from '../lib/combat-system';
 // Fallback image helper component for event backgrounds (thiết kế hình tròn viền ngọc bích mảnh)
 function EventIllustration({ id, sect }: { id: string; sect?: string }) {
@@ -288,6 +289,7 @@ export default function HomePage() {
   const [creationAmbition, setCreationAmbition] = useState<'truong_sinh' | 'ba_chu' | 'dan_dao' | 'kiem_tien' | 'phu_quoc' | 'ma_dao'>('truong_sinh');
   const [isIntroTextFinished, setIsIntroTextFinished] = useState(false);
   const [showSectMissions, setShowSectMissions] = useState(false);
+  const [showSectShop, setShowSectShop] = useState(false);
   const [showBlackMarket, setShowBlackMarket] = useState(false);
   const [showAlchemy, setShowAlchemy] = useState(false);
   const [activeCombat, setActiveCombat] = useState<{
@@ -1539,6 +1541,11 @@ export default function HomePage() {
       return;
     }
 
+    if (choiceId === 'goto_menu_sect_shop') {
+      setShowSectShop(true);
+      return;
+    }
+
     if (choiceId === 'start_combat_npc_ta_tieu') {
       const player = buildPlayerCharacter(game);
       const fallback: Character = {
@@ -1646,6 +1653,11 @@ export default function HomePage() {
 
     const next = applyChoiceToState(game, choiceId, language);
     setGame(next);
+
+    const choice = game.currentEvent?.choices.find(c => c.id === choiceId);
+    if (choice?.effects?.openAlchemy) {
+      setShowAlchemy(true);
+    }
   };
 
   const handleReincarnate = () => {
@@ -2726,6 +2738,24 @@ export default function HomePage() {
                           </div>
                         </button>
 
+                        <button
+                          type="button"
+                          onClick={() => setShowSectShop(true)}
+                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                        >
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">📜</span>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                              {language === 'vi' ? 'Đến Tông Môn Bảo Các' : 'Sect Vault'}
+                            </h4>
+                            <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
+                              {language === 'vi' 
+                                ? 'Đổi Điểm cống hiến lấy pháp bảo, đan dược và công pháp.' 
+                                : 'Exchange Contribution points for artifacts, pills, and techniques.'}
+                            </p>
+                          </div>
+                        </button>
+
                         {/* Option 2: Tu luyện */}
                         <button
                           type="button"
@@ -3425,6 +3455,15 @@ export default function HomePage() {
           onClose={() => setShowSectMissions(false)}
           language={language}
           warLevel={game.worldState?.sect?.warLevel ?? 0}
+        />
+      )}
+
+      {showSectShop && game && (
+        <SectShopModal
+          state={game}
+          onUpdateState={setGame}
+          onClose={() => setShowSectShop(false)}
+          language={language}
         />
       )}
 

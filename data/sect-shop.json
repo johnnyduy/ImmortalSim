@@ -1,0 +1,66 @@
+[
+  {
+    "id": "shop_ngung_khi_dan",
+    "itemId": "item_ngung_khi_dan",
+    "quantity": 3,
+    "cost": 10,
+    "minRank": "ngoại_môn",
+    "type": "item"
+  },
+  {
+    "id": "shop_hoang_cap_tan_quyen",
+    "techniqueId": "hoang_cap_tan_quyen",
+    "quantity": 1,
+    "cost": 20,
+    "minRank": "ngoại_môn",
+    "type": "technique"
+  },
+  {
+    "id": "shop_huyen_nguyen_dan",
+    "itemId": "item_huyen_nguyen_dan",
+    "quantity": 1,
+    "cost": 30,
+    "minRank": "nội_môn",
+    "type": "item"
+  },
+  {
+    "id": "shop_thanh_phong_kiem",
+    "itemId": "item_thanh_phong_kiem",
+    "quantity": 1,
+    "cost": 100,
+    "minRank": "nội_môn",
+    "type": "item"
+  },
+  {
+    "id": "shop_dia_cap_tan_quyen",
+    "techniqueId": "dia_cap_tan_quyen",
+    "quantity": 1,
+    "cost": 150,
+    "minRank": "nội_môn",
+    "type": "technique"
+  },
+  {
+    "id": "shop_truc_co_dan",
+    "itemId": "item_truc_co_dan",
+    "quantity": 1,
+    "cost": 200,
+    "minRank": "chân_truyền",
+    "type": "item"
+  },
+  {
+    "id": "shop_thien_cap_tan_quyen",
+    "techniqueId": "thien_cap_tan_quyen",
+    "quantity": 1,
+    "cost": 500,
+    "minRank": "chân_truyền",
+    "type": "technique"
+  },
+  {
+    "id": "shop_tho_nguyen_dan",
+    "itemId": "item_tho_nguyen_dan",
+    "quantity": 1,
+    "cost": 1000,
+    "minRank": "trưởng_lão",
+    "type": "item"
+  }
+]

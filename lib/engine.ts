@@ -319,6 +319,7 @@ const applyEffects = (stats: Stats, effects: GameEffect, state?: GameState): Sta
     speed: Math.max(0, stats.speed + (effects.speed ?? 0)),
     toxicity: Math.max(0, stats.toxicity + (effects.toxicity ?? 0)),
     spiritualRoot: stats.spiritualRoot, // Linh căn cố định xuyên suốt kiếp sống
+    alchemyLevel: Math.max(0, (stats.alchemyLevel || 0) + (effects.alchemyLevel ?? 0)),
   };
 };
 
@@ -1912,7 +1913,8 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         { id: 'goto_menu_hoat_dong_tong_mon', text: { vi: '🏛️ [3] Hoạt Động Tông Môn', en: '🏛️ [3] Sect Activities' }, effects: {} },
         { id: 'goto_menu_kiem_tai_nguyen', text: { vi: '⛏️ [4] Kiếm Tài Nguyên (Tại tông môn)', en: '⛏️ [4] Gather Resources (Inside Sect)' }, effects: {} },
         { id: 'goto_menu_quan_he_xa_hoi', text: { vi: '👥 [5] Quan Hệ Xã Hội', en: '👥 [5] Social Relations' }, effects: {} },
-        { id: 'goto_menu_lich_luyen', text: { vi: '🗺️ [6] Lịch Luyện Thế Giới', en: '🗺️ [6] World Travel' }, effects: {} }
+        { id: 'goto_menu_lich_luyen', text: { vi: '🗺️ [6] Lịch Luyện Thế Giới', en: '🗺️ [6] World Travel' }, effects: {} },
+        { id: 'goto_menu_sect_shop', text: { vi: '📜 [7] Tông Môn Bảo Các', en: '📜 [7] Sect Vault' }, effects: {} }
       ];
 
       const cap = getCultivationCap(state);
