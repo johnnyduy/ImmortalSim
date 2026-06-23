@@ -226,7 +226,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 1.2, opacity: 0 }}
-              transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="relative w-48 h-48 rounded-full border-2 border-[#e5c17b] flex items-center justify-center shadow-[0_0_35px_rgba(229,193,123,0.3)] bg-gradient-to-b from-[#1c1813]/90 to-[#0e0c0a]/95 backdrop-blur-md"
             >
               <div className="absolute inset-2 rounded-full border border-[#e5c17b]/30 border-dashed animate-spin" style={{ animationDuration: '20s' }} />
