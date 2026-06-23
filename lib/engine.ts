@@ -1023,9 +1023,16 @@ export const filterEventsForState = (
     const currentTier = realmTiers[state.realm] ?? 0;
     if (currentTier < reqTier) return false;
     
+    if (currentTier === reqTier && event.minSubStageIndex !== undefined) {
+      if ((state.subStageIndex || 0) < event.minSubStageIndex) return false;
+    }
+    
     if (event.maxRealm) {
       const maxTier = realmTiers[event.maxRealm as string] ?? 99;
       if (currentTier > maxTier) return false;
+      if (currentTier === maxTier && event.maxSubStageIndex !== undefined) {
+        if ((state.subStageIndex || 0) > event.maxSubStageIndex) return false;
+      }
     }
 
     // 2. Check Sect Prestige Requirements if they are sect-specific events
@@ -4195,6 +4202,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         }
       ]
     };
+  } else if (choice.effects && choice.effects.nextEvent) {
+    const allEvents = getLocalizedEvents(language);
+    const targetEvent = allEvents.find((e: EventDefinition) => e.id === choice.effects!.nextEvent);
+    if (targetEvent) {
+      nextEvent = targetEvent;
+    } else {
+      nextEvent = getMenuEvent('menu_monthly_plan', { ...state, stats: newStats, realm: newRealm, npcFavorability: nextNpcFavorability }, language);
+    }
   } else {
     nextEvent = getMenuEvent('menu_monthly_plan', { ...state, stats: newStats, realm: newRealm, npcFavorability: nextNpcFavorability }, language);
   }

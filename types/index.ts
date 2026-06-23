@@ -154,6 +154,7 @@ export type GameEffect = Partial<Stats> & {
     demonic?: Partial<Record<keyof DemonicWorldVars, number>>;
     global?: Partial<Record<keyof GlobalWorldVars, number>>;
   };
+  nextEvent?: string;
 };
 
 export type NpcDefinition = {
@@ -184,8 +185,11 @@ export type EventDefinition = {
   id: string;
   title: TextResource;
   description: TextResource;
+  location?: string;
   minRealm: Realm;
   maxRealm?: Realm;
+  minSubStageIndex?: number;
+  maxSubStageIndex?: number;
   weight: number;
   choices: EventChoice[];
   tags?: string[];

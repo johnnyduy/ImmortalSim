@@ -3,8 +3,11 @@
 import { useEffect, useState } from 'react';
 import type { GameState, WorldState } from '../types';
 import { getNpcFavorabilityLabel, changeNpcFavorability, createInitialWorldState, getWorldEventModifiers, generateWorldThresholdEvent, worldStateToNews, applyChoiceToState, tickMonth, createNewGame } from '../lib/engine';
+import TestCharacterTab from './TestCharacterTab';
+import EventGraphTab from './EventGraphTab';
 
-type Tab = 'techniques' | 'npcs' | 'sects' | 'events' | 'time_gear' | 'scriptures' | 'cultivation' | 'npc_relations' | 'world_state';
+
+type Tab = 'techniques' | 'npcs' | 'sects' | 'events' | 'event_graph' | 'time_gear' | 'scriptures' | 'cultivation' | 'npc_relations' | 'world_state' | 'test_character';
 
 type Props = {
   isOpen: boolean;
@@ -330,17 +333,19 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
 
         {/* Tab Navigation */}
         <nav className="flex bg-[#14110f] border-b border-[#3e3328]/50 overflow-x-auto">
-          {(['techniques', 'npcs', 'sects', 'events', 'time_gear', 'scriptures', 'cultivation', 'npc_relations', 'world_state'] as Tab[]).map((tab) => {
+          {(['techniques', 'npcs', 'sects', 'events', 'event_graph', 'time_gear', 'scriptures', 'cultivation', 'npc_relations', 'world_state', 'test_character'] as Tab[]).map((tab) => {
             const labels: Record<Tab, string> = {
               techniques: 'Công pháp & Vũ kĩ',
               npcs: 'Nhân vật NPC',
               sects: 'Danh môn Môn phái',
               events: 'Sự kiện Đời người',
+              event_graph: 'Cây Sự Kiện',
               time_gear: 'Bánh răng Thời gian',
               scriptures: '📖 Tàng Kinh Các',
               cultivation: '🌱 Tu Vi & Linh Căn',
               npc_relations: '👥 Lược Đồ Nhân Mạch',
               world_state: '🌍 Mạch Máu Thế Giới',
+              test_character: '🛠️ Test Nhân Vật',
             };
             return (
               <button
@@ -364,9 +369,19 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
         </nav>
 
         {/* Body content */}
-        <div className="flex-1 overflow-y-auto p-6">
-          {/* World State tab renders independently — no config fetch needed */}
-          {activeTab === 'world_state' ? (
+        <div className="flex-1 overflow-y-auto p-6" style={activeTab === 'event_graph' ? { padding: 0 } : {}}>
+          {/* World State and Test Character tabs render independently - no config fetch needed */}
+          {activeTab === 'test_character' ? (
+            <TestCharacterTab game={game} onChangeGame={onChangeGame!} onClose={onClose} combatConfig={combatConfig} sects={sects} />
+          ) : activeTab === 'event_graph' ? (
+            <EventGraphTab 
+              onEditEvent={(eventId) => {
+                setActiveTab('events');
+                const eventIndex = events.findIndex(e => e.id === eventId);
+                setEditingItem({ type: 'event', index: eventIndex !== -1 ? eventIndex : events.length, data: events[eventIndex] || { id: eventId } });
+              }}
+            />
+          ) : activeTab === 'world_state' ? (
             <WorldStateView game={game} onChangeGame={onChangeGame} />
           ) : loading ? (
             <div className="flex flex-col items-center justify-center h-64 space-y-4">
@@ -714,8 +729,7 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
                           id: '',
                           title: '',
                           description: '',
-                          minAge: 1,
-                          maxAge: 100,
+                          minRealm: 'Mortal',
                           weight: 1,
                           choices: []
                         },
@@ -1735,7 +1749,7 @@ function EventList({
                 <div className="flex items-baseline gap-4 flex-wrap">
                   <h5 className="font-serif text-[#e5c17b] text-base">{locationLabel}{titleText}</h5>
                   <span className="text-[10px] text-text-tertiary">Mã: {ev.id}</span>
-                  <span className="text-[10px] text-[#847764] uppercase tracking-wider">Tuổi: {ev.minAge} - {ev.maxAge} (Nặng: {ev.weight})</span>
+                  <span className="text-[10px] text-[#847764] uppercase tracking-wider">Cảnh Giới: {ev.minRealm} {ev.minSubStageIndex !== undefined ? `(T${ev.minSubStageIndex})` : ''} - {ev.maxRealm || 'Tối Đa'} (Nặng: {ev.weight})</span>
                   {ev._sourceFile && (
                     <span className="text-[9px] bg-[#3e3328]/30 text-[#847764] px-1 border border-[#3e3328]/50 rounded-sm">File: {ev._sourceFile}</span>
                   )}
@@ -1790,8 +1804,10 @@ function EventForm({
   const [titleEn, setTitleEn] = useState(typeof data.title === 'object' ? (data.title.en || '') : '');
   const [descriptionVi, setDescriptionVi] = useState(typeof data.description === 'object' ? (data.description.vi || '') : (data.description || ''));
   const [descriptionEn, setDescriptionEn] = useState(typeof data.description === 'object' ? (data.description.en || '') : '');
-  const [minAge, setMinAge] = useState(data.minAge || 1);
-  const [maxAge, setMaxAge] = useState(data.maxAge || 100);
+  const [minRealm, setMinRealm] = useState(data.minRealm || 'Mortal');
+  const [maxRealm, setMaxRealm] = useState(data.maxRealm || '');
+  const [minSubStageIndex, setMinSubStageIndex] = useState(data.minSubStageIndex ?? '');
+  const [maxSubStageIndex, setMaxSubStageIndex] = useState(data.maxSubStageIndex ?? '');
   const [weight, setWeight] = useState(data.weight || 1);
   const [location, setLocation] = useState(data.location || 'sect');
   const [tags, setTags] = useState<string[]>(data.tags || []);
@@ -1815,8 +1831,10 @@ function EventForm({
         tags: tags.length > 0 ? tags : undefined,
         title: titleEn ? { vi: titleVi, en: titleEn } : titleVi,
         description: descriptionEn ? { vi: descriptionVi, en: descriptionEn } : descriptionVi,
-        minAge: Number(minAge),
-        maxAge: Number(maxAge),
+        minRealm: minRealm,
+        maxRealm: maxRealm || undefined,
+        minSubStageIndex: minSubStageIndex !== '' ? Number(minSubStageIndex) : undefined,
+        maxSubStageIndex: maxSubStageIndex !== '' ? Number(maxSubStageIndex) : undefined,
         weight: Number(weight),
         choices: choices.map(c => ({
           id: c.id,
@@ -1905,8 +1923,10 @@ function EventForm({
       tags: tags.length > 0 ? tags : undefined,
       title: titleEn ? { vi: titleVi, en: titleEn } : titleVi,
       description: descriptionEn ? { vi: descriptionVi, en: descriptionEn } : descriptionVi,
-      minAge: Number(minAge),
-      maxAge: Number(maxAge),
+      minRealm: minRealm,
+      maxRealm: maxRealm || undefined,
+      minSubStageIndex: minSubStageIndex !== '' ? Number(minSubStageIndex) : undefined,
+      maxSubStageIndex: maxSubStageIndex !== '' ? Number(maxSubStageIndex) : undefined,
       weight: Number(weight),
       choices: choices.map(c => ({
         id: c.id,
@@ -1943,8 +1963,10 @@ function EventForm({
           setDescriptionEn('');
         }
         
-        setMinAge(parsed.minAge || 1);
-        setMaxAge(parsed.maxAge || 100);
+        setMinRealm(parsed.minRealm || 'Mortal');
+        setMaxRealm(parsed.maxRealm || '');
+        setMinSubStageIndex(parsed.minSubStageIndex ?? '');
+        setMaxSubStageIndex(parsed.maxSubStageIndex ?? '');
         setWeight(parsed.weight || 1);
         
         const restoredChoices = (parsed.choices || []).map((c: any) => ({
@@ -2108,25 +2130,68 @@ function EventForm({
               </label>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <label className="block space-y-2">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Tuổi Nhỏ Nhất (Min Age)</span>
+            <div className="grid grid-cols-5 gap-4">
+              <label className="block space-y-2 col-span-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Cảnh Giới (Min)</span>
+                <select
+                  value={minRealm}
+                  onChange={(e) => setMinRealm(e.target.value)}
+                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                >
+                  <option value="Mortal">Mortal</option>
+                  <option value="Qi Refinement">Qi Refinement</option>
+                  <option value="Foundation Establishment">Foundation</option>
+                  <option value="Golden Core">Golden Core</option>
+                  <option value="Nascent Soul">Nascent Soul</option>
+                  <option value="Soul Formation">Soul Formation</option>
+                  <option value="Void Amalgamation">Void Amalgamation</option>
+                  <option value="Body Integration">Body Integration</option>
+                  <option value="Mahayana">Mahayana</option>
+                  <option value="Tribulation">Tribulation</option>
+                  <option value="True Immortal">True Immortal</option>
+                </select>
+              </label>
+              <label className="block space-y-2 col-span-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Tầng (Min)</span>
                 <input
                   type="number"
-                  value={minAge}
-                  onChange={(e) => setMinAge(Number(e.target.value))}
+                  value={minSubStageIndex}
+                  onChange={(e) => setMinSubStageIndex(e.target.value)}
                   min={1}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  placeholder="Bất kỳ"
+                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
                 />
               </label>
-              <label className="block space-y-2">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Tuổi Lớn Nhất (Max Age)</span>
+              <label className="block space-y-2 col-span-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Cảnh Giới (Max)</span>
+                <select
+                  value={maxRealm}
+                  onChange={(e) => setMaxRealm(e.target.value)}
+                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                >
+                  <option value="">Không giới hạn</option>
+                  <option value="Mortal">Mortal</option>
+                  <option value="Qi Refinement">Qi Refinement</option>
+                  <option value="Foundation Establishment">Foundation</option>
+                  <option value="Golden Core">Golden Core</option>
+                  <option value="Nascent Soul">Nascent Soul</option>
+                  <option value="Soul Formation">Soul Formation</option>
+                  <option value="Void Amalgamation">Void Amalgamation</option>
+                  <option value="Body Integration">Body Integration</option>
+                  <option value="Mahayana">Mahayana</option>
+                  <option value="Tribulation">Tribulation</option>
+                  <option value="True Immortal">True Immortal</option>
+                </select>
+              </label>
+              <label className="block space-y-2 col-span-1">
+                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Tầng (Max)</span>
                 <input
                   type="number"
-                  value={maxAge}
-                  onChange={(e) => setMaxAge(Number(e.target.value))}
+                  value={maxSubStageIndex}
+                  onChange={(e) => setMaxSubStageIndex(e.target.value)}
                   min={1}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  placeholder="Bất kỳ"
+                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
                 />
               </label>
               <label className="block space-y-2">
@@ -2292,7 +2357,7 @@ function EventImportForm({
       <textarea
         value={jsonText}
         onChange={(e) => setJsonText(e.target.value)}
-        placeholder={`[\n  {\n    "id": "my_custom_event",\n    "location": "city",\n    "tags": ["city", "market"],\n    "title": {\n      "en": "Custom Event",\n      "vi": "Sự kiện tự chế"\n    },\n    "description": {\n      "en": "A mysterious merchant offers you a map...",\n      "vi": "Một thương nhân bí ẩn đưa cho bạn tấm bản đồ..."\n    },\n    "minAge": 15,\n    "maxAge": 80,\n    "weight": 2,\n    "choices": [\n      {\n        "id": "accept_map",\n        "text": {\n          "en": "Accept it.",\n          "vi": "Nhận bản đồ."\n        },\n        "effects": {\n          "luck": 2,\n          "money": -50\n        }\n      }\n    ]\n  }\n]`}
+        placeholder={`[\n  {\n    "id": "my_custom_event",\n    "location": "city",\n    "tags": ["city", "market"],\n    "title": {\n      "en": "Custom Event",\n      "vi": "Sự kiện tự chế"\n    },\n    "description": {\n      "en": "A mysterious merchant offers you a map...",\n      "vi": "Một thương nhân bí ẩn đưa cho bạn tấm bản đồ..."\n    },\n    "minRealm": "Mortal",\n    "weight": 2,\n    "choices": [\n      {\n        "id": "accept_map",\n        "text": {\n          "en": "Accept it.",\n          "vi": "Nhận bản đồ."\n        },\n        "effects": {\n          "luck": 2,\n          "money": -50\n        }\n      }\n    ]\n  }\n]`}
         rows={15}
         className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059] font-mono text-xs"
         required
