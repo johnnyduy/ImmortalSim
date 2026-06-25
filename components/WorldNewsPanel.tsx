@@ -43,7 +43,7 @@ export const NEWS_RULES: NewsRule[] = [
     title: { vi: 'THÚ TRIỀU DÂNG CAO', en: 'BEAST SURGE' },
     description: {
       vi: 'Yêu thú bộc phát dữ dội tại Sơn mạch! Nguy hiểm sơn mạch gia tăng, tránh đi thám hiểm dã ngoại.',
-      en: 'Beast activity surging in the Mountains! Mountain danger elevated, avoid wilderness exploration.'
+      en: 'Beast activity surging in the Mountains! Mountain danger Improved, avoid wilderness exploration.'
     },
     check: (w) => w.mountain?.beastActivity > 75
   },
@@ -65,7 +65,7 @@ export const NEWS_RULES: NewsRule[] = [
     title: { vi: 'NỘI BỘ BẤT ỔN', en: 'INTERNAL INSTABILITY' },
     description: {
       vi: 'Chấp sự tông môn bị ám sát, đấu đá phe phái! Nguy hiểm tông môn, rủi ro cao.',
-      en: 'Sect deacons assassinated, faction wars! Internal danger and risks elevated.'
+      en: 'Sect deacons assassinated, faction wars! Internal danger and risks Improved.'
     },
     check: (w) => w.sect?.stability < 30
   },
@@ -154,24 +154,24 @@ export default function WorldNewsPanel({
 
       {/* Main Board Container */}
       <div 
-        className="relative w-full max-w-4xl bg-gradient-to-b from-[#0e241e] via-[#091713] to-[#0a1b16] border-4 border-double border-[#b89f65] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1px_3px_rgba(255,255,255,0.15)] flex flex-col p-6 sm:p-8 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-[#173a30] scrollbar-track-black/40"
+        className="relative w-full max-w-4xl bg-gradient-to-b from-[#0e241e] via-[#091713] to-[#0a1b16] border-4 border-double border-[#10b981] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.95),inset_0_1px_3px_rgba(255,255,255,0.15)] flex flex-col p-6 sm:p-8 overflow-y-auto max-h-[90vh] scrollbar-thin scrollbar-thumb-[#173a30] scrollbar-track-black/40"
         style={{ outline: '1px solid rgba(229, 193, 123, 0.3)', outlineOffset: '-6px' }}
       >
         {/* Ancient Chinese-style decorative cloud corners */}
-        <div className="absolute top-2 left-2 text-[#b89f65]/40 text-xl pointer-events-none">🔸</div>
-        <div className="absolute top-2 right-2 text-[#b89f65]/40 text-xl pointer-events-none">🔸</div>
-        <div className="absolute bottom-2 left-2 text-[#b89f65]/40 text-xl pointer-events-none">🔸</div>
-        <div className="absolute bottom-2 right-2 text-[#b89f65]/40 text-xl pointer-events-none">🔸</div>
+        <div className="absolute top-2 left-2 text-emerald-500/40 text-xl pointer-events-none">🔸</div>
+        <div className="absolute top-2 right-2 text-emerald-500/40 text-xl pointer-events-none">🔸</div>
+        <div className="absolute bottom-2 left-2 text-emerald-500/40 text-xl pointer-events-none">🔸</div>
+        <div className="absolute bottom-2 right-2 text-emerald-500/40 text-xl pointer-events-none">🔸</div>
 
         {/* Title Banner */}
-        <div className="bg-gradient-to-r from-[#173a30] via-[#225547] to-[#173a30] border-2 border-[#b89f65] rounded-lg py-3 px-6 shadow-md text-center border-double">
-          <h2 className="font-serif text-[18px] sm:text-[22px] font-bold text-[#e5c17b] tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-            {isVi ? 'THẾ GIỚI TIÊN HIỆP — THÔNG BÁO THẾ GIỚI & TÔNG MÔN' : 'IMMORTAL WORLD — WORLD & SECT NEWS'}
+        <div className="bg-gradient-to-r from-[#173a30] via-[#225547] to-[#173a30] border-2 border-[#10b981] rounded-lg py-3 px-6 shadow-md text-center border-double">
+          <h2 className="font-serif text-[18px] sm:text-[22px] font-bold text-emerald-400 tracking-wider uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            {isVi ? 'THẾ GIỚI TIÊN HIỆP - THÔNG BÁO THẾ GIỚI & TÔNG MÔN' : 'IMMORTAL WORLD - WORLD & SECT NEWS'}
           </h2>
         </div>
 
         {/* Sub-Header: Month & Realm */}
-        <div className="mt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-serif font-bold text-[#e5c17b] tracking-widest bg-[#132c25]/60 border border-[#b89f65]/30 rounded px-4 py-1.5 mx-auto max-w-sm">
+        <div className="mt-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-serif font-bold text-emerald-400 tracking-widest bg-[#132c25]/60 border border-[#10b981]/30 rounded px-4 py-1.5 mx-auto max-w-sm">
           <span>📜</span>
           <span>
             {isVi 
@@ -184,15 +184,15 @@ export default function WorldNewsPanel({
         {/* Main 3-Column News Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 flex-1 min-h-[300px]">
           {/* Column 1: World Anomalies */}
-          <div className="bg-[#0b1713]/60 border border-[#b89f65]/20 rounded-md p-4 flex flex-col gap-4">
-            <h3 className="font-serif text-sm font-bold text-[#e5c17b] border-b border-[#b89f65]/35 pb-2 uppercase flex items-center gap-2">
+          <div className="bg-[#0b1713]/60 border border-[#10b981]/20 rounded-md p-4 flex flex-col gap-4">
+            <h3 className="font-serif text-sm font-bold text-emerald-400 border-b border-[#10b981]/35 pb-2 uppercase flex items-center gap-2">
               <span>🌍</span> {isVi ? 'Thế Giới Dị Động' : 'World Anomalies'}
             </h3>
             <div className="flex-1 flex flex-col gap-3.5 overflow-y-auto max-h-[320px] scrollbar-thin">
               {anomalies.length > 0 ? (
                 anomalies.map(news => (
-                  <div key={news.id} className="p-3 bg-[#173a30]/30 border border-[#c5a059]/30 rounded-sm space-y-1.5 animate-fade-in hover:bg-[#173a30]/40 transition-colors duration-300">
-                    <h4 className="font-serif text-xs font-bold text-[#fbe3b5] flex items-center gap-1.5">
+                  <div key={news.id} className="p-3 bg-[#173a30]/30 border border-emerald-500/30 rounded-sm space-y-1.5 animate-fade-in hover:bg-[#173a30]/40 transition-colors duration-300">
+                    <h4 className="font-mono-data text-xs font-bold text-primary flex items-center gap-1.5 uppercase">
                       <span>{news.icon}</span> {isVi ? news.title.vi : news.title.en}
                     </h4>
                     <p className="text-[11px] sm:text-xs text-text-secondary leading-relaxed text-justify">
@@ -214,8 +214,8 @@ export default function WorldNewsPanel({
           </div>
 
           {/* Column 2: Sect Conflicts */}
-          <div className="bg-[#0b1713]/60 border border-[#b89f65]/20 rounded-md p-4 flex flex-col gap-4">
-            <h3 className="font-serif text-sm font-bold text-[#e5c17b] border-b border-[#b89f65]/35 pb-2 uppercase flex items-center gap-2">
+          <div className="bg-[#0b1713]/60 border border-[#10b981]/20 rounded-md p-4 flex flex-col gap-4">
+            <h3 className="font-serif text-sm font-bold text-emerald-400 border-b border-[#10b981]/35 pb-2 uppercase flex items-center gap-2">
               <span>⚔️</span> {isVi ? 'Tông Môn Chiến Sự' : 'Sect Conflicts'}
             </h3>
             <div className="flex-1 flex flex-col gap-3.5 overflow-y-auto max-h-[320px] scrollbar-thin">
@@ -244,15 +244,15 @@ export default function WorldNewsPanel({
           </div>
 
           {/* Column 3: Market & Cities */}
-          <div className="bg-[#0b1713]/60 border border-[#b89f65]/20 rounded-md p-4 flex flex-col gap-4">
-            <h3 className="font-serif text-sm font-bold text-[#e5c17b] border-b border-[#b89f65]/35 pb-2 uppercase flex items-center gap-2">
+          <div className="bg-[#0b1713]/60 border border-[#10b981]/20 rounded-md p-4 flex flex-col gap-4">
+            <h3 className="font-serif text-sm font-bold text-emerald-400 border-b border-[#10b981]/35 pb-2 uppercase flex items-center gap-2">
               <span>📊</span> {isVi ? 'Thị Trường & Thành Thị' : 'Market & Cities'}
             </h3>
             <div className="flex-1 flex flex-col gap-3.5 overflow-y-auto max-h-[320px] scrollbar-thin">
               {markets.length > 0 ? (
                 markets.map(news => (
-                  <div key={news.id} className="p-3 bg-[#322c15]/30 border border-[#c5a059]/30 rounded-sm space-y-1.5 animate-fade-in hover:bg-[#322c15]/40 transition-colors duration-300">
-                    <h4 className="font-serif text-xs font-bold text-[#e5c17b] flex items-center gap-1.5">
+                  <div key={news.id} className="p-3 bg-[#322c15]/30 border border-emerald-500/30 rounded-sm space-y-1.5 animate-fade-in hover:bg-[#322c15]/40 transition-colors duration-300">
+                    <h4 className="font-serif text-xs font-bold text-emerald-400 flex items-center gap-1.5">
                       <span>{news.icon}</span> {isVi ? news.title.vi : news.title.en}
                     </h4>
                     <p className="text-[11px] sm:text-xs text-text-secondary leading-relaxed text-justify">
@@ -275,8 +275,8 @@ export default function WorldNewsPanel({
         </div>
 
         {/* Bottom Variable Status Panel */}
-        <div className="mt-8 border-t border-[#b89f65]/30 pt-6">
-          <div className="text-center font-serif text-xs font-bold text-[#e5c17b] uppercase tracking-[0.2em] mb-4 bg-[#0a1512] py-1 border border-[#b89f65]/20 rounded max-w-[200px] mx-auto">
+        <div className="mt-8 border-t border-[#10b981]/30 pt-6">
+          <div className="text-center font-serif text-xs font-bold text-emerald-400 font-medium mb-4 bg-[#0a1512] py-1 border border-[#10b981]/20 rounded max-w-[200px] mx-auto">
             {isVi ? 'Bảng Trạng Thái' : 'Status Variables'}
           </div>
 
@@ -285,9 +285,9 @@ export default function WorldNewsPanel({
             <div className="space-y-1">
               <div className="flex justify-between text-[10px] text-text-secondary font-bold">
                 <span className="truncate">{isVi ? 'Reputation' : 'Reputation'}</span>
-                <span className="text-[#e5c17b]">{Math.round(ws.sect?.reputation ?? 50)}</span>
+                <span className="text-emerald-400">{Math.round(ws.sect?.reputation ?? 50)}</span>
               </div>
-              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#b89f65]/35">
+              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#10b981]/35">
                 <div 
                   className="h-full rounded-full bg-gradient-to-r from-blue-700 to-cyan-400" 
                   style={{ width: `${getReputationPercent()}%` }}
@@ -299,9 +299,9 @@ export default function WorldNewsPanel({
             <div className="space-y-1">
               <div className="flex justify-between text-[10px] text-text-secondary font-bold">
                 <span className="truncate">{isVi ? 'spiritualQi' : 'spiritualQi'}</span>
-                <span className="text-[#e5c17b]">{Math.round(ws.global?.spiritualQi ?? 50)}</span>
+                <span className="text-emerald-400">{Math.round(ws.global?.spiritualQi ?? 50)}</span>
               </div>
-              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#b89f65]/35">
+              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#10b981]/35">
                 <div 
                   className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-green-400" 
                   style={{ width: `${getQiPercent()}%` }}
@@ -313,9 +313,9 @@ export default function WorldNewsPanel({
             <div className="space-y-1">
               <div className="flex justify-between text-[10px] text-text-secondary font-bold">
                 <span className="truncate">{isVi ? 'stability' : 'stability'}</span>
-                <span className="text-[#e5c17b]">{Math.round(ws.sect?.stability ?? 80)}</span>
+                <span className="text-emerald-400">{Math.round(ws.sect?.stability ?? 80)}</span>
               </div>
-              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#b89f65]/35">
+              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#10b981]/35">
                 <div 
                   className="h-full rounded-full bg-gradient-to-r from-green-700 to-emerald-400" 
                   style={{ width: `${getStabilityPercent()}%` }}
@@ -327,9 +327,9 @@ export default function WorldNewsPanel({
             <div className="space-y-1">
               <div className="flex justify-between text-[10px] text-text-secondary font-bold">
                 <span className="truncate">{isVi ? 'warLevel' : 'warLevel'}</span>
-                <span className="text-[#e5c17b]">{Math.round(ws.sect?.warLevel ?? 10)}</span>
+                <span className="text-emerald-400">{Math.round(ws.sect?.warLevel ?? 10)}</span>
               </div>
-              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#b89f65]/35">
+              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#10b981]/35">
                 <div 
                   className="h-full rounded-full bg-gradient-to-r from-orange-500 to-red-600" 
                   style={{ width: `${getWarPercent()}%` }}
@@ -341,11 +341,11 @@ export default function WorldNewsPanel({
             <div className="space-y-1">
               <div className="flex justify-between text-[10px] text-text-secondary font-bold">
                 <span className="truncate">{isVi ? 'prosperity' : 'prosperity'}</span>
-                <span className="text-[#e5c17b]">{Math.round(ws.city?.prosperity ?? 50)}</span>
+                <span className="text-emerald-400">{Math.round(ws.city?.prosperity ?? 50)}</span>
               </div>
-              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#b89f65]/35">
+              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#10b981]/35">
                 <div 
-                  className="h-full rounded-full bg-gradient-to-r from-amber-600 to-[#e5c17b]" 
+                  className="h-full rounded-full bg-gradient-to-r from-amber-600 to-[#34d399]" 
                   style={{ width: `${getProsperityPercent()}%` }}
                 />
               </div>
@@ -355,9 +355,9 @@ export default function WorldNewsPanel({
             <div className="space-y-1">
               <div className="flex justify-between text-[10px] text-text-secondary font-bold">
                 <span className="truncate">{isVi ? 'priceIndex' : 'priceIndex'}</span>
-                <span className="text-[#e5c17b]">{Math.round(ws.city?.priceIndex ?? 100)}</span>
+                <span className="text-emerald-400">{Math.round(ws.city?.priceIndex ?? 100)}</span>
               </div>
-              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#b89f65]/35">
+              <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden p-[1px] border border-[#10b981]/35">
                 <div 
                   className="h-full rounded-full bg-gradient-to-r from-purple-700 to-pink-500" 
                   style={{ width: `${getPricePercent()}%` }}
@@ -372,7 +372,7 @@ export default function WorldNewsPanel({
           <button
             type="button"
             onClick={onClose}
-            className="group px-8 py-2.5 rounded border border-[#b89f65] hover:border-[#e5c17b] bg-gradient-to-r from-[#173a30] to-[#0e241e] hover:from-[#205244] hover:to-[#173a30] text-[#e5c17b] hover:text-white font-serif font-bold text-sm tracking-widest shadow-lg transition-all duration-300 transform active:scale-95 cursor-pointer uppercase border-double"
+            className="group px-8 py-2.5 rounded border border-[#10b981] hover:border-[#34d399] bg-gradient-to-r from-[#173a30] to-[#0e241e] hover:from-[#205244] hover:to-[#173a30] text-emerald-400 hover:text-white font-serif font-bold text-sm tracking-widest shadow-lg transition-all duration-300 transform active:scale-95 cursor-pointer uppercase border-double"
           >
             {isVi ? 'Lui Ra' : 'Close Board'}
           </button>

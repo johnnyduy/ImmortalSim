@@ -1,3 +1,4 @@
+import { tickMonth, getVietnameseMonthName, getEnglishMonthName } from './game-controller';
 import type {
   EventDefinition,
   GameEffect,
@@ -51,7 +52,7 @@ const baseStats = (inheritance: Inheritance, spiritualRoot?: string, sect?: stri
   let karma = 0 + Math.min(10, Math.floor(inheritance.legacyPower / 2));
   let cultivation = 0 + Math.min(8, Math.floor(inheritance.ancestralMemory / 3));
   let lifespan = 80 + Math.max(0, Math.floor(inheritance.blessing * 1.5));
-  let daoHeart = 10 + Math.max(0, Math.floor(inheritance.ancestralMemory / 2));
+  let daoHeart = Math.floor(Math.random() * 41) + 30 + Math.max(0, Math.floor(inheritance.ancestralMemory / 2)); // Random 30-70
   let speed = 10 + Math.floor(luck * 0.2);
   let toxicity = 0;
 
@@ -484,7 +485,7 @@ export const getTechniqueBreakthroughCost = (tier: string, costIncreasePct?: num
   return base * (1 + pct / 100);
 };
 
-const determineRealm = (cultivation: number, currentRealm: Realm): Realm => {
+export const determineRealm = (cultivation: number, currentRealm: Realm): Realm => {
   if (
     currentRealm === 'Qi Refinement' ||
     currentRealm === 'Foundation Establishment' ||
@@ -577,7 +578,7 @@ const localeEvents: Record<string, EventDefinition[]> = {
   en: enEvents as EventDefinition[],
   vi: viEvents as EventDefinition[]};
 
-const getLocalizedEvents = (language: Lang): EventDefinition[] => {
+export const getLocalizedEvents = (language: Lang): EventDefinition[] => {
   if (dynamicLocaleEvents) {
     return dynamicLocaleEvents[language] ?? dynamicLocaleEvents['vi'];
   }
@@ -1704,7 +1705,8 @@ export const createNewGame = (
   const gender = customParams?.gender ?? 'nam';
   const spiritualRoot = customParams?.spiritualRoot ?? 'Kim Linh Căn';
   const sect = customParams?.sect ?? 'Kiếm Tông';
-  const ambition = customParams?.ambition ?? 'truong_sinh';
+  const ambitions = ['truong_sinh', 'ba_chu', 'dan_dao', 'kiem_tien', 'phu_quoc', 'ma_dao'] as const;
+  const ambition = customParams?.ambition ?? ambitions[Math.floor(Math.random() * ambitions.length)];
   
   const stats = baseStats(inheritance, spiritualRoot, sect);
   
@@ -4424,7 +4426,8 @@ export const reincarnate = (
   const gender = customParams?.gender ?? 'nam';
   const spiritualRoot = customParams?.spiritualRoot ?? 'Kim Linh Căn';
   const sect = customParams?.sect ?? 'Kiếm Tông';
-  const ambition = customParams?.ambition ?? state.ambition ?? 'truong_sinh';
+  const ambitions = ['truong_sinh', 'ba_chu', 'dan_dao', 'kiem_tien', 'phu_quoc', 'ma_dao'] as const;
+  const ambition = customParams?.ambition ?? state.ambition ?? ambitions[Math.floor(Math.random() * ambitions.length)];
   
   const stats = baseStats(nextInheritance, spiritualRoot, sect);
   
@@ -4481,7 +4484,7 @@ export const reincarnate = (
     currentLocation: 'sect'};
 };
 
-const monthlyNarrativesVi = [
+export const monthlyNarrativesVi = [
   "Bạn tĩnh tọa điều tức trong động phủ, linh khí xung quanh dao động nhẹ.",
   "Tiết trời thay đổi, đạo tâm cầu trường sinh của bạn vẫn kiên định.",
   "Bạn vận chuyển đại chu thiên, rèn luyện kinh mạch chân khí.",
@@ -4494,7 +4497,7 @@ const monthlyNarrativesVi = [
   "Bạn tĩnh tọa nghe tiếng gió thổi qua mây ngàn, lòng không gợn sóng."
 ];
 
-const monthlyNarrativesEn = [
+export const monthlyNarrativesEn = [
   "You focused your breathing in your cave, feeling the natural flow of spiritual energy.",
   "The seasons change, but your determination to reach immortality remains unyielding.",
   "You practiced your breathing exercises, refining your meridians.",
@@ -4568,7 +4571,7 @@ export const getPlayerStat = (state: GameState, stat: 'combatPower' | 'luck' | '
   return 0;
 };
 
-const buildQuestCompleteEvent = (quest: SectQuest, language: Lang, isParty: boolean): EventDefinition => {
+export const buildQuestCompleteEvent = (quest: SectQuest, language: Lang, isParty: boolean): EventDefinition => {
   const title = language === 'vi' ? `Hoàn Thành: ${quest.title.vi}` : `Completed: ${quest.title.en}`;
   
   // Halve contribution and gold if isParty is true
@@ -4632,7 +4635,7 @@ const buildQuestCompleteEvent = (quest: SectQuest, language: Lang, isParty: bool
   };
 };
 
-const buildQuestFailedEvent = (quest: SectQuest, language: Lang, isParty: boolean): EventDefinition => {
+export const buildQuestFailedEvent = (quest: SectQuest, language: Lang, isParty: boolean): EventDefinition => {
   const title = language === 'vi' ? `Thất Bại: ${quest.title.vi}` : `Failed: ${quest.title.en}`;
   
   // Calculate damage
@@ -5070,625 +5073,8 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
   return null;
 };
 
-export const tickMonth = (state: GameState, language: Lang, customConfig?: any): GameState => {
-  if (!state.alive) return state;
-
-  const activeConfig = customConfig || combatConfig;
-  const cap = getCultivationCap(state, activeConfig);
-  let nextMonth = state.month + 1;
-  let nextAge = state.age;
-  let nextStats = { ...state.stats };
-  let nextRealm = state.realm;
-  let nextSubStageIndex = state.subStageIndex;
-  let alive: boolean = state.alive;
-  let deathCause = state.deathCause;
-  let lastMessage = state.lastMessage;
-  const newLog = [...state.log];
-
-  let nextQuestsCompletedThisYear = state.questsCompletedThisYear ?? 0;
-
-  // Process quest completion first to increment nextQuestsCompletedThisYear before year rollover check
-  let nextActiveQuest = state.activeQuest ? { ...state.activeQuest } : null;
-  let questJustCompleted = false;
-  let questSuccess = false;
-  let questEvent: EventDefinition | null = null;
-  let triggerLog: LogEntry | null = null;
-  let monthlyCultivationGain = 0;
-
-  if (nextActiveQuest) {
-    nextActiveQuest.monthsRemaining -= 1;
-    
-    // Tĩnh tu bế quan: Cộng tu vi mỗi tháng
-    if (nextActiveQuest.quest.id.startsWith('quest_be_quan_')) {
-      const mult = getCultivationGainMultiplier(state, customConfig);
-      // Giống như tĩnh tu bình thường nhưng hiệu quả cao hơn một chút vì liên tục
-      const gain = (0.8 + (nextStats.comprehension * 0.02)) * mult;
-      monthlyCultivationGain = gain;
-      const currentAccumulated = nextActiveQuest.accumulatedCultivation ?? 0;
-      nextActiveQuest.accumulatedCultivation = currentAccumulated + gain;
-
-      // Cộng trực tiếp vào tu vi mỗi tháng để hiển thị tiến trình tu luyện tăng dần trên giao diện
-      nextStats.cultivation = Math.round((nextStats.cultivation + gain) * 100) / 100;
-      
-      const transitionResult = checkAndApplySubStageTransition(
-        state,
-        nextStats,
-        newLog,
-        language,
-        activeConfig
-      );
-      nextStats = transitionResult.stats;
-      nextRealm = transitionResult.realm;
-      nextSubStageIndex = transitionResult.subStageIndex;
-      newLog.length = 0;
-      newLog.push(...transitionResult.logs);
-      
-      const bottlenecks = getBottlenecks({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex }, activeConfig);
-      const isBottleneck = bottlenecks.some(b => b.realm_from === nextRealm && b.subStageIndex === nextSubStageIndex);
-      const localCap = getCultivationCap({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats }, activeConfig);
-      
-      if (nextStats.cultivation >= localCap && isBottleneck) {
-        nextStats.cultivation = localCap;
-        const breakthroughEvent = generateBreakthroughEvent(
-          { ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats },
-          nextStats,
-          activeConfig,
-          language
-        );
-        if (breakthroughEvent) {
-          const monthLabel = language === 'vi' ? getVietnameseMonthName(nextMonth) : getEnglishMonthName(nextMonth);
-          const desc = language === 'vi' ? `Tĩnh tu bế quan (Tu vi +${gain.toFixed(2)})` : `Closed-door retreat (Cultivation +${gain.toFixed(2)})`;
-          return {
-            ...state,
-            age: nextAge,
-            month: nextMonth,
-            isTicking: false,
-            activeQuest: null,
-            currentEvent: breakthroughEvent,
-            monthlyLog: [...(state.monthlyLog || []), `[${monthLabel} - Tuổi ${nextAge}]: ${desc}`].slice(-5),
-            worldState: state.worldState,
-            log: [...newLog],
-            stats: nextStats,
-            realm: nextRealm,
-            subStageIndex: nextSubStageIndex,
-            lastMessage: breakthroughEvent.description as LocalizedText
-          };
-        }
-      }
-    }
-    
-    if (nextActiveQuest.monthsRemaining === 0) {
-      questJustCompleted = true;
-      const quest = nextActiveQuest.quest;
-      const isParty = nextActiveQuest.isParty;
-
-      let success = true;
-      if (quest.checkStat && quest.checkValue) {
-        const playerVal = getPlayerStat(state, quest.checkStat);
-        const requiredVal = isParty ? quest.checkValue * 0.5 : quest.checkValue;
-        success = playerVal >= requiredVal;
-
-        // Custom OR checks for the specific quests
-        if (quest.id === 'quest_harvest_herbs') {
-          const comp = getPlayerStat(state, 'comprehension');
-          const luck = getPlayerStat(state, 'luck');
-          success = comp >= 8 || luck >= 8;
-        } else if (quest.id === 'quest_beast_care') {
-          const dao = getPlayerStat(state, 'daoHeart');
-          const luck = getPlayerStat(state, 'luck');
-          success = dao >= 10 || luck >= 7;
-        } else if (quest.id === 'quest_patrol') {
-          const cp = getPlayerStat(state, 'combatPower');
-          const comp = getPlayerStat(state, 'comprehension');
-          success = cp >= 35 || comp >= 10;
-        } else if (quest.id === 'quest_diplomacy') {
-          const luck = getPlayerStat(state, 'luck');
-          const cp = getPlayerStat(state, 'combatPower');
-          success = luck >= 12 || cp >= 50;
-        }
-      }
-      questSuccess = success;
-      
-      if (questSuccess && !quest.id.startsWith('quest_be_quan_') && quest.id !== 'quest_farm_herbs') {
-        nextQuestsCompletedThisYear += 1;
-      }
-
-      questEvent = questSuccess 
-        ? buildQuestCompleteEvent(quest, language, isParty) 
-        : buildQuestFailedEvent(quest, language, isParty);
-
-      triggerLog = {
-        type: 'info',
-        age: nextAge,
-        message: {
-          en: questSuccess 
-            ? `Completed Sect Quest: [${getLocalizedText(quest.title, 'en')}]` 
-            : `Failed Sect Quest: [${getLocalizedText(quest.title, 'en')}]`,
-          vi: questSuccess 
-            ? `Hoàn thành Nhiệm vụ Tông môn: [${getLocalizedText(quest.title, 'vi')}]` 
-            : `Thất bại Nhiệm vụ Tông môn: [${getLocalizedText(quest.title, 'vi')}]`
-        }
-      };
-    }
-  }
-
-  // Handle year rollover and punishment check
-  let triggerPunishment = false;
-  if (nextMonth > 12) {
-    nextMonth = 1;
-    nextAge += 1;
-
-    if (state.realm === 'Qi Refinement' && nextQuestsCompletedThisYear === 0) {
-      triggerPunishment = true;
-    }
-    nextQuestsCompletedThisYear = 0; // reset for new year
-
-    // Kiểm tra hết thọ nguyên khi bước sang năm mới
-    if (nextAge >= nextStats.lifespan) {
-      alive = false;
-      const deathText = translateDeathReason({ stats: nextStats, age: nextAge });
-      deathCause = deathText;
-      lastMessage = deathText;
-      newLog.push({
-        type: 'death',
-        age: nextAge,
-        message: renderLocalizedTemplate(defaultMessages.deathAtAge, { age: nextAge })});
-    }
-  }
-
-  if (!alive) {
-    return {
-      ...state,
-      age: nextAge,
-      month: nextMonth,
-      alive: false,
-      stats: nextStats,
-      realm: nextRealm,
-      subStageIndex: nextSubStageIndex,
-      currentEvent: null,
-      isTicking: false,
-      deathCause,
-      lastMessage,
-      log: newLog,
-      questsCompletedThisYear: nextQuestsCompletedThisYear
-    };
-  }
-
-  if (nextActiveQuest) {
-    const duration = nextActiveQuest.quest.durationMonths;
-    const elapsed = duration - nextActiveQuest.monthsRemaining - 1;
-    const langKey = language === 'vi' ? 'vi' : 'en';
-    const logs = nextActiveQuest.quest.progressLogs[langKey] || nextActiveQuest.quest.progressLogs.vi;
-    const logIdx = Math.max(0, Math.min(elapsed, (logs.length ?? 1) - 1));
-    let desc = logs[logIdx] || '';
-    if (monthlyCultivationGain > 0) {
-      desc += language === 'vi' ? ` (Tu vi +${monthlyCultivationGain.toFixed(2)})` : ` (Cultivation +${monthlyCultivationGain.toFixed(2)})`;
-    }
-  } else {
-    const pool = language === 'vi' ? monthlyNarrativesVi : monthlyNarrativesEn;
-    let desc = pool[Math.floor(Math.random() * pool.length)];
-  }
-  
-  // Tránh lỗi khi scope thay đổi, lấy lại desc chung
-  let finalDesc = '';
-  if (nextActiveQuest) {
-    const duration = nextActiveQuest.quest.durationMonths;
-    const elapsed = duration - nextActiveQuest.monthsRemaining - 1;
-    const langKey = language === 'vi' ? 'vi' : 'en';
-    const logs = nextActiveQuest.quest.progressLogs[langKey] || nextActiveQuest.quest.progressLogs.vi;
-    const logIdx = Math.max(0, Math.min(elapsed, (logs.length ?? 1) - 1));
-    finalDesc = logs[logIdx] || '';
-    if (monthlyCultivationGain > 0) {
-      finalDesc += language === 'vi' ? ` (Tu vi +${monthlyCultivationGain.toFixed(2)})` : ` (Cultivation +${monthlyCultivationGain.toFixed(2)})`;
-    }
-  } else {
-    const pool = language === 'vi' ? monthlyNarrativesVi : monthlyNarrativesEn;
-    finalDesc = pool[Math.floor(Math.random() * pool.length)];
-  }
-
-  const monthLabel = language === 'vi' ? getVietnameseMonthName(nextMonth) : getEnglishMonthName(nextMonth);
-  const logLine = `[${monthLabel} - Tuổi ${nextAge}]: ${finalDesc}`;
-  const nextMonthlyLog = [...(state.monthlyLog || []), logLine].slice(-5);
-
-  // Nếu đụng nóc tu vi, trả về trang Đột Phá
-  const hitCapThisTurn = nextStats.cultivation >= cap;
-  if (monthlyCultivationGain > 0 && hitCapThisTurn) {
-    nextStats.cultivation = cap;
-    const breakthroughEvent = generateBreakthroughEvent(state, nextStats, activeConfig, language);
-    if (breakthroughEvent) {
-      return {
-        ...state,
-        age: nextAge,
-        month: nextMonth,
-        isTicking: false,
-        activeQuest: null,
-        currentEvent: breakthroughEvent,
-        monthlyLog: nextMonthlyLog,
-        worldState: state.worldState,
-        log: newLog,
-        stats: nextStats,
-        lastMessage: breakthroughEvent.description as LocalizedText
-      };
-    }
-  }
-
-  if (triggerPunishment) {
-    const punishmentLog: LogEntry = {
-      type: 'info',
-      age: nextAge,
-      message: {
-        vi: `⚠️ Trừng phạt hàng năm: Do lười biếng không làm nhiệm vụ tông môn nào, Chấp Pháp Đường giáng lâm trừng phạt!`,
-        en: `⚠️ Annual Punishment: Having completed no sect quests, the Law Enforcement Hall inflicts punishment!`
-      }
-    };
-    return {
-      ...state,
-      age: nextAge,
-      month: nextMonth,
-      isTicking: false,
-      currentEvent: SectPunishmentEvent,
-      monthlyLog: nextMonthlyLog,
-      activeQuest: null,
-      log: [...state.log, punishmentLog],
-      lastMessage: punishmentLog.message,
-      questsCompletedThisYear: 0,
-      realm: nextRealm,
-      subStageIndex: nextSubStageIndex,
-      stats: nextStats
-    };
-  }
-
-  // ── Ngoại Môn Đại Bỉ Annual December Trigger ──
-  if (
-    nextMonth === 12 &&
-    !nextActiveQuest &&
-    !questJustCompleted &&
-    state.sect &&
-    (state.sectRank === 'ngoại_môn' || state.sectRank === undefined)
-  ) {
-    const tourLog: LogEntry = {
-      type: 'info',
-      age: nextAge,
-      message: {
-        vi: '🏟️ Ngoại Môn Đại Bỉ năm nay khai mở! Trống lôi đài vang rền toàn tông môn.',
-        en: '🏟️ The annual Outer Sect Tournament has begun! War drums echo across the whole sect.'
-      }
-    };
-
-    return {
-      ...state,
-      age: nextAge,
-      month: nextMonth,
-      isTicking: false,
-      currentEvent: TournamentAnnualStartEvent,
-      monthlyLog: nextMonthlyLog,
-      questsCompletedThisYear: nextQuestsCompletedThisYear,
-      log: [...state.log, tourLog],
-      lastMessage: tourLog.message,
-      realm: nextRealm,
-      subStageIndex: nextSubStageIndex,
-      stats: nextStats
-    };
-  }
-
-  if (questJustCompleted) {
-    const oldRealm = state.realm;
-    const newRealm = determineRealm(nextStats.cultivation, state.realm);
-    if (oldRealm !== newRealm) {
-      if (newRealm === 'Qi Refinement') nextStats.lifespan += 40;
-      else if (newRealm === 'Foundation Establishment') nextStats.lifespan += 80;
-      else if (newRealm === 'Golden Core') nextStats.lifespan += 200;
-      else if (newRealm === 'Nascent Soul') nextStats.lifespan += 500;
-    }
-
-    return {
-      ...state,
-      age: nextAge,
-      month: nextMonth,
-      isTicking: false,
-      currentEvent: questEvent,
-      monthlyLog: nextMonthlyLog,
-      activeQuest: null,
-      log: [...state.log, triggerLog!],
-      lastMessage: triggerLog!.message,
-      questsCompletedThisYear: nextQuestsCompletedThisYear,
-      stats: nextStats,
-      realm: nextRealm,
-      subStageIndex: nextSubStageIndex
-    };
-  }
-
-  if (nextActiveQuest) {
-    let passiveGain = 0;
-    if (!nextActiveQuest.quest.id.startsWith('quest_be_quan_')) {
-      passiveGain = 0.02 * getCultivationGainMultiplier(state, customConfig);
-      nextStats.cultivation = Math.round((nextStats.cultivation + passiveGain) * 100) / 100;
-      
-      const transitionResult = checkAndApplySubStageTransition(
-        state,
-        nextStats,
-        newLog,
-        language,
-        activeConfig
-      );
-      nextStats = transitionResult.stats;
-      nextRealm = transitionResult.realm;
-      nextSubStageIndex = transitionResult.subStageIndex;
-      newLog.length = 0;
-      newLog.push(...transitionResult.logs);
-      
-      const bottlenecks = getBottlenecks({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex }, activeConfig);
-      const isBottleneck = bottlenecks.some(b => b.realm_from === nextRealm && b.subStageIndex === nextSubStageIndex);
-      const localCap = getCultivationCap({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats }, activeConfig);
-      
-      if (nextStats.cultivation >= localCap && isBottleneck) {
-        nextStats.cultivation = localCap;
-        const breakthroughEvent = generateBreakthroughEvent(
-          { ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats },
-          nextStats,
-          activeConfig,
-          language
-        );
-        if (breakthroughEvent) {
-          return {
-            ...state,
-            age: nextAge,
-            month: nextMonth,
-            isTicking: false,
-            activeQuest: null,
-            currentEvent: breakthroughEvent,
-            monthlyLog: nextMonthlyLog,
-            worldState: state.worldState,
-            log: [...newLog],
-            stats: nextStats,
-            realm: nextRealm,
-            subStageIndex: nextSubStageIndex,
-            lastMessage: breakthroughEvent.description as LocalizedText
-          };
-        }
-      }
-    }
 
 
-    return {
-      ...state,
-      age: nextAge,
-      month: nextMonth,
-      monthlyLog: nextMonthlyLog,
-      activeQuest: nextActiveQuest,
-      questsCompletedThisYear: nextQuestsCompletedThisYear,
-      stats: nextStats,
-      realm: nextRealm,
-      subStageIndex: nextSubStageIndex,
-      log: newLog,
-      lastMessage
-    };
-  }
-
-  // ── Tick WorldState ──
-  const nextWorldState = state.worldState
-    ? tickWorldState(state.worldState, nextAge, nextMonth)
-    : createInitialWorldState(true);
-
-  // Thiên Đạo Truyền Âm (Heavenly Voice)
-  const voiceNotifications: Array<{ vi: string, en: string }> = [];
-  if (nextWorldState.mountain.beastActivity > 75) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: 🐾 Yêu thú hoạt động mạnh, nguy hiểm sơn mạch tăng cao.',
-      en: '[Heavenly Voice]: 🐾 Beast activity is high, danger in the mountain range has risen.'
-    });
-  }
-  if (nextWorldState.city.priceIndex > 140) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: 📈 Giá linh dược leo thang, khan hiếm hàng hóa.',
-      en: '[Heavenly Voice]: 📈 Spirit medicine prices are soaring, goods are scarce.'
-    });
-  }
-  if (nextWorldState.city.priceIndex < 70) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: 📉 Thị trường dư thừa, giá hàng giảm mạnh.',
-      en: '[Heavenly Voice]: 📉 Market surplus detected, prices dropping significantly.'
-    });
-  }
-  if (nextWorldState.sect.stability < 30) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: ⚡ Nội bộ tông môn bất ổn, đấu đá phe phái.',
-      en: '[Heavenly Voice]: ⚡ Sect stability is low, factional fighting intensifies.'
-    });
-  }
-  if (nextWorldState.global.daoFluctuation > 65) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: ✨ Thiên đạo dị động, cơ duyên phi thường có thể xuất hiện.',
-      en: '[Heavenly Voice]: ✨ Heavenly dao fluctuations detected, extraordinary opportunities may appear.'
-    });
-  }
-  if (nextWorldState.demonic.activity > 60) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: 💀 Ma tu hoạt động mạnh, đường sá không an toàn.',
-      en: '[Heavenly Voice]: 💀 Demonic activity is intense, paths are dangerous.'
-    });
-  }
-  if (nextWorldState.sect.warLevel > 60) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: ⚔️ Tông môn chiến sự leo thang, đại chiến bùng nổ.',
-      en: '[Heavenly Voice]: ⚔️ Sect war levels escalating, battles are erupting.'
-    });
-  }
-  if (nextWorldState.city.prosperity > 80) {
-    voiceNotifications.push({
-      vi: '[Thiên Đạo Truyền Âm]: 🏙️ Thành thị phồn hoa, cơ hội kinh doanh tốt.',
-      en: '[Heavenly Voice]: 🏙️ City prosperity is high, business opportunities abound.'
-    });
-  }
-
-  // Randomly take at most 2-3 notifications to prevent spamming the logs
-  const shuffleNotifications = [...voiceNotifications].sort(() => 0.5 - Math.random());
-  const maxToPick = Math.min(shuffleNotifications.length, Math.floor(Math.random() * 2) + 2); // 2 or 3
-  const pickedNotifications = shuffleNotifications.slice(0, maxToPick);
-
-  const voiceLogEntries: LogEntry[] = pickedNotifications.map(n => ({
-    type: 'info',
-    age: nextAge,
-    message: n
-  }));
-
-  // Thu thập tin tức thế giới đáng chú ý
-  const worldNews = worldStateToNews(nextWorldState, language);
-  const worldNewsLog: LogEntry[] = worldNews.length > 0 ? [{
-    type: 'info',
-    age: nextAge,
-    message: {
-      vi: `📰 Tin tức thế giới: ${worldNews.join(' | ')}`,
-      en: `📰 World news: ${worldNews.join(' | ')}`
-    }
-  }] : [];
-
-  // Roll standard random event (only if NOT on a quest!)
-  // activeConfig is already defined above
-  const configDenom = activeConfig?.time_gear?.event_chance_denominator ?? 12;
-  const rollEvent = Math.random() < (1 / configDenom);
-
-  // World event modifiers cho event pool
-  const worldMods = getWorldEventModifiers(nextWorldState);
-
-  if (rollEvent) {
-    let event: EventDefinition | null = null;
-
-    // Ưu tiên world threshold events (15% chance khi roll event)
-    if (Math.random() < 0.15) {
-      event = generateWorldThresholdEvent(nextWorldState, { ...state, age: nextAge }, language);
-    }
-
-    // NPC events (40%)
-    if (!event && state.sect && Math.random() < 0.40) {
-      event = generateNpcEvent({ ...state, age: nextAge, stats: nextStats, npcFavorability: state.npcFavorability }, language);
-    }
-
-    // Random event pool với world modifiers
-    if (!event) {
-      const baseState = { ...state, age: nextAge };
-      const available = filterEventsForState(getLocalizedEvents(language), baseState, nextAge);
-
-      if (available.length > 0) {
-        const getWeight = (ev: EventDefinition) => {
-          let w = ev.weight;
-          // Ambition boost
-          if (state.ambition && ev.tags && ev.tags.includes(state.ambition)) w *= 3.0;
-          // World modifier boost
-          if (ev.tags) {
-            for (const tag of ev.tags) {
-              if (worldMods[tag]) w *= worldMods[tag];
-            }
-          }
-          return w;
-        };
-        const total = available.reduce((s, ev) => s + getWeight(ev), 0);
-        let roll = Math.random() * total;
-        for (const ev of available) {
-          roll -= getWeight(ev);
-          if (roll <= 0) { event = ev; break; }
-        }
-        if (!event) event = available[0];
-      } else {
-        event = getRandomEvent(baseState, language);
-      }
-    }
-
-    const triggerLog: LogEntry = {
-      type: 'info',
-      age: nextAge,
-      message: {
-        en: `An event occurs in ${monthLabel}: [${getLocalizedText(event!.title, 'en')}]`,
-        vi: `Kỳ ngộ phát sinh vào ${monthLabel}: [${getLocalizedText(event!.title, 'vi')}]`
-      }
-    };
-
-    return {
-      ...state,
-      age: nextAge,
-      month: nextMonth,
-      isTicking: false,
-      currentEvent: event,
-      monthlyLog: nextMonthlyLog,
-      worldState: nextWorldState,
-      log: [...newLog, ...worldNewsLog, ...voiceLogEntries, triggerLog],
-      lastMessage: triggerLog.message,
-      stats: nextStats,
-      realm: nextRealm,
-      subStageIndex: nextSubStageIndex
-    };
-  }
-
-  let passiveGain = 0.02 * getCultivationGainMultiplier(state, customConfig);
-  nextStats.cultivation = Math.round((nextStats.cultivation + passiveGain) * 100) / 100;
-  
-  const transitionResult = checkAndApplySubStageTransition(
-    state,
-    nextStats,
-    newLog,
-    language,
-    activeConfig
-  );
-  nextStats = transitionResult.stats;
-  nextRealm = transitionResult.realm;
-  nextSubStageIndex = transitionResult.subStageIndex;
-  newLog.length = 0;
-  newLog.push(...transitionResult.logs);
-  
-  const bottlenecks = getBottlenecks({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex }, activeConfig);
-  const isBottleneck = bottlenecks.some(b => b.realm_from === nextRealm && b.subStageIndex === nextSubStageIndex);
-  const localCap = getCultivationCap({ ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats }, activeConfig);
-  
-  if (nextStats.cultivation >= localCap && isBottleneck) {
-    nextStats.cultivation = localCap;
-    const breakthroughEvent = generateBreakthroughEvent(
-      { ...state, realm: nextRealm, subStageIndex: nextSubStageIndex, stats: nextStats },
-      nextStats,
-      activeConfig,
-      language
-    );
-    if (breakthroughEvent) {
-      return {
-        ...state,
-        age: nextAge,
-        month: nextMonth,
-        isTicking: false,
-        activeQuest: null,
-        currentEvent: breakthroughEvent,
-        monthlyLog: nextMonthlyLog,
-        worldState: state.worldState,
-        log: [...newLog],
-        stats: nextStats,
-        realm: nextRealm,
-        subStageIndex: nextSubStageIndex,
-        lastMessage: breakthroughEvent.description as LocalizedText
-      };
-    }
-  }
-
-  return {
-    ...state,
-    age: nextAge,
-    month: nextMonth,
-    monthlyLog: nextMonthlyLog,
-    worldState: nextWorldState,
-    log: [...newLog, ...worldNewsLog, ...voiceLogEntries],
-    stats: nextStats,
-    realm: nextRealm,
-    subStageIndex: nextSubStageIndex,
-    lastMessage
-  };
-};
-
-function getVietnameseMonthName(m: number): string {
-  const names = ["🐀", "🐂", "🐅", "🐈", "🐉", "🐍", "🐎", "🐐", "🐒", "🐓", "🐕", "🐖"];
-  return names[m - 1] || `Month ${m}`;
-}
-
-function getEnglishMonthName(m: number): string {
-  const names = ["🐀", "🐂", "🐅", "🐈", "🐉", "🐍", "🐎", "🐐", "🐒", "🐓", "🐕", "🐖"];
-  return names[m - 1] || `Month ${m}`;
-}
 
 export const changeLocation = (
   state: GameState,

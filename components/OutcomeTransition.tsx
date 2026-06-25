@@ -212,7 +212,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
           <div className="absolute inset-0 bg-black/45 backdrop-blur-[1px] flex flex-col items-center justify-center">
             {/* Elegant glowing gold vectors forming lines of karma */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none">
-              <g stroke="#e5c17b" strokeWidth="1.5" fill="none" opacity="0.75">
+              <g stroke="#34d399" strokeWidth="1.5" fill="none" opacity="0.75">
                 {/* Dynamic intersecting threads of fate */}
                 <path d="M-100,200 Q 200,450 600,200 T 1300,500" className="karmic-line" style={{ animationDelay: '0s' }} />
                 <path d="M1200,100 Q 800,400 400,100 T -100,400" className="karmic-line" style={{ animationDelay: '0.1s' }} />
@@ -227,12 +227,12 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 1.2, opacity: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-48 h-48 rounded-full border-2 border-[#e5c17b] flex items-center justify-center shadow-[0_0_35px_rgba(229,193,123,0.3)] bg-gradient-to-b from-[#1c1813]/90 to-[#0e0c0a]/95 backdrop-blur-md"
+              className="relative w-48 h-48 rounded-full border-2 border-[#34d399] flex items-center justify-center shadow-[0_0_35px_rgba(229,193,123,0.3)] bg-gradient-to-b from-[#1c1813]/90 to-[#0e0c0a]/95 backdrop-blur-md"
             >
-              <div className="absolute inset-2 rounded-full border border-[#e5c17b]/30 border-dashed animate-spin" style={{ animationDuration: '20s' }} />
+              <div className="absolute inset-2 rounded-full border border-[#34d399]/30 border-dashed animate-spin" style={{ animationDuration: '20s' }} />
               <div className="text-center space-y-1 z-10 px-4">
-                <span className="text-3xl text-[#e5c17b] filter drop-shadow-[0_0_8px_rgba(229,193,123,0.6)]">☯</span>
-                <h3 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest font-bold">
+                <span className="text-3xl text-emerald-400 filter drop-shadow-[0_0_8px_rgba(229,193,123,0.6)]">☯</span>
+                <h3 className="font-serif text-emerald-400 text-base font-medium font-bold">
                   {language === 'vi' ? 'Thiện Nghiệp' : 'Good Karma'}
                 </h3>
                 <p className="text-[9px] text-[#b5a995] font-sans tracking-wide">
@@ -270,10 +270,10 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               <div className="absolute inset-2 rounded-full border border-[#a93c3c]/30 border-dashed animate-spin" style={{ animationDuration: '8s' }} />
               <div className="text-center space-y-1 z-10 px-4">
                 <span className="text-3xl text-[#a93c3c] filter drop-shadow-[0_0_8px_rgba(169,60,60,0.7)]">💀</span>
-                <h3 className="font-serif text-[#a93c3c] text-base uppercase tracking-widest font-bold">
+                <h3 className="font-serif text-[#a93c3c] text-base font-medium font-bold">
                   {language === 'vi' ? 'Ma Vực Nghiệp' : 'Demonic Karma'}
                 </h3>
-                <p className="text-[9px] text-[#847764] font-sans tracking-wide">
+                <p className="text-[9px] text-zinc-400 font-sans tracking-wide">
                   {language === 'vi' ? 'Nhân quả báo ứng' : 'Karmic Retribution'}
                 </p>
               </div>
@@ -293,13 +293,13 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               className="relative w-64 h-64 flex items-center justify-center"
             >
               {/* Outer Golden Aura */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#e5c17b]/20 to-[#a87f37]/20 blur-xl animate-pulse" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#34d399]/20 to-[#a87f37]/20 blur-xl animate-pulse" />
               
               {/* Circular Trigrams Ring */}
               <svg width="256" height="256" className="w-full h-full filter drop-shadow-[0_0_15px_rgba(229,193,123,0.5)]">
-                <circle cx="128" cy="128" r="110" fill="none" stroke="#e5c17b" strokeWidth="1" strokeOpacity="0.4" />
-                <circle cx="128" cy="128" r="95" fill="none" stroke="#e5c17b" strokeWidth="2" />
-                <circle cx="128" cy="128" r="70" fill="rgba(15,12,10,0.9)" stroke="#e5c17b" strokeWidth="1" />
+                <circle cx="128" cy="128" r="110" fill="none" stroke="#34d399" strokeWidth="1" strokeOpacity="0.4" />
+                <circle cx="128" cy="128" r="95" fill="none" stroke="#34d399" strokeWidth="2" />
+                <circle cx="128" cy="128" r="70" fill="rgba(15,12,10,0.9)" stroke="#34d399" strokeWidth="1" />
                 
                 {/* Trigram Characters arranging in circle */}
                 {['☰', '☱', '☲', '☳', '☴', '☵', '☶', '☷'].map((tg, i) => {
@@ -313,7 +313,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
                       y={y}
                       dy="0.35em"
                       textAnchor="middle"
-                      fill="#e5c17b"
+                      fill="#34d399"
                       fontSize="22"
                       fontWeight="bold"
                       className="font-serif"
@@ -325,11 +325,11 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
 
                 {/* Glowing Destiny Lines connecting stars */}
                 <path d="M78,78 L178,78 L128,178 Z" fill="none" stroke="#fff" strokeWidth="1.5" className="karmic-line" />
-                <path d="M128,58 L178,168 L78,168 Z" fill="none" stroke="#e5c17b" strokeWidth="1" strokeDasharray="3 3" />
+                <path d="M128,58 L178,168 L78,168 Z" fill="none" stroke="#34d399" strokeWidth="1" strokeDasharray="3 3" />
               </svg>
 
               {/* Glowing Center Core */}
-              <div className="absolute w-20 h-20 rounded-full bg-[#e5c17b]/15 border border-[#e5c17b] flex items-center justify-center">
+              <div className="absolute w-20 h-20 rounded-full bg-[#34d399]/15 border border-[#34d399] flex items-center justify-center">
                 <span className="text-2xl text-white font-serif font-bold animate-pulse">吉</span> {/* Cát - Lucky */}
               </div>
             </motion.div>
@@ -337,7 +337,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mt-6 font-serif text-[#e5c17b] text-base uppercase tracking-[0.25em]"
+              className="mt-6 font-serif text-emerald-400 text-base font-medium"
             >
               {language === 'vi' ? 'Thiên Cơ Hiện Thế • Đại Cát' : 'Celestial Opportunity • Auspicious'}
             </motion.p>
@@ -400,7 +400,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="mt-6 font-serif text-[#ef4444] text-base uppercase tracking-[0.25em]"
+              className="mt-6 font-serif text-[#ef4444] text-base font-medium"
             >
               {language === 'vi' ? 'Thiên Đạo Trở Ngại • Hung Tượng' : 'Heavenly Obstacle • Ominous'}
             </motion.p>
@@ -423,7 +423,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               <h2 className="font-serif text-3xl text-gradient bg-gradient-to-r from-cyan-300 via-teal-200 to-emerald-300 bg-clip-text text-transparent font-bold tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                 {language === 'vi' ? 'ĐỘT PHÁ THÀNH CÔNG' : 'BREAKTHROUGH SUCCESS'}
               </h2>
-              <p className="text-xs text-text-secondary uppercase tracking-[0.2em]">
+              <p className="text-xs text-text-secondary font-medium">
                 {language === 'vi' ? 'Kinh mạch khuếch trương • Linh khí dồi dào' : 'Meridians Expanded • Qi Surges'}
               </p>
             </motion.div>
@@ -458,7 +458,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               <h2 className="font-serif text-3xl text-red-600 font-bold tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 {language === 'vi' ? 'ĐỘT PHÁ THẤT BẠI' : 'BREAKTHROUGH FAILED'}
               </h2>
-              <p className="text-xs text-red-400 uppercase tracking-[0.2em] drop-shadow-sm">
+              <p className="text-xs text-red-400 font-medium drop-shadow-sm">
                 {language === 'vi' ? 'Tẩu hỏa nhập ma • Khí huyết hao tổn' : 'Cultivation Deviated • Vitality Injured'}
               </p>
             </motion.div>
@@ -482,7 +482,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               <h2 className="font-serif text-3xl text-[#e6dfd5] font-bold tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 {language === 'vi' ? 'BẮT ĐẦU GIAO CHIẾN' : 'ENGAGING IN COMBAT'}
               </h2>
-              <p className="text-xs text-[#a87f37] uppercase tracking-[0.3em]">
+              <p className="text-xs text-[#a87f37] font-medium">
                 {language === 'vi' ? 'Nhịp tim dồn dập • Sát khí ngập trời' : 'Heart Racing • Demonic Qi Rises'}
               </p>
             </motion.div>

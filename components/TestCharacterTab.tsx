@@ -130,7 +130,7 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
 
   return (
     <div className="p-6 bg-[#0a0806] min-h-[50vh] text-text-primary">
-      <h2 className="text-2xl font-serif text-[#e5c17b] mb-6">🛠️ Test Nhân Vật (Debug)</h2>
+      <h2 className="text-2xl font-serif text-emerald-400 mb-6">🛠️ Test Nhân Vật (Debug)</h2>
       <p className="text-sm text-text-tertiary mb-8">
         Thay đổi nhanh các chỉ số của nhân vật và dịch chuyển thẳng vào giao diện Menu Tông Môn.
         (Nếu chưa có save game, nút bên dưới sẽ tự động tạo một thế giới mới).
@@ -141,7 +141,7 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-2">Giới Tính</label>
             <select 
-              className="w-full bg-[#1e1915] border border-[#3e3328] rounded p-2 text-text-primary focus:border-[#c5a059] outline-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded p-2 text-text-primary focus:border-emerald-500 outline-none"
               value={gender}
               onChange={(e) => setGender(e.target.value as GenderType)}
             >
@@ -153,7 +153,7 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-2">Linh Căn</label>
             <select 
-              className="w-full bg-[#1e1915] border border-[#3e3328] rounded p-2 text-text-primary focus:border-[#c5a059] outline-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded p-2 text-text-primary focus:border-emerald-500 outline-none"
               value={spiritualRoot}
               onChange={(e) => setSpiritualRoot(e.target.value)}
             >
@@ -166,7 +166,7 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-2">Cảnh Giới</label>
             <select 
-              className="w-full bg-[#1e1915] border border-[#3e3328] rounded p-2 text-text-primary focus:border-[#c5a059] outline-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded p-2 text-text-primary focus:border-emerald-500 outline-none"
               value={`${realm}|${subStageIndex}`}
               onChange={(e) => {
                 const [r, s] = e.target.value.split('|');
@@ -184,7 +184,7 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
             <label className="block text-sm font-medium text-text-secondary mb-2">Linh Thạch</label>
             <input 
               type="number" 
-              className="w-full bg-[#1e1915] border border-[#3e3328] rounded p-2 text-text-primary focus:border-[#c5a059] outline-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded p-2 text-text-primary focus:border-emerald-500 outline-none"
               value={spiritStones}
               onChange={(e) => setSpiritStones(parseInt(e.target.value, 10) || 0)}
             />
@@ -193,7 +193,7 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-2">Tông Môn Gia Nhập</label>
             <select 
-              className="w-full bg-[#1e1915] border border-[#3e3328] rounded p-2 text-text-primary focus:border-[#c5a059] outline-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded p-2 text-text-primary focus:border-emerald-500 outline-none"
               value={selectedSectId}
               onChange={(e) => setSelectedSectId(e.target.value)}
             >
@@ -206,7 +206,7 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-2">Thân Phận Tông Môn</label>
             <select 
-              className="w-full bg-[#1e1915] border border-[#3e3328] rounded p-2 text-text-primary focus:border-[#c5a059] outline-none"
+              className="w-full bg-zinc-900 border border-zinc-800 rounded p-2 text-text-primary focus:border-emerald-500 outline-none"
               value={sectRank}
               onChange={(e) => setSectRank(e.target.value as SectRankType)}
             >
@@ -220,18 +220,18 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
 
         <div>
           <label className="block text-sm font-medium text-text-secondary mb-2">Công Pháp & Vũ Kĩ (Chọn để cấp trực tiếp)</label>
-          <div className="bg-[#1e1915] border border-[#3e3328] rounded p-3 h-96 overflow-y-auto space-y-2">
+          <div className="bg-zinc-900 border border-zinc-800 rounded p-3 h-96 overflow-y-auto space-y-2">
             {availableTechniques.length > 0 ? (
               availableTechniques.map((tech: any) => (
-                <label key={tech.id} className="flex items-center space-x-3 cursor-pointer group p-2 hover:bg-[#28211b] rounded transition">
+                <label key={tech.id} className="flex items-center space-x-3 cursor-pointer group p-2 hover:bg-zinc-800 rounded transition">
                   <input 
                     type="checkbox"
-                    className="form-checkbox text-[#c5a059] bg-[#0c0a08] border-[#3e3328] focus:ring-0 focus:ring-offset-0 rounded"
+                    className="form-checkbox text-emerald-500 bg-zinc-950 border-zinc-800 focus:ring-0 focus:ring-offset-0 rounded"
                     checked={selectedTechniques.includes(tech.id)}
                     onChange={() => handleToggleTechnique(tech.id)}
                   />
                   <div className="flex flex-col">
-                    <span className="text-text-primary group-hover:text-[#e5c17b] transition">{tech.label}</span>
+                    <span className="text-text-primary group-hover:text-emerald-400 transition">{tech.label}</span>
                     <span className="text-xs text-text-tertiary">{tech.type} - {tech.tier}</span>
                   </div>
                 </label>
@@ -243,11 +243,11 @@ export default function TestCharacterTab({ game, onChangeGame, onClose, combatCo
         </div>
       </div>
 
-      <div className="mt-8 pt-6 border-t border-[#3e3328] max-w-lg">
+      <div className="mt-8 pt-6 border-t border-zinc-800 max-w-lg">
         <button 
           type="button"
           onClick={handleApply}
-          className="w-full py-3 bg-[#c5a059] text-black font-medium hover:bg-[#e5c17b] rounded transition shadow-[0_0_15px_rgba(197,160,89,0.3)] hover:shadow-[0_0_25px_rgba(229,193,123,0.5)]"
+          className="w-full py-3 bg-[#10b981] text-black font-medium hover:bg-[#34d399] rounded transition shadow-[0_0_15px_rgba(197,160,89,0.3)] hover:shadow-[0_0_25px_rgba(229,193,123,0.5)]"
         >
           {game && game.alive ? 'Áp Dụng & Bắt Đầu Test' : 'Khởi Tạo Thế Giới & Bắt Đầu Test'}
         </button>

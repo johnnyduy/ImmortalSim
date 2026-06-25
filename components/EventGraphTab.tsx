@@ -100,14 +100,14 @@ export default function EventGraphTab({ onEditEvent }: Props) {
             event: ev, // Store event data for tooltips
             label: (
               <div className="flex flex-col items-center justify-center text-center p-2">
-                <span className="font-bold text-xs text-[#c5a059]">{ev.id}</span>
+                <span className="font-bold text-xs text-emerald-500">{ev.id}</span>
                 <span className="text-xs mt-1 truncate w-full" title={eventTitle}>{eventTitle}</span>
               </div>
             ) 
           },
           position: { x: 0, y: 0 }, // will be set by dagre
-          className: 'rounded shadow-md border hover:border-[#c5a059] transition-colors',
-          style: { width: nodeWidth, backgroundColor: '#1e1915', borderColor: '#3e3328', color: '#ffffff' }
+          className: 'rounded shadow-md border hover:border-emerald-500 transition-colors',
+          style: { width: nodeWidth, backgroundColor: '#18181b', borderColor: '#27272a', color: '#ffffff' }
         });
 
         // 1. Condition Edges (Realm & SubStage)
@@ -209,14 +209,14 @@ export default function EventGraphTab({ onEditEvent }: Props) {
                 label: choiceText,
                 type: 'smoothstep',
                 animated: true,
-                style: { stroke: '#c5a059', strokeWidth: 1.5 },
+                style: { stroke: '#10b981', strokeWidth: 1.5 },
                 labelStyle: { fill: '#a0a0a0', fontSize: 10, fontWeight: 500 },
                 labelBgStyle: { fill: '#0a0806', fillOpacity: 0.8 },
                 markerEnd: {
                   type: MarkerType.ArrowClosed,
                   width: 20,
                   height: 20,
-                  color: '#c5a059',
+                  color: '#10b981',
                 },
               });
             }
@@ -291,9 +291,9 @@ export default function EventGraphTab({ onEditEvent }: Props) {
 
   return (
     <div className="w-full h-full bg-[#0a0806] flex flex-col" style={{ minHeight: 'calc(100vh - 4rem)' }}>
-      <div className="p-4 border-b border-[#3e3328] flex justify-between items-center bg-[#14100c] flex-wrap gap-4">
+      <div className="p-4 border-b border-zinc-800 flex justify-between items-center bg-[#14100c] flex-wrap gap-4">
         <div>
-          <h2 className="text-xl font-serif text-[#e5c17b]">Cây Sự Kiện (Event Graph)</h2>
+          <h2 className="text-xl font-serif text-emerald-400">Cây Sự Kiện (Event Graph)</h2>
           <p className="text-xs text-text-tertiary mt-1">Sơ đồ rẽ nhánh của các cốt truyện. Bấm đúp vào Node để sửa.</p>
         </div>
         
@@ -303,7 +303,7 @@ export default function EventGraphTab({ onEditEvent }: Props) {
               type="checkbox" 
               checked={showLocation} 
               onChange={(e) => setShowLocation(e.target.checked)} 
-              className="accent-[#c5a059]"
+              className="accent-[#10b981]"
             />
             Hiện Vị Trí (Location)
           </label>
@@ -312,20 +312,20 @@ export default function EventGraphTab({ onEditEvent }: Props) {
               type="checkbox" 
               checked={showTags} 
               onChange={(e) => setShowTags(e.target.checked)} 
-              className="accent-[#c5a059]"
+              className="accent-[#10b981]"
             />
             Hiện Tags
           </label>
         </div>
 
         <div className="flex gap-2">
-          <button onClick={() => onLayout('TB')} className="px-3 py-1 bg-[#28211b] text-text-secondary text-sm rounded hover:bg-[#3e3328]">
+          <button onClick={() => onLayout('TB')} className="px-3 py-1 bg-zinc-800 text-text-secondary text-sm rounded hover:bg-zinc-800">
             Dọc (Top-Bottom)
           </button>
-          <button onClick={() => onLayout('LR')} className="px-3 py-1 bg-[#28211b] text-text-secondary text-sm rounded hover:bg-[#3e3328]">
+          <button onClick={() => onLayout('LR')} className="px-3 py-1 bg-zinc-800 text-text-secondary text-sm rounded hover:bg-zinc-800">
             Ngang (Left-Right)
           </button>
-          <button onClick={fetchEvents} className="px-3 py-1 bg-[#c5a059] text-black text-sm rounded hover:bg-[#e5c17b]">
+          <button onClick={fetchEvents} className="px-3 py-1 bg-[#10b981] text-black text-sm rounded hover:bg-[#34d399]">
             Tải Lại
           </button>
         </div>
@@ -348,19 +348,19 @@ export default function EventGraphTab({ onEditEvent }: Props) {
           minZoom={0.1}
           maxZoom={1.5}
         >
-          <Background color="#1e1915" gap={20} size={1} />
+          <Background color="#18181b" gap={20} size={1} />
           <MiniMap 
-            nodeColor="#3e3328" 
+            nodeColor="#27272a" 
             maskColor="rgba(10, 8, 6, 0.7)" 
-            style={{ backgroundColor: '#14100c', border: '1px solid #3e3328' }} 
+            style={{ backgroundColor: '#14100c', border: '1px solid #27272a' }} 
           />
           <Controls 
-            style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#14100c', border: '1px solid #3e3328', borderRadius: '4px' }} 
+            style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#14100c', border: '1px solid #27272a', borderRadius: '4px' }} 
           />
           
           {activeDisplayEvent && (
-            <Panel position="top-right" className="bg-[#14100c] border border-[#c5a059] p-4 rounded shadow-xl w-80 text-white z-50 mr-4 mt-4 pointer-events-none">
-              <h3 className="font-bold text-[#c5a059] text-lg border-b border-[#3e3328] pb-2 mb-2">
+            <Panel position="top-right" className="bg-[#14100c] border border-emerald-500 p-4 rounded shadow-xl w-80 text-white z-50 mr-4 mt-4 pointer-events-none">
+              <h3 className="font-bold text-emerald-500 text-lg border-b border-zinc-800 pb-2 mb-2">
                 {typeof activeDisplayEvent.title === 'string' ? activeDisplayEvent.title : activeDisplayEvent.title.vi}
               </h3>
               <div className="text-xs text-gray-400 mb-2 font-mono">{activeDisplayEvent.id}</div>
@@ -392,7 +392,7 @@ export default function EventGraphTab({ onEditEvent }: Props) {
               )}
 
               {selectedEvent && (
-                <div className="mt-4 pt-2 border-t border-[#3e3328] text-xs text-center text-[#c5a059]">
+                <div className="mt-4 pt-2 border-t border-zinc-800 text-xs text-center text-emerald-500">
                   Bấm đúp (Double-click) vào Node để sửa
                 </div>
               )}

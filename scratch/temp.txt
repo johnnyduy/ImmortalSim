@@ -1,0 +1,35 @@
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Legacy Data Panel */}
+              <div className="border border-outline-variant/30 bg-surface-container-low/40 p-4 flex flex-col gap-3">
+                <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-1">{'// Dữ Liệu Di Sản'}</div>
+                
+                {[
+                  { label: copy.legacyPower || (language === 'vi' ? 'Sức mạnh' : 'Power'), value: inheritance.legacyPower },
+                  { label: copy.ancestralMemory || (language === 'vi' ? 'Ký ức' : 'Memory'), value: inheritance.ancestralMemory },
+                  { label: copy.blessing || (language === 'vi' ? 'Phúc lành' : 'Blessing'), value: inheritance.blessing },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex justify-between items-center border-b border-outline-variant/20 pb-1.5 last:border-0 last:pb-0">
+                    <span className="text-[9px] text-on-surface-variant uppercase">{item.label}</span>
+                    <span className="text-[11px] font-headline-sm text-secondary">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        {game?.currentLocation === 'mountain' && !activeCombat && (
+          <MountainExploration
+            language={languageRef.current}
+            onReturn={() => handleMoveLocationWithTransition('sect')}
+            onEventResult={handleMountainExploreEventResult}
+            onCombat={handleMountainExploreCombat}
+            onTimePass={handleMountainExploreTimePass}
+            travelCostStones={activeCombatConfigRef.current?.time_gear?.travel_cost_stones ?? 10}
+            travelCostHp={activeCombatConfigRef.current?.time_gear?.travel_cost_hp ?? 2}
+          />

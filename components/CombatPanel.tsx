@@ -144,34 +144,34 @@ export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: 
   }, [playerStats, enemyStats, playerChar, enemyChar]);
 
   return (
-    <div className="flex flex-col gap-6 py-6 px-5 sm:px-8 bg-[#0c0a09]/95 border-2 border-[#c5a059] shadow-[8px_8px_0px_#000] rounded-sm text-text-primary max-w-xl w-full mx-auto">
+    <div className="flex flex-col gap-6 py-6 px-5 sm:px-8 bg-[#0c0a09]/95 border-2 border-emerald-500 shadow-[8px_8px_0px_#000] rounded-sm text-text-primary max-w-xl w-full mx-auto">
       <div className="space-y-3">
-        <div className="flex items-center justify-between border-b border-[#3e3328]/55 pb-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764] font-serif">Đấu Pháp Ao Cảnh</span>
+        <div className="flex items-center justify-between border-b border-zinc-800/55 pb-2">
+          <span className="text-xs font-medium text-zinc-400 font-serif">Đấu Pháp Ao Cảnh</span>
           <div className="flex gap-2">
-            <span className="px-2.5 py-0.5 bg-orange-950/40 border border-orange-800/40 text-orange-400 text-[10px] font-serif uppercase tracking-widest font-bold">
+            <span className="px-2.5 py-0.5 bg-orange-950/40 border border-orange-800/40 text-orange-400 text-[10px] font-serif font-medium font-bold">
               Tension: {battlefieldTension}%
             </span>
-            <span className="px-2.5 py-0.5 bg-red-950/40 border border-red-800/40 text-red-400 text-[10px] font-serif uppercase tracking-widest font-bold">
+            <span className="px-2.5 py-0.5 bg-red-950/40 border border-red-800/40 text-red-400 text-[10px] font-serif font-medium font-bold">
               {combatPhase === 'finished' ? 'Kết thúc' : 'Quyết đấu'}
             </span>
           </div>
         </div>
-        <h2 className="font-serif text-2xl font-bold text-[#e5c17b] tracking-wider uppercase">
+        <h2 className="font-serif text-2xl font-bold text-emerald-400 tracking-wider uppercase">
           ⚔️ Đối Đầu: {enemyChar.name}
         </h2>
-        <p className="text-sm font-serif italic text-[#e8dcc0] border-l-2 border-[#c5a059] pl-3 py-1">
+        <p className="text-sm font-serif italic text-[#e8dcc0] border-l-2 border-emerald-500 pl-3 py-1">
           {matchupText}
         </p>
       </div>
 
       {/* HP/Qi Bars */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-b border-[#3e3328]/55 py-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-b border-zinc-800/55 py-4">
         {/* Player Stats */}
         <div className="space-y-2">
-          <p className="text-sm font-bold text-[#c5a059] font-serif flex justify-between">
+          <p className="text-sm font-bold text-emerald-500 font-serif flex justify-between">
             <span>Bản Tôn (Tu Sĩ)</span>
-            <span className="text-xs text-[#847764]">Realm {playerChar.realm_tier}</span>
+            <span className="text-xs text-zinc-400">Realm {playerChar.realm_tier}</span>
           </p>
           {playerStats && (
             <div className="space-y-1 text-xs">
@@ -198,10 +198,10 @@ export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: 
         </div>
 
         {/* Enemy Stats */}
-        <div className="space-y-2 md:border-l md:border-[#3e3328]/45 md:pl-4">
+        <div className="space-y-2 md:border-l md:border-zinc-800/45 md:pl-4">
           <p className="text-sm font-bold text-red-400 font-serif flex justify-between">
             <span>{enemyChar.name}</span>
-            <span className="text-xs text-[#847764]">Realm {enemyChar.realm_tier}</span>
+            <span className="text-xs text-zinc-400">Realm {enemyChar.realm_tier}</span>
           </p>
           {enemyStats && (
             <div className="space-y-1 text-xs">
@@ -230,13 +230,13 @@ export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: 
 
       {/* Decisions section */}
       <section className="space-y-3 py-2">
-        <p className="text-xs uppercase tracking-widest text-[#847764] font-serif font-bold">Nghi thức ra chiêu</p>
+        <p className="text-xs font-medium text-zinc-400 font-serif font-bold">Nghi thức ra chiêu</p>
         <div className="flex flex-col gap-2">
           {combatPhase === 'finished' ? (
             <button
               type="button"
               onClick={handleExit}
-              className="w-full text-center px-6 py-3 rounded-sm border-2 border-[#c5a059] bg-[#1a1512] text-[#e5c17b] font-serif font-bold uppercase tracking-widest hover:bg-[#c5a059] hover:text-black transition-all duration-200"
+              className="w-full text-center px-6 py-3 rounded-sm border-2 border-emerald-500 bg-[#1a1512] text-emerald-400 font-serif font-bold font-medium hover:bg-[#10b981] hover:text-black transition-all duration-200"
             >
               Thu Liễm Chân Khí (Exit Combat)
             </button>
@@ -247,7 +247,7 @@ export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: 
                   key={choice.id}
                   type="button"
                   onClick={() => handleChoice(choice)}
-                  className="block w-full text-left px-4 py-3 rounded-sm border border-[#c5a059]/60 bg-[#1e1915]/80 text-[#e5c17b] font-serif text-sm hover:bg-[#c5a059] hover:text-black hover:border-[#c5a059] transition-all duration-150"
+                  className="block w-full text-left px-4 py-3 rounded-sm border border-emerald-500/60 bg-zinc-900/80 text-emerald-400 font-serif text-sm hover:bg-[#10b981] hover:text-black hover:border-emerald-500 transition-all duration-150"
                 >
                   {choice.name}
                 </button>
@@ -261,7 +261,7 @@ export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: 
               </button>
             </div>
           ) : (
-            <div className="text-center py-4 text-xs italic text-[#847764] animate-pulse">
+            <div className="text-center py-4 text-xs italic text-zinc-400 animate-pulse">
               Đang ngưng khí hóa thần... (Resolving turns)
             </div>
           )}
@@ -269,13 +269,13 @@ export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: 
       </section>
 
       {/* Combat Log narrative */}
-      <div className="space-y-3 pt-4 border-t border-[#3e3328]/55">
-        <p className="text-xs font-serif font-bold uppercase tracking-widest text-[#c5a059]">
+      <div className="space-y-3 pt-4 border-t border-zinc-800/55">
+        <p className="text-xs font-serif font-bold font-medium text-emerald-500">
           Nhật ký đấu pháp (Battle Log)
         </p>
         <div className="max-h-48 space-y-2 overflow-y-auto pt-1 pr-2 text-xs sm:text-sm font-serif leading-relaxed text-[#e8dcc0] flex flex-col gap-1.5 scrollbar-thin">
           {combatLogs.map((log, index) => (
-            <p key={index} className="border-b border-[#3e3328]/15 pb-1 last:border-0 last:text-white font-medium">
+            <p key={index} className="border-b border-zinc-800/15 pb-1 last:border-0 last:text-white font-medium">
               {log}
             </p>
           ))}

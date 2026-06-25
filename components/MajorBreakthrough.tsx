@@ -37,8 +37,8 @@ export default function MajorBreakthrough({
       lifeSpan: '+20 Năm',
     },
     'Foundation Establishment': {
-      colorClass: 'text-[#e5c17b]',
-      borderColor: 'border-[#c5a059]',
+      colorClass: 'text-emerald-400',
+      borderColor: 'border-emerald-500',
       glowShadow: 'shadow-[0_0_50px_rgba(197,160,89,0.45)]',
       gradient: 'from-[#2e2311]/60 via-[#1a140b]/90 to-black',
       image: '/images/events/waking_dawn.png',
@@ -202,7 +202,7 @@ export default function MajorBreakthrough({
             
             {/* Header */}
             <div>
-              <p className={`text-sm uppercase tracking-[0.3em] font-bold ${currentTheme.colorClass} mb-1`}>
+              <p className={`text-sm font-medium font-bold ${currentTheme.colorClass} mb-1`}>
                 {isVi ? 'TIẾN GIAI ĐẠI CẢNH GIỚI' : 'MAJOR REALM ASCENSION'}
               </p>
               <h2 className={`text-4xl md:text-5xl font-black tracking-wider ${currentTheme.colorClass} drop-shadow-[0_0_15px_currentColor]`}>

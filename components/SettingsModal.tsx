@@ -90,7 +90,7 @@ export default function SettingsModal({
         <div className="space-y-6">
           {/* 1. Theme Configuration */}
           <div className="space-y-2.5">
-            <label className="text-xs uppercase tracking-widest text-accent font-serif font-bold block">
+            <label className="text-xs font-medium text-accent font-serif font-bold block">
               {copy.themeLabel || 'Thiên Địa Giao Diện'}
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -100,7 +100,7 @@ export default function SettingsModal({
                 className={`py-2 px-3 text-xs rounded-sm border transition font-serif ${
                   theme === 'dark'
                     ? 'border-accent bg-accent/10 text-accent font-bold'
-                    : 'border-[#3e3328] bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
+                    : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
                 }`}
               >
                 {copy.themeDark || 'U Tối'}
@@ -111,7 +111,7 @@ export default function SettingsModal({
                 className={`py-2 px-3 text-xs rounded-sm border transition font-serif ${
                   theme === 'obsidian'
                     ? 'border-accent bg-accent/10 text-accent font-bold'
-                    : 'border-[#3e3328] bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
+                    : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
                 }`}
               >
                 {copy.themeObsidian || 'Trầm Mặc'}
@@ -122,7 +122,7 @@ export default function SettingsModal({
                 className={`py-2 px-3 text-xs rounded-sm border transition font-serif ${
                   theme === 'parchment'
                     ? 'border-accent bg-accent/10 text-accent font-bold'
-                    : 'border-[#3e3328] bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
+                    : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
                 }`}
               >
                 {copy.themeParchment || 'Bạch Tông'}
@@ -132,7 +132,7 @@ export default function SettingsModal({
 
           {/* 2. Font Size Configuration */}
           <div className="space-y-2.5">
-            <label className="text-xs uppercase tracking-widest text-accent font-serif font-bold block">
+            <label className="text-xs font-medium text-accent font-serif font-bold block">
               {copy.fontSizeLabel || 'Thần Thức (Cỡ Chữ)'}
             </label>
             <div className="grid grid-cols-4 gap-2">
@@ -151,7 +151,7 @@ export default function SettingsModal({
                     className={`py-2 px-1 text-xs rounded-sm border transition font-serif ${
                       fontSize === sz
                         ? 'border-accent bg-accent/10 text-accent font-bold'
-                        : 'border-[#3e3328] bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
+                        : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
                     }`}
                   >
                     {labelMap[sz]}
@@ -163,7 +163,7 @@ export default function SettingsModal({
 
           {/* 3. Language Configuration */}
           <div className="space-y-2.5">
-            <label className="text-xs uppercase tracking-widest text-accent font-serif font-bold block">
+            <label className="text-xs font-medium text-accent font-serif font-bold block">
               {copy.language || 'Ngôn Ngữ'}
             </label>
             <div className="flex gap-4 items-center">
@@ -173,7 +173,7 @@ export default function SettingsModal({
                 className={`flex-1 py-2 px-3 text-xs rounded-sm border transition font-serif ${
                   language === 'vi'
                     ? 'border-accent bg-accent/10 text-accent font-bold'
-                    : 'border-[#3e3328] bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
+                    : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
                 }`}
               >
                 Tiếng Việt (VI)
@@ -184,7 +184,7 @@ export default function SettingsModal({
                 className={`flex-1 py-2 px-3 text-xs rounded-sm border transition font-serif ${
                   language === 'en'
                     ? 'border-accent bg-accent/10 text-accent font-bold'
-                    : 'border-[#3e3328] bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
+                    : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
                 }`}
               >
                 English (EN)
@@ -195,7 +195,7 @@ export default function SettingsModal({
           {/* 4. Audio Control Configuration */}
           <div className="space-y-3.5 border-t border-accent/10 pt-4">
             <div className="flex items-center justify-between">
-              <label className="text-xs uppercase tracking-widest text-accent font-serif font-bold block">
+              <label className="text-xs font-medium text-accent font-serif font-bold block">
                 {copy.audio || 'Âm Thanh'}
               </label>
               
@@ -204,10 +204,10 @@ export default function SettingsModal({
                 <button
                   type="button"
                   onClick={() => setAudioEnabled(!audioEnabled)}
-                  className={`px-3 py-1 text-[10px] uppercase tracking-wider border rounded-sm transition font-serif ${
+                  className={`px-3 py-1 text-[10px] font-medium border rounded-sm transition font-serif ${
                     audioEnabled
                       ? 'border-accent bg-accent/10 text-accent'
-                      : 'border-[#3e3328] text-text-tertiary'
+                      : 'border-zinc-800 text-text-tertiary'
                   }`}
                 >
                   {audioEnabled ? copy.audioOn || 'Bật' : copy.audioOff || 'Tắt'}
@@ -218,7 +218,7 @@ export default function SettingsModal({
                   type="button"
                   onClick={() => setAudioMuted(!audioMuted)}
                   disabled={!audioEnabled}
-                  className="p-1 border border-[#3e3328] rounded-sm text-text-secondary hover:text-accent disabled:opacity-30 disabled:hover:text-text-secondary transition"
+                  className="p-1 border border-zinc-800 rounded-sm text-text-secondary hover:text-accent disabled:opacity-30 disabled:hover:text-text-secondary transition"
                   aria-label="Mute sound"
                 >
                   {audioMuted ? soundOffIcon : soundOnIcon}
@@ -229,7 +229,7 @@ export default function SettingsModal({
             {/* Volume slider */}
             {audioEnabled && (
               <div className="flex items-center gap-3">
-                <span className="text-[10px] uppercase tracking-widest text-text-tertiary font-serif">
+                <span className="text-[10px] font-medium text-text-tertiary font-serif">
                   {copy.volume || 'Âm Lượng'}
                 </span>
                 <input
@@ -255,7 +255,7 @@ export default function SettingsModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-full py-3 text-center text-sm font-semibold uppercase tracking-wider rounded-sm border border-accent bg-accent/10 text-accent hover:bg-accent hover:text-black transition-all duration-300 font-serif"
+            className="w-full py-3 text-center text-sm font-semibold font-medium rounded-sm border border-accent bg-accent/10 text-accent hover:bg-accent hover:text-black transition-all duration-300 font-serif"
           >
             {copy.closeSettings || 'Đóng Thiết Lập'}
           </button>

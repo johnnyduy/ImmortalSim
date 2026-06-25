@@ -1,0 +1,100 @@
+/* Terminal & Reincarnation UI Styles */
+
+:root {
+    --scanline-color: rgba(57, 255, 20, 0.03);
+}
+
+.scanlines {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, var(--scanline-color) 51%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.scanline-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.06)
+    );
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.flicker-anim {
+    animation: flicker 0.2s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; }
+    100% { opacity: 0.95; }
+}
+
+.qi-segment {
+    width: 8px;
+    height: 16px;
+    margin-right: 2px;
+    background-color: #39ff14;
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+}
+
+.qi-segment-empty {
+    width: 8px;
+    height: 16px;
+    margin-right: 2px;
+    border: 1px solid #3c4b35;
+}
+
+.glass-panel {
+    background: rgba(19, 19, 19, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #222222;
+}
+
+.stat-glow:hover {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);
+    border-color: #39ff14;
+}
+
+.ambient-glow {
+    filter: blur(120px);
+    opacity: 0.15;
+    background: radial-gradient(circle, #ffba43 0%, transparent 70%);
+}
+
+.portal-pulse {
+    animation: portal-pulse-anim 8s ease-in-out infinite;
+}
+
+@keyframes portal-pulse-anim {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.1); opacity: 0.4; }
+}
+
+.data-stream {
+    mask-image: linear-gradient(to bottom, transparent, black, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black, transparent);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #614000;
+}

@@ -79,7 +79,7 @@ export default function TimeGearPanel({
 
   const { auraClass, auraColor, particleColor, statusTitle, statusDesc } = useMemo(() => {
     let auraClass = '';
-    let auraColor = '#e5c17b'; // default gold
+    let auraColor = '#34d399'; // default gold
     let particleColor = 'rgba(229,193,123,0.6)';
     let statusTitle = language === 'vi' ? 'Mệnh Bàn Thiên Tuần' : 'Destiny Cycle';
     let statusDesc = language === 'vi' 
@@ -213,7 +213,7 @@ export default function TimeGearPanel({
   }, []);
 
   return (
-    <div className="adventure-card p-6 flex flex-col items-center gap-5 animate-fade-in relative overflow-hidden border border-[#c5a059]/30 bg-[#070605]/95 shadow-2xl">
+    <div className="adventure-card p-6 flex flex-col items-center gap-5 animate-fade-in relative overflow-hidden border border-emerald-500/30 bg-[#070605]/95 shadow-2xl">
       
       {/* Background Subtle Qi Aura (Changes color dynamically based on dominant state) */}
       <div 
@@ -252,8 +252,8 @@ export default function TimeGearPanel({
           <div
             className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[10px] font-bold font-serif tracking-wider relative z-10 transition-all duration-500"
             style={{
-              borderColor: isThisMonth ? '#fbbf24' : urgentGlow ? '#f87171' : '#c5a059',
-              color: isThisMonth ? '#fbbf24' : urgentGlow ? '#f87171' : '#c5a059bb',
+              borderColor: isThisMonth ? '#fbbf24' : urgentGlow ? '#f87171' : '#10b981',
+              color: isThisMonth ? '#fbbf24' : urgentGlow ? '#f87171' : '#10b981bb',
               background: isThisMonth ? 'rgba(251,191,36,0.08)' : urgentGlow ? 'rgba(248,113,113,0.06)' : 'rgba(197,160,89,0.05)',
               boxShadow: isThisMonth ? '0 0 12px rgba(251,191,36,0.35)' : urgentGlow ? '0 0 8px rgba(248,113,113,0.25)' : 'none',
               animation: isThisMonth ? 'pulse 1.5s ease-in-out infinite' : undefined
@@ -275,11 +275,11 @@ export default function TimeGearPanel({
 
       {/* Destiny Plate Title */}
       <div className="text-center space-y-1 relative z-10">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-[#847764] font-serif font-semibold">
+        <span className="text-[10px] font-medium text-zinc-400 font-serif font-semibold">
           {language === 'vi' ? 'MỆNH BÀN THIÊN ĐẠO' : 'HEAVENLY DESTINY COMPASS'}
         </span>
         <h3 
-          className="font-serif text-lg uppercase tracking-wider font-bold transition-colors duration-1000"
+          className="font-serif text-lg font-medium font-bold transition-colors duration-1000"
           style={{ color: auraColor, textShadow: `0 0 10px ${auraColor}40` }}
         >
           {statusTitle}
@@ -291,9 +291,9 @@ export default function TimeGearPanel({
         <svg width="300" height="300" className="overflow-visible">
           {/* Static Concentric Circles */}
           <circle cx="150" cy="150" r="140" fill="none" stroke="#261e16" strokeWidth="1" strokeDasharray="3 5" />
-          <circle cx="150" cy="150" r="132" fill="none" stroke="#3e3328" strokeWidth="0.5" />
-          <circle cx="150" cy="150" r="95" fill="none" stroke="#c5a059" strokeWidth="0.5" strokeOpacity="0.25" />
-          <circle cx="150" cy="150" r="58" fill="none" stroke="#c5a059" strokeWidth="1.5" strokeOpacity="0.3" />
+          <circle cx="150" cy="150" r="132" fill="none" stroke="#27272a" strokeWidth="0.5" />
+          <circle cx="150" cy="150" r="95" fill="none" stroke="#10b981" strokeWidth="0.5" strokeOpacity="0.25" />
+          <circle cx="150" cy="150" r="58" fill="none" stroke="#10b981" strokeWidth="1.5" strokeOpacity="0.3" />
 
           {/* Rotating Bagua Trigrams wheel */}
           <g 
@@ -379,7 +379,7 @@ export default function TimeGearPanel({
                     className={`font-serif transition-all duration-500 font-bold select-none pointer-events-none ${
                       isActive 
                         ? 'text-[11px] fill-white opacity-100 font-semibold' 
-                        : 'text-[9px] fill-[#847764] opacity-55'
+                        : 'text-[9px] fill-[#71717a] opacity-55'
                     }`}
                   >
                     {lbl.name}
@@ -423,7 +423,7 @@ export default function TimeGearPanel({
             cy="150" 
             r="60" 
             fill="rgba(10,8,6,0.92)" 
-            stroke="#c5a059" 
+            stroke="#10b981" 
             strokeWidth="2" 
             strokeOpacity="0.4" 
           />
@@ -437,7 +437,7 @@ export default function TimeGearPanel({
             backgroundPosition: `${(col * 100) / 3}% ${(row * 100) / 1}%`,
             backgroundRepeat: 'no-repeat',
           }}
-          className="w-[110px] h-[110px] rounded-full overflow-hidden absolute z-20 top-[150px] left-[150px] transform -translate-x-1/2 -translate-y-1/2 border border-[#c5a059]/40 shadow-[0_0_12px_rgba(197,160,89,0.3)] bg-[#0c0a08]"
+          className="w-[110px] h-[110px] rounded-full overflow-hidden absolute z-20 top-[150px] left-[150px] transform -translate-x-1/2 -translate-y-1/2 border border-emerald-500/40 shadow-[0_0_12px_rgba(197,160,89,0.3)] bg-zinc-950"
         />
       </div>
 
@@ -449,63 +449,63 @@ export default function TimeGearPanel({
       </div>
 
       {/* Heavenly Dao Modifiers Indicators HUD */}
-      <div className="w-full grid grid-cols-4 gap-2 pt-3 border-t border-[#3e3328]/40 relative z-10 text-center">
+      <div className="w-full grid grid-cols-4 gap-2 pt-3 border-t border-zinc-800/40 relative z-10 text-center">
         <div className="flex flex-col items-center">
-          <span className="text-[9px] text-[#847764] uppercase font-bold tracking-wider">
+          <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
             {language === 'vi' ? 'Linh Khí' : 'Spirit Qi'}
           </span>
           <span className="text-xs font-bold font-serif text-cyan-400 mt-0.5">
             {Math.round(spiritualQi)}%
           </span>
-          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-[#3e3328]/35">
+          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-zinc-800/35">
             <div className="h-full bg-cyan-400 transition-all duration-1000" style={{ width: `${spiritualQi}%` }} />
           </div>
         </div>
 
         <div className="flex flex-col items-center">
-          <span className="text-[9px] text-[#847764] uppercase font-bold tracking-wider">
+          <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
             {language === 'vi' ? 'Dị Động' : 'Dao Flux'}
           </span>
           <span className="text-xs font-bold font-serif text-amber-400 mt-0.5">
             {Math.round(daoFluctuation)}%
           </span>
-          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-[#3e3328]/35">
+          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-zinc-800/35">
             <div className="h-full bg-amber-400 transition-all duration-1000" style={{ width: `${daoFluctuation}%` }} />
           </div>
         </div>
 
         <div className="flex flex-col items-center">
-          <span className="text-[9px] text-[#847764] uppercase font-bold tracking-wider">
+          <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
             {language === 'vi' ? 'Ma Khí' : 'Demonic Qi'}
           </span>
           <span className="text-xs font-bold font-serif text-purple-400 mt-0.5">
             {Math.round(demonicEnergy)}%
           </span>
-          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-[#3e3328]/35">
+          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-zinc-800/35">
             <div className="h-full bg-purple-400 transition-all duration-1000" style={{ width: `${demonicEnergy}%` }} />
           </div>
         </div>
 
         <div className="flex flex-col items-center">
-          <span className="text-[9px] text-[#847764] uppercase font-bold tracking-wider">
+          <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
             {language === 'vi' ? 'An Ninh' : 'Security'}
           </span>
           <span className={`text-xs font-bold font-serif mt-0.5 ${security < 40 ? 'text-red-400' : 'text-blue-400'}`}>
             {Math.round(security)}%
           </span>
-          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-[#3e3328]/35">
+          <div className="w-full h-1 bg-[#1a1512] rounded-sm mt-1 overflow-hidden border border-zinc-800/35">
             <div className={`h-full transition-all duration-1000 ${security < 40 ? 'bg-red-500' : 'bg-blue-400'}`} style={{ width: `${security}%` }} />
           </div>
         </div>
       </div>
 
       {/* Month Log / Diary */}
-      <div className="w-full space-y-2 relative z-10 border-t border-[#3e3328]/45 pt-3">
-        <div className="flex justify-between items-center text-[10px] uppercase tracking-wider text-[#847764] font-semibold font-serif">
+      <div className="w-full space-y-2 relative z-10 border-t border-zinc-800/45 pt-3">
+        <div className="flex justify-between items-center text-[10px] font-medium text-zinc-400 font-semibold font-serif">
           <span>{language === 'vi' ? 'Nhật ký Tĩnh Tu (Meditation Log)' : 'Meditation Log'}</span>
           <span className="text-blue-400 font-sans">+0.02 {language === 'vi' ? 'Tu Vi/tháng' : 'Cultivation/m'}</span>
         </div>
-        <div className="min-h-36 bg-[#14110f]/60 border border-[#3e3328]/40 rounded-sm p-3.5 space-y-2.5 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-[#3e3328]">
+        <div className="min-h-36 bg-zinc-950/60 border border-zinc-800/40 rounded-sm p-3.5 space-y-2.5 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-[#27272a]">
           {monthlyLog.length === 0 ? (
             <p className="text-2xl text-text-tertiary italic text-center py-4">
               {language === 'vi' 
@@ -514,7 +514,7 @@ export default function TimeGearPanel({
             </p>
           ) : (
             monthlyLog.map((logLine, idx) => (
-              <p key={idx} className="text-2xl text-[#e8dcc0] font-serif leading-relaxed text-left border-l border-[#c5a059]/40 pl-2 animate-fade-in">
+              <p key={idx} className="text-2xl text-[#e8dcc0] font-serif leading-relaxed text-left border-l border-emerald-500/40 pl-2 animate-fade-in">
                 {logLine}
               </p>
             ))

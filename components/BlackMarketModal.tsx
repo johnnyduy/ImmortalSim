@@ -70,8 +70,8 @@ export default function BlackMarketModal({ state, onUpdateState, onClose }: Blac
             <p className="text-xs text-red-400/50 mt-1">Nơi giao dịch máu, nước mắt và những thứ không thể thấy ánh mặt trời.</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="text-sm bg-black/50 px-3 py-1.5 rounded border border-[#c5a059]/20">
-              <span className="text-[#c5a059]">💎 Linh thạch: </span>
+            <div className="text-sm bg-black/50 px-3 py-1.5 rounded border border-emerald-500/20">
+              <span className="text-emerald-500">💎 Linh thạch: </span>
               <span className="font-bold">{state.spiritStones || 0}</span>
             </div>
             <button onClick={onClose} className="text-red-500/50 hover:text-red-400 text-3xl leading-none">&times;</button>
@@ -91,7 +91,7 @@ export default function BlackMarketModal({ state, onUpdateState, onClose }: Blac
                 return (
                   <div key={idx} className="bg-zinc-900/50 border border-zinc-800 rounded p-3 flex justify-between items-center hover:border-red-900/50 transition-colors">
                     <div>
-                      <div className="font-bold text-[#e5c17b]">{item.name}</div>
+                      <div className="font-bold text-emerald-400">{item.name}</div>
                       <div className="text-xs text-lunar/50">{item.description}</div>
                     </div>
                     <button 

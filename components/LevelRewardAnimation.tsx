@@ -38,7 +38,7 @@ export default function LevelRewardAnimation({ payload, language = 'vi', onDone 
 
   // Colour palette by kind
   const colours = isLevel
-    ? { primary: '#ffe2a0', secondary: '#e5c17b', glow: 'rgba(229,193,123,', accent: '#ffd166', ring: 'rgba(255,226,160,', dark: '#1a1208' }
+    ? { primary: '#ffe2a0', secondary: '#34d399', glow: 'rgba(229,193,123,', accent: '#ffd166', ring: 'rgba(255,226,160,', dark: '#1a1208' }
     : { primary: '#a8e0ff', secondary: '#6bb8e8', glow: 'rgba(107,184,232,', accent: '#7ecfff', ring: 'rgba(168,224,255,', dark: '#080d14' };
 
   return (
@@ -250,7 +250,7 @@ export default function LevelRewardAnimation({ payload, language = 'vi', onDone 
           <div className="relative text-center space-y-6 pt-2">
             {/* Metadata Text */}
             <p
-              className="text-[10px] sm:text-[11px] uppercase tracking-[0.35em] font-bold font-serif"
+              className="text-[10px] sm:text-[11px] font-medium font-bold font-serif"
               style={{ color: isLevel ? colours.secondary : '#b3e0f5' }}
             >
               {isLevel ? '✦ ĐỘT PHÁ CẢNH GIỚI • BREAKTHROUGH ✦' : '✦ Cơ Duyên Nhàn Nhã • Chill Rewards ✦'}
@@ -381,7 +381,7 @@ export default function LevelRewardAnimation({ payload, language = 'vi', onDone 
 
             {/* Confirmation Button */}
             <div
-              className="pt-6 border-t border-[#3e3328]/35 mt-6 flex justify-center"
+              className="pt-6 border-t border-zinc-800/35 mt-6 flex justify-center"
               style={{
                 opacity: 0,
                 transform: 'translateY(10px)',
@@ -391,10 +391,10 @@ export default function LevelRewardAnimation({ payload, language = 'vi', onDone 
               <button
                 type="button"
                 onClick={handleConfirm}
-                className="relative px-8 py-2.5 font-serif text-sm font-bold uppercase tracking-widest rounded-lg transition-all duration-300 focus:outline-none overflow-hidden group border cursor-pointer"
+                className="relative px-8 py-2.5 font-serif text-sm font-bold font-medium rounded-lg transition-all duration-300 focus:outline-none overflow-hidden group border cursor-pointer"
                 style={{
                   background: isLevel
-                    ? 'linear-gradient(135deg, #c5a059 0%, #a8823b 100%)'
+                    ? 'linear-gradient(135deg, #10b981 0%, #a8823b 100%)'
                     : 'linear-gradient(135deg, #6bb8e8 0%, #4696c7 100%)',
                   borderColor: isLevel ? '#ffe2a0' : '#a8e0ff',
                   color: '#ffffff',

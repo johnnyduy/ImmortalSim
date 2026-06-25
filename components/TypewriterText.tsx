@@ -59,7 +59,7 @@ export default function TypewriterText({ text, speed = 8, onComplete }: Props) {
     >
       {displayedText}
       {!isFinished && (
-        <span className="inline-block w-1.5 h-4.5 ml-0.5 bg-[#e5c17b] align-middle animate-pulse">|</span>
+        <span className="inline-block w-1.5 h-4.5 ml-0.5 bg-[#34d399] align-middle animate-pulse">|</span>
       )}
     </span>
   );

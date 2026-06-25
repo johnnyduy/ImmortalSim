@@ -1,0 +1,375 @@
+             START SCREEN - Trường Sinh Lộ
+             ═══════════════════════════════════════ */
+          <div className="relative flex flex-col items-center justify-start flex-1 min-h-screen overflow-hidden">
+
+            {/* ── Background: celestial sky + floating swords ── */}
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                background: 'var(--background)'}}
+            >
+              {/* Cloud layers */}
+              <div className="absolute inset-0 opacity-60" style={{ backgroundImage: "radial-gradient(ellipse 120% 40% at 50% 85%, rgba(255,255,255,0.7) 0%, transparent 70%)" }} />
+              <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(ellipse 80% 30% at 20% 80%, rgba(255,255,255,0.8) 0%, transparent 60%)" }} />
+              <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(ellipse 60% 25% at 80% 75%, rgba(255,255,255,0.9) 0%, transparent 55%)" }} />
+
+              {/* Background image overlay */}
+              <img
+                src="/images/start.png"
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-luminosity"
+              />
+
+              {/* Star speckles */}
+              {[...Array(20)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute rounded-full bg-white"
+                  style={{
+                    width: `${Math.random() * 3 + 1}px`,
+                    height: `${Math.random() * 3 + 1}px`,
+                    top: `${Math.random() * 55}%`,
+                    left: `${Math.random() * 100}%`,
+                    opacity: Math.random() * 0.8 + 0.2,
+                    animation: `pulse ${2 + Math.random() * 3}s ease-in-out infinite`,
+                    animationDelay: `${Math.random() * 3}s`}}
+                />
+              ))}
+            </div>
+
+            {/* ── Floating swords (CSS-animated) ── */}
+            {[
+              { top: '8%',  left: '4%',  rotate: '-30deg', size: 48, delay: '0s' },
+              { top: '15%', left: '10%', rotate: '20deg',  size: 38, delay: '0.5s' },
+              { top: '28%', left: '2%',  rotate: '-50deg', size: 55, delay: '1s' },
+              { top: '42%', left: '6%',  rotate: '10deg',  size: 40, delay: '1.5s' },
+              { top: '55%', left: '3%',  rotate: '-70deg', size: 44, delay: '0.8s' },
+              { top: '10%', right: '5%', rotate: '40deg',  size: 50, delay: '0.3s' },
+              { top: '22%', right: '8%', rotate: '-20deg', size: 36, delay: '1.2s' },
+              { top: '35%', right: '3%', rotate: '60deg',  size: 52, delay: '0.7s' },
+              { top: '48%', right: '9%', rotate: '-35deg', size: 42, delay: '1.8s' },
+              { top: '60%', right: '4%', rotate: '15deg',  size: 38, delay: '0.4s' },
+              { top: '5%',  left: '35%', rotate: '-10deg', size: 34, delay: '2s' },
+              { top: '3%',  right: '30%',rotate: '25deg',  size: 30, delay: '1.4s' },
+            ].map((s, i) => (
+              <div
+                key={i}
+                className="absolute z-10 pointer-events-none select-none"
+                style={{
+                  top: s.top,
+                  left: (s as any).left,
+                  right: (s as any).right,
+                  transform: `rotate(${s.rotate})`,
+                  animation: `float ${4 + i * 0.3}s ease-in-out infinite`,
+                  animationDelay: s.delay}}
+              >
+                <svg width={s.size} height={s.size * 2.8} viewBox="0 0 24 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id={`sg${i}`} x1="12" y1="0" x2="12" y2="67" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#fff9c4" />
+                      <stop offset="40%" stopColor="#f0c040" />
+                      <stop offset="100%" stopColor="#a07020" />
+                    </linearGradient>
+                    <filter id={`glow${i}`}>
+                      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                  {/* Blade */}
+                  <polygon points="12,0 10,48 12,52 14,48" fill={`url(#sg${i})`} filter={`url(#glow${i})`} opacity="0.92"/>
+                  {/* Guard */}
+                  <rect x="5" y="48" width="14" height="4" rx="1.5" fill="#d4a020" opacity="0.9"/>
+                  {/* Handle */}
+                  <rect x="10" y="52" width="4" height="12" rx="1" fill="#8B5E15" opacity="0.85"/>
+                  {/* Pommel */}
+                  <circle cx="12" cy="65" r="2.5" fill="#d4a020" opacity="0.9"/>
+                  {/* Blade shine */}
+                  <line x1="11.2" y1="4" x2="11.2" y2="44" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8"/>
+                </svg>
+              </div>
+            ))}
+
+            {/* ── Pink energy orb at top ── */}
+            <div className="relative z-20 mt-12 mb-2 flex items-center justify-center">
+              <div
+                className="w-16 h-16 rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, #ff9de2 0%, #d946ef 40%, #9333ea 80%, transparent 100%)',
+                  boxShadow: '0 0 40px 20px rgba(217,70,239,0.45), 0 0 80px 40px rgba(147,51,234,0.2)',
+                  animation: 'pulse 3s ease-in-out infinite'}}
+              />
+            </div>
+
+            {/* ── Main title ── */}
+            <div className="relative z-20 text-center px-4">
+              <h1
+                className="font-serif leading-tight tracking-wider"
+                style={{
+                  fontSize: 'clamp(2.4rem, 8vw, 4rem)',
+                  fontWeight: 900,
+                  background: 'linear-gradient(180deg, #fff9e6 0%, #6ee7b7 35%, #c89b2a 70%, #8b6914 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: 'none',
+                  filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))',
+                  letterSpacing: '0.05em'}}
+              >
+                {language === 'vi' ? 'Trường Sinh Lộ' : 'Immortal Sim'}
+              </h1>
+              <p className="mt-3 text-sm leading-relaxed text-center max-w-xs mx-auto" style={{ color: 'rgba(30,20,10,0.75)', fontStyle: 'italic' }}>
+                {language === 'vi'
+                  ? 'Số ra qua nhiều kiện, quyết định hàng ha chọn, và mang việc mạnh thừa lễ sống đời sau'
+                  : 'Live through countless events, make fateful choices, and carry your legacy into the next life.'}
+              </p>
+            </div>
+
+            {/* ── Action buttons ── */}
+            <div className="relative z-20 w-full max-w-xs mt-7 space-y-3 px-4">
+              <button
+                type="button"
+                onClick={handleStart}
+                className="group block w-full text-center font-serif font-bold  cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  padding: '14px 24px',
+                  borderRadius: '50px',
+                  background: 'linear-gradient(180deg, #064e3b 0%, #065f46 50%, #022c22 100%)',
+                  border: '2px solid #10b981',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,220,100,0.15), 0 0 0 1px rgba(197,146,10,0.3)',
+                  color: '#6ee7b7',
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.18em'}}
+              >
+                <span className="mr-2 opacity-60">◆</span>
+                {copy.startNew}
+                <span className="ml-2 opacity-60">◆</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleReset}
+                className="group block w-full text-center font-serif font-bold  cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  padding: '14px 24px',
+                  borderRadius: '50px',
+                  background: 'linear-gradient(180deg, #064e3b 0%, #065f46 50%, #022c22 100%)',
+                  border: '2px solid #10b981',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,220,100,0.15), 0 0 0 1px rgba(197,146,10,0.3)',
+                  color: '#6ee7b7',
+                  fontSize: '0.8rem',
+                  letterSpacing: '0.18em'}}
+              >
+                <span className="mr-2 opacity-60">◆</span>
+                {copy.resetLegacy}
+                <span className="ml-2 opacity-60">◆</span>
+              </button>
+            </div>
+
+            {/* ── Settings panel ── */}
+            <div className="relative z-20 w-full max-w-xs mt-6 px-4 space-y-3">
+              {/* Language row */}
+              <div className="flex items-center gap-3">
+                <span className="text-xs  font-bold min-w-[80px] text-right" style={{ color: 'rgba(30,20,10,0.8)' }}>
+                  {language === 'vi' ? 'NGÔN NGỮ' : 'LANGUAGE'}
+                </span>
+                <div className="flex gap-2">
+                  {(['en', 'vi'] as const).map((l) => (
+                    <button
+                      key={l}
+                      type="button"
+                      onClick={() => setLanguage(l)}
+                      className="font-serif font-bold uppercase text-xs tracking-wider cursor-pointer transition-all duration-200"
+                      style={{
+                        padding: '6px 18px',
+                        borderRadius: '50px',
+                        background: language === l
+                          ? 'linear-gradient(180deg, #064e3b 0%, #022c22 100%)'
+                          : 'rgba(255,255,255,0.6)',
+                        border: language === l ? '2px solid #10b981' : '2px solid rgba(150,110,40,0.4)',
+                        color: language === l ? '#6ee7b7' : 'rgba(60,40,10,0.7)',
+                        boxShadow: language === l ? '0 2px 8px rgba(0,0,0,0.3)' : 'none'}}
+                    >
+                      {l.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Audio row */}
+              <div className="flex items-center gap-3">
+                <span className="text-xs  font-bold min-w-[80px] text-right" style={{ color: 'rgba(30,20,10,0.8)' }}>
+                  {language === 'vi' ? 'ÂM THANH' : 'AUDIO'}
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleToggleAudioEnabled}
+                    title={audioEnabled ? copy.audioOff : copy.audioOn}
+                    className="transition-all duration-200 cursor-pointer hover:scale-110"
+                    style={{
+                      width: 40, height: 40, borderRadius: '50px',
+                      background: audioEnabled
+                        ? 'linear-gradient(180deg, #064e3b 0%, #022c22 100%)'
+                        : 'rgba(255,255,255,0.6)',
+                      border: audioEnabled ? '2px solid #10b981' : '2px solid rgba(150,110,40,0.4)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '1.1rem'}}
+                  >
+                    🔔
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleToggleMute}
+                    disabled={!audioEnabled}
+                    title={audioMuted ? copy.unmute : copy.mute}
+                    className="transition-all duration-200 cursor-pointer hover:scale-110 disabled:opacity-40"
+                    style={{
+                      width: 40, height: 40, borderRadius: '50px',
+                      background: !audioMuted && audioEnabled
+                        ? 'linear-gradient(180deg, #064e3b 0%, #022c22 100%)'
+                        : 'rgba(255,255,255,0.6)',
+                      border: !audioMuted && audioEnabled ? '2px solid #10b981' : '2px solid rgba(150,110,40,0.4)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '1.1rem'}}
+                  >
+                    🔕
+                  </button>
+                </div>
+              </div>
+
+              {/* Volume slider row */}
+              {audioEnabled && (
+                <div className="flex items-center gap-3">
+                  <span className="text-xs  font-bold min-w-[80px] text-right" style={{ color: 'rgba(30,20,10,0.8)' }}>
+                    {language === 'vi' ? 'ÂM LƯỢNG' : 'VOLUME'}
+                  </span>
+                  <div className="flex-1 relative flex items-center">
+                    <div className="relative w-full h-2 rounded-full overflow-visible" style={{ background: 'rgba(180,140,60,0.3)' }}>
+                      <div
+                        className="absolute left-0 top-0 h-full rounded-full"
+                        style={{
+                          width: `${Math.round(audioVolume * 100)}%`,
+                          background: 'linear-gradient(90deg, #10b981, #6ee7b7)'}}
+                      />
+                      {/* Lotus thumb indicator */}
+                      <div
+                        className="absolute top-1/2 -translate-y-1/2 text-base pointer-events-none select-none"
+                        style={{ left: `calc(${Math.round(audioVolume * 100)}% - 10px)` }}
+                      >
+                        🪷
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={Math.round(audioVolume * 100)}
+                        onChange={(e) => handleAudioVolumeChange(parseInt(e.target.value) / 100)}
+                        disabled={!audioEnabled || audioMuted}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-default"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* ── Divider ── */}
+            <div className="relative z-20 w-full max-w-xs mt-5 px-4">
+              <div className="border-t" style={{ borderColor: 'rgba(150,110,40,0.4)' }} />
+            </div>
+
+            {/* ── DI SẢN / Heritage section ── */}
+            <div className="relative z-20 w-full max-w-xs mt-4 px-4 pb-4">
+              <p className="text-xs  font-bold text-center mb-3" style={{ color: 'rgba(30,20,10,0.75)' }}>
+                {copy.legacyTitle || 'DI SẢN'}
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { label: copy.legacyPower, value: inheritance.legacyPower },
+                  { label: copy.ancestralMemory, value: inheritance.ancestralMemory },
+                  { label: copy.blessing, value: inheritance.blessing },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="text-center p-2 rounded-lg"
+                    style={{
+                      background: 'linear-gradient(180deg, #064e3b 0%, #022c22 100%)',
+                      border: '2px solid #10b981',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.4)'}}
+                  >
+                    <span className="block text-[8px]  leading-tight mb-1" style={{ color: 'rgba(245,215,110,0.7)' }}>
+                      {item.label}
+                    </span>
+                    <span className="block font-serif text-base font-bold" style={{ color: '#6ee7b7' }}>
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Flavor text ── */}
+            <div className="relative z-20 w-full max-w-xs px-4 pb-8 text-center">
+              <p className="text-sm italic leading-relaxed" style={{ color: 'rgba(30,20,10,0.65)' }}>
+                {copy.legacyDescription || (language === 'vi'
+                  ? 'Ở mạnh thừa kế của bạn vẫn con quả một an tái sinh. Mỗi cái chết giúp kiếp cột mạnh hơn...'
+                  : 'Each death carries your legacy forward. Every life grows stronger...')}
+              </p>
+            </div>
+
+            {/* ── Chibi sage character (bottom-right) ── */}
+            <div
+              className="absolute bottom-0 right-0 z-30 pointer-events-none select-none"
+              style={{ animation: 'float 5s ease-in-out infinite' }}
+            >
+              <img
+                src="/images/chibi_sage.png"
+                alt="Immortal Sage"
+                style={{ width: 'clamp(100px, 25vw, 160px)', opacity: 0.95 }}
+              />
+            </div>
+
+          </div>
+        )}
+
+        </div>
+        
+        {game?.currentLocation === 'mountain' && !activeCombat && (
+          <MountainExploration
+            language={languageRef.current}
+            onReturn={() => handleMoveLocationWithTransition('sect')}
+            onEventResult={handleMountainExploreEventResult}
+            onCombat={handleMountainExploreCombat}
+            onTimePass={handleMountainExploreTimePass}
+            travelCostStones={activeCombatConfigRef.current?.time_gear?.travel_cost_stones ?? 10}
+            travelCostHp={activeCombatConfigRef.current?.time_gear?.travel_cost_hp ?? 2}
+          />
+        )}
+      </main>
+
+      {isAdminPortalVisible && (
+        <button
+          type="button"
+          onClick={() => setIsAdminPanelOpen(true)}
+          className="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-full border border-secondary bg-zinc-900 text-secondary font-serif text-xs  shadow-2xl hover:bg-zinc-800 hover:text-white transition-all duration-300 animate-pulse hover:animate-none"
+        >
+          ☯ Thái Cổ Thần Điện
+        </button>
+      )}
+
+      <AdminPanel 
+        isOpen={isAdminPanelOpen} 
+        onClose={() => setIsAdminPanelOpen(false)} 
+        showAudioPaths={showAudioPaths}
+        onToggleAudioPaths={setShowAudioPaths}
+        onStartTestCombat={() => {
+          setIsAdminPanelOpen(false);
+          setShowTestCombat(true);
+        }}
+        game={game}
+        onChangeGame={setGame}
+      />
+
+      {showAudioPaths && (
+        <div className="fixed bottom-6 left-6 z-50 p-4 border border-secondary/40 bg-zinc-950/90 backdrop-blur-md font-mono text-[11px] text-secondary rounded shadow-2xl max-w-xs space-y-2 select-all">
+          <div className="flex items-center gap-1.5 border-b border-zinc-800 pb-1.5 font-serif font-bold  text-[10px]">

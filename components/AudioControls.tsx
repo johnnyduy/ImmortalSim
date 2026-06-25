@@ -29,15 +29,15 @@ export default function AudioControls({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-center gap-3">
-        <span className="text-xs uppercase tracking-widest text-[#e5c17b] font-bold">{labels.audio}</span>
+        <span className="text-xs font-medium text-emerald-400 font-bold">{labels.audio}</span>
         <button
           type="button"
           onClick={onToggleEnabled}
-          className="px-4 py-1.5 text-xs uppercase tracking-wider border rounded-sm transition font-serif font-bold cursor-pointer"
+          className="px-4 py-1.5 text-xs font-medium border rounded-sm transition font-serif font-bold cursor-pointer"
           style={{
             backgroundColor: enabled ? 'rgba(30, 25, 21, 0.95)' : 'rgba(12, 10, 8, 0.95)',
-            color: enabled ? '#e5c17b' : '#847764',
-            borderColor: enabled ? '#c5a059' : '#3e3328',
+            color: enabled ? '#34d399' : '#71717a',
+            borderColor: enabled ? '#10b981' : '#27272a',
           }}
         >
           {enabled ? labels.audioOn : labels.audioOff}
@@ -46,11 +46,11 @@ export default function AudioControls({
           type="button"
           onClick={onToggleMute}
           disabled={!enabled}
-          className="px-4 py-1.5 text-xs uppercase tracking-wider border rounded-sm transition disabled:opacity-30 font-serif font-bold cursor-pointer"
+          className="px-4 py-1.5 text-xs font-medium border rounded-sm transition disabled:opacity-30 font-serif font-bold cursor-pointer"
           style={{
             backgroundColor: !enabled ? 'rgba(12, 10, 8, 0.5)' : muted ? 'rgba(12, 10, 8, 0.95)' : 'rgba(30, 25, 21, 0.95)',
-            color: !enabled ? '#6d6954' : muted ? '#847764' : '#e5c17b',
-            borderColor: !enabled ? '#3e3328' : muted ? '#3e3328' : '#c5a059',
+            color: !enabled ? '#6d6954' : muted ? '#71717a' : '#34d399',
+            borderColor: !enabled ? '#27272a' : muted ? '#27272a' : '#10b981',
           }}
         >
           {muted ? labels.unmute : labels.mute}
@@ -59,7 +59,7 @@ export default function AudioControls({
 
       {enabled && (
         <div className="flex items-center justify-center gap-3">
-          <span className="text-xs uppercase tracking-widest text-[#e5c17b] font-bold">{labels.volume}</span>
+          <span className="text-xs font-medium text-emerald-400 font-bold">{labels.volume}</span>
           <input
             type="range"
             min="0"
@@ -72,7 +72,7 @@ export default function AudioControls({
               accentColor: '#a89f7d',
             }}
           />
-          <span className="text-xs text-[#e5c17b] font-bold min-w-[2rem] text-right">{Math.round(volume * 100)}%</span>
+          <span className="text-xs text-emerald-400 font-bold min-w-[2rem] text-right">{Math.round(volume * 100)}%</span>
         </div>
       )}
     </div>

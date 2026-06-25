@@ -8,7 +8,10 @@ import StatsPanel from '../components/StatsPanel';
 import TestCombatPanel from '../components/TestCombatPanel';
 import AdminPanel from '../components/AdminPanel';
 import SettingsModal from '../components/SettingsModal';
-import { applyChoiceToState, createNewGame, getInitialInheritance, reincarnate, useItemInState, equipItemInState, tickMonth, getPlayerStat, getRandomEvent, addItem, getMenuEvent, addFragment, SectPunishmentEvent, changeLocation, setDynamicEvents, completeTechniqueLearning } from '../lib/engine';
+import TerminalUI from '../components/TerminalUI';
+import ReincarnationUI from '../components/ReincarnationUI';
+import { applyChoiceToState, createNewGame, getInitialInheritance, reincarnate, useItemInState, equipItemInState, getPlayerStat, getRandomEvent, addItem, getMenuEvent, addFragment, SectPunishmentEvent, changeLocation, setDynamicEvents, completeTechniqueLearning } from '../lib/engine';
+import { tickMonth } from '../lib/game-controller';;
 import { getRealmSubStage } from '../lib/cultivation-states';
 import { getLocalizedText, uiText, translatedRealms } from '../lib/i18n';
 import { useAtmosphere } from '../hooks/useAtmosphere';
@@ -68,7 +71,7 @@ function EventIllustration({ id, sect }: { id: string; sect?: string }) {
   return (
     <div 
       className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-[6px] border-[#133529] shadow-[0_12px_30px_rgba(0,0,0,0.85),0_0_20px_rgba(37,107,83,0.5)] flex-shrink-0 mx-auto transition-transform duration-300 hover:scale-105"
-      style={{ outline: '2px solid #b89f65', outlineOffset: '-4px' }}
+      style={{ outline: '2px solid #10b981', outlineOffset: '-4px' }}
     >
       {isMeditation ? (
         <div
@@ -76,9 +79,8 @@ function EventIllustration({ id, sect }: { id: string; sect?: string }) {
             backgroundImage: "url('/images/meditation_spritesheet.png')",
             backgroundSize: '400% 200%',
             backgroundPosition: `${(col * 100) / 3}% ${(row * 100) / 1}%`,
-            backgroundRepeat: 'no-repeat',
-          }}
-          className="w-full h-full bg-[#0c0a08]"
+            backgroundRepeat: 'no-repeat'}}
+          className="w-full h-full bg-zinc-950"
         />
       ) : (
         <img
@@ -110,8 +112,7 @@ const BGM_PATHS: Record<string, string> = {
   story_2: '/audio/mystery.mp3',
   story_3: '/audio/forbidden.mp3',
   story_4: '/audio/meditation.mp3',
-  story_5: '/audio/mountain.mp3',
-};
+  story_5: '/audio/mountain.mp3'};
 
 const formatSignedGain = (value: number) => {
   const rounded = Math.round(value * 100) / 100;
@@ -124,8 +125,7 @@ const getInventoryCounts = (inventory: GameState['inventory'] = []) => {
     const current = counts.get(item.id);
     counts.set(item.id, {
       name: item.name,
-      quantity: (current?.quantity ?? 0) + item.quantity,
-    });
+      quantity: (current?.quantity ?? 0) + item.quantity});
   });
   return counts;
 };
@@ -163,8 +163,7 @@ const buildLevelRewardPayload = (
         item: 'Vật phẩm',
         technique: 'Công pháp',
         fragment: 'Mảnh công pháp',
-        activated: 'Kích hoạt',
-      }
+        activated: 'Kích hoạt'}
     : {
         levelTitle: 'Realm Breakthrough',
         rewardTitle: 'Reward Claimed',
@@ -182,8 +181,7 @@ const buildLevelRewardPayload = (
         item: 'Item',
         technique: 'Technique',
         fragment: 'Technique Shard',
-        activated: 'Activated',
-      };
+        activated: 'Activated'};
 
   const cultivationGain = next.stats.cultivation - previous.stats.cultivation;
   // Bỏ đi phần thưởng Tu vi khi đột phá theo yêu cầu
@@ -240,8 +238,7 @@ const buildLevelRewardPayload = (
     kind: leveledUp ? 'level' : 'reward',
     title: leveledUp ? labels.levelTitle : labels.rewardTitle,
     subtitle: leveledUp ? labels.levelSubtitle : labels.rewardSubtitle,
-    rewards,
-  };
+    rewards};
 };
 
 export default function HomePage() {
@@ -286,7 +283,6 @@ export default function HomePage() {
   const [creationRoot, setCreationRoot] = useState<string>('Kim Linh Căn');
   const [creationSect, setCreationSect] = useState<string>('Kiếm Tông');
   const [isReincarnationFlow, setIsReincarnationFlow] = useState<boolean>(false);
-  const [creationAmbition, setCreationAmbition] = useState<'truong_sinh' | 'ba_chu' | 'dan_dao' | 'kiem_tien' | 'phu_quoc' | 'ma_dao'>('truong_sinh');
   const [isIntroTextFinished, setIsIntroTextFinished] = useState(false);
   const [showSectMissions, setShowSectMissions] = useState(false);
   const [showSectShop, setShowSectShop] = useState(false);
@@ -345,8 +341,7 @@ export default function HomePage() {
 
   const { currentMode, setMasterVolume, mute, unmute } = useAtmosphere(game, {
     enableAudio: audioEnabled,
-    masterVolume: audioVolume,
-  });
+    masterVolume: audioVolume});
 
   const playSfxWithPath = useCallback((path: string, volume: number = 0.7) => {
     setLastAudioTriggered(path);
@@ -407,8 +402,7 @@ export default function HomePage() {
         oldStageName: oldStageName[language],
         newStageName: newStageName[language],
         majorRealm: currentSubStage.majorRealm,
-        isMajor,
-      });
+        isMajor});
 
       // Play custom audio breakthrough SFX
       playSfxWithPath('/audio/crystal-bowl.mp3', 0.9);
@@ -728,7 +722,6 @@ export default function HomePage() {
     setCreationGender('nam');
     setCreationRoot('Kim Linh Căn');
     setCreationSect('Kiếm Tông');
-    setCreationAmbition('truong_sinh');
     setIsReincarnationFlow(false);
     setShowCharacterCreation(true);
   };
@@ -741,7 +734,6 @@ export default function HomePage() {
     setCreationGender('nam');
     setCreationRoot('Kim Linh Căn');
     setCreationSect('Kiếm Tông');
-    setCreationAmbition('truong_sinh');
     setIsReincarnationFlow(false);
     setShowCharacterCreation(true);
   };
@@ -847,9 +839,7 @@ export default function HomePage() {
       const next = reincarnate(game, language, {
         gender: creationGender,
         spiritualRoot: creationRoot,
-        sect: creationSect,
-        ambition: creationAmbition
-      });
+        sect: creationSect});
       setInheritance(next.inheritance);
       setGame(next);
     } else {
@@ -857,9 +847,7 @@ export default function HomePage() {
       const nextGame = createNewGame(inheritance, game?.run ?? 0, language, {
         gender: creationGender,
         spiritualRoot: creationRoot,
-        sect: creationSect,
-        ambition: creationAmbition
-      });
+        sect: creationSect});
       setGame(nextGame);
     }
   };
@@ -1109,8 +1097,7 @@ export default function HomePage() {
       npc_kiem_tong_ta_tieu: 0,
       npc_dan_tong_chap_su: 0,
       npc_ma_dao_chap_su: 0,
-      npc_huyet_tong_chap_su: 0,
-    };
+      npc_huyet_tong_chap_su: 0};
     
     const combatOutcomeLog = (isWin: boolean, descVi: string, descEn: string) => {
       nextLog.push({
@@ -1370,7 +1357,7 @@ export default function HomePage() {
         const hpPenalty = 50;
         nextStats.health = Math.max(0, nextStats.health - hpPenalty);
         if (nextStats.health > 0) {
-          // Survived – just heavily injured, return to monthly plan
+          // Survived - just heavily injured, return to monthly plan
           nextLog.push({
             type: 'info',
             age: game.age,
@@ -1463,8 +1450,7 @@ export default function HomePage() {
       speed: 10,
       comprehension: 8,
       attack: 18,
-      qi_control: 10,
-    };
+      qi_control: 10};
 
     const realms = combatConfig.realms as any[];
     const physiques = combatConfig.physiques as any[];
@@ -1755,8 +1741,7 @@ export default function HomePage() {
       newLog.push({
         type: 'death',
         age: nextAge,
-        message: deathText,
-      });
+        message: deathText});
     }
 
     const months = ["🐀", "🐂", "🐅", "🐈", "🐉", "🐍", "🐎", "🐐", "🐒", "🐓", "🐕", "🐖"];
@@ -1867,8 +1852,7 @@ export default function HomePage() {
       newLog.push({
         type: 'death',
         age: nextAge,
-        message: deathText,
-      });
+        message: deathText});
       
       setGame({
         ...game,
@@ -2104,39 +2088,41 @@ export default function HomePage() {
 
   if (!loaded || eventsLoading) {
     return (
-      <div className="fixed inset-0 z-[300] flex flex-col items-center justify-center bg-[#060e0b] text-[#fbe3b5] font-serif">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.1)_0%,rgba(0,0,0,0.95)_100%)] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] border border-emerald-950/20 rounded-full animate-[spin_40s_linear_infinite]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-emerald-950/10 border-dashed rounded-full animate-[spin_60s_linear_infinite_reverse]" />
-
-        <div className="relative z-10 w-full max-w-sm px-6 text-center space-y-8">
-          <div className="space-y-3">
-            <div className="text-4xl font-bold tracking-[0.25em] text-gradient bg-gradient-to-b from-[#fbe3b5] via-[#e5c17b] to-[#a87f37] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-              {language === 'vi' ? 'TRƯỜNG SINH LỘ' : 'IMMORTAL SIM'}
-            </div>
-            <p className="text-xs tracking-[0.4em] uppercase text-emerald-500/70 font-semibold drop-shadow-md">
+      <div className="fixed inset-0 z-[300] flex flex-col items-center justify-center bg-background text-primary font-mono-data">
+        <div className="absolute inset-0 pointer-events-none scanlines opacity-30" />
+        
+        <div className="relative z-10 w-full max-w-md px-6 space-y-8">
+          {/* Header */}
+          <div className="space-y-2 border-l-2 border-primary pl-4">
+            <h1 className="text-2xl font-bold tracking-[0.2em] uppercase">
+              {language === 'vi' ? 'TRƯỜNG SINH LỘ // HỆ THỐNG' : 'IMMORTAL SIM // SYS'}
+            </h1>
+            <p className="text-xs tracking-[0.3em] uppercase text-on-surface-variant font-semibold">
               {language === 'vi' ? 'KHỞI TẠO BẢN NGUYÊN THẾ GIỚI' : 'INITIALIZING WORLD ORIGIN'}
             </p>
           </div>
           
-          <div className="space-y-4">
-            <div className="relative h-2 w-full bg-[#132c25] rounded-full overflow-hidden border border-[#b89f65]/20 p-[1px] shadow-[0_0_12px_rgba(16,185,129,0.1)]">
+          {/* Progress bar */}
+          <div className="space-y-2">
+            <div className="relative h-4 w-full bg-surface-container border border-outline-variant overflow-hidden p-[2px]">
               <div 
                 style={{ width: `${loadingProgress}%` }}
-                className="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(52,211,153,0.7)]"
+                className="h-full bg-primary transition-all duration-300"
               />
             </div>
             
-            <div className="flex justify-between items-center px-1 text-[10px] text-text-tertiary tracking-widest uppercase">
-              <span>{loadingProgress}%</span>
-              <span>Qi: {(loadingProgress * 15.6).toFixed(0)} / 1560</span>
+            <div className="flex justify-between items-center text-[10px] text-on-surface tracking-widest uppercase mt-1">
+              <span>{`[ SYNC: ${loadingProgress}% ]`}</span>
+              <span>DATA: {(loadingProgress * 15.6).toFixed(0)} / 1560 KB</span>
             </div>
           </div>
           
-          <div className="py-2">
-            <p className="text-sm font-serif italic tracking-wide text-[#e5c17b] animate-pulse drop-shadow">
-              {loadingText}
+          {/* Logs */}
+          <div className="border border-outline-variant/30 bg-surface-container/50 p-4 h-24 overflow-hidden relative">
+            <p className="text-xs font-mono tracking-wide text-primary/80 animate-pulse">
+              &gt; {loadingText}
             </p>
+            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-surface-container/50 to-transparent pointer-events-none" />
           </div>
         </div>
       </div>
@@ -2146,6 +2132,42 @@ export default function HomePage() {
   return (
     <>
       <AtmosphereBackground gameState={game} previousGameState={previousGame} />
+      
+      {/* If Game is Active, render new UI */}
+      {game && game.alive && !showCharacterCreation && !showTestCombat && (
+        <TerminalUI 
+          game={game} 
+          setGame={setGame} 
+          language={language}
+          onAscension={() => {
+            const subStage = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
+            if (game.stats.cultivation >= 500) {
+              setGame(prev => prev ? {
+                ...prev,
+                stats: { ...prev.stats, cultivation: prev.stats.cultivation - 500 },
+                subStageIndex: prev.subStageIndex + 1
+              } : prev);
+            }
+          }}
+        />
+      )}
+
+      {game && !game.alive && !showCharacterCreation && !showTestCombat && (
+        <ReincarnationUI 
+          game={game} 
+          setGame={setGame} 
+          inheritance={inheritance} 
+          setInheritance={setInheritance} 
+          language={language}
+          onReincarnate={() => {
+            handleReset();
+          }}
+        />
+      )}
+
+      {/* Fallback to original UI for character creation, test combat, etc. */}
+      {(!game || showCharacterCreation || showTestCombat) && (
+      <div className={`relative flex min-h-[100dvh] flex-col antialiased ${!game || !game.alive ? 'overflow-auto' : 'overflow-hidden max-h-[100dvh]'}`}>
       {game?.activeCombat && (
         <CombatModal state={game} onAction={handleCombatModalAction} onClose={handleCombatModalClose} />
       )}
@@ -2262,12 +2284,11 @@ export default function HomePage() {
             blessing: copy.blessing,
             lifespan: copy.lifespanLabel,
             daoHeart: copy.daoHeartLabel,
-            spiritualRoot: copy.spiritualRootLabel,
-          }}
+            spiritualRoot: copy.spiritualRootLabel}}
         />
       )}
 
-      <main className="min-h-screen flex flex-col px-4 py-6 sm:px-6 relative z-10">
+      <main className="max-w-md mx-auto min-h-[100dvh] flex flex-col relative bg-zinc-950 text-zinc-100 overflow-hidden shadow-2xl">
         <div className={`mx-auto flex w-full flex-col gap-0 flex-1 justify-between transition-all duration-500 ${game && !showTestCombat && !activeCombat ? 'max-w-5xl' : 'max-w-2xl'}`}>
 
         {activeCombat ? (
@@ -2285,15 +2306,15 @@ export default function HomePage() {
           </div>
         ) : showCharacterCreation ? (
           <div className="py-6 w-full flex-1 flex flex-col justify-center items-center animate-fade-in relative z-20">
-            <div className="adventure-card w-full max-w-xl p-5 sm:p-6 space-y-6 animate-slide-up relative bg-[#0c0a08]/95 border border-[#c5a059]/40 shadow-2xl">
-              <div className="text-center space-y-1 pb-4 border-b border-[#3e3328]/50">
-                <span className="text-[10px] uppercase tracking-[0.3em] text-[#847764] font-serif">Khởi Đầu Tiên Lộ</span>
-                <h2 className="font-serif text-[#e5c17b] text-2xl uppercase tracking-wider">Thiết Lập Bản Thể</h2>
+            <div className="adventure-card w-full max-w-xl p-5 sm:p-6 space-y-6 animate-slide-up relative bg-surface-container-lowest/90 border border-outline-variant/30 shadow-2xl backdrop-blur-sm">
+              <div className="text-center space-y-1 pb-4 border-b border-zinc-800/50">
+                <span className="font-label-caps text-label-caps text-secondary-fixed opacity-60 mb-2 block">Khởi Đầu Tiên Lộ</span>
+                <h2 className="font-headline-lg text-headline-lg text-primary uppercase tracking-widest ">Thiết Lập Bản Thể</h2>
               </div>
 
               {/* Giới Tính */}
               <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif">1. Chọn Giới Tính (Gender)</h3>
+                <h3 className="font-label-caps text-label-caps text-secondary-fixed opacity-80 uppercase tracking-widest">1. Chọn Giới Tính (Gender)</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {['nam', 'nữ'].map((g) => {
                     const isSelected = creationGender === g;
@@ -2304,8 +2325,8 @@ export default function HomePage() {
                         onClick={() => setCreationGender(g as 'nam' | 'nữ')}
                         className={`py-3 text-center font-serif text-sm font-semibold rounded-sm border transition-all duration-300 ${
                           isSelected
-                            ? 'border-[#e5c17b] bg-[#e5c17b]/10 text-white shadow-[0_0_12px_rgba(229,193,123,0.25)]'
-                            : 'border-[#3e3328] bg-black/40 text-text-secondary hover:border-[#847764] hover:text-white'
+                            ? 'border-secondary bg-secondary/10 text-secondary shadow-[0_0_10px_rgba(255,176,0,0.2)]'
+                            : 'border-outline-variant/30 bg-surface-container-low text-on-surface-variant hover:border-secondary/40 hover:text-secondary'
                         }`}
                       >
                         {g === 'nam' ? '♂ Nam (Male)' : '♀ Nữ (Female)'}
@@ -2317,7 +2338,7 @@ export default function HomePage() {
 
               {/* Linh Căn */}
               <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif">2. Chọn Thiên Phú Linh Căn (Spiritual Root)</h3>
+                <h3 className="font-label-caps text-label-caps text-secondary-fixed opacity-80 uppercase tracking-widest">2. Chọn Thiên Phú Linh Căn (Spiritual Root)</h3>
                 <div className="grid grid-cols-4 gap-2">
                   {[
                     { name: 'Kim Linh Căn', icon: '⚔️' },
@@ -2337,12 +2358,12 @@ export default function HomePage() {
                         onClick={() => setCreationRoot(r.name)}
                         className={`p-2.5 rounded-sm border flex flex-col items-center gap-1.5 transition-all duration-300 ${
                           isSelected
-                            ? 'border-[#e5c17b] bg-[#e5c17b]/10 text-white shadow-[0_0_10px_rgba(229,193,123,0.2)]'
-                            : 'border-[#3e3328]/80 bg-black/30 text-text-secondary hover:border-[#847764] hover:text-white'
+                            ? 'border-secondary bg-secondary/10 text-secondary shadow-[0_0_10px_rgba(255,176,0,0.2)]'
+                            : 'border-outline-variant/30 bg-surface-container-low text-on-surface-variant hover:border-secondary/40 hover:text-secondary'
                         }`}
                       >
                         <span className="text-base">{r.icon}</span>
-                        <span className="text-[9px] uppercase tracking-wider truncate w-full text-center font-serif leading-none">{r.name.split(' ')[0]}</span>
+                        <span className="text-[9px]  truncate w-full text-center font-serif leading-none">{r.name.split(' ')[0]}</span>
                       </button>
                     );
                   })}
@@ -2351,7 +2372,7 @@ export default function HomePage() {
 
               {/* Môn Phái */}
               <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif">3. Chọn Môn Phái & Xuất Thân Làng Xã</h3>
+                <h3 className="font-label-caps text-label-caps text-secondary-fixed opacity-80 uppercase tracking-widest">3. Chọn Môn Phái & Xuất Thân Làng Xã</h3>
                 <div className="grid grid-cols-2 gap-3.5">
                   {[
                     {
@@ -2395,12 +2416,12 @@ export default function HomePage() {
                         onClick={() => setCreationSect(s.name)}
                         className={`p-3 text-left rounded-sm border transition-all duration-300 flex flex-col gap-1.5 ${
                           isSelected
-                            ? 'border-[#e5c17b] bg-[#e5c17b]/10 text-white shadow-[0_0_12px_rgba(229,193,123,0.25)]'
-                            : 'border-[#3e3328]/80 bg-black/40 text-text-secondary hover:border-[#847764]'
+                            ? 'border-secondary bg-secondary/10 text-secondary shadow-[0_0_10px_rgba(255,176,0,0.2)]'
+                            : 'border-outline-variant/30 bg-surface-container-low text-on-surface-variant hover:border-secondary/40 hover:text-secondary'
                         }`}
                       >
                         <div className="flex justify-between items-center w-full">
-                          <span className="font-serif text-sm font-bold text-[#e5c17b] flex items-center gap-1.5">
+                          <span className="font-serif text-sm font-bold text-secondary flex items-center gap-1.5">
                             <span>{s.icon}</span>
                             {s.name}
                           </span>
@@ -2410,7 +2431,7 @@ export default function HomePage() {
                         <div className="text-[8px] uppercase tracking-wide text-amber-500/80 font-serif leading-none mt-1">
                           💪 {s.bonus}
                         </div>
-                        <div className="text-[8px] uppercase tracking-wide text-emerald-400 font-serif leading-none">
+                        <div className="text-[8px] uppercase tracking-wide text-secondary font-serif leading-none">
                           🎁 {s.item}
                         </div>
                       </button>
@@ -2419,47 +2440,12 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Đạo Tâm */}
-              <div className="space-y-2">
-                <h3 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif">4. Chọn Đạo Tâm Hướng Đi (Dao Heart)</h3>
-                <div className="grid grid-cols-2 gap-3.5">
-                  {[
-                    { id: 'truong_sinh', name: 'Trường Sinh', icon: '🐢', desc: 'Cầu trường sinh bất lão, tránh né phong ba cuộc đời.' },
-                    { id: 'ba_chu', name: 'Bá Chủ Thiên Hạ', icon: '👑', desc: 'Đoạt lấy vương vị, thống trị vạn dân, chư thiên tôn kính.' },
-                    { id: 'dan_dao', name: 'Đan Đạo Chí Tôn', icon: '🧪', desc: 'Dùng đan chứng đạo, ưu tiên các sự kiện đan dược thảo mộc.' },
-                    { id: 'kiem_tien', name: 'Kiếm Tiên Vô Địch', icon: '⚔️', desc: 'Một kiếm trấn cửu châu, chém đứt nhân quả tam giới.' },
-                    { id: 'phu_quoc', name: 'Phú Khả Địch Quốc', icon: '💎', desc: 'Tích lũy linh thạch, khống chế thị trường giao thương thế giới.' },
-                    { id: 'ma_dao', name: 'Ma Đạo Cự Phách', icon: '🔥', desc: 'Tu ma nghịch tiên, tùy tâm sở dục, đoạt sinh cơ chư thiên.' }
-                  ].map((amb) => {
-                    const isSelected = creationAmbition === amb.id;
-                    return (
-                      <button
-                        key={amb.id}
-                        type="button"
-                        onClick={() => setCreationAmbition(amb.id as any)}
-                        className={`p-3 text-left rounded-sm border transition-all duration-300 flex flex-col gap-1.5 ${
-                          isSelected
-                            ? 'border-[#e5c17b] bg-[#e5c17b]/10 text-white shadow-[0_0_12px_rgba(229,193,123,0.25)]'
-                            : 'border-[#3e3328]/80 bg-black/40 text-text-secondary hover:border-[#847764]'
-                        }`}
-                      >
-                        <span className="font-serif text-sm font-bold text-[#e5c17b] flex items-center gap-1.5">
-                          <span>{amb.icon}</span>
-                          {amb.name}
-                        </span>
-                        <p className="text-[10px] text-text-secondary leading-relaxed line-clamp-2">{amb.desc}</p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
               {/* Bắt Đầu Hành Trình */}
-              <div className="pt-4 border-t border-[#3e3328]/50">
+              <div className="pt-4 border-t border-zinc-800/50">
                 <button
                   type="button"
                   onClick={handleConfirmCharacter}
-                  className="w-full py-4 text-center font-serif text-base font-bold uppercase tracking-wider rounded-sm border border-[#c5a059] bg-gradient-to-r from-[#1e1915] to-[#2d241c] text-[#e5c17b] hover:text-white hover:border-[#e5c17b] transition-all duration-300 shadow-[0_4px_15px_rgba(197,160,89,0.2)] hover:shadow-[0_4px_25px_rgba(229,193,123,0.4)]"
+                  className="w-full py-4 text-center font-headline-sm text-headline-sm font-bold border transition-all duration-300 uppercase tracking-widest border-secondary/40 text-secondary hover:border-secondary hover:bg-secondary/10 hover:shadow-[0_0_15px_rgba(255,176,0,0.2)] hover:-translate-y-0.5 cursor-pointer bg-surface-container-low/80"
                 >
                   Bắt Đầu Hành Trình Nghịch Thiên
                 </button>
@@ -2481,7 +2467,7 @@ export default function HomePage() {
               {/* Cột phải: Cuộn sớ cổ trang trúc lục bảo viền vàng kim */}
               {game.alive && game.currentEvent && (
                 <article 
-                  className="relative flex flex-col w-full max-w-md bg-[#eae1c8] text-neutral-800 rounded-sm py-8 px-7 sm:px-9 border-x-2 border-[#b89f65]/35 animate-portal-entry shadow-[0_15px_35px_rgba(0,0,0,0.65)] mt-8 md:mt-10"
+                  className="relative flex flex-col w-full max-w-md bg-surface-container-lowest text-on-surface rounded-sm py-8 px-7 sm:px-9 border-x-2 border-outline-variant/30 animate-portal-entry shadow-[0_15px_35px_rgba(0,0,0,0.65)] mt-8 md:mt-10"
                   style={{
                     backgroundImage: "radial-gradient(circle, #fcfaf2 20%, #f3ead0 100%)",
                     boxShadow: "inset 0 0 40px rgba(130, 95, 45, 0.2), 0 15px 35px rgba(0,0,0,0.65)"
@@ -2502,7 +2488,7 @@ export default function HomePage() {
                         </span>
                       </div>
                     )}
-                    <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-amber-950/40 bg-amber-900/10 text-[16px] sm:text-[18px] font-bold text-amber-900 font-serif shadow-md">
+                    <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-emerald-950/40 bg-emerald-900/10 text-[16px] sm:text-[18px] font-bold text-emerald-900 font-serif shadow-md">
                       <span>
                         ⚖️ {language === 'vi' 
                           ? `Đấu giá: ${10 - (game.age % 10)} năm` 
@@ -2547,19 +2533,19 @@ export default function HomePage() {
 
                   {/* Nội dung chính cuộn sớ */}
                   <div className="space-y-4 my-auto relative z-10">
-                    <div className="flex items-center justify-between text-[11px] uppercase tracking-wider text-neutral-600 font-bold border-b border-neutral-700/10 pb-1 font-serif">
+                    <div className="flex items-center justify-between text-[11px]  text-neutral-600 font-bold border-b border-neutral-700/10 pb-1 font-serif">
                       <span>Kiếp {game.life}</span>
                     </div>
 
-                    <h2 className="font-serif text-neutral-800 text-2xl sm:text-3xl font-bold tracking-wide drop-shadow-sm flex items-center gap-1.5 justify-center text-center">
+                    <h2 className="font-serif text-on-surface text-2xl sm:text-3xl font-bold tracking-wide drop-shadow-sm flex items-center gap-1.5 justify-center text-center">
                       {getLocalizedText(game.currentEvent.title, language)}
                     </h2>
 
                     {/* Dải phân cách trang trí vàng kim */}
                     <div className="flex items-center justify-center my-1 opacity-60">
-                      <svg className="w-24 h-2 text-[#b89f65] fill-current" viewBox="0 0 100 10">
+                      <svg className="w-24 h-2 text-secondary fill-current" viewBox="0 0 100 10">
                         <path d="M0 5 h40 l5 -3 l5 3 l-5 3 l-5 -3 h-40 Z M100 5 h-40 l-5 -3 l-5 3 l5 3 l5 -3 h40 Z" />
-                        <circle cx="50" cy="5" r="2.5" className="fill-[#b89f65]" />
+                        <circle cx="50" cy="5" r="2.5" className="fill-[#10b981]" />
                       </svg>
                     </div>
                     
@@ -2575,7 +2561,7 @@ export default function HomePage() {
                     </p>
 
                     {game.currentEvent.id === 'sect_entry_welfare' && (
-                      <div className="flex flex-wrap justify-center gap-6 py-4 px-4 border border-[#3e3328]/45 bg-[#0c0a08]/80 rounded-sm">
+                      <div className="flex flex-wrap justify-center gap-6 py-4 px-4 border border-zinc-800/45 bg-zinc-950/80 rounded-sm">
                         {/* Render Manual Book Icon */}
                         {(() => {
                           const sectIdMap: Record<string, string> = {
@@ -2620,20 +2606,20 @@ export default function HomePage() {
                                   ]
                                 });
                               }}
-                              className="group flex flex-col items-center p-3 border border-[#3e3328]/70 hover:border-[#c5a059] bg-[#14110f]/80 rounded shadow-md transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer max-w-[120px] text-center"
+                              className="group flex flex-col items-center p-3 border border-zinc-800/70 hover:border-secondary bg-zinc-950/80 rounded shadow-md transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer max-w-[120px] text-center"
                             >
-                              <div className="relative w-16 h-20 bg-cover bg-center border border-[#c5a059]/40 rounded-sm overflow-hidden mb-2 group-hover:scale-105 transition-transform duration-300 shadow-lg flex items-center justify-center">
+                              <div className="relative w-16 h-20 bg-cover bg-center border border-secondary/40 rounded-sm overflow-hidden mb-2 group-hover:scale-105 transition-transform duration-300 shadow-lg flex items-center justify-center">
                                 {configTech.image ? (
                                   <img src={configTech.image} alt={configTech.label} className="w-full h-full object-cover select-none" />
                                 ) : (
                                   <span className="text-2xl">📖</span>
                                 )}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end justify-center pb-1">
-                                  <span className="text-[8px] text-[#e5c17b] tracking-widest font-serif font-bold uppercase">{configTech.spiritual_root}</span>
+                                  <span className="text-[8px] text-secondary tracking-widest font-serif font-bold uppercase">{configTech.spiritual_root}</span>
                                 </div>
                               </div>
-                              <span className="text-[10px] font-serif text-[#e5c17b] group-hover:text-white font-semibold line-clamp-1">{configTech.label}</span>
-                              <span className="text-[8px] text-text-tertiary uppercase tracking-wider mt-0.5">{language === 'vi' ? 'Xem chi tiết' : 'View Info'}</span>
+                              <span className="text-[10px] font-mono-data text-secondary group-hover:text-white font-semibold line-clamp-1">{configTech.label}</span>
+                              <span className="text-[8px] text-text-tertiary  mt-0.5">{language === 'vi' ? 'Xem chi tiết' : 'View Info'}</span>
                             </button>
                           );
                         })()}
@@ -2660,16 +2646,16 @@ export default function HomePage() {
                                   ]
                                 });
                               }}
-                              className="group flex flex-col items-center p-3 border border-[#3e3328]/70 hover:border-[#c5a059] bg-[#14110f]/80 rounded shadow-md transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer max-w-[120px] text-center"
+                              className="group flex flex-col items-center p-3 border border-zinc-800/70 hover:border-secondary bg-zinc-950/80 rounded shadow-md transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer max-w-[120px] text-center"
                             >
-                              <div className="w-16 h-20 bg-[#0c0a08] border border-[#c5a059]/40 rounded-sm flex flex-col items-center justify-center mb-2 group-hover:scale-105 transition-transform duration-300 shadow-lg relative overflow-hidden">
+                              <div className="w-16 h-20 bg-zinc-950 border border-secondary/40 rounded-sm flex flex-col items-center justify-center mb-2 group-hover:scale-105 transition-transform duration-300 shadow-lg relative overflow-hidden">
                                 <span className="text-3xl animate-bounce duration-1000">💎</span>
                                 <div className="absolute bottom-1 bg-yellow-950/40 border border-yellow-800/40 px-1 rounded-sm">
-                                  <span className="text-[10px] text-[#e5c17b] font-serif font-bold">x{startingStones}</span>
+                                  <span className="text-[10px] text-secondary font-serif font-bold">x{startingStones}</span>
                                 </div>
                               </div>
-                              <span className="text-[10px] font-serif text-[#e5c17b] group-hover:text-white font-semibold line-clamp-1">{language === 'vi' ? 'Linh Thạch' : 'Spirit Stones'}</span>
-                              <span className="text-[8px] text-text-tertiary uppercase tracking-wider mt-0.5">{language === 'vi' ? 'Xem chi tiết' : 'View Info'}</span>
+                              <span className="text-[10px] font-mono-data text-secondary group-hover:text-white font-semibold line-clamp-1">{language === 'vi' ? 'Linh Thạch' : 'Spirit Stones'}</span>
+                              <span className="text-[8px] text-text-tertiary  mt-0.5">{language === 'vi' ? 'Xem chi tiết' : 'View Info'}</span>
                             </button>
                           );
                         })()}
@@ -2705,12 +2691,12 @@ export default function HomePage() {
               )}
 
               {game.alive && !game.isTicking && !game.currentEvent && !game.activeQuest && (
-                <div className="adventure-card p-5 sm:p-6 w-full space-y-5 animate-slide-up bg-[#0c0a08]/95 border border-[#c5a059]/40 shadow-2xl">
-                  <div className="text-center space-y-1 pb-4 border-b border-[#3e3328]/50">
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-[#847764] font-serif">
+                <div className="adventure-card p-5 sm:p-6 w-full space-y-5 animate-slide-up bg-surface-container-lowest/90 border border-outline-variant/30 shadow-2xl backdrop-blur-sm">
+                  <div className="text-center space-y-1 pb-4 border-b border-zinc-800/50">
+                    <span className="font-label-caps text-label-caps text-secondary-fixed opacity-60 mb-2 block">
                       {language === 'vi' ? 'Động Phủ Tĩnh Tu' : 'Meditation Chamber'}
                     </span>
-                    <h2 className="font-serif text-[#e5c17b] text-xl uppercase tracking-wider">
+                    <h2 className="font-headline-md text-headline-md text-primary uppercase tracking-widest ">
                       {language === 'vi' ? 'Lựa Chọn Hành Động' : 'Choose Action'}
                     </h2>
                   </div>
@@ -2723,11 +2709,11 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => setShowSectMissions(true)}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group p-3.5 text-left rounded-sm border border-secondary/40 bg-zinc-900/60 hover:bg-zinc-800/80 hover:border-[#34d399] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">☯</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">☯</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Đến Nhiệm Vụ Đường' : 'Sect Quest Hall'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2741,11 +2727,11 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => setShowSectShop(true)}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group p-3.5 text-left rounded-sm border border-secondary/40 bg-zinc-900/60 hover:bg-zinc-800/80 hover:border-[#34d399] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">📜</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">📜</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Đến Tông Môn Bảo Các' : 'Sect Vault'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2763,11 +2749,11 @@ export default function HomePage() {
                             setGame({ ...game, isTicking: true });
                             playSfxWithPath('/audio/crystal-bowl.mp3', 0.5);
                           }}
-                          className="group p-3.5 text-left rounded-sm border border-[#3e3328]/80 bg-[#0c0a08] hover:bg-[#14110f]/80 hover:border-[#847764] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group p-3.5 text-left rounded-sm border border-zinc-800/80 bg-zinc-950 hover:bg-zinc-950/80 hover:border-zinc-600 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           <span className="text-2xl w-10 h-10 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🧘</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Tĩnh Tọa Tu Luyện' : 'Silent Cultivation'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2785,13 +2771,13 @@ export default function HomePage() {
                           onClick={handleHealWithTransition}
                           className={`group p-3.5 text-left rounded-sm border transition-all duration-300 flex items-center gap-3.5 ${
                             game.stats.health >= maxHp
-                              ? 'opacity-40 cursor-not-allowed border-[#3e3328]/40 bg-black/10'
+                              ? 'opacity-40 cursor-not-allowed border-zinc-800/40 bg-black/10'
                               : 'border-red-950/40 bg-red-950/10 hover:bg-red-950/20 hover:border-red-500/60 cursor-pointer'
                           }`}
                         >
                           <span className="text-2xl w-10 h-10 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🩹</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Bế Quan Dưỡng Thương' : 'Closed-door Healing'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2806,12 +2792,12 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => handleMoveLocationWithTransition('city')}
-                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-secondary/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           {getCityBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏘️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏘️</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Đến Thanh Dương Thành' : 'Travel to Thanh Duong City'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2826,11 +2812,11 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => setShowAlchemy(true)}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group p-3.5 text-left rounded-sm border border-secondary/40 bg-zinc-900/60 hover:bg-zinc-800/80 hover:border-[#34d399] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">⚗️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">⚗️</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Lập Trận Luyện Đan' : 'Alchemy Array'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2845,12 +2831,12 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => handleMoveLocationWithTransition('mountain')}
-                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-secondary/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           {getMountainBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏔️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏔️</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Thám Hiểm Sơn Mạch' : 'Explore Beast Mountain Range'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2870,11 +2856,11 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => setShowBlackMarket(true)}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group p-3.5 text-left rounded-sm border border-secondary/40 bg-zinc-900/60 hover:bg-zinc-800/80 hover:border-[#34d399] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏪</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏪</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Dạo Chợ Đen' : 'Wander Black Market'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2889,11 +2875,11 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => handleLeaveSectForEventWithTransition('auction')}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group p-3.5 text-left rounded-sm border border-secondary/40 bg-zinc-900/60 hover:bg-zinc-800/80 hover:border-[#34d399] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">⚖️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">⚖️</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Tham Gia Đấu Giá' : 'Attend Auction'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2908,12 +2894,12 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => handleMoveLocationWithTransition('sect')}
-                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-secondary/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           {getSectBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏵️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏵️</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Trở Về Tông Môn' : 'Return to Sect'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2928,12 +2914,12 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => handleMoveLocationWithTransition('city')}
-                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-secondary/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           {getCityBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏙️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏙️</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Đến Thanh Dương Thành' : 'Go to Thanh Duong City'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2953,11 +2939,11 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => handleLeaveSectForEventWithTransition('general_travel')}
-                          className="group p-3.5 text-left rounded-sm border border-[#c5a059]/40 bg-[#1e1915]/60 hover:bg-[#28211b]/80 hover:border-[#e5c17b] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group p-3.5 text-left rounded-sm border border-secondary/40 bg-zinc-900/60 hover:bg-zinc-800/80 hover:border-[#34d399] text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
-                          <span className="text-2xl w-10 h-10 rounded-full bg-[#c5a059]/10 text-[#e5c17b] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏺</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏺</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Phá Giải Cấm Chế' : 'Decrypt Ancient Array'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2972,12 +2958,12 @@ export default function HomePage() {
                         <button
                           type="button"
                           onClick={() => handleMoveLocationWithTransition('sect')}
-                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-emerald-500/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
+                          className="group relative p-3.5 text-left rounded-sm border border-emerald-950/40 bg-emerald-950/10 hover:bg-[#1a382b]/35 hover:border-secondary/60 text-text-primary transition-all duration-300 flex items-center gap-3.5 cursor-pointer"
                         >
                           {getSectBadge()}
-                          <span className="text-2xl w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏵️</span>
+                          <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏵️</span>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-serif text-sm font-bold text-[#e5c17b] group-hover:text-white transition-colors">
+                            <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
                               {language === 'vi' ? 'Rời Bí Cảnh • Về Tông Môn' : 'Exit Realm • Return to Sect'}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
@@ -2998,7 +2984,7 @@ export default function HomePage() {
                 <article className="adventure-card border-red-950/65 shadow-red-950/10 animate-slide-up">
                   <EventIllustration id="grave_storm" />
                   <div className="p-5 sm:p-6 space-y-4">
-                    <div className="flex items-center justify-between text-xs uppercase tracking-widest text-red-500/70">
+                    <div className="flex items-center justify-between text-xs  text-red-500/70">
                       <span>Kiếp {game.life} • Tuổi {game.age}</span>
                       <span className="font-bold">+ Đã Tịch Diệt</span>
                     </div>
@@ -3022,7 +3008,7 @@ export default function HomePage() {
                       <button
                         type="button"
                         onClick={handleReset}
-                        className="px-4 py-3 text-sm font-serif font-semibold text-center rounded-sm border border-[#3e3328] bg-black/40 text-text-secondary transition hover:bg-black/60 hover:text-white focus:outline-none"
+                        className="px-4 py-3 text-sm font-serif font-semibold text-center rounded-sm border border-zinc-800 bg-surface-container-lowest/80 text-text-secondary transition hover:bg-black/60 hover:text-white focus:outline-none"
                       >
                         {copy.newSimulation}
                       </button>
@@ -3037,352 +3023,132 @@ export default function HomePage() {
           </div>
         ) : (
           /* ═══════════════════════════════════════
-             START SCREEN — Trường Sinh Lộ
+             START SCREEN - Trường Sinh Lộ
              ═══════════════════════════════════════ */
-          <div className="relative flex flex-col items-center justify-start flex-1 min-h-screen overflow-hidden">
-
-            {/* ── Background: celestial sky + floating swords ── */}
-            <div
-              className="absolute inset-0 z-0"
-              style={{
-                background: 'linear-gradient(180deg, #1a2f5a 0%, #2d4a8a 20%, #6b8fd4 45%, #a8c5e8 65%, #c5d8f0 80%, #e8f0f8 95%, #f0f4fa 100%)',
-              }}
-            >
-              {/* Cloud layers */}
-              <div className="absolute inset-0 opacity-60" style={{ backgroundImage: "radial-gradient(ellipse 120% 40% at 50% 85%, rgba(255,255,255,0.7) 0%, transparent 70%)" }} />
-              <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(ellipse 80% 30% at 20% 80%, rgba(255,255,255,0.8) 0%, transparent 60%)" }} />
-              <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(ellipse 60% 25% at 80% 75%, rgba(255,255,255,0.9) 0%, transparent 55%)" }} />
-
-              {/* Background image overlay */}
-              <img
-                src="/images/start_screen_bg.png"
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-luminosity"
-              />
-
-              {/* Star speckles */}
-              {[...Array(20)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute rounded-full bg-white"
-                  style={{
-                    width: `${Math.random() * 3 + 1}px`,
-                    height: `${Math.random() * 3 + 1}px`,
-                    top: `${Math.random() * 55}%`,
-                    left: `${Math.random() * 100}%`,
-                    opacity: Math.random() * 0.8 + 0.2,
-                    animation: `pulse ${2 + Math.random() * 3}s ease-in-out infinite`,
-                    animationDelay: `${Math.random() * 3}s`,
-                  }}
-                />
-              ))}
+          <div className="relative flex flex-col items-center justify-center flex-1 min-h-[100dvh] bg-surface-container-lowest text-on-surface p-6 font-mono-data overflow-hidden">
+            
+            {/* Terminal Background Effects */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary/5 via-surface-container-lowest to-surface-container-lowest" />
+              <div className="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)' }} />
             </div>
 
-            {/* ── Floating swords (CSS-animated) ── */}
-            {[
-              { top: '8%',  left: '4%',  rotate: '-30deg', size: 48, delay: '0s' },
-              { top: '15%', left: '10%', rotate: '20deg',  size: 38, delay: '0.5s' },
-              { top: '28%', left: '2%',  rotate: '-50deg', size: 55, delay: '1s' },
-              { top: '42%', left: '6%',  rotate: '10deg',  size: 40, delay: '1.5s' },
-              { top: '55%', left: '3%',  rotate: '-70deg', size: 44, delay: '0.8s' },
-              { top: '10%', right: '5%', rotate: '40deg',  size: 50, delay: '0.3s' },
-              { top: '22%', right: '8%', rotate: '-20deg', size: 36, delay: '1.2s' },
-              { top: '35%', right: '3%', rotate: '60deg',  size: 52, delay: '0.7s' },
-              { top: '48%', right: '9%', rotate: '-35deg', size: 42, delay: '1.8s' },
-              { top: '60%', right: '4%', rotate: '15deg',  size: 38, delay: '0.4s' },
-              { top: '5%',  left: '35%', rotate: '-10deg', size: 34, delay: '2s' },
-              { top: '3%',  right: '30%',rotate: '25deg',  size: 30, delay: '1.4s' },
-            ].map((s, i) => (
-              <div
-                key={i}
-                className="absolute z-10 pointer-events-none select-none"
-                style={{
-                  top: s.top,
-                  left: (s as any).left,
-                  right: (s as any).right,
-                  transform: `rotate(${s.rotate})`,
-                  animation: `float ${4 + i * 0.3}s ease-in-out infinite`,
-                  animationDelay: s.delay,
-                }}
-              >
-                <svg width={s.size} height={s.size * 2.8} viewBox="0 0 24 67" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id={`sg${i}`} x1="12" y1="0" x2="12" y2="67" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stopColor="#fff9c4" />
-                      <stop offset="40%" stopColor="#f0c040" />
-                      <stop offset="100%" stopColor="#a07020" />
-                    </linearGradient>
-                    <filter id={`glow${i}`}>
-                      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
-                      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                  </defs>
-                  {/* Blade */}
-                  <polygon points="12,0 10,48 12,52 14,48" fill={`url(#sg${i})`} filter={`url(#glow${i})`} opacity="0.92"/>
-                  {/* Guard */}
-                  <rect x="5" y="48" width="14" height="4" rx="1.5" fill="#d4a020" opacity="0.9"/>
-                  {/* Handle */}
-                  <rect x="10" y="52" width="4" height="12" rx="1" fill="#8B5E15" opacity="0.85"/>
-                  {/* Pommel */}
-                  <circle cx="12" cy="65" r="2.5" fill="#d4a020" opacity="0.9"/>
-                  {/* Blade shine */}
-                  <line x1="11.2" y1="4" x2="11.2" y2="44" stroke="rgba(255,255,255,0.6)" strokeWidth="0.8"/>
-                </svg>
-              </div>
-            ))}
-
-            {/* ── Pink energy orb at top ── */}
-            <div className="relative z-20 mt-12 mb-2 flex items-center justify-center">
-              <div
-                className="w-16 h-16 rounded-full"
-                style={{
-                  background: 'radial-gradient(circle, #ff9de2 0%, #d946ef 40%, #9333ea 80%, transparent 100%)',
-                  boxShadow: '0 0 40px 20px rgba(217,70,239,0.45), 0 0 80px 40px rgba(147,51,234,0.2)',
-                  animation: 'pulse 3s ease-in-out infinite',
-                }}
-              />
-            </div>
-
-            {/* ── Main title ── */}
-            <div className="relative z-20 text-center px-4">
-              <h1
-                className="font-serif leading-tight tracking-wider"
-                style={{
-                  fontSize: 'clamp(2.4rem, 8vw, 4rem)',
-                  fontWeight: 900,
-                  background: 'linear-gradient(180deg, #fff9e6 0%, #f5d76e 35%, #c89b2a 70%, #8b6914 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  textShadow: 'none',
-                  filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))',
-                  letterSpacing: '0.05em',
-                }}
-              >
+            {/* Title Block */}
+            <div className="relative z-20 text-center w-full max-w-md border border-outline-variant/30 bg-surface-container-low/50 p-8 shadow-[0_0_30px_rgba(255,176,0,0.05)] backdrop-blur-md animate-fade-in">
+              <div className="text-secondary/60 text-[10px] tracking-widest mb-4 font-headline-sm uppercase">{'<System Initialization>'}</div>
+              <h1 className="font-headline-lg text-4xl text-primary font-bold tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(255,176,0,0.3)]">
                 {language === 'vi' ? 'Trường Sinh Lộ' : 'Immortal Sim'}
               </h1>
-              <p className="mt-3 text-sm leading-relaxed text-center max-w-xs mx-auto" style={{ color: 'rgba(30,20,10,0.75)', fontStyle: 'italic' }}>
+              <div className="h-[1px] w-3/4 mx-auto bg-gradient-to-r from-transparent via-secondary/30 to-transparent my-6" />
+              <p className="text-xs text-on-surface-variant tracking-wide leading-relaxed">
                 {language === 'vi'
-                  ? 'Số ra qua nhiều kiện, quyết định hàng ha chọn, và mang việc mạnh thừa lễ sống đời sau'
-                  : 'Live through countless events, make fateful choices, and carry your legacy into the next life.'}
+                  ? 'Tải dữ liệu... Vận mệnh đang được tái thiết lập. Bạn đã sẵn sàng kết nối lại mạng lưới luân hồi?'
+                  : 'Loading data... Destiny is being recompiled. Are you ready to reconnect to the reincarnation network?'}
               </p>
             </div>
 
-            {/* ── Action buttons ── */}
-            <div className="relative z-20 w-full max-w-xs mt-7 space-y-3 px-4">
+            {/* Action Buttons */}
+            <div className="relative z-20 w-full max-w-md mt-8 space-y-4">
               <button
                 type="button"
                 onClick={handleStart}
-                className="group block w-full text-center font-serif font-bold uppercase tracking-widest cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-                style={{
-                  padding: '14px 24px',
-                  borderRadius: '50px',
-                  background: 'linear-gradient(180deg, #5c3d1a 0%, #3d2610 50%, #2a1a08 100%)',
-                  border: '2px solid #c5920a',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,220,100,0.15), 0 0 0 1px rgba(197,146,10,0.3)',
-                  color: '#f5d76e',
-                  fontSize: '0.8rem',
-                  letterSpacing: '0.18em',
-                }}
+                className="w-full py-4 px-6 text-center font-headline-sm text-sm uppercase tracking-widest border transition-all duration-300 border-secondary/40 text-secondary hover:border-secondary hover:bg-secondary/10 hover:shadow-[0_0_15px_rgba(255,176,0,0.2)] hover:-translate-y-0.5 cursor-pointer bg-surface-container-low/80"
               >
-                <span className="mr-2 opacity-60">◆</span>
-                {copy.startNew}
-                <span className="ml-2 opacity-60">◆</span>
+                {copy.startNew || (language === 'vi' ? 'Khởi Chạy Tiến Trình Mới' : 'Execute New Process')}
               </button>
 
               <button
                 type="button"
                 onClick={handleReset}
-                className="group block w-full text-center font-serif font-bold uppercase tracking-widest cursor-pointer transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-                style={{
-                  padding: '14px 24px',
-                  borderRadius: '50px',
-                  background: 'linear-gradient(180deg, #5c3d1a 0%, #3d2610 50%, #2a1a08 100%)',
-                  border: '2px solid #c5920a',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,220,100,0.15), 0 0 0 1px rgba(197,146,10,0.3)',
-                  color: '#f5d76e',
-                  fontSize: '0.8rem',
-                  letterSpacing: '0.18em',
-                }}
+                className="w-full py-4 px-6 text-center font-headline-sm text-sm uppercase tracking-widest border transition-all duration-300 border-error/40 text-error hover:border-error hover:bg-error/10 hover:shadow-[0_0_15px_rgba(255,100,100,0.2)] hover:-translate-y-0.5 cursor-pointer bg-surface-container-low/80"
               >
-                <span className="mr-2 opacity-60">◆</span>
-                {copy.resetLegacy}
-                <span className="ml-2 opacity-60">◆</span>
+                {copy.resetLegacy || (language === 'vi' ? 'Xóa Bộ Nhớ Cache Di Sản' : 'Wipe Legacy Cache')}
               </button>
             </div>
 
-            {/* ── Settings panel ── */}
-            <div className="relative z-20 w-full max-w-xs mt-6 px-4 space-y-3">
-              {/* Language row */}
-              <div className="flex items-center gap-3">
-                <span className="text-xs uppercase tracking-widest font-bold min-w-[80px] text-right" style={{ color: 'rgba(30,20,10,0.8)' }}>
-                  {language === 'vi' ? 'NGÔN NGỮ' : 'LANGUAGE'}
-                </span>
-                <div className="flex gap-2">
-                  {(['en', 'vi'] as const).map((l) => (
-                    <button
-                      key={l}
-                      type="button"
-                      onClick={() => setLanguage(l)}
-                      className="font-serif font-bold uppercase text-xs tracking-wider cursor-pointer transition-all duration-200"
-                      style={{
-                        padding: '6px 18px',
-                        borderRadius: '50px',
-                        background: language === l
-                          ? 'linear-gradient(180deg, #5c3d1a 0%, #2a1a08 100%)'
-                          : 'rgba(255,255,255,0.6)',
-                        border: language === l ? '2px solid #c5920a' : '2px solid rgba(150,110,40,0.4)',
-                        color: language === l ? '#f5d76e' : 'rgba(60,40,10,0.7)',
-                        boxShadow: language === l ? '0 2px 8px rgba(0,0,0,0.3)' : 'none',
-                      }}
-                    >
-                      {l.toUpperCase()}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Audio row */}
-              <div className="flex items-center gap-3">
-                <span className="text-xs uppercase tracking-widest font-bold min-w-[80px] text-right" style={{ color: 'rgba(30,20,10,0.8)' }}>
-                  {language === 'vi' ? 'ÂM THANH' : 'AUDIO'}
-                </span>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={handleToggleAudioEnabled}
-                    title={audioEnabled ? copy.audioOff : copy.audioOn}
-                    className="transition-all duration-200 cursor-pointer hover:scale-110"
-                    style={{
-                      width: 40, height: 40, borderRadius: '50px',
-                      background: audioEnabled
-                        ? 'linear-gradient(180deg, #5c3d1a 0%, #2a1a08 100%)'
-                        : 'rgba(255,255,255,0.6)',
-                      border: audioEnabled ? '2px solid #c5920a' : '2px solid rgba(150,110,40,0.4)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '1.1rem',
-                    }}
-                  >
-                    🔔
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleToggleMute}
-                    disabled={!audioEnabled}
-                    title={audioMuted ? copy.unmute : copy.mute}
-                    className="transition-all duration-200 cursor-pointer hover:scale-110 disabled:opacity-40"
-                    style={{
-                      width: 40, height: 40, borderRadius: '50px',
-                      background: !audioMuted && audioEnabled
-                        ? 'linear-gradient(180deg, #5c3d1a 0%, #2a1a08 100%)'
-                        : 'rgba(255,255,255,0.6)',
-                      border: !audioMuted && audioEnabled ? '2px solid #c5920a' : '2px solid rgba(150,110,40,0.4)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '1.1rem',
-                    }}
-                  >
-                    🔕
-                  </button>
-                </div>
-              </div>
-
-              {/* Volume slider row */}
-              {audioEnabled && (
-                <div className="flex items-center gap-3">
-                  <span className="text-xs uppercase tracking-widest font-bold min-w-[80px] text-right" style={{ color: 'rgba(30,20,10,0.8)' }}>
-                    {language === 'vi' ? 'ÂM LƯỢNG' : 'VOLUME'}
-                  </span>
-                  <div className="flex-1 relative flex items-center">
-                    <div className="relative w-full h-2 rounded-full overflow-visible" style={{ background: 'rgba(180,140,60,0.3)' }}>
-                      <div
-                        className="absolute left-0 top-0 h-full rounded-full"
-                        style={{
-                          width: `${Math.round(audioVolume * 100)}%`,
-                          background: 'linear-gradient(90deg, #c5920a, #f5d76e)',
-                        }}
-                      />
-                      {/* Lotus thumb indicator */}
-                      <div
-                        className="absolute top-1/2 -translate-y-1/2 text-base pointer-events-none select-none"
-                        style={{ left: `calc(${Math.round(audioVolume * 100)}% - 10px)` }}
+            {/* Settings & Legacy Data */}
+            <div className="relative z-20 w-full max-w-md mt-8 grid grid-cols-2 gap-4">
+              {/* Audio/Language Settings Panel */}
+              <div className="border border-outline-variant/30 bg-surface-container-low/40 p-4 flex flex-col gap-4">
+                <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-2">{'// Cấu Hình'}</div>
+                
+                <div className="flex justify-between items-center">
+                  <span className="text-[10px] text-on-surface-variant">{language === 'vi' ? 'Ngôn Ngữ:' : 'Language:'}</span>
+                  <div className="flex gap-1.5">
+                    {(['en', 'vi'] as const).map((l) => (
+                      <button
+                        key={l}
+                        type="button"
+                        onClick={() => setLanguage(l)}
+                        className={`text-[9px] px-2 py-1 uppercase border transition-colors ${
+                          language === l ? 'border-secondary text-secondary bg-secondary/10' : 'border-outline-variant/50 text-on-surface-variant hover:text-white hover:border-outline-variant'
+                        }`}
                       >
-                        🪷
-                      </div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={Math.round(audioVolume * 100)}
-                        onChange={(e) => handleAudioVolumeChange(parseInt(e.target.value) / 100)}
-                        disabled={!audioEnabled || audioMuted}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-default"
-                      />
-                    </div>
+                        {l}
+                      </button>
+                    ))}
                   </div>
                 </div>
-              )}
-            </div>
 
-            {/* ── Divider ── */}
-            <div className="relative z-20 w-full max-w-xs mt-5 px-4">
-              <div className="border-t" style={{ borderColor: 'rgba(150,110,40,0.4)' }} />
-            </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[10px] text-on-surface-variant">{language === 'vi' ? 'Âm Thanh:' : 'Audio:'}</span>
+                  <div className="flex gap-1.5">
+                    <button
+                      type="button"
+                      onClick={handleToggleAudioEnabled}
+                      className={`text-[9px] px-2 py-1 uppercase border transition-colors ${
+                        audioEnabled ? 'border-secondary text-secondary bg-secondary/10' : 'border-outline-variant/50 text-on-surface-variant hover:text-white hover:border-outline-variant'
+                      }`}
+                    >
+                      {audioEnabled ? 'ON' : 'OFF'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleToggleMute}
+                      disabled={!audioEnabled}
+                      className={`text-[9px] px-2 py-1 uppercase border transition-colors disabled:opacity-30 ${
+                        (!audioMuted && audioEnabled) ? 'border-secondary text-secondary bg-secondary/10' : 'border-outline-variant/50 text-on-surface-variant hover:text-white hover:border-outline-variant'
+                      }`}
+                    >
+                      {audioMuted ? 'MUTE' : 'PLAY'}
+                    </button>
+                  </div>
+                </div>
 
-            {/* ── DI SẢN / Heritage section ── */}
-            <div className="relative z-20 w-full max-w-xs mt-4 px-4 pb-4">
-              <p className="text-xs uppercase tracking-widest font-bold text-center mb-3" style={{ color: 'rgba(30,20,10,0.75)' }}>
-                {copy.legacyTitle || 'DI SẢN'}
-              </p>
-              <div className="grid grid-cols-3 gap-2">
+                {audioEnabled && (
+                  <div className="pt-2">
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={Math.round(audioVolume * 100)}
+                      onChange={(e) => handleAudioVolumeChange(parseInt(e.target.value) / 100)}
+                      disabled={!audioEnabled || audioMuted}
+                      className="w-full h-1 bg-surface-container appearance-none outline-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-secondary"
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Legacy Data Panel */}
+              <div className="border border-outline-variant/30 bg-surface-container-low/40 p-4 flex flex-col gap-3">
+                <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-1">{'// Dữ Liệu Di Sản'}</div>
+                
                 {[
-                  { label: copy.legacyPower, value: inheritance.legacyPower },
-                  { label: copy.ancestralMemory, value: inheritance.ancestralMemory },
-                  { label: copy.blessing, value: inheritance.blessing },
+                  { label: copy.legacyPower || (language === 'vi' ? 'Sức mạnh' : 'Power'), value: inheritance.legacyPower },
+                  { label: copy.ancestralMemory || (language === 'vi' ? 'Ký ức' : 'Memory'), value: inheritance.ancestralMemory },
+                  { label: copy.blessing || (language === 'vi' ? 'Phúc lành' : 'Blessing'), value: inheritance.blessing },
                 ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="text-center p-2 rounded-lg"
-                    style={{
-                      background: 'linear-gradient(180deg, #5c3d1a 0%, #2e1d0a 100%)',
-                      border: '2px solid #c5920a',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
-                    }}
-                  >
-                    <span className="block text-[8px] uppercase tracking-wider leading-tight mb-1" style={{ color: 'rgba(245,215,110,0.7)' }}>
-                      {item.label}
-                    </span>
-                    <span className="block font-serif text-base font-bold" style={{ color: '#f5d76e' }}>
-                      {item.value}
-                    </span>
+                  <div key={idx} className="flex justify-between items-center border-b border-outline-variant/20 pb-1.5 last:border-0 last:pb-0">
+                    <span className="text-[9px] text-on-surface-variant uppercase">{item.label}</span>
+                    <span className="text-[11px] font-headline-sm text-secondary">{item.value}</span>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* ── Flavor text ── */}
-            <div className="relative z-20 w-full max-w-xs px-4 pb-8 text-center">
-              <p className="text-sm italic leading-relaxed" style={{ color: 'rgba(30,20,10,0.65)' }}>
-                {copy.legacyDescription || (language === 'vi'
-                  ? 'Ở mạnh thừa kế của bạn vẫn con quả một an tái sinh. Mỗi cái chết giúp kiếp cột mạnh hơn...'
-                  : 'Each death carries your legacy forward. Every life grows stronger...')}
-              </p>
-            </div>
-
-            {/* ── Chibi sage character (bottom-right) ── */}
-            <div
-              className="absolute bottom-0 right-0 z-30 pointer-events-none select-none"
-              style={{ animation: 'float 5s ease-in-out infinite' }}
-            >
-              <img
-                src="/images/chibi_sage.png"
-                alt="Immortal Sage"
-                style={{ width: 'clamp(100px, 25vw, 160px)', opacity: 0.95 }}
-              />
-            </div>
-
+            
           </div>
         )}
-
         </div>
         
         {game?.currentLocation === 'mountain' && !activeCombat && (
@@ -3402,7 +3168,7 @@ export default function HomePage() {
         <button
           type="button"
           onClick={() => setIsAdminPanelOpen(true)}
-          className="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-full border border-[#c5a059] bg-[#1e1915] text-[#e5c17b] font-serif text-xs uppercase tracking-widest shadow-2xl hover:bg-[#28211b] hover:text-white transition-all duration-300 animate-pulse hover:animate-none"
+          className="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-full border border-secondary bg-zinc-900 text-secondary font-serif text-xs  shadow-2xl hover:bg-zinc-800 hover:text-white transition-all duration-300 animate-pulse hover:animate-none"
         >
           ☯ Thái Cổ Thần Điện
         </button>
@@ -3422,12 +3188,12 @@ export default function HomePage() {
       />
 
       {showAudioPaths && (
-        <div className="fixed bottom-6 left-6 z-50 p-4 border border-[#c5a059]/40 bg-[#0c0a08]/90 backdrop-blur-md font-mono text-[11px] text-[#e5c17b] rounded shadow-2xl max-w-xs space-y-2 select-all">
-          <div className="flex items-center gap-1.5 border-b border-[#3e3328] pb-1.5 font-serif font-bold uppercase tracking-wider text-[10px]">
+        <div className="fixed bottom-6 left-6 z-50 p-4 border border-secondary/40 bg-zinc-950/90 backdrop-blur-md font-mono text-[11px] text-secondary rounded shadow-2xl max-w-xs space-y-2 select-all">
+          <div className="flex items-center gap-1.5 border-b border-zinc-800 pb-1.5 font-serif font-bold  text-[10px]">
             <span>🎵 Audio Paths Debug</span>
           </div>
           <div>
-            <span className="text-text-tertiary block text-[9px] uppercase tracking-wider">Active BGM:</span>
+            <span className="text-text-tertiary block text-[9px] ">Active BGM:</span>
             <span className="break-all font-semibold">
               {(!audioEnabled || audioMuted) 
                 ? `${BGM_PATHS[currentMode] || '/audio/mortal_village.mp3'} (Muted/Disabled)` 
@@ -3435,7 +3201,7 @@ export default function HomePage() {
             </span>
           </div>
           <div>
-            <span className="text-text-tertiary block text-[9px] uppercase tracking-wider">Last SFX/Voice:</span>
+            <span className="text-text-tertiary block text-[9px] ">Last SFX/Voice:</span>
             <span className="break-all font-semibold">{lastAudioTriggered || 'None'}</span>
           </div>
         </div>
@@ -3448,8 +3214,7 @@ export default function HomePage() {
             combatPower: getPlayerStat(game, 'combatPower'),
             luck: getPlayerStat(game, 'luck'),
             comprehension: getPlayerStat(game, 'comprehension'),
-            daoHeart: getPlayerStat(game, 'daoHeart'),
-          }}
+            daoHeart: getPlayerStat(game, 'daoHeart')}}
           hasActiveQuest={!!game.activeQuest}
           onAcceptQuest={handleAcceptQuest}
           onClose={() => setShowSectMissions(false)}
@@ -3487,7 +3252,7 @@ export default function HomePage() {
       {selectedDetailItem && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in">
           <button type="button" className="absolute inset-0 cursor-default focus:outline-none" onClick={() => setSelectedDetailItem(null)} />
-          <div className="adventure-card w-full max-w-sm p-6 relative z-10 animate-slide-up bg-[#0c0a08] border-2 border-[#c5a059]/60 shadow-2xl">
+          <div className="adventure-card w-full max-w-sm p-6 relative z-10 animate-slide-up bg-zinc-950 border-2 border-secondary/60 shadow-2xl">
             <button
               type="button"
               onClick={() => {
@@ -3499,7 +3264,7 @@ export default function HomePage() {
               ✕
             </button>
             <div className="text-center space-y-4">
-              <div className="w-20 h-20 mx-auto rounded border border-[#c5a059]/40 bg-[#14110f] shadow-lg flex items-center justify-center overflow-hidden">
+              <div className="w-20 h-20 mx-auto rounded border border-secondary/40 bg-zinc-950 shadow-lg flex items-center justify-center overflow-hidden">
                 {selectedDetailItem.image ? (
                   <img src={selectedDetailItem.image} alt={selectedDetailItem.title} className="w-full h-full object-cover" />
                 ) : (
@@ -3507,20 +3272,20 @@ export default function HomePage() {
                 )}
               </div>
               <div className="space-y-1">
-                <span className="text-[8px] uppercase tracking-widest text-[#847764] font-bold font-serif">
+                <span className="text-[8px]  text-zinc-400 font-bold font-serif">
                   {selectedDetailItem.type === 'manual' ? (language === 'vi' ? 'Tâm Pháp Linh Căn' : 'Mind Manual') : 
                    selectedDetailItem.type === 'currency' ? (language === 'vi' ? 'Tài Vật Tu Luyện' : 'Resource') :
                    (language === 'vi' ? 'Linh Dược Đan Dược' : 'Elixir')}
                 </span>
-                <h3 className="font-serif text-lg text-[#e5c17b] tracking-wider uppercase font-bold">{selectedDetailItem.title}</h3>
+                <h3 className="font-serif text-lg text-secondary tracking-wider uppercase font-bold">{selectedDetailItem.title}</h3>
               </div>
               
-              <p className="text-xs text-text-secondary leading-relaxed bg-[#14110f]/80 p-3 border border-[#3e3328]/50 rounded-sm text-justify">
+              <p className="text-xs text-text-secondary leading-relaxed bg-zinc-950/80 p-3 border border-zinc-800/50 rounded-sm text-justify">
                 {selectedDetailItem.description}
               </p>
 
               {selectedDetailItem.details && selectedDetailItem.details.length > 0 && (
-                <div className="text-left bg-black/35 p-2.5 rounded border border-[#3e3328]/30 space-y-1">
+                <div className="text-left bg-black/35 p-2.5 rounded border border-zinc-800/30 space-y-1">
                   {selectedDetailItem.details.map((detail, dIdx) => (
                     <div key={dIdx} className="text-[10px] text-text-tertiary flex justify-between">
                       <span>{detail}</span>
@@ -3597,6 +3362,8 @@ export default function HomePage() {
           }}
           language={language as 'vi' | 'en'}
         />
+      )}
+      </div>
       )}
     </>
   );

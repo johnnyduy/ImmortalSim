@@ -321,7 +321,7 @@ export default function MountainExploration({
                 ) : (
                   <>
                     <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-6 h-2 bg-black/60 rounded-[100%] blur-[2px]" />
-                    <div className="absolute inset-0 bg-[#e5c17b] rounded-full blur-xl opacity-40 group-hover:opacity-80 transition-opacity" />
+                    <div className="absolute inset-0 bg-[#34d399] rounded-full blur-xl opacity-40 group-hover:opacity-80 transition-opacity" />
                     <div 
                       className="text-2xl sm:text-3xl md:text-4xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
                       style={{ transform: `translateY(${Math.sin(distance * 8 + obj.id.charCodeAt(0)) * 3}px)` }}
@@ -339,14 +339,14 @@ export default function MountainExploration({
       {/* Event Modal Overlay */}
       {activeEvent && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-50 backdrop-blur-md p-4">
-          <div className="bg-gradient-to-b from-[#1c1611] to-[#0c0a08] border-[4px] border-[#c2964a] p-6 sm:p-8 rounded-xl max-w-sm sm:max-w-md w-full text-center shadow-[0_0_50px_rgba(197,160,89,0.3)] animate-in fade-in zoom-in-95 duration-300">
+          <div className="bg-gradient-to-b from-[#1c1611] to-[#09090b] border-[4px] border-[#c2964a] p-6 sm:p-8 rounded-xl max-w-sm sm:max-w-md w-full text-center shadow-[0_0_50px_rgba(197,160,89,0.3)] animate-in fade-in zoom-in-95 duration-300">
             {/* Event Icon */}
             <div className="relative inline-block mb-4 sm:mb-6 mt-2">
               {activeEvent.image ? (
                 <img src={activeEvent.image} className="w-24 h-24 sm:w-32 sm:h-32 object-contain mx-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] animate-bounce" />
               ) : (
                 <>
-                  <div className="absolute inset-0 bg-[#e5c17b] rounded-full blur-3xl opacity-30" />
+                  <div className="absolute inset-0 bg-[#34d399] rounded-full blur-3xl opacity-30" />
                   <div className="text-[4rem] sm:text-[5rem] relative z-10 animate-bounce">{activeEvent.icon}</div>
                 </>
               )}

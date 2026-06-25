@@ -127,7 +127,7 @@ export default function TestCombatPanel({ onExit }: Props) {
         <h2 className="text-2xl font-bold text-accent tracking-widest">THỬ NGHIỆM CHIẾN ĐẤU (NEW ENGINE)</h2>
         <button 
           onClick={onExit}
-          className="px-4 py-2 text-sm uppercase tracking-wider rounded border border-lunar/25 hover:border-lunar hover:bg-lunar/10 transition"
+          className="px-4 py-2 text-sm font-medium rounded border border-lunar/25 hover:border-lunar hover:bg-lunar/10 transition"
         >
           Trở Về
         </button>

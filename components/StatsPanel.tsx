@@ -203,7 +203,7 @@ export default function StatsPanel({
           </span>
           <span className="text-text-primary font-serif">{value} / {max}</span>
         </div>
-        <div className="h-2 bg-[#1a1512] border border-[#3e3328] rounded-sm overflow-hidden p-[1px]">
+        <div className="h-2 bg-[#1a1512] border border-zinc-800 rounded-sm overflow-hidden p-[1px]">
           <div className={`h-full rounded-[1px] ${colorClass} transition-all duration-500`} style={{ width: `${width}%` }} />
         </div>
       </div>
@@ -269,7 +269,7 @@ export default function StatsPanel({
                 </div>
                 
                 {/* Realm Pill */}
-                <div className="absolute -bottom-1 px-3 py-1 bg-gradient-to-r from-[#735c00] to-[#b38f00] text-white rounded-full text-[10px] sm:text-xs shadow-md z-20 whitespace-nowrap font-serif font-bold uppercase tracking-widest border-2 border-[#f0e2ba]">
+                <div className="absolute -bottom-1 px-3 py-1 bg-gradient-to-r from-[#735c00] to-[#b38f00] text-white rounded-full text-[10px] sm:text-xs shadow-md z-20 whitespace-nowrap font-serif font-bold font-medium border-2 border-[#f0e2ba]">
                   {detailedRealm}
                 </div>
               </button>
@@ -376,26 +376,26 @@ export default function StatsPanel({
 
             {/* Profile Content */}
             <div className="text-center space-y-4 mb-6">
-              <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-[#c5a059] bg-[#1a1512] shadow-lg">
+              <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-emerald-500/30 bg-[#1a1512] shadow-lg">
                 <img src="/images/avatar.png" alt="Cultivator Avatar" className="w-full h-full object-cover" />
               </div>
               <div className="space-y-1">
-                <p className="text-xs uppercase tracking-[0.2em] text-text-secondary font-medium">{labels.realm}</p>
-                <h3 className="font-serif text-2xl text-[#e5c17b] tracking-wider">{detailedRealm}</h3>
+                <p className="text-xs font-medium text-text-secondary font-medium">{labels.realm}</p>
+                <h3 className="font-serif text-2xl text-zinc-100 tracking-wider">{detailedRealm}</h3>
                 <div className="flex justify-center items-center gap-1.5 pt-0.5">
                   <span className="text-xs text-text-secondary font-serif">Chiến Lực:</span>
-                  <span className="text-sm text-[#e5c17b] font-serif font-bold">{combatPower} CP</span>
+                  <span className="text-sm text-zinc-100 font-serif font-bold">{combatPower} CP</span>
                 </div>
               </div>
-              <div className="inline-flex justify-center gap-6 px-4 py-1.5 border border-[#3e3328] bg-[#14110f]/80 text-xs text-text-secondary rounded-sm">
+              <div className="inline-flex justify-center gap-6 px-4 py-1.5 border border-zinc-800 bg-zinc-950/80 text-xs text-text-secondary rounded-sm">
                 <span>{labels.life}: <strong className="text-text-primary font-serif">{life}</strong></span>
                 <span>{labels.age}: <strong className="text-text-primary font-serif">{age} ({monthName}) / {stats.lifespan}</strong></span>
               </div>
             </div>
 
             {/* Core Stats Progress Bars */}
-            <div className="space-y-4 mb-6 border-t border-b border-[#3e3328] py-4">
-              <h4 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold mb-3 font-serif">Thuộc Tính Bản Thể</h4>
+            <div className="space-y-4 mb-6 border-t border-b border-zinc-800 py-4">
+              <h4 className="text-xs font-medium text-emerald-500 font-semibold mb-3 font-serif">Thuộc Tính Bản Thể</h4>
               <div className="grid grid-cols-1 gap-3.5">
                 <div className="space-y-1">
                   <div className="flex items-center justify-between text-xs font-medium">
@@ -428,17 +428,17 @@ export default function StatsPanel({
                 {renderBarDetail(labels.daoHeart, stats.daoHeart, 100, "bg-gradient-to-r from-indigo-800 to-indigo-500", daoHeartIcon)}
                 
                 {/* Dòng hiển thị thông tin Linh Căn */}
-                <div className="flex items-center justify-between text-xs font-medium pt-2.5 border-t border-[#3e3328]/45 mt-2.5">
+                <div className="flex items-center justify-between text-xs font-medium pt-2.5 border-t border-zinc-800/45 mt-2.5">
                   <span className="flex items-center gap-1.5 text-text-secondary">
                     {rootIcon}
                     {labels.spiritualRoot}
                   </span>
-                  <span className="text-[#e5c17b] font-serif font-semibold">{stats.spiritualRoot}</span>
+                  <span className="text-zinc-100 font-serif font-semibold">{stats.spiritualRoot}</span>
                 </div>
 
                 {cultMultiplier > 1.0 && (
-                  <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-[#3e3328]/30">
-                    <span className="flex items-center gap-1.5 text-[#e5c17b] font-medium">
+                  <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
+                    <span className="flex items-center gap-1.5 text-zinc-100 font-medium">
                       ⚡ {language === 'vi' ? 'Tốc độ tu luyện:' : 'Cultivation Speed:'}
                     </span>
                     <span className="text-[#38bdf8] font-serif font-bold">
@@ -448,7 +448,7 @@ export default function StatsPanel({
                 )}
 
                 {/* Dòng hiển thị Vị Trí Hiện Tại */}
-                <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-[#3e3328]/30">
+                <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                   <span className="flex items-center gap-1.5 text-text-secondary">
                     📍 {language === 'vi' ? 'Vị Trí Hiện Tại' : 'Current Location'}
                   </span>
@@ -476,7 +476,7 @@ export default function StatsPanel({
                       });
                     }
                   }}
-                  className="flex items-center justify-between text-xs font-medium pt-2 border-t border-[#3e3328]/30 w-full text-left transition hover:text-[#e5c17b] cursor-pointer"
+                  className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30 w-full text-left transition hover:text-zinc-100 cursor-pointer"
                 >
                   <span className="flex items-center gap-1.5 text-text-secondary">
                     💎 {language === 'vi' ? 'Linh Thạch (Xem chi tiết)' : 'Spirit Stones (View Details)'}
@@ -485,7 +485,7 @@ export default function StatsPanel({
                 </button>
                 {sect && (
                   <>
-                    <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-[#3e3328]/30">
+                    <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                       <span className="flex items-center gap-1.5 text-text-secondary">
                         ⚔️ {language === 'vi' ? 'Tông Môn' : 'Sect'}
                       </span>
@@ -493,7 +493,7 @@ export default function StatsPanel({
                         {sect}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-[#3e3328]/30">
+                    <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                       <span className="flex items-center gap-1.5 text-text-secondary">
                         🛡️ {language === 'vi' ? 'Danh Vị & Cống Hiến' : 'Rank & Contribution'}
                       </span>
@@ -506,11 +506,11 @@ export default function StatsPanel({
                         })
                       </span>
                     </div>
-                    <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-[#3e3328]/30">
+                    <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                       <span className="flex items-center gap-1.5 text-text-secondary">
                         🏆 {language === 'vi' ? 'Uy Vọng Tông Môn' : 'Sect Prestige'}
                       </span>
-                      <span className="text-[#e5c17b] font-serif font-semibold">
+                      <span className="text-zinc-100 font-serif font-semibold">
                         {getSectPrestigeRankName(sectPrestige, language)}
                       </span>
                     </div>
@@ -520,8 +520,8 @@ export default function StatsPanel({
             </div>
 
             {/* Nhân Mạch Quan Hệ / Relationship Matrix */}
-            <div className="space-y-3 mb-6 border-b border-[#3e3328]/45 pb-4">
-              <h4 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif text-left">
+            <div className="space-y-3 mb-6 border-b border-zinc-800/45 pb-4">
+              <h4 className="text-xs font-medium text-emerald-500 font-semibold font-serif text-left">
                 {language === 'vi' ? 'Nhân Mạch Quan Hệ' : 'Relationship Matrix'}
               </h4>
               
@@ -554,8 +554,8 @@ export default function StatsPanel({
                     textColor = 'text-emerald-400';
                     barColor = 'bg-emerald-500';
                   } else if (val >= 20) {
-                    textColor = 'text-[#e5c17b]';
-                    barColor = 'bg-[#c5a059]';
+                    textColor = 'text-zinc-100';
+                    barColor = 'bg-[#10b981]';
                   } else if (val <= -60) {
                     textColor = 'text-red-400';
                     barColor = 'bg-red-600';
@@ -567,13 +567,13 @@ export default function StatsPanel({
                   return (
                     <div 
                       key={npc.id} 
-                      className="bg-[#14110f]/60 border border-[#3e3328]/60 p-2 rounded-sm flex flex-col gap-1.5 w-full text-left"
+                      className="bg-zinc-950/60 border border-zinc-800/60 p-2 rounded-sm flex flex-col gap-1.5 w-full text-left"
                     >
                       <div className="flex items-center justify-between text-xs w-full">
                         <span className="font-serif font-semibold text-text-primary flex items-center gap-1.5">
                           <span className="text-sm">{npc.avatar}</span>
                           <span>{npc.name}</span>
-                          <span className="text-[9px] text-text-tertiary font-sans font-normal uppercase tracking-wider">
+                          <span className="text-[9px] text-text-tertiary font-sans font-normal font-medium">
                             ({npc.sect})
                           </span>
                         </span>
@@ -594,9 +594,9 @@ export default function StatsPanel({
                       </div>
 
                       {/* Progress Bar with center alignment */}
-                      <div className="relative h-1.5 bg-[#1a1512] border border-[#3e3328]/50 rounded-full overflow-hidden mt-0.5">
+                      <div className="relative h-1.5 bg-[#1a1512] border border-zinc-800/50 rounded-full overflow-hidden mt-0.5">
                         {/* Center marker */}
-                        <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#3e3328] z-10" />
+                        <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-zinc-800 z-10" />
                         {/* Fill bar */}
                         <div 
                           className={`h-full rounded-full ${barColor} transition-all duration-500`}
@@ -610,8 +610,8 @@ export default function StatsPanel({
             </div>
 
             {/* Công Pháp Đang Có / Owned Techniques */}
-            <div className="space-y-3 mb-6 border-b border-[#3e3328]/45 pb-4">
-              <h4 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif text-left">
+            <div className="space-y-3 mb-6 border-b border-zinc-800/45 pb-4">
+              <h4 className="text-xs font-medium text-emerald-500 font-semibold font-serif text-left">
                 {language === 'vi' ? 'Công Pháp Đang Có' : 'Owned Techniques'}
               </h4>
               
@@ -661,10 +661,10 @@ export default function StatsPanel({
                           }
                         }}
                         key={tech.id} 
-                        className={`bg-[#14110f]/60 border border-[#3e3328]/60 p-2.5 rounded-sm flex flex-col gap-1 w-full text-left transition hover:border-[#c5a059] cursor-pointer ${!tech.isActive ? 'opacity-50' : ''}`}
+                        className={`bg-zinc-950/60 border border-zinc-800/60 p-2.5 rounded-sm flex flex-col gap-1 w-full text-left transition hover:border-emerald-500/30 cursor-pointer ${!tech.isActive ? 'opacity-50' : ''}`}
                       >
                         <div className="flex items-center justify-between text-xs w-full">
-                          <span className="font-serif font-semibold text-[#e5c17b] flex items-center gap-1.5">
+                          <span className="font-serif font-semibold text-zinc-100 flex items-center gap-1.5">
                             <span>{typeIcon}</span>
                             {tech.name}
                             <span className={`text-[9px] uppercase font-sans font-normal border px-1 rounded-sm scale-90 ${tierColor}`}>
@@ -690,7 +690,7 @@ export default function StatsPanel({
                         </div>
  
                         {!tech.isActive && (
-                          <div className="mt-2 pt-1 border-t border-[#3e3328]/35 w-full">
+                          <div className="mt-2 pt-1 border-t border-zinc-800/35 w-full">
                             {(() => {
                               const realmTiers: Record<string, number> = { 'Mortal': 0, 'Qi Refinement': 1, 'Foundation Establishment': 2, 'Golden Core': 3, 'Nascent Soul': 4, 'Soul Formation': 5, 'Void Amalgamation': 6, 'Body Integration': 7, 'Mahayana': 8, 'Tribulation': 9, 'True Immortal': 10 };
                               const reqRealmTier = reqs?.realm ? realmTiers[reqs.realm] ?? 0 : 0;
@@ -704,7 +704,7 @@ export default function StatsPanel({
                                   <button
                                     type="button"
                                     onClick={(e) => { e.stopPropagation(); onLearnTechnique && onLearnTechnique(tech); }}
-                                    className="w-full px-2 py-1.5 bg-[#c5a059]/20 hover:bg-[#c5a059]/40 border border-[#c5a059]/50 text-[#e5c17b] rounded-sm text-xs font-serif uppercase tracking-widest transition"
+                                    className="w-full px-2 py-1.5 bg-[#10b981]/20 hover:bg-[#10b981]/40 border border-emerald-500/30/50 text-zinc-100 rounded-sm text-xs font-serif font-medium transition"
                                   >
                                     {language === 'vi' ? '⚔️ Tiến Hành Nhập Môn' : '⚔️ Begin Cultivation'}
                                   </button>
@@ -730,8 +730,8 @@ export default function StatsPanel({
             </div>
 
             {/* Túi Trữ Vật / Inventory */}
-            <div className="space-y-3 mb-6 border-b border-[#3e3328]/45 pb-4">
-              <h4 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif text-left">
+            <div className="space-y-3 mb-6 border-b border-zinc-800/45 pb-4">
+              <h4 className="text-xs font-medium text-emerald-500 font-semibold font-serif text-left">
                 {language === 'vi' ? 'Túi Trữ Vật' : 'Inventory Bag'}
               </h4>
               
@@ -783,10 +783,10 @@ export default function StatsPanel({
                           }
                         }}
                         key={`${item.id}-${idx}`} 
-                        className="bg-[#14110f]/60 border border-[#3e3328]/60 p-2.5 rounded-sm flex flex-col gap-1.5 w-full text-left transition hover:border-[#c5a059] cursor-pointer"
+                        className="bg-zinc-950/60 border border-zinc-800/60 p-2.5 rounded-sm flex flex-col gap-1.5 w-full text-left transition hover:border-emerald-500/30 cursor-pointer"
                       >
                         <div className="flex items-center justify-between text-xs w-full">
-                          <span className="font-serif font-semibold text-[#e5c17b] flex items-center gap-1.5 text-left">
+                          <span className="font-serif font-semibold text-zinc-100 flex items-center gap-1.5 text-left">
                             <span>{itemIcon}</span>
                             {item.name}
                             {item.quantity > 1 && <span className="text-text-secondary text-[10px]">x{item.quantity}</span>}
@@ -803,7 +803,7 @@ export default function StatsPanel({
                                   e.stopPropagation();
                                   onUseItem(idx);
                                 }}
-                                className="px-2 py-0.5 border border-[#c5a059] bg-[#1e1915] text-[#e5c17b] hover:bg-[#28211b] text-[10px] rounded-sm transition font-serif"
+                                className="px-2 py-0.5 border border-emerald-500/30 bg-zinc-900 text-zinc-100 hover:bg-zinc-800 text-[10px] rounded-sm transition font-serif"
                               >
                                 {language === 'vi' ? 'Sử dụng' : 'Use'}
                               </button>
@@ -818,7 +818,7 @@ export default function StatsPanel({
                                 className={`px-2 py-0.5 border text-[10px] rounded-sm transition font-serif ${
                                   item.equipped
                                     ? 'border-[#5c7f55] bg-[#5c7f55]/20 text-[#5c7f55]'
-                                    : 'border-[#3e3328] bg-black/40 text-text-secondary hover:text-white'
+                                    : 'border-zinc-800 bg-black/40 text-text-secondary hover:text-white'
                                 }`}
                               >
                                 {item.equipped 
@@ -847,19 +847,19 @@ export default function StatsPanel({
 
             {/* Legacy & Inheritance */}
             <div className="space-y-3">
-              <h4 className="text-xs uppercase tracking-wider text-[#c5a059] font-semibold font-serif text-left">Di Sản Tích Lũy</h4>
+              <h4 className="text-xs font-medium text-emerald-500 font-semibold font-serif text-left">Di Sản Tích Lũy</h4>
               <div className="grid grid-cols-3 gap-2.5">
-                <div className="bg-[#14110f] border border-[#3e3328] p-2 text-center rounded-sm">
-                  <p className="text-[9px] uppercase tracking-wider text-text-secondary truncate">{labels.legacyPower}</p>
-                  <p className="font-serif text-base text-[#e5c17b] mt-1">{inheritance.legacyPower}</p>
+                <div className="bg-zinc-950 border border-zinc-800 p-2 text-center rounded-sm">
+                  <p className="text-[9px] font-medium text-text-secondary truncate">{labels.legacyPower}</p>
+                  <p className="font-serif text-base text-zinc-100 mt-1">{inheritance.legacyPower}</p>
                 </div>
-                <div className="bg-[#14110f] border border-[#3e3328] p-2 text-center rounded-sm">
-                  <p className="text-[9px] uppercase tracking-wider text-text-secondary truncate">{labels.ancestralMemory}</p>
-                  <p className="font-serif text-base text-[#e5c17b] mt-1">{inheritance.ancestralMemory}</p>
+                <div className="bg-zinc-950 border border-zinc-800 p-2 text-center rounded-sm">
+                  <p className="text-[9px] font-medium text-text-secondary truncate">{labels.ancestralMemory}</p>
+                  <p className="font-serif text-base text-zinc-100 mt-1">{inheritance.ancestralMemory}</p>
                 </div>
-                <div className="bg-[#14110f] border border-[#3e3328] p-2 text-center rounded-sm">
-                  <p className="text-[9px] uppercase tracking-wider text-text-secondary truncate">{labels.blessing}</p>
-                  <p className="font-serif text-base text-[#e5c17b] mt-1">{inheritance.blessing}</p>
+                <div className="bg-zinc-950 border border-zinc-800 p-2 text-center rounded-sm">
+                  <p className="text-[9px] font-medium text-text-secondary truncate">{labels.blessing}</p>
+                  <p className="font-serif text-base text-zinc-100 mt-1">{inheritance.blessing}</p>
                 </div>
               </div>
             </div>

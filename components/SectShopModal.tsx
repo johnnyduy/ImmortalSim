@@ -99,16 +99,16 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-      <div className="bg-[#14110f] border-2 border-[#c5a059]/60 rounded-xl max-w-4xl w-full flex flex-col overflow-hidden text-text-primary shadow-[0_0_30px_rgba(197,160,89,0.15)] relative max-h-[90vh]">
+      <div className="bg-zinc-950 border-2 border-emerald-500/60 rounded-xl max-w-4xl w-full flex flex-col overflow-hidden text-text-primary shadow-[0_0_30px_rgba(197,160,89,0.15)] relative max-h-[90vh]">
         
-        <div className="bg-[#1e1915]/80 p-4 border-b border-[#3e3328] flex justify-between items-center">
+        <div className="bg-zinc-900/80 p-4 border-b border-zinc-800 flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-serif font-bold text-[#e5c17b]">
+            <h2 className="text-2xl font-serif font-bold text-emerald-400">
               {language === 'vi' ? 'TÔNG MÔN BẢO CÁC' : 'SECT VAULT'}
             </h2>
             <div className="text-sm text-text-secondary mt-1">
               {language === 'vi' ? 'Cống hiến hiện tại: ' : 'Current Contribution: '}
-              <span className="text-[#c5a059] font-bold">{state.sectContribution || 0}</span>
+              <span className="text-emerald-500 font-bold">{state.sectContribution || 0}</span>
             </div>
           </div>
           <button onClick={onClose} className="text-text-secondary hover:text-red-400 text-2xl leading-none">&times;</button>
@@ -138,15 +138,15 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
             return (
               <div 
                 key={idx} 
-                className={`p-4 border rounded-sm flex flex-col justify-between ${isLocked ? 'border-[#3e3328]/40 bg-[#14110f]/40 opacity-70' : 'border-[#c5a059]/30 bg-[#1e1915]/60 hover:border-[#c5a059]/60'}`}
+                className={`p-4 border rounded-sm flex flex-col justify-between ${isLocked ? 'border-zinc-800/40 bg-zinc-950/40 opacity-70' : 'border-emerald-500/30 bg-zinc-900/60 hover:border-emerald-500/60'}`}
               >
                 <div>
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className={`font-serif font-bold text-lg ${isLocked ? 'text-gray-500' : 'text-[#e5c17b]'}`}>
+                    <h3 className={`font-serif font-bold text-lg ${isLocked ? 'text-gray-500' : 'text-emerald-400'}`}>
                       {displayName} {item.quantity && item.quantity > 1 ? `x${item.quantity}` : ''}
                     </h3>
                     {displayTier && (
-                      <span className="text-xs uppercase px-2 py-1 bg-[#3e3328]/50 rounded text-text-secondary">
+                      <span className="text-xs uppercase px-2 py-1 bg-zinc-800/50 rounded text-text-secondary">
                         {displayTier}
                       </span>
                     )}
@@ -163,7 +163,7 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
                         {language === 'vi' ? `Yêu cầu: ${rankNames[item.minRank].vi}` : `Required: ${rankNames[item.minRank].en}`}
                       </span>
                     ) : (
-                      <span className={`font-bold ${canAfford ? 'text-[#c5a059]' : 'text-red-400'}`}>
+                      <span className={`font-bold ${canAfford ? 'text-emerald-500' : 'text-red-400'}`}>
                         {item.cost} {language === 'vi' ? 'Cống hiến' : 'Contrib'}
                       </span>
                     )}
@@ -174,8 +174,8 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
                     disabled={isLocked || !canAfford}
                     className={`px-4 py-2 rounded text-sm font-bold tracking-wide transition-colors ${
                       isLocked || !canAfford 
-                        ? 'bg-[#28211b] text-gray-500 cursor-not-allowed' 
-                        : 'bg-[#c5a059]/20 text-[#e5c17b] hover:bg-[#c5a059]/40 border border-[#c5a059]/50'
+                        ? 'bg-zinc-800 text-gray-500 cursor-not-allowed' 
+                        : 'bg-[#10b981]/20 text-emerald-400 hover:bg-[#10b981]/40 border border-emerald-500/50'
                     }`}
                   >
                     {language === 'vi' ? 'ĐỔI' : 'EXCHANGE'}

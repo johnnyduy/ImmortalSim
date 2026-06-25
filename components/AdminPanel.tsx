@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import type { GameState, WorldState } from '../types';
-import { getNpcFavorabilityLabel, changeNpcFavorability, createInitialWorldState, getWorldEventModifiers, generateWorldThresholdEvent, worldStateToNews, applyChoiceToState, tickMonth, createNewGame } from '../lib/engine';
+import { getNpcFavorabilityLabel, changeNpcFavorability, createInitialWorldState, getWorldEventModifiers, generateWorldThresholdEvent, worldStateToNews, applyChoiceToState, createNewGame } from '../lib/engine';
+import { tickMonth } from '../lib/game-controller';;
 import TestCharacterTab from './TestCharacterTab';
 import EventGraphTab from './EventGraphTab';
 
@@ -281,12 +282,12 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md overflow-hidden p-4 sm:p-6">
-      <div className="relative flex flex-col w-full max-w-5xl h-[90vh] bg-[#0c0a08] border border-[#c5a059]/40 rounded-sm shadow-2xl">
+      <div className="relative flex flex-col w-full max-w-5xl h-[90vh] bg-zinc-950 border border-emerald-500/40 rounded-sm shadow-2xl">
         
         {/* Header */}
-        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-[#3e3328]/70 gap-4">
+        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-zinc-800/70 gap-4">
           <div className="space-y-1">
-            <h1 className="font-serif text-2xl text-[#e5c17b] tracking-wider uppercase">Thái Cổ Thần Điện (Admin Panel)</h1>
+            <h1 className="font-serif text-2xl text-emerald-400 tracking-wider uppercase">Thái Cổ Thần Điện (Admin Panel)</h1>
             <p className="text-xs text-text-tertiary">Bấm tổ hợp phím Ctrl + X hoặc nhấn Đóng để ẩn bảng điều khiển này.</p>
             <div className="pt-1.5 flex items-center">
               <label className="flex items-center gap-2 cursor-pointer select-none text-left">
@@ -294,9 +295,9 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
                   type="checkbox"
                   checked={showAudioPaths}
                   onChange={(e) => onToggleAudioPaths(e.target.checked)}
-                  className="w-3.5 h-3.5 accent-[#c5a059] rounded-sm cursor-pointer"
+                  className="w-3.5 h-3.5 accent-[#10b981] rounded-sm cursor-pointer"
                 />
-                <span className="text-[10px] text-[#e5c17b] font-serif uppercase tracking-wider font-bold">Hiển thị đường dẫn âm thanh (Display Audio Paths)</span>
+                <span className="text-[10px] text-emerald-400 font-serif font-medium font-bold">Hiển thị đường dẫn âm thanh (Display Audio Paths)</span>
               </label>
             </div>
           </div>
@@ -305,7 +306,7 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
               <button
                 type="button"
                 onClick={onStartTestCombat}
-                className="px-4 py-2 text-xs uppercase tracking-widest text-red-400/90 border border-red-950/60 bg-red-950/15 hover:border-red-500 hover:text-white hover:bg-red-950/30 transition font-serif"
+                className="px-4 py-2 text-xs font-medium text-red-400/90 border border-red-950/60 bg-red-950/15 hover:border-red-500 hover:text-white hover:bg-red-950/30 transition font-serif"
               >
                 ⚔️ Bắt đầu Test Combat
               </button>
@@ -313,7 +314,7 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-xs uppercase tracking-widest text-[#847764] border border-[#3e3328] hover:border-[#c5a059]/60 hover:text-white transition font-serif"
+              className="px-4 py-2 text-xs font-medium text-zinc-400 border border-zinc-800 hover:border-emerald-500/60 hover:text-white transition font-serif"
             >
               Đóng (Close)
             </button>
@@ -332,7 +333,7 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
         )}
 
         {/* Tab Navigation */}
-        <nav className="flex bg-[#14110f] border-b border-[#3e3328]/50 overflow-x-auto">
+        <nav className="flex bg-zinc-950 border-b border-zinc-800/50 overflow-x-auto">
           {(['techniques', 'npcs', 'sects', 'events', 'event_graph', 'time_gear', 'scriptures', 'cultivation', 'npc_relations', 'world_state', 'test_character'] as Tab[]).map((tab) => {
             const labels: Record<Tab, string> = {
               techniques: 'Công pháp & Vũ kĩ',
@@ -356,9 +357,9 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
                   setEditingItem(null);
                   setSimulationResults(null);
                 }}
-                className={`px-5 py-3.5 text-xs sm:text-sm font-serif uppercase tracking-widest border-r border-[#3e3328]/50 transition whitespace-nowrap ${
+                className={`px-5 py-3.5 text-xs sm:text-sm font-serif font-medium border-r border-zinc-800/50 transition whitespace-nowrap ${
                   activeTab === tab 
-                    ? 'text-[#e5c17b] bg-[#0c0a08] border-b-2 border-b-[#c5a059] font-medium' 
+                    ? 'text-emerald-400 bg-zinc-950 border-b-2 border-b-[#10b981] font-medium' 
                     : 'text-text-tertiary hover:text-text-secondary hover:bg-black/25'
                 }`}
               >
@@ -385,14 +386,14 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
             <WorldStateView game={game} onChangeGame={onChangeGame} />
           ) : loading ? (
             <div className="flex flex-col items-center justify-center h-64 space-y-4">
-              <div className="w-10 h-10 border-2 border-t-transparent border-[#c5a059] rounded-full animate-spin"></div>
-              <p className="font-serif text-sm text-[#847764] animate-pulse">Đang cảm ngộ quy tắc thiên địa...</p>
+              <div className="w-10 h-10 border-2 border-t-transparent border-emerald-500 rounded-full animate-spin"></div>
+              <p className="font-serif text-sm text-zinc-400 animate-pulse">Đang cảm ngộ quy tắc thiên địa...</p>
             </div>
           ) : editingItem ? (
             // Sub form overlay for edit/create
             <div className="space-y-6 animate-slide-up">
-              <div className="flex items-center justify-between border-b border-[#3e3328]/40 pb-4">
-                <h3 className="font-serif text-lg text-[#e5c17b]">
+              <div className="flex items-center justify-between border-b border-zinc-800/40 pb-4">
+                <h3 className="font-serif text-lg text-emerald-400">
                   {editingItem.index === -1 ? 'Khởi tạo thực thể mới' : 'Biên dịch sửa đổi thông số'}
                 </h3>
                 <button
@@ -749,9 +750,9 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
         
         {saving && (
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center z-50">
-            <div className="bg-[#14110f] border border-[#c5a059]/50 p-6 rounded-sm text-center max-w-sm space-y-3">
-              <div className="w-8 h-8 border-2 border-t-transparent border-[#c5a059] rounded-full animate-spin mx-auto"></div>
-              <p className="font-serif text-[#e5c17b]">Đang khắc ấn quy tắc lên phiến đá thiên mệnh...</p>
+            <div className="bg-zinc-950 border border-emerald-500/50 p-6 rounded-sm text-center max-w-sm space-y-3">
+              <div className="w-8 h-8 border-2 border-t-transparent border-emerald-500 rounded-full animate-spin mx-auto"></div>
+              <p className="font-serif text-emerald-400">Đang khắc ấn quy tắc lên phiến đá thiên mệnh...</p>
               <p className="text-xs text-text-tertiary">Vui lòng không tắt hoặc tải lại trang.</p>
             </div>
           </div>
@@ -799,16 +800,16 @@ function TechniqueList({
   return (
     <div className="space-y-6">
       {/* Sub-tabs Navigation */}
-      <div className="flex bg-[#100e0c]/90 border border-[#3e3328]/40 rounded-sm overflow-x-auto p-1 gap-1">
+      <div className="flex bg-[#100e0c]/90 border border-zinc-800/40 rounded-sm overflow-x-auto p-1 gap-1">
         {subTabs.map((subTab) => (
           <button
             key={subTab.key}
             type="button"
             onClick={() => setActiveSubTab(subTab.key)}
-            className={`px-4 py-2 text-xs font-serif uppercase tracking-wider transition whitespace-nowrap rounded-sm ${
+            className={`px-4 py-2 text-xs font-serif font-medium transition whitespace-nowrap rounded-sm ${
               activeSubTab === subTab.key
-                ? 'text-[#e5c17b] bg-[#1a1612] border border-[#c5a059]/40 font-semibold'
-                : 'text-[#847764] hover:text-[#c5a059] hover:bg-[#14110f]/50'
+                ? 'text-emerald-400 bg-[#1a1612] border border-emerald-500/40 font-semibold'
+                : 'text-zinc-400 hover:text-emerald-500 hover:bg-zinc-950/50'
             }`}
           >
             {subTab.label}
@@ -818,42 +819,42 @@ function TechniqueList({
 
       {/* Player Techniques */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between border-b border-[#3e3328]/50 pb-2">
-          <h4 className="font-serif text-md text-[#e5c17b]">Tu Sĩ Công Pháp (Player Techniques)</h4>
+        <div className="flex items-center justify-between border-b border-zinc-800/50 pb-2">
+          <h4 className="font-serif text-md text-emerald-400">Tu Sĩ Công Pháp (Player Techniques)</h4>
           <button
             type="button"
             onClick={() => onAdd(true, activeSubTab)}
-            className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition"
+            className="px-3 py-1 text-xs border border-emerald-500/40 text-emerald-400 hover:bg-[#10b981]/10 rounded-sm transition"
           >
             + Khai sáng công pháp
           </button>
         </div>
         
         {filteredPList.length === 0 ? (
-          <p className="text-xs text-text-tertiary italic p-4 text-center border border-[#3e3328]/30 bg-[#14110f]/20 rounded-sm">
+          <p className="text-xs text-text-tertiary italic p-4 text-center border border-zinc-800/30 bg-zinc-950/20 rounded-sm">
             Chưa khai sáng công pháp nào thuộc loại này.
           </p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredPList.map((t: any) => (
-              <div key={t.id || t.originalIndex} className="bg-[#14110f] border border-[#3e3328]/60 p-4 space-y-2 flex flex-col justify-between">
+              <div key={t.id || t.originalIndex} className="bg-zinc-950 border border-zinc-800/60 p-4 space-y-2 flex flex-col justify-between">
                 <div>
-                  <h5 className="font-serif text-[#e5c17b] text-base">{t.label} <span className="text-[10px] text-text-tertiary">({t.id})</span></h5>
+                  <h5 className="font-serif text-emerald-400 text-base">{t.label} <span className="text-[10px] text-text-tertiary">({t.id})</span></h5>
                   <p className="text-xs text-text-secondary leading-relaxed line-clamp-2">{t.description}</p>
-                  <div className="text-[11px] text-[#847764] mt-2">
+                  <div className="text-[11px] text-zinc-400 mt-2">
                     Chiêu thức: <span className="text-text-secondary">{t.action?.name}</span> (Tốn: {t.action?.costs?.qi || 0} Qi)
                   </div>
                   {t.type === 'tâm_pháp' && t.m_manual !== undefined && (
-                    <div className="text-[11px] text-[#e5c17b] mt-1">
+                    <div className="text-[11px] text-emerald-400 mt-1">
                       Hệ số Tâm Pháp (M_manual): <span className="font-semibold">{t.m_manual}x</span>
                     </div>
                   )}
                 </div>
-                <div className="flex justify-end gap-2 pt-3 border-t border-[#3e3328]/30">
+                <div className="flex justify-end gap-2 pt-3 border-t border-zinc-800/30">
                   <button
                     type="button"
                     onClick={() => onEdit(t.originalIndex, true)}
-                    className="px-2.5 py-1 text-xs text-[#c5a059] hover:bg-[#c5a059]/10 border border-transparent hover:border-[#c5a059]/30 rounded-sm"
+                    className="px-2.5 py-1 text-xs text-emerald-500 hover:bg-[#10b981]/10 border border-transparent hover:border-emerald-500/30 rounded-sm"
                   >
                     Sửa
                   </button>
@@ -873,42 +874,42 @@ function TechniqueList({
 
       {/* Enemy Arts */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between border-b border-[#3e3328]/50 pb-2">
-          <h4 className="font-serif text-md text-[#e5c17b]">Tà Ma Vũ Kĩ (Enemy Arts)</h4>
+        <div className="flex items-center justify-between border-b border-zinc-800/50 pb-2">
+          <h4 className="font-serif text-md text-emerald-400">Tà Ma Vũ Kĩ (Enemy Arts)</h4>
           <button
             type="button"
             onClick={() => onAdd(false, activeSubTab)}
-            className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition"
+            className="px-3 py-1 text-xs border border-emerald-500/40 text-emerald-400 hover:bg-[#10b981]/10 rounded-sm transition"
           >
             + Chế tạo ma kĩ
           </button>
         </div>
 
         {filteredEList.length === 0 ? (
-          <p className="text-xs text-text-tertiary italic p-4 text-center border border-[#3e3328]/30 bg-[#14110f]/20 rounded-sm">
+          <p className="text-xs text-text-tertiary italic p-4 text-center border border-zinc-800/30 bg-zinc-950/20 rounded-sm">
             Chưa chế tạo ma kĩ nào thuộc loại này.
           </p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredEList.map((t: any) => (
-              <div key={t.id || t.originalIndex} className="bg-[#14110f] border border-[#3e3328]/60 p-4 space-y-2 flex flex-col justify-between">
+              <div key={t.id || t.originalIndex} className="bg-zinc-950 border border-zinc-800/60 p-4 space-y-2 flex flex-col justify-between">
                 <div>
-                  <h5 className="font-serif text-[#e5c17b] text-base">{t.label} <span className="text-[10px] text-text-tertiary">({t.id})</span></h5>
+                  <h5 className="font-serif text-emerald-400 text-base">{t.label} <span className="text-[10px] text-text-tertiary">({t.id})</span></h5>
                   <p className="text-xs text-text-secondary leading-relaxed line-clamp-2">{t.description}</p>
-                  <div className="text-[11px] text-[#847764] mt-2">
+                  <div className="text-[11px] text-zinc-400 mt-2">
                     Chiêu thức: <span className="text-text-secondary">{t.action?.name}</span>
                   </div>
                   {t.type === 'tâm_pháp' && t.m_manual !== undefined && (
-                    <div className="text-[11px] text-[#e5c17b] mt-1">
+                    <div className="text-[11px] text-emerald-400 mt-1">
                       Hệ số Tâm Pháp (M_manual): <span className="font-semibold">{t.m_manual}x</span>
                     </div>
                   )}
                 </div>
-                <div className="flex justify-end gap-2 pt-3 border-t border-[#3e3328]/30">
+                <div className="flex justify-end gap-2 pt-3 border-t border-zinc-800/30">
                   <button
                     type="button"
                     onClick={() => onEdit(t.originalIndex, false)}
-                    className="px-2.5 py-1 text-xs text-[#c5a059] hover:bg-[#c5a059]/10 border border-transparent hover:border-[#c5a059]/30 rounded-sm"
+                    className="px-2.5 py-1 text-xs text-emerald-500 hover:bg-[#10b981]/10 border border-transparent hover:border-emerald-500/30 rounded-sm"
                   >
                     Sửa
                   </button>
@@ -1021,34 +1022,34 @@ function TechniqueForm({
     <form onSubmit={handleSubmit} className="space-y-6 text-sm text-text-secondary">
       <div className="grid grid-cols-3 gap-4">
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Mã Định Danh (ID)*</span>
+          <span className="text-xs font-medium text-zinc-400">Mã Định Danh (ID)*</span>
           <input
             type="text"
             value={id}
             onChange={(e) => setId(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
             placeholder="vi_du_kiem_phap"
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
             disabled={data.id !== ''}
           />
         </label>
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Tên Gọi (Label)*</span>
+          <span className="text-xs font-medium text-zinc-400">Tên Gọi (Label)*</span>
           <input
             type="text"
             value={label}
             onChange={(e) => setLabel(e.target.value)}
             placeholder="Thanh Vân Kiếm Pháp"
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
           />
         </label>
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Loại Công Pháp (Type)*</span>
+          <span className="text-xs font-medium text-zinc-400">Loại Công Pháp (Type)*</span>
           <select
             value={type}
             onChange={(e) => setType(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500"
             required
           >
             <option value="tâm_pháp">Tâm Pháp</option>
@@ -1065,14 +1066,14 @@ function TechniqueForm({
       {type === 'tâm_pháp' && (
         <div className="grid grid-cols-3 gap-4 animate-fade-in">
           <label className="block space-y-2 col-span-1">
-            <span className="text-xs uppercase tracking-widest text-[#e5c17b]">Hệ số hiệu quả (M_manual)*</span>
+            <span className="text-xs font-medium text-emerald-400">Hệ số hiệu quả (M_manual)*</span>
             <input
               type="number"
               step="0.05"
               value={mManual}
               onChange={(e) => setMManual(Number(e.target.value))}
               placeholder="1.0"
-              className="w-full bg-[#14110f] border border-[#c5a059]/40 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+              className="w-full bg-zinc-950 border border-emerald-500/40 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
               required
             />
           </label>
@@ -1080,76 +1081,76 @@ function TechniqueForm({
       )}
 
       <label className="block space-y-2">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Mô Tả Công Pháp (Description)</span>
+        <span className="text-xs font-medium text-zinc-400">Mô Tả Công Pháp (Description)</span>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Mô tả về sức mạnh và xuất xứ của thuật này..."
           rows={2}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
         />
       </label>
 
       {data.isPlayer && (
         <label className="block space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Lời Dẫn Lựa Chọn (Choice Text)</span>
+          <span className="text-xs font-medium text-zinc-400">Lời Dẫn Lựa Chọn (Choice Text)</span>
           <input
             type="text"
             value={choiceText}
             onChange={(e) => setChoiceText(e.target.value)}
             placeholder="Vận chuyển thanh vân chân khí, tung một chém kiếm quyết."
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           />
         </label>
       )}
 
       {/* Action configuration */}
-      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-        <h4 className="font-serif text-[#e5c17b] text-sm uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">Thiết Lập Chiêu Thức Chiến Đấu (Action details)</h4>
+      <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h4 className="font-serif text-emerald-400 text-sm font-medium border-b border-zinc-800/40 pb-2">Thiết Lập Chiêu Thức Chiến Đấu (Action details)</h4>
         
         <div className="grid grid-cols-3 gap-4">
           <label className="block space-y-2 col-span-1">
-            <span className="text-[11px] uppercase tracking-widest text-[#847764]">Tên Chiêu Thức*</span>
+            <span className="text-[11px] font-medium text-zinc-400">Tên Chiêu Thức*</span>
             <input
               type="text"
               value={actionName}
               onChange={(e) => setActionName(e.target.value)}
               placeholder="Thanh Vân Phá"
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none focus:border-[#c5a059]"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none focus:border-emerald-500"
               required
             />
           </label>
           <label className="block space-y-2 col-span-1">
-            <span className="text-[11px] uppercase tracking-widest text-[#847764]">Hệ Nguyên Tố/Thuật</span>
+            <span className="text-[11px] font-medium text-zinc-400">Hệ Nguyên Tố/Thuật</span>
             <input
               type="text"
               value={intentType}
               onChange={(e) => setIntentType(e.target.value)}
               placeholder="sword / flame / shield"
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none focus:border-[#c5a059]"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none focus:border-emerald-500"
             />
           </label>
           <div className="grid grid-cols-2 gap-2 col-span-1">
             <label className="block space-y-2">
-              <span className="text-[11px] uppercase tracking-widest text-[#847764]">Nguy Hiểm</span>
+              <span className="text-[11px] font-medium text-zinc-400">Nguy Hiểm</span>
               <input
                 type="number"
                 value={dangerRating}
                 onChange={(e) => setDangerRating(Number(e.target.value))}
                 min={1}
                 max={10}
-                className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none focus:border-emerald-500"
               />
             </label>
             {data.isPlayer && (
               <label className="block space-y-2">
-                <span className="text-[11px] uppercase tracking-widest text-[#847764]">Tốn Qi</span>
+                <span className="text-[11px] font-medium text-zinc-400">Tốn Qi</span>
                 <input
                   type="number"
                   value={qiCost}
                   onChange={(e) => setQiCost(Number(e.target.value))}
                   min={0}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none focus:border-emerald-500"
                 />
               </label>
             )}
@@ -1157,24 +1158,24 @@ function TechniqueForm({
         </div>
 
         <label className="block space-y-2">
-          <span className="text-[11px] uppercase tracking-widest text-[#847764]">Lời Dẫn Miêu Tả Tung Chiêu (Narrative Template)</span>
+          <span className="text-[11px] font-medium text-zinc-400">Lời Dẫn Miêu Tả Tung Chiêu (Narrative Template)</span>
           <input
             type="text"
             value={narrativeTemplate}
             onChange={(e) => setNarrativeTemplate(e.target.value)}
             placeholder="{source.name} vận hóa tiên cơ, chém thẳng xuống đối thủ."
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none focus:border-emerald-500"
           />
         </label>
 
         {/* Effects management */}
         <div className="space-y-3 pt-2">
-          <div className="flex items-center justify-between border-t border-[#3e3328]/30 pt-2">
-            <span className="text-xs uppercase tracking-widest text-[#e5c17b]">Các hiệu ứng kích hoạt ({effects.length})</span>
+          <div className="flex items-center justify-between border-t border-zinc-800/30 pt-2">
+            <span className="text-xs font-medium text-emerald-400">Các hiệu ứng kích hoạt ({effects.length})</span>
             <button
               type="button"
               onClick={addEffect}
-              className="text-xs text-[#c5a059] hover:underline"
+              className="text-xs text-emerald-500 hover:underline"
             >
               + Thêm hiệu ứng
             </button>
@@ -1182,9 +1183,9 @@ function TechniqueForm({
 
           <div className="space-y-3">
             {effects.map((eff, index) => (
-              <div key={index} className="border border-[#3e3328]/40 p-3 bg-black/40 rounded-sm space-y-3">
+              <div key={index} className="border border-zinc-800/40 p-3 bg-black/40 rounded-sm space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-serif text-[#847764]">Hiệu ứng #{index + 1}</span>
+                  <span className="text-[11px] font-serif text-zinc-400">Hiệu ứng #{index + 1}</span>
                   <button
                     type="button"
                     onClick={() => removeEffect(index)}
@@ -1200,7 +1201,7 @@ function TechniqueForm({
                     <select
                       value={eff.type}
                       onChange={(e) => updateEffect(index, 'type', e.target.value)}
-                      className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-lunar text-xs outline-none"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-lunar text-xs outline-none"
                     >
                       <option value="damage">damage (Sát thương)</option>
                       <option value="heal">heal (Hồi HP)</option>
@@ -1216,7 +1217,7 @@ function TechniqueForm({
                       value={eff.formula}
                       onChange={(e) => updateEffect(index, 'formula', e.target.value)}
                       placeholder="self.attack * 1.5"
-                      className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-lunar text-xs outline-none"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-lunar text-xs outline-none"
                     />
                   </label>
 
@@ -1225,7 +1226,7 @@ function TechniqueForm({
                     <select
                       value={eff.target}
                       onChange={(e) => updateEffect(index, 'target', e.target.value)}
-                      className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-lunar text-xs outline-none"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-lunar text-xs outline-none"
                     >
                       <option value="enemy">enemy (Đối thủ)</option>
                       <option value="self">self (Bản thân)</option>
@@ -1241,7 +1242,7 @@ function TechniqueForm({
                       value={eff.resource || 'qi'}
                       onChange={(e) => updateEffect(index, 'resource', e.target.value)}
                       placeholder="qi / fatigue"
-                      className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-lunar text-xs outline-none"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-lunar text-xs outline-none"
                     />
                   </label>
                 )}
@@ -1253,7 +1254,7 @@ function TechniqueForm({
                     value={eff.narrative_template}
                     onChange={(e) => updateEffect(index, 'narrative_template', e.target.value)}
                     placeholder="Kiếm quang chém trúng {target.name}, gây {amount} sát thương."
-                    className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-lunar text-xs outline-none"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-lunar text-xs outline-none"
                   />
                 </label>
               </div>
@@ -1262,17 +1263,17 @@ function TechniqueForm({
         </div>
       </div>
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+      <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 py-2 border border-[#3e3328] text-text-tertiary hover:text-white rounded-sm transition"
+          className="px-6 py-2 border border-zinc-800 text-text-tertiary hover:text-white rounded-sm transition"
         >
           Hủy bỏ
         </button>
         <button
           type="submit"
-          className="px-6 py-2 bg-[#c5a059]/20 hover:bg-[#c5a059]/30 text-[#e5c17b] border border-[#c5a059]/50 rounded-sm transition"
+          className="px-6 py-2 bg-[#10b981]/20 hover:bg-[#10b981]/30 text-emerald-400 border border-emerald-500/50 rounded-sm transition"
         >
           Lưu chuyển (Save)
         </button>
@@ -1297,12 +1298,12 @@ function NpcList({
 }) {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between border-b border-[#3e3328]/50 pb-2">
-        <h4 className="font-serif text-md text-[#e5c17b]">Danh Sách Tà Ma/NPC Ma Cảnh</h4>
+      <div className="flex items-center justify-between border-b border-zinc-800/50 pb-2">
+        <h4 className="font-serif text-md text-emerald-400">Danh Sách Tà Ma/NPC Ma Cảnh</h4>
         <button
           type="button"
           onClick={onAdd}
-          className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition"
+          className="px-3 py-1 text-xs border border-emerald-500/40 text-emerald-400 hover:bg-[#10b981]/10 rounded-sm transition"
         >
           + Triệu hoán ma đầu mới
         </button>
@@ -1310,11 +1311,11 @@ function NpcList({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {npcs.map((npc, index) => (
-          <div key={npc.id || index} className="bg-[#14110f] border border-[#3e3328]/60 p-4 space-y-3 flex flex-col justify-between">
+          <div key={npc.id || index} className="bg-zinc-950 border border-zinc-800/60 p-4 space-y-3 flex flex-col justify-between">
             <div className="space-y-1">
               <div className="flex items-baseline justify-between">
-                <h5 className="font-serif text-[#e5c17b] text-base">{npc.name}</h5>
-                <span className="text-[10px] text-accent uppercase tracking-widest">{npc.realm}</span>
+                <h5 className="font-serif text-emerald-400 text-base">{npc.name}</h5>
+                <span className="text-[10px] text-accent font-medium">{npc.realm}</span>
               </div>
               <p className="text-xs text-text-secondary leading-relaxed line-clamp-2">{npc.description}</p>
               <div className="grid grid-cols-2 gap-x-2 gap-y-1 pt-2 text-[10px] text-text-tertiary">
@@ -1323,11 +1324,11 @@ function NpcList({
                 <div className="col-span-2">Đặc kĩ: <span className="text-text-secondary">{npc.technique}</span></div>
               </div>
             </div>
-            <div className="flex justify-end gap-2 pt-3 border-t border-[#3e3328]/30">
+            <div className="flex justify-end gap-2 pt-3 border-t border-zinc-800/30">
               <button
                 type="button"
                 onClick={() => onEdit(index)}
-                className="px-2.5 py-1 text-xs text-[#c5a059] hover:bg-[#c5a059]/10 border border-transparent hover:border-[#c5a059]/30 rounded-sm"
+                className="px-2.5 py-1 text-xs text-emerald-500 hover:bg-[#10b981]/10 border border-transparent hover:border-emerald-500/30 rounded-sm"
               >
                 Sửa
               </button>
@@ -1392,23 +1393,23 @@ function NpcForm({
     <form onSubmit={handleSubmit} className="space-y-6 text-sm text-text-secondary">
       <div className="grid grid-cols-2 gap-4">
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Tên Nhân Vật (NPC)*</span>
+          <span className="text-xs font-medium text-zinc-400">Tên Nhân Vật (NPC)*</span>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Ảo Ảnh Tâm Ma"
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
           />
         </label>
         
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Cảnh Giới (Realm)</span>
+          <span className="text-xs font-medium text-zinc-400">Cảnh Giới (Realm)</span>
           <select
             value={realm}
             onChange={(e) => setRealm(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500"
           >
             {realms.map((r: any) => (
               <option key={r.id} value={r.id}>{r.label}</option>
@@ -1419,11 +1420,11 @@ function NpcForm({
 
       <div className="grid grid-cols-3 gap-4">
         <label className="block space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Thể Chất (Physique)</span>
+          <span className="text-xs font-medium text-zinc-400">Thể Chất (Physique)</span>
           <select
             value={physique}
             onChange={(e) => setPhysique(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500"
           >
             {physiques.map((p: any) => (
               <option key={p.id} value={p.id}>{p.label}</option>
@@ -1432,11 +1433,11 @@ function NpcForm({
         </label>
 
         <label className="block space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Võ Học Chủ Đạo*</span>
+          <span className="text-xs font-medium text-zinc-400">Võ Học Chủ Đạo*</span>
           <select
             value={technique}
             onChange={(e) => setTechnique(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500"
             required
           >
             <option value="">-- Chọn võ kĩ --</option>
@@ -1454,11 +1455,11 @@ function NpcForm({
         </label>
 
         <label className="block space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Đạo Chiến Thuật</span>
+          <span className="text-xs font-medium text-zinc-400">Đạo Chiến Thuật</span>
           <select
             value={tactic}
             onChange={(e) => setTactic(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500"
           >
             <option value="balanced">Cân bằng</option>
             <option value="aggressive">Cuồng công</option>
@@ -1469,27 +1470,27 @@ function NpcForm({
       </div>
 
       <label className="block space-y-2">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Tóm Tắt Lai Lịch (Description)</span>
+        <span className="text-xs font-medium text-zinc-400">Tóm Tắt Lai Lịch (Description)</span>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Mô tả về gốc gác hoặc tính cách của ma đầu này khi xuất chiêu..."
           rows={3}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
         />
       </label>
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+      <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 py-2 border border-[#3e3328] text-text-tertiary hover:text-white rounded-sm transition"
+          className="px-6 py-2 border border-zinc-800 text-text-tertiary hover:text-white rounded-sm transition"
         >
           Hủy bỏ
         </button>
         <button
           type="submit"
-          className="px-6 py-2 bg-[#c5a059]/20 hover:bg-[#c5a059]/30 text-[#e5c17b] border border-[#c5a059]/50 rounded-sm transition"
+          className="px-6 py-2 bg-[#10b981]/20 hover:bg-[#10b981]/30 text-emerald-400 border border-emerald-500/50 rounded-sm transition"
         >
           Triệu hoán (Save)
         </button>
@@ -1514,12 +1515,12 @@ function SectList({
 }) {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between border-b border-[#3e3328]/50 pb-2">
-        <h4 className="font-serif text-md text-[#e5c17b]">Danh Tông Môn Phái Đại Lục</h4>
+      <div className="flex items-center justify-between border-b border-zinc-800/50 pb-2">
+        <h4 className="font-serif text-md text-emerald-400">Danh Tông Môn Phái Đại Lục</h4>
         <button
           type="button"
           onClick={onAdd}
-          className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition"
+          className="px-3 py-1 text-xs border border-emerald-500/40 text-emerald-400 hover:bg-[#10b981]/10 rounded-sm transition"
         >
           + Lập tông môn mới
         </button>
@@ -1527,19 +1528,19 @@ function SectList({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {sects.map((sect, index) => (
-          <div key={sect.id || index} className="bg-[#14110f] border border-[#3e3328]/60 p-4 space-y-3 flex flex-col justify-between">
+          <div key={sect.id || index} className="bg-zinc-950 border border-zinc-800/60 p-4 space-y-3 flex flex-col justify-between">
             <div>
               <div className="flex items-baseline justify-between mb-1">
-                <h5 className="font-serif text-[#e5c17b] text-base">{sect.name}</h5>
-                <span className="text-[10px] text-accent uppercase tracking-widest">{sect.alignment}</span>
+                <h5 className="font-serif text-emerald-400 text-base">{sect.name}</h5>
+                <span className="text-[10px] text-accent font-medium">{sect.alignment}</span>
               </div>
               <p className="text-xs text-text-secondary leading-relaxed line-clamp-3">{sect.description}</p>
             </div>
-            <div className="flex justify-end gap-2 pt-3 border-t border-[#3e3328]/30">
+            <div className="flex justify-end gap-2 pt-3 border-t border-zinc-800/30">
               <button
                 type="button"
                 onClick={() => onEdit(index)}
-                className="px-2.5 py-1 text-xs text-[#c5a059] hover:bg-[#c5a059]/10 border border-transparent hover:border-[#c5a059]/30 rounded-sm"
+                className="px-2.5 py-1 text-xs text-emerald-500 hover:bg-[#10b981]/10 border border-transparent hover:border-emerald-500/30 rounded-sm"
               >
                 Sửa
               </button>
@@ -1591,37 +1592,37 @@ function SectForm({
     <form onSubmit={handleSubmit} className="space-y-6 text-sm text-text-secondary">
       <div className="grid grid-cols-2 gap-4">
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Mã Tông Môn (ID)*</span>
+          <span className="text-xs font-medium text-zinc-400">Mã Tông Môn (ID)*</span>
           <input
             type="text"
             value={id}
             onChange={(e) => setId(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
             placeholder="duong_gia_bao"
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
             disabled={data.id !== ''}
           />
         </label>
         
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Tên Tông Môn*</span>
+          <span className="text-xs font-medium text-zinc-400">Tên Tông Môn*</span>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Kiếm Vương Các"
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
           />
         </label>
       </div>
 
       <label className="block space-y-2">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Chính/Tà Tông Môn</span>
+        <span className="text-xs font-medium text-zinc-400">Chính/Tà Tông Môn</span>
         <select
           value={alignment}
           onChange={(e) => setAlignment(e.target.value)}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500"
         >
           <option value="righteous">Chính phái (Righteous)</option>
           <option value="neutral">Trung lập (Neutral)</option>
@@ -1630,27 +1631,27 @@ function SectForm({
       </label>
 
       <label className="block space-y-2">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Lịch Sử Tông Môn (Description)</span>
+        <span className="text-xs font-medium text-zinc-400">Lịch Sử Tông Môn (Description)</span>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Mô tả truyền thuyết tông môn, các mật pháp nổi danh..."
           rows={4}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
         />
       </label>
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+      <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 py-2 border border-[#3e3328] text-text-tertiary hover:text-white rounded-sm transition"
+          className="px-6 py-2 border border-zinc-800 text-text-tertiary hover:text-white rounded-sm transition"
         >
           Hủy bỏ
         </button>
         <button
           type="submit"
-          className="px-6 py-2 bg-[#c5a059]/20 hover:bg-[#c5a059]/30 text-[#e5c17b] border border-[#c5a059]/50 rounded-sm transition"
+          className="px-6 py-2 bg-[#10b981]/20 hover:bg-[#10b981]/30 text-emerald-400 border border-emerald-500/50 rounded-sm transition"
         >
           Khai môn lập phái (Save)
         </button>
@@ -1688,28 +1689,28 @@ function EventList({
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-3 border-b border-[#3e3328]/50 pb-3">
+      <div className="flex flex-col gap-3 border-b border-zinc-800/50 pb-3">
         <div className="flex items-center justify-between">
-          <h4 className="font-serif text-md text-[#e5c17b]">Các Sự Kiện Tu Chân Đời Người</h4>
+          <h4 className="font-serif text-md text-emerald-400">Các Sự Kiện Tu Chân Đời Người</h4>
           <div className="flex gap-2">
             <button
               type="button"
               onClick={onFastTest}
-              className="px-3 py-1 text-xs border border-red-500/40 text-red-400 hover:bg-red-500/10 rounded-sm transition font-serif uppercase tracking-wider"
+              className="px-3 py-1 text-xs border border-red-500/40 text-red-400 hover:bg-red-500/10 rounded-sm transition font-serif font-medium"
             >
               ⚡ Chạy Fast Test (Giả lập)
             </button>
             <button
               type="button"
               onClick={onImportJSON}
-              className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#c5a059] hover:bg-[#c5a059]/10 rounded-sm transition font-serif uppercase tracking-wider"
+              className="px-3 py-1 text-xs border border-emerald-500/40 text-emerald-500 hover:bg-[#10b981]/10 rounded-sm transition font-serif font-medium"
             >
               📥 Nhập JSON sự kiện
             </button>
             <button
               type="button"
               onClick={onAdd}
-              className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition font-serif uppercase tracking-wider"
+              className="px-3 py-1 text-xs border border-emerald-500/40 text-emerald-400 hover:bg-[#10b981]/10 rounded-sm transition font-serif font-medium"
             >
               + Dệt thêm sự kiện mới
             </button>
@@ -1718,11 +1719,11 @@ function EventList({
 
         {/* Filter Bar */}
         <div className="flex items-center gap-3">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Lọc theo loại:</span>
+          <span className="text-xs font-medium text-zinc-400">Lọc theo loại:</span>
           <select
             value={filterLocation}
             onChange={(e) => setFilterLocation(e.target.value)}
-            className="bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-1.5 text-[#e5c17b] text-xs outline-none focus:border-[#c5a059]"
+            className="bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-emerald-400 text-xs outline-none focus:border-emerald-500"
           >
             <option value="all">Tất cả (All)</option>
             <option value="sect">Tông môn (Sect)</option>
@@ -1744,14 +1745,14 @@ function EventList({
           const locationLabel = ev.location ? `[${ev.location.toUpperCase()}] ` : '';
           
           return (
-            <div key={ev.id || originalIndex} className="bg-[#14110f] border border-[#3e3328]/60 p-4 space-y-2 flex items-center justify-between gap-6">
+            <div key={ev.id || originalIndex} className="bg-zinc-950 border border-zinc-800/60 p-4 space-y-2 flex items-center justify-between gap-6">
               <div className="flex-1 space-y-1">
                 <div className="flex items-baseline gap-4 flex-wrap">
-                  <h5 className="font-serif text-[#e5c17b] text-base">{locationLabel}{titleText}</h5>
+                  <h5 className="font-serif text-emerald-400 text-base">{locationLabel}{titleText}</h5>
                   <span className="text-[10px] text-text-tertiary">Mã: {ev.id}</span>
-                  <span className="text-[10px] text-[#847764] uppercase tracking-wider">Cảnh Giới: {ev.minRealm} {ev.minSubStageIndex !== undefined ? `(T${ev.minSubStageIndex})` : ''} - {ev.maxRealm || 'Tối Đa'} (Nặng: {ev.weight})</span>
+                  <span className="text-[10px] text-zinc-400 font-medium">Cảnh Giới: {ev.minRealm} {ev.minSubStageIndex !== undefined ? `(T${ev.minSubStageIndex})` : ''} - {ev.maxRealm || 'Tối Đa'} (Nặng: {ev.weight})</span>
                   {ev._sourceFile && (
-                    <span className="text-[9px] bg-[#3e3328]/30 text-[#847764] px-1 border border-[#3e3328]/50 rounded-sm">File: {ev._sourceFile}</span>
+                    <span className="text-[9px] bg-zinc-800/30 text-zinc-400 px-1 border border-zinc-800/50 rounded-sm">File: {ev._sourceFile}</span>
                   )}
                 </div>
                 <p className="text-xs text-text-secondary leading-relaxed line-clamp-2">{descText}</p>
@@ -1766,14 +1767,14 @@ function EventList({
                 <button
                   type="button"
                   onClick={() => onEdit(originalIndex)}
-                  className="px-2.5 py-2 text-xs text-[#c5a059] hover:bg-[#c5a059]/10 border border-[#3e3328] rounded-sm transition"
+                  className="px-2.5 py-2 text-xs text-emerald-500 hover:bg-[#10b981]/10 border border-zinc-800 rounded-sm transition"
                 >
                   Sửa
                 </button>
                 <button
                   type="button"
                   onClick={() => onDelete(originalIndex)}
-                  className="px-2.5 py-2 text-xs text-red-400 hover:bg-red-950/20 border border-[#3e3328] rounded-sm transition"
+                  className="px-2.5 py-2 text-xs text-red-400 hover:bg-red-950/20 border border-zinc-800 rounded-sm transition"
                 >
                   Xóa
                 </button>
@@ -1989,14 +1990,14 @@ function EventForm({
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center bg-[#100e0c]/90 border border-[#3e3328]/40 p-3 rounded-sm">
+      <div className="flex justify-between items-center bg-[#100e0c]/90 border border-zinc-800/40 p-3 rounded-sm">
         <span className="text-xs text-text-tertiary">
-          Chế độ chỉnh sửa: <strong className="text-[#e5c17b]">{isRawJson ? 'MÃ NGUỒN JSON' : 'GIAO DIỆN FORM'}</strong>
+          Chế độ chỉnh sửa: <strong className="text-emerald-400">{isRawJson ? 'MÃ NGUỒN JSON' : 'GIAO DIỆN FORM'}</strong>
         </span>
         <button
           type="button"
           onClick={handleToggleMode}
-          className="px-3 py-1 text-xs border border-[#c5a059]/60 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition font-serif"
+          className="px-3 py-1 text-xs border border-emerald-500/60 text-emerald-400 hover:bg-[#10b981]/10 rounded-sm transition font-serif"
         >
           {isRawJson ? '👁️ Chuyển sang chỉnh Form' : '⚙️ Chuyển sang sửa bằng JSON'}
         </button>
@@ -2006,12 +2007,12 @@ function EventForm({
         {isRawJson ? (
           <div className="space-y-4">
             <label className="block space-y-2">
-              <span className="text-xs uppercase tracking-widest text-[#847764]">Mã JSON của Sự Kiện (Raw JSON Code)*</span>
+              <span className="text-xs font-medium text-zinc-400">Mã JSON của Sự Kiện (Raw JSON Code)*</span>
               <textarea
                 value={rawJsonText}
                 onChange={(e) => setRawJsonText(e.target.value)}
                 rows={18}
-                className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059] font-mono text-xs"
+                className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500 font-mono text-xs"
                 required
               />
             </label>
@@ -2020,24 +2021,24 @@ function EventForm({
           <div className="space-y-6">
             <div className="grid grid-cols-3 gap-4">
               <label className="block space-y-2 col-span-1">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Mã Sự Kiện (Event ID)*</span>
+                <span className="text-xs font-medium text-zinc-400">Mã Sự Kiện (Event ID)*</span>
                 <input
                   type="text"
                   value={id}
                   onChange={(e) => setId(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
                   placeholder="linh_khi_tieu_tan"
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
                   required
                   disabled={data.id !== ''}
                 />
               </label>
 
               <label className="block space-y-2 col-span-1">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Vị Trí (Location)*</span>
+                <span className="text-xs font-medium text-zinc-400">Vị Trí (Location)*</span>
                 <select
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500"
                   required
                 >
                   <option value="sect">Tông môn (Sect)</option>
@@ -2049,7 +2050,7 @@ function EventForm({
               </label>
 
               <div className="block space-y-2 col-span-1">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Gắn Nhãn (Tags)</span>
+                <span className="text-xs font-medium text-zinc-400">Gắn Nhãn (Tags)</span>
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -2057,12 +2058,12 @@ function EventForm({
                     onChange={(e) => setTagInput(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
                     placeholder="Nhập tag rồi ấn Enter..."
-                    className="flex-1 bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-xs text-lunar outline-none focus:border-[#c5a059]"
+                    className="flex-1 bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-xs text-lunar outline-none focus:border-emerald-500"
                   />
                   <button
                     type="button"
                     onClick={addTag}
-                    className="px-3 py-2 border border-[#3e3328] hover:bg-[#c5a059]/10 text-xs rounded-sm transition"
+                    className="px-3 py-2 border border-zinc-800 hover:bg-[#10b981]/10 text-xs rounded-sm transition"
                   >
                     Thêm
                   </button>
@@ -2070,7 +2071,7 @@ function EventForm({
                 {tags.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 pt-1.5">
                     {tags.map((t, idx) => (
-                      <span key={idx} className="inline-flex items-center gap-1 bg-[#3e3328]/20 border border-[#3e3328]/60 text-[#847764] px-1.5 py-0.5 rounded-sm text-[10px]">
+                      <span key={idx} className="inline-flex items-center gap-1 bg-zinc-800/20 border border-zinc-800/60 text-zinc-400 px-1.5 py-0.5 rounded-sm text-[10px]">
                         {t}
                         <button type="button" onClick={() => removeTag(idx)} className="text-red-400 hover:text-white font-bold">×</button>
                       </span>
@@ -2082,61 +2083,61 @@ function EventForm({
 
             <div className="grid grid-cols-2 gap-4">
               <label className="block space-y-2 col-span-1">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Tiêu Đề (Tiếng Việt)*</span>
+                <span className="text-xs font-medium text-zinc-400">Tiêu Đề (Tiếng Việt)*</span>
                 <input
                   type="text"
                   value={titleVi}
                   onChange={(e) => setTitleVi(e.target.value)}
                   placeholder="Linh Khí Khô Kiệt"
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
 
               <label className="block space-y-2 col-span-1">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Tiêu Đề (English)</span>
+                <span className="text-xs font-medium text-zinc-400">Tiêu Đề (English)</span>
                 <input
                   type="text"
                   value={titleEn}
                   onChange={(e) => setTitleEn(e.target.value)}
                   placeholder="Spiritual Qi Depletion"
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
                 />
               </label>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <label className="block space-y-2 col-span-1">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Mô Tả Bối Cảnh (Tiếng Việt)*</span>
+                <span className="text-xs font-medium text-zinc-400">Mô Tả Bối Cảnh (Tiếng Việt)*</span>
                 <textarea
                   value={descriptionVi}
                   onChange={(e) => setDescriptionVi(e.target.value)}
                   placeholder="Mô tả bối cảnh..."
                   rows={3}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
 
               <label className="block space-y-2 col-span-1">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Mô Tả Bối Cảnh (English)</span>
+                <span className="text-xs font-medium text-zinc-400">Mô Tả Bối Cảnh (English)</span>
                 <textarea
                   value={descriptionEn}
                   onChange={(e) => setDescriptionEn(e.target.value)}
                   placeholder="Bilingual English description..."
                   rows={3}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
                 />
               </label>
             </div>
 
             <div className="grid grid-cols-5 gap-4">
               <label className="block space-y-2 col-span-1">
-                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Cảnh Giới (Min)</span>
+                <span className="text-[10px] font-medium text-zinc-400">Cảnh Giới (Min)</span>
                 <select
                   value={minRealm}
                   onChange={(e) => setMinRealm(e.target.value)}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-2 text-lunar outline-none focus:border-emerald-500"
                 >
                   <option value="Mortal">Mortal</option>
                   <option value="Qi Refinement">Qi Refinement</option>
@@ -2152,22 +2153,22 @@ function EventForm({
                 </select>
               </label>
               <label className="block space-y-2 col-span-1">
-                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Tầng (Min)</span>
+                <span className="text-[10px] font-medium text-zinc-400">Tầng (Min)</span>
                 <input
                   type="number"
                   value={minSubStageIndex}
                   onChange={(e) => setMinSubStageIndex(e.target.value)}
                   min={1}
                   placeholder="Bất kỳ"
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-2 text-lunar outline-none focus:border-emerald-500"
                 />
               </label>
               <label className="block space-y-2 col-span-1">
-                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Cảnh Giới (Max)</span>
+                <span className="text-[10px] font-medium text-zinc-400">Cảnh Giới (Max)</span>
                 <select
                   value={maxRealm}
                   onChange={(e) => setMaxRealm(e.target.value)}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-2 text-lunar outline-none focus:border-emerald-500"
                 >
                   <option value="">Không giới hạn</option>
                   <option value="Mortal">Mortal</option>
@@ -2184,36 +2185,36 @@ function EventForm({
                 </select>
               </label>
               <label className="block space-y-2 col-span-1">
-                <span className="text-[10px] uppercase tracking-widest text-[#847764]">Tầng (Max)</span>
+                <span className="text-[10px] font-medium text-zinc-400">Tầng (Max)</span>
                 <input
                   type="number"
                   value={maxSubStageIndex}
                   onChange={(e) => setMaxSubStageIndex(e.target.value)}
                   min={1}
                   placeholder="Bất kỳ"
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-2 text-lunar outline-none focus:border-emerald-500"
                 />
               </label>
               <label className="block space-y-2">
-                <span className="text-xs uppercase tracking-widest text-[#847764]">Trọng Số (Weight)</span>
+                <span className="text-xs font-medium text-zinc-400">Trọng Số (Weight)</span>
                 <input
                   type="number"
                   value={weight}
                   onChange={(e) => setWeight(Number(e.target.value))}
                   min={1}
-                  className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2 text-lunar outline-none focus:border-emerald-500"
                 />
               </label>
             </div>
 
             {/* Choices management */}
-            <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-              <div className="flex items-center justify-between border-b border-[#3e3328]/40 pb-2">
-                <h4 className="font-serif text-[#e5c17b] text-sm uppercase tracking-widest">Các Lựa Chọn Hành Động (Choices)*</h4>
+            <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+              <div className="flex items-center justify-between border-b border-zinc-800/40 pb-2">
+                <h4 className="font-serif text-emerald-400 text-sm font-medium">Các Lựa Chọn Hành Động (Choices)*</h4>
                 <button
                   type="button"
                   onClick={addChoice}
-                  className="text-xs text-[#c5a059] hover:underline"
+                  className="text-xs text-emerald-500 hover:underline"
                 >
                   + Bổ sung lựa chọn
                 </button>
@@ -2221,9 +2222,9 @@ function EventForm({
 
               <div className="space-y-4">
                 {choices.map((choice, choiceIdx) => (
-                  <div key={choiceIdx} className="border border-[#3e3328]/40 p-4 bg-black/40 rounded-sm space-y-3">
+                  <div key={choiceIdx} className="border border-zinc-800/40 p-4 bg-black/40 rounded-sm space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-serif text-[#847764]">Lựa chọn #{choiceIdx + 1}</span>
+                      <span className="text-xs font-serif text-zinc-400">Lựa chọn #{choiceIdx + 1}</span>
                       <button
                         type="button"
                         onClick={() => removeChoice(choiceIdx)}
@@ -2241,7 +2242,7 @@ function EventForm({
                           value={choice.id}
                           onChange={(e) => updateChoice(choiceIdx, 'id', e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
                           placeholder="ngoi_thien_tinh_tu"
-                          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-xs text-lunar outline-none"
+                          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-xs text-lunar outline-none"
                           required
                         />
                       </label>
@@ -2252,7 +2253,7 @@ function EventForm({
                           value={choice.textVi}
                           onChange={(e) => updateChoice(choiceIdx, 'textVi', e.target.value)}
                           placeholder="Chọn ngồi tĩnh tu..."
-                          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-xs text-lunar outline-none"
+                          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-xs text-lunar outline-none"
                           required
                         />
                       </label>
@@ -2263,7 +2264,7 @@ function EventForm({
                           value={choice.textEn}
                           onChange={(e) => updateChoice(choiceIdx, 'textEn', e.target.value)}
                           placeholder="Choose to meditate..."
-                          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-2 py-1 text-xs text-lunar outline-none"
+                          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-2 py-1 text-xs text-lunar outline-none"
                         />
                       </label>
                     </div>
@@ -2272,14 +2273,14 @@ function EventForm({
                     <div className="space-y-2">
                       <div className="flex justify-between items-baseline">
                         <span className="text-[10px] uppercase text-text-tertiary block">Ảnh hưởng thuộc tính sau lựa chọn:</span>
-                        <span className="text-[9px] text-[#847764] italic">Hỗ trợ các thuộc tính phức tạp qua chỉnh sửa JSON.</span>
+                        <span className="text-[9px] text-zinc-400 italic">Hỗ trợ các thuộc tính phức tạp qua chỉnh sửa JSON.</span>
                       </div>
                       <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                         {AVAILABLE_STATS.map((stat) => {
                           const val = choice.effects[stat] !== undefined ? choice.effects[stat] : 0;
                           return (
-                            <label key={stat} className="block text-center bg-[#14110f] border border-[#3e3328]/60 p-1.5 rounded-sm">
-                              <span className="text-[9px] uppercase tracking-tighter text-[#847764] block truncate">{stat}</span>
+                            <label key={stat} className="block text-center bg-zinc-950 border border-zinc-800/60 p-1.5 rounded-sm">
+                              <span className="text-[9px] uppercase tracking-tighter text-zinc-400 block truncate">{stat}</span>
                               <input
                                 type="number"
                                 value={val}
@@ -2298,17 +2299,17 @@ function EventForm({
           </div>
         )}
 
-        <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+        <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
           <button
             type="button"
             onClick={onCancel}
-            className="px-6 py-2 border border-[#3e3328] text-text-tertiary hover:text-white rounded-sm transition"
+            className="px-6 py-2 border border-zinc-800 text-text-tertiary hover:text-white rounded-sm transition"
           >
             Hủy bỏ
           </button>
           <button
             type="submit"
-            className="px-6 py-2 bg-[#c5a059]/20 hover:bg-[#c5a059]/30 text-[#e5c17b] border border-[#c5a059]/50 rounded-sm transition font-serif uppercase tracking-widest text-xs"
+            className="px-6 py-2 bg-[#10b981]/20 hover:bg-[#10b981]/30 text-emerald-400 border border-emerald-500/50 rounded-sm transition font-serif font-medium text-xs"
           >
             Mở vận mệnh (Save)
           </button>
@@ -2338,8 +2339,8 @@ function EventImportForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 text-sm text-text-secondary animate-fade-in">
-      <div className="flex items-center justify-between border-b border-[#3e3328]/40 pb-2">
-        <h4 className="font-serif text-[#e5c17b] text-md">📥 Nhập Nhiều Sự Kiện Bằng JSON (Batch Import)</h4>
+      <div className="flex items-center justify-between border-b border-zinc-800/40 pb-2">
+        <h4 className="font-serif text-emerald-400 text-md">📥 Nhập Nhiều Sự Kiện Bằng JSON (Batch Import)</h4>
         <button
           type="button"
           onClick={onCancel}
@@ -2351,7 +2352,7 @@ function EventImportForm({
 
       <p className="text-xs text-text-tertiary leading-relaxed">
         Nhập một đối tượng sự kiện đơn lẻ hoặc mảng các đối tượng sự kiện theo định dạng JSON.
-        Bất kỳ sự kiện trùng ID hiện có sẽ tự động bị ghi đè (Cập nhật), ID mới sẽ được tạo thêm vào các tệp phân loại tương ứng dựa trên thuộc tính <code className="text-[#e5c17b]">location</code>.
+        Bất kỳ sự kiện trùng ID hiện có sẽ tự động bị ghi đè (Cập nhật), ID mới sẽ được tạo thêm vào các tệp phân loại tương ứng dựa trên thuộc tính <code className="text-emerald-400">location</code>.
       </p>
 
       <textarea
@@ -2359,21 +2360,21 @@ function EventImportForm({
         onChange={(e) => setJsonText(e.target.value)}
         placeholder={`[\n  {\n    "id": "my_custom_event",\n    "location": "city",\n    "tags": ["city", "market"],\n    "title": {\n      "en": "Custom Event",\n      "vi": "Sự kiện tự chế"\n    },\n    "description": {\n      "en": "A mysterious merchant offers you a map...",\n      "vi": "Một thương nhân bí ẩn đưa cho bạn tấm bản đồ..."\n    },\n    "minRealm": "Mortal",\n    "weight": 2,\n    "choices": [\n      {\n        "id": "accept_map",\n        "text": {\n          "en": "Accept it.",\n          "vi": "Nhận bản đồ."\n        },\n        "effects": {\n          "luck": 2,\n          "money": -50\n        }\n      }\n    ]\n  }\n]`}
         rows={15}
-        className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-3 text-lunar outline-none focus:border-[#c5a059] font-mono text-xs"
+        className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-3 text-lunar outline-none focus:border-emerald-500 font-mono text-xs"
         required
       />
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+      <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 py-2 border border-[#3e3328] text-text-tertiary hover:text-white rounded-sm transition"
+          className="px-6 py-2 border border-zinc-800 text-text-tertiary hover:text-white rounded-sm transition"
         >
           Hủy bỏ
         </button>
         <button
           type="submit"
-          className="px-6 py-2 border border-[#c5a059] bg-[#c5a059]/15 text-[#e5c17b] hover:bg-[#c5a059]/25 hover:text-white rounded-sm transition font-serif uppercase tracking-widest text-xs"
+          className="px-6 py-2 border border-emerald-500 bg-[#10b981]/15 text-emerald-400 hover:bg-[#10b981]/25 hover:text-white rounded-sm transition font-serif font-medium text-xs"
         >
           Cập nhật & Thêm mới
         </button>
@@ -2410,84 +2411,84 @@ function TimeGearConfig({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-md text-sm text-text-secondary animate-fade-in">
-      <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">
+      <h4 className="font-serif text-emerald-400 text-base font-medium border-b border-zinc-800/40 pb-2">
         Cấu hình Bánh Răng Thời Gian (Time Gear Settings)
       </h4>
       
       <label className="block space-y-2 text-left">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Tần Suất Xoay (Giây / Tháng)*</span>
+        <span className="text-xs font-medium text-zinc-400">Tần Suất Xoay (Giây / Tháng)*</span>
         <input
           type="number"
           value={seconds}
           onChange={(e) => setSeconds(Math.max(1, Number(e.target.value)))}
           min={1}
           max={3600}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           required
         />
         <span className="block text-xs text-text-tertiary">Thời gian đếm ngược giữa mỗi tháng tu luyện. Mặc định là 10 giây.</span>
       </label>
 
       <label className="block space-y-2 text-left">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Tỷ Lệ Kích Hoạt Sự Kiện (1 / X)*</span>
+        <span className="text-xs font-medium text-zinc-400">Tỷ Lệ Kích Hoạt Sự Kiện (1 / X)*</span>
         <input
           type="number"
           value={denom}
           onChange={(e) => setDenom(Math.max(1, Number(e.target.value)))}
           min={1}
           max={1000}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           required
         />
         <span className="block text-xs text-text-tertiary">Mỗi tháng sẽ có tỷ lệ 1/X cơ hội kích hoạt kỳ ngộ (ví dụ: X = 12 tức tỷ lệ 1/12). Mặc định là 12.</span>
       </label>
 
       <label className="block space-y-2 text-left">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Linh Thạch Phúc Lợi Nhập Môn*</span>
+        <span className="text-xs font-medium text-zinc-400">Linh Thạch Phúc Lợi Nhập Môn*</span>
         <input
           type="number"
           value={startingStones}
           onChange={(e) => setStartingStones(Math.max(0, Number(e.target.value)))}
           min={0}
           max={100000}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           required
         />
         <span className="block text-xs text-text-tertiary">Số lượng hạ phẩm linh thạch ban tặng cho đệ tử mới gia nhập. Mặc định là 10.</span>
       </label>
 
       <label className="block space-y-2 text-left">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Tiêu Hao HP Khi Di Chuyển*</span>
+        <span className="text-xs font-medium text-zinc-400">Tiêu Hao HP Khi Di Chuyển*</span>
         <input
           type="number"
           value={travelHp}
           onChange={(e) => setTravelHp(Math.max(0, Number(e.target.value)))}
           min={0}
           max={100}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           required
         />
         <span className="block text-xs text-text-tertiary">Mỗi lần di chuyển giữa các địa điểm người chơi mất X lượng HP. Mặc định là 2.</span>
       </label>
 
       <label className="block space-y-2 text-left">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Tiêu Hao Linh Thạch Khi Di Chuyển*</span>
+        <span className="text-xs font-medium text-zinc-400">Tiêu Hao Linh Thạch Khi Di Chuyển*</span>
         <input
           type="number"
           value={travelStones}
           onChange={(e) => setTravelStones(Math.max(0, Number(e.target.value)))}
           min={0}
           max={10000}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           required
         />
         <span className="block text-xs text-text-tertiary">Mỗi lần di chuyển giữa các địa điểm người chơi tốn X hạ phẩm linh thạch. Mặc định là 10.</span>
       </label>
 
-      <div className="pt-4 border-t border-[#3e3328]/50 text-left">
+      <div className="pt-4 border-t border-zinc-800/50 text-left">
         <button
           type="submit"
-          className="px-6 py-2 bg-[#c5a059]/20 hover:bg-[#c5a059]/30 text-[#e5c17b] border border-[#c5a059]/50 rounded-sm transition font-serif"
+          className="px-6 py-2 bg-[#10b981]/20 hover:bg-[#10b981]/30 text-emerald-400 border border-emerald-500/50 rounded-sm transition font-serif"
         >
           Lưu cấu hình thời gian
         </button>
@@ -2511,15 +2512,15 @@ function ScriptureList({
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between border-b border-[#3e3328]/50 pb-2">
+      <div className="flex items-center justify-between border-b border-zinc-800/50 pb-2">
         <div className="text-left">
-          <h4 className="font-serif text-md text-[#e5c17b]">Tàng Kinh Các (32 Bộ Tâm Pháp Sơ Cấp Linh Căn)</h4>
+          <h4 className="font-serif text-md text-emerald-400">Tàng Kinh Các (32 Bộ Tâm Pháp Sơ Cấp Linh Căn)</h4>
           <p className="text-xs text-text-tertiary">Các quyển tâm pháp này giới hạn tu luyện từ Luyện Khí tầng 1 đến 12.</p>
         </div>
         <button
           type="button"
           onClick={onAdd}
-          className="px-3 py-1 text-xs border border-[#c5a059]/40 text-[#e5c17b] hover:bg-[#c5a059]/10 rounded-sm transition font-serif"
+          className="px-3 py-1 text-xs border border-emerald-500/40 text-emerald-400 hover:bg-[#10b981]/10 rounded-sm transition font-serif"
         >
           + Thêm tâm pháp linh căn
         </button>
@@ -2527,37 +2528,37 @@ function ScriptureList({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {list.map((t: any, index: number) => (
-          <div key={t.id || index} className="bg-[#14110f] border border-[#3e3328]/60 p-4 rounded-sm flex flex-col justify-between text-left relative overflow-hidden group">
+          <div key={t.id || index} className="bg-zinc-950 border border-zinc-800/60 p-4 rounded-sm flex flex-col justify-between text-left relative overflow-hidden group">
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <img
                   src={t.image || '/images/sects/book_metal.png'}
                   alt={t.label}
-                  className="w-12 h-12 rounded-sm border border-[#3e3328] object-cover bg-black/40 group-hover:scale-105 transition-transform duration-300 animate-fade-in"
+                  className="w-12 h-12 rounded-sm border border-zinc-800 object-cover bg-black/40 group-hover:scale-105 transition-transform duration-300 animate-fade-in"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = '/images/sects/book_metal.png';
                   }}
                 />
                 <div className="min-w-0">
-                  <h5 className="font-serif text-[#e5c17b] text-sm font-bold truncate">{t.label}</h5>
+                  <h5 className="font-serif text-emerald-400 text-sm font-bold truncate">{t.label}</h5>
                   <div className="flex flex-wrap gap-1 mt-1 text-[9px] uppercase font-mono">
-                    <span className="px-1.5 py-0.5 rounded-sm bg-[#c5a059]/10 text-[#e5c17b]">{t.sect}</span>
+                    <span className="px-1.5 py-0.5 rounded-sm bg-[#10b981]/10 text-emerald-400">{t.sect}</span>
                     <span className="px-1.5 py-0.5 rounded-sm bg-blue-950/40 text-blue-400">{t.spiritual_root}</span>
                   </div>
                 </div>
               </div>
               <p className="text-xs text-text-secondary leading-relaxed line-clamp-3">{t.description}</p>
-              <div className="text-[10px] text-[#847764] space-y-0.5 font-serif border-t border-[#3e3328]/30 pt-1.5">
+              <div className="text-[10px] text-zinc-400 space-y-0.5 font-serif border-t border-zinc-800/30 pt-1.5">
                 <div>Chiêu thức: <span className="text-text-secondary font-sans">{t.action?.name}</span> (Tốn: {t.action?.costs?.qi || 0} Qi)</div>
                 <div>Giới hạn tu vi: <span className="text-text-secondary font-sans">{t.max_cultivation_level || 26.0}</span> (Tầng 12)</div>
                 <div>Hệ số Tâm Pháp (M_manual): <span className="text-text-secondary font-sans">{t.m_manual || 1.0}x</span></div>
               </div>
             </div>
-            <div className="flex justify-end gap-2 pt-3 border-t border-[#3e3328]/30 mt-3">
+            <div className="flex justify-end gap-2 pt-3 border-t border-zinc-800/30 mt-3">
               <button
                 type="button"
                 onClick={() => onEdit(index)}
-                className="px-2.5 py-1 text-xs text-[#c5a059] hover:bg-[#c5a059]/10 border border-transparent hover:border-[#c5a059]/30 rounded-sm font-serif"
+                className="px-2.5 py-1 text-xs text-emerald-500 hover:bg-[#10b981]/10 border border-transparent hover:border-emerald-500/30 rounded-sm font-serif"
               >
                 Sửa
               </button>
@@ -2654,34 +2655,34 @@ function ScriptureForm({
     <form onSubmit={handleSubmit} className="space-y-6 text-sm text-text-secondary text-left">
       <div className="grid grid-cols-3 gap-4">
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Mã Định Danh (ID)*</span>
+          <span className="text-xs font-medium text-zinc-400">Mã Định Danh (ID)*</span>
           <input
             type="text"
             value={id}
             onChange={(e) => setId(e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, ''))}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
             disabled={data.id !== '' && data.id.startsWith('manual_')}
           />
         </label>
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Tên Tâm Pháp Sơ Cấp*</span>
+          <span className="text-xs font-medium text-zinc-400">Tên Tâm Pháp Sơ Cấp*</span>
           <input
             type="text"
             value={label}
             onChange={(e) => setLabel(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
           />
         </label>
         <label className="block space-y-2 col-span-1">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Hệ số hiệu quả (M_manual)*</span>
+          <span className="text-xs font-medium text-zinc-400">Hệ số hiệu quả (M_manual)*</span>
           <input
             type="number"
             step="0.05"
             value={mManual}
             onChange={(e) => setMManual(Number(e.target.value))}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
           />
         </label>
@@ -2689,94 +2690,94 @@ function ScriptureForm({
 
       <div className="grid grid-cols-3 gap-4">
         <label className="block space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Môn Phái Độc Quyền</span>
+          <span className="text-xs font-medium text-zinc-400">Môn Phái Độc Quyền</span>
           <select
             value={sect}
             onChange={(e) => setSect(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           >
             {sectsList.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </label>
         <label className="block space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Yêu Cầu Linh Căn</span>
+          <span className="text-xs font-medium text-zinc-400">Yêu Cầu Linh Căn</span>
           <select
             value={root}
             onChange={(e) => handleRootChange(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
           >
             {rootsList.map(r => <option key={r} value={r}>{r}</option>)}
           </select>
         </label>
         <label className="block space-y-2">
-          <span className="text-xs uppercase tracking-widest text-[#847764]">Giới Hạn Tu Vi*</span>
+          <span className="text-xs font-medium text-zinc-400">Giới Hạn Tu Vi*</span>
           <input
             type="number"
             step="0.1"
             value={maxCultivation}
             onChange={(e) => setMaxCultivation(Number(e.target.value))}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
             required
           />
         </label>
       </div>
 
       <label className="block space-y-2">
-        <span className="text-xs uppercase tracking-widest text-[#847764]">Mô Tả Tâm Pháp Sơ Cấp</span>
+        <span className="text-xs font-medium text-zinc-400">Mô Tả Tâm Pháp Sơ Cấp</span>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={2}
-          className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-[#c5a059]"
+          className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2.5 text-lunar outline-none focus:border-emerald-500"
         />
       </label>
 
-      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-        <h5 className="font-serif text-[#e5c17b] text-sm uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">Chiêu thức trong đấu pháp</h5>
+      <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h5 className="font-serif text-emerald-400 text-sm font-medium border-b border-zinc-800/40 pb-2">Chiêu thức trong đấu pháp</h5>
         <div className="grid grid-cols-2 gap-4">
           <label className="block space-y-2">
-            <span className="text-[11px] uppercase tracking-widest text-[#847764]">Tên Chiêu Thức*</span>
+            <span className="text-[11px] font-medium text-zinc-400">Tên Chiêu Thức*</span>
             <input
               type="text"
               value={actionName}
               onChange={(e) => setActionName(e.target.value)}
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none"
               required
             />
           </label>
           <label className="block space-y-2">
-            <span className="text-[11px] uppercase tracking-widest text-[#847764]">Linh Lực Tiêu Hao (Qi Cost)</span>
+            <span className="text-[11px] font-medium text-zinc-400">Linh Lực Tiêu Hao (Qi Cost)</span>
             <input
               type="number"
               value={qiCost}
               onChange={(e) => setQiCost(Number(e.target.value))}
               min={0}
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none"
             />
           </label>
         </div>
         <label className="block space-y-2">
-          <span className="text-[11px] uppercase tracking-widest text-[#847764]">Lời Dẫn Miêu Tả Kỹ Năng</span>
+          <span className="text-[11px] font-medium text-zinc-400">Lời Dẫn Miêu Tả Kỹ Năng</span>
           <input
             type="text"
             value={narrativeTemplate}
             onChange={(e) => setNarrativeTemplate(e.target.value)}
-            className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-3 py-2 text-lunar outline-none"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-2 text-lunar outline-none"
           />
         </label>
       </div>
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+      <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
         <button
           type="button"
           onClick={onCancel}
-          className="px-6 py-2 bg-black/40 hover:bg-black/60 text-text-secondary border border-[#3e3328] rounded-sm transition font-serif"
+          className="px-6 py-2 bg-black/40 hover:bg-black/60 text-text-secondary border border-zinc-800 rounded-sm transition font-serif"
         >
           Hủy bỏ (Cancel)
         </button>
         <button
           type="submit"
-          className="px-6 py-2 bg-[#c5a059]/20 hover:bg-[#c5a059]/30 text-[#e5c17b] border border-[#c5a059]/50 rounded-sm transition font-serif"
+          className="px-6 py-2 bg-[#10b981]/20 hover:bg-[#10b981]/30 text-emerald-400 border border-emerald-500/50 rounded-sm transition font-serif"
         >
           Khắc Lên Thạch Phiến (Save)
         </button>
@@ -2794,8 +2795,8 @@ function NpcRelationsView({
 }) {
   if (!game || !onChangeGame) {
     return (
-      <div className="text-center p-8 border border-[#3e3328]/60 bg-[#14110f]/20 rounded-sm">
-        <p className="font-serif text-[#847764] italic">Không tìm thấy thông tin kiếp sống hiện tại. Hãy bắt đầu hoặc hồi sinh kiếp mới để tải Lược đồ Nhân Mạch.</p>
+      <div className="text-center p-8 border border-zinc-800/60 bg-zinc-950/20 rounded-sm">
+        <p className="font-serif text-zinc-400 italic">Không tìm thấy thông tin kiếp sống hiện tại. Hãy bắt đầu hoặc hồi sinh kiếp mới để tải Lược đồ Nhân Mạch.</p>
       </div>
     );
   }
@@ -2821,10 +2822,10 @@ function NpcRelationsView({
 
   const getFavorabilityBadgeColor = (val: number) => {
     if (val >= 60) return 'text-emerald-400 bg-emerald-950/20 border-emerald-800/40';
-    if (val >= 20) return 'text-[#e5c17b] bg-[#c5a059]/10 border-[#c5a059]/30';
+    if (val >= 20) return 'text-emerald-400 bg-[#10b981]/10 border-emerald-500/30';
     if (val <= -60) return 'text-red-400 bg-red-950/25 border-red-900/40';
     if (val <= -20) return 'text-orange-400 bg-orange-950/20 border-orange-900/40';
-    return 'text-text-tertiary bg-black/35 border-[#3e3328]/60';
+    return 'text-text-tertiary bg-black/35 border-zinc-800/60';
   };
 
   const npcs = [
@@ -2907,22 +2908,22 @@ function NpcRelationsView({
     const badgeColor = getFavorabilityBadgeColor(val);
 
     const borderStyle = val >= 30 
-      ? 'border-[#c5a059]/60 shadow-[0_0_12px_rgba(197,160,89,0.12)]' 
+      ? 'border-emerald-500/60 shadow-[0_0_12px_rgba(197,160,89,0.12)]' 
       : val <= -30 
         ? 'border-red-950/60 shadow-[0_0_12px_rgba(239,68,68,0.1)]' 
-        : 'border-[#3e3328]/60';
+        : 'border-zinc-800/60';
 
     return (
       <div 
         key={npc.id} 
-        className={`bg-[#0c0a08]/95 border ${borderStyle} p-4 rounded-sm flex flex-col space-y-3 hover:scale-[1.01] transition-all duration-300`}
+        className={`bg-zinc-950/95 border ${borderStyle} p-4 rounded-sm flex flex-col space-y-3 hover:scale-[1.01] transition-all duration-300`}
       >
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-2.5">
             <span className="text-2xl">{npc.avatar}</span>
             <div>
-              <h5 className="font-serif text-[#e5c17b] text-base font-bold">{npc.name}</h5>
-              <p className="text-[10px] text-text-tertiary uppercase tracking-wider font-semibold">{npc.role} • {npc.sect}</p>
+              <h5 className="font-serif text-emerald-400 text-base font-bold">{npc.name}</h5>
+              <p className="text-[10px] text-text-tertiary font-medium font-semibold">{npc.role} • {npc.sect}</p>
             </div>
           </div>
           <span className={`text-[10px] font-bold px-2 py-0.5 border rounded-sm font-serif ${badgeColor}`}>
@@ -2930,7 +2931,7 @@ function NpcRelationsView({
           </span>
         </div>
 
-        <p className="text-xs text-text-secondary leading-relaxed bg-black/20 p-2 border border-[#3e3328]/35 rounded-sm">
+        <p className="text-xs text-text-secondary leading-relaxed bg-black/20 p-2 border border-zinc-800/35 rounded-sm">
           {npc.desc}
         </p>
 
@@ -2941,10 +2942,10 @@ function NpcRelationsView({
         )}
 
         {/* Sliders and Inputs */}
-        <div className="space-y-2 pt-2 border-t border-[#3e3328]/30">
-          <div className="flex items-center justify-between text-[11px] uppercase tracking-wider text-text-tertiary">
+        <div className="space-y-2 pt-2 border-t border-zinc-800/30">
+          <div className="flex items-center justify-between text-[11px] font-medium text-text-tertiary">
             <span>Thiết lập Hảo Cảm</span>
-            <span className="text-[#e5c17b] font-mono font-bold">{val}</span>
+            <span className="text-emerald-400 font-mono font-bold">{val}</span>
           </div>
           
           <div className="flex items-center gap-3">
@@ -2954,7 +2955,7 @@ function NpcRelationsView({
               max="100"
               value={val}
               onChange={(e) => handleFavorabilityChange(npc.id, Number(e.target.value))}
-              className="flex-1 accent-[#c5a059] h-1 bg-black rounded-lg cursor-pointer"
+              className="flex-1 accent-[#10b981] h-1 bg-black rounded-lg cursor-pointer"
             />
             <input
               type="number"
@@ -2967,14 +2968,14 @@ function NpcRelationsView({
                 if (n < -100) n = -100;
                 handleFavorabilityChange(npc.id, n);
               }}
-              className="w-14 bg-[#14110f] border border-[#3e3328] rounded-sm text-center py-0.5 text-xs font-mono text-[#e5c17b]"
+              className="w-14 bg-zinc-950 border border-zinc-800 rounded-sm text-center py-0.5 text-xs font-mono text-emerald-400"
             />
           </div>
         </div>
 
         {/* NPC Events Triggers */}
-        <div className="pt-2 border-t border-[#3e3328]/30 space-y-1.5">
-          <h6 className="text-[10px] uppercase text-[#847764] font-bold tracking-wider">Trạng thái sự kiện liên quan:</h6>
+        <div className="pt-2 border-t border-zinc-800/30 space-y-1.5">
+          <h6 className="text-[10px] uppercase text-zinc-400 font-bold tracking-wider">Trạng thái sự kiện liên quan:</h6>
           <div className="space-y-1 text-[11px]">
             {npc.events.map((evt, idx) => {
               let isTriggered = false;
@@ -2987,12 +2988,12 @@ function NpcRelationsView({
                   key={idx} 
                   className={`p-1.5 rounded-sm border ${
                     isTriggered 
-                      ? 'border-[#c5a059]/45 bg-[#c5a059]/10 text-white font-medium shadow-[0_0_8px_rgba(197,160,89,0.05)]' 
+                      ? 'border-emerald-500/45 bg-[#10b981]/10 text-white font-medium shadow-[0_0_8px_rgba(197,160,89,0.05)]' 
                       : 'border-transparent text-text-tertiary'
                   }`}
                 >
                   <div className="flex justify-between font-serif text-[11px]">
-                    <span className={isTriggered ? 'text-[#e5c17b]' : ''}>{evt.name}</span>
+                    <span className={isTriggered ? 'text-emerald-400' : ''}>{evt.name}</span>
                     <span className="text-[10px] scale-90">{evt.trigger}</span>
                   </div>
                   <p className="text-[10px] leading-tight text-text-secondary mt-0.5">{evt.desc}</p>
@@ -3013,10 +3014,10 @@ function NpcRelationsView({
 
   return (
     <div className="space-y-6 animate-fade-in text-sm text-text-secondary">
-      <div className="border border-[#c5a059]/35 bg-[#14110f]/40 p-4 rounded-sm flex items-center gap-3">
+      <div className="border border-emerald-500/35 bg-zinc-950/40 p-4 rounded-sm flex items-center gap-3">
         <span className="text-xl">👥</span>
         <div>
-          <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-wider font-semibold">Lược Đồ Nhân Mạch Môn Phái</h4>
+          <h4 className="font-serif text-emerald-400 text-base font-medium font-semibold">Lược Đồ Nhân Mạch Môn Phái</h4>
           <p className="text-xs text-text-secondary leading-relaxed">
             Theo dõi và thử nghiệm hảo cảm NPC. Hảo cảm ảnh hưởng trực tiếp đến chuỗi sự kiện môn phái hàng tháng và các cuộc đột kích thù địch/hữu hảo.
             Khi hảo cảm NPC phụ (Tạ Tiêu) thay đổi, hảo cảm của Chấp sự (Tạ Trần) sẽ thay đổi liên đới theo hệ số phản ánh quan hệ gia tộc.
@@ -3027,16 +3028,16 @@ function NpcRelationsView({
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
         {/* Column 1: Kiếm Tông (Contains relation line) */}
         <div className="md:col-span-1 flex flex-col space-y-4">
-          <div className="border-b border-[#3e3328] pb-1.5 mb-1 text-center">
-            <h5 className="font-serif text-[#e5c17b] text-sm uppercase tracking-widest font-bold">⚔️ Kiếm Tông</h5>
+          <div className="border-b border-zinc-800 pb-1.5 mb-1 text-center">
+            <h5 className="font-serif text-emerald-400 text-sm font-medium font-bold">⚔️ Kiếm Tông</h5>
           </div>
           
           {renderNpcCard(chapSuKiemTong)}
 
           {/* Relation Line Representation */}
           <div className="flex flex-col items-center py-2 relative">
-            <div className="w-0.5 h-10 border-l border-dashed border-[#c5a059]/65"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0c0a08] border border-[#c5a059]/40 px-2 py-0.5 rounded-sm text-[8px] uppercase tracking-wider text-[#e5c17b] font-serif font-bold text-center whitespace-nowrap shadow-md">
+            <div className="w-0.5 h-10 border-l border-dashed border-emerald-500/65"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-950 border border-emerald-500/40 px-2 py-0.5 rounded-sm text-[8px] font-medium text-emerald-400 font-serif font-bold text-center whitespace-nowrap shadow-md">
               Bác Cháu (Liên Đới)
             </div>
           </div>
@@ -3046,24 +3047,24 @@ function NpcRelationsView({
 
         {/* Column 2: Đan Tông */}
         <div className="flex flex-col space-y-4">
-          <div className="border-b border-[#3e3328] pb-1.5 mb-1 text-center">
-            <h5 className="font-serif text-[#e5c17b] text-sm uppercase tracking-widest font-bold">🧪 Đan Tông</h5>
+          <div className="border-b border-zinc-800 pb-1.5 mb-1 text-center">
+            <h5 className="font-serif text-emerald-400 text-sm font-medium font-bold">🧪 Đan Tông</h5>
           </div>
           {renderNpcCard(danTong)}
         </div>
 
         {/* Column 3: Ma Đạo */}
         <div className="flex flex-col space-y-4">
-          <div className="border-b border-[#3e3328] pb-1.5 mb-1 text-center">
-            <h5 className="font-serif text-[#e5c17b] text-sm uppercase tracking-widest font-bold">🔮 Ma Đạo</h5>
+          <div className="border-b border-zinc-800 pb-1.5 mb-1 text-center">
+            <h5 className="font-serif text-emerald-400 text-sm font-medium font-bold">🔮 Ma Đạo</h5>
           </div>
           {renderNpcCard(maDao)}
         </div>
 
         {/* Column 4: Huyết Tông */}
         <div className="flex flex-col space-y-4">
-          <div className="border-b border-[#3e3328] pb-1.5 mb-1 text-center">
-            <h5 className="font-serif text-[#e5c17b] text-sm uppercase tracking-widest font-bold">🩸 Huyết Tông</h5>
+          <div className="border-b border-zinc-800 pb-1.5 mb-1 text-center">
+            <h5 className="font-serif text-emerald-400 text-sm font-medium font-bold">🩸 Huyết Tông</h5>
           </div>
           {renderNpcCard(huyetTong)}
         </div>
@@ -3158,97 +3159,97 @@ function CultivationConfig({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8 text-sm text-text-secondary pb-6 animate-fade-in">
-      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-        <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">🌱 Tốc độ Tu luyện Cơ bản (Base Gain rates)</h4>
+      <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h4 className="font-serif text-emerald-400 text-base font-medium border-b border-zinc-800/40 pb-2">🌱 Tốc độ Tu luyện Cơ bản (Base Gain rates)</h4>
         <div className="grid grid-cols-3 gap-4">
           <label className="block space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#847764]">Hấp thụ Thụ động (Passive / tháng)</span>
+            <span className="text-xs font-medium text-zinc-400">Hấp thụ Thụ động (Passive / tháng)</span>
             <input
               type="number"
               step="0.001"
               value={passive}
               onChange={(e) => setPassive(Number(e.target.value))}
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2 text-lunar outline-none focus:border-emerald-500"
               required
             />
           </label>
           <label className="block space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#847764]">Bế quan Tĩnh tu (Active / tháng)</span>
+            <span className="text-xs font-medium text-zinc-400">Bế quan Tĩnh tu (Active / tháng)</span>
             <input
               type="number"
               step="0.01"
               value={activeRetreat}
               onChange={(e) => setActiveRetreat(Number(e.target.value))}
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2 text-lunar outline-none focus:border-emerald-500"
               required
             />
           </label>
           <label className="block space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#847764]">Trung bình năm có nhiệm vụ (baseline)</span>
+            <span className="text-xs font-medium text-zinc-400">Trung bình năm có nhiệm vụ (baseline)</span>
             <input
               type="number"
               step="0.01"
               value={annualAverage}
               onChange={(e) => setAnnualAverage(Number(e.target.value))}
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2 text-lunar outline-none focus:border-emerald-500"
               required
             />
           </label>
         </div>
       </div>
 
-      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-        <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">⚡ Quy tắc Tăng trưởng Cảnh giới (Cultivation Progression)</h4>
+      <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h4 className="font-serif text-emerald-400 text-base font-medium border-b border-zinc-800/40 pb-2">⚡ Quy tắc Tăng trưởng Cảnh giới (Cultivation Progression)</h4>
         <div className="grid grid-cols-2 gap-4">
           <label className="block space-y-2">
-            <span className="text-xs uppercase tracking-widest text-[#847764]">Hệ số nhân tu vi Luyện Khí (x - mỗi tầng sau hơn tầng trước)</span>
+            <span className="text-xs font-medium text-zinc-400">Hệ số nhân tu vi Luyện Khí (x - mỗi tầng sau hơn tầng trước)</span>
             <input
               type="number"
               step="0.05"
               value={qiRefinementMultiplier}
               onChange={(e) => setQiRefinementMultiplier(Number(e.target.value))}
-              className="w-full bg-[#14110f] border border-[#3e3328] rounded-sm px-4 py-2 text-lunar outline-none focus:border-[#c5a059]"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-4 py-2 text-lunar outline-none focus:border-emerald-500"
               required
             />
           </label>
         </div>
       </div>
 
-      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-        <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">🌱 Hệ số Tư chất Linh Căn (Spiritual Roots multipliers)</h4>
+      <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h4 className="font-serif text-emerald-400 text-base font-medium border-b border-zinc-800/40 pb-2">🌱 Hệ số Tư chất Linh Căn (Spiritual Roots multipliers)</h4>
         <div className="space-y-4">
           {roots.map((r, index) => (
-            <div key={r.id} className="grid grid-cols-4 gap-4 items-center bg-[#14110f] p-3 border border-[#3e3328]/40 rounded-sm">
-              <span className="font-serif text-[#e5c17b] font-semibold text-sm">{r.name} ({r.id})</span>
+            <div key={r.id} className="grid grid-cols-4 gap-4 items-center bg-zinc-950 p-3 border border-zinc-800/40 rounded-sm">
+              <span className="font-serif text-emerald-400 font-semibold text-sm">{r.name} ({r.id})</span>
               <label className="block space-y-1">
-                <span className="text-[10px] uppercase text-[#847764]">Hệ số tốc độ (Multiplier)</span>
+                <span className="text-[10px] uppercase text-zinc-400">Hệ số tốc độ (Multiplier)</span>
                 <input
                   type="number"
                   step="0.1"
                   value={r.multiplier}
                   onChange={(e) => handleRootChange(index, 'multiplier', Number(e.target.value))}
-                  className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
               <label className="block space-y-1">
-                <span className="text-[10px] uppercase text-[#847764]">Tăng Sát thương (%)</span>
+                <span className="text-[10px] uppercase text-zinc-400">Tăng Sát thương (%)</span>
                 <input
                   type="number"
                   value={r.damage_bonus_pct}
                   onChange={(e) => handleRootChange(index, 'damage_bonus_pct', Number(e.target.value))}
-                  className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
               {r.defense_bonus_pct !== undefined ? (
                 <label className="block space-y-1">
-                  <span className="text-[10px] uppercase text-[#847764]">Tăng Kháng phòng thủ (%)</span>
+                  <span className="text-[10px] uppercase text-zinc-400">Tăng Kháng phòng thủ (%)</span>
                   <input
                     type="number"
                     value={r.defense_bonus_pct}
                     onChange={(e) => handleRootChange(index, 'defense_bonus_pct', Number(e.target.value))}
-                    className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                     required
                   />
                 </label>
@@ -3260,31 +3261,31 @@ function CultivationConfig({
         </div>
       </div>
 
-      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-        <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">📖 Phẩm cấp Tâm Pháp & Giới hạn bình sinh (Manual Tiers & Caps)</h4>
+      <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h4 className="font-serif text-emerald-400 text-base font-medium border-b border-zinc-800/40 pb-2">📖 Phẩm cấp Tâm Pháp & Giới hạn bình sinh (Manual Tiers & Caps)</h4>
         <div className="space-y-4">
           {manuals.map((m, index) => (
-            <div key={m.tier} className="grid grid-cols-3 gap-4 items-center bg-[#14110f] p-3 border border-[#3e3328]/40 rounded-sm">
-              <span className="font-serif text-[#e5c17b] font-semibold text-sm">{m.label} ({m.tier})</span>
+            <div key={m.tier} className="grid grid-cols-3 gap-4 items-center bg-zinc-950 p-3 border border-zinc-800/40 rounded-sm">
+              <span className="font-serif text-emerald-400 font-semibold text-sm">{m.label} ({m.tier})</span>
               <label className="block space-y-1">
-                <span className="text-[10px] uppercase text-[#847764]">Hệ số tu luyện (Multiplier)</span>
+                <span className="text-[10px] uppercase text-zinc-400">Hệ số tu luyện (Multiplier)</span>
                 <input
                   type="number"
                   step="0.1"
                   value={m.multiplier}
                   onChange={(e) => handleManualChange(index, 'multiplier', Number(e.target.value))}
-                  className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
               <label className="block space-y-1">
-                <span className="text-[10px] uppercase text-[#847764]">Cực hạn tu vi không có đan dược (Max Cap)</span>
+                <span className="text-[10px] uppercase text-zinc-400">Cực hạn tu vi không có đan dược (Max Cap)</span>
                 <input
                   type="number"
                   step="0.01"
                   value={m.max_level_no_pill}
                   onChange={(e) => handleManualChange(index, 'max_level_no_pill', Number(e.target.value))}
-                  className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
@@ -3293,44 +3294,44 @@ function CultivationConfig({
         </div>
       </div>
 
-      <div className="border border-[#3e3328]/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
-        <h4 className="font-serif text-[#e5c17b] text-base uppercase tracking-widest border-b border-[#3e3328]/40 pb-2">⚡ Điểm nghẽn Bình Cảnh & Đan Dược phá cảnh (Bottlenecks & Pills)</h4>
+      <div className="border border-zinc-800/60 p-4 space-y-4 rounded-sm bg-[#100e0c]">
+        <h4 className="font-serif text-emerald-400 text-base font-medium border-b border-zinc-800/40 pb-2">⚡ Điểm nghẽn Bình Cảnh & Đan Dược phá cảnh (Bottlenecks & Pills)</h4>
         <div className="space-y-4">
           {bottlenecks.map((b, index) => (
-            <div key={b.realm_from} className="grid grid-cols-4 gap-4 items-center bg-[#14110f] p-3 border border-[#3e3328]/40 rounded-sm">
+            <div key={b.realm_from} className="grid grid-cols-4 gap-4 items-center bg-zinc-950 p-3 border border-zinc-800/40 rounded-sm">
               <div className="flex flex-col gap-0.5 col-span-1">
-                <span className="font-serif text-[#e5c17b] font-medium text-xs">Đột phá: {b.label}</span>
+                <span className="font-serif text-emerald-400 font-medium text-xs">Đột phá: {b.label}</span>
                 <span className="text-[10px] text-text-tertiary">Ngưỡng: {b.threshold}</span>
               </div>
               <label className="block space-y-1 col-span-1">
-                <span className="text-[10px] uppercase text-[#847764]">Mã Đan dược yêu cầu</span>
+                <span className="text-[10px] uppercase text-zinc-400">Mã Đan dược yêu cầu</span>
                 <input
                   type="text"
                   value={b.pill_item_id}
                   onChange={(e) => handleBottleneckChange(index, 'pill_item_id', e.target.value)}
-                  className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
               <label className="block space-y-1 col-span-1">
-                <span className="text-[10px] uppercase text-[#847764]">Mức tu vi chuyển tiếp (Next Cult)</span>
+                <span className="text-[10px] uppercase text-zinc-400">Mức tu vi chuyển tiếp (Next Cult)</span>
                 <input
                   type="number"
                   step="0.1"
                   value={b.next_cult}
                   onChange={(e) => handleBottleneckChange(index, 'next_cult', Number(e.target.value))}
-                  className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
               <label className="block space-y-1 col-span-1">
-                <span className="text-[10px] uppercase text-[#847764]">Tỷ lệ thành công tự nhiên (No pill)</span>
+                <span className="text-[10px] uppercase text-zinc-400">Tỷ lệ thành công tự nhiên (No pill)</span>
                 <input
                   type="number"
                   step="0.01"
                   value={b.success_rate_no_pill ?? 0.01}
                   onChange={(e) => handleBottleneckChange(index, 'success_rate_no_pill', Number(e.target.value))}
-                  className="w-full bg-[#0c0a08] border border-[#3e3328] rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-[#c5a059]"
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-sm px-3 py-1.5 text-lunar outline-none focus:border-emerald-500"
                   required
                 />
               </label>
@@ -3339,10 +3340,10 @@ function CultivationConfig({
         </div>
       </div>
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+      <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
         <button
           type="submit"
-          className="px-8 py-3 bg-[#c5a059]/20 hover:bg-[#c5a059]/30 text-[#e5c17b] border border-[#c5a059]/50 rounded-sm transition font-serif uppercase tracking-wider text-xs"
+          className="px-8 py-3 bg-[#10b981]/20 hover:bg-[#10b981]/30 text-emerald-400 border border-emerald-500/50 rounded-sm transition font-serif font-medium text-xs"
         >
           Khắc ấn Tu Vi lên Thạch Bản (Save Cultivation Config)
         </button>
@@ -3352,7 +3353,7 @@ function CultivationConfig({
 }
 
 // ==========================================
-// 10. WORLD STATE VIEW — MẠCH MÁU THẾ GIỚI
+// 10. WORLD STATE VIEW - MẠCH MÁU THẾ GIỚI
 // ==========================================
 function WorldStateView({
   game,
@@ -3392,7 +3393,7 @@ function WorldStateView({
             const ws = createInitialWorldState(randomizeMode);
             onChangeGame({ ...game, worldState: ws });
           }}
-          className="mt-4 px-6 py-2 border border-[#c5a059]/50 text-[#e5c17b] text-xs rounded-sm hover:bg-[#c5a059]/10"
+          className="mt-4 px-6 py-2 border border-emerald-500/50 text-emerald-400 text-xs rounded-sm hover:bg-[#10b981]/10"
         >
           🌍 Khởi tạo Mạch Máu Thế Giới
         </button>
@@ -3425,7 +3426,7 @@ function WorldStateView({
     good: '#4ade80',
     warn: '#facc15',
     bad: '#f87171',
-    accent: '#e5c17b',
+    accent: '#34d399',
   };
 
   const barColor = (v: number, invert = false): string => {
@@ -3448,7 +3449,7 @@ function WorldStateView({
       groupKey: 'sect',
       title: 'Tông Môn',
       emoji: '⛩️',
-      color: '#e5c17b',
+      color: '#34d399',
       vars: [
         { key: 'reputation', label: 'Danh vọng' },
         { key: 'resources', label: 'Tài nguyên' },
@@ -3505,21 +3506,21 @@ function WorldStateView({
   return (
     <div className="space-y-6">
       {/* Header controls */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#3e3328]/50 pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800/50 pb-4">
         <div>
-          <h2 className="font-serif text-lg text-[#e5c17b] tracking-wider">🌍 Mạch Máu Thế Giới</h2>
+          <h2 className="font-serif text-lg text-emerald-400 tracking-wider">🌍 Mạch Máu Thế Giới</h2>
           <p className="text-xs text-text-tertiary mt-0.5">
-            Tháng {game.month} — Tuổi {game.age} | Lịch sử: {localWorld.history?.length ?? 0} tháng
+            Tháng {game.month} - Tuổi {game.age} | Lịch sử: {localWorld.history?.length ?? 0} tháng
           </p>
         </div>
         <div className="flex gap-2 flex-wrap">
           {/* Toggle random/fixed */}
-          <label className="flex items-center gap-2 cursor-pointer select-none bg-[#14110f] border border-[#3e3328]/60 px-3 py-2 rounded-sm text-xs">
+          <label className="flex items-center gap-2 cursor-pointer select-none bg-zinc-950 border border-zinc-800/60 px-3 py-2 rounded-sm text-xs">
             <input
               type="checkbox"
               checked={randomizeMode}
               onChange={e => setRandomizeMode(e.target.checked)}
-              className="accent-[#c5a059]"
+              className="accent-[#10b981]"
             />
             <span className="text-text-secondary">Khởi tạo ngẫu nhiên ±15</span>
           </label>
@@ -3529,7 +3530,7 @@ function WorldStateView({
               const ws = createInitialWorldState(randomizeMode);
               applyLocalWorld(ws);
             }}
-            className="px-4 py-2 border border-[#c5a059]/50 text-[#e5c17b] text-xs hover:bg-[#c5a059]/10 transition rounded-sm"
+            className="px-4 py-2 border border-emerald-500/50 text-emerald-400 text-xs hover:bg-[#10b981]/10 transition rounded-sm"
           >
             🔄 Reset Thế Giới
           </button>
@@ -3538,8 +3539,8 @@ function WorldStateView({
 
       {/* World News Banner */}
       {news.length > 0 && (
-        <div className="bg-[#0f0d0b] border border-[#c5a059]/20 rounded-sm p-3 space-y-1.5">
-          <p className="text-[10px] uppercase tracking-wider text-[#c5a059] font-bold">📰 Tin Tức Thế Giới Tháng Này</p>
+        <div className="bg-[#0f0d0b] border border-emerald-500/20 rounded-sm p-3 space-y-1.5">
+          <p className="text-[10px] font-medium text-emerald-500 font-bold">📰 Tin Tức Thế Giới Tháng Này</p>
           {news.map((n, i) => (
             <p key={i} className="text-xs text-text-secondary font-serif">{n}</p>
           ))}
@@ -3553,7 +3554,7 @@ function WorldStateView({
           return (
             <div
               key={g.groupKey}
-              className="bg-[#0f0d0b] border border-[#3e3328]/60 rounded-sm p-4 space-y-3"
+              className="bg-[#0f0d0b] border border-zinc-800/60 rounded-sm p-4 space-y-3"
               style={{ borderLeftColor: g.color, borderLeftWidth: 3 }}
             >
               <h3
@@ -3609,8 +3610,8 @@ function WorldStateView({
 
       {/* Event Modifiers Preview */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-[#0f0d0b] border border-[#3e3328]/60 rounded-sm p-4 space-y-3">
-          <h3 className="font-serif text-sm text-[#e5c17b] font-bold tracking-wide">⚖️ Hệ Số Sự Kiện Hiện Tại</h3>
+        <div className="bg-[#0f0d0b] border border-zinc-800/60 rounded-sm p-4 space-y-3">
+          <h3 className="font-serif text-sm text-emerald-400 font-bold tracking-wide">⚖️ Hệ Số Sự Kiện Hiện Tại</h3>
           <div className="space-y-2">
             {Object.entries(mods).length === 0 ? (
               <p className="text-xs text-text-tertiary italic">Thế giới ở trạng thái cân bằng, không có modifier đặc biệt.</p>
@@ -3639,8 +3640,8 @@ function WorldStateView({
         </div>
 
         {/* Threshold Event Preview */}
-        <div className="bg-[#0f0d0b] border border-[#3e3328]/60 rounded-sm p-4 space-y-3">
-          <h3 className="font-serif text-sm text-[#e5c17b] font-bold tracking-wide">🎯 Sự Kiện Threshold Tiềm Năng</h3>
+        <div className="bg-[#0f0d0b] border border-zinc-800/60 rounded-sm p-4 space-y-3">
+          <h3 className="font-serif text-sm text-emerald-400 font-bold tracking-wide">🎯 Sự Kiện Threshold Tiềm Năng</h3>
           {previewEvent ? (
             <div className="space-y-2">
               <div className="text-xs font-bold text-[#ffd166] font-serif">
@@ -3649,7 +3650,7 @@ function WorldStateView({
               <p className="text-[11px] text-text-secondary leading-relaxed line-clamp-3">
                 {typeof previewEvent.description === 'string' ? previewEvent.description : previewEvent.description.vi}
               </p>
-              <div className="text-[10px] text-[#847764]">
+              <div className="text-[10px] text-zinc-400">
                 {previewEvent.choices.length} lựa chọn | Tags: {previewEvent.tags?.join(', ') || 'none'}
               </div>
             </div>
@@ -3658,7 +3659,7 @@ function WorldStateView({
               Không có sự kiện threshold nào đang ở ngưỡng kích hoạt. Tăng các biến cực đoan để kích hoạt sự kiện đặc biệt.
             </p>
           )}
-          <div className="text-[10px] text-[#847764] border-t border-[#3e3328]/30 pt-2 space-y-0.5">
+          <div className="text-[10px] text-zinc-400 border-t border-zinc-800/30 pt-2 space-y-0.5">
             <p>• beastActivity &gt;85 → Thú Triều Tràn Thành (35%)</p>
             <p>• stability &lt;20 → Nội Loạn Môn Phái (30%)</p>
             <p>• daoFluctuation &gt;78 → Bí Cảnh Khai Mở (28%)</p>
@@ -3670,11 +3671,11 @@ function WorldStateView({
 
       {/* Sparkline history */}
       {localWorld.history && localWorld.history.length > 1 && (
-        <div className="bg-[#0f0d0b] border border-[#3e3328]/60 rounded-sm p-4 space-y-3">
-          <h3 className="font-serif text-sm text-[#e5c17b] font-bold tracking-wide">📈 Lịch Sử Biến Động ({localWorld.history.length} tháng)</h3>
+        <div className="bg-[#0f0d0b] border border-zinc-800/60 rounded-sm p-4 space-y-3">
+          <h3 className="font-serif text-sm text-emerald-400 font-bold tracking-wide">📈 Lịch Sử Biến Động ({localWorld.history.length} tháng)</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              { label: 'Danh vọng TM', fn: (s: any) => s.sect.reputation, color: '#e5c17b' },
+              { label: 'Danh vọng TM', fn: (s: any) => s.sect.reputation, color: '#34d399' },
               { label: 'Yêu thú', fn: (s: any) => s.mountain.beastActivity, color: '#f87171' },
               { label: 'An ninh', fn: (s: any) => s.city.security, color: '#60a5fa' },
               { label: 'Ma khí', fn: (s: any) => s.global.demonicEnergy, color: '#c084fc' },
@@ -3851,8 +3852,8 @@ function SimulationReport({
 
   return (
     <div className="space-y-6 animate-fade-in text-sm text-text-secondary">
-      <div className="flex items-center justify-between border-b border-[#3e3328]/40 pb-4">
-        <h3 className="font-serif text-lg text-[#e5c17b]">
+      <div className="flex items-center justify-between border-b border-zinc-800/40 pb-4">
+        <h3 className="font-serif text-lg text-emerald-400">
           ⚡ Kết Quả Giả Lập Mệnh Vận (Simulation Report)
         </h3>
         <button
@@ -3866,17 +3867,17 @@ function SimulationReport({
 
       {/* Summary dashboard */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-[#14110f] border border-[#3e3328]/60 p-4 rounded-sm text-center">
-          <span className="text-[10px] uppercase tracking-widest text-[#847764] block">Tuổi thọ đạt được</span>
-          <span className="font-serif text-2xl text-[#e5c17b] mt-1 block">{results.finalState.age} tuổi</span>
+        <div className="bg-zinc-950 border border-zinc-800/60 p-4 rounded-sm text-center">
+          <span className="text-[10px] font-medium text-zinc-400 block">Tuổi thọ đạt được</span>
+          <span className="font-serif text-2xl text-emerald-400 mt-1 block">{results.finalState.age} tuổi</span>
           <span className="text-[10px] text-text-tertiary">Tháng {results.finalState.month}</span>
         </div>
-        <div className="bg-[#14110f] border border-[#3e3328]/60 p-4 rounded-sm text-center col-span-2">
-          <span className="text-[10px] uppercase tracking-widest text-[#847764] block">Nguyên nhân từ trần</span>
+        <div className="bg-zinc-950 border border-zinc-800/60 p-4 rounded-sm text-center col-span-2">
+          <span className="text-[10px] font-medium text-zinc-400 block">Nguyên nhân từ trần</span>
           <span className="font-serif text-sm text-red-400 mt-2 block leading-relaxed line-clamp-2">{deathReason}</span>
         </div>
-        <div className="bg-[#14110f] border border-[#3e3328]/60 p-4 rounded-sm text-center">
-          <span className="text-[10px] uppercase tracking-widest text-[#847764] block">Cảnh giới cuối cùng</span>
+        <div className="bg-zinc-950 border border-zinc-800/60 p-4 rounded-sm text-center">
+          <span className="text-[10px] font-medium text-zinc-400 block">Cảnh giới cuối cùng</span>
           <span className="font-serif text-md text-green-400 mt-2 block font-semibold">{results.finalState.realm}</span>
         </div>
       </div>
@@ -3884,28 +3885,28 @@ function SimulationReport({
       {/* Actions and Logs */}
       <div className="space-y-3">
         <div className="flex justify-between items-center">
-          <h4 className="font-serif text-sm text-[#e5c17b]">Cuộn Trục Mệnh Vận ({results.eventHistory.length} Sự kiện)</h4>
+          <h4 className="font-serif text-sm text-emerald-400">Cuộn Trục Mệnh Vận ({results.eventHistory.length} Sự kiện)</h4>
           <button
             type="button"
             onClick={downloadLog}
-            className="px-4 py-2 border border-red-500/40 bg-red-950/20 text-red-300 hover:bg-red-950/40 hover:text-white rounded-sm text-xs transition font-serif uppercase tracking-wider"
+            className="px-4 py-2 border border-red-500/40 bg-red-950/20 text-red-300 hover:bg-red-950/40 hover:text-white rounded-sm text-xs transition font-serif font-medium"
           >
             📥 Tải xuống Nhật ký đầy đủ (.txt)
           </button>
         </div>
 
-        <div className="border border-[#3e3328]/60 bg-black/40 rounded-sm overflow-hidden">
+        <div className="border border-zinc-800/60 bg-black/40 rounded-sm overflow-hidden">
           <div className="max-h-[50vh] overflow-y-auto p-4 space-y-6 font-serif text-sm text-text-secondary">
             {results.eventHistory.map((item, idx) => {
               const changes = getStatChanges(item.statsBefore || {}, item.statsAfter || {});
               return (
-                <div key={idx} className="border-b border-[#3e3328]/20 pb-4 last:border-0 last:pb-0 space-y-2">
+                <div key={idx} className="border-b border-zinc-800/20 pb-4 last:border-0 last:pb-0 space-y-2">
                   {/* Title */}
-                  <div className="text-[13px] text-[#e5c17b] font-semibold">
+                  <div className="text-[13px] text-emerald-400 font-semibold">
                     [Tuổi {item.age} - Tháng {item.month}] - [{item.eventTitle}]
                   </div>
                   {/* Context & Result */}
-                  <div className="pl-3 border-l border-[#c5a059]/30 text-xs text-text-tertiary space-y-1 leading-relaxed">
+                  <div className="pl-3 border-l border-emerald-500/30 text-xs text-text-tertiary space-y-1 leading-relaxed">
                     <p><strong className="text-text-secondary font-semibold">Tình huống:</strong> Bản thân đối mặt với cảnh ngộ "{item.eventTitle}", tâm niệm chọn cách "{item.choiceText}" để ứng phó hiểm cảnh.</p>
                     <p><strong className="text-text-secondary font-semibold">Kết quả:</strong> Nhân quả xoay vần, thiên cơ mở ra, khí vận cơ thể bắt đầu biến chuyển.</p>
                   </div>
@@ -3913,7 +3914,7 @@ function SimulationReport({
                   <div className="pl-3 overflow-x-auto">
                     <table className="min-w-[280px] text-[11px] font-mono text-left border-collapse">
                       <thead>
-                        <tr className="border-b border-[#3e3328]/40 text-[#847764] uppercase tracking-wider">
+                        <tr className="border-b border-zinc-800/40 text-zinc-400 font-medium">
                           <th className="py-1 pr-4 font-normal">Chỉ số</th>
                           <th className="py-1 pr-4 font-normal">Trước</th>
                           <th className="py-1 pr-4 font-normal">Sau</th>
@@ -3922,7 +3923,7 @@ function SimulationReport({
                       </thead>
                       <tbody>
                         {changes.length === 0 ? (
-                          <tr className="border-b border-[#3e3328]/10">
+                          <tr className="border-b border-zinc-800/10">
                             <td className="py-1 pr-4 text-text-tertiary">Mệnh Số</td>
                             <td className="py-1 pr-4">0</td>
                             <td className="py-1 pr-4">0</td>
@@ -3930,7 +3931,7 @@ function SimulationReport({
                           </tr>
                         ) : (
                           changes.map((c, cIdx) => (
-                            <tr key={cIdx} className="border-b border-[#3e3328]/10 last:border-0">
+                            <tr key={cIdx} className="border-b border-zinc-800/10 last:border-0">
                               <td className="py-1 pr-4 text-text-secondary">{c.label}</td>
                               <td className="py-1 pr-4 text-text-tertiary">{c.before}</td>
                               <td className="py-1 pr-4 text-text-tertiary">{c.after}</td>
@@ -3950,11 +3951,11 @@ function SimulationReport({
         </div>
       </div>
 
-      <div className="flex justify-end gap-3 pt-4 border-t border-[#3e3328]/50">
+      <div className="flex justify-end gap-3 pt-4 border-t border-zinc-800/50">
         <button
           type="button"
           onClick={onClose}
-          className="px-6 py-2 border border-[#3e3328] text-text-tertiary hover:text-white rounded-sm transition text-xs uppercase tracking-widest font-serif"
+          className="px-6 py-2 border border-zinc-800 text-text-tertiary hover:text-white rounded-sm transition text-xs font-medium font-serif"
         >
           Đóng & Quay lại
         </button>

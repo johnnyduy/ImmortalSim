@@ -1,0 +1,149 @@
+        ) : showCharacterCreation ? (
+          <div className="py-6 w-full flex-1 flex flex-col justify-center items-center animate-fade-in relative z-20">
+            <div className="adventure-card w-full max-w-xl p-5 sm:p-6 space-y-6 animate-slide-up relative bg-zinc-950/95 border border-emerald-500/40 shadow-2xl">
+              <div className="text-center space-y-1 pb-4 border-b border-zinc-800/50">
+                <span className="text-[10px]  text-zinc-400 font-serif">Khởi Đầu Tiên Lộ</span>
+                <h2 className="font-serif text-emerald-400 text-2xl ">Thiết Lập Bản Thể</h2>
+              </div>
+
+              {/* Giới Tính */}
+              <div className="space-y-2">
+                <h3 className="text-xs  text-emerald-500 font-semibold font-serif">1. Chọn Giới Tính (Gender)</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {['nam', 'nữ'].map((g) => {
+                    const isSelected = creationGender === g;
+                    return (
+                      <button
+                        key={g}
+                        type="button"
+                        onClick={() => setCreationGender(g as 'nam' | 'nữ')}
+                        className={`py-3 text-center font-serif text-sm font-semibold rounded-sm border transition-all duration-300 ${
+                          isSelected
+                            ? 'border-[#34d399] bg-[#34d399]/10 text-white shadow-[0_0_12px_rgba(229,193,123,0.25)]'
+                            : 'border-zinc-800 bg-black/40 text-text-secondary hover:border-zinc-600 hover:text-white'
+                        }`}
+                      >
+                        {g === 'nam' ? '♂ Nam (Male)' : '♀ Nữ (Female)'}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Linh Căn */}
+              <div className="space-y-2">
+                <h3 className="text-xs  text-emerald-500 font-semibold font-serif">2. Chọn Thiên Phú Linh Căn (Spiritual Root)</h3>
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    { name: 'Kim Linh Căn', icon: '⚔️' },
+                    { name: 'Mộc Linh Căn', icon: '🌳' },
+                    { name: 'Thủy Linh Căn', icon: '💧' },
+                    { name: 'Hỏa Linh Căn', icon: '🔥' },
+                    { name: 'Thổ Linh Căn', icon: '🪨' },
+                    { name: 'Lôi Linh Căn', icon: '⚡' },
+                    { name: 'Băng Linh Căn', icon: '❄️' },
+                    { name: 'Phong Linh Căn', icon: '🌪️' }
+                  ].map((r) => {
+                    const isSelected = creationRoot === r.name;
+                    return (
+                      <button
+                        key={r.name}
+                        type="button"
+                        onClick={() => setCreationRoot(r.name)}
+                        className={`p-2.5 rounded-sm border flex flex-col items-center gap-1.5 transition-all duration-300 ${
+                          isSelected
+                            ? 'border-[#34d399] bg-[#34d399]/10 text-white shadow-[0_0_10px_rgba(229,193,123,0.2)]'
+                            : 'border-zinc-800/80 bg-black/30 text-text-secondary hover:border-zinc-600 hover:text-white'
+                        }`}
+                      >
+                        <span className="text-base">{r.icon}</span>
+                        <span className="text-[9px]  truncate w-full text-center font-serif leading-none">{r.name.split(' ')[0]}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Môn Phái */}
+              <div className="space-y-2">
+                <h3 className="text-xs  text-emerald-500 font-semibold font-serif">3. Chọn Môn Phái & Xuất Thân Làng Xã</h3>
+                <div className="grid grid-cols-2 gap-3.5">
+                  {[
+                    {
+                      name: 'Kiếm Tông',
+                      village: 'Làng Tàn Kiếm',
+                      bonus: '+2 Ngộ Tính, +5 Đạo Tâm',
+                      item: 'Nhận mảnh tàn quyển Kiếm Pháp',
+                      desc: 'Luyện kiếm đắc đạo, dùng kiếm khí trảm tẫn thiên ma.',
+                      icon: '🗡️'
+                    },
+                    {
+                      name: 'Ma Đạo',
+                      village: 'Làng Hắc Thạch',
+                      bonus: '+3 Vận May, -4 Nghiệp Lực',
+                      item: 'Nhận Nhiên Huyết Đan cấm kỵ',
+                      desc: 'Tu ma nghịch tiên, đoạt thiên địa hóa sinh, hành sự tùy ý.',
+                      icon: '🔮'
+                    },
+                    {
+                      name: 'Huyết Tông',
+                      village: 'Làng Xích Huyết',
+                      bonus: '+10 Máu khởi đầu, +10 Tuổi thọ',
+                      item: 'Nhận Thọ Nguyên Đan huyết ngưng',
+                      desc: 'Luyện máu dưỡng thần, nuốt huyết khí tăng sinh lực vô biên.',
+                      icon: '🩸'
+                    },
+                    {
+                      name: 'Đan Tông',
+                      village: 'Làng Bách Thảo',
+                      bonus: '+3 Ngộ Tính sơ khởi',
+                      item: 'Nhận Huyền Nguyên Đan bổ tu vi',
+                      desc: 'Dùng đan nhập đạo, thấu hiểu quy tắc sinh dưỡng thảo mộc.',
+                      icon: '🧪'
+                    }
+                  ].map((s) => {
+                    const isSelected = creationSect === s.name;
+                    return (
+                      <button
+                        key={s.name}
+                        type="button"
+                        onClick={() => setCreationSect(s.name)}
+                        className={`p-3 text-left rounded-sm border transition-all duration-300 flex flex-col gap-1.5 ${
+                          isSelected
+                            ? 'border-[#34d399] bg-[#34d399]/10 text-white shadow-[0_0_12px_rgba(229,193,123,0.25)]'
+                            : 'border-zinc-800/80 bg-black/40 text-text-secondary hover:border-zinc-600'
+                        }`}
+                      >
+                        <div className="flex justify-between items-center w-full">
+                          <span className="font-serif text-sm font-bold text-emerald-400 flex items-center gap-1.5">
+                            <span>{s.icon}</span>
+                            {s.name}
+                          </span>
+                          <span className="text-[8px] uppercase px-1.5 py-0.5 rounded-sm bg-black/50 text-text-tertiary font-serif">{s.village}</span>
+                        </div>
+                        <p className="text-[10px] text-text-secondary leading-relaxed line-clamp-2">{s.desc}</p>
+                        <div className="text-[8px] uppercase tracking-wide text-amber-500/80 font-serif leading-none mt-1">
+                          💪 {s.bonus}
+                        </div>
+                        <div className="text-[8px] uppercase tracking-wide text-emerald-400 font-serif leading-none">
+                          🎁 {s.item}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Bắt Đầu Hành Trình */}
+              <div className="pt-4 border-t border-zinc-800/50">
+                <button
+                  type="button"
+                  onClick={handleConfirmCharacter}
+                  className="w-full py-4 text-center font-serif text-base font-bold  rounded-sm border border-emerald-500 bg-gradient-to-r from-[#18181b] to-[#2d241c] text-emerald-400 hover:text-white hover:border-[#34d399] transition-all duration-300 shadow-[0_4px_15px_rgba(197,160,89,0.2)] hover:shadow-[0_4px_25px_rgba(229,193,123,0.4)]"
+                >
+                  Bắt Đầu Hành Trình Nghịch Thiên
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : game ? (

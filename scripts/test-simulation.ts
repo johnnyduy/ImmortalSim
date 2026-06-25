@@ -1,4 +1,5 @@
-import { createNewGame, tickMonth, applyChoiceToState } from '../lib/engine';
+import { createNewGame, applyChoiceToState } from '../lib/engine';
+import { tickMonth } from '../lib/game-controller';;
 import type { Inheritance } from '../types';
 
 const inheritance: Inheritance = {

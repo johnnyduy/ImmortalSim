@@ -81,9 +81,9 @@ export default function SectMissionsPanel({
       {/* Main Panel Box */}
       <div className="adventure-card w-full max-w-2xl max-h-[85vh] p-6 overflow-y-auto relative z-10 animate-slide-up flex flex-col gap-6">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#3e3328] pb-3">
+        <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
           <div>
-            <h2 className="font-serif text-2xl text-[#e5c17b] tracking-wider">
+            <h2 className="font-serif text-2xl text-emerald-400 tracking-wider">
               {language === 'vi' ? '☯ Nhiệm Vụ Đường' : '☯ Sect Quest Hall'}
             </h2>
             <p className="text-xs text-text-secondary mt-1">
@@ -139,17 +139,17 @@ export default function SectMissionsPanel({
             const rewardContribution = isParty ? Math.max(1, Math.floor(quest.rewards.contribution * 0.5)) : quest.rewards.contribution;
             const rewardGold = quest.rewards.gold ? (isParty ? Math.max(1, Math.floor(quest.rewards.gold * 0.5)) : quest.rewards.gold) : 0;
 
-            const difficultyBadge = difficultyColors[quest.difficulty] || 'border-[#3e3328] text-text-primary';
+            const difficultyBadge = difficultyColors[quest.difficulty] || 'border-zinc-800 text-text-primary';
 
             return (
               <div 
                 key={quest.id}
-                className={`bg-[#14110f]/80 border border-[#3e3328]/60 p-4 rounded-sm flex flex-col gap-4 hover:border-[#5a4a3a] transition duration-300 relative overflow-hidden`}
+                className={`bg-zinc-950/80 border border-zinc-800/60 p-4 rounded-sm flex flex-col gap-4 hover:border-[#5a4a3a] transition duration-300 relative overflow-hidden`}
               >
                 {/* Title and Difficulty */}
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-1">
-                    <h3 className="font-serif text-base text-[#e5c17b] font-bold">
+                    <h3 className="font-serif text-base text-emerald-400 font-bold">
                       {quest.title[language === 'vi' ? 'vi' : 'en']}
                     </h3>
                     <span className="text-[10px] text-text-secondary tracking-wider block">
@@ -165,13 +165,13 @@ export default function SectMissionsPanel({
                 </div>
 
                 {/* Description */}
-                <p className="text-xs text-text-secondary leading-relaxed font-sans border-l-2 border-[#c5a059]/40 pl-3 py-1">
+                <p className="text-xs text-text-secondary leading-relaxed font-sans border-l-2 border-emerald-500/40 pl-3 py-1">
                   {quest.description[language === 'vi' ? 'vi' : 'en']}
                 </p>
 
                 {/* Option Toggles */}
                 <div className="bg-[#0b0908] border border-[#2b241c] p-2 rounded-sm flex flex-col sm:flex-row gap-3 items-center justify-between">
-                  <span className="text-xs text-[#e5c17b] font-serif font-semibold">
+                  <span className="text-xs text-emerald-400 font-serif font-semibold">
                     {language === 'vi' ? 'Phương thức hành trình:' : 'Mission Approach:'}
                   </span>
                   
@@ -181,7 +181,7 @@ export default function SectMissionsPanel({
                       onClick={() => setQuestPartyModes(prev => ({ ...prev, [quest.id]: false }))}
                       className={`px-3 py-1 border text-xs rounded-sm font-serif transition-all duration-200 ${
                         !isParty 
-                          ? 'border-[#c5a059] bg-[#c5a059]/10 text-[#e5c17b] font-bold shadow-md' 
+                          ? 'border-emerald-500 bg-[#10b981]/10 text-emerald-400 font-bold shadow-md' 
                           : 'border-transparent bg-transparent text-text-tertiary hover:text-text-secondary'
                       }`}
                     >
@@ -192,7 +192,7 @@ export default function SectMissionsPanel({
                       onClick={() => setQuestPartyModes(prev => ({ ...prev, [quest.id]: true }))}
                       className={`px-3 py-1 border text-xs rounded-sm font-serif transition-all duration-200 ${
                         isParty 
-                          ? 'border-[#c5a059] bg-[#c5a059]/10 text-[#e5c17b] font-bold shadow-md' 
+                          ? 'border-emerald-500 bg-[#10b981]/10 text-emerald-400 font-bold shadow-md' 
                           : 'border-transparent bg-transparent text-text-tertiary hover:text-text-secondary'
                       }`}
                     >
@@ -202,10 +202,10 @@ export default function SectMissionsPanel({
                 </div>
 
                 {/* Requirements & Rewards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs border-t border-[#3e3328]/40 pt-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs border-t border-zinc-800/40 pt-3">
                   {/* Left Column: Requirements & Status */}
                   <div className="space-y-2">
-                    <h4 className="text-[11px] uppercase tracking-wider text-[#c5a059] font-semibold font-serif">
+                    <h4 className="text-[11px] font-medium text-emerald-500 font-semibold font-serif">
                       {language === 'vi' ? 'Yêu Cầu & Thử Thách' : 'Requirements & Checks'}
                     </h4>
                     
@@ -240,7 +240,7 @@ export default function SectMissionsPanel({
 
                   {/* Right Column: Rewards */}
                   <div className="space-y-2">
-                    <h4 className="text-[11px] uppercase tracking-wider text-[#c5a059] font-semibold font-serif">
+                    <h4 className="text-[11px] font-medium text-emerald-500 font-semibold font-serif">
                       {language === 'vi' ? 'Phần Thưởng Thực Nhận' : 'Expected Rewards'}
                     </h4>
                     
@@ -286,9 +286,9 @@ export default function SectMissionsPanel({
                       )}
 
                       {quest.rewards.item && (
-                        <div className="flex justify-between items-center border-t border-[#3e3328]/35 pt-1 mt-1 text-[11px]">
+                        <div className="flex justify-between items-center border-t border-zinc-800/35 pt-1 mt-1 text-[11px]">
                           <span>{language === 'vi' ? 'Vật phẩm hiếm:' : 'Rare Item:'}</span>
-                          <span className="text-[#e5c17b] font-serif font-bold">
+                          <span className="text-emerald-400 font-serif font-bold">
                             [{quest.rewards.item.itemId.replace('item_', '').replace(/_/g, ' ')}] x{quest.rewards.item.quantity}
                           </span>
                         </div>
@@ -298,7 +298,7 @@ export default function SectMissionsPanel({
                 </div>
 
                 {/* Bottom Action Button */}
-                <div className="mt-2 border-t border-[#3e3328]/30 pt-3 flex justify-end">
+                <div className="mt-2 border-t border-zinc-800/30 pt-3 flex justify-end">
                   {isWarLevelLocked ? (
                     <span className="text-xs text-red-400 italic">
                       ⚠️ {language === 'vi' 
@@ -320,8 +320,8 @@ export default function SectMissionsPanel({
                       onClick={() => onAcceptQuest(quest, isParty)}
                       className={`px-4 py-1.5 font-serif text-xs rounded-sm transition duration-200 border ${
                         canAccept
-                          ? 'border-[#c5a059] bg-[#1e1915] text-[#e5c17b] hover:bg-[#c5a059] hover:text-[#0b0908] font-bold shadow-md cursor-pointer'
-                          : 'border-[#3e3328] bg-black/20 text-text-tertiary cursor-not-allowed'
+                          ? 'border-emerald-500 bg-zinc-900 text-emerald-400 hover:bg-[#10b981] hover:text-[#0b0908] font-bold shadow-md cursor-pointer'
+                          : 'border-zinc-800 bg-black/20 text-text-tertiary cursor-not-allowed'
                       }`}
                     >
                       {language === 'vi' ? 'Nhận Nhiệm Vụ' : 'Accept Quest'}

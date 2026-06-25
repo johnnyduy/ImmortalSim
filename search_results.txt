@@ -1,0 +1,7 @@
+app\page.tsx:2443:{/* Bắt Đầu Hành Trình */}
+app\page.tsx:2450:Bắt Đầu Hành Trình Nghịch Thiên
+components\AdminPanel.tsx:311:⚔️ Bắt đầu Test Combat
+components\AdminPanel.tsx:3380:<p>Chưa có dữ liệu game. Bắt đầu một hành trình mới để xem Mạch Máu Thế Giới.</p>
+components\ReincarnationUI.tsx:26:descVi: 'Bắt đầu kiếp sau với nền tảng vững chắc hơn. Tích lũy dựa trên Tu Vi kiếp trước.',
+components\TestCharacterTab.tsx:252:{game && game.alive ? 'Áp Dụng & Bắt Đầu Test' : 'Khởi Tạo Thế Giới & Bắt Đầu Test'}
+components\TimeGearPanel.tsx:512:? 'Bắt đầu khép mi tập trung hơi thở, thời quang bắt đầu xoay...'
