@@ -1,0 +1,5305 @@
+[
+  {
+    "id": "auction_house_conflict",
+    "title": "[ZH-TODO] Auction House Conflict",
+    "description": "[ZH-TODO] At the decennial auction in Qingyang City, you spent all your Spirit Stones on a Foundation Establishment Pill. As you step out, Young Master Wang blocks your path, tosses 10 Spirit Stones at you, and demands the pill.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "slap_young_master",
+        "text": "[ZH-TODO] Use your strength to slap the young master's face!",
+        "effects": {
+          "cultivation": 2,
+          "daoMind": 5,
+          "health": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "endure_humiliation",
+        "text": "[ZH-TODO] Endure the humiliation and hand over the pill.",
+        "effects": {
+          "daoMind": -10,
+          "luck": -1,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "npc_thieu_gia",
+      "combat"
+    ]
+  },
+  {
+    "id": "slum_black_market",
+    "title": "[ZH-TODO] Slum Black Market",
+    "description": "[ZH-TODO] Sneaking into the city's slums, you find a hidden black market. A masked merchant offers a 'Supreme Foundation Establishment Pill' for half the market price, but it reeks of blood.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_bloody_pill",
+        "text": "[ZH-TODO] Buy the blood-reeking pill.",
+        "effects": {
+          "money": -150,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "rob_the_merchant",
+        "text": "[ZH-TODO] Draw your weapon and rob the pill!",
+        "effects": {
+          "health": -12,
+          "gainItem": {
+            "itemId": "item_truc_co_dan_ha_pham",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "crime",
+      "demonic"
+    ]
+  },
+  {
+    "id": "mortal_plague",
+    "title": "[ZH-TODO] Mortal Plague",
+    "description": "[ZH-TODO] Passing through a mortal village at the foot of the mountain, you discover a strange plague spreading due to leaking demonic energy. Hundreds are crying out in agony.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "heal_mortals",
+        "text": "[ZH-TODO] Consume herbs to brew an antidote and save them.",
+        "effects": {
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "collect_plague",
+        "text": "[ZH-TODO] Collect the plague aura to refine a Poison Pill.",
+        "effects": {
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_doc_chuong_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "karma_extreme",
+      "demonic",
+      "city_interaction"
+    ]
+  },
+  {
+    "id": "rogue_cultivator_scam",
+    "title": "[ZH-TODO] Rogue Cultivator Scam",
+    "description": "[ZH-TODO] Wandering the market, a mysterious ragged old man pulls you aside, offering to sell the 'Nine Turns Divine Art' for only 50 Spirit Stones.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_scam_manual",
+        "text": "[ZH-TODO] Gamble and buy it.",
+        "effects": {
+          "money": -50,
+          "comprehension": -1,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "expose_scammer",
+        "text": "[ZH-TODO] Coldly expose and chase away the old man.",
+        "effects": {
+          "daoMind": 1,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "random_chance"
+    ]
+  },
+  {
+    "id": "beast_tide_mortals",
+    "title": "[ZH-TODO] Beast Tide Sweeps Mortals",
+    "description": "[ZH-TODO] Violent beasts swarm down the mountain, slaughtering a mortal village. You happen to be passing by.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_mortals",
+        "text": "[ZH-TODO] Set up a defensive array to protect the mortals.",
+        "effects": {
+          "health": -10,
+          "karma": 8
+        }
+      },
+      {
+        "id": "loot_beasts",
+        "text": "[ZH-TODO] Ignore the mortals and harvest beast corpses.",
+        "effects": {
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "karma_event",
+      "combat"
+    ]
+  },
+  {
+    "id": "demonic_invasion",
+    "title": "[ZH-TODO] Demonic Invasion",
+    "description": "[ZH-TODO] The sky turns blood red as dense demonic energy suffocates the area. A horde of demonic cultivators breaches the defenses, slaughtering everyone in sight.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_demonic_horde",
+        "text": "[ZH-TODO] Fight to the death to protect the innocent.",
+        "effects": {
+          "health": -25,
+          "karma": 15,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "join_demons",
+        "text": "[ZH-TODO] Surrender and offer them mortal blood to survive.",
+        "effects": {
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "grand_decennial_auction",
+    "title": "[ZH-TODO] Grand Decennial Auction",
+    "description": "[ZH-TODO] The city is highly prosperous, hosting a grand auction. Rare treasures and supreme martial fragments are displayed, but the prices are astronomical.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "buy_supreme_fragment",
+        "text": "[ZH-TODO] Spend a fortune to buy a Supreme Manual Fragment.",
+        "effects": {
+          "money": -300,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_vip",
+        "text": "[ZH-TODO] Try to pickpocket a distracted VIP guest.",
+        "effects": {
+          "health": -15,
+          "luck": -3,
+          "money": 150,
+          "karma": -5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "market_crash_scavenging",
+    "title": "[ZH-TODO] Market Crash Scavenging",
+    "description": "[ZH-TODO] Due to a surplus of goods, the market has crashed. Desperate merchants are dumping raw spirit herbs on the streets at dirt-cheap prices to cut losses.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_cheap_herbs",
+        "text": "[ZH-TODO] Spend a little money to hoard cheap herbs.",
+        "effects": {
+          "money": -30,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "extort_merchants",
+        "text": "[ZH-TODO] Threaten the bankrupt merchants to hand over goods for free.",
+        "effects": {
+          "karma": -8,
+          "daoMind": -2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thieu_gia_gay_su",
+    "title": "[ZH-TODO] Young Master's Oppression",
+    "description": "[ZH-TODO] At the grand auction, Young Master Wang uses his overwhelming wealth to maliciously outbid and humiliate you over a supreme treasure.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "slap_thieu_gia",
+        "text": "[ZH-TODO] Slap his face and ambush him outside the city to take the treasure back!",
+        "effects": {
+          "health": -5,
+          "money": 200,
+          "karma": -5
+        }
+      },
+      {
+        "id": "endure_thieu_gia",
+        "text": "[ZH-TODO] Swallow your anger and endure the humiliation.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "npc_thieu_gia",
+      "combat"
+    ]
+  },
+  {
+    "id": "soul_festival",
+    "title": "[ZH-TODO] Soul Festival",
+    "description": "[ZH-TODO] You stumble upon a rare Soul Festival in the city where spirits and mortals gather, overflowing with mystical energies.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "join_festival",
+        "text": "[ZH-TODO] Join the spirits and build relationships.",
+        "effects": {
+          "luck": 2,
+          "karma": -1,
+          "health": -1,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "study_scripture",
+        "text": "[ZH-TODO] Study the sacred scriptures left at the altar.",
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 1
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "market"
+    ]
+  },
+  {
+    "id": "herb_price_surge",
+    "title": "[ZH-TODO] Skyrocketing Herb Prices",
+    "description": "[ZH-TODO] Due to a severe shortage, the price of spirit herbs has skyrocketed! The market is in a frenzy, offering a perfect opportunity for hoarding and speculation.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "speculate_market",
+        "text": "[ZH-TODO] Take advantage of the chaos to speculate and profit.",
+        "effects": {
+          "money": 300,
+          "luck": -1,
+          "karma": -2
+        }
+      },
+      {
+        "id": "rob_merchant_convoy",
+        "text": "[ZH-TODO] Rob a merchant convoy carrying rare herbs.",
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "demonic_town_activity",
+    "title": "[ZH-TODO] Demonic Activity in Town",
+    "description": "[ZH-TODO] Demonic cultivators have appeared in the town's outskirts, significantly reducing security. Cultivators are warned to stay away.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "hunt_demonic_cultivators",
+        "text": "[ZH-TODO] Hunt down the demonic cultivators to protect the town.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "ignore_warning",
+        "text": "[ZH-TODO] Ignore the warning and go about your business.",
+        "effects": {
+          "health": -5,
+          "luck": -2,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "illicit_demonic_caravan",
+    "title": "[ZH-TODO] Illicit Demonic Caravan",
+    "description": "[ZH-TODO] Due to poor city security and rising demonic infiltration, a suspicious merchant caravan sets up shop in an alley, secretly selling forbidden Demonic path materials.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_blood_crystal",
+        "text": "[ZH-TODO] Quietly buy a Blood Crystal to accelerate your progress.",
+        "effects": {
+          "money": -100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_guards",
+        "text": "[ZH-TODO] Report them to the city guards for a bounty.",
+        "effects": {
+          "money": 50,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "mortal_rebellion",
+    "title": "[ZH-TODO] Mortal Rebellion",
+    "description": "[ZH-TODO] City morale has hit rock bottom. Starving mortals are violently rebelling against the corrupt city lord who serves the cultivation sects.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "distribute_wealth",
+        "text": "[ZH-TODO] Distribute your spirit stones to buy them food.",
+        "effects": {
+          "money": -100,
+          "karma": 15,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "suppress_rebels",
+        "text": "[ZH-TODO] Help the city lord brutally suppress the mortals.",
+        "effects": {
+          "money": 150,
+          "karma": -15,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "danger"
+    ]
+  },
+  {
+    "id": "corrupted_pill_vendor",
+    "title": "[ZH-TODO] Corrupted Pill Vendor",
+    "description": "[ZH-TODO] Taking advantage of the high demonic infiltration in the city, a hooded vendor in a dark alley offers you a Foundation Establishment Pill. It's cheap, but it reeks of heavy pill-toxins and dark arts.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_corrupted_pill",
+        "text": "[ZH-TODO] Buy it! A breakthrough is worth any risk.",
+        "effects": {
+          "money": -100,
+          "karma": -5,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "refuse_corrupted_pill",
+        "text": "[ZH-TODO] Refuse the wicked temptation and leave immediately.",
+        "effects": {
+          "daoMind": 3,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "demonic_blood_raid",
+    "title": "[ZH-TODO] Demonic Blood Raid",
+    "description": "[ZH-TODO] Demonic activity is peaking. A group of masked demonic cultivators sets up a blood array in the city outskirts, attempting to refine passing mortals into pills.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "destroy_blood_array",
+        "text": "[ZH-TODO] Risk your life to break the array and save the mortals.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": "[ZH-TODO] Wait in the shadows and steal the finished Blood Pill.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "underground_black_auction",
+    "title": "[ZH-TODO] Underground Black Auction",
+    "description": "[ZH-TODO] City security is lax. You receive a secret invitation to an underground black auction selling stolen sect artifacts and forbidden pills.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_forbidden_item",
+        "text": "[ZH-TODO] Spend heavily to buy a forbidden artifact.",
+        "effects": {
+          "money": -250,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_black_market",
+        "text": "[ZH-TODO] Report the location to the righteous sects.",
+        "effects": {
+          "karma": 10,
+          "money": 100,
+          "luck": -2,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "counterfeit_manual_scam",
+    "title": "[ZH-TODO] Counterfeit Manual Scam",
+    "description": "[ZH-TODO] With city security failing, scammers are rampant. A merchant tries to sell you a 'Heavenly Grade' manual fragment for a suspiciously low price.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_fake_manual",
+        "text": "[ZH-TODO] Take the risk and buy it.",
+        "effects": {
+          "money": -120,
+          "comprehension": -2,
+          "luck": -5
+        }
+      },
+      {
+        "id": "intimidate_scammer",
+        "text": "[ZH-TODO] Threaten the scammer to reveal his real goods.",
+        "effects": {
+          "money": 50,
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "herb_monopoly_challenge",
+    "title": "[ZH-TODO] Herb Monopoly Challenge",
+    "description": "[ZH-TODO] With the price index skyrocketing, a local merchant guild has monopolized all spirit herbs, driving prices even higher. A group of rogue cultivators plans to raid their warehouse.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": "[ZH-TODO] Join the raid to secure herbs for yourself.",
+        "effects": {
+          "health": -15,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 6
+          }
+        }
+      },
+      {
+        "id": "protect_merchant",
+        "text": "[ZH-TODO] Protect the warehouse to earn the guild's favor.",
+        "effects": {
+          "health": -10,
+          "money": 200,
+          "reputation": 5,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "demonic_merchant_trap",
+    "title": "[ZH-TODO] Demonic Merchant Trap",
+    "description": "[ZH-TODO] Demonic activity is high. A merchant offers you a 'Breakthrough Pill' at an impossibly low price, but you notice a faint, dark aura emanating from him.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "accept_and_test",
+        "text": "[ZH-TODO] Buy the pill and test its efficacy.",
+        "effects": {
+          "money": -50,
+          "health": -15,
+          "cultivation": -5,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expose_merchant",
+        "text": "[ZH-TODO] Call out the merchant's demonic identity and engage in combat.",
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "karma": 10,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "trap"
+    ]
+  },
+  {
+    "id": "corrupt_speculation_frenzy",
+    "title": "[ZH-TODO] Corrupt Speculation Frenzy",
+    "description": "[ZH-TODO] Due to skyrocketing spirit herb prices, a group of corrupt merchants is hoarding life-saving pills to sell at ten times the cost. The city's morale is plummeting as phantoms of hunger haunt the streets,.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_speculators",
+        "text": "[ZH-TODO] Use your sect influence to join the monopoly for massive profit,.",
+        "effects": {
+          "money": 400,
+          "karma": -20,
+          "daoMind": -5,
+          "city.morale": -5
+        }
+      },
+      {
+        "id": "raid_merchant_vault",
+        "text": "[ZH-TODO] Raid their hidden vault and distribute the pills to the poor,.",
+        "effects": {
+          "health": -15,
+          "karma": 25,
+          "city.morale": 10,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "the_shadow_ritual",
+    "title": "[ZH-TODO] The Shadow Ritual",
+    "description": "[ZH-TODO] Demonic activity has reached a fever pitch. In the city's slums, you find a ritual using phàm nhân (mortal) children to birth a new Demonic Seed,.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "purify_the_slums",
+        "text": "[ZH-TODO] Risk a direct clash with the cult to stop the ritual and save the mortals,.",
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 15,
+          "city.security": 10
+        }
+      },
+      {
+        "id": "harvest_the_ma_chung",
+        "text": "[ZH-TODO] Wait for the ritual to conclude, then kill the cultists and take the Demonic Seed for yourself,.",
+        "effects": {
+          "karma": -100,
+          "daoMind": -20,
+          "cultivation": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "karma_extreme",
+      "danger"
+    ]
+  },
+  {
+    "id": "mysterious_wandering_merchant",
+    "title": "[ZH-TODO] Mysterious Wandering Merchant",
+    "description": "[ZH-TODO] The city's price index is low. A wandering merchant from a distant land offers rare spiritual materials at prices that seem too good to be true.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_bulk_materials",
+        "text": "[ZH-TODO] Invest your spirit stones and buy materials in bulk.",
+        "effects": {
+          "money": -150,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 4
+          },
+          "luck": 1
+        }
+      },
+      {
+        "id": "haggle_for_pills",
+        "text": "[ZH-TODO] Haggle aggressively for a rare cultivation pill.",
+        "effects": {
+          "money": -80,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "corrupt_guard_extortion",
+    "title": "[ZH-TODO] Corrupt Guard Extortion",
+    "description": "[ZH-TODO] City security is low. A corrupt captain of the guard accuses you of smuggling forbidden demonic artifacts and demands a 'settlement' fee.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_the_bribe",
+        "text": "[ZH-TODO] Pay the bribe to avoid legal trouble with the city.",
+        "effects": {
+          "money": -100,
+          "karma": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "fight_the_guards",
+        "text": "[ZH-TODO] Defend your honor and fight the corrupt guards.",
+        "effects": {
+          "health": -15,
+          "karma": 5,
+          "daoMind": 5,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "starving_mob_riot",
+    "title": "[ZH-TODO] The Starving Mob",
+    "description": "[ZH-TODO] City morale has reached a critical low. A desperate mob of starving mortals is blocking your path, demanding spirit stones to buy food from the price-gouging merchants.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "give_alms",
+        "text": "[ZH-TODO] Generously distribute your spirit stones to feed them.",
+        "effects": {
+          "money": -150,
+          "karma": 20,
+          "daoMind": 10,
+          "reputation": 10
+        }
+      },
+      {
+        "id": "disperse_mob",
+        "text": "[ZH-TODO] Use your spiritual pressure to forcefully disperse the mob.",
+        "effects": {
+          "karma": -15,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ]
+  },
+  {
+    "id": "city_guard_mutiny",
+    "title": "[ZH-TODO] City Guard Mutiny",
+    "description": "[ZH-TODO] City security and morale have collapsed. The guards, unpaid for months, have turned into looters, terrorizing the merchants they once protected.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "suppress_mutiny",
+        "text": "[ZH-TODO] Slay the rogue guards to restore order.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "reputation": 10,
+          "money": 80
+        }
+      },
+      {
+        "id": "loot_with_guards",
+        "text": "[ZH-TODO] Join the guards and raid the local merchant guild.",
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "danger"
+    ]
+  },
+  {
+    "id": "mortal_hunger_riot",
+    "title": "[ZH-TODO] Riot of the Starving Phantoms",
+    "description": "[ZH-TODO] City morale has collapsed due to price-gouging. Starving mortals are attacking cultivator convoys for any scraps of spirit energy.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "distribute_rations",
+        "text": "[ZH-TODO] Distribute your spirit herbs to appease the mob.",
+        "effects": {
+          "money": -150,
+          "karma": 30,
+          "daoMind": 10,
+          "city.morale": 15
+        }
+      },
+      {
+        "id": "ruthless_suppression",
+        "text": "[ZH-TODO] Brutally suppress the riot to restore market order.",
+        "effects": {
+          "karma": -40,
+          "money": 100,
+          "city.security": 10,
+          "reputation": -10
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "crime"
+    ]
+  },
+  {
+    "id": "mystical_lantern_festival",
+    "title": "[ZH-TODO] Mystical Lantern Festival",
+    "description": "[ZH-TODO] The city is highly prosperous and spiritual Qi is dense. A grand festival is held where lanterns infused with soul power fill the sky, creating a resonance with the Heavenly Dao.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "make_a_dao_wish",
+        "text": "[ZH-TODO] Release a lantern and make a wish for your Dao journey.",
+        "effects": {
+          "luck": 3,
+          "daoMind": 5,
+          "karma": 2,
+          "money": -20
+        }
+      },
+      {
+        "id": "collect_fallen_essence",
+        "text": "[ZH-TODO] Quietly collect the falling soul essence from the lanterns.",
+        "effects": {
+          "comprehension": 3,
+          "cultivation": 5,
+          "luck": -1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "opportunity",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "black_market_smuggling",
+    "title": "[ZH-TODO] Black Market Smuggling",
+    "description": "[ZH-TODO] The price index is skyrocketing and city security is low. A hidden network of smugglers is moving forbidden spirit herbs and demonic blood stones through the city sewers.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_smugglers",
+        "text": "[ZH-TODO] Ambush the smugglers and seize their cargo.",
+        "effects": {
+          "health": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 10
+          },
+          "karma": 5
+        }
+      },
+      {
+        "id": "invest_in_smuggling",
+        "text": "[ZH-TODO] Invest your own spirit stones to fund their next run.",
+        "effects": {
+          "money": -200,
+          "luck": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "demonic"
+    ]
+  },
+  {
+    "id": "black_market_hoarding",
+    "title": "[ZH-TODO] Black Market Hoarding",
+    "description": "[ZH-TODO] With the city's price index at an all-time high, a shadowy figure offers you a chance to join a scheme to hoard essential spiritual ores and manipulate the market.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "invest_in_monopoly",
+        "text": "[ZH-TODO] Invest heavily to monopolize the supply of Spirit Ores.",
+        "effects": {
+          "money": -300,
+          "luck": 5,
+          "karma": -15,
+          "city.priceIndex": 10
+        }
+      },
+      {
+        "id": "expose_to_authorities",
+        "text": "[ZH-TODO] Expose the scheme to the City Lord for a bounty.",
+        "effects": {
+          "money": 100,
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "ghost_market_whispers",
+    "title": "[ZH-TODO] Ghost Market Whispers",
+    "description": "[ZH-TODO] City security is low. You find a hidden entrance to the Ghost Market, where rogue cultivators trade forbidden demonic artifacts. A masked dealer offers you a piece of 'Huyền Thiết' for a suspicious price.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_huyen_thiet",
+        "text": "[ZH-TODO] Buy the rare ore to upgrade your weapon.",
+        "effects": {
+          "money": -120,
+          "luck": -2,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "steal_from_dealer",
+        "text": "[ZH-TODO] Wait for the dealer to leave and ambush him.",
+        "effects": {
+          "health": -15,
+          "karma": -15,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "demonic",
+      "crime"
+    ]
+  },
+  {
+    "id": "mortal_plague_curse",
+    "title": "[ZH-TODO] The Wailing Plague",
+    "description": "[ZH-TODO] A mysterious plague, suspected to be a demonic curse, is ravaging the mortal population. The city's morale is at rock bottom as phàm nhân die by the hundreds.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "heal_with_spiritual_qi",
+        "text": "[ZH-TODO] Exhaust your Qi to heal the dying mortals.",
+        "effects": {
+          "cultivation": -10,
+          "health": -10,
+          "karma": 40,
+          "daoMind": 15,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "ignore_mortal_suffering",
+        "text": "[ZH-TODO] Ignore them; mortal lives are but fleeting smoke.",
+        "effects": {
+          "daoMind": -5,
+          "karma": -20,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "karma_event",
+      "demonic"
+    ]
+  },
+  {
+    "id": "city_embargo_crisis",
+    "title": "[ZH-TODO] City Resource Embargo",
+    "description": "[ZH-TODO] The city is under a resource embargo due to high demonic activity. Prices have reached extreme levels, and the black market is the only way to survive.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "smuggle_goods",
+        "text": "[ZH-TODO] Risk smuggling essential herbs into the city for profit.",
+        "effects": {
+          "money": 500,
+          "karma": -20,
+          "luck": -5,
+          "city.security": -5
+        }
+      },
+      {
+        "id": "defend_caravans",
+        "text": "[ZH-TODO] Work as a guard for the few remaining legal caravans.",
+        "effects": {
+          "health": -20,
+          "money": 150,
+          "reputation": 10,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "city_spirit_tide",
+    "title": "[ZH-TODO] City Spirit Tide",
+    "description": "[ZH-TODO] Due to a massive surge in global spiritual Qi, the city's spiritual wells have overflowed. A literal tide of energy washes through the streets, momentarily turning the marketplace into a supreme cultivation ground.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_in_public",
+        "text": "[ZH-TODO] Sit in the middle of the street and absorb the tide.",
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "daoMind": -2,
+          "luck": 2
+        }
+      },
+      {
+        "id": "gather_spirit_liquid",
+        "text": "[ZH-TODO] Use your flasks to gather the condensed spiritual liquid to sell later.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "demonic_market_raid",
+    "title": "[ZH-TODO] Demonic Market Raid",
+    "description": "[ZH-TODO] City security is high and demonic activity is rising. The City Lord calls for volunteers to raid a secret demonic market discovered beneath the city's slums.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_raid",
+        "text": "[ZH-TODO] Join the city guards and strike the cultists.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "money": 150,
+          "reputation": 10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leak_info",
+        "text": "[ZH-TODO] Secretly tip off the market in exchange for a 'donation'.",
+        "effects": {
+          "money": 300,
+          "karma": -30,
+          "daoMind": -15,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "huyen_thiet_black_market",
+    "title": "[ZH-TODO] Huyền Thiết Black Market",
+    "description": "[ZH-TODO] City security is low and the price index is rising. A rogue cultivator is secretly selling 'Huyền Thiết' stolen from a sect convoy, useful for crafting superior weapons.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_huyen_thiet_cheap",
+        "text": "[ZH-TODO] Pay spirit stones to buy the illegal ore.",
+        "effects": {
+          "money": -150,
+          "karma": -10,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "report_to_sect",
+        "text": "[ZH-TODO] Report the location to your sect deacons for a reward.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 80,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "crime",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corrupt_city_lord_tax",
+    "title": "[ZH-TODO] Corrupt City Lord's Tax",
+    "description": "[ZH-TODO] City morale and security are low. The corrupt City Lord has imposed a 'Spiritual Protection Tax' on all visiting cultivators to fund his private army.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_the_tax",
+        "text": "[ZH-TODO] Pay the tax to maintain a low profile.",
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "incite_rebellion",
+        "text": "[ZH-TODO] Secretly incite the starving mortals to rebel against the Lord.",
+        "effects": {
+          "karma": 20,
+          "reputation": 10,
+          "city.morale": -10,
+          "city.security": -15,
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "city",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "city_tax_riot_interaction",
+    "title": "[ZH-TODO] The Bread and Stone Riot",
+    "description": "[ZH-TODO] With skyrocketing prices and low morale, starving mortals are blocking your path, accusing cultivators of hoarding the world's lifeblood [cite: 53, 60].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bribe_the_mob",
+        "text": "[ZH-TODO] Throw spirit stones to disperse the crowd and gain karma.",
+        "effects": {
+          "money": -200,
+          "karma": 25,
+          "daoMind": 10,
+          "city.morale": 10
+        }
+      },
+      {
+        "id": "protect_merchant_convoy",
+        "text": "[ZH-TODO] Help a nearby merchant suppress the mob to earn a discount.",
+        "effects": {
+          "karma": -20,
+          "money": 100,
+          "luck": 2,
+          "city.security": 5
+        }
+      }
+    ],
+    "tags": [
+      "city_interaction",
+      "economy",
+      "crime"
+    ]
+  },
+  {
+    "id": "grand_decade_auction",
+    "title": "[ZH-TODO] Grand Auction of the Decade",
+    "description": "[ZH-TODO] With city prosperity at its peak, the legendary Decade Auction has opened. Rare treasures from across the continent, including breakthrough pills and supreme manuals, are being showcased [cite: 60, 18].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bid_for_breakthrough_pill",
+        "text": "[ZH-TODO] Spend a fortune to secure a guaranteed Breakthrough Pill.",
+        "effects": {
+          "money": -500,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "sell_rare_materials",
+        "text": "[ZH-TODO] Take advantage of the high prices to sell your rare ores and herbs.",
+        "effects": {
+          "money": 400,
+          "reputation": 10,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "market",
+      "auction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thien_kieu_tra_xanh_gap_go",
+    "title": "[ZH-TODO] Encountering Moc Uyen Thanh",
+    "description": "[ZH-TODO] At the Ancient Cave, you see Moc Uyen Thanh surrounded by demonic beasts, looking weak and calling for help.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "rescue_tra_xanh",
+        "text": "[ZH-TODO] Lend a hand, cannot leave her to die.",
+        "effects": {
+          "health": -5,
+          "karma": 5,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": 10
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 0
+          }
+        }
+      },
+      {
+        "id": "ignore_tra_xanh",
+        "text": "[ZH-TODO] Sense something is wrong and leave quietly.",
+        "effects": {
+          "luck": 1,
+          "npcFavorability": {
+            "npc_thien_kieu_tra_xanh": -20
+          },
+          "npcGrudges": {
+            "npc_thien_kieu_tra_xanh": 10
+          }
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_tra_xanh",
+      "rescue"
+    ]
+  },
+  {
+    "id": "save_demonic_cultivator",
+    "title": "[ZH-TODO] Saving a Demonic Cultivator",
+    "description": "[ZH-TODO] In the pouring rain, you find a woman in black robes collapsed by the road, covered in blood. Her aura is cold and reeks of demonic energy. Righteous cultivators are searching nearby.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "save_demonic_girl",
+        "text": "[ZH-TODO] Use a Blood Recovery Pill to save her.",
+        "effects": {
+          "karma": -5,
+          "gainFragment": {
+            "techniqueId": "ma_cong_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "call_righteous",
+        "text": "[ZH-TODO] Call the righteous cultivators to capture her.",
+        "effects": {
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "npc_hong_nhan_ma_dao",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "abyssal_whispers",
+    "title": "[ZH-TODO] Abyssal Whispers",
+    "description": "[ZH-TODO] While cultivating in seclusion in a remote cave, you hear murmurs echoing from an underground spring, promising unmatched power and infinite lifespan if you abandon your Dao Mind.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "resist_whisper",
+        "text": "[ZH-TODO] Keep your mind clear and reject the demonic voice.",
+        "effects": {
+          "daoMind": 5,
+          "cultivation": 2,
+          "comprehension": 1
+        }
+      },
+      {
+        "id": "accept_whisper",
+        "text": "[ZH-TODO] Open your mind and embrace the evil power.",
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "black_roadhouse_inn",
+    "title": "[ZH-TODO] Black Roadhouse Inn",
+    "description": "[ZH-TODO] In the dark wilderness, you stop at a dimly lit inn. The sly old innkeeper serves a bowl of braised meat that has a strange but incredibly appetizing spiritual aura.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "stay_awake",
+        "text": "[ZH-TODO] Carefully avoid eating and stay awake to defend yourself.",
+        "effects": {
+          "health": -2,
+          "daoMind": 2,
+          "money": 50
+        }
+      },
+      {
+        "id": "eat_and_sleep",
+        "text": "[ZH-TODO] Feast on the meat and go to sleep.",
+        "effects": {
+          "health": -15,
+          "luck": -2,
+          "money": -50
+        }
+      }
+    ],
+    "tags": [
+      "trap",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "blood_sacrifice_array",
+    "title": "[ZH-TODO] Blood Sacrifice Array",
+    "description": "[ZH-TODO] While patrolling, you discover a wicked array absorbing mortal blood to condense a Blood Pill.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "destroy_array",
+        "text": "[ZH-TODO] Risk your life to destroy the array.",
+        "effects": {
+          "health": -15,
+          "daoMind": 5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "steal_blood_pill",
+        "text": "[ZH-TODO] Wait for completion and steal the pill.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "gainItem": {
+            "itemId": "item_nhien_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "karma_extreme"
+    ]
+  },
+  {
+    "id": "qi_deviation_crisis",
+    "title": "[ZH-TODO] Qi Deviation Crisis",
+    "description": "[ZH-TODO] Rising demonic energy triggers your inner demons during meditation. The spiritual Qi in your meridians turns chaotic, threatening to explode.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_breakthrough",
+        "text": "[ZH-TODO] Use the chaotic energy to forcefully increase cultivation!",
+        "effects": {
+          "health": -20,
+          "cultivation": 10,
+          "daoMind": -5
+        }
+      },
+      {
+        "id": "suppress_qi",
+        "text": "[ZH-TODO] Bite your tongue and brutally suppress the energy.",
+        "effects": {
+          "cultivation": -5,
+          "daoMind": 5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "demonic_qi_overload",
+    "title": "[ZH-TODO] Demonic Qi Overload",
+    "description": "[ZH-TODO] The world's demonic energy is so dense it begins to seep into your meridians during regular rest, causing a violent struggle between your spiritual Qi and the dark aura.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "refine_demonic_qi",
+        "text": "[ZH-TODO] Attempt to refine the demonic Qi into your own power.",
+        "effects": {
+          "cultivation": 15,
+          "health": -20,
+          "daoMind": -10,
+          "karma": -5
+        }
+      },
+      {
+        "id": "expel_darkness",
+        "text": "[ZH-TODO] Focus entirely on expelling the darkness from your body.",
+        "effects": {
+          "health": -5,
+          "daoMind": 8,
+          "cultivation": -2
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ]
+  },
+  {
+    "id": "shadow_demonic_ambush",
+    "title": "[ZH-TODO] Shadow of the Demonic Path",
+    "description": "[ZH-TODO] High demonic energy has emboldened dark cultivators. A skilled demonic assassin ambushes you from the shadows, seeking to steal your cultivation base.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "counter_ambush",
+        "text": "[ZH-TODO] React instantly and engage in a deadly duel.",
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "use_escape_talisman",
+        "text": "[ZH-TODO] Use an escape talisman to flee, leaving your treasures behind.",
+        "effects": {
+          "money": -200,
+          "luck": -2,
+          "daoMind": -5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "void_visions_meditation",
+    "title": "[ZH-TODO] Visions of the Void",
+    "description": "[ZH-TODO] Dense demonic energy surrounds you during meditation. Visions of a dark void begin to tempt your mind, promising power in exchange for your humanity.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "embrace_the_darkness",
+        "text": "[ZH-TODO] Embrace the visions and harness the void energy.",
+        "effects": {
+          "cultivation": 18,
+          "karma": -15,
+          "health": -10,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "recite_heart_sutra",
+        "text": "[ZH-TODO] Recite the Heart-Cleansing Sutra to purge the corruption.",
+        "effects": {
+          "daoMind": 15,
+          "cultivation": -5,
+          "karma": 10,
+          "health": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "cultivation",
+      "danger"
+    ]
+  },
+  {
+    "id": "demonic_whisper_meditation",
+    "title": "[ZH-TODO] Whispers of the Demonic Seed",
+    "description": "[ZH-TODO] As demonic energy saturates the world, a dark voice begins to whisper in your mind during meditation, offering forbidden power to bypass your current bottleneck.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "listen_to_whispers",
+        "text": "[ZH-TODO] Listen to the whispers and embrace the dark shortcut.",
+        "effects": {
+          "cultivation": 20,
+          "karma": -30,
+          "daoMind": -15,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "seal_the_mind",
+        "text": "[ZH-TODO] Seal your senses and protect your righteous Dao Heart.",
+        "effects": {
+          "daoMind": 15,
+          "health": -10,
+          "karma": 10
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "dao_mind"
+    ]
+  },
+  {
+    "id": "demonic_blood_sacrifice_interruption",
+    "title": "[ZH-TODO] Interrupting the Blood Sacrifice",
+    "description": "[ZH-TODO] You stumble upon a hidden ritual where demonic cultivators are sacrificing mortals to fuel their dark energy. The atmosphere is heavy with the smell of iron and death.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "save_mortals",
+        "text": "[ZH-TODO] Risk your life to slay the cultists and save the survivors.",
+        "effects": {
+          "health": -35,
+          "karma": 50,
+          "daoMind": 20,
+          "reputation": 15
+        }
+      },
+      {
+        "id": "wait_and_scavenge",
+        "text": "[ZH-TODO] Wait for the ritual to end, then loot the abandoned demonic tools.",
+        "effects": {
+          "karma": -50,
+          "daoMind": -20,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 3
+          },
+          "money": 300
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "heart_demon_resonance",
+    "title": "[ZH-TODO] Heart Demon Resonance",
+    "description": "[ZH-TODO] The world's demonic energy is overflowing, triggering a resonance with the lingering 'Pill Toxins' and repressed desires in your soul, manifested as a Heart Demon [cite: 18, 56].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "conquer_heart_demon",
+        "text": "[ZH-TODO] Engage in a spiritual battle to conquer your inner darkness.",
+        "effects": {
+          "daoMind": 20,
+          "comprehension": 5,
+          "health": -20,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "surrender_to_darkness",
+        "text": "[ZH-TODO] Surrender to the whispers for a sudden surge in cultivation.",
+        "effects": {
+          "cultivation": 40,
+          "daoMind": -30,
+          "karma": -50,
+          "health": -10
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "dao_mind"
+    ]
+  },
+  {
+    "id": "waking_dawn",
+    "title": "[ZH-TODO] Waking Dawn",
+    "description": "[ZH-TODO] A cold dawn breaks. A choice appears: cultivate steadily or chase a risky shortcut.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steady_practice",
+        "text": "[ZH-TODO] Practice patiently, build your foundation.",
+        "effects": {
+          "cultivation": 2,
+          "comprehension": 1,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "liet_duong_hoa",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "shortcut_burst",
+        "text": "[ZH-TODO] Use a risky shortcut to leap forward.",
+        "effects": {
+          "cultivation": 5,
+          "luck": -2,
+          "health": -3,
+          "gainItem": {
+            "itemId": "item_tho_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "chosen_one_duel",
+    "title": "[ZH-TODO] Duel with the Chosen One",
+    "description": "[ZH-TODO] Long Ngao Thien, the arrogant child of destiny, blocks your path. He points his glittering sword at you, demanding a duel to step on your dignity.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": "[ZH-TODO] Go all out and prove your worth!",
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "daoMind": 10,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": "[ZH-TODO] Acknowledge his superiority and back down.",
+        "effects": {
+          "daoMind": -10,
+          "health": 0
+        }
+      }
+    ],
+    "tags": [
+      "combat",
+      "npc_thien_kieu_chan_chinh"
+    ]
+  },
+  {
+    "id": "spirit_herbs",
+    "title": "[ZH-TODO] Spirit Herbs",
+    "description": "[ZH-TODO] You stumble upon mysterious spirit herbs. Their aura is intoxicating but slightly unstable.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "accept_herbs",
+        "text": "[ZH-TODO] Refine them safely using your core techniques.",
+        "effects": {
+          "health": 2,
+          "cultivation": 1,
+          "karma": 1,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "test_herbs",
+        "text": "[ZH-TODO] Test the raw herbs directly on yourself.",
+        "effects": {
+          "health": -2,
+          "comprehension": 2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "decline_herbs",
+        "text": "[ZH-TODO] Decline the temptation and leave silently.",
+        "effects": {
+          "karma": 1,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "duel_challenge",
+    "title": "[ZH-TODO] Duel Challenge",
+    "description": "[ZH-TODO] A wandering martial artist abruptly blocks your path, drawing their weapon and demanding a duel to hone their Dao.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "accept_duel",
+        "text": "[ZH-TODO] Accept the duel and prove yourself.",
+        "effects": {
+          "cultivation": 2,
+          "luck": 1,
+          "health": -3,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "avoid_duel",
+        "text": "[ZH-TODO] Avoid the confrontation but observe their stance.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "combat",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "heavenly_dao_quake",
+    "title": "[ZH-TODO] Heavenly Dao Quake",
+    "description": "[ZH-TODO] Spiritual energy fluctuates violently, reaching an alarming level! An extraordinary destiny is approaching, and a hidden secret realm might be opening.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_violent_qi",
+        "text": "[ZH-TODO] Risk your life to absorb the violent spiritual Qi.",
+        "effects": {
+          "health": -25,
+          "cultivation": 30,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "seek_secret_realm",
+        "text": "[ZH-TODO] Search for the entrance to the opening secret realm.",
+        "effects": {
+          "luck": 2,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "heavenly_qi_surge",
+    "title": "[ZH-TODO] Heavenly Qi Surge",
+    "description": "[ZH-TODO] The spiritual Qi of the world suddenly surges to an incredibly dense level! It completely suppresses demonic auras, but inhaling too much might overwhelm a weak body.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_madly",
+        "text": "[ZH-TODO] Absorb the Qi madly to surge your cultivation!",
+        "effects": {
+          "health": -15,
+          "cultivation": 20,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "refine_into_pills",
+        "text": "[ZH-TODO] Safely guide the Qi to refine it into spiritual pills.",
+        "effects": {
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "cultivation",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_epiphany_surge",
+    "title": "[ZH-TODO] Heavenly Epiphany Surge",
+    "description": "[ZH-TODO] The Heavenly Dao fluctuates wildly. A sudden surge of profound Dao rhythm washes over you, resonating with your meridians and presenting a rare chance for a sudden epiphany.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_epiphany",
+        "text": "[ZH-TODO] Close your eyes and absorb the Dao rhythm to surge your cultivation.",
+        "effects": {
+          "health": -5,
+          "cultivation": 15,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "comprehend_manual",
+        "text": "[ZH-TODO] Use this profound moment to deduce martial techniques.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "echoes_of_the_immortal_rift",
+    "title": "[ZH-TODO] Echoes of the Immortal Rift",
+    "description": "[ZH-TODO] A sudden spike in Dao fluctuations has caused a localized temporal rift. You hear echoes of a future breakthrough or a past failure resonating with your soul,.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "peer_into_destiny",
+        "text": "[ZH-TODO] Force your mind through the rift to grasp a fragment of supreme knowledge,.",
+        "effects": {
+          "comprehension": 15,
+          "daoMind": -5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "sacrifice_cultivation_for_luck",
+        "text": "[ZH-TODO] Offer your current cultivation base to the rift in exchange for a shift in destiny,.",
+        "effects": {
+          "cultivation": -20,
+          "luck": 10,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_thunder_tempering",
+    "title": "[ZH-TODO] Heavenly Thunder Tempering",
+    "description": "[ZH-TODO] Heavenly Dao is fluctuating wildly. A localized spiritual storm has summoned bolts of Heavenly Thunder. You can try to use the lightning to temper your meridians.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "face_the_thunder",
+        "text": "[ZH-TODO] Face the thunder head-on to purge your body.",
+        "effects": {
+          "health": -35,
+          "cultivation": 30,
+          "comprehension": 5,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "flee_the_storm",
+        "text": "[ZH-TODO] Retreat to safety and avoid the deadly lightning.",
+        "effects": {
+          "luck": 2,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "cultivation",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "ancient_array_puzzle",
+    "title": "[ZH-TODO] The Lost Array of the Ancients",
+    "description": "[ZH-TODO] While exploring a remote area, you discover an ancient array carved into the rock. It flickers with a mysterious light, resonating with the current Heavenly Dao fluctuations.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "solve_with_wisdom",
+        "text": "[ZH-TODO] Use your deep comprehension to solve the puzzle peacefully.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 3,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "break_with_force",
+        "text": "[ZH-TODO] Use sheer martial power to shatter the array's core.",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "opportunity",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "immortal_tomb_emergence",
+    "title": "[ZH-TODO] Immortal's Tomb Emergence",
+    "description": "[ZH-TODO] Extreme Dao fluctuations have caused the earth to split, revealing the entrance to a majestic tomb belonging to an ancient Ascendant Immortal.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_the_core_tomb",
+        "text": "[ZH-TODO] Brave the deadly traps to enter the core burial chamber.",
+        "effects": {
+          "health": -35,
+          "comprehension": 10,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          },
+          "luck": 5
+        }
+      },
+      {
+        "id": "scavenge_the_outskirts",
+        "text": "[ZH-TODO] Stay safe and scavenge the offerings in the outer halls.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          },
+          "luck": 2,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "danger"
+    ]
+  },
+  {
+    "id": "world_dao_epiphany",
+    "title": "[ZH-TODO] Heavenly Dao Resonance",
+    "description": "[ZH-TODO] The world's Dao fluctuates violently, causing spiritual energy to manifest as physical lotus petals falling from the sky.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "meditate_on_dao",
+        "text": "[ZH-TODO] Focus on comprehending the laws of the universe.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 10,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_petals",
+        "text": "[ZH-TODO] Quickly absorb the manifestation petals for cultivation.",
+        "effects": {
+          "cultivation": 15,
+          "health": 5,
+          "spiritualQi": -5
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "heavenly_karma_judgment",
+    "title": "[ZH-TODO] Heavenly Karma Judgment",
+    "description": "[ZH-TODO] Heavenly Dao fluctuations have triggered a moment of karmic clarity. The world judges your past actions, resonating with your soul's purity or corruption.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "embrace_the_judgment",
+        "text": "[ZH-TODO] Offer your soul to the judgment of the heavens.",
+        "effects": {
+          "daoMind": 10,
+          "luck": 5,
+          "health": -5,
+          "karma": 10
+        }
+      },
+      {
+        "id": "defy_the_heavens",
+        "text": "[ZH-TODO] Defy the judgment and rely only on your own power.",
+        "effects": {
+          "cultivation": 15,
+          "daoMind": -10,
+          "karma": -20,
+          "health": -15
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "karma_event",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "pill_toxin_backlash",
+    "title": "[ZH-TODO] Accumulated Pill Toxins",
+    "description": "[ZH-TODO] Your over-reliance on low-grade pills to survive the lifespan race has caused 'Pill Toxins' to accumulate in your meridians. A backlash is imminent.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "cleanse_meridians",
+        "text": "[ZH-TODO] Endure excruciating pain to manually cleanse the toxins.",
+        "effects": {
+          "health": -20,
+          "daoMind": 10,
+          "cultivation": -2,
+          "karma": 5
+        }
+      },
+      {
+        "id": "neutralize_with_herb",
+        "text": "[ZH-TODO] Use a rare Snow Lotus to neutralize the toxins safely.",
+        "effects": {
+          "money": -150,
+          "health": 5,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "danger",
+      "pill_toxin"
+    ]
+  },
+  {
+    "id": "pill_toxin_cleansing_ritual",
+    "title": "[ZH-TODO] Pill Toxin Cleansing Ritual",
+    "description": "[ZH-TODO] Your meridians are clogged with dark residues from excessive pill consumption. A wandering healer offers a dangerous ritual to burn away the toxins using pure spiritual fire.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "endure_the_fire",
+        "text": "[ZH-TODO] Endure the excruciating spiritual fire to cleanse your body.",
+        "effects": {
+          "health": -30,
+          "daoMind": 10,
+          "cultivation": -5,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "refuse_and_seek_herbs",
+        "text": "[ZH-TODO] Refuse the ritual and try to neutralize toxins with rare herbs.",
+        "effects": {
+          "money": -200,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ]
+  },
+  {
+    "id": "fragment_of_the_heavens",
+    "title": "[ZH-TODO] Fragment of the Heavens",
+    "description": "[ZH-TODO] Extreme Dao fluctuations have caused a physical fragment of the Heavenly Dao to fall from the sky. It radiates a rhythm that defies mortality.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "grasp_the_fragment",
+        "text": "[ZH-TODO] Risk your body to grasp the divine fragment.",
+        "effects": {
+          "health": -40,
+          "comprehension": 20,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "watch_it_dissolve",
+        "text": "[ZH-TODO] Don't touch it; simply sit nearby and observe as it dissolves.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 20,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_dao_vision_war",
+    "title": "[ZH-TODO] Vision of the Eternal War",
+    "description": "[ZH-TODO] Extreme Dao fluctuations have triggered a spiritual resonance. You see a vision of the founding Sect Leader battling a Great Demon, revealing a flaw in your current technique.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "correct_the_flaw",
+        "text": "[ZH-TODO] Focus on correcting the technique's flaw to boost efficiency.",
+        "effects": {
+          "comprehension": 15,
+          "cultivation": 5,
+          "daoMind": 10,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "capture_demon_technique",
+        "text": "[ZH-TODO] Try to memorize the Demon's forbidden moves instead.",
+        "effects": {
+          "comprehension": 10,
+          "karma": -20,
+          "daoMind": -15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "lore"
+    ]
+  },
+  {
+    "id": "pill_toxin_meridian_blockage",
+    "title": "[ZH-TODO] Meridian Blockage Crisis",
+    "description": "[ZH-TODO] The high spiritual Qi in the environment is reacting violently with the 'Pill Toxins' in your body, causing a localized Qi explosion within your meridians.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_suppression",
+        "text": "[ZH-TODO] Forcefully suppress the explosion, risking permanent damage.",
+        "effects": {
+          "health": -40,
+          "cultivation": -5,
+          "daoMind": 15,
+          "karma": 5
+        }
+      },
+      {
+        "id": "vent_excess_qi",
+        "text": "[ZH-TODO] Vent the excess energy outwards, causing a small shockwave.",
+        "effects": {
+          "health": -15,
+          "cultivation": -10,
+          "luck": -2,
+          "reputation": -5
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "pill_toxin",
+      "danger"
+    ]
+  },
+  {
+    "id": "ancient_spatial_rift_puzzle",
+    "title": "[ZH-TODO] Ancient Spatial Rift",
+    "description": "[ZH-TODO] Extreme Heavenly Dao fluctuations have opened a localized spatial rift. It leads to a pocket dimension containing ancient cultivation techniques [cite: 56, 59].",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "decipher_the_rift",
+        "text": "[ZH-TODO] Use your high comprehension to stabilize the rift and enter safely.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 2
+          }
+        }
+      },
+      {
+        "id": "force_entry",
+        "text": "[ZH-TODO] Brave the chaotic space to snatch a supreme manual fragment.",
+        "effects": {
+          "health": -40,
+          "luck": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "puzzle",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "heavenly_nectar_epiphany",
+    "title": "[ZH-TODO] Heavenly Nectar Rain",
+    "description": "[ZH-TODO] A rare phenomenon occurs when spiritual Qi peaks! Rain that directly nourishes the soul falls from the sky, bypassing ordinary bottlenecks [cite: 56, 12].",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "meditate_in_rain",
+        "text": "[ZH-TODO] Meditate openly to maximize tu vi gain.",
+        "effects": {
+          "cultivation": 25,
+          "health": 10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "collect_nectar",
+        "text": "[ZH-TODO] Focus on collecting the rain into jade bottles for later sale.",
+        "effects": {
+          "money": 300,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "opportunity",
+      "rare"
+    ]
+  },
+  {
+    "id": "beast_king_lotus",
+    "title": "[ZH-TODO] Beast King Guarding the Blood Lotus",
+    "description": "[ZH-TODO] Deep in the core of the Myriad Beast Mountain Range, you discover a thousand-year Blood Lotus. However, coiled tightly beside it is a slumbering Blood Python Beast King.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steal_lotus",
+        "text": "[ZH-TODO] Set up a stealth array, steal the Blood Lotus, and run.",
+        "effects": {
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_huyet_lien",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leave_safely",
+        "text": "[ZH-TODO] Walk away, your life is more important.",
+        "effects": {
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "beast",
+      "danger",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corpse_in_swamp",
+    "title": "[ZH-TODO] Corpse in the Swamp",
+    "description": "[ZH-TODO] Deep in the Myriad Beast Mountain Range, you see a Foundation Establishment cultivator's corpse half-submerged in a swamp, with a bulging storage bag still glittering on their waist.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "loot_corpse",
+        "text": "[ZH-TODO] Use sword control or a branch to hook the storage bag.",
+        "effects": {
+          "health": -15,
+          "luck": 1,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_boi_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "burn_corpse",
+        "text": "[ZH-TODO] Burn the corpse from afar to avoid future trouble.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "trap",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "unfinished_go_game",
+    "title": "[ZH-TODO] Unfinished Go Game",
+    "description": "[ZH-TODO] Exploring a stalactite-filled cave, you find a white jade Go board. The unfinished game radiates profound Dao rhythm, likely left behind by two ascendant masters millennia ago.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "solve_go_game",
+        "text": "[ZH-TODO] Sit down and dedicate your entire mind to solving the game.",
+        "effects": {
+          "cultivation": 20,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "observe_briefly",
+        "text": "[ZH-TODO] Just bow respectfully, watch briefly, and leave.",
+        "effects": {
+          "comprehension": 1,
+          "cultivation": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "dao_event",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "demon_king_metamorphosis",
+    "title": "[ZH-TODO] Demon King's Metamorphosis",
+    "description": "[ZH-TODO] The sky darkens over the Myriad Beast Mountain Range. A Demon King is undergoing Heavenly Tribulation to take human form and is extremely weak.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "protect_demon",
+        "text": "[ZH-TODO] Protect the Demon King through the tribulation.",
+        "effects": {
+          "health": -20,
+          "karma": 5,
+          "gainItem": {
+            "itemId": "item_van_thu_huyet_lenh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "sneak_attack_demon",
+        "text": "[ZH-TODO] Take advantage of the situation and attack!",
+        "effects": {
+          "karma": -8,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "rare_encounter"
+    ]
+  },
+  {
+    "id": "secret_realm_opening",
+    "title": "[ZH-TODO] Secret Realm Opening",
+    "description": "[ZH-TODO] Heavenly Dao fluctuates violently. A spatial rift tears open in the mountains, revealing an ancient secret realm glowing with supreme spiritual energy.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_realm",
+        "text": "[ZH-TODO] Risk your life and leap into the spatial rift.",
+        "effects": {
+          "health": -20,
+          "cultivation": 25,
+          "comprehension": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "meditate_outside",
+        "text": "[ZH-TODO] Too dangerous. Meditate outside to absorb the leaking Qi.",
+        "effects": {
+          "cultivation": 5,
+          "luck": 2,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "secret_realm",
+      "opportunity",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "heavenly_treasure_emerges",
+    "title": "[ZH-TODO] Heavenly Treasure Emerges",
+    "description": "[ZH-TODO] The mountain's resources are overflowing. A rare Snow Lotus has bloomed on a cliff, attracting numerous greedy rogue cultivators who are already fighting for it.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "sneak_and_grab",
+        "text": "[ZH-TODO] Sneak through the chaos to grab the Snow Lotus.",
+        "effects": {
+          "health": -10,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_tuyet_lien",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "ambush_survivors",
+        "text": "[ZH-TODO] Wait for them to kill each other, then ambush the survivors.",
+        "effects": {
+          "karma": -10,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "resource_gathering",
+      "opportunity",
+      "danger"
+    ]
+  },
+  {
+    "id": "encounter_mu_wanqing",
+    "title": "[ZH-TODO] Encountering Mu Wanqing",
+    "description": "[ZH-TODO] At the Ancient Ruins, you find Mu Wanqing, a famous inner sect beauty, surrounded by demonic beasts. She is crying weakly for help.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "rescue_tra_xanh",
+        "text": "[ZH-TODO] Rush in to save her like a hero.",
+        "effects": {
+          "health": -15,
+          "karma": 5,
+          "money": 50
+        }
+      },
+      {
+        "id": "ignore_tra_xanh",
+        "text": "[ZH-TODO] See through the trouble and walk away silently.",
+        "effects": {
+          "luck": 2,
+          "daoMind": 2,
+          "karma": -2
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_tra_xanh",
+      "rescue",
+      "beast"
+    ]
+  },
+  {
+    "id": "mountain_meditation",
+    "title": "[ZH-TODO] Mountain Meditation",
+    "description": "[ZH-TODO] The towering peaks of the ancient mountain invite you to sit and ponder the Heavenly Dao.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "embrace_silence",
+        "text": "[ZH-TODO] Sit with the mountain's soul and listen to the silence.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 2,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "seek_fortune",
+        "text": "[ZH-TODO] Search the surrounding peaks for hidden treasures.",
+        "effects": {
+          "health": -1,
+          "cultivation": 1,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "opportunity",
+      "mountain"
+    ]
+  },
+  {
+    "id": "event_hong_nhan_ma_dao_am_sat",
+    "title": "[ZH-TODO] Blood Rose Ambush",
+    "description": "[ZH-TODO] While exploring the Myriad Beast Mountain Range, Blood Rose suddenly drops her disguise, revealing her demonic nature, and surrounds you with killing intent.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_hong_nhan",
+        "text": "[ZH-TODO] Fight to the death and break out!",
+        "effects": {
+          "health": -15,
+          "cultivation": 10,
+          "luck": 2
+        }
+      },
+      {
+        "id": "flee_hong_nhan",
+        "text": "[ZH-TODO] Leave your Spirit Stones behind and flee for your life.",
+        "effects": {
+          "health": -5,
+          "money": -100
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "combat",
+      "npc_hong_nhan_ma_dao"
+    ]
+  },
+  {
+    "id": "ancestral_memory",
+    "title": "[ZH-TODO] Ancestral Memory",
+    "description": "[ZH-TODO] Deep within the ancient ruins, a mysterious resonance triggers a flood of ancient ancestral memories in your mind.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "remember_ancestors",
+        "text": "[ZH-TODO] Embrace the ancestors and nurture the legacy.",
+        "effects": {
+          "karma": 2,
+          "cultivation": 1,
+          "comprehension": 1
+        }
+      },
+      {
+        "id": "forge_own_path",
+        "text": "[ZH-TODO] Break the old path and forge your own destiny.",
+        "effects": {
+          "luck": 2,
+          "comprehension": 1,
+          "karma": -1
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "lore",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "grave_storm",
+    "title": "[ZH-TODO] Grave Storm",
+    "description": "[ZH-TODO] A terrifying spectral storm filled with resentful spirits suddenly sweeps across the ancient burial grounds.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "stand_firm",
+        "text": "[ZH-TODO] Stand firm and protect your Dao Heart.",
+        "effects": {
+          "health": -1,
+          "karma": 2,
+          "cultivation": 1
+        }
+      },
+      {
+        "id": "evade_pain",
+        "text": "[ZH-TODO] Evade the pain and conserve your energy.",
+        "effects": {
+          "luck": 2,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "danger",
+      "demonic",
+      "trap"
+    ]
+  },
+  {
+    "id": "helping_hand_daoist",
+    "title": "[ZH-TODO] A Daoist in Distress",
+    "description": "[ZH-TODO] You encounter a severely injured righteous cultivator being cornered by a pack of demonic wolves. They beg you for help.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "help_daoist",
+        "text": "[ZH-TODO] Draw your sword and save them.",
+        "effects": {
+          "health": -10,
+          "karma": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "loot_daoist",
+        "text": "[ZH-TODO] Wait for them to die, then loot their corpse.",
+        "effects": {
+          "karma": -10,
+          "money": 80,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "karma_event",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "ruined_alchemy_furnace",
+    "title": "[ZH-TODO] Ruined Alchemy Furnace",
+    "description": "[ZH-TODO] In a forgotten cave, you find a cracked alchemy furnace still radiating intense, unstable medicinal Qi after centuries.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "absorb_medicinal_qi",
+        "text": "[ZH-TODO] Inhale the scorching Qi to temper your body.",
+        "effects": {
+          "health": -5,
+          "cultivation": 5,
+          "comprehension": 2
+        }
+      },
+      {
+        "id": "scavenge_furnace",
+        "text": "[ZH-TODO] Break the furnace to search for leftover pills.",
+        "effects": {
+          "luck": -1,
+          "gainItem": {
+            "itemId": "item_ngung_khi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "crafting",
+      "opportunity",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "ancient_array_trap",
+    "title": "[ZH-TODO] Ancient Array Trap",
+    "description": "[ZH-TODO] Heavenly Dao fluctuations have revealed the entrance to an Ancient Cave Dwelling, but it is protected by a deadly and complex killing array.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "force_break_array",
+        "text": "[ZH-TODO] Use sheer martial power to break the array!",
+        "effects": {
+          "health": -25,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "decipher_array",
+        "text": "[ZH-TODO] Sit down and use your comprehension to decipher the array.",
+        "effects": {
+          "comprehension": 3,
+          "luck": 1,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "puzzle",
+      "danger",
+      "secret_realm"
+    ]
+  },
+  {
+    "id": "demonic_altar_discovery",
+    "title": "[ZH-TODO] Demonic Altar Discovery",
+    "description": "[ZH-TODO] Deep in the misty mountains, you stumble upon a hidden Demonic Altar. Fresh blood covers the runes, and a dark artifact throbs with forbidden power.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "take_artifact",
+        "text": "[ZH-TODO] Endure the corrupted energy and take the artifact.",
+        "effects": {
+          "health": -15,
+          "karma": -15,
+          "daoMind": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "destroy_altar",
+        "text": "[ZH-TODO] Purify the altar with your cultivation base.",
+        "effects": {
+          "health": -20,
+          "karma": 15,
+          "cultivation": 5,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "millennial_ginseng_guardian",
+    "title": "[ZH-TODO] Guardian of the Millennial Ginseng",
+    "description": "[ZH-TODO] Deep in the Beast Mountain Range, you discover a patch of rare spirit herbs, including a Millennial Ginseng. However, a fierce demonic wolf is aggressively guarding the area.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_wolf_for_ginseng",
+        "text": "[ZH-TODO] Engage the demonic wolf in a bloody battle for the herbs.",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 4
+          }
+        }
+      },
+      {
+        "id": "sneak_and_steal_herbs",
+        "text": "[ZH-TODO] Hold your breath and try to steal a few herbs without alerting it.",
+        "effects": {
+          "health": -10,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "beast",
+      "resource_gathering",
+      "combat"
+    ]
+  },
+  {
+    "id": "ancient_dao_stele",
+    "title": "[ZH-TODO] Ancient Dao Stele",
+    "description": "[ZH-TODO] Triggered by intense Heavenly Dao fluctuations, a massive stone stele rises from the earth, radiating ancient Dao runes that resonate with your soul.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_stele",
+        "text": "[ZH-TODO] Sit beneath the stele and meditate on the runes.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 5,
+          "cultivation": 10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "pry_fragment",
+        "text": "[ZH-TODO] Pry a fragment off the stele to sell.",
+        "effects": {
+          "karma": -5,
+          "luck": -2,
+          "money": 150
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "beast_king_lair",
+    "title": "[ZH-TODO] Beast King's Lair",
+    "description": "[ZH-TODO] With beast activity at a peak, you stumble upon the empty lair of a Beast King while it's out leading the beast tide. Treasures are scattered everywhere.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "loot_lair_quickly",
+        "text": "[ZH-TODO] Loot as much as you can and run before it returns!",
+        "effects": {
+          "health": -5,
+          "luck": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          },
+          "money": 150
+        }
+      },
+      {
+        "id": "trap_beast_king",
+        "text": "[ZH-TODO] Set up a killing array to ambush the weakened Beast King.",
+        "effects": {
+          "health": -30,
+          "cultivation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "high_risk_reward",
+      "danger"
+    ]
+  },
+  {
+    "id": "miasma_mountain_trail",
+    "title": "[ZH-TODO] Miasma on the Mountain Trail",
+    "description": "[ZH-TODO] Rising demonic energy has created a thick, toxic miasma on the mountain trail. You hear the distorted growls of mutated beasts within the fog.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "push_through_miasma",
+        "text": "[ZH-TODO] Hold your breath and push through to find rare herbs.",
+        "effects": {
+          "health": -15,
+          "cultivation": 2,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "wait_for_clearance",
+        "text": "[ZH-TODO] Wait for the miasma to clear, losing precious time.",
+        "effects": {
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "danger",
+      "demonic",
+      "beast"
+    ]
+  },
+  {
+    "id": "spiritual_spring_epiphany",
+    "title": "[ZH-TODO] Spiritual Spring Epiphany",
+    "description": "[ZH-TODO] High spiritual Qi in the area has manifested a hidden spiritual spring. The water is pure and radiates profound Dao energy.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "bathe_in_spring",
+        "text": "[ZH-TODO] Bathe in the spring to cleanse your meridians.",
+        "effects": {
+          "health": 10,
+          "cultivation": 5,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "collect_spring_water",
+        "text": "[ZH-TODO] Collect the water into jade flasks to sell or use later.",
+        "effects": {
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_huyen_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "opportunity",
+      "rare"
+    ]
+  },
+  {
+    "id": "ghost_battlefield_scavenging",
+    "title": "[ZH-TODO] Ghost Battlefield Scavenging",
+    "description": "[ZH-TODO] The mountain is littered with remains from the ongoing sect war. Ghostly wails echo as you search the area for abandoned spiritual tools and weapons.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "search_remains",
+        "text": "[ZH-TODO] Deeply search the battlefield despite the spectral danger.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          },
+          "money": 120
+        }
+      },
+      {
+        "id": "purify_battlefield",
+        "text": "[ZH-TODO] Use your cultivation to purify the souls of the fallen.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 20,
+          "daoMind": 10
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "ancient_battlefield_vision",
+    "title": "[ZH-TODO] Ancient Battlefield Vision",
+    "description": "[ZH-TODO] High Heavenly Dao fluctuations trigger a temporal rift. You see a vision of an ancient battle between Immortals and Demons, revealing profound combat techniques.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "study_vision",
+        "text": "[ZH-TODO] Immerse yourself in the vision to learn the ancient ways.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "resist_vision",
+        "text": "[ZH-TODO] Close your eyes to protect your mind from the brutal killing intent.",
+        "effects": {
+          "daoMind": 10,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "dao_event",
+      "comprehension",
+      "lore"
+    ]
+  },
+  {
+    "id": "spirit_beast_egg_discovery",
+    "title": "[ZH-TODO] Spirit Beast Egg Discovery",
+    "description": "[ZH-TODO] Mountain resources are abundant. You find a glowing Spirit Beast egg hidden in a crevice, but the parent beast is nearby, hunting for food.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "steal_egg",
+        "text": "[ZH-TODO] Quietly steal the egg and escape.",
+        "effects": {
+          "luck": 5,
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "leave_beast_alone",
+        "text": "[ZH-TODO] Leave the egg undisturbed to respect the laws of nature.",
+        "effects": {
+          "karma": 10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "resource_gathering",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "night_of_the_blood_moon",
+    "title": "[ZH-TODO] Night of the Blood Moon",
+    "description": "[ZH-TODO] The sky turns a sickly crimson. Extreme demonic energy has driven the mountain beasts into a murderous frenzy, and the veil between worlds is thinning,.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "absorb_blood_essence",
+        "text": "[ZH-TODO] Sit in the center of the slaughter and absorb the chaotic blood essence to surge your cultivation,.",
+        "effects": {
+          "cultivation": 25,
+          "health": -30,
+          "daoMind": -15,
+          "karma": -10
+        }
+      },
+      {
+        "id": "slay_frenzied_beasts",
+        "text": "[ZH-TODO] Slay the frenzied beasts to harvest their mutated cores for crafting,.",
+        "effects": {
+          "health": -20,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "beast"
+    ]
+  },
+  {
+    "id": "beast_mountain_landslide",
+    "title": "[ZH-TODO] Beast Mountain Landslide",
+    "description": "[ZH-TODO] High danger levels in the mountains have caused a massive landslide. Ancient ores are now exposed, but the area is unstable and crawling with agitated beasts.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "mine_rare_ores",
+        "text": "[ZH-TODO] Risk the falling rocks to mine the exposed ores.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "hunt_agitated_beasts",
+        "text": "[ZH-TODO] Hunt the beasts confused by the landslide for their cores.",
+        "effects": {
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "beast_tide_vanguard",
+    "title": "[ZH-TODO] Beast Tide Vanguard",
+    "description": "[ZH-TODO] Beast activity has exploded! A massive tide of monsters is rushing down the mountain. You are caught directly in the path of the beast vanguard.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "hold_the_line",
+        "text": "[ZH-TODO] Stand your ground and slay the beasts to protect the valley.",
+        "effects": {
+          "health": -30,
+          "cultivation": 10,
+          "reputation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "retreat_and_scavenge",
+        "text": "[ZH-TODO] Retreat to the rear and scavenge remains of fallen beasts.",
+        "effects": {
+          "health": -5,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "combat",
+      "war"
+    ]
+  },
+  {
+    "id": "herbalist_hidden_garden",
+    "title": "[ZH-TODO] The Herbalist's Hidden Garden",
+    "description": "[ZH-TODO] With high spiritual Qi in the mountains, a hidden array has failed, revealing a long-forgotten herb garden once owned by a legendary herbalist.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "harvest_rare_strains",
+        "text": "[ZH-TODO] Harvest the most precious and rare spiritual strains.",
+        "effects": {
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 8
+          },
+          "luck": 3,
+          "health": -5
+        }
+      },
+      {
+        "id": "transplant_to_sect",
+        "text": "[ZH-TODO] Carefully transplant seedlings back to your sect's garden.",
+        "effects": {
+          "reputation": 20,
+          "karma": 10,
+          "daoMind": 5,
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "resource_gathering",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "ancient_alchemy_relic",
+    "title": "[ZH-TODO] Remnants of an Immortal Alchemist",
+    "description": "[ZH-TODO] High mountain resources have revealed a hidden cave in the Ancient Ruins. Inside, a furnace still burns with a faint, divine flame.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "complete_the_pill",
+        "text": "[ZH-TODO] Attempt to finish the ancient pill-making process.",
+        "effects": {
+          "comprehension": 5,
+          "luck": 5,
+          "health": -10,
+          "gainItem": {
+            "itemId": "item_ngung_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "salvage_the_furnace",
+        "text": "[ZH-TODO] Deconstruct the furnace for rare smelting materials.",
+        "effects": {
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "alchemy",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "ancient_beast_seal_weakening",
+    "title": "[ZH-TODO] Weakening of the Ancient Seal",
+    "description": "[ZH-TODO] High demonic energy and beast activity have weakened an ancient seal in the mountains. A terrifying aura from the era of the Ancient War is leaking out.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "reinforce_seal_with_qi",
+        "text": "[ZH-TODO] Sacrifice your spiritual Qi to reinforce the seal.",
+        "effects": {
+          "cultivation": -15,
+          "karma": 30,
+          "daoMind": 15,
+          "luck": 5
+        }
+      },
+      {
+        "id": "enter_leaking_fissure",
+        "text": "[ZH-TODO] Enter the fissure to scavenge for ancient artifacts.",
+        "effects": {
+          "health": -35,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "thien_cap_tan_quyen",
+            "amount": 1
+          },
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "high_risk_reward"
+    ]
+  },
+  {
+    "id": "ancient_weapon_awakening",
+    "title": "[ZH-TODO] Awakening of the Ancient Relic",
+    "description": "[ZH-TODO] Deep within the Ancient Ruins, a rusted weapon begins to resonate with the high Dao fluctuations, radiating a faint but sharp sword intent.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "awaken_with_blood",
+        "text": "[ZH-TODO] Offer your essence blood to re-awaken the weapon's spirit.",
+        "effects": {
+          "health": -15,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "weapon_thanh_phong_kiem",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "study_the_intent",
+        "text": "[ZH-TODO] Meditate on the sword intent to enhance your comprehension.",
+        "effects": {
+          "comprehension": 8,
+          "daoMind": 5,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "weapon",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "corrupted_spirit_spring",
+    "title": "[ZH-TODO] Corrupted Spirit Spring",
+    "description": "[ZH-TODO] A spiritual spring in the mountains has been corrupted by the rising demonic energy. The water glows with a sickly purple light, but its energy is still incredibly potent.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "absorb_corrupted_qi",
+        "text": "[ZH-TODO] Absorb the dark Qi to break through your limits.",
+        "effects": {
+          "cultivation": 15,
+          "health": -20,
+          "daoMind": -10,
+          "karma": -10
+        }
+      },
+      {
+        "id": "purify_the_spring",
+        "text": "[ZH-TODO] Use your spiritual power to purify the water.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 20,
+          "daoMind": 10,
+          "luck": 5
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "hibernating_beast_king",
+    "title": "[ZH-TODO] Hibernating Beast King",
+    "description": "[ZH-TODO] While exploring, you find the lair of a hibernating Beast King. Rare 'Linh Thảo' and 'Linh Quặng' are piled around its massive, slumbering form.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "steal_materials_carefully",
+        "text": "[ZH-TODO] Carefully steal the materials without waking it.",
+        "effects": {
+          "health": -10,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 6
+          }
+        }
+      },
+      {
+        "id": "slay_the_sleeping_beast",
+        "text": "[ZH-TODO] Take the opportunity to slay the beast for its core.",
+        "effects": {
+          "health": -40,
+          "cultivation": 20,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          },
+          "reputation": 15
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "high_risk_reward",
+      "danger"
+    ]
+  },
+  {
+    "id": "ancient_sword_intent_ruins",
+    "title": "[ZH-TODO] Sword Intent of the Ancient Master",
+    "description": "[ZH-TODO] At the Ancient Ruins, high Dao fluctuations have awakened the lingering sword intent of a long-dead master. The air itself feels sharp and lethal.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "meditate_on_intent",
+        "text": "[ZH-TODO] Meditate directly within the sword intent to sharpen your mind.",
+        "effects": {
+          "comprehension": 12,
+          "health": -15,
+          "daoMind": 10,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "protect_yourself",
+        "text": "[ZH-TODO] Use your spiritual Qi to protect your body and collect spirit ores.",
+        "effects": {
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          },
+          "money": 100
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "combat",
+      "comprehension"
+    ]
+  },
+  {
+    "id": "cursed_herb_patch",
+    "title": "[ZH-TODO] Cursed Herb Patch",
+    "description": "[ZH-TODO] Rising demonic energy has corrupted a patch of rare herbs. The spirit herbs are glowing with a dark, pulsating light, offering immense power at the cost of your soul's purity.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "harvest_dark_herbs",
+        "text": "[ZH-TODO] Harvest the corrupted herbs and refine them into dark pills.",
+        "effects": {
+          "cultivation": 20,
+          "karma": -25,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "burn_the_patch",
+        "text": "[ZH-TODO] Burn the corrupted patch to prevent the spread of demonic Qi.",
+        "effects": {
+          "karma": 15,
+          "daoMind": 10,
+          "reputation": 5,
+          "health": -5
+        }
+      }
+    ],
+    "tags": [
+      "mountain",
+      "danger",
+      "demonic"
+    ]
+  },
+  {
+    "id": "ancient_ruins_puzzle_box",
+    "title": "[ZH-TODO] Ancient Ruins: The Puzzle Box",
+    "description": "[ZH-TODO] While exploring the Ancient Ruins, you find a metallic box sealed with a complex array. High Dao fluctuations have weakened its lock.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "solve_with_comprehension",
+        "text": "[ZH-TODO] Use your deep comprehension to decipher the array.",
+        "effects": {
+          "comprehension": 5,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "break_with_force",
+        "text": "[ZH-TODO] Shatter the box with sheer spiritual power.",
+        "effects": {
+          "health": -15,
+          "cultivation": 2,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 4
+          }
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "puzzle",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "blood_moon_beast_tide",
+    "title": "[ZH-TODO] Blood Moon Beast Tide",
+    "description": "[ZH-TODO] Beast activity has reached critical levels! Driven by the blood moon, a tide of monsters is rushing towards the mortal settlements.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "protect_the_village",
+        "text": "[ZH-TODO] Join the defense to save the mortals.",
+        "effects": {
+          "health": -35,
+          "karma": 30,
+          "reputation": 15,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "hunt_mutated_leaders",
+        "text": "[ZH-TODO] Focus on slaying the alpha beasts for their mutated cores.",
+        "effects": {
+          "health": -25,
+          "cultivation": 10,
+          "money": 150,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "ancient_furnace_residual_fire",
+    "title": "[ZH-TODO] Residual Fire of the Ancient Furnace",
+    "description": "[ZH-TODO] High spiritual Qi has re-ignited a fragment of divine fire in an abandoned alchemy furnace within the Ancient Ruins. The heat is melting the surrounding stone, revealing hidden ores.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "extract_huyen_thiet",
+        "text": "[ZH-TODO] Risk the divine fire to extract 'Huyền Thiết' from the molten stone.",
+        "effects": {
+          "health": -20,
+          "luck": 3,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "absorb_residual_heat",
+        "text": "[ZH-TODO] Meditate near the heat to temper your fire-element spiritual root.",
+        "effects": {
+          "cultivation": 8,
+          "comprehension": 5,
+          "health": -5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "ancient_ruins",
+      "alchemy",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_war_convoy_ambush",
+    "title": "[ZH-TODO] Sect War: Convoy Ambush",
+    "description": "[ZH-TODO] The war level is high. You are part of an escort for a sect resource convoy that has been ambushed by elite disciples of the Ten Thousand Immortals Sect.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_the_convoy",
+        "text": "[ZH-TODO] Fight to the death to protect the sect's resources.",
+        "effects": {
+          "health": -35,
+          "reputation": 30,
+          "karma": 10,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_ngung_nguyen_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "seize_and_flee",
+        "text": "[ZH-TODO] Seize a portion of the resources and flee in the chaos.",
+        "effects": {
+          "money": 500,
+          "karma": -30,
+          "reputation": -50,
+          "luck": 5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 10
+          }
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "ma_huyet_quang_mach",
+    "title": "[ZH-TODO] Demonic Blood Ore Vein",
+    "description": "[ZH-TODO] High demonic energy has seeped into a spirit ore vein in the mountains. The ores are pulsing with a dark, blood-red light, offering high power but risking severe corruption [cite: 54, 56].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "mine_corrupted_ore",
+        "text": "[ZH-TODO] Mine the corrupted ore to craft demonic weapons.",
+        "effects": {
+          "health": -15,
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "purify_with_righteous_qi",
+        "text": "[ZH-TODO] Use your spiritual base to purify a small portion of the vein.",
+        "effects": {
+          "cultivation": -5,
+          "karma": 15,
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 3
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "mountain",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "lost_huyen_thiet_vein",
+    "title": "[ZH-TODO] Lost Huyền Thiết Vein",
+    "description": "[ZH-TODO] Abundant mountain resources have revealed a hidden cave containing a pure vein of 'Huyền Thiết'—the supreme material for crafting Earth-grade weapons [cite: 19, 54].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intensive_mining",
+        "text": "[ZH-TODO] Dedicate months to mining as much Huyền Thiết as possible.",
+        "effects": {
+          "health": -15,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_huyen_thiet",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "report_location_for_merit",
+        "text": "[ZH-TODO] Report the vein to the sect in exchange for massive merit points.",
+        "effects": {
+          "reputation": 50,
+          "money": 150,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "resource_gathering",
+      "mountain",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "event_thien_kieu_chan_chinh_thach_dau",
+    "title": "[ZH-TODO] Tournament Finals",
+    "description": "[ZH-TODO] Long Ngao Thien, the child of heaven, stands on the arena waiting for you. Spiritual energy violently swirls around him.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_ngao_thien",
+        "text": "[ZH-TODO] Go all out and prove who the real prodigy is!",
+        "effects": {
+          "health": -20,
+          "cultivation": 20,
+          "sectPrestige": 100,
+          "worldState": {
+            "sect": {
+              "reputation": 10
+            },
+            "global": {
+              "daoFluctuation": 5
+            }
+          },
+          "npcFavorability": {
+            "npc_thien_kieu_chan_chinh": 20
+          }
+        }
+      },
+      {
+        "id": "surrender_ngao_thien",
+        "text": "[ZH-TODO] Know when to retreat, surrender to save your life.",
+        "effects": {
+          "daoHeart": -5,
+          "health": 0
+        }
+      }
+    ],
+    "tags": [
+      "npc_thien_kieu_chan_chinh",
+      "tournament"
+    ]
+  },
+  {
+    "id": "corrupt_sect_deacon",
+    "title": "[ZH-TODO] Corrupt Sect Deacon",
+    "description": "[ZH-TODO] When you arrive at the Deacon Hall to receive your mandatory annual sect quest, the fat Deacon winks at you: 50 Spirit Stones for an easy herb-gathering task. Otherwise, you go to the deepest mining tunnels.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "bribe_deacon",
+        "text": "[ZH-TODO] Grit your teeth and bribe him with 50 Spirit Stones.",
+        "effects": {
+          "money": -50,
+          "health": 5,
+          "daoMind": -2
+        }
+      },
+      {
+        "id": "refuse_and_mine",
+        "text": "[ZH-TODO] Better to break than bend, go to the mines!",
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "daoMind": 5,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "sect_chaos",
+      "npc_interaction"
+    ]
+  },
+  {
+    "id": "immortal_guidance",
+    "title": "[ZH-TODO] Immortal's Guidance",
+    "description": "[ZH-TODO] Heavenly Dao fluctuates wildly. An illusion of an ancient immortal appears in your mind, preaching the supreme Dao.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "listen_respectfully",
+        "text": "[ZH-TODO] Listen respectfully, clearing all mundane thoughts.",
+        "effects": {
+          "comprehension": 5,
+          "cultivation": 10,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "beg_for_treasures",
+        "text": "[ZH-TODO] Give in to greed and beg for treasures.",
+        "effects": {
+          "luck": -5,
+          "daoMind": -5,
+          "health": -2
+        }
+      }
+    ],
+    "tags": [
+      "opportunity",
+      "rare",
+      "dao_event"
+    ]
+  },
+  {
+    "id": "sect_rebellion",
+    "title": "[ZH-TODO] Sect Rebellion",
+    "description": "[ZH-TODO] The sect's stability has plummeted. A deacon is assassinated in broad daylight, and rogue disciples are burning the outer sect pavilions to loot resources.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "defend_sect",
+        "text": "[ZH-TODO] Draw your sword and defend the sect!",
+        "effects": {
+          "health": -15,
+          "karma": 10,
+          "daoMind": 5,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "loot_chaos",
+        "text": "[ZH-TODO] Take advantage of the chaos to loot the storage.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "rebel"
+    ]
+  },
+  {
+    "id": "sect_conscription",
+    "title": "[ZH-TODO] Sect Conscription",
+    "description": "[ZH-TODO] Sect warfare has escalated drastically. Deacons are forcefully conscripting outer disciples to serve as cannon fodder at the frontline.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": "[ZH-TODO] Draw your sword and fight bravely for the sect!",
+        "effects": {
+          "health": -20,
+          "cultivation": 5,
+          "daoMind": 5,
+          "money": 80,
+          "karma": 5
+        }
+      },
+      {
+        "id": "bribe_to_hide",
+        "text": "[ZH-TODO] Bribe the deacon heavily to stay in the rear.",
+        "effects": {
+          "money": -150,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ]
+  },
+  {
+    "id": "possessed_deacon",
+    "title": "[ZH-TODO] Possessed Deacon",
+    "description": "[ZH-TODO] Demonic infiltration is severe. Late at night, you accidentally spot a highly respected Sect Deacon practicing a forbidden blood art. He notices you.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "flee_and_report",
+        "text": "[ZH-TODO] Flee desperately and report to the Sect Leader.",
+        "effects": {
+          "health": -18,
+          "daoMind": 5,
+          "money": 100,
+          "karma": 5
+        }
+      },
+      {
+        "id": "join_demonic_path",
+        "text": "[ZH-TODO] Swear loyalty to him and embrace the Demonic path.",
+        "effects": {
+          "karma": -15,
+          "cultivation": 10,
+          "daoMind": -5,
+          "gainItem": {
+            "itemId": "item_huyet_tinh",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "danger"
+    ]
+  },
+  {
+    "id": "event_ke_sinh_ton_phan_boi",
+    "title": "[ZH-TODO] Cau Du's Betrayal",
+    "description": "[ZH-TODO] Taking advantage of sect instability, Cau Du secretly leads a group of rebel disciples to raid your cave dwelling.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "kill_cau_du",
+        "text": "[ZH-TODO] Cleanse the sect, show no mercy!",
+        "effects": {
+          "health": -10,
+          "karma": -10,
+          "money": 50
+        }
+      },
+      {
+        "id": "bribe_cau_du",
+        "text": "[ZH-TODO] Bribe him heavily to leave you in peace.",
+        "effects": {
+          "money": -500,
+          "karma": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "npc_ke_sinh_ton",
+      "danger"
+    ]
+  },
+  {
+    "id": "golden_core_trial",
+    "title": "[ZH-TODO] Golden Core Trial",
+    "description": "[ZH-TODO] You discover a hidden trial left by a Golden Core master, designed to test a cultivator's readiness to break through.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "enter_trial",
+        "text": "[ZH-TODO] Enter the trial and risk everything for a breakthrough.",
+        "effects": {
+          "cultivation": 4,
+          "health": -4,
+          "comprehension": 2,
+          "gainItem": {
+            "itemId": "item_luan_hoi_thach",
+            "quantity": 1
+          },
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defer_trial",
+        "text": "[ZH-TODO] Wait and prepare yourself better.",
+        "effects": {
+          "comprehension": 2,
+          "karma": 1
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "high_risk_reward",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "spirit_mine_collapse",
+    "title": "[ZH-TODO] Spirit Mine Collapse",
+    "description": "[ZH-TODO] Due to sect instability and poor maintenance, the outer sect spirit mine suddenly starts collapsing around you. Priceless ores are revealed in the rubble.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "risk_digging",
+        "text": "[ZH-TODO] Risk your life to dig out the precious ores.",
+        "effects": {
+          "health": -15,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "flee_mine",
+        "text": "[ZH-TODO] Flee the mine immediately to survive.",
+        "effects": {
+          "luck": 1,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "berserk_spirit_beast",
+    "title": "[ZH-TODO] Berserk Spirit Beast",
+    "description": "[ZH-TODO] A usually docile spirit beast in the outer sect's pens has gone berserk due to a demonic aura, breaking its chains and attacking disciples.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "subdue_gently",
+        "text": "[ZH-TODO] Use your Dao Mind to calm and subdue it.",
+        "effects": {
+          "daoMind": 2,
+          "karma": 2,
+          "money": 30
+        }
+      },
+      {
+        "id": "kill_for_parts",
+        "text": "[ZH-TODO] Kill it swiftly to harvest its valuable materials.",
+        "effects": {
+          "karma": -5,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "beast",
+      "combat"
+    ]
+  },
+  {
+    "id": "ten_thousand_immortals_war",
+    "title": "[ZH-TODO] Ten Thousand Immortals War",
+    "description": "[ZH-TODO] The Ten Thousand Immortals Sect has officially declared war on the Heavenly Dao Sect! The sect is in chaos, and all disciples are ordered to the frontlines.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_frontline",
+        "text": "[ZH-TODO] Follow the orders and fight fiercely on the frontline.",
+        "effects": {
+          "health": -25,
+          "cultivation": 15,
+          "daoMind": 5,
+          "money": 100
+        }
+      },
+      {
+        "id": "desert_sect",
+        "text": "[ZH-TODO] Become a deserter and flee the sect.",
+        "effects": {
+          "health": -5,
+          "karma": -15,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect_chaos",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "sect_internal_strife",
+    "title": "[ZH-TODO] Sect Internal Strife",
+    "description": "[ZH-TODO] Factional infighting has reached its peak. A sect deacon was assassinated, and the sect is highly dangerous with a high risk of betrayal.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_faction",
+        "text": "[ZH-TODO] Pick a strong faction and eliminate rivals.",
+        "effects": {
+          "health": -15,
+          "karma": -5,
+          "money": 120,
+          "cultivation": 5
+        }
+      },
+      {
+        "id": "hide_in_cave",
+        "text": "[ZH-TODO] Seal your cave dwelling and avoid the conflict.",
+        "effects": {
+          "health": 5,
+          "daoMind": -2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_outer_tournament",
+    "title": "[ZH-TODO] Outer Sect Tournament",
+    "description": "[ZH-TODO] The sect is stable and hosting its decennial Outer Sect Tournament. Disciples from all peaks gather to prove their martial prowess and win supreme pills.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "participate_tournament",
+        "text": "[ZH-TODO] Enter the arena and fight for the championship!",
+        "effects": {
+          "health": -15,
+          "cultivation": 5,
+          "money": 100,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "observe_tournament",
+        "text": "[ZH-TODO] Sit on the mountain and watch the tigers fight.",
+        "effects": {
+          "comprehension": 3,
+          "daoMind": 2,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "tournament",
+      "combat",
+      "sect"
+    ]
+  },
+  {
+    "id": "sect_resource_famine",
+    "title": "[ZH-TODO] Sect Resource Famine",
+    "description": "[ZH-TODO] The sect's resource reserves have plummeted to a critical low. Allowances are cut, and desperate outer disciples are fighting each other over meager scraps of spirit herbs.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "fight_for_scraps",
+        "text": "[ZH-TODO] Join the brawl to secure your cultivation resources.",
+        "effects": {
+          "health": -10,
+          "karma": -5,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 3
+          }
+        }
+      },
+      {
+        "id": "bribe_for_ration",
+        "text": "[ZH-TODO] Secretly bribe the treasury deacon for your portion.",
+        "effects": {
+          "money": -50,
+          "luck": 1,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "spirit_beast_mutation",
+    "title": "[ZH-TODO] Spirit Beast Mutation",
+    "description": "[ZH-TODO] While tending to the sect's spirit beasts, one of them swallows a strange glowing insect and begins to mutate violently, radiating intense spiritual energy.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "help_assimilate",
+        "text": "[ZH-TODO] Use your Dao Mind to help it assimilate the power.",
+        "effects": {
+          "daoMind": 2,
+          "health": -5,
+          "gainItem": {
+            "itemId": "item_van_thu_huyet_lenh",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "kill_mutant",
+        "text": "[ZH-TODO] Kill it before it completely loses control.",
+        "effects": {
+          "karma": -2,
+          "money": 80,
+          "gainItem": {
+            "itemId": "item_yeu_vuong_noi_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "beast",
+      "sect",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "outer_sect_herb_theft",
+    "title": "[ZH-TODO] Herb Garden Theft",
+    "description": "[ZH-TODO] Sect resources are dwindling. You catch a fellow outer disciple desperately stealing a spirit herb to save their dying mortal mother.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "look_away",
+        "text": "[ZH-TODO] Look the other way and pretend you saw nothing.",
+        "effects": {
+          "karma": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "report_theft",
+        "text": "[ZH-TODO] Arrest them and report to the deacon for a reward.",
+        "effects": {
+          "karma": -5,
+          "money": 50,
+          "daoMind": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "corrupt_promotion_offer",
+    "title": "[ZH-TODO] Corrupt Promotion Offer",
+    "description": "[ZH-TODO] A greedy Inner Sect Elder approaches you in secret. He offers to bend the rules and promote you to the Inner Sect early, but for a steep price.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_bribe",
+        "text": "[ZH-TODO] Pay the massive bribe for early promotion.",
+        "effects": {
+          "money": -300,
+          "cultivation": 10,
+          "daoMind": -5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "refuse_bribe",
+        "text": "[ZH-TODO] Refuse and rely firmly on your own strength.",
+        "effects": {
+          "daoMind": 10,
+          "karma": 5,
+          "comprehension": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_beast_feeding_frenzy",
+    "title": "[ZH-TODO] Frenzied Spirit Beast",
+    "description": "[ZH-TODO] While performing your mandatory sect quest to feed the outer sect's spirit beasts, one of them, corrupted by a sudden spike in demonic energy, breaks its cage and lunges at you.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "calm_the_beast",
+        "text": "[ZH-TODO] Use your Dao Mind and cultivation to forcefully calm the beast.",
+        "effects": {
+          "health": -5,
+          "daoMind": 5,
+          "karma": 2,
+          "money": 20
+        }
+      },
+      {
+        "id": "slay_the_beast",
+        "text": "[ZH-TODO] Draw your weapon and slay it before it hurts others.",
+        "effects": {
+          "health": -15,
+          "karma": -2,
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "beast",
+      "danger"
+    ]
+  },
+  {
+    "id": "strict_deacon_inspection",
+    "title": "[ZH-TODO] Strict Deacon Inspection",
+    "description": "[ZH-TODO] The sect is tightening its rules. A strict deacon stops you to inspect your annual sect contributions. He glares at you, demanding either proof of hard work or a hefty 'fine'.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_deacon_fine",
+        "text": "[ZH-TODO] Bite your tongue and pay the hefty fine in Spirit Stones.",
+        "effects": {
+          "money": -100,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "accept_physical_punishment",
+        "text": "[ZH-TODO] Refuse to pay and accept the physical punishment.",
+        "effects": {
+          "health": -15,
+          "cultivation": -2,
+          "daoMind": 5,
+          "karma": 2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "npc_interaction",
+      "danger"
+    ]
+  },
+  {
+    "id": "traitorous_deacon",
+    "title": "[ZH-TODO] Traitorous Deacon",
+    "description": "[ZH-TODO] Sect stability is crumbling. You catch a senior deacon sneaking out with the sect's core technique manual, planning to defect to a rival sect.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": "[ZH-TODO] Intercept him to protect the sect's legacy!",
+        "effects": {
+          "health": -25,
+          "karma": 5,
+          "money": 200,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "extort_traitor",
+        "text": "[ZH-TODO] Extort him for hush money to let him pass.",
+        "effects": {
+          "money": 300,
+          "karma": -10,
+          "daoMind": -5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "rebel",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_debt_collector",
+    "title": "[ZH-TODO] Sect Debt Collector",
+    "description": "[ZH-TODO] Sect resources are depleted. A debt-collecting deacon is making rounds, forcefully demanding 'voluntary contributions' from outer disciples to fill the treasury.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pay_contribution",
+        "text": "[ZH-TODO] Pay the contribution to avoid trouble.",
+        "effects": {
+          "money": -80,
+          "daoMind": -2,
+          "luck": 1
+        }
+      },
+      {
+        "id": "refuse_and_hide",
+        "text": "[ZH-TODO] Refuse and hide your valuables.",
+        "effects": {
+          "health": -10,
+          "daoMind": 5,
+          "karma": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "money"
+    ]
+  },
+  {
+    "id": "elder_funeral_conspiracy",
+    "title": "[ZH-TODO] Sect Elder's Funeral",
+    "description": "[ZH-TODO] An inner sect elder has passed away, and the sect's stability is shaken. Rumors of a hidden legacy left to an outer disciple are spreading like wildfire.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "investigate_legacy",
+        "text": "[ZH-TODO] Sneak into the elder's forbidden peak to investigate.",
+        "effects": {
+          "health": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "attend_honorably",
+        "text": "[ZH-TODO] Attend the funeral honorably to show your loyalty.",
+        "effects": {
+          "daoMind": 5,
+          "karma": 5,
+          "reputation": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "lore",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "captured_sect_rebel",
+    "title": "[ZH-TODO] Captured Sect Rebel",
+    "description": "[ZH-TODO] Internal strife is high. You've cornered a fellow disciple who was caught stealing core scriptures. They beg you to let them go, claiming they only wanted to save their family.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "execute_rebel",
+        "text": "[ZH-TODO] Execute the traitor to uphold sect law.",
+        "effects": {
+          "karma": -5,
+          "reputation": 10,
+          "money": 50,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "release_for_bribe",
+        "text": "[ZH-TODO] Accept a hidden treasure in exchange for their freedom.",
+        "effects": {
+          "money": 100,
+          "karma": -10,
+          "luck": 2,
+          "gainFragment": {
+            "techniqueId": "hoang_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "karma_event"
+    ]
+  },
+  {
+    "id": "sect_manual_preservation",
+    "title": "[ZH-TODO] Sect Manual Preservation",
+    "description": "[ZH-TODO] The Library Pavilion has caught fire during a riot. Rare manual fragments are scattered in the smoke and flames. You can only save a few.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "save_high_grade",
+        "text": "[ZH-TODO] Risk the flames to save an Earth-grade fragment.",
+        "effects": {
+          "health": -12,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "save_many_basic",
+        "text": "[ZH-TODO] Save as many basic manuals as possible for the sect's future.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "sect_resource_leak",
+    "title": "[ZH-TODO] Sect Resource Leak",
+    "description": "[ZH-TODO] The sect's resources are at a critical low, and management is in shambles. You discover a hidden hole in the resource warehouse where spirit stones and low-grade pills are leaking out.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "pocket_the_leak",
+        "text": "[ZH-TODO] Quietly pocket the leaking resources for yourself.",
+        "effects": {
+          "money": 100,
+          "karma": -8,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "report_the_leak",
+        "text": "[ZH-TODO] Report the leak to the elders to show your loyalty.",
+        "effects": {
+          "reputation": 10,
+          "karma": 5,
+          "money": 30
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "resource_gathering",
+      "crime"
+    ]
+  },
+  {
+    "id": "alchemy_hall_explosion",
+    "title": "[ZH-TODO] Alchemy Hall Explosion",
+    "description": "[ZH-TODO] While passing the Alchemy Hall, a massive explosion rocks the building. Smoke fills the air, and scorched remains of rare spirit herbs are scattered everywhere.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "scavenge_smoke",
+        "text": "[ZH-TODO] Rush into the smoke to scavenge usable herb remains.",
+        "effects": {
+          "health": -10,
+          "luck": 1,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 4
+          }
+        }
+      },
+      {
+        "id": "help_extinguish",
+        "text": "[ZH-TODO] Use your spiritual Qi to help extinguish the fires.",
+        "effects": {
+          "cultivation": -2,
+          "reputation": 8,
+          "karma": 5,
+          "daoMind": 2
+        }
+      }
+    ],
+    "tags": [
+      "alchemy",
+      "danger",
+      "luck_event"
+    ]
+  },
+  {
+    "id": "sect_treasury_betrayal",
+    "title": "[ZH-TODO] Sect Treasury Betrayal",
+    "description": "[ZH-TODO] Internal stability has collapsed. You find a group of high-ranking disciples and an elder attempting to empty the treasury before defecting to a rival sect,.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "extort_the_betrayers",
+        "text": "[ZH-TODO] Threaten to sound the alarm unless they share the stolen artifacts with you,.",
+        "effects": {
+          "money": 500,
+          "karma": -15,
+          "daoMind": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_legacy",
+        "text": "[ZH-TODO] Draw your sword to protect the sect's last legacy, even if it means fighting your brothers,.",
+        "effects": {
+          "health": -40,
+          "cultivation": 10,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "crime",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_meridian_cleansing_pool",
+    "title": "[ZH-TODO] Meridian Cleansing Pool",
+    "description": "[ZH-TODO] The spiritual Qi in the sect is exceptionally dense. The legendary cleansing pool has opened its doors to outer disciples for a limited time.",
+    "weight": 1,
+    "choices": [
+      {
+        "id": "deep_soak",
+        "text": "[ZH-TODO] Soak deeply to cleanse your internal impurities.",
+        "effects": {
+          "cultivation": 8,
+          "health": 5,
+          "daoMind": 2
+        }
+      },
+      {
+        "id": "gather_pool_essence",
+        "text": "[ZH-TODO] Quickly gather the pool's essence into a jade vial.",
+        "effects": {
+          "money": 50,
+          "gainItem": {
+            "itemId": "item_khi_huyet_dan",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "cultivation",
+      "sect",
+      "rare"
+    ]
+  },
+  {
+    "id": "forced_labor_duty",
+    "title": "[ZH-TODO] Forced Labor Duty",
+    "description": "[ZH-TODO] The sect's stability is low, and the elders are demanding more from outer disciples. You have been assigned to the most dangerous section of the spirit mines as a 'mandatory contribution'.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "accept_labor",
+        "text": "[ZH-TODO] Accept the labor and work through the exhaustion.",
+        "effects": {
+          "health": -15,
+          "cultivation": 1,
+          "money": 30,
+          "gainItem": {
+            "itemId": "item_linh_quang_tho",
+            "quantity": 2
+          }
+        }
+      },
+      {
+        "id": "bribe_supervisor",
+        "text": "[ZH-TODO] Bribe the mine supervisor to give you a lighter task.",
+        "effects": {
+          "money": -100,
+          "daoMind": -5,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "danger",
+      "punishment"
+    ]
+  },
+  {
+    "id": "hidden_jade_chamber",
+    "title": "[ZH-TODO] The Hidden Jade Chamber",
+    "description": "[ZH-TODO] The sect is stable and prosperous. The Sect Leader decides to open the 'Hidden Jade Chamber' for the most promising disciples, offering access to restricted knowledge.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "study_forbidden_scroll",
+        "text": "[ZH-TODO] Study a forbidden Earth-grade scroll.",
+        "effects": {
+          "cultivation": 12,
+          "comprehension": 5,
+          "health": -10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "claim_spiritual_bounty",
+        "text": "[ZH-TODO] Claim a bounty of spirit stones instead of studying.",
+        "effects": {
+          "money": 250,
+          "reputation": -5,
+          "luck": 1
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "cultivation"
+    ]
+  },
+  {
+    "id": "great_sect_war_frontline",
+    "title": "[ZH-TODO] Frontline of the Great War",
+    "description": "[ZH-TODO] Sect war has reached a fever pitch. You are drafted to the frontline to defend the Spirit Mine against the Ten Thousand Immortals Sect's elite vanguard.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "brave_the_charge",
+        "text": "[ZH-TODO] Lead a counter-charge to break their formations.",
+        "effects": {
+          "health": -30,
+          "cultivation": 15,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "desert_battlefield",
+        "text": "[ZH-TODO] Desert the battlefield and hide in the mortal world.",
+        "effects": {
+          "karma": -20,
+          "luck": 5,
+          "daoMind": -15,
+          "reputation": -50,
+          "sect.stability": -2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "combat",
+      "danger"
+    ]
+  },
+  {
+    "id": "deacon_infiltration_scandal",
+    "title": "[ZH-TODO] Demonic Mole Revealed",
+    "description": "[ZH-TODO] High demonic infiltration has compromised a Senior Deacon. You catch them transmitting sect secrets via a blood-red transmission jade.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "expose_the_traitor",
+        "text": "[ZH-TODO] Publicly expose the traitor to the Law Enforcement Hall.",
+        "effects": {
+          "reputation": 15,
+          "karma": 10,
+          "money": 100,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "blackmail_the_traitor",
+        "text": "[ZH-TODO] Blackmail them for demonic resources to keep silent.",
+        "effects": {
+          "money": 300,
+          "karma": -25,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "sect_chaos",
+      "crime"
+    ]
+  },
+  {
+    "id": "sect_coup_attempt",
+    "title": "[ZH-TODO] Outer Sect Coup Attempt",
+    "description": "[ZH-TODO] Sect stability has reached a critical low. A group of radical disciples, fueled by the resource famine, is attempting to overthrow the treasury deacons.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "suppress_rebels_for_loyalty",
+        "text": "[ZH-TODO] Stand with the deacons and suppress the rebellion.",
+        "effects": {
+          "health": -20,
+          "reputation": 20,
+          "money": 150,
+          "daoMind": 5
+        }
+      },
+      {
+        "id": "join_the_overthrow",
+        "text": "[ZH-TODO] Join the rebels to claim your 'fair share' of the treasury.",
+        "effects": {
+          "money": 300,
+          "karma": -20,
+          "daoMind": -10,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "combat"
+    ]
+  },
+  {
+    "id": "sect_war_raiding_party",
+    "title": "[ZH-TODO] Sect War: Raiding Party",
+    "description": "[ZH-TODO] Sect warfare has escalated. You are ordered to join a high-risk raiding party to sabotage the enemy sect's spirit herb garden.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "lead_the_sabotage",
+        "text": "[ZH-TODO] Lead the charge into the enemy's formation.",
+        "effects": {
+          "health": -25,
+          "cultivation": 10,
+          "reputation": 25,
+          "gainItem": {
+            "itemId": "item_linh_thao_tho",
+            "quantity": 5
+          }
+        }
+      },
+      {
+        "id": "bribe_to_stay_back",
+        "text": "[ZH-TODO] Bribe the task official to assign you to the rear guards.",
+        "effects": {
+          "money": -150,
+          "daoMind": -5,
+          "luck": 2
+        }
+      }
+    ],
+    "tags": [
+      "war",
+      "sect",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_merit_hoarding",
+    "title": "[ZH-TODO] Sect Merit Hoarding",
+    "description": "[ZH-TODO] The sect is flourishing with resources. A greedy deacon is secretly allowing disciples to 'buy' merit points with large sums of spirit stones.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_merit_points",
+        "text": "[ZH-TODO] Spend your savings to boost your sect reputation.",
+        "effects": {
+          "money": -200,
+          "reputation": 20,
+          "daoMind": -5,
+          "luck": 1
+        }
+      },
+      {
+        "id": "report_the_deacon",
+        "text": "[ZH-TODO] Report this corruption to the Law Enforcement Hall.",
+        "effects": {
+          "karma": 15,
+          "daoMind": 10,
+          "reputation": 5,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "market",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_manual_leak",
+    "title": "[ZH-TODO] Sect Manual Leak",
+    "description": "[ZH-TODO] Internal stability is low. A corrupted librarian is secretly selling fragments of the sect's high-grade manuals to the highest bidder.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "buy_earth_fragment",
+        "text": "[ZH-TODO] Pay a heavy price to acquire an Earth-grade manual fragment.",
+        "effects": {
+          "money": -400,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          },
+          "karma": -10
+        }
+      },
+      {
+        "id": "report_to_elders",
+        "text": "[ZH-TODO] Report the librarian to increase your reputation.",
+        "effects": {
+          "reputation": 25,
+          "karma": 15,
+          "daoMind": 5,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "sect_heritage_trial",
+    "title": "[ZH-TODO] Sect Heritage Trial",
+    "description": "[ZH-TODO] With the sect's reputation at an all-time high, the Grand Elder opens the 'Heritage Path'—a trial designed to test a disciple's core comprehension and loyalty to the sect's founding Dao.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "walk_the_path",
+        "text": "[ZH-TODO] Focus your mind and attempt to walk the path of the ancestors.",
+        "effects": {
+          "comprehension": 5,
+          "daoMind": 10,
+          "reputation": 10,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "memorize_runes",
+        "text": "[ZH-TODO] Don't enter the path, but try to memorize the ancient runes from the side.",
+        "effects": {
+          "comprehension": 3,
+          "luck": 1,
+          "money": 50
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "comprehension"
+    ]
+  },
+  {
+    "id": "spirit_root_resonance_test",
+    "title": "[ZH-TODO] Spirit Root Resonance Test",
+    "description": "[ZH-TODO] With global spiritual Qi peaking, the sect's resonance crystal has activated. It offers a rare chance to refine your Spirit Root's purity and enhance your cultivation multiplier.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "refine_spirit_root",
+        "text": "[ZH-TODO] Focus your soul to refine your Spirit Root's efficiency.",
+        "effects": {
+          "cultivation": 5,
+          "comprehension": 3,
+          "health": -10,
+          "daoMind": 5,
+          "luck": 2
+        }
+      },
+      {
+        "id": "absorb_raw_energy",
+        "text": "[ZH-TODO] Directly absorb the crystal's raw energy for immediate cultivation.",
+        "effects": {
+          "cultivation": 15,
+          "health": -5,
+          "luck": -2
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "cultivation",
+      "opportunity"
+    ]
+  },
+  {
+    "id": "sect_internal_betrayal",
+    "title": "[ZH-TODO] Sect Internal Betrayal",
+    "description": "[ZH-TODO] Sect stability is low and demonic infiltration is high. You catch a senior disciple attempting to poison the spirit well with demonic energy.",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "intercept_traitor",
+        "text": "[ZH-TODO] Engage the traitor in a deadly duel to protect the well.",
+        "effects": {
+          "health": -25,
+          "reputation": 20,
+          "karma": 15,
+          "daoMind": 10,
+          "money": 120
+        }
+      },
+      {
+        "id": "blackmail_traitor",
+        "text": "[ZH-TODO] Promise silence in exchange for forbidden demonic pills.",
+        "effects": {
+          "karma": -40,
+          "daoMind": -15,
+          "luck": -5,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          }
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "demonic",
+      "danger"
+    ]
+  },
+  {
+    "id": "sect_pill_warehouse_chaos",
+    "title": "[ZH-TODO] Sect Pill Warehouse Breach",
+    "description": "[ZH-TODO] Internal stability has collapsed! A riot has broken out, and the sect's pill warehouse is being looted by desperate disciples [cite: 52, 59].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "join_the_looting",
+        "text": "[ZH-TODO] Rush in and seize whatever pills you can carry.",
+        "effects": {
+          "karma": -15,
+          "reputation": -30,
+          "gainItem": {
+            "itemId": "item_truc_co_dan",
+            "quantity": 1
+          }
+        }
+      },
+      {
+        "id": "defend_the_gates",
+        "text": "[ZH-TODO] Stand with the elders to defend the sect's remaining resources.",
+        "effects": {
+          "health": -25,
+          "reputation": 40,
+          "karma": 10,
+          "money": 150,
+          "daoMind": 5
+        }
+      }
+    ],
+    "tags": [
+      "sect_chaos",
+      "danger",
+      "resource_gathering"
+    ]
+  },
+  {
+    "id": "sect_ancestor_statue_awakening",
+    "title": "[ZH-TODO] Sect Ancestor's Statue Awakening",
+    "description": "[ZH-TODO] Fueled by the sect's high reputation and spiritual Qi, the statue of the founding ancestor begins to radiate a golden light, offering guidance to the faithful [cite: 52, 57].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "receive_guidance",
+        "text": "[ZH-TODO] Kneel and receive the ancestor's spiritual transmission.",
+        "effects": {
+          "comprehension": 10,
+          "daoMind": 15,
+          "gainFragment": {
+            "techniqueId": "dia_cap_tan_quyen",
+            "amount": 1
+          }
+        }
+      },
+      {
+        "id": "offer_sacrifices",
+        "text": "[ZH-TODO] Offer rare spirit herbs to the statue to gain the sect's favor.",
+        "effects": {
+          "reputation": 30,
+          "luck": 5,
+          "karma": 10
+        }
+      }
+    ],
+    "tags": [
+      "sect",
+      "opportunity",
+      "lore"
+    ]
+  },
+  {
+    "id": "demonic_possession_scandal",
+    "title": "[ZH-TODO] Possession of the Deacon",
+    "description": "[ZH-TODO] Extremely high demonic infiltration and energy have led to a catastrophe: a senior deacon has been possessed by a demonic entity and is wreaking havoc in the outer sect [cite: 59, 55].",
+    "weight": 2,
+    "choices": [
+      {
+        "id": "exorcise_the_demon",
+        "text": "[ZH-TODO] Risk your life to perform an exorcism and save the deacon.",
+        "effects": {
+          "health": -30,
+          "karma": 40,
+          "reputation": 20,
+          "daoMind": 10
+        }
+      },
+      {
+        "id": "slay_the_possessed",
+        "text": "[ZH-TODO] Slay the possessed deacon immediately to stop the spread.",
+        "effects": {
+          "health": -20,
+          "money": 200,
+          "gainItem": {
+            "itemId": "item_oan_hon_chau",
+            "quantity": 2
+          },
+          "karma": -10
+        }
+      }
+    ],
+    "tags": [
+      "demonic",
+      "danger",
+      "sect_chaos"
+    ]
+  }
+]

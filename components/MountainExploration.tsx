@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import type { Lang } from '../types';
+import { uiText } from '../lib/i18n';
 
 interface MountainExplorationProps {
   language: Lang;
@@ -154,37 +155,37 @@ export default function MountainExploration({
     switch (activeEvent.type) {
       case 'herb':
         return [
-          { label: language === 'vi' ? 'Hái' : 'Harvest', type: 'positive' },
-          { label: language === 'vi' ? 'Bỏ qua' : 'Ignore', type: 'ignore' },
+          { label: (uiText[language]?.['harvest'] || 'Harvest'), type: 'positive' },
+          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
         ];
       case 'ore':
         return [
-          { label: language === 'vi' ? 'Đào' : 'Mine', type: 'positive' },
-          { label: language === 'vi' ? 'Bỏ qua' : 'Ignore', type: 'ignore' },
+          { label: (uiText[language]?.['mine'] || 'Mine'), type: 'positive' },
+          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
         ];
       case 'corpse':
         return [
-          { label: language === 'vi' ? 'Khám xét' : 'Examine', type: 'positive' },
-          { label: language === 'vi' ? 'Rời đi' : 'Leave', type: 'ignore' },
+          { label: (uiText[language]?.['examine'] || 'Examine'), type: 'positive' },
+          { label: (uiText[language]?.['leave'] || 'Leave'), type: 'ignore' },
         ];
       case 'beast':
       case 'evil':
         return [
-          { label: language === 'vi' ? 'Chiến đấu' : 'Fight', type: 'positive' },
-          { label: language === 'vi' ? 'Trốn chạy' : 'Flee', type: 'ignore' },
+          { label: (uiText[language]?.['fight'] || 'Fight'), type: 'positive' },
+          { label: (uiText[language]?.['flee'] || 'Flee'), type: 'ignore' },
         ];
       case 'realm':
         return [
-          { label: language === 'vi' ? 'Tiến vào' : 'Enter', type: 'positive' },
-          { label: language === 'vi' ? 'Bỏ qua' : 'Ignore', type: 'ignore' },
+          { label: (uiText[language]?.['enter'] || 'Enter'), type: 'positive' },
+          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
         ];
       case 'npc':
         return [
-          { label: language === 'vi' ? 'Trò chuyện' : 'Talk', type: 'positive' },
-          { label: language === 'vi' ? 'Bỏ qua' : 'Ignore', type: 'ignore' },
+          { label: (uiText[language]?.['talk'] || 'Talk'), type: 'positive' },
+          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
         ];
       default:
-        return [{ label: language === 'vi' ? 'Bỏ qua' : 'Ignore', type: 'ignore' }];
+        return [{ label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' }];
     }
   };
 
@@ -357,9 +358,7 @@ export default function MountainExploration({
             </h3>
             
             <p className="text-[#d4af37] mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed px-2 sm:px-4">
-              {language === 'vi' 
-                ? `Giữa làn sương mù, bạn vô tình chạm trán một ${activeEvent.nameVi.toLowerCase()}! Hãy đưa ra quyết định cẩn thận.`
-                : `Through the mist, you encountered a ${activeEvent.nameEn.toLowerCase()}! Make your decision carefully.`}
+              {(uiText[language]?.['throughTheMistYouEnc'] || 'Through the mist, you encountered a ${activeEvent.nameEn.toLowerCase()}! Make your decision carefully.')}
             </p>
             
             <div className="flex flex-col gap-3 sm:gap-4">

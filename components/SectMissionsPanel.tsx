@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { SectQuest, Lang } from '../types';
 import sectQuestsData from '../data/sect-quests.json';
+import { uiText, getLocalizedText } from '../lib/i18n';
 
 // Cast JSON data to SectQuest[]
 const sectQuests = sectQuestsData as SectQuest[];
@@ -60,7 +61,7 @@ export default function SectMissionsPanel({
       comprehension: { vi: 'Ngộ Tính', en: 'Comprehension' },
       daoHeart: { vi: 'Đạo Tâm', en: 'Dao Heart' },
     };
-    return names[stat]?.[language === 'vi' ? 'vi' : 'en'] || stat;
+    return names[stat]?.[language as "vi" | "en"] || stat;
   };
 
   const getPlayerStatValue = (stat: string) => {
@@ -84,13 +85,11 @@ export default function SectMissionsPanel({
         <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
           <div>
             <h2 className="font-serif text-2xl text-emerald-400 tracking-wider">
-              {language === 'vi' ? '☯ Nhiệm Vụ Đường' : '☯ Sect Quest Hall'}
+              {(uiText[language]?.['SectQuestHall'] || '☯ Sect Quest Hall')}
             </h2>
             <p className="text-xs text-text-secondary mt-1">
-              {language === 'vi' 
-                ? `Thân phận hiện tại: ` 
-                : `Current Rank: `}
-              <strong className="text-purple-400 font-serif">{rankNames[currentRank][language === 'vi' ? 'vi' : 'en']}</strong>
+              {(uiText[language]?.['currentRank'] || 'Current Rank: ')}
+              <strong className="text-purple-400 font-serif">{rankNames[currentRank][language as "vi" | "en"]}</strong>
             </p>
           </div>
           <button
@@ -105,9 +104,7 @@ export default function SectMissionsPanel({
         {/* Info Banner */}
         {hasActiveQuest && (
           <div className="bg-amber-950/20 border border-amber-800/40 p-3 rounded-sm text-xs text-amber-300 leading-relaxed font-sans">
-            ⚠️ {language === 'vi' 
-              ? 'Bạn đang thực hiện một nhiệm vụ khác. Hoàn thành hoặc thất bại nhiệm vụ cũ trước khi nhận nhiệm vụ mới.' 
-              : 'You are currently on an active quest. Complete or fail your current quest before accepting a new one.'}
+            ⚠️ {(uiText[language]?.['youAreCurrentlyOnAnA'] || 'You are currently on an active quest. Complete or fail your current quest before accepting a new one.')}
           </div>
         )}
 
@@ -150,12 +147,12 @@ export default function SectMissionsPanel({
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-1">
                     <h3 className="font-serif text-base text-emerald-400 font-bold">
-                      {quest.title[language === 'vi' ? 'vi' : 'en']}
+                      {quest.title[language as "vi" | "en"]}
                     </h3>
                     <span className="text-[10px] text-text-secondary tracking-wider block">
-                      {language === 'vi' ? 'Yêu cầu thân phận: ' : 'Min Rank: '}
+                      {(uiText[language]?.['minRank'] || 'Min Rank: ')}
                       <strong className="text-text-primary uppercase font-serif">
-                        {rankNames[quest.minRank][language === 'vi' ? 'vi' : 'en']}
+                        {rankNames[quest.minRank][language as "vi" | "en"]}
                       </strong>
                     </span>
                   </div>
@@ -166,13 +163,13 @@ export default function SectMissionsPanel({
 
                 {/* Description */}
                 <p className="text-xs text-text-secondary leading-relaxed font-sans border-l-2 border-emerald-500/40 pl-3 py-1">
-                  {quest.description[language === 'vi' ? 'vi' : 'en']}
+                  {quest.description[language as "vi" | "en"]}
                 </p>
 
                 {/* Option Toggles */}
                 <div className="bg-[#0b0908] border border-[#2b241c] p-2 rounded-sm flex flex-col sm:flex-row gap-3 items-center justify-between">
                   <span className="text-xs text-emerald-400 font-serif font-semibold">
-                    {language === 'vi' ? 'Phương thức hành trình:' : 'Mission Approach:'}
+                    {(uiText[language]?.['missionApproach'] || 'Mission Approach:')}
                   </span>
                   
                   <div className="flex gap-2">
@@ -185,7 +182,7 @@ export default function SectMissionsPanel({
                           : 'border-transparent bg-transparent text-text-tertiary hover:text-text-secondary'
                       }`}
                     >
-                      {language === 'vi' ? 'Độc Hành (Solo)' : 'Solo'}
+                      {(uiText[language]?.['solo'] || 'Solo')}
                     </button>
                     <button
                       type="button"
@@ -196,7 +193,7 @@ export default function SectMissionsPanel({
                           : 'border-transparent bg-transparent text-text-tertiary hover:text-text-secondary'
                       }`}
                     >
-                      {language === 'vi' ? 'Tổ Đội (Party)' : 'Party'}
+                      {(uiText[language]?.['party'] || 'Party')}
                     </button>
                   </div>
                 </div>
@@ -206,19 +203,19 @@ export default function SectMissionsPanel({
                   {/* Left Column: Requirements & Status */}
                   <div className="space-y-2">
                     <h4 className="text-[11px] font-medium text-emerald-500 font-semibold font-serif">
-                      {language === 'vi' ? 'Yêu Cầu & Thử Thách' : 'Requirements & Checks'}
+                      {(uiText[language]?.['requirementsChecks'] || 'Requirements & Checks')}
                     </h4>
                     
                     <div className="space-y-1.5 font-sans text-text-secondary">
                       <div className="flex justify-between items-center">
-                        <span>{language === 'vi' ? 'Thời gian:' : 'Duration:'}</span>
-                        <span className="text-text-primary font-serif font-bold">{quest.durationMonths} {language === 'vi' ? 'Tháng' : 'Months'}</span>
+                        <span>{(uiText[language]?.['duration'] || 'Duration:')}</span>
+                        <span className="text-text-primary font-serif font-bold">{quest.durationMonths} {(uiText[language]?.['months'] || 'Months')}</span>
                       </div>
 
                       {quest.checkStat && quest.checkValue && (
                         <div className="flex justify-between items-center">
                           <span>
-                            {language === 'vi' ? 'Yêu cầu ' : 'Required '}
+                            {(uiText[language]?.['required'] || 'Required ')}
                             {getStatName(quest.checkStat)}:
                           </span>
                           <span className={`font-serif font-bold ${meetsStats ? 'text-emerald-400' : 'text-red-400'}`}>
@@ -228,11 +225,11 @@ export default function SectMissionsPanel({
                       )}
 
                       <div className="flex justify-between items-center text-[10px] pt-1">
-                        <span>{language === 'vi' ? 'Rủi ro thất bại:' : 'Failure Penalty:'}</span>
+                        <span>{(uiText[language]?.['failurePenalty'] || 'Failure Penalty:')}</span>
                         <span className={isParty ? 'text-emerald-400 font-bold' : 'text-red-400 font-bold'}>
                           {isParty 
-                            ? (language === 'vi' ? 'An toàn (Đồng đội hỗ trợ)' : 'Safe (Rescued)') 
-                            : (language === 'vi' ? 'Trừ Khí Huyết lớn (HP)' : 'High HP Loss')}
+                            ? ((uiText[language]?.['safeRescued'] || 'Safe (Rescued)')) 
+                            : ((uiText[language]?.['highHpLoss'] || 'High HP Loss'))}
                         </span>
                       </div>
                     </div>
@@ -241,53 +238,53 @@ export default function SectMissionsPanel({
                   {/* Right Column: Rewards */}
                   <div className="space-y-2">
                     <h4 className="text-[11px] font-medium text-emerald-500 font-semibold font-serif">
-                      {language === 'vi' ? 'Phần Thưởng Thực Nhận' : 'Expected Rewards'}
+                      {(uiText[language]?.['expectedRewards'] || 'Expected Rewards')}
                     </h4>
                     
                     <div className="space-y-1.5 font-sans text-text-secondary">
                       <div className="flex justify-between items-center">
-                        <span>{language === 'vi' ? 'Đóng góp Tông môn:' : 'Sect Contribution:'}</span>
+                        <span>{(uiText[language]?.['sectContribution'] || 'Sect Contribution:')}</span>
                         <span className="text-purple-400 font-serif font-bold">+{rewardContribution}</span>
                       </div>
 
                       {rewardGold > 0 && (
                         <div className="flex justify-between items-center">
-                          <span>{language === 'vi' ? 'Linh Thạch:' : 'Spirit Stones:'}</span>
+                          <span>{(uiText[language]?.['spiritStones'] || 'Spirit Stones:')}</span>
                           <span className="text-amber-400 font-serif font-bold">+{rewardGold}</span>
                         </div>
                       )}
 
                       {quest.rewards.health && (
                         <div className="flex justify-between items-center">
-                          <span>{language === 'vi' ? 'Sinh lực:' : 'Max HP:'}</span>
+                          <span>{(uiText[language]?.['maxHp'] || 'Max HP:')}</span>
                           <span className="text-red-400 font-serif font-bold">+{quest.rewards.health}</span>
                         </div>
                       )}
 
                       {quest.rewards.comprehension && (
                         <div className="flex justify-between items-center">
-                          <span>{language === 'vi' ? 'Ngộ tính:' : 'Comprehension:'}</span>
+                          <span>{(uiText[language]?.['comprehension'] || 'Comprehension:')}</span>
                           <span className="text-emerald-400 font-serif font-bold">+{quest.rewards.comprehension}</span>
                         </div>
                       )}
 
                       {quest.rewards.cultivation && (
                         <div className="flex justify-between items-center">
-                          <span>{language === 'vi' ? 'Tu vi:' : 'Cultivation:'}</span>
+                          <span>{(uiText[language]?.['cultivation'] || 'Cultivation:')}</span>
                           <span className="text-blue-400 font-serif font-bold">+{quest.rewards.cultivation}</span>
                         </div>
                       )}
 
                       {quest.rewards.daoHeart && (
                         <div className="flex justify-between items-center">
-                          <span>{language === 'vi' ? 'Đạo tâm:' : 'Dao Heart:'}</span>
+                          <span>{(uiText[language]?.['daoHeart'] || 'Dao Heart:')}</span>
                           <span className="text-indigo-400 font-serif font-bold">+{quest.rewards.daoHeart}</span>
                         </div>
                       )}
 
                       {quest.rewards.item && (
                         <div className="flex justify-between items-center border-t border-zinc-800/35 pt-1 mt-1 text-[11px]">
-                          <span>{language === 'vi' ? 'Vật phẩm hiếm:' : 'Rare Item:'}</span>
+                          <span>{(uiText[language]?.['rareItem'] || 'Rare Item:')}</span>
                           <span className="text-emerald-400 font-serif font-bold">
                             [{quest.rewards.item.itemId.replace('item_', '').replace(/_/g, ' ')}] x{quest.rewards.item.quantity}
                           </span>
@@ -301,17 +298,15 @@ export default function SectMissionsPanel({
                 <div className="mt-2 border-t border-zinc-800/30 pt-3 flex justify-end">
                   {isWarLevelLocked ? (
                     <span className="text-xs text-red-400 italic">
-                      ⚠️ {language === 'vi' 
-                        ? 'Chiến sự tông môn chưa đạt mức khốc liệt (Sect War Level > 50) để dọn dẹp tử địa.' 
-                        : 'Sect War Level must be > 50 to unlock battlefield cleanup.'}
+                      ⚠️ {(uiText[language]?.['sectWarLevelMustBe50'] || 'Sect War Level must be > 50 to unlock battlefield cleanup.')}
                     </span>
                   ) : !isRankEligible ? (
                     <span className="text-xs text-red-400 italic">
-                      ⚠️ {language === 'vi' ? 'Thân phận không đủ điều kiện' : 'Required Rank not met'}
+                      ⚠️ {(uiText[language]?.['requiredRankNotMet'] || 'Required Rank not met')}
                     </span>
                   ) : !meetsStats ? (
                     <span className="text-xs text-red-400 italic">
-                      ⚠️ {language === 'vi' ? 'Không đủ thuộc tính yêu cầu' : 'Insufficient stats for this approach'}
+                      ⚠️ {(uiText[language]?.['insufficientStatsFor'] || 'Insufficient stats for this approach')}
                     </span>
                   ) : (
                     <button
@@ -324,7 +319,7 @@ export default function SectMissionsPanel({
                           : 'border-zinc-800 bg-black/20 text-text-tertiary cursor-not-allowed'
                       }`}
                     >
-                      {language === 'vi' ? 'Nhận Nhiệm Vụ' : 'Accept Quest'}
+                      {(uiText[language]?.['acceptQuest'] || 'Accept Quest')}
                     </button>
                   )}
                 </div>

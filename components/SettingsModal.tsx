@@ -171,9 +171,7 @@ export default function SettingsModal({
                 type="button"
                 onClick={() => setLanguage('vi')}
                 className={`flex-1 py-2 px-3 text-xs rounded-sm border transition font-serif ${
-                  language === 'vi'
-                    ? 'border-accent bg-accent/10 text-accent font-bold'
-                    : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
+                  (uiText[language]?.['borderzinc800Bgblack'] || 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary')
                 }`}
               >
                 Tiếng Việt (VI)
@@ -182,12 +180,21 @@ export default function SettingsModal({
                 type="button"
                 onClick={() => setLanguage('en')}
                 className={`flex-1 py-2 px-3 text-xs rounded-sm border transition font-serif ${
-                  language === 'en'
+                  (uiText[language]?.['borderaccentBgaccent'] || 'border-accent bg-accent/10 text-accent font-bold')
+                }`}
+              >
+                English (EN)
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage('zh')}
+                className={`flex-1 py-2 px-3 text-xs rounded-sm border transition font-serif ${
+                  language === 'zh'
                     ? 'border-accent bg-accent/10 text-accent font-bold'
                     : 'border-zinc-800 bg-black/30 text-text-secondary hover:border-accent/40 hover:text-text-primary'
                 }`}
               >
-                English (EN)
+                中文 (ZH)
               </button>
             </div>
           </div>

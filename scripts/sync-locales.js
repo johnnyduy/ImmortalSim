@@ -64,7 +64,7 @@ function writeJsonFile(filePath, data) {
 
 // Helper to check if a value is a TODO placeholder
 function isTodo(val) {
-  return typeof val === 'string' && (val.startsWith('[VI-TODO]') || val.startsWith('[EN-TODO]'));
+  return typeof val === 'string' && (val.startsWith('[VI-TODO]') || val.startsWith('[EN-TODO]') || val.startsWith('[ZH-TODO]'));
 }
 
 // --- 1. Sync UI locales ---
@@ -72,55 +72,70 @@ function syncUiLocales() {
   logHeader('SYNCING UI TRANSLATIONS');
   const enPath = path.join(__dirname, '../locales/en/ui.json');
   const viPath = path.join(__dirname, '../locales/vi/ui.json');
+  const zhPath = path.join(__dirname, '../locales/zh/ui.json');
 
   const enUi = readJsonFile(enPath);
   const viUi = readJsonFile(viPath);
+  const zhUi = readJsonFile(zhPath);
 
   let updated = false;
   let addedEn = 0;
   let addedVi = 0;
+  let addedZh = 0;
   let todoCount = 0;
 
   // Find all union keys
-  const allKeys = Array.from(new Set([...Object.keys(enUi), ...Object.keys(viUi)])).sort();
+  const allKeys = Array.from(new Set([...Object.keys(enUi), ...Object.keys(viUi), ...Object.keys(zhUi)])).sort();
 
   const newEnUi = {};
   const newViUi = {};
+  const newZhUi = {};
 
   allKeys.forEach((key) => {
     let enVal = enUi[key];
     let viVal = viUi[key];
+    let zhVal = zhUi[key];
 
     if (enVal === undefined) {
-      enVal = `[EN-TODO] ${viVal}`;
+      enVal = `[EN-TODO] ${viVal || zhVal}`;
       updated = true;
       addedEn++;
       logWarning(`UI key missing in EN: "${key}" -> added placeholder.`);
     }
 
     if (viVal === undefined) {
-      viVal = `[VI-TODO] ${enVal}`;
+      viVal = `[VI-TODO] ${enVal || zhVal}`;
       updated = true;
       addedVi++;
       logWarning(`UI key missing in VI: "${key}" -> added placeholder.`);
     }
 
-    if (isTodo(enVal) || isTodo(viVal)) {
+    if (zhVal === undefined) {
+      zhVal = `[ZH-TODO] ${enVal || viVal}`;
+      updated = true;
+      addedZh++;
+      logWarning(`UI key missing in ZH: "${key}" -> added placeholder.`);
+    }
+
+    if (isTodo(enVal) || isTodo(viVal) || isTodo(zhVal)) {
       todoCount++;
     }
 
     newEnUi[key] = enVal;
     newViUi[key] = viVal;
+    newZhUi[key] = zhVal;
   });
 
   // Check if content order or values changed
   const enChanged = JSON.stringify(enUi) !== JSON.stringify(newEnUi);
   const viChanged = JSON.stringify(viUi) !== JSON.stringify(newViUi);
+  const zhChanged = JSON.stringify(zhUi) !== JSON.stringify(newZhUi);
 
-  if (enChanged || viChanged) {
+  if (enChanged || viChanged || zhChanged) {
     if (enChanged) writeJsonFile(enPath, newEnUi);
     if (viChanged) writeJsonFile(viPath, newViUi);
-    logSuccess(`UI translations updated! Added EN keys: ${addedEn}, Added VI keys: ${addedVi}.`);
+    if (zhChanged) writeJsonFile(zhPath, newZhUi);
+    logSuccess(`UI translations updated! Added EN keys: ${addedEn}, Added VI keys: ${addedVi}, Added ZH keys: ${addedZh}.`);
   } else {
     logSuccess('UI translations are already in sync.');
   }
@@ -151,26 +166,28 @@ function syncEvents() {
 
   const enPath = path.join(__dirname, '../locales/en/events.json');
   const viPath = path.join(__dirname, '../locales/vi/events.json');
+  const zhPath = path.join(__dirname, '../locales/zh/events.json');
 
   const enEvents = readJsonFile(enPath, []);
   const viEvents = readJsonFile(viPath, []);
+  const zhEvents = readJsonFile(zhPath, []);
 
   // Maps for faster lookups
   const enMap = new Map(enEvents.map((ev) => [ev.id, ev]));
   const viMap = new Map(viEvents.map((ev) => [ev.id, ev]));
+  const zhMap = new Map(zhEvents.map((ev) => [ev.id, ev]));
 
   const nextEnEvents = [];
   const nextViEvents = [];
-  let addedEvents = 0;
-  let addedChoices = 0;
-  let missingTranslations = 0;
+  const nextZhEvents = [];
+  
+  let missingTranslationsVi = 0;
+  let missingTranslationsZh = 0;
 
   masterEvents.forEach((masterEv) => {
     const existingEnEv = enMap.get(masterEv.id);
     const existingViEv = viMap.get(masterEv.id);
-
-    if (!existingEnEv) addedEvents++;
-    if (!existingViEv) addedEvents++;
+    const existingZhEv = zhMap.get(masterEv.id);
 
     // 1. Build EN Event
     const masterTitleEn = typeof masterEv.title === 'object' ? masterEv.title.en : masterEv.title;
@@ -181,7 +198,6 @@ function syncEvents() {
 
     const enChoices = masterEv.choices.map((masterChoice) => {
       const existingChoice = existingEnEv?.choices?.find((c) => c.id === masterChoice.id);
-      if (!existingChoice) addedChoices++;
       const masterChoiceEn = typeof masterChoice.text === 'object' ? masterChoice.text.en : masterChoice.text;
       return {
         id: masterChoice.id,
@@ -213,13 +229,11 @@ function syncEvents() {
 
     if (!viTitle) {
       viTitle = `[VI-TODO] ${masterTitleEn || masterEv.title}`;
-      missingTranslations++;
-      logWarning(`Missing VI translation for event title: "${masterEv.id}"`);
+      missingTranslationsVi++;
     }
     if (!viDesc) {
       viDesc = `[VI-TODO] ${masterDescEn || masterEv.description}`;
-      missingTranslations++;
-      logWarning(`Missing VI translation for event description: "${masterEv.id}"`);
+      missingTranslationsVi++;
     }
 
     const viChoices = masterEv.choices.map((masterChoice) => {
@@ -229,8 +243,7 @@ function syncEvents() {
       let viChoiceText = masterChoiceVi || existingChoice?.text;
       if (!viChoiceText) {
         viChoiceText = `[VI-TODO] ${masterChoiceEn || masterChoice.text}`;
-        missingTranslations++;
-        logWarning(`Missing VI translation for choice: "${masterEv.id}.${masterChoice.id}"`);
+        missingTranslationsVi++;
       }
       return {
         id: masterChoice.id,
@@ -241,34 +254,71 @@ function syncEvents() {
     });
 
     const viEv = {
-      id: masterEv.id,
+      ...enEv,
       title: viTitle,
       description: viDesc,
-      minAge: masterEv.minAge,
-      maxAge: masterEv.maxAge,
-      weight: masterEv.weight,
       choices: viChoices,
-      ...(masterEv.tags ? { tags: masterEv.tags } : {}),
-      ...(masterEv.metadata ? { metadata: masterEv.metadata } : {}),
     };
     nextViEvents.push(viEv);
+
+    // 3. Build ZH Event
+    const masterTitleZh = typeof masterEv.title === 'object' ? masterEv.title.zh : undefined;
+    const masterDescZh = typeof masterEv.description === 'object' ? masterEv.description.zh : undefined;
+
+    let zhTitle = masterTitleZh || existingZhEv?.title;
+    let zhDesc = masterDescZh || existingZhEv?.description;
+
+    if (!zhTitle) {
+      zhTitle = `[ZH-TODO] ${masterTitleEn || masterEv.title}`;
+      missingTranslationsZh++;
+    }
+    if (!zhDesc) {
+      zhDesc = `[ZH-TODO] ${masterDescEn || masterEv.description}`;
+      missingTranslationsZh++;
+    }
+
+    const zhChoices = masterEv.choices.map((masterChoice) => {
+      const existingChoice = existingZhEv?.choices?.find((c) => c.id === masterChoice.id);
+      const masterChoiceZh = typeof masterChoice.text === 'object' ? masterChoice.text.zh : undefined;
+      const masterChoiceEn = typeof masterChoice.text === 'object' ? masterChoice.text.en : masterChoice.text;
+      let zhChoiceText = masterChoiceZh || existingChoice?.text;
+      if (!zhChoiceText) {
+        zhChoiceText = `[ZH-TODO] ${masterChoiceEn || masterChoice.text}`;
+        missingTranslationsZh++;
+      }
+      return {
+        id: masterChoice.id,
+        text: zhChoiceText,
+        effects: masterChoice.effects,
+        ...(masterChoice.metadata ? { metadata: masterChoice.metadata } : {}),
+      };
+    });
+
+    const zhEv = {
+      ...enEv,
+      title: zhTitle,
+      description: zhDesc,
+      choices: zhChoices,
+    };
+    nextZhEvents.push(zhEv);
   });
 
   // Check if content or sorting changed
   const enChanged = JSON.stringify(enEvents) !== JSON.stringify(nextEnEvents);
   const viChanged = JSON.stringify(viEvents) !== JSON.stringify(nextViEvents);
+  const zhChanged = JSON.stringify(zhEvents) !== JSON.stringify(nextZhEvents);
 
-  if (enChanged || viChanged) {
+  if (enChanged || viChanged || zhChanged) {
     if (enChanged) writeJsonFile(enPath, nextEnEvents);
     if (viChanged) writeJsonFile(viPath, nextViEvents);
+    if (zhChanged) writeJsonFile(zhPath, nextZhEvents);
     logSuccess(`Events data updated! Synced ${masterEvents.length} events.`);
   } else {
     logSuccess('Events data is already in sync.');
   }
 
-  if (missingTranslations > 0) {
-    logInfo(`Events contain ${missingTranslations} pending VI-TODO translation item(s).`);
-  }
+  if (missingTranslationsVi > 0) logInfo(`Events contain ${missingTranslationsVi} pending VI-TODO item(s).`);
+  if (missingTranslationsZh > 0) logInfo(`Events contain ${missingTranslationsZh} pending ZH-TODO item(s).`);
 }
 
 // --- 3. Sync Sects ---
@@ -276,52 +326,50 @@ function syncSects() {
   logHeader('SYNCING SECTS DATA');
   const enPath = path.join(__dirname, '../locales/en/sects.json');
   const viPath = path.join(__dirname, '../locales/vi/sects.json');
+  const zhPath = path.join(__dirname, '../locales/zh/sects.json');
 
   const enSects = readJsonFile(enPath, []);
   const viSects = readJsonFile(viPath, []);
+  const zhSects = readJsonFile(zhPath, []);
 
   const viMap = new Map(viSects.map((s) => [s.id, s]));
+  const zhMap = new Map(zhSects.map((s) => [s.id, s]));
   const nextViSects = [];
-  let missingTranslations = 0;
+  const nextZhSects = [];
+  let missingVi = 0;
+  let missingZh = 0;
 
   enSects.forEach((enSect) => {
     const existingViSect = viMap.get(enSect.id);
+    const existingZhSect = zhMap.get(enSect.id);
+    
     let viName = existingViSect?.name;
     let viDesc = existingViSect?.description;
+    if (!viName) { viName = `[VI-TODO] ${enSect.name}`; missingVi++; }
+    if (!viDesc) { viDesc = `[VI-TODO] ${enSect.description}`; missingVi++; }
 
-    if (!viName) {
-      viName = `[VI-TODO] ${enSect.name}`;
-      missingTranslations++;
-      logWarning(`Missing VI translation for sect name: "${enSect.id}"`);
-    }
-    if (!viDesc) {
-      viDesc = `[VI-TODO] ${enSect.description}`;
-      missingTranslations++;
-      logWarning(`Missing VI translation for sect description: "${enSect.id}"`);
-    }
+    let zhName = existingZhSect?.name;
+    let zhDesc = existingZhSect?.description;
+    if (!zhName) { zhName = `[ZH-TODO] ${enSect.name}`; missingZh++; }
+    if (!zhDesc) { zhDesc = `[ZH-TODO] ${enSect.description}`; missingZh++; }
 
-    const viSect = {
-      id: enSect.id,
-      name: viName,
-      description: viDesc,
-      alignment: enSect.alignment,
-      ...(enSect.metadata ? { metadata: enSect.metadata } : {}),
-    };
-    nextViSects.push(viSect);
+    nextViSects.push({ ...enSect, name: viName, description: viDesc });
+    nextZhSects.push({ ...enSect, name: zhName, description: zhDesc });
   });
 
   const viChanged = JSON.stringify(viSects) !== JSON.stringify(nextViSects);
+  const zhChanged = JSON.stringify(zhSects) !== JSON.stringify(nextZhSects);
 
-  if (viChanged) {
-    writeJsonFile(viPath, nextViSects);
-    logSuccess(`Sects data updated! Synced ${enSects.length} sects.`);
+  if (viChanged || zhChanged) {
+    if (viChanged) writeJsonFile(viPath, nextViSects);
+    if (zhChanged) writeJsonFile(zhPath, nextZhSects);
+    logSuccess(`Sects data updated!`);
   } else {
     logSuccess('Sects data is already in sync.');
   }
 
-  if (missingTranslations > 0) {
-    logInfo(`Sects contain ${missingTranslations} pending VI-TODO translation item(s).`);
-  }
+  if (missingVi > 0) logInfo(`Sects contain ${missingVi} pending VI-TODO.`);
+  if (missingZh > 0) logInfo(`Sects contain ${missingZh} pending ZH-TODO.`);
 }
 
 // Main Runner

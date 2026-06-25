@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect, useRef } from 'react';
 import type { WorldState } from '../types';
+import { uiText } from '../lib/i18n';
 
 type Props = {
   month: number;
@@ -81,50 +82,40 @@ export default function TimeGearPanel({
     let auraClass = '';
     let auraColor = '#34d399'; // default gold
     let particleColor = 'rgba(229,193,123,0.6)';
-    let statusTitle = language === 'vi' ? 'Mệnh Bàn Thiên Tuần' : 'Destiny Cycle';
-    let statusDesc = language === 'vi' 
-      ? 'Thiên Đạo tuần hoàn, nhân quả tự định, vạn pháp quy nhất.' 
-      : 'The Dao cycles, karma flows, and all techniques align as one.';
+    let statusTitle = (uiText[language]?.['destinyCycle'] || 'Destiny Cycle');
+    let statusDesc = (uiText[language]?.['theDaoCyclesKarmaFlo'] || 'The Dao cycles, karma flows, and all techniques align as one.');
 
     // Demonic is highest priority
     if (demonicEnergy > 50) {
       auraClass = 'glow-demonic';
       auraColor = '#a78bfa'; // light purple
       particleColor = 'rgba(167,139,250,0.7)'; // dark smoke purple
-      statusTitle = language === 'vi' ? '👹 Ma Khí Ngập Trời' : '👹 Demonic Qi Flood';
-      statusDesc = language === 'vi'
-        ? 'Ma đạo hưng thịnh hoành hành thế giới, yêu thú cuồng bạo, thiên cơ hỗn độn.'
-        : 'Demonic path surges, beasts grow violent, heavenly secrets are obscured.';
+      statusTitle = (uiText[language]?.['DemonicQiFlood'] || '👹 Demonic Qi Flood');
+      statusDesc = (uiText[language]?.['demonicPathSurgesBea'] || 'Demonic path surges, beasts grow violent, heavenly secrets are obscured.');
     } 
     // Dao Fluctuation
     else if (daoFluctuation > 60) {
       auraClass = 'glow-dao';
       auraColor = '#fbbf24'; // bright gold
       particleColor = 'rgba(251,191,36,0.8)';
-      statusTitle = language === 'vi' ? '✨ Thiên Đạo Dị Động' : '✨ Celestial Fluctuation';
-      statusDesc = language === 'vi'
-        ? 'Càn khôn hỗn loạn, linh vận tụ hội, có cơ hội ngộ cổ đại bí cảnh kỳ ngộ.'
-        : 'Cosmos in flux, spiritual fortunes converge, ancient secret realms emerge.';
+      statusTitle = (uiText[language]?.['CelestialFluctuation'] || '✨ Celestial Fluctuation');
+      statusDesc = (uiText[language]?.['cosmosInFluxSpiritua'] || 'Cosmos in flux, spiritual fortunes converge, ancient secret realms emerge.');
     } 
     // Security Warning
     else if (security < 40) {
       auraClass = 'glow-chaos';
       auraColor = '#f87171'; // red warning
       particleColor = 'rgba(248,113,113,0.8)';
-      statusTitle = language === 'vi' ? '🚨 Phàm Trần Hỗn Loạn' : '🚨 Mortal Chaos';
-      statusDesc = language === 'vi'
-        ? 'An ninh thành thị suy sụp, đạo tặc hoành hành phàm gian, nghiệp chướng tăng cao.'
-        : 'City security collapses, mortal bandits roam, dark karma gathers.';
+      statusTitle = (uiText[language]?.['MortalChaos'] || '🚨 Mortal Chaos');
+      statusDesc = (uiText[language]?.['citySecurityCollapse'] || 'City security collapses, mortal bandits roam, dark karma gathers.');
     } 
     // High Spiritual Qi
     else if (spiritualQi > 70) {
       auraClass = 'glow-spiritual';
       auraColor = '#22d3ee'; // cyan
       particleColor = 'rgba(34,211,238,0.8)';
-      statusTitle = language === 'vi' ? '🌊 Linh Khí Triều Tịch' : '🌊 Spiritual Tide';
-      statusDesc = language === 'vi'
-        ? 'Linh khí tràn ngập tiên sơn, linh dược tăng trưởng nhanh chóng, bế quan đắc lợi.'
-        : 'Spiritual energy floods mountains, medicinal herbs grow fast, meditation blooms.';
+      statusTitle = (uiText[language]?.['SpiritualTide'] || '🌊 Spiritual Tide');
+      statusDesc = (uiText[language]?.['spiritualEnergyFlood'] || 'Spiritual energy floods mountains, medicinal herbs grow fast, meditation blooms.');
     }
 
     return { auraClass, auraColor, particleColor, statusTitle, statusDesc };
@@ -276,7 +267,7 @@ export default function TimeGearPanel({
       {/* Destiny Plate Title */}
       <div className="text-center space-y-1 relative z-10">
         <span className="text-[10px] font-medium text-zinc-400 font-serif font-semibold">
-          {language === 'vi' ? 'MỆNH BÀN THIÊN ĐẠO' : 'HEAVENLY DESTINY COMPASS'}
+          {(uiText[language]?.['heavenlyDestinyCompa'] || 'HEAVENLY DESTINY COMPASS')}
         </span>
         <h3 
           className="font-serif text-lg font-medium font-bold transition-colors duration-1000"
@@ -452,7 +443,7 @@ export default function TimeGearPanel({
       <div className="w-full grid grid-cols-4 gap-2 pt-3 border-t border-zinc-800/40 relative z-10 text-center">
         <div className="flex flex-col items-center">
           <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
-            {language === 'vi' ? 'Linh Khí' : 'Spirit Qi'}
+            {(uiText[language]?.['spiritQi'] || 'Spirit Qi')}
           </span>
           <span className="text-xs font-bold font-serif text-cyan-400 mt-0.5">
             {Math.round(spiritualQi)}%
@@ -464,7 +455,7 @@ export default function TimeGearPanel({
 
         <div className="flex flex-col items-center">
           <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
-            {language === 'vi' ? 'Dị Động' : 'Dao Flux'}
+            {(uiText[language]?.['daoFlux'] || 'Dao Flux')}
           </span>
           <span className="text-xs font-bold font-serif text-amber-400 mt-0.5">
             {Math.round(daoFluctuation)}%
@@ -476,7 +467,7 @@ export default function TimeGearPanel({
 
         <div className="flex flex-col items-center">
           <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
-            {language === 'vi' ? 'Ma Khí' : 'Demonic Qi'}
+            {(uiText[language]?.['demonicQi'] || 'Demonic Qi')}
           </span>
           <span className="text-xs font-bold font-serif text-purple-400 mt-0.5">
             {Math.round(demonicEnergy)}%
@@ -488,7 +479,7 @@ export default function TimeGearPanel({
 
         <div className="flex flex-col items-center">
           <span className="text-[9px] text-zinc-400 uppercase font-bold tracking-wider">
-            {language === 'vi' ? 'An Ninh' : 'Security'}
+            {(uiText[language]?.['security'] || 'Security')}
           </span>
           <span className={`text-xs font-bold font-serif mt-0.5 ${security < 40 ? 'text-red-400' : 'text-blue-400'}`}>
             {Math.round(security)}%
@@ -502,15 +493,13 @@ export default function TimeGearPanel({
       {/* Month Log / Diary */}
       <div className="w-full space-y-2 relative z-10 border-t border-zinc-800/45 pt-3">
         <div className="flex justify-between items-center text-[10px] font-medium text-zinc-400 font-semibold font-serif">
-          <span>{language === 'vi' ? 'Nhật ký Tĩnh Tu (Meditation Log)' : 'Meditation Log'}</span>
-          <span className="text-blue-400 font-sans">+0.02 {language === 'vi' ? 'Tu Vi/tháng' : 'Cultivation/m'}</span>
+          <span>{(uiText[language]?.['meditationLog'] || 'Meditation Log')}</span>
+          <span className="text-blue-400 font-sans">+0.02 {(uiText[language]?.['cultivationm'] || 'Cultivation/m')}</span>
         </div>
         <div className="min-h-36 bg-zinc-950/60 border border-zinc-800/40 rounded-sm p-3.5 space-y-2.5 max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-[#27272a]">
           {monthlyLog.length === 0 ? (
             <p className="text-2xl text-text-tertiary italic text-center py-4">
-              {language === 'vi' 
-                ? 'Bắt đầu khép mi tập trung hơi thở, thời quang bắt đầu xoay...'
-                : 'Closing eyes to focus on breath, time destiny begins to spin...'}
+              {(uiText[language]?.['closingEyesToFocusOn'] || 'Closing eyes to focus on breath, time destiny begins to spin...')}
             </p>
           ) : (
             monthlyLog.map((logLine, idx) => (

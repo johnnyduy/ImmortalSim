@@ -1,8 +1,9 @@
-export type Lang = 'vi' | 'en';
+export type Lang = 'vi' | 'en' | 'zh';
 
 export type LocalizedText = {
   vi: string;
   en: string;
+  zh?: string;
 };
 
 export type TextResource = string | LocalizedText;
@@ -124,6 +125,7 @@ export interface SectQuest {
   progressLogs: {
     vi: string[];
     en: string[];
+    zh?: string[];
   };
 }
 

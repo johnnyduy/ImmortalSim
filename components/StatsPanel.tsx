@@ -5,6 +5,7 @@ import combatConfig from '../data/combat-config.json';
 import { getNpcFavorabilityLabel, getSubStageMaxCultivation } from '../lib/engine';
 import WorldNewsPanel from './WorldNewsPanel';
 import { npcs } from '../data/npcs/index';
+import { uiText } from '../lib/i18n';
 
 // LabelSet (Tập hợp nhãn ngôn ngữ đã dịch dùng cho hiển thị giao diện)
 type LabelSet = {
@@ -439,7 +440,7 @@ export default function StatsPanel({
                 {cultMultiplier > 1.0 && (
                   <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                     <span className="flex items-center gap-1.5 text-zinc-100 font-medium">
-                      ⚡ {language === 'vi' ? 'Tốc độ tu luyện:' : 'Cultivation Speed:'}
+                      ⚡ {(uiText[language]?.['cultivationSpeed'] || 'Cultivation Speed:')}
                     </span>
                     <span className="text-[#38bdf8] font-serif font-bold">
                       +{Math.round((cultMultiplier - 1.0) * 100)}%
@@ -450,7 +451,7 @@ export default function StatsPanel({
                 {/* Dòng hiển thị Vị Trí Hiện Tại */}
                 <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                   <span className="flex items-center gap-1.5 text-text-secondary">
-                    📍 {language === 'vi' ? 'Vị Trí Hiện Tại' : 'Current Location'}
+                    📍 {(uiText[language]?.['currentLocation'] || 'Current Location')}
                   </span>
                   <span className="text-emerald-400 font-serif font-semibold">
                     {getLocationName(currentLocation, sect, language)}
@@ -464,14 +465,12 @@ export default function StatsPanel({
                     if (onViewDetail) {
                       onViewDetail({
                         type: 'currency',
-                        title: language === 'vi' ? 'Hạ Phẩm Linh Thạch' : 'Low-Grade Spirit Stones',
-                        description: language === 'vi'
-                          ? 'Đá linh khí có phẩm cấp thấp, chứa linh khí thiên địa tinh thuần, dùng làm tiền tệ giao dịch và xúc tiến tu luyện.'
-                          : 'A low-grade stone containing pure ambient spiritual energy. It serves as standard currency and resource for cultivation burning.',
+                        title: (uiText[language]?.['lowgradeSpiritStones'] || 'Low-Grade Spirit Stones'),
+                        description: (uiText[language]?.['aLowgradeStoneContai'] || 'A low-grade stone containing pure ambient spiritual energy. It serves as standard currency and resource for cultivation burning.'),
                         icon: '💎',
                         details: [
-                          `${language === 'vi' ? 'Sở hữu' : 'Owned'}: ${spiritStones}x`,
-                          `${language === 'vi' ? 'Loại' : 'Category'}: ${language === 'vi' ? 'Tiền tệ / Tài nguyên' : 'Currency / Resource'}`
+                          `${(uiText[language]?.['owned'] || 'Owned')}: ${spiritStones}x`,
+                          `${(uiText[language]?.['category'] || 'Category')}: ${(uiText[language]?.['currencyResource'] || 'Currency / Resource')}`
                         ]
                       });
                     }
@@ -479,7 +478,7 @@ export default function StatsPanel({
                   className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30 w-full text-left transition hover:text-zinc-100 cursor-pointer"
                 >
                   <span className="flex items-center gap-1.5 text-text-secondary">
-                    💎 {language === 'vi' ? 'Linh Thạch (Xem chi tiết)' : 'Spirit Stones (View Details)'}
+                    💎 {(uiText[language]?.['spiritStonesViewDeta'] || 'Spirit Stones (View Details)')}
                   </span>
                   <span className="text-amber-400 font-serif font-semibold">{spiritStones}</span>
                 </button>
@@ -487,7 +486,7 @@ export default function StatsPanel({
                   <>
                     <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                       <span className="flex items-center gap-1.5 text-text-secondary">
-                        ⚔️ {language === 'vi' ? 'Tông Môn' : 'Sect'}
+                        ⚔️ {(uiText[language]?.['sect'] || 'Sect')}
                       </span>
                       <span className="text-purple-400 font-serif font-semibold">
                         {sect}
@@ -495,20 +494,20 @@ export default function StatsPanel({
                     </div>
                     <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                       <span className="flex items-center gap-1.5 text-text-secondary">
-                        🛡️ {language === 'vi' ? 'Danh Vị & Cống Hiến' : 'Rank & Contribution'}
+                        🛡️ {(uiText[language]?.['rankContribution'] || 'Rank & Contribution')}
                       </span>
                       <span className="text-purple-400 font-serif font-semibold">
                         {sectContribution} ({
-                          sectRank === 'ngoại_môn' ? (language === 'vi' ? 'Đệ Tử Ngoại Môn' : 'Outer Disciple') :
-                          sectRank === 'nội_môn' ? (language === 'vi' ? 'Đệ Tử Nội Môn' : 'Inner Disciple') :
-                          sectRank === 'chân_truyền' ? (language === 'vi' ? 'Đệ Tử Chân Truyền' : 'Core Disciple') :
-                          (language === 'vi' ? 'Trưởng Lão Tông Môn' : 'Sect Elder')
+                          sectRank === 'ngoại_môn' ? ((uiText[language]?.['outerDisciple'] || 'Outer Disciple')) :
+                          sectRank === 'nội_môn' ? ((uiText[language]?.['innerDisciple'] || 'Inner Disciple')) :
+                          sectRank === 'chân_truyền' ? ((uiText[language]?.['coreDisciple'] || 'Core Disciple')) :
+                          ((uiText[language]?.['sectElder'] || 'Sect Elder'))
                         })
                       </span>
                     </div>
                     <div className="flex items-center justify-between text-xs font-medium pt-2 border-t border-zinc-800/30">
                       <span className="flex items-center gap-1.5 text-text-secondary">
-                        🏆 {language === 'vi' ? 'Uy Vọng Tông Môn' : 'Sect Prestige'}
+                        🏆 {(uiText[language]?.['sectPrestige'] || 'Sect Prestige')}
                       </span>
                       <span className="text-zinc-100 font-serif font-semibold">
                         {getSectPrestigeRankName(sectPrestige, language)}
@@ -522,16 +521,16 @@ export default function StatsPanel({
             {/* Nhân Mạch Quan Hệ / Relationship Matrix */}
             <div className="space-y-3 mb-6 border-b border-zinc-800/45 pb-4">
               <h4 className="text-xs font-medium text-emerald-500 font-semibold font-serif text-left">
-                {language === 'vi' ? 'Nhân Mạch Quan Hệ' : 'Relationship Matrix'}
+                {(uiText[language]?.['relationshipMatrix'] || 'Relationship Matrix')}
               </h4>
               
               <div className="space-y-2.5 max-h-44 overflow-y-auto pr-1">
                 {[
-                  { id: 'npc_kiem_tong_chap_su', name: 'Tạ Trần', sect: 'Kiếm Tông', role: language === 'vi' ? 'Chấp sự Ngoại môn' : 'Outer Deacon', avatar: '👨‍💼' },
-                  { id: 'npc_kiem_tong_ta_tieu', name: 'Tạ Tiêu', sect: 'Kiếm Tông', role: language === 'vi' ? 'Đệ tử (Cháu Chấp sự)' : 'Disciple (Deacon\'s Nephew)', avatar: '🧑‍🎤' },
-                  { id: 'npc_dan_tong_chap_su', name: 'Linh Dương', sect: 'Đan Tông', role: language === 'vi' ? 'Chấp sự Ngoại môn' : 'Outer Deacon', avatar: '👨‍🔬' },
-                  { id: 'npc_ma_dao_chap_su', name: 'Khấu Vô Kỵ', sect: 'Ma Đạo', role: language === 'vi' ? 'Chấp sự Ngoại môn' : 'Outer Deacon', avatar: '😈' },
-                  { id: 'npc_huyet_tong_chap_su', name: 'Xích Liệt', sect: 'Huyết Tông', role: language === 'vi' ? 'Chấp sự Ngoại môn' : 'Outer Deacon', avatar: '🧛' },
+                  { id: 'npc_kiem_tong_chap_su', name: 'Tạ Trần', sect: 'Kiếm Tông', role: (uiText[language]?.['outerDeacon'] || 'Outer Deacon'), avatar: '👨‍💼' },
+                  { id: 'npc_kiem_tong_ta_tieu', name: 'Tạ Tiêu', sect: 'Kiếm Tông', role: (uiText[language]?.['discipleDeacon'] || "Disciple (Deacon's Nephew)"), avatar: '🧑‍🎤' },
+                  { id: 'npc_dan_tong_chap_su', name: 'Linh Dương', sect: 'Đan Tông', role: (uiText[language]?.['outerDeacon'] || 'Outer Deacon'), avatar: '👨‍🔬' },
+                  { id: 'npc_ma_dao_chap_su', name: 'Khấu Vô Kỵ', sect: 'Ma Đạo', role: (uiText[language]?.['outerDeacon'] || 'Outer Deacon'), avatar: '😈' },
+                  { id: 'npc_huyet_tong_chap_su', name: 'Xích Liệt', sect: 'Huyết Tông', role: (uiText[language]?.['outerDeacon'] || 'Outer Deacon'), avatar: '🧛' },
                   ...npcs.map(n => ({
                     id: n.id,
                     name: n.name,
@@ -612,12 +611,12 @@ export default function StatsPanel({
             {/* Công Pháp Đang Có / Owned Techniques */}
             <div className="space-y-3 mb-6 border-b border-zinc-800/45 pb-4">
               <h4 className="text-xs font-medium text-emerald-500 font-semibold font-serif text-left">
-                {language === 'vi' ? 'Công Pháp Đang Có' : 'Owned Techniques'}
+                {(uiText[language]?.['ownedTechniques'] || 'Owned Techniques')}
               </h4>
               
               {(!techniques || techniques.length === 0) ? (
                 <p className="text-xs text-text-tertiary italic text-left">
-                  {language === 'vi' ? 'Chưa sở hữu công pháp nào.' : 'No techniques owned yet.'}
+                  {(uiText[language]?.['noTechniquesOwnedYet'] || 'No techniques owned yet.')}
                 </p>
               ) : (
                 <div className="space-y-2.5 max-h-48 overflow-y-auto pr-1">
@@ -651,11 +650,11 @@ export default function StatsPanel({
                               description: configTech?.description || tech.name,
                               image: configTech?.image,
                               details: [
-                                `${language === 'vi' ? 'Phẩm cấp' : 'Grade'}: ${tech.tier.toUpperCase()}`,
-                                `${language === 'vi' ? 'Loại' : 'Type'}: ${tech.type === 'tâm_pháp' ? (language === 'vi' ? 'Tâm Pháp' : 'Mind Manual') : (language === 'vi' ? 'Vũ Kỹ' : 'Martial Skill')}`,
-                                `${language === 'vi' ? 'Thuộc tính linh căn' : 'Spiritual Root'}: ${configTech?.spiritual_root || (language === 'vi' ? 'Bản Thể' : 'All')}`,
-                                `${language === 'vi' ? 'Trạng thái' : 'Status'}: ${tech.isActive ? (language === 'vi' ? 'Đã kích hoạt' : 'Active') : (language === 'vi' ? 'Chưa kích hoạt' : 'Locked')}`,
-                                `${language === 'vi' ? 'Độ hoàn chỉnh' : 'Completeness'}: ${completenessLabel.toUpperCase()}`
+                                `${(uiText[language]?.['grade'] || 'Grade')}: ${tech.tier.toUpperCase()}`,
+                                `${(uiText[language]?.['type'] || 'Type')}: ${tech.type === 'tâm_pháp' ? ((uiText[language]?.['mindManual'] || 'Mind Manual')) : ((uiText[language]?.['martialSkill'] || 'Martial Skill'))}`,
+                                `${(uiText[language]?.['spiritualRoot'] || 'Spiritual Root')}: ${configTech?.spiritual_root || ((uiText[language]?.['all'] || 'All'))}`,
+                                `${(uiText[language]?.['status'] || 'Status')}: ${tech.isActive ? ((uiText[language]?.['active'] || 'Active')) : ((uiText[language]?.['locked'] || 'Locked'))}`,
+                                `${(uiText[language]?.['completeness'] || 'Completeness')}: ${completenessLabel.toUpperCase()}`
                               ]
                             });
                           }
@@ -674,18 +673,18 @@ export default function StatsPanel({
                           
                           <span className={`font-serif text-[11px] ${tech.isActive ? 'text-emerald-400' : 'text-amber-500/80 font-bold'}`}>
                             {tech.isActive 
-                              ? (language === 'vi' ? 'Đang hoạt động' : 'Active') 
-                              : (language === 'vi' ? 'Chưa thức tỉnh' : 'Locked')}
+                              ? ((uiText[language]?.['active'] || 'Active')) 
+                              : ((uiText[language]?.['locked'] || 'Locked'))}
                           </span>
                         </div>
                         
                         <div className="flex items-center justify-between text-[11px] text-text-secondary w-full">
                           <span className="text-left">
-                            {language === 'vi' ? 'Độ hoàn chỉnh: ' : 'Completeness: '}
+                            {(uiText[language]?.['completeness1'] || 'Completeness: ')}
                             <strong className="text-text-primary font-serif uppercase">{completenessLabel}</strong>
                           </span>
                           {tech.completeness !== 'viên_mãn' && (
-                            <span>{tech.fragmentsCollected} / {tech.fragmentsRequired} {language === 'vi' ? 'mảnh' : 'shards'}</span>
+                            <span>{tech.fragmentsCollected} / {tech.fragmentsRequired} {(uiText[language]?.['shards'] || 'shards')}</span>
                           )}
                         </div>
  
@@ -706,14 +705,14 @@ export default function StatsPanel({
                                     onClick={(e) => { e.stopPropagation(); onLearnTechnique && onLearnTechnique(tech); }}
                                     className="w-full px-2 py-1.5 bg-[#10b981]/20 hover:bg-[#10b981]/40 border border-emerald-500/30/50 text-zinc-100 rounded-sm text-xs font-serif font-medium transition"
                                   >
-                                    {language === 'vi' ? '⚔️ Tiến Hành Nhập Môn' : '⚔️ Begin Cultivation'}
+                                    {(uiText[language]?.['BeginCultivation'] || '⚔️ Begin Cultivation')}
                                   </button>
                                 );
                               }
 
                               return (
                                 <div className="text-[10px] text-amber-500/80 text-left">
-                                  {language === 'vi' ? 'Yêu cầu nhập môn: ' : 'Requirements: '}
+                                  {(uiText[language]?.['requirements'] || 'Requirements: ')}
                                   {reqs?.realm && `${reqs.realm === 'Qi Refinement' ? 'Luyện Khí' : reqs.realm === 'Foundation Establishment' ? 'Trúc Cơ' : reqs.realm === 'Golden Core' ? 'Kim Đan' : 'Phàm Nhân'}`}
                                   {reqs?.comprehension && ` • Ngộ tính ${reqs.comprehension}`}
                                   {reqs?.age && ` • Tuổi ${reqs.age}`}
@@ -732,12 +731,12 @@ export default function StatsPanel({
             {/* Túi Trữ Vật / Inventory */}
             <div className="space-y-3 mb-6 border-b border-zinc-800/45 pb-4">
               <h4 className="text-xs font-medium text-emerald-500 font-semibold font-serif text-left">
-                {language === 'vi' ? 'Túi Trữ Vật' : 'Inventory Bag'}
+                {(uiText[language]?.['inventoryBag'] || 'Inventory Bag')}
               </h4>
               
               {(!inventory || inventory.length === 0) ? (
                 <p className="text-xs text-text-tertiary italic text-left">
-                  {language === 'vi' ? 'Hành trang trống không.' : 'Your inventory bag is empty.'}
+                  {(uiText[language]?.['yourInventoryBagIsEm'] || 'Your inventory bag is empty.')}
                 </p>
               ) : (
                 <div className="space-y-2.5 max-h-48 overflow-y-auto pr-1">
@@ -775,9 +774,9 @@ export default function StatsPanel({
                               description: item.description,
                               icon: itemIcon,
                               details: [
-                                `${language === 'vi' ? 'Phẩm cấp' : 'Grade'}: ${item.tier.toUpperCase()}`,
-                                `${language === 'vi' ? 'Phân loại' : 'Category'}: ${item.category.toUpperCase()}`,
-                                `${language === 'vi' ? 'Số lượng' : 'Quantity'}: ${item.quantity}`
+                                `${(uiText[language]?.['grade'] || 'Grade')}: ${item.tier.toUpperCase()}`,
+                                `${(uiText[language]?.['category'] || 'Category')}: ${item.category.toUpperCase()}`,
+                                `${(uiText[language]?.['quantity'] || 'Quantity')}: ${item.quantity}`
                               ]
                             });
                           }
@@ -805,7 +804,7 @@ export default function StatsPanel({
                                 }}
                                 className="px-2 py-0.5 border border-emerald-500/30 bg-zinc-900 text-zinc-100 hover:bg-zinc-800 text-[10px] rounded-sm transition font-serif"
                               >
-                                {language === 'vi' ? 'Sử dụng' : 'Use'}
+                                {(uiText[language]?.['use'] || 'Use')}
                               </button>
                             )}
                             {isEquipment && onEquipItem && (
@@ -822,8 +821,8 @@ export default function StatsPanel({
                                 }`}
                               >
                                 {item.equipped 
-                                  ? (language === 'vi' ? 'Đang trang bị' : 'Equipped') 
-                                  : (language === 'vi' ? 'Trang bị' : 'Equip')}
+                                  ? ((uiText[language]?.['equipped'] || 'Equipped')) 
+                                  : ((uiText[language]?.['equip'] || 'Equip'))}
                               </button>
                             )}
                           </div>
@@ -835,7 +834,7 @@ export default function StatsPanel({
                         
                         {item.soulbound && (
                           <div className="text-[8px] text-indigo-400 font-sans tracking-wider uppercase text-left w-full">
-                            ✨ {language === 'vi' ? 'Liên Kết Linh Hồn' : 'Soulbound'}
+                            ✨ {(uiText[language]?.['soulbound'] || 'Soulbound')}
                           </div>
                         )}
                       </button>

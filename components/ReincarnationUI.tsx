@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GameState, Inheritance } from '../types';
 import { getRealmSubStage } from '../lib/cultivation-states';
 import { getLocalizedText } from '../lib/i18n';
+import { uiText } from '../lib/i18n';
 
 interface ReincarnationUIProps {
   game: GameState;
@@ -84,7 +85,7 @@ export default function ReincarnationUI({ game, setGame, inheritance, setInherit
         <div className="flex items-center gap-4">
           <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>account_tree</span>
           <h1 className="font-headline-sm text-headline-sm uppercase tracking-widest text-primary-container text-red-500">
-            {language === 'vi' ? 'ĐÃ TỬ VONG' : 'DECEASED'}
+            {(uiText[language]?.['deceased'] || 'DECEASED')}
           </h1>
         </div>
         <div className="font-mono-data text-mono-data text-secondary flex items-center gap-4">
@@ -181,7 +182,7 @@ export default function ReincarnationUI({ game, setGame, inheritance, setInherit
             <button 
               onClick={onReincarnate}
               className="px-8 py-3 bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps shadow-[0_0_15px_rgba(255,176,0,0.4)] hover:shadow-[0_0_25px_rgba(255,176,0,0.6)] hover:bg-white transition-all active:scale-95 uppercase">
-              {language === 'vi' ? 'Tiến Nhập Luân Hồi' : 'Enter Reincarnation Cycle'}
+              {(uiText[language]?.['enterReincarnationCy'] || 'Enter Reincarnation Cycle')}
             </button>
           </div>
         </section>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { uiText } from '../lib/i18n';
 
 export type LevelRewardAnimationPayload = {
   id: number;
@@ -406,7 +407,7 @@ export default function LevelRewardAnimation({ payload, language = 'vi', onDone 
                 {/* Glowing hover overlay */}
                 <span className="absolute inset-0 w-full h-full bg-white/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
                 <span className="relative z-10">
-                  {language === 'vi' ? 'Xác nhận' : 'Confirm'}
+                  {(uiText[language]?.['confirm'] || 'Confirm')}
                 </span>
               </button>
             </div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { GameState, ItemInstance, SectShopItem } from '../types';
 import itemsData from '../data/items.json';
 import sectShopData from '../data/sect-shop.json';
+import { uiText } from '../lib/i18n';
 
 interface SectShopModalProps {
   state: GameState;
@@ -33,7 +34,7 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
 
   const handleExchange = (shopItem: SectShopItem) => {
     if ((state.sectContribution || 0) < shopItem.cost) {
-      alert(language === 'vi' ? "Không đủ điểm cống hiến!" : "Not enough sect contribution!");
+      alert((uiText[language]?.['notEnoughSectContrib'] || 'Not enough sect contribution!'));
       return;
     }
 
@@ -104,10 +105,10 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
         <div className="bg-zinc-900/80 p-4 border-b border-zinc-800 flex justify-between items-center">
           <div>
             <h2 className="text-2xl font-serif font-bold text-emerald-400">
-              {language === 'vi' ? 'TÔNG MÔN BẢO CÁC' : 'SECT VAULT'}
+              {(uiText[language]?.['sectVault'] || 'SECT VAULT')}
             </h2>
             <div className="text-sm text-text-secondary mt-1">
-              {language === 'vi' ? 'Cống hiến hiện tại: ' : 'Current Contribution: '}
+              {(uiText[language]?.['currentContribution'] || 'Current Contribution: ')}
               <span className="text-emerald-500 font-bold">{state.sectContribution || 0}</span>
             </div>
           </div>
@@ -131,7 +132,7 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
               displayTier = baseItem?.tier || '';
             } else if (item.type === 'technique' && item.techniqueId) {
               displayName = item.techniqueId.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') + ' (Mảnh)';
-              description = language === 'vi' ? 'Mảnh ghép công pháp, thu thập đủ để lĩnh ngộ.' : 'Technique fragment, collect enough to comprehend.';
+              description = (uiText[language]?.['techniqueFragmentCol'] || 'Technique fragment, collect enough to comprehend.');
               displayTier = item.techniqueId.includes('hoang') ? 'hoàng' : item.techniqueId.includes('dia') ? 'địa' : 'thiên';
             }
 
@@ -160,11 +161,11 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
                   <div className="text-sm">
                     {isLocked ? (
                       <span className="text-red-400/80 italic">
-                        {language === 'vi' ? `Yêu cầu: ${rankNames[item.minRank].vi}` : `Required: ${rankNames[item.minRank].en}`}
+                        {(uiText[language]?.['requiredRanknamesite'] || 'Required: ${rankNames[item.minRank].en}')}
                       </span>
                     ) : (
                       <span className={`font-bold ${canAfford ? 'text-emerald-500' : 'text-red-400'}`}>
-                        {item.cost} {language === 'vi' ? 'Cống hiến' : 'Contrib'}
+                        {item.cost} {(uiText[language]?.['contrib'] || 'Contrib')}
                       </span>
                     )}
                   </div>
@@ -178,7 +179,7 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
                         : 'bg-[#10b981]/20 text-emerald-400 hover:bg-[#10b981]/40 border border-emerald-500/50'
                     }`}
                   >
-                    {language === 'vi' ? 'ĐỔI' : 'EXCHANGE'}
+                    {(uiText[language]?.['exchange'] || 'EXCHANGE')}
                   </button>
                 </div>
               </div>

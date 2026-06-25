@@ -1,80 +1,36 @@
 const fs = require('fs');
 const path = require('path');
 
-const replaceInFile = (filePath, searchRegex, replacement) => {
-  if (fs.existsSync(filePath)) {
-    let content = fs.readFileSync(filePath, 'utf8');
-    content = content.replace(searchRegex, replacement);
-    fs.writeFileSync(filePath, content, 'utf8');
+const dirs = [path.join(__dirname, 'components'), path.join(__dirname, 'app')];
+const filesToProcess = [];
+
+function findFiles(dir) {
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      findFiles(fullPath);
+    } else if (fullPath.endsWith('.tsx')) {
+      filesToProcess.push(fullPath);
+    }
   }
-};
-
-// 1. Fix engine.ts missing imports
-const enginePath = path.join(__dirname, 'lib', 'engine.ts');
-let engineContent = fs.readFileSync(enginePath, 'utf8');
-// Add import at the top
-if (!engineContent.includes('import { tickMonth')) {
-  engineContent = "import { tickMonth, getVietnameseMonthName, getEnglishMonthName } from './game-controller';\n" + engineContent;
 }
-fs.writeFileSync(enginePath, engineContent, 'utf8');
 
-// 2. Fix game-controller.ts - remove getVietnameseMonthName and getEnglishMonthName if they are now exported in engine?
-// Wait, I extracted them into game-controller.ts and removed them from engine.ts.
-// So importing them from game-controller into engine is correct. Let's make sure they are exported in game-controller.ts.
-const gcPath = path.join(__dirname, 'lib', 'game-controller.ts');
-let gcContent = fs.readFileSync(gcPath, 'utf8');
-gcContent = gcContent.replace(/export function getVietnameseMonthName/g, 'export function getVietnameseMonthName'); // Just ensuring they are exported, which my previous script did
-fs.writeFileSync(gcPath, gcContent, 'utf8');
+dirs.forEach(findFiles);
 
-// 3. Fix app/page.tsx
-const pagePath = path.join(__dirname, 'app', 'page.tsx');
-if (fs.existsSync(pagePath)) {
-  let content = fs.readFileSync(pagePath, 'utf8');
-  // tickMonth might be imported like: import { tickMonth, ... } from '../lib/engine';
-  // We need to remove tickMonth from engine import, and import it from game-controller.
-  content = content.replace(/import\s*\{([^}]*)\}\s*from\s*['"]\.\.\/lib\/engine['"]/, (match, group1) => {
-    let imports = group1.split(',').map(s => s.trim());
-    if (imports.includes('tickMonth')) {
-      imports = imports.filter(i => i !== 'tickMonth');
-      if (imports.length === 0) return ``;
-      return `import { ${imports.join(', ')} } from '../lib/engine';\nimport { tickMonth } from '../lib/game-controller';`;
+for (const file of filesToProcess) {
+  let content = fs.readFileSync(file, 'utf8');
+  if (content.includes('uiText') && !content.includes('import { uiText }')) {
+    const importMatches = [...content.matchAll(/^import .*;$/gm)];
+    let index = 0;
+    if (importMatches.length > 0) {
+      const lastImport = importMatches[importMatches.length - 1];
+      index = lastImport.index + lastImport[0].length;
     }
-    return match;
-  });
-  // Also check if it's imported in a separate line
-  fs.writeFileSync(pagePath, content, 'utf8');
+    const depth = file.split(path.sep).length - path.join(__dirname, '').split(path.sep).length - 1;
+    const relativePath = depth === 0 ? './lib/i18n' : '../'.repeat(depth) + 'lib/i18n';
+    content = content.slice(0, index) + `\nimport { uiText } from '${relativePath}';` + content.slice(index);
+    fs.writeFileSync(file, content, 'utf8');
+    console.log(`Fixed import in ${path.basename(file)}`);
+  }
 }
-
-// 4. Fix components/AdminPanel.tsx
-const adminPath = path.join(__dirname, 'components', 'AdminPanel.tsx');
-if (fs.existsSync(adminPath)) {
-  let content = fs.readFileSync(adminPath, 'utf8');
-  content = content.replace(/import\s*\{([^}]*)\}\s*from\s*['"]\.\.\/lib\/engine['"]/, (match, group1) => {
-    let imports = group1.split(',').map(s => s.trim());
-    if (imports.includes('tickMonth')) {
-      imports = imports.filter(i => i !== 'tickMonth');
-      if (imports.length === 0) return ``;
-      return `import { ${imports.join(', ')} } from '../lib/engine';\nimport { tickMonth } from '../lib/game-controller';`;
-    }
-    return match;
-  });
-  fs.writeFileSync(adminPath, content, 'utf8');
-}
-
-// 5. Fix scripts/test-simulation.ts
-const testPath = path.join(__dirname, 'scripts', 'test-simulation.ts');
-if (fs.existsSync(testPath)) {
-  let content = fs.readFileSync(testPath, 'utf8');
-  content = content.replace(/import\s*\{([^}]*)\}\s*from\s*['"]\.\.\/lib\/engine['"]/, (match, group1) => {
-    let imports = group1.split(',').map(s => s.trim());
-    if (imports.includes('tickMonth')) {
-      imports = imports.filter(i => i !== 'tickMonth');
-      if (imports.length === 0) return ``;
-      return `import { ${imports.join(', ')} } from '../lib/engine';\nimport { tickMonth } from '../lib/game-controller';`;
-    }
-    return match;
-  });
-  fs.writeFileSync(testPath, content, 'utf8');
-}
-
-console.log('Imports fixed.');

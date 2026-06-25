@@ -11,13 +11,13 @@ import SettingsModal from '../components/SettingsModal';
 import TerminalUI from '../components/TerminalUI';
 import ReincarnationUI from '../components/ReincarnationUI';
 import { applyChoiceToState, createNewGame, getInitialInheritance, reincarnate, useItemInState, equipItemInState, getPlayerStat, getRandomEvent, addItem, getMenuEvent, addFragment, SectPunishmentEvent, changeLocation, setDynamicEvents, completeTechniqueLearning } from '../lib/engine';
-import { tickMonth } from '../lib/game-controller';;
+import { tickMonth } from '../lib/game-controller';
 import { getRealmSubStage } from '../lib/cultivation-states';
 import { getLocalizedText, uiText, translatedRealms } from '../lib/i18n';
 import { useAtmosphere } from '../hooks/useAtmosphere';
 import TimeGearPanel from '../components/TimeGearPanel';
 import OutcomeTransition from '../components/OutcomeTransition';
-import type { GameState, Inheritance, Lang, SectQuest, EventDefinition, TechniqueInstance } from '../types';
+import type { GameState, Inheritance, Lang, LocalizedText, SectQuest, EventDefinition, TechniqueInstance } from '../types';
 import SectMissionsPanel from '../components/SectMissionsPanel';
 import { audioManager } from '../styles/AudioManager';
 import TypewriterText from '../components/TypewriterText';
@@ -34,6 +34,7 @@ import AlchemyModal from '../components/AlchemyModal';
 import BlackMarketModal from '../components/BlackMarketModal';
 import SectShopModal from '../components/SectShopModal';
 import { resolveCombatAction, finishCombat } from '../lib/combat-system';
+
 // Fallback image helper component for event backgrounds (thiết kế hình tròn viền ngọc bích mảnh)
 function EventIllustration({ id, sect }: { id: string; sect?: string }) {
   const [src, setSrc] = useState(`/images/events/${id}.png`);
@@ -368,29 +369,29 @@ export default function HomePage() {
 
     if (lastSubStageRef.current !== null && currentIdx > lastSubStageRef.current) {
       const getSubStageNameByIndex = (idx: number) => {
-        if (idx === 0) return { vi: 'Phàm Nhân', en: 'Mortal' };
+        if (idx === 0) return { vi: 'Phàm Nhân', en: 'Mortal'};
         if (idx <= 9) {
           const layer = idx;
           const labelVi = layer === 9 ? 'Luyện Khí Tầng 9 (Viên Mãn)' : `Luyện Khí Tầng ${layer}`;
           const labelEn = layer === 9 ? 'Qi Refinement Layer 9 (Consummate)' : `Qi Refinement Layer ${layer}`;
-          return { vi: labelVi, en: labelEn };
+          return { vi: labelVi, en: labelEn};
         }
         if (idx <= 12) {
           const subIdx = idx - 10;
           const namesVi = ['Trúc Cơ Sơ Kỳ', 'Trúc Cơ Trung Kỳ', 'Trúc Cơ Hậu Kỳ'];
           const namesEn = ['Foundation Establishment Early', 'Foundation Establishment Middle', 'Foundation Establishment Late'];
-          return { vi: namesVi[subIdx], en: namesEn[subIdx] };
+          return { vi: namesVi[subIdx], en: namesEn[subIdx]};
         }
         if (idx <= 16) {
           const subIdx = idx - 13;
           const namesVi = ['Kim Đan Sơ Kỳ', 'Kim Đan Trung Kỳ', 'Kim Đan Hậu Kỳ', 'Kim Đan Viên Mãn'];
           const namesEn = ['Golden Core Early', 'Golden Core Middle', 'Golden Core Late', 'Golden Core Consummate'];
-          return { vi: namesVi[subIdx], en: namesEn[subIdx] };
+          return { vi: namesVi[subIdx], en: namesEn[subIdx]};
         }
         const subIdx = idx - 17;
         const namesVi = ['Nguyên Anh Sơ Kỳ', 'Nguyên Anh Trung Kỳ', 'Nguyên Anh Hậu Kỳ', 'Nguyên Anh Viên Mãn'];
         const namesEn = ['Nascent Soul Early', 'Nascent Soul Middle', 'Nascent Soul Late', 'Nascent Soul Consummate'];
-        return { vi: namesVi[subIdx], en: namesEn[subIdx] };
+        return { vi: namesVi[subIdx], en: namesEn[subIdx]};
       };
 
       const oldStageName = getSubStageNameByIndex(lastSubStageRef.current);
@@ -399,8 +400,8 @@ export default function HomePage() {
       const isMajor = oldSubStageInfo.majorRealm !== currentSubStage.majorRealm;
 
       setBreakthroughData({
-        oldStageName: oldStageName[language],
-        newStageName: newStageName[language],
+        oldStageName: (oldStageName as any)[language],
+        newStageName: (newStageName as any)[language],
         majorRealm: currentSubStage.majorRealm,
         isMajor});
 
@@ -439,7 +440,7 @@ export default function HomePage() {
     }
 
     if (storedLanguage === 'vi') {
-      setLanguage('vi');
+      setLanguage(language as any); //'vi');
     }
 
     const storedTheme = window.localStorage.getItem('immortalSimTheme');
@@ -1090,7 +1091,7 @@ export default function HomePage() {
     let nextSectContribution = game.sectContribution ?? 0;
     let nextLog = [...game.log];
     let nextEvent = game.currentEvent;
-    let customDeathCause: { vi: string; en: string } | undefined = undefined;
+    let customDeathCause: LocalizedText | undefined = undefined;
     
     let nextNpcFavorability = game.npcFavorability ? { ...game.npcFavorability } : {
       npc_kiem_tong_chap_su: 0,
@@ -1103,7 +1104,7 @@ export default function HomePage() {
       nextLog.push({
         type: 'info',
         age: game.age,
-        message: { vi: descVi, en: descEn }
+        message: { vi: descVi, en: descEn}
       });
     };
 
@@ -1200,17 +1201,14 @@ export default function HomePage() {
       else if (type === 'tournament_1') {
         const nextRoundEvent: EventDefinition = {
           id: 'combat_encounter_tournament_2',
-          title: { vi: '🏟️ Đại Hội Tỷ Thí Ngoại Môn (Vòng Bán Kết)', en: '🏟️ Outer Sect Tournament (Semi-finals)' },
-          description: {
-            vi: 'Chiến thắng Lâm Phong thuyết phục! Vòng bán kết tiếp tục: Đối thủ tiếp theo của bạn là Diệp Phàm (Luyện Khí tầng 3). Hãy tập trung linh hỏa giao chiến!',
-            en: 'Slew Lâm Phong decisively! Semi-finals match: Next opponent is Diệp Phàm (Qi Refinement Layer 3). Gather your Qi!'
-          },
+          title: { vi: '🏟️ Đại Hội Tỷ Thí Ngoại Môn (Vòng Bán Kết)', en: '🏟️ Outer Sect Tournament (Semi-finals)'},
+          description: { vi: 'Chiến thắng Lâm Phong thuyết phục! Vòng bán kết tiếp tục: Đối thủ tiếp theo của bạn là Diệp Phàm (Luyện Khí tầng 3). Hãy tập trung linh hỏa giao chiến!', en: 'Slew Lâm Phong decisively! Semi-finals match: Next opponent is Diệp Phàm (Qi Refinement Layer 3). Gather your Qi!'},
           minRealm: 'Mortal',
           
           weight: 1,
           choices: [
-            { id: 'start_combat_tournament_2', text: { vi: '⚔️ Bước Vào Trận Đấu', en: '⚔️ Step onto the Ring' }, effects: {} },
-            { id: 'action_back', text: { vi: '↩️ Rút lui bảo toàn thực lực (Nhận giải Top 4)', en: '↩️ Withdraw (Claim Top 4 rewards)' }, effects: {} }
+            { id: 'start_combat_tournament_2', text: { vi: '⚔️ Bước Vào Trận Đấu', en: '⚔️ Step onto the Ring'}, effects: {} },
+            { id: 'action_back', text: { vi: '↩️ Rút lui bảo toàn thực lực (Nhận giải Top 4)', en: '↩️ Withdraw (Claim Top 4 rewards)'}, effects: {} }
           ]
         };
         setGame({
@@ -1227,17 +1225,14 @@ export default function HomePage() {
       else if (type === 'tournament_2') {
         const nextRoundEvent: EventDefinition = {
           id: 'combat_encounter_tournament_3',
-          title: { vi: '🏟️ Đại Hội Tỷ Thí Ngoại Môn (Trận Chung Kết)', en: '🏟️ Outer Sect Tournament (Championship Finals)' },
-          description: {
-            vi: 'Đại chiến chấn động đài tỷ võ! Bạn bước vào trận Chung kết tranh đoạt chức Quán Quân: Đối thủ tối thượng là Sở Hạo (Luyện Khí tầng 4). Trận đấu quyết định vinh quang!',
-            en: 'Stunning victory! You enter the Championship Finals: The final opponent is Sở Hạo (Qi Refinement Layer 4). The ultimate clash!'
-          },
+          title: { vi: '🏟️ Đại Hội Tỷ Thí Ngoại Môn (Trận Chung Kết)', en: '🏟️ Outer Sect Tournament (Championship Finals)'},
+          description: { vi: 'Đại chiến chấn động đài tỷ võ! Bạn bước vào trận Chung kết tranh đoạt chức Quán Quân: Đối thủ tối thượng là Sở Hạo (Luyện Khí tầng 4). Trận đấu quyết định vinh quang!', en: 'Stunning victory! You enter the Championship Finals: The final opponent is Sở Hạo (Qi Refinement Layer 4). The ultimate clash!'},
           minRealm: 'Mortal',
           
           weight: 1,
           choices: [
-            { id: 'start_combat_tournament_3', text: { vi: '⚔️ Đại Chiến Tranh Quán Quân', en: '⚔️ Fight for the Championship' }, effects: {} },
-            { id: 'action_back', text: { vi: '↩️ Xin chịu thua đầu hàng (Nhận giải Á Quân)', en: '↩️ Withdraw (Claim Runner-up rewards)' }, effects: {} }
+            { id: 'start_combat_tournament_3', text: { vi: '⚔️ Đại Chiến Tranh Quán Quân', en: '⚔️ Fight for the Championship'}, effects: {} },
+            { id: 'action_back', text: { vi: '↩️ Xin chịu thua đầu hàng (Nhận giải Á Quân)', en: '↩️ Withdraw (Claim Runner-up rewards)'}, effects: {} }
           ]
         };
         setGame({
@@ -1274,10 +1269,7 @@ export default function HomePage() {
           nextLog.push({
             type: 'info',
             age: game.age,
-            message: {
-              vi: `Chúc mừng! Bạn đã thăng cấp thân phận tông môn thành [Đệ Tử Nội Môn] nhờ danh hiệu Quán Quân!`,
-              en: `Congratulations! Your rank has been promoted to [Inner Disciple] as the Champion!`
-            }
+            message: { vi: `Chúc mừng! Bạn đã thăng cấp thân phận tông môn thành [Đệ Tử Nội Môn] nhờ danh hiệu Quán Quân!`, en: `Congratulations! Your rank has been promoted to [Inner Disciple] as the Champion!`}
           });
         }
 
@@ -1361,9 +1353,7 @@ export default function HomePage() {
           nextLog.push({
             type: 'info',
             age: game.age,
-            message: {
-              vi: `❌ Thất bại trước Long Ngạo Thiên! Hắn dừng tay trước khi bạn hấp hối. Tuy thua nhưng bạn vẫn nhận được ghi nhận của tông môn. Chấn thương kiên mạch: -${hpPenalty} HP.`,
-              en: `❌ Defeated by Long Ngao Thien! He stayed his hand before you fell. Despite losing, the sect acknowledged your courage. Meridian injury: -${hpPenalty} HP.`
+            message: { vi: `❌ Thất bại trước Long Ngạo Thiên! Hắn dừng tay trước khi bạn hấp hối. Tuy thua nhưng bạn vẫn nhận được ghi nhận của tông môn. Chấn thương kiên mạch: -${hpPenalty} HP.`, en: `❌ Defeated by Long Ngao Thien! He stayed his hand before you fell. Despite losing, the sect acknowledged your courage. Meridian injury: -${hpPenalty} HP.`
             }
           });
           setGame({
@@ -1399,7 +1389,7 @@ export default function HomePage() {
         deathMsgEn = `Defeated in the wilderness! Suffer critical wounds and were looted (Lost ${stonesLost} Spirit Stones). You perished from your injuries.`;
       }
 
-      customDeathCause = { vi: deathMsgVi, en: deathMsgEn };
+      customDeathCause = { vi: deathMsgVi, en: deathMsgEn};
       
       nextLog.push({
         type: 'death',
@@ -1434,7 +1424,7 @@ export default function HomePage() {
       sectRank: finalRank,
       log: nextLog,
       npcFavorability: nextNpcFavorability,
-      deathCause: isAlive ? undefined : (customDeathCause || { vi: 'Thất bại chiến đấu tổn thương kinh mạch chí mạng dẫn đến tử vong.', en: 'Suffered fatal meridian damage in combat and deceased.' })
+      deathCause: isAlive ? undefined : (customDeathCause || { vi: 'Thất bại chiến đấu tổn thương kinh mạch chí mạng dẫn đến tử vong.', en: 'Suffered fatal meridian damage in combat and deceased.'})
     });
   };
 
@@ -1746,9 +1736,7 @@ export default function HomePage() {
 
     const months = ["🐀", "🐂", "🐅", "🐈", "🐉", "🐍", "🐎", "🐐", "🐒", "🐓", "🐕", "🐖"];
     const monthLabel = months[nextMonth - 1] || `Month ${nextMonth}`;
-    const logDesc = language === 'vi' 
-      ? `Bạn bế quan trị thương, khí huyết hồi phục (+50% Khí Huyết).` 
-      : `You enter closed-door meditation to heal, restoring vitality (+50% HP).`;
+    const logDesc = (uiText[language]?.['youEnterCloseddoorMe'] || 'You enter closed-door meditation to heal, restoring vitality (+50% HP).');
     const logLine = `[${monthLabel} - Tuổi ${nextAge}]: ${logDesc}`;
     const nextMonthlyLog = [...(game.monthlyLog || []), logLine].slice(-5);
 
@@ -1797,9 +1785,7 @@ export default function HomePage() {
     const healLogEntry: any = {
       type: 'info',
       age: nextAge,
-      message: {
-        vi: `Bế quan dưỡng thương vào ${monthLabel}: Khí huyết hồi phục từ ${game.stats.health} lên ${healedHealth}.`,
-        en: `Healed injuries in ${monthLabel}: HP restored from ${game.stats.health} to ${healedHealth}.`
+      message: { vi: `Bế quan dưỡng thương vào ${monthLabel}: Khí huyết hồi phục từ ${game.stats.health} lên ${healedHealth}.`, en: `Healed injuries in ${monthLabel}: HP restored from ${game.stats.health} to ${healedHealth}.`
       }
     };
 
@@ -1900,23 +1886,23 @@ export default function HomePage() {
     let triggerLogMessageEn = '';
 
     if (actionType === 'black_market') {
-      logDesc = language === 'vi' ? 'Bạn dạo quanh Chợ Đen tìm kiếm cơ duyên.' : 'You wander the Black Market seeking opportunity.';
+      logDesc = (uiText[language]?.['youWanderTheBlackMar'] || 'You wander the Black Market seeking opportunity.');
       triggerLogMessageVi = `Dạo quanh Chợ Đen, gặp phải kỳ ngộ vào ${monthLabel}: [${getLocalizedText(event.title, 'vi')}]`;
       triggerLogMessageEn = `Wandered the Black Market and triggered an event in ${monthLabel}: [${getLocalizedText(event.title, 'en')}]`;
     } else if (actionType === 'auction') {
-      logDesc = language === 'vi' ? 'Bạn tham gia hội Đấu Giá tìm kiếm bảo vật.' : 'You attend an Auction seeking treasures.';
+      logDesc = (uiText[language]?.['youAttendAnAuctionSe'] || 'You attend an Auction seeking treasures.');
       triggerLogMessageVi = `Tham gia Đấu Giá, gặp phải kỳ ngộ vào ${monthLabel}: [${getLocalizedText(event.title, 'vi')}]`;
       triggerLogMessageEn = `Attended an Auction and triggered an event in ${monthLabel}: [${getLocalizedText(event.title, 'en')}]`;
     } else if (actionType === 'explore_mountain') {
-      logDesc = language === 'vi' ? 'Bạn tiến sâu vào Vạn Thú Sơn Mạch thám hiểm.' : 'You venture deep into the Beast Mountain Range to explore.';
+      logDesc = (uiText[language]?.['youVentureDeepIntoTh'] || 'You venture deep into the Beast Mountain Range to explore.');
       triggerLogMessageVi = `Tiến sâu vào Sơn Mạch, gặp phải kỳ ngộ vào ${monthLabel}: [${getLocalizedText(event.title, 'vi')}]`;
       triggerLogMessageEn = `Ventured into the Mountain Range and triggered an event in ${monthLabel}: [${getLocalizedText(event.title, 'en')}]`;
     } else if (actionType === 'hunt_beast') {
-      logDesc = language === 'vi' ? 'Bạn săn thú và hái thuốc trong Vạn Thú Sơn Mạch.' : 'You hunt beasts and gather herbs in the Beast Mountain Range.';
+      logDesc = (uiText[language]?.['youHuntBeastsAndGath'] || 'You hunt beasts and gather herbs in the Beast Mountain Range.');
       triggerLogMessageVi = `Săn thú & hái thuốc, gặp phải kỳ ngộ vào ${monthLabel}: [${getLocalizedText(event.title, 'vi')}]`;
       triggerLogMessageEn = `Hunted and gathered herbs, triggering an event in ${monthLabel}: [${getLocalizedText(event.title, 'en')}]`;
     } else {
-      logDesc = language === 'vi' ? 'Bạn rời tông môn chu du thế giới bên ngoài tìm kiếm cơ duyên.' : 'You leave the sect to travel the outside world seeking serendipity.';
+      logDesc = (uiText[language]?.['youLeaveTheSectToTra'] || 'You leave the sect to travel the outside world seeking serendipity.');
       triggerLogMessageVi = `Xuống núi chu du, gặp phải kỳ ngộ vào ${monthLabel}: [${getLocalizedText(event.title, 'vi')}]`;
       triggerLogMessageEn = `Traveled outside and triggered an event in ${monthLabel}: [${getLocalizedText(event.title, 'en')}]`;
     }
@@ -1924,10 +1910,7 @@ export default function HomePage() {
     const triggerLog: any = {
       type: 'info',
       age: nextAge,
-      message: {
-        en: triggerLogMessageEn,
-        vi: triggerLogMessageVi
-      }
+      message: { en: triggerLogMessageEn, vi: triggerLogMessageVi}
     };
 
     const logLine = `[${monthLabel} - Tuổi ${nextAge}]: ${logDesc}`;
@@ -2095,10 +2078,10 @@ export default function HomePage() {
           {/* Header */}
           <div className="space-y-2 border-l-2 border-primary pl-4">
             <h1 className="text-2xl font-bold tracking-[0.2em] uppercase">
-              {language === 'vi' ? 'TRƯỜNG SINH LỘ // HỆ THỐNG' : 'IMMORTAL SIM // SYS'}
+              {(uiText[language]?.['immortalSimSys'] || 'IMMORTAL SIM // SYS')}
             </h1>
             <p className="text-xs tracking-[0.3em] uppercase text-on-surface-variant font-semibold">
-              {language === 'vi' ? 'KHỞI TẠO BẢN NGUYÊN THẾ GIỚI' : 'INITIALIZING WORLD ORIGIN'}
+              {(uiText[language]?.['initializingWorldOri'] || 'INITIALIZING WORLD ORIGIN')}
             </p>
           </div>
           
@@ -2138,7 +2121,7 @@ export default function HomePage() {
         <TerminalUI 
           game={game} 
           setGame={setGame} 
-          language={language}
+          language={language as "vi" | "en"}
           onAscension={() => {
             const subStage = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
             if (game.stats.cultivation >= 500) {
@@ -2158,7 +2141,7 @@ export default function HomePage() {
           setGame={setGame} 
           inheritance={inheritance} 
           setInheritance={setInheritance} 
-          language={language}
+          language={language as "vi" | "en"}
           onReincarnate={() => {
             handleReset();
           }}
@@ -2177,7 +2160,7 @@ export default function HomePage() {
           onFinished={(res) => {
             if (!game) return;
             const nextState = { ...game };
-            nextState.log = [...nextState.log, { type: 'info', message: { vi: "Kết thúc luyện đan.", en: "Finished alchemy." } }];
+            nextState.log = [...nextState.log, { type: 'info', message: { vi: "Kết thúc luyện đan.", en: "Finished alchemy."} }];
             
             if (res.healthLost) {
               nextState.stats.health = Math.max(0, nextState.stats.health - res.healthLost);
@@ -2205,7 +2188,7 @@ export default function HomePage() {
             oldStageName={breakthroughData.oldStageName}
             newStageName={breakthroughData.newStageName}
             majorRealm={breakthroughData.majorRealm}
-            language={language}
+            language={language as "vi" | "en"}
             onClose={() => setBreakthroughData(null)}
           />
         ) : (
@@ -2213,7 +2196,7 @@ export default function HomePage() {
             oldStageName={breakthroughData.oldStageName}
             newStageName={breakthroughData.newStageName}
             majorRealm={breakthroughData.majorRealm}
-            language={language}
+            language={language as "vi" | "en"}
             onClose={() => setBreakthroughData(null)}
           />
         )
@@ -2221,7 +2204,7 @@ export default function HomePage() {
         levelRewardAnimation && (
           <LevelRewardAnimation
             payload={levelRewardAnimation}
-            language={language}
+            language={language as "vi" | "en"}
             onDone={() => setLevelRewardAnimation(null)}
           />
         )
@@ -2253,7 +2236,7 @@ export default function HomePage() {
           life={game.life}
           run={game.run}
           techniques={game.techniques || []}
-          language={language}
+          language={language as "vi" | "en"}
           inventory={game.inventory || []}
           onUseItem={handleUseItem}
           onEquipItem={handleEquipItem}
@@ -2483,16 +2466,14 @@ export default function HomePage() {
                       }`}>
                         <span>
                           ⚔️ {game.month === 12 
-                            ? (language === 'vi' ? 'Đại Bỉ: Đang Diễn Ra!' : 'Tournament: Active!') 
-                            : (language === 'vi' ? `Đại Bỉ: ${12 - game.month} tháng` : `Tournament: ${12 - game.month}mo`)}
+                            ? ((uiText[language]?.['tournamentActive'] || 'Tournament: Active!')) 
+                            : ((uiText[language]?.['tournament12Gamemont'] || 'Tournament: ${12 - game.month}mo'))}
                         </span>
                       </div>
                     )}
                     <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-emerald-950/40 bg-emerald-900/10 text-[16px] sm:text-[18px] font-bold text-emerald-900 font-serif shadow-md">
                       <span>
-                        ⚖️ {language === 'vi' 
-                          ? `Đấu giá: ${10 - (game.age % 10)} năm` 
-                          : `Auction: ${10 - (game.age % 10)}yr`}
+                        ⚖️ {(uiText[language]?.['auction10Gameage10yr'] || 'Auction: ${10 - (game.age % 10)}yr')}
                       </span>
                     </div>
                   </div>
@@ -2599,10 +2580,10 @@ export default function HomePage() {
                                   description: configTech.description,
                                   image: configTech.image,
                                   details: [
-                                    `${language === 'vi' ? 'Phẩm cấp' : 'Grade'}: ${configTech.tier.toUpperCase()}`,
-                                    `${language === 'vi' ? 'Giới hạn tu vi' : 'Cultivation Cap'}: Qi Refinement Layer 12 (Cap: 26.0)`,
-                                    `${language === 'vi' ? 'Thuộc tính linh căn' : 'Spiritual Root'}: ${configTech.spiritual_root}`,
-                                    `${language === 'vi' ? 'Thuộc tông môn' : 'Sect'}: ${configTech.sect}`
+                                    `${(uiText[language]?.['grade'] || 'Grade')}: ${configTech.tier.toUpperCase()}`,
+                                    `${(uiText[language]?.['cultivationCap'] || 'Cultivation Cap')}: Qi Refinement Layer 12 (Cap: 26.0)`,
+                                    `${(uiText[language]?.['spiritualRoot'] || 'Spiritual Root')}: ${configTech.spiritual_root}`,
+                                    `${(uiText[language]?.['sect'] || 'Sect')}: ${configTech.sect}`
                                   ]
                                 });
                               }}
@@ -2619,7 +2600,7 @@ export default function HomePage() {
                                 </div>
                               </div>
                               <span className="text-[10px] font-mono-data text-secondary group-hover:text-white font-semibold line-clamp-1">{configTech.label}</span>
-                              <span className="text-[8px] text-text-tertiary  mt-0.5">{language === 'vi' ? 'Xem chi tiết' : 'View Info'}</span>
+                              <span className="text-[8px] text-text-tertiary  mt-0.5">{(uiText[language]?.['viewInfo'] || 'View Info')}</span>
                             </button>
                           );
                         })()}
@@ -2635,14 +2616,12 @@ export default function HomePage() {
                                 playSfxWithPath('/audio/crystal-bowl.mp3', 0.5);
                                 setSelectedDetailItem({
                                   type: 'currency',
-                                  title: language === 'vi' ? 'Hạ Phẩm Linh Thạch' : 'Low-Grade Spirit Stones',
-                                  description: language === 'vi' 
-                                    ? 'Đá linh khí có phẩm cấp thấp, chứa đựng linh khí trời đất tinh thuần dùng làm tiền tệ giao dịch phổ biến trong giới tu chân và cung cấp linh khí khi đốt tài nguyên tu luyện.' 
-                                    : 'A low-grade stone containing pure ambient spiritual energy. It serves as standard currency and resource for cultivation burning in the cultivation realm.',
+                                  title: (uiText[language]?.['lowgradeSpiritStones'] || 'Low-Grade Spirit Stones'),
+                                  description: (uiText[language]?.['aLowgradeStoneContai1'] || 'A low-grade stone containing pure ambient spiritual energy. It serves as standard currency and resource for cultivation burning in the cultivation realm.'),
                                   icon: '💎',
                                   details: [
-                                    `${language === 'vi' ? 'Số lượng' : 'Quantity'}: ${startingStones}x`,
-                                    `${language === 'vi' ? 'Loại' : 'Category'}: ${language === 'vi' ? 'Tài nguyên tu luyện / Tiền tệ' : 'Currency / Resource'}`
+                                    `${(uiText[language]?.['quantity'] || 'Quantity')}: ${startingStones}x`,
+                                    `${(uiText[language]?.['category'] || 'Category')}: ${(uiText[language]?.['currencyResource'] || 'Currency / Resource')}`
                                   ]
                                 });
                               }}
@@ -2654,8 +2633,8 @@ export default function HomePage() {
                                   <span className="text-[10px] text-secondary font-serif font-bold">x{startingStones}</span>
                                 </div>
                               </div>
-                              <span className="text-[10px] font-mono-data text-secondary group-hover:text-white font-semibold line-clamp-1">{language === 'vi' ? 'Linh Thạch' : 'Spirit Stones'}</span>
-                              <span className="text-[8px] text-text-tertiary  mt-0.5">{language === 'vi' ? 'Xem chi tiết' : 'View Info'}</span>
+                              <span className="text-[10px] font-mono-data text-secondary group-hover:text-white font-semibold line-clamp-1">{(uiText[language]?.['spiritStones1'] || 'Spirit Stones')}</span>
+                              <span className="text-[8px] text-text-tertiary  mt-0.5">{(uiText[language]?.['viewInfo'] || 'View Info')}</span>
                             </button>
                           );
                         })()}
@@ -2668,7 +2647,7 @@ export default function HomePage() {
                           eventId={game.currentEvent.id}
                           choices={game.currentEvent.choices}
                           onSelect={handleChoiceWithTransition}
-                          language={language}
+                          language={language as "vi" | "en"}
                         />
                       </div>
                     )}
@@ -2694,10 +2673,10 @@ export default function HomePage() {
                 <div className="adventure-card p-5 sm:p-6 w-full space-y-5 animate-slide-up bg-surface-container-lowest/90 border border-outline-variant/30 shadow-2xl backdrop-blur-sm">
                   <div className="text-center space-y-1 pb-4 border-b border-zinc-800/50">
                     <span className="font-label-caps text-label-caps text-secondary-fixed opacity-60 mb-2 block">
-                      {language === 'vi' ? 'Động Phủ Tĩnh Tu' : 'Meditation Chamber'}
+                      {(uiText[language]?.['meditationChamber'] || 'Meditation Chamber')}
                     </span>
                     <h2 className="font-headline-md text-headline-md text-primary uppercase tracking-widest ">
-                      {language === 'vi' ? 'Lựa Chọn Hành Động' : 'Choose Action'}
+                      {(uiText[language]?.['chooseAction'] || 'Choose Action')}
                     </h2>
                   </div>
 
@@ -2714,12 +2693,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">☯</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Đến Nhiệm Vụ Đường' : 'Sect Quest Hall'}
+                              {(uiText[language]?.['sectQuestHall'] || 'Sect Quest Hall')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Nhận ủy thác tông môn để tích lũy Điểm cống hiến và Linh thạch thăng cấp đệ tử.' 
-                                : 'Accept sect quests to earn Contribution and Spirit Stones for rank promotion.'}
+                              {(uiText[language]?.['acceptSectQuestsToEa'] || 'Accept sect quests to earn Contribution and Spirit Stones for rank promotion.')}
                             </p>
                           </div>
                         </button>
@@ -2732,12 +2709,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">📜</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Đến Tông Môn Bảo Các' : 'Sect Vault'}
+                              {(uiText[language]?.['sectVault1'] || 'Sect Vault')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Đổi Điểm cống hiến lấy pháp bảo, đan dược và công pháp.' 
-                                : 'Exchange Contribution points for artifacts, pills, and techniques.'}
+                              {(uiText[language]?.['exchangeContribution'] || 'Exchange Contribution points for artifacts, pills, and techniques.')}
                             </p>
                           </div>
                         </button>
@@ -2754,12 +2729,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🧘</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Tĩnh Tọa Tu Luyện' : 'Silent Cultivation'}
+                              {(uiText[language]?.['silentCultivation'] || 'Silent Cultivation')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Bế quan hấp thu linh khí thiên địa, đột phá tu vi cảnh giới. Thời quang sẽ bắt đầu xoay.' 
-                                : 'Meditate to absorb spiritual energy and breakthrough cultivation. Time will start flowing.'}
+                              {(uiText[language]?.['meditateToAbsorbSpir'] || 'Meditate to absorb spiritual energy and breakthrough cultivation. Time will start flowing.')}
                             </p>
                           </div>
                         </button>
@@ -2778,7 +2751,7 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-red-500/10 text-red-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🩹</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Bế Quan Dưỡng Thương' : 'Closed-door Healing'}
+                              {(uiText[language]?.['closeddoorHealing'] || 'Closed-door Healing')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
                               {language === 'vi' 
@@ -2798,12 +2771,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏘️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Đến Thanh Dương Thành' : 'Travel to Thanh Duong City'}
+                              {(uiText[language]?.['travelToThanhDuongCi'] || 'Travel to Thanh Duong City')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? `Đến nơi đô hội sầm uất trao đổi kỳ trân dị bảo (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
-                                : `Travel to the bustling city (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
+                              {(uiText[language]?.['travelToTheBustlingC'] || 'Travel to the bustling city (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -2817,12 +2788,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">⚗️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Lập Trận Luyện Đan' : 'Alchemy Array'}
+                              {(uiText[language]?.['alchemyArray'] || 'Alchemy Array')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Nung luyện dược thảo, đoạt thiên địa tạo hóa, nhưng coi chừng nổ lò mất mạng.' 
-                                : 'Refine herbs and seize creation, but beware of furnace explosion.'}
+                              {(uiText[language]?.['refineHerbsAndSeizeC'] || 'Refine herbs and seize creation, but beware of furnace explosion.')}
                             </p>
                           </div>
                         </button>
@@ -2837,12 +2806,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏔️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Thám Hiểm Sơn Mạch' : 'Explore Beast Mountain Range'}
+                              {(uiText[language]?.['exploreBeastMountain'] || 'Explore Beast Mountain Range')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? `Di chuyển đến Vạn Thú Sơn Mạch nguy hiểm tìm linh thảo (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
-                                : `Travel to the dangerous beast mountain range (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
+                              {(uiText[language]?.['travelToTheDangerous'] || 'Travel to the dangerous beast mountain range (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -2861,12 +2828,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏪</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Dạo Chợ Đen' : 'Wander Black Market'}
+                              {(uiText[language]?.['wanderBlackMarket'] || 'Wander Black Market')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Tìm kiếm các quầy hàng ẩn giấu mua linh thạch, bảo vật phế tích (Tốn 1 tháng).' 
-                                : 'Look for hidden stalls to buy stones and legacy ruins (Costs 1 month).'}
+                              {(uiText[language]?.['lookForHiddenStallsT'] || 'Look for hidden stalls to buy stones and legacy ruins (Costs 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -2880,12 +2845,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">⚖️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Tham Gia Đấu Giá' : 'Attend Auction'}
+                              {(uiText[language]?.['attendAuction'] || 'Attend Auction')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Tham gia lâu đài đấu giá tìm kiếm các pháp bảo quý hiếm tuyệt bản (Tốn 1 tháng).' 
-                                : 'Join the auction house to bid on rare unique treasures (Costs 1 month).'}
+                              {(uiText[language]?.['joinTheAuctionHouseT'] || 'Join the auction house to bid on rare unique treasures (Costs 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -2900,12 +2863,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏵️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Trở Về Tông Môn' : 'Return to Sect'}
+                              {(uiText[language]?.['returnToSect'] || 'Return to Sect')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? `Trở về an toàn trong sự bảo hộ của trận pháp môn phái (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
-                                : `Return safely under the protection of the sect array (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
+                              {(uiText[language]?.['returnSafelyUnderThe'] || 'Return safely under the protection of the sect array (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -2920,12 +2881,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏙️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Đến Thanh Dương Thành' : 'Go to Thanh Duong City'}
+                              {(uiText[language]?.['goToThanhDuongCity'] || 'Go to Thanh Duong City')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? `Đi phàm trần giao thương, bán đấu giá đồ cũ (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
-                                : `Go to the mortal world for trade and auctioning (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
+                              {(uiText[language]?.['goToTheMortalWorldFo'] || 'Go to the mortal world for trade and auctioning (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -2944,12 +2903,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-[#10b981]/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏺</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Phá Giải Cấm Chế' : 'Decrypt Ancient Array'}
+                              {(uiText[language]?.['decryptAncientArray'] || 'Decrypt Ancient Array')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? 'Tìm cách hóa giải cấm chế cổ xưa thu hoạch truyền thừa thượng cổ (Tốn 1 tháng).' 
-                                : 'Break ancient arrays to harvest ancient inheritances (Costs 1 month).'}
+                              {(uiText[language]?.['breakAncientArraysTo'] || 'Break ancient arrays to harvest ancient inheritances (Costs 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -2964,12 +2921,10 @@ export default function HomePage() {
                           <span className="text-2xl w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">🏵️</span>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-serif text-sm font-bold text-secondary group-hover:text-white transition-colors">
-                              {language === 'vi' ? 'Rời Bí Cảnh • Về Tông Môn' : 'Exit Realm • Return to Sect'}
+                              {(uiText[language]?.['exitRealmReturnToSec'] || 'Exit Realm • Return to Sect')}
                             </h4>
                             <p className="text-[10px] text-text-secondary leading-relaxed mt-0.5">
-                              {language === 'vi' 
-                                ? `Trở về an toàn trong sự bảo hộ của trận pháp môn phái (Tốn ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Linh thạch, 1 tháng).` 
-                                : `Return safely under the protection of the sect array (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).`}
+                              {(uiText[language]?.['returnSafelyUnderThe'] || 'Return safely under the protection of the sect array (Costs ${activeCombatConfig?.time_gear?.travel_cost_hp ?? 2} HP, ${activeCombatConfig?.time_gear?.travel_cost_stones ?? 10} Spirit Stones, 1 month).')}
                             </p>
                           </div>
                         </button>
@@ -3037,13 +2992,11 @@ export default function HomePage() {
             <div className="relative z-20 text-center w-full max-w-md border border-outline-variant/30 bg-surface-container-low/50 p-8 shadow-[0_0_30px_rgba(255,176,0,0.05)] backdrop-blur-md animate-fade-in">
               <div className="text-secondary/60 text-[10px] tracking-widest mb-4 font-headline-sm uppercase">{'<System Initialization>'}</div>
               <h1 className="font-headline-lg text-4xl text-primary font-bold tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(255,176,0,0.3)]">
-                {language === 'vi' ? 'Trường Sinh Lộ' : 'Immortal Sim'}
+                {(uiText[language]?.['immortalSim'] || 'Immortal Sim')}
               </h1>
               <div className="h-[1px] w-3/4 mx-auto bg-gradient-to-r from-transparent via-secondary/30 to-transparent my-6" />
               <p className="text-xs text-on-surface-variant tracking-wide leading-relaxed">
-                {language === 'vi'
-                  ? 'Tải dữ liệu... Vận mệnh đang được tái thiết lập. Bạn đã sẵn sàng kết nối lại mạng lưới luân hồi?'
-                  : 'Loading data... Destiny is being recompiled. Are you ready to reconnect to the reincarnation network?'}
+                {(uiText[language]?.['loadingDataDestinyIs'] || 'Loading data... Destiny is being recompiled. Are you ready to reconnect to the reincarnation network?')}
               </p>
             </div>
 
@@ -3054,7 +3007,7 @@ export default function HomePage() {
                 onClick={handleStart}
                 className="w-full py-4 px-6 text-center font-headline-sm text-sm uppercase tracking-widest border transition-all duration-300 border-secondary/40 text-secondary hover:border-secondary hover:bg-secondary/10 hover:shadow-[0_0_15px_rgba(255,176,0,0.2)] hover:-translate-y-0.5 cursor-pointer bg-surface-container-low/80"
               >
-                {copy.startNew || (language === 'vi' ? 'Khởi Chạy Tiến Trình Mới' : 'Execute New Process')}
+                {copy.startNew || ((uiText[language]?.['executeNewProcess'] || 'Execute New Process'))}
               </button>
 
               <button
@@ -3062,7 +3015,7 @@ export default function HomePage() {
                 onClick={handleReset}
                 className="w-full py-4 px-6 text-center font-headline-sm text-sm uppercase tracking-widest border transition-all duration-300 border-error/40 text-error hover:border-error hover:bg-error/10 hover:shadow-[0_0_15px_rgba(255,100,100,0.2)] hover:-translate-y-0.5 cursor-pointer bg-surface-container-low/80"
               >
-                {copy.resetLegacy || (language === 'vi' ? 'Xóa Bộ Nhớ Cache Di Sản' : 'Wipe Legacy Cache')}
+                {copy.resetLegacy || ((uiText[language]?.['wipeLegacyCache'] || 'Wipe Legacy Cache'))}
               </button>
             </div>
 
@@ -3073,7 +3026,7 @@ export default function HomePage() {
                 <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-2">{'// Cấu Hình'}</div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] text-on-surface-variant">{language === 'vi' ? 'Ngôn Ngữ:' : 'Language:'}</span>
+                  <span className="text-[10px] text-on-surface-variant">{(uiText[language]?.['language1'] || 'Language:')}</span>
                   <div className="flex gap-1.5">
                     {(['en', 'vi'] as const).map((l) => (
                       <button
@@ -3091,7 +3044,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex justify-between items-center">
-                  <span className="text-[10px] text-on-surface-variant">{language === 'vi' ? 'Âm Thanh:' : 'Audio:'}</span>
+                  <span className="text-[10px] text-on-surface-variant">{(uiText[language]?.['audio1'] || 'Audio:')}</span>
                   <div className="flex gap-1.5">
                     <button
                       type="button"
@@ -3135,9 +3088,9 @@ export default function HomePage() {
                 <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-1">{'// Dữ Liệu Di Sản'}</div>
                 
                 {[
-                  { label: copy.legacyPower || (language === 'vi' ? 'Sức mạnh' : 'Power'), value: inheritance.legacyPower },
-                  { label: copy.ancestralMemory || (language === 'vi' ? 'Ký ức' : 'Memory'), value: inheritance.ancestralMemory },
-                  { label: copy.blessing || (language === 'vi' ? 'Phúc lành' : 'Blessing'), value: inheritance.blessing },
+                  { label: copy.legacyPower || ((uiText[language]?.['power'] || 'Power')), value: inheritance.legacyPower },
+                  { label: copy.ancestralMemory || ((uiText[language]?.['memory'] || 'Memory')), value: inheritance.ancestralMemory },
+                  { label: copy.blessing || ((uiText[language]?.['blessing'] || 'Blessing')), value: inheritance.blessing },
                 ].map((item, idx) => (
                   <div key={idx} className="flex justify-between items-center border-b border-outline-variant/20 pb-1.5 last:border-0 last:pb-0">
                     <span className="text-[9px] text-on-surface-variant uppercase">{item.label}</span>
@@ -3218,7 +3171,7 @@ export default function HomePage() {
           hasActiveQuest={!!game.activeQuest}
           onAcceptQuest={handleAcceptQuest}
           onClose={() => setShowSectMissions(false)}
-          language={language}
+          language={language as "vi" | "en"}
           warLevel={game.worldState?.sect?.warLevel ?? 0}
         />
       )}
@@ -3228,7 +3181,7 @@ export default function HomePage() {
           state={game}
           onUpdateState={setGame}
           onClose={() => setShowSectShop(false)}
-          language={language}
+          language={language as "vi" | "en"}
         />
       )}
 
@@ -3239,7 +3192,7 @@ export default function HomePage() {
         setTheme={setTheme}
         fontSize={fontSize}
         setFontSize={setFontSize}
-        language={language}
+        language={language as "vi" | "en"}
         setLanguage={setLanguage}
         audioEnabled={audioEnabled}
         setAudioEnabled={setAudioEnabled}
@@ -3273,9 +3226,9 @@ export default function HomePage() {
               </div>
               <div className="space-y-1">
                 <span className="text-[8px]  text-zinc-400 font-bold font-serif">
-                  {selectedDetailItem.type === 'manual' ? (language === 'vi' ? 'Tâm Pháp Linh Căn' : 'Mind Manual') : 
-                   selectedDetailItem.type === 'currency' ? (language === 'vi' ? 'Tài Vật Tu Luyện' : 'Resource') :
-                   (language === 'vi' ? 'Linh Dược Đan Dược' : 'Elixir')}
+                  {selectedDetailItem.type === 'manual' ? ((uiText[language]?.['mindManual'] || 'Mind Manual')) : 
+                   selectedDetailItem.type === 'currency' ? ((uiText[language]?.['resource'] || 'Resource')) :
+                   ((uiText[language]?.['elixir'] || 'Elixir'))}
                 </span>
                 <h3 className="font-serif text-lg text-secondary tracking-wider uppercase font-bold">{selectedDetailItem.title}</h3>
               </div>
@@ -3303,7 +3256,7 @@ export default function HomePage() {
           technique={learningTechnique}
           isFatal={isFatalMinigame}
           onFatalFail={() => {
-            const deathCause = { vi: 'Tẩu hoả nhập ma bạo thể tử vong khi lần đầu vận hành linh khí.', en: 'Qi deviation during first manual initiation.' };
+            const deathCause = { vi: 'Tẩu hoả nhập ma bạo thể tử vong khi lần đầu vận hành linh khí.', en: 'Qi deviation during first manual initiation.'};
             const newState = {
               ...game,
               alive: false,
@@ -3324,10 +3277,7 @@ export default function HomePage() {
               const logEntry = {
                 type: 'technique_breakthrough' as const,
                 age: newState.age,
-                message: {
-                  vi: `🌟 Chúc mừng! Bạn đã đột phá từ Phàm Nhân thành công bước vào Luyện Khí Tầng 1! Thọ nguyên gia tăng +40 năm.`,
-                  en: `🌟 Congratulations! You broke through from Mortal to Qi Refinement Layer 1! Lifespan increased by +40 years.`
-                }
+                message: { vi: `🌟 Chúc mừng! Bạn đã đột phá từ Phàm Nhân thành công bước vào Luyện Khí Tầng 1! Thọ nguyên gia tăng +40 năm.`, en: `🌟 Congratulations! You broke through from Mortal to Qi Refinement Layer 1! Lifespan increased by +40 years.`}
               };
               newState = {
                 ...newState,

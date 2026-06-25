@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { uiText } from '../lib/i18n';
 
 type TransitionType = 
   | 'ink_fade' 
@@ -233,10 +234,10 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               <div className="text-center space-y-1 z-10 px-4">
                 <span className="text-3xl text-emerald-400 filter drop-shadow-[0_0_8px_rgba(229,193,123,0.6)]">☯</span>
                 <h3 className="font-serif text-emerald-400 text-base font-medium font-bold">
-                  {language === 'vi' ? 'Thiện Nghiệp' : 'Good Karma'}
+                  {(uiText[language]?.['goodKarma'] || 'Good Karma')}
                 </h3>
                 <p className="text-[9px] text-[#b5a995] font-sans tracking-wide">
-                  {language === 'vi' ? 'Linh quang gia trì' : 'Ethereal Blessing'}
+                  {(uiText[language]?.['etherealBlessing'] || 'Ethereal Blessing')}
                 </p>
               </div>
             </motion.div>
@@ -271,10 +272,10 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               <div className="text-center space-y-1 z-10 px-4">
                 <span className="text-3xl text-[#a93c3c] filter drop-shadow-[0_0_8px_rgba(169,60,60,0.7)]">💀</span>
                 <h3 className="font-serif text-[#a93c3c] text-base font-medium font-bold">
-                  {language === 'vi' ? 'Ma Vực Nghiệp' : 'Demonic Karma'}
+                  {(uiText[language]?.['demonicKarma'] || 'Demonic Karma')}
                 </h3>
                 <p className="text-[9px] text-zinc-400 font-sans tracking-wide">
-                  {language === 'vi' ? 'Nhân quả báo ứng' : 'Karmic Retribution'}
+                  {(uiText[language]?.['karmicRetribution'] || 'Karmic Retribution')}
                 </p>
               </div>
             </motion.div>
@@ -339,7 +340,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               transition={{ delay: 0.6 }}
               className="mt-6 font-serif text-emerald-400 text-base font-medium"
             >
-              {language === 'vi' ? 'Thiên Cơ Hiện Thế • Đại Cát' : 'Celestial Opportunity • Auspicious'}
+              {(uiText[language]?.['celestialOpportunity'] || 'Celestial Opportunity • Auspicious')}
             </motion.p>
           </div>
         )}
@@ -402,7 +403,7 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               transition={{ delay: 0.5 }}
               className="mt-6 font-serif text-[#ef4444] text-base font-medium"
             >
-              {language === 'vi' ? 'Thiên Đạo Trở Ngại • Hung Tượng' : 'Heavenly Obstacle • Ominous'}
+              {(uiText[language]?.['heavenlyObstacleOmin'] || 'Heavenly Obstacle • Ominous')}
             </motion.p>
           </div>
         )}
@@ -421,10 +422,10 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               className="z-10 text-center space-y-2"
             >
               <h2 className="font-serif text-3xl text-gradient bg-gradient-to-r from-cyan-300 via-teal-200 to-emerald-300 bg-clip-text text-transparent font-bold tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                {language === 'vi' ? 'ĐỘT PHÁ THÀNH CÔNG' : 'BREAKTHROUGH SUCCESS'}
+                {(uiText[language]?.['breakthroughSuccess'] || 'BREAKTHROUGH SUCCESS')}
               </h2>
               <p className="text-xs text-text-secondary font-medium">
-                {language === 'vi' ? 'Kinh mạch khuếch trương • Linh khí dồi dào' : 'Meridians Expanded • Qi Surges'}
+                {(uiText[language]?.['meridiansExpandedQiS'] || 'Meridians Expanded • Qi Surges')}
               </p>
             </motion.div>
           </div>
@@ -456,10 +457,10 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
               className="z-10 text-center space-y-2"
             >
               <h2 className="font-serif text-3xl text-red-600 font-bold tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                {language === 'vi' ? 'ĐỘT PHÁ THẤT BẠI' : 'BREAKTHROUGH FAILED'}
+                {(uiText[language]?.['breakthroughFailed'] || 'BREAKTHROUGH FAILED')}
               </h2>
               <p className="text-xs text-red-400 font-medium drop-shadow-sm">
-                {language === 'vi' ? 'Tẩu hỏa nhập ma • Khí huyết hao tổn' : 'Cultivation Deviated • Vitality Injured'}
+                {(uiText[language]?.['cultivationDeviatedV'] || 'Cultivation Deviated • Vitality Injured')}
               </p>
             </motion.div>
           </div>
@@ -480,10 +481,10 @@ export default function OutcomeTransition({ type, onComplete, language }: Props)
             >
               <span className="text-5xl text-red-600 filter drop-shadow-[0_0_10px_rgba(239,68,68,0.7)] animate-pulse">⚔️</span>
               <h2 className="font-serif text-3xl text-[#e6dfd5] font-bold tracking-widest drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                {language === 'vi' ? 'BẮT ĐẦU GIAO CHIẾN' : 'ENGAGING IN COMBAT'}
+                {(uiText[language]?.['engagingInCombat'] || 'ENGAGING IN COMBAT')}
               </h2>
               <p className="text-xs text-[#a87f37] font-medium">
-                {language === 'vi' ? 'Nhịp tim dồn dập • Sát khí ngập trời' : 'Heart Racing • Demonic Qi Rises'}
+                {(uiText[language]?.['heartRacingDemonicQi'] || 'Heart Racing • Demonic Qi Rises')}
               </p>
             </motion.div>
           </div>

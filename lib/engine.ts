@@ -24,6 +24,7 @@ import {
   translateDeathReason} from '../lib/i18n';
 import enEvents from '../locales/en/events.json';
 import viEvents from '../locales/vi/events.json';
+import zhEvents from '../locales/zh/events.json';
 import combatConfig from '../data/combat-config.json';
 import sectQuestsData from '../data/sect-quests.json';
 import story1 from '../data/starting-stories/story_1.json';
@@ -142,10 +143,7 @@ const buildStartingEvent = (
   return {
     id: 'birth_and_recruitment',
     title: story.title,
-    description: {
-      vi: descriptionVi,
-      en: descriptionEn
-    },
+    description: { vi: descriptionVi, en: descriptionEn},
     minRealm: 'Mortal',
     
     weight: 1,
@@ -571,12 +569,21 @@ export const setDynamicEvents = (events: any[]) => {
     }))
   }));
 
-  dynamicLocaleEvents = { vi, en };
+  const zh: EventDefinition[] = events.map(ev => ({
+    ...ev,
+    title: typeof ev.title === 'object' ? ev.title.zh : ev.title,
+    description: typeof ev.description === 'object' ? ev.description.zh : ev.description,
+    choices: ev.choices.map((c: any) => ({
+      ...c,
+      text: typeof c.text === 'object' ? c.text.zh : c.text
+    }))
+  }));
+
+  dynamicLocaleEvents = { vi, en, zh };
 };
 
-const localeEvents: Record<string, EventDefinition[]> = {
-  en: enEvents as EventDefinition[],
-  vi: viEvents as EventDefinition[]};
+const localeEvents: Record<string, EventDefinition[]> = { en: enEvents as EventDefinition[], vi: viEvents as EventDefinition[],
+  zh: zhEvents as EventDefinition[]};
 
 export const getLocalizedEvents = (language: Lang): EventDefinition[] => {
   if (dynamicLocaleEvents) {
@@ -818,7 +825,7 @@ export const generateWorldThresholdEvent = (
   if (world.mountain.beastActivity > 85 && Math.random() < 0.35) {
     return {
       id: 'world_event_beast_tide',
-      title: { vi: '🌊 Thú Triều Tràn Thành!', en: '🌊 Beast Tide Invades!' },
+      title: { vi: '🌊 Thú Triều Tràn Thành!', en: '🌊 Beast Tide Invades!'},
       description: {
         vi: `Vạn Thú Sơn Mạch bỗng dậy sóng — yêu thú từng đàn tràn xuống tấn công thành trì. Tiếng gầm vang trời, linh lực khắp nơi hỗn loạn. An ninh thành giảm xuống thấp nguy hiểm. Môn phái huy động đệ tử cơ hội lập công.`,
         en: `The Beast Mountains erupt — waves of demonic beasts storm the city. Roars shake the sky, spiritual energy fluctuates wildly. Security plummets. The sect mobilizes disciples to earn merit.`
@@ -833,12 +840,12 @@ export const generateWorldThresholdEvent = (
         },
         {
           id: 'world_beast_tide_harvest',
-          text: { vi: '🌿 Thu hoạch xác yêu thú kiếm tài nguyên', en: '🌿 Harvest beast corpses for resources' },
+          text: { vi: '🌿 Thu hoạch xác yêu thú kiếm tài nguyên', en: '🌿 Harvest beast corpses for resources'},
           effects: { health: -5, spiritStones: 40 }
         },
         {
           id: 'world_beast_tide_hide',
-          text: { vi: '🏠 Ẩn náu tránh thú triều', en: '🏠 Hide and survive the tide' },
+          text: { vi: '🏠 Ẩn náu tránh thú triều', en: '🏠 Hide and survive the tide'},
           effects: { luck: -2 }
         }
       ]
@@ -849,7 +856,7 @@ export const generateWorldThresholdEvent = (
   if (world.sect.stability < 20 && Math.random() < 0.30 && state.sect) {
     return {
       id: 'world_event_sect_chaos',
-      title: { vi: '⚡ Môn Phái Nội Loạn!', en: '⚡ Sect Internal Strife!' },
+      title: { vi: '⚡ Môn Phái Nội Loạn!', en: '⚡ Sect Internal Strife!'},
       description: {
         vi: `Nội bộ ${state.sect} bùng phát tranh đoạt quyền lực — các trưởng lão kéo bè phái đấu đá, chấp sự có kẻ bị ám sát. Cả tông môn rơi vào cảnh hỗn loạn. Đây là thời cơ hoặc hiểm họa tùy người.`,
         en: `${state.sect} erupts in power struggles — elders form factions, a sect supervisor is assassinated. The whole sect falls into chaos. This is either opportunity or peril.`
@@ -859,7 +866,7 @@ export const generateWorldThresholdEvent = (
       choices: [
         {
           id: 'world_chaos_side_strong',
-          text: { vi: '🤝 Theo phe mạnh kiếm lợi', en: '🤝 Side with the stronger faction' },
+          text: { vi: '🤝 Theo phe mạnh kiếm lợi', en: '🤝 Side with the stronger faction'},
           effects: { sectPrestige: 20, karma: -3, luck: 2 }
         },
         {
@@ -869,7 +876,7 @@ export const generateWorldThresholdEvent = (
         },
         {
           id: 'world_chaos_opportunist',
-          text: { vi: '🗄️ Nhân lúc loạn chiếm đoạt tài nguyên', en: '🗄️ Exploit the chaos to seize resources' },
+          text: { vi: '🗄️ Nhân lúc loạn chiếm đoạt tài nguyên', en: '🗄️ Exploit the chaos to seize resources'},
           effects: { spiritStones: 60, karma: -6, luck: -3 }
         }
       ]
@@ -880,7 +887,7 @@ export const generateWorldThresholdEvent = (
   if (world.global.daoFluctuation > 78 && Math.random() < 0.28) {
     return {
       id: 'world_event_secret_realm',
-      title: { vi: '✨ Bí Cảnh Hiện Thế!', en: '✨ Secret Realm Appears!' },
+      title: { vi: '✨ Bí Cảnh Hiện Thế!', en: '✨ Secret Realm Appears!'},
       description: {
         vi: `Thiên đạo dị động cực mạnh — không trung xuất hiện dị tượng thất sắc, một bí cảnh cổ đại từ từ mở ra nơi sơn mạch. Khắp tu tiên giới xôn xao. Cơ duyên thiên địa bên trong không thể đo lường.`,
         en: `Extreme Dao fluctuations — a seven-colored aurora appears in the sky as an ancient secret realm slowly opens in the mountains. The entire cultivation world buzzes with excitement.`
@@ -890,17 +897,17 @@ export const generateWorldThresholdEvent = (
       choices: [
         {
           id: 'world_realm_enter',
-          text: { vi: '🌟 Mạo hiểm vào bí cảnh', en: '🌟 Dare to enter the secret realm' },
+          text: { vi: '🌟 Mạo hiểm vào bí cảnh', en: '🌟 Dare to enter the secret realm'},
           effects: { health: -15, cultivation: 5, comprehension: 5, luck: 3 }
         },
         {
           id: 'world_realm_guard',
-          text: { vi: '🛡️ Canh gác cửa bí cảnh kiếm linh thạch', en: '🛡️ Guard the realm entrance for spirit stones' },
+          text: { vi: '🛡️ Canh gác cửa bí cảnh kiếm linh thạch', en: '🛡️ Guard the realm entrance for spirit stones'},
           effects: { spiritStones: 50, sectContribution: 20 }
         },
         {
           id: 'world_realm_skip',
-          text: { vi: '🧘 Tu luyện bên ngoài hấp thụ linh khí tràn ra', en: '🧘 Cultivate outside absorbing leaked spiritual energy' },
+          text: { vi: '🧘 Tu luyện bên ngoài hấp thụ linh khí tràn ra', en: '🧘 Cultivate outside absorbing leaked spiritual energy'},
           effects: { cultivation: 2.5, daoHeart: 2 }
         }
       ]
@@ -911,7 +918,7 @@ export const generateWorldThresholdEvent = (
   if (world.global.demonicEnergy > 80 && world.demonic.infiltration > 70 && Math.random() < 0.25) {
     return {
       id: 'world_event_demonic_siege',
-      title: { vi: '💀 Ma Đạo Đại Xâm Nhập!', en: '💀 Demonic Sect Invasion!' },
+      title: { vi: '💀 Ma Đạo Đại Xâm Nhập!', en: '💀 Demonic Sect Invasion!'},
       description: {
         vi: `Ma khí khắp trời đất tràn ngập — đại ma tu giấu mặt bộc lộ thân phận, chân truyền bị đoạt xá, nhiều chấp sự là nội gián. ${state.sect || 'Tông môn'} đứng trước hiểm họa tiêu vong!`,
         en: `Demonic energy floods the world — hidden great demons reveal themselves, true disciples are possessed, supervisors exposed as spies. ${state.sect || 'The sect'} faces existential danger!`
@@ -921,7 +928,7 @@ export const generateWorldThresholdEvent = (
       choices: [
         {
           id: 'world_demonic_fight',
-          text: { vi: '⚔️ Xả thân chiến đấu bảo vệ tông môn', en: '⚔️ Fight to defend the sect' },
+          text: { vi: '⚔️ Xả thân chiến đấu bảo vệ tông môn', en: '⚔️ Fight to defend the sect'},
           effects: { health: -20, sectPrestige: 40, cultivation: 3, karma: 8 }
         },
         {
@@ -931,7 +938,7 @@ export const generateWorldThresholdEvent = (
         },
         {
           id: 'world_demonic_surrender',
-          text: { vi: '😈 Gia nhập ma đạo đổi lấy quyền lực', en: '😈 Join the demonic sect for power' },
+          text: { vi: '😈 Gia nhập ma đạo đổi lấy quyền lực', en: '😈 Join the demonic sect for power'},
           effects: { cultivation: 6, karma: -15, daoHeart: -10 }
         }
       ]
@@ -942,7 +949,7 @@ export const generateWorldThresholdEvent = (
   if (world.city.prosperity > 85 && Math.random() < 0.30) {
     return {
       id: 'world_event_grand_auction',
-      title: { vi: '🏛️ Đại Đấu Giá Thập Niên!', en: '🏛️ Grand Decennial Auction!' },
+      title: { vi: '🏛️ Đại Đấu Giá Thập Niên!', en: '🏛️ Grand Decennial Auction!'},
       description: {
         vi: `Thành phố phồn hoa tột bậc, thương hội lớn tổ chức đại đấu giá mười năm một lần. Dị bảo, công pháp cổ đại, thần dược trân phẩm bày la liệt. Đây là cơ hội mua bán nghìn năm có một.`,
         en: `The thriving city hosts its grand decennial auction. Rare treasures, ancient techniques, divine pills on display. A once-in-a-millennium trading opportunity.`
@@ -952,17 +959,17 @@ export const generateWorldThresholdEvent = (
       choices: [
         {
           id: 'world_auction_bid_pill',
-          text: { vi: '💊 Đấu giá Đan dược đột phá (Tốn 80 Linh thạch)', en: '💊 Bid for Breakthrough Pill (Cost 80 Stones)' },
+          text: { vi: '💊 Đấu giá Đan dược đột phá (Tốn 80 Linh thạch)', en: '💊 Bid for Breakthrough Pill (Cost 80 Stones)'},
           effects: { spiritStones: -80, cultivation: 4, daoHeart: 2 }
         },
         {
           id: 'world_auction_bid_technique',
-          text: { vi: '📖 Đấu giá Công pháp tàn quyển (Tốn 60 Linh thạch)', en: '📖 Bid for Technique Shard (Cost 60 Stones)' },
+          text: { vi: '📖 Đấu giá Công pháp tàn quyển (Tốn 60 Linh thạch)', en: '📖 Bid for Technique Shard (Cost 60 Stones)'},
           effects: { spiritStones: -60, comprehension: 4 }
         },
         {
           id: 'world_auction_sell',
-          text: { vi: '💰 Bán hàng tồn kho kiếm lời cao', en: '💰 Sell your inventory at premium prices' },
+          text: { vi: '💰 Bán hàng tồn kho kiếm lời cao', en: '💰 Sell your inventory at premium prices'},
           effects: { spiritStones: 70, luck: 2 }
         }
       ]
@@ -1101,9 +1108,7 @@ export const getRandomEvent = (
   if (available.length === 0) {
     return {
       id: 'quiet_reflection',
-      title: getLocalizedText({
-        en: 'Quiet Reflection',
-        vi: 'Suy ngẫm tĩnh lặng'}, language),
+      title: getLocalizedText({ en: 'Quiet Reflection', vi: 'Suy ngẫm tĩnh lặng'}, language),
       description: getLocalizedText({
         en: 'A quiet period passes, and you reflect on your cultivation path.',
         vi: 'Một khoảng tĩnh lặng trôi qua, bạn suy tư về con đường tu chân.'}, language),
@@ -1113,15 +1118,11 @@ export const getRandomEvent = (
       choices: [
         {
           id: 'keep_training',
-          text: getLocalizedText({
-            en: 'Keep training through the quiet.',
-            vi: 'Tiếp tục tu luyện trong tĩnh lặng.'}, language),
+          text: getLocalizedText({ en: 'Keep training through the quiet.', vi: 'Tiếp tục tu luyện trong tĩnh lặng.'}, language),
           effects: { cultivation: 1, comprehension: 1 }},
         {
           id: 'rest',
-          text: getLocalizedText({
-            en: 'Rest and restore your spirit.',
-            vi: 'Nghỉ ngơi và hồi phục tinh thần.'}, language),
+          text: getLocalizedText({ en: 'Rest and restore your spirit.', vi: 'Nghỉ ngơi và hồi phục tinh thần.'}, language),
           effects: { health: 2, luck: 1 }},
       ]};
   }
@@ -1205,9 +1206,7 @@ export const completeTechniqueLearning = (
   const logEntry: LogEntry = {
     type: 'technique_breakthrough',
     age: state.age,
-    message: {
-      en: `Successfully cultivated [${tech.name}]! Gained ${bonusComprehension} Comprehension.`,
-      vi: `Nhập môn thành công [${tech.name}]! Khí huyết lưu thông, tăng ${bonusComprehension} Ngộ tính.`
+    message: { en: `Successfully cultivated [${tech.name}]! Gained ${bonusComprehension} Comprehension.`, vi: `Nhập môn thành công [${tech.name}]! Khí huyết lưu thông, tăng ${bonusComprehension} Ngộ tính.`
     }
   };
 
@@ -1254,9 +1253,7 @@ export const addFragment = (
     logs.push({
       type: 'technique_fragment',
       age,
-      message: {
-        en: `You found a fragment of [${configTech.label}] (${amount}/${newTech.fragmentsRequired} fragments).`,
-        vi: `Bạn nhặt được mảnh tàn quyển của [${configTech.label}] (đã thu thập ${amount}/${newTech.fragmentsRequired} mảnh).`
+      message: { en: `You found a fragment of [${configTech.label}] (${amount}/${newTech.fragmentsRequired} fragments).`, vi: `Bạn nhặt được mảnh tàn quyển của [${configTech.label}] (đã thu thập ${amount}/${newTech.fragmentsRequired} mảnh).`
       }
     });
 
@@ -1362,9 +1359,7 @@ export const addFragment = (
       logs.push({
         type: 'technique_fragment',
         age,
-        message: {
-          en: `You found a fragment of [${tech.name}] (${updated[techIndex].fragmentsCollected}/${tech.fragmentsRequired} fragments).`,
-          vi: `Bạn nhặt được mảnh tàn quyển của [${tech.name}] (đã thu thập ${updated[techIndex].fragmentsCollected}/${tech.fragmentsRequired} mảnh).`
+        message: { en: `You found a fragment of [${tech.name}] (${updated[techIndex].fragmentsCollected}/${tech.fragmentsRequired} fragments).`, vi: `Bạn nhặt được mảnh tàn quyển của [${tech.name}] (đã thu thập ${updated[techIndex].fragmentsCollected}/${tech.fragmentsRequired} mảnh).`
         }
       });
     }
@@ -1435,9 +1430,7 @@ export const addItem = (
   logs.push({
     type: 'item_gain',
     age,
-    message: {
-      en: `You acquired [${configItem.name}] x${quantity}.`,
-      vi: `Bạn đã nhận được [${configItem.name}] x${quantity}.`
+    message: { en: `You acquired [${configItem.name}] x${quantity}.`, vi: `Bạn đã nhận được [${configItem.name}] x${quantity}.`
     }
   });
 
@@ -1569,9 +1562,7 @@ export const useItemInState = (state: GameState, itemIndexInInventory: number): 
   const useLogEntry: LogEntry = {
     type: 'item_use',
     age: state.age,
-    message: {
-      en: `You used [${item.name}].`,
-      vi: `Bạn đã sử dụng [${item.name}].`
+    message: { en: `You used [${item.name}].`, vi: `Bạn đã sử dụng [${item.name}].`
     }
   };
 
@@ -1630,9 +1621,7 @@ export const equipItemInState = (state: GameState, itemIndexInInventory: number)
   const equipLogEntry: LogEntry = {
     type: 'item_equip',
     age: state.age,
-    message: {
-      en: targetEquip ? `You equipped [${item.name}].` : `You unequipped [${item.name}].`,
-      vi: targetEquip ? `Bạn đã trang bị [${item.name}].` : `Bạn đã tháo bỏ [${item.name}].`
+    message: { en: targetEquip ? `You equipped [${item.name}].` : `You unequipped [${item.name}].`, vi: targetEquip ? `Bạn đã trang bị [${item.name}].` : `Bạn đã tháo bỏ [${item.name}].`
     }
   };
 
@@ -1732,16 +1721,11 @@ export const createNewGame = (
     log: [
       {
         type: 'info',
-        message: {
-          vi: `Kiếp sống mới bắt đầu tại ${sect === 'Kiếm Tông' ? 'Làng Tàn Kiếm' : sect === 'Ma Đạo' ? 'Làng Hắc Thạch' : sect === 'Huyết Tông' ? 'Làng Xích Huyết' : 'Làng Bách Thảo'}.`,
-          en: `A new life starts at your village.`
-        }},
+        message: { vi: `Kiếp sống mới bắt đầu tại ${sect === 'Kiếm Tông' ? 'Làng Tàn Kiếm' : sect === 'Ma Đạo' ? 'Làng Hắc Thạch' : sect === 'Huyết Tông' ? 'Làng Xích Huyết' : 'Làng Bách Thảo'}.`, en: `A new life starts at your village.`}},
       ...checkResult.activatedLogs
     ],
     currentEvent,
-    lastMessage: {
-      vi: `Bạn bước vào hành trình làm đệ tử ngoại môn của ${sect}.`,
-      en: `Your journey as an outer disciple of ${sect} begins.`
+    lastMessage: { vi: `Bạn bước vào hành trình làm đệ tử ngoại môn của ${sect}.`, en: `Your journey as an outer disciple of ${sect} begins.`
     },
     history: [],
     techniques,
@@ -1773,7 +1757,7 @@ export const createNewGame = (
 const beQuanQuest = (months: number): SectQuest => ({
   id: `quest_be_quan_${months}`,
   title: { vi: `Bế Quan Tu Luyện (${months} tháng)`, en: `Closed-door Retreat (${months} months)` },
-  description: { vi: `Bế quan tĩnh tu để hấp thụ tinh khí đất trời.`, en: `Closed-door retreat to absorb world spiritual energy.` },
+  description: { vi: `Bế quan tĩnh tu để hấp thụ tinh khí đất trời.`, en: `Closed-door retreat to absorb world spiritual energy.`},
   difficulty: 'Hoàng',
   durationMonths: months,
   minRank: 'ngoại_môn',
@@ -1797,8 +1781,8 @@ const beQuanQuest = (months: number): SectQuest => ({
 
 const farmingQuest = (): SectQuest => ({
   id: 'quest_farm_herbs',
-  title: { vi: 'Trồng Linh Thảo Linh Điền', en: 'Herb Farming' },
-  description: { vi: 'Thuê ruộng linh điền để gieo hạt Linh Thảo.', en: 'Lease spirit land to cultivate Spirit Herbs.' },
+  title: { vi: 'Trồng Linh Thảo Linh Điền', en: 'Herb Farming'},
+  description: { vi: 'Thuê ruộng linh điền để gieo hạt Linh Thảo.', en: 'Lease spirit land to cultivate Spirit Herbs.'},
   difficulty: 'Hoàng',
   durationMonths: 6,
   minRank: 'ngoại_môn',
@@ -1822,10 +1806,7 @@ const farmingQuest = (): SectQuest => ({
 
 export const SectPunishmentEvent: EventDefinition = {
   id: 'sect_punishment_event',
-  title: {
-    vi: '⚠️ Tông Môn Trừng Phạt',
-    en: '⚠️ Sect Punishment'
-  },
+  title: { vi: '⚠️ Tông Môn Trừng Phạt', en: '⚠️ Sect Punishment'},
   description: {
     vi: 'Năm vừa qua bạn lười biếng không hoàn thành bất kỳ nhiệm vụ tông môn nào. Theo môn quy của đệ tử Luyện Khí, Chấp Pháp Đường giáng xuống trừng phạt!',
     en: 'In the past year, you did not complete any sect quests. According to the rules of Qi Refinement disciples, the Law Hall inflicts punishment!'
@@ -1843,10 +1824,7 @@ export const SectPunishmentEvent: EventDefinition = {
     },
     {
       id: 'action_punishment_fine',
-      text: {
-        vi: 'Nộp phạt tiền tài (-100 Linh Thạch)',
-        en: 'Pay fine (-100 Spirit Stones)'
-      },
+      text: { vi: 'Nộp phạt tiền tài (-100 Linh Thạch)', en: 'Pay fine (-100 Spirit Stones)'},
       effects: {}
     },
     {
@@ -1862,10 +1840,7 @@ export const SectPunishmentEvent: EventDefinition = {
 
 export const TournamentAnnualStartEvent: EventDefinition = {
   id: 'tournament_annual_start',
-  title: {
-    vi: '🏟️ Ngoại Môn Đại Bỉ Khai Mở!',
-    en: '🏟️ Outer Sect Tournament Begins!'
-  },
+  title: { vi: '🏟️ Ngoại Môn Đại Bỉ Khai Mở!', en: '🏟️ Outer Sect Tournament Begins!'},
   description: {
     vi: 'Tháng 12 hàng năm, Đại Hội Tỷ Thí Ngoại Môn chính thức khai mở! Trống lôi đài vang rền khắp sơn môn, các đệ tử Luyện Khí từ khắp các phong tập hợp. Đây là cơ hội lấy Trúc Cơ Đan phá cảnh và chứng minh thực lực của bản thân trước toàn tông môn!\n\n💎 Phần thưởng: Top 10 → 1x Trúc Cơ Đan. Top 50 → 50-100 Điểm cống hiến.\n⚠️ Lưu ý: Nếu không tham gia, trừ 30 Điểm cống hiến tông môn vì thiếu sự hiện diện.',
     en: 'Every year in December, the Outer Sect Tournament officially opens! War drums echo across the mountain gates as Qi Refinement disciples from every peak gather. This is your chance to claim a Foundation Pill and prove your might before the whole sect!\n\n💎 Rewards: Top 10 → 1x Foundation Pill. Top 50 → 50-100 Contribution Points.\n⚠️ Warning: Skipping the tournament costs 30 Sect Contribution Points for absence.'
@@ -1875,26 +1850,17 @@ export const TournamentAnnualStartEvent: EventDefinition = {
   choices: [
     {
       id: 'action_tournament_participate',
-      text: {
-        vi: '⚔️ Báo danh thi đấu (Tham gia Đại Bỉ)',
-        en: '⚔️ Register to compete (Enter Tournament)'
-      },
+      text: { vi: '⚔️ Báo danh thi đấu (Tham gia Đại Bỉ)', en: '⚔️ Register to compete (Enter Tournament)'},
       effects: {}
     },
     {
       id: 'action_tournament_watch',
-      text: {
-        vi: '👁️ Tọa sơn quan hổ đấu (Đứng ngoài quan sát)',
-        en: '👁️ Observe from the sidelines (Watch & Bet)'
-      },
+      text: { vi: '👁️ Tọa sơn quan hổ đấu (Đứng ngoài quan sát)', en: '👁️ Observe from the sidelines (Watch & Bet)'},
       effects: {}
     },
     {
       id: 'action_tournament_skip',
-      text: {
-        vi: '🚶 Bỏ qua không tham gia (-30 Cống Hiến)',
-        en: '🚶 Skip the tournament (-30 Contribution)'
-      },
+      text: { vi: '🚶 Bỏ qua không tham gia (-30 Cống Hiến)', en: '🚶 Skip the tournament (-30 Contribution)'},
       effects: {}
     }
   ]
@@ -1917,13 +1883,13 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       ];
     } else {
       choices = [
-        { id: 'goto_menu_tinh_tu', text: { vi: '🧘 [1] Tĩnh Tu (Meditation)', en: '🧘 [1] Tĩnh Tu (Meditation)' }, effects: {} },
-        { id: 'goto_menu_nhan_nhiem_vu', text: { vi: '📜 [2] Nhận Nhiệm Vụ Tông Môn', en: '📜 [2] Accept Sect Quests' }, effects: {} },
-        { id: 'goto_menu_hoat_dong_tong_mon', text: { vi: '🏛️ [3] Hoạt Động Tông Môn', en: '🏛️ [3] Sect Activities' }, effects: {} },
-        { id: 'goto_menu_kiem_tai_nguyen', text: { vi: '⛏️ [4] Kiếm Tài Nguyên (Tại tông môn)', en: '⛏️ [4] Gather Resources (Inside Sect)' }, effects: {} },
-        { id: 'goto_menu_quan_he_xa_hoi', text: { vi: '👥 [5] Quan Hệ Xã Hội', en: '👥 [5] Social Relations' }, effects: {} },
-        { id: 'goto_menu_lich_luyen', text: { vi: '🗺️ [6] Lịch Luyện Thế Giới', en: '🗺️ [6] World Travel' }, effects: {} },
-        { id: 'goto_menu_sect_shop', text: { vi: '📜 [7] Tông Môn Bảo Các', en: '📜 [7] Sect Vault' }, effects: {} }
+        { id: 'goto_menu_tinh_tu', text: { vi: '🧘 [1] Tĩnh Tu (Meditation)', en: '🧘 [1] Tĩnh Tu (Meditation)'}, effects: {} },
+        { id: 'goto_menu_nhan_nhiem_vu', text: { vi: '📜 [2] Nhận Nhiệm Vụ Tông Môn', en: '📜 [2] Accept Sect Quests'}, effects: {} },
+        { id: 'goto_menu_hoat_dong_tong_mon', text: { vi: '🏛️ [3] Hoạt Động Tông Môn', en: '🏛️ [3] Sect Activities'}, effects: {} },
+        { id: 'goto_menu_kiem_tai_nguyen', text: { vi: '⛏️ [4] Kiếm Tài Nguyên (Tại tông môn)', en: '⛏️ [4] Gather Resources (Inside Sect)'}, effects: {} },
+        { id: 'goto_menu_quan_he_xa_hoi', text: { vi: '👥 [5] Quan Hệ Xã Hội', en: '👥 [5] Social Relations'}, effects: {} },
+        { id: 'goto_menu_lich_luyen', text: { vi: '🗺️ [6] Lịch Luyện Thế Giới', en: '🗺️ [6] World Travel'}, effects: {} },
+        { id: 'goto_menu_sect_shop', text: { vi: '📜 [7] Tông Môn Bảo Các', en: '📜 [7] Sect Vault'}, effects: {} }
       ];
 
       const cap = getCultivationCap(state);
@@ -1933,7 +1899,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       if (state.stats.cultivation >= cap && isBottleneck) {
         choices.unshift({
           id: 'action_trigger_breakthrough',
-          text: { vi: '🌟 Đột Phá Bình Cảnh (Breakthrough)', en: '🌟 Breakthrough Bottleneck' },
+          text: { vi: '🌟 Đột Phá Bình Cảnh (Breakthrough)', en: '🌟 Breakthrough Bottleneck'},
           effects: {}
         });
       }
@@ -1941,14 +1907,9 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
 
     return {
       id: 'menu_monthly_plan',
-      title: {
-        vi: `☯ Kế Hoạch Tu Hành - ${monthLabel} (Tuổi ${state.age})`,
-        en: `☯ Cultivation Plan - ${monthLabel} (Age ${state.age})`
+      title: { vi: `☯ Kế Hoạch Tu Hành - ${monthLabel} (Tuổi ${state.age})`, en: `☯ Cultivation Plan - ${monthLabel} (Age ${state.age})`
       },
-      description: {
-        vi: `Thời gian khả dụng trong tháng này: 1 tháng. Bạn muốn lên kế hoạch hoạt động nào cho tháng này?`,
-        en: `Time available for this month: 1 month. What actions do you want to plan for this month?`
-      },
+      description: { vi: `Thời gian khả dụng trong tháng này: 1 tháng. Bạn muốn lên kế hoạch hoạt động nào cho tháng này?`, en: `Time available for this month: 1 month. What actions do you want to plan for this month?`},
       minRealm: 'Mortal',
       weight: 1,
       choices
@@ -1957,19 +1918,16 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_tinh_tu') {
     return {
       id: 'menu_tinh_tu',
-      title: { vi: '🧘 Động Phủ Tĩnh Tu', en: '🧘 Meditation Chamber' },
-      description: {
-        vi: 'Linh khí xung quanh hội tụ. Việc tu luyện đòi hỏi sự kiên trì và tập trung cao độ.',
-        en: 'Spiritual energy gathers around. Cultivation demands persistence and absolute focus.'
-      },
+      title: { vi: '🧘 Động Phủ Tĩnh Tu', en: '🧘 Meditation Chamber'},
+      description: { vi: 'Linh khí xung quanh hội tụ. Việc tu luyện đòi hỏi sự kiên trì và tập trung cao độ.', en: 'Spiritual energy gathers around. Cultivation demands persistence and absolute focus.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_tinh_tu_binh_thuong', text: { vi: '✨ Tĩnh tu bình thường (An toàn, +Tu vi)', en: '✨ Normal Meditation (Safe, +Cultivation)' }, effects: {} },
-        { id: 'goto_menu_be_quan', text: { vi: '🚪 Bế quan dài hạn (Tăng nhiều tu vi)', en: '🚪 Closed-door Retreat (High Cultivation)' }, effects: {} },
-        { id: 'goto_menu_dot_tai_nguyen', text: { vi: '🔥 Đốt tài nguyên tu luyện (Tốn Linh thạch)', en: '🔥 Spend resources to cultivate' }, effects: {} },
-        { id: 'goto_menu_nghien_cuu_cong_phap', text: { vi: '📖 Tham ngộ/Nghiên cứu công pháp', en: '📖 Comprehend/Study Techniques' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại menu chính', en: '↩️ Back to main menu' }, effects: {} }
+        { id: 'goto_menu_be_quan', text: { vi: '🚪 Bế quan dài hạn (Tăng nhiều tu vi)', en: '🚪 Closed-door Retreat (High Cultivation)'}, effects: {} },
+        { id: 'goto_menu_dot_tai_nguyen', text: { vi: '🔥 Đốt tài nguyên tu luyện (Tốn Linh thạch)', en: '🔥 Spend resources to cultivate'}, effects: {} },
+        { id: 'goto_menu_nghien_cuu_cong_phap', text: { vi: '📖 Tham ngộ/Nghiên cứu công pháp', en: '📖 Comprehend/Study Techniques'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại menu chính', en: '↩️ Back to main menu'}, effects: {} }
       ]
     };
   }
@@ -1977,18 +1935,15 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_be_quan') {
     return {
       id: 'menu_be_quan',
-      title: { vi: '🚪 Bế Quan Tu Luyện', en: '🚪 Closed-Door Retreat' },
-      description: {
-        vi: 'Chọn khoảng thời gian bế quan. Trong suốt thời gian này thời gian sẽ trôi tự động và không có sự kiện ngoài cắt ngang.',
-        en: 'Select the retreat duration. Time will pass automatically without external events during this period.'
-      },
+      title: { vi: '🚪 Bế Quan Tu Luyện', en: '🚪 Closed-Door Retreat'},
+      description: { vi: 'Chọn khoảng thời gian bế quan. Trong suốt thời gian này thời gian sẽ trôi tự động và không có sự kiện ngoài cắt ngang.', en: 'Select the retreat duration. Time will pass automatically without external events during this period.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
-        { id: 'action_be_quan_3', text: { vi: '⏳ Bế quan 3 tháng (+2 Tu Vi)', en: '⏳ Retreat for 3 months (+2 Cultivation)' }, effects: {} },
-        { id: 'action_be_quan_6', text: { vi: '⏳ Bế quan 6 tháng (+5 Tu Vi)', en: '⏳ Retreat for 6 months (+5 Cultivation)' }, effects: {} },
-        { id: 'action_be_quan_12', text: { vi: '⏳ Bế quan 1 năm (+10 Tu Vi)', en: '⏳ Retreat for 1 year (+10 Cultivation)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_be_quan_3', text: { vi: '⏳ Bế quan 3 tháng (+2 Tu Vi)', en: '⏳ Retreat for 3 months (+2 Cultivation)'}, effects: {} },
+        { id: 'action_be_quan_6', text: { vi: '⏳ Bế quan 6 tháng (+5 Tu Vi)', en: '⏳ Retreat for 6 months (+5 Cultivation)'}, effects: {} },
+        { id: 'action_be_quan_12', text: { vi: '⏳ Bế quan 1 năm (+10 Tu Vi)', en: '⏳ Retreat for 1 year (+10 Cultivation)'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -1997,10 +1952,8 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
     const hasPill = (state.inventory || []).some(item => item.id === 'item_huyen_nguyen_dan');
     return {
       id: 'menu_dot_tai_nguyen',
-      title: { vi: '🔥 Đốt Tài Nguyên Tu Luyện', en: '🔥 Cultivate With Resources' },
-      description: {
-        vi: `Sử dụng Linh thạch hoặc Đan dược để tăng tốc độ hấp thu linh năng. Linh thạch hiện có: ${state.spiritStones} 💎.`,
-        en: `Use Spirit Stones or Elixirs to boost Qi absorption. Spirit Stones owned: ${state.spiritStones} 💎.`
+      title: { vi: '🔥 Đốt Tài Nguyên Tu Luyện', en: '🔥 Cultivate With Resources'},
+      description: { vi: `Sử dụng Linh thạch hoặc Đan dược để tăng tốc độ hấp thu linh năng. Linh thạch hiện có: ${state.spiritStones} 💎.`, en: `Use Spirit Stones or Elixirs to boost Qi absorption. Spirit Stones owned: ${state.spiritStones} 💎.`
       },
       minRealm: 'Mortal',
       weight: 1,
@@ -2008,7 +1961,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         { id: 'action_dot_tai_nguyen_it', text: { vi: '🔹 Tiêu hao ít (Tốn 5 Linh thạch, +0.8 Tu vi)', en: '🔹 Low cost (Costs 5 Stones, +0.8 Cultivation)' }, effects: {} },
         { id: 'action_dot_tai_nguyen_vua', text: { vi: '🔸 Tiêu hao vừa (Tốn 15 Linh thạch, +2.0 Tu vi)', en: '🔸 Moderate cost (Costs 15 Stones, +2.0 Cultivation)' }, effects: {} },
         { id: 'action_dot_tai_nguyen_toan_luc', text: { vi: `💥 Toàn lực (Tốn 30 Linh thạch + 1 Huyền Nguyên Đan, +5.0 Tu vi) ${hasPill ? '✓' : '❌ (Thiếu đan)'}`, en: `💥 All-out (Costs 30 Stones + 1 Elixir, +5.0 Cultivation) ${hasPill ? '✓' : '❌ (No Elixir)'}` }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2016,7 +1969,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_nghien_cuu_cong_phap') {
     return {
       id: 'menu_nghien_cuu_cong_phap',
-      title: { vi: '📖 Tham Ngộ Công Pháp', en: '📖 Study Techniques' },
+      title: { vi: '📖 Tham Ngộ Công Pháp', en: '📖 Study Techniques'},
       description: {
         vi: 'Không tăng tu vi bản thân, nhưng tăng độ thuần thục công pháp và nâng cao Ngộ tính/Đạo tâm.',
         en: 'Does not increase cultivation, but increases technique mastery and Comprehension/Dao Heart.'
@@ -2024,9 +1977,9 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       minRealm: 'Mortal',
       weight: 1,
       choices: [
-        { id: 'action_nghien_cuu_kiem', text: { vi: '⚔️ Nghiên cứu Kiếm Quyết (+1 Ngộ Tính)', en: '⚔️ Study Sword Secrets (+1 Comprehension)' }, effects: {} },
-        { id: 'action_nghien_cuu_tam_phap', text: { vi: '🧘 Tĩnh tâm nghiên cứu Tâm Pháp (+2 Đạo Tâm)', en: '🧘 Meditate on Mind Manuals (+2 Dao Heart)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_nghien_cuu_kiem', text: { vi: '⚔️ Nghiên cứu Kiếm Quyết (+1 Ngộ Tính)', en: '⚔️ Study Sword Secrets (+1 Comprehension)'}, effects: {} },
+        { id: 'action_nghien_cuu_tam_phap', text: { vi: '🧘 Tĩnh tâm nghiên cứu Tâm Pháp (+2 Đạo Tâm)', en: '🧘 Meditate on Mind Manuals (+2 Dao Heart)'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2034,18 +1987,15 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_nhan_nhiem_vu') {
     return {
       id: 'menu_nhan_nhiem_vu',
-      title: { vi: '📜 Nhiệm Vụ Đường', en: '📜 Sect Quest Hall' },
-      description: {
-        vi: 'Bảng gỗ nhiệm vụ tông môn chứa nhiều ủy thác khác nhau giúp tích lũy cống hiến môn phái.',
-        en: 'The sect bulletin board displays various requests to accumulate contribution.'
-      },
+      title: { vi: '📜 Nhiệm Vụ Đường', en: '📜 Sect Quest Hall'},
+      description: { vi: 'Bảng gỗ nhiệm vụ tông môn chứa nhiều ủy thác khác nhau giúp tích lũy cống hiến môn phái.', en: 'The sect bulletin board displays various requests to accumulate contribution.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'goto_menu_quest_lao_vu', text: { vi: '🧹 Lao dịch tông môn (An toàn, tẻ nhạt)', en: '🧹 Sect Chores (Safe, tedious)' }, effects: {} },
         { id: 'goto_menu_quest_chien_dau', text: { vi: '⚔️ Nhiệm vụ chiến đấu (Nguy hiểm, thưởng cao)', en: '⚔️ Combat Missions (Dangerous, high rewards)' }, effects: {} },
-        { id: 'goto_menu_quest_bi_mat', text: { vi: '🕵️ Nhiệm vụ bí mật từ Trưởng Lão', en: '🕵️ Secret Elder Request' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'goto_menu_quest_bi_mat', text: { vi: '🕵️ Nhiệm vụ bí mật từ Trưởng Lão', en: '🕵️ Secret Elder Request'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2085,16 +2035,16 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       };
     });
 
-    choices.push({ id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} });
+    choices.push({ id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} });
 
     return {
       id: menuId,
       title: isChores 
-        ? { vi: '🧹 Nhiệm Vụ Lao Dịch', en: '🧹 Sect Chores' }
-        : { vi: '⚔️ Nhiệm Vụ Chiến Đấu', en: '⚔️ Combat Missions' },
+        ? { vi: '🧹 Nhiệm Vụ Lao Dịch', en: '🧹 Sect Chores'}
+        : { vi: '⚔️ Nhiệm Vụ Chiến Đấu', en: '⚔️ Combat Missions'},
       description: isChores
-        ? { vi: 'Nhiệm vụ tay chân giúp rèn luyện cơ thể một cách vững chãi.', en: 'Manual labor that trains the physical body steadily.' }
-        : { vi: 'Chiến đấu bảo vệ tài sản tông môn và trừ yêu diệt ma.', en: 'Fight against demons and guard sect assets.' },
+        ? { vi: 'Nhiệm vụ tay chân giúp rèn luyện cơ thể một cách vững chãi.', en: 'Manual labor that trains the physical body steadily.'}
+        : { vi: 'Chiến đấu bảo vệ tài sản tông môn và trừ yêu diệt ma.', en: 'Fight against demons and guard sect assets.'},
       minRealm: 'Mortal',
       weight: 1,
       choices
@@ -2104,18 +2054,15 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_quest_bi_mat') {
     return {
       id: 'menu_quest_bi_mat',
-      title: { vi: '🕵️ Nhiệm Vụ Mật Của Trưởng Lão', en: '🕵️ Secret Elder Request' },
-      description: {
-        vi: 'Trưởng lão giao nhiệm vụ riêng: Điều tra một đệ tử ngoại môn có biểu hiện khả nghi buôn lậu đan dược tông môn.',
-        en: 'The Elder gives you a secret request: Investigate an outer disciple suspected of smuggling sect pills.'
-      },
+      title: { vi: '🕵️ Nhiệm Vụ Mật Của Trưởng Lão', en: '🕵️ Secret Elder Request'},
+      description: { vi: 'Trưởng lão giao nhiệm vụ riêng: Điều tra một đệ tử ngoại môn có biểu hiện khả nghi buôn lậu đan dược tông môn.', en: 'The Elder gives you a secret request: Investigate an outer disciple suspected of smuggling sect pills.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_quest_bi_mat_trung_thanh', text: { vi: '⚖️ Báo cáo trung thực tông môn (+30 Cống Hiến, +1 Đạo Tâm)', en: '⚖️ Honestly report it (+30 Contrib, +1 Dao Heart)' }, effects: {} },
         { id: 'action_quest_bi_mat_nhan_hoi_lo', text: { vi: '💰 Nhận hối lộ của đệ tử buôn lậu (+100 Linh Thạch, -4 Nghiệp Lực)', en: '💰 Accept smuggler\'s bribe (+100 Spirit Stones, -4 Karma)' }, effects: {} },
         { id: 'action_quest_bi_mat_bo_mac', text: { vi: '🙈 Bỏ mặc không quan tâm (+2 Vận may, -1 Đạo tâm)', en: '🙈 Ignore the issue (+2 Luck, -1 Dao Heart)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2123,7 +2070,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_lich_luyen') {
     return {
       id: 'menu_lich_luyen',
-      title: { vi: '🗺️ Xuống Núi Lịch Luyện', en: '🗺️ Mountain Travel & Adventure' },
+      title: { vi: '🗺️ Xuống Núi Lịch Luyện', en: '🗺️ Mountain Travel & Adventure'},
       description: {
         vi: 'Rời tông môn tầm bảo, đi săn yêu thú hoặc giao thương tại thành thị tu chân.',
         en: 'Leave the sect gates to search for treasures, hunt monsters, or trade in cultivator towns.'
@@ -2133,8 +2080,8 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       choices: [
         { id: 'goto_menu_lich_luyen_nui_rung', text: { vi: '⛰️ Vào Vạn Thú Sơn Mạch (Săn bắn, hái thuốc)', en: '⛰️ Enter Beast Mountain Range (Hunting, herbs)' }, effects: {} },
         { id: 'goto_menu_lich_luyen_thanh_thi', text: { vi: '🏮 Đến Thành Thị Tu Chân (Giao thương, đấu giá)', en: '🏮 Visit Cultivator Town (Trade, auction)' }, effects: {} },
-        { id: 'goto_menu_lich_luyen_di_xa', text: { vi: '🐪 Đi viễn du phương xa (Theo thương đoàn)', en: '🐪 Long distance travel (With merchant caravan)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'goto_menu_lich_luyen_di_xa', text: { vi: '🐪 Đi viễn du phương xa (Theo thương đoàn)', en: '🐪 Long distance travel (With merchant caravan)'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2142,18 +2089,15 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_lich_luyen_nui_rung') {
     return {
       id: 'menu_lich_luyen_nui_rung',
-      title: { vi: '⛰️ Vạn Thú Sơn Mạch', en: '⛰️ Beast Mountain Range' },
-      description: {
-        vi: 'Sơn mạch trùng điệp đầy linh thảo hoang dã nhưng cũng đầy rẫy thú dữ săn mồi.',
-        en: 'Endless mountain ranges filled with wild spiritual herbs but also fearsome predators.'
-      },
+      title: { vi: '⛰️ Vạn Thú Sơn Mạch', en: '⛰️ Beast Mountain Range'},
+      description: { vi: 'Sơn mạch trùng điệp đầy linh thảo hoang dã nhưng cũng đầy rẫy thú dữ săn mồi.', en: 'Endless mountain ranges filled with wild spiritual herbs but also fearsome predators.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
-        { id: 'action_hunt_herbs', text: { vi: '🌿 Tìm linh dược (Có tỷ lệ nhận Linh Thảo/Tuyết Liên)', en: '🌿 Search for herbs (Chance to gain Spirit Herbs/Tuyết Liên)' }, effects: {} },
-        { id: 'action_hunt_beasts', text: { vi: '🐆 Săn yêu thú (Có tỷ lệ nhận Linh Quặng/Thần cốt)', en: '🐆 Hunt beasts (Chance to gain Spirit Ore/Beast Shard)' }, effects: {} },
-        { id: 'action_find_ancient_cave', text: { vi: '🕸️ Khám phá Động Phủ cổ tu sĩ (Cực kỳ may rủi)', en: '🕸️ Discover Ancient Cave Dwelling (High risk/reward)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_hunt_herbs', text: { vi: '🌿 Tìm linh dược (Có tỷ lệ nhận Linh Thảo/Tuyết Liên)', en: '🌿 Search for herbs (Chance to gain Spirit Herbs/Tuyết Liên)'}, effects: {} },
+        { id: 'action_hunt_beasts', text: { vi: '🐆 Săn yêu thú (Có tỷ lệ nhận Linh Quặng/Thần cốt)', en: '🐆 Hunt beasts (Chance to gain Spirit Ore/Beast Shard)'}, effects: {} },
+        { id: 'action_find_ancient_cave', text: { vi: '🕸️ Khám phá Động Phủ cổ tu sĩ (Cực kỳ may rủi)', en: '🕸️ Discover Ancient Cave Dwelling (High risk/reward)'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2161,17 +2105,14 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_lich_luyen_thanh_thi') {
     return {
       id: 'menu_lich_luyen_thanh_thi',
-      title: { vi: '🏮 Thành Thị Tu Chân', en: '🏮 Cultivator Town' },
-      description: {
-        vi: 'Chợ giao dịch sầm uất. Nơi tu sĩ tụ tập trao đổi tin tức và vật phẩm.',
-        en: 'Busy trading market where cultivators gather to trade news and items.'
-      },
+      title: { vi: '🏮 Thành Thị Tu Chân', en: '🏮 Cultivator Town'},
+      description: { vi: 'Chợ giao dịch sầm uất. Nơi tu sĩ tụ tập trao đổi tin tức và vật phẩm.', en: 'Busy trading market where cultivators gather to trade news and items.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
-        { id: 'action_town_auction', text: { vi: '🏛️ Vào Đấu Giá Hội (Mua Đan dược bằng Linh thạch)', en: '🏛️ Enter Auction Hall (Buy Elixirs with Gold)' }, effects: {} },
-        { id: 'action_town_black_market', text: { vi: '👁️ Giao dịch Chợ Đen (Mua bán nguyên liệu thô)', en: '👁️ Black Market Trade (Buy/sell raw materials)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_town_auction', text: { vi: '🏛️ Vào Đấu Giá Hội (Mua Đan dược bằng Linh thạch)', en: '🏛️ Enter Auction Hall (Buy Elixirs with Gold)'}, effects: {} },
+        { id: 'action_town_black_market', text: { vi: '👁️ Giao dịch Chợ Đen (Mua bán nguyên liệu thô)', en: '👁️ Black Market Trade (Buy/sell raw materials)'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2179,16 +2120,13 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_lich_luyen_di_xa') {
     return {
       id: 'menu_lich_luyen_di_xa',
-      title: { vi: '🐪 Đi Viễn Du Phương Xa', en: '🐪 Long Distance Travel' },
-      description: {
-        vi: 'Vượt vạn dặm núi rừng để sang quốc gia tu chân khác. Chuyến đi tốn nhiều thời gian và tiền bạc.',
-        en: 'Cross ten thousand miles of wilderness to another cultivation empire. Takes time and gold.'
-      },
+      title: { vi: '🐪 Đi Viễn Du Phương Xa', en: '🐪 Long Distance Travel'},
+      description: { vi: 'Vượt vạn dặm núi rừng để sang quốc gia tu chân khác. Chuyến đi tốn nhiều thời gian và tiền bạc.', en: 'Cross ten thousand miles of wilderness to another cultivation empire. Takes time and gold.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
         { id: 'action_travel_caravan', text: { vi: '🐫 Đi theo thương đoàn (Tốn 10 Linh thạch, 6 tháng, Thưởng: +3 Ngộ tính, +3 Vận may)', en: '🐫 Go with caravan (Costs 10 Gold, 6 months, Reward: +3 Comp, +3 Luck)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2198,7 +2136,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
     const isSmithEligible = state.stats.health >= 15 || state.sect === 'Kiếm Tông';
     return {
       id: 'menu_kiem_tai_nguyen',
-      title: { vi: '💎 Kiếm Thêm Tài Nguyên', en: '💎 Earn Resources' },
+      title: { vi: '💎 Kiếm Thêm Tài Nguyên', en: '💎 Earn Resources'},
       description: {
         vi: 'Lao động làm thuê đan dược, rèn khí cụ hoặc đấu pháp cá cược để trang trải cuộc sống.',
         en: 'Work making elixirs, forging tools, or betting on fights to make a living.'
@@ -2210,7 +2148,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
         { id: 'action_work_blacksmith', text: { vi: `⚒️ Rèn đúc pháp khí thuê (+20 Linh thạch) ${isSmithEligible ? '✓' : '❌ (Cần Sức Khỏe >= 15)'}`, en: `⚒️ Forging work (+20 Gold) ${isSmithEligible ? '✓' : '❌ (Requires HP >= 15)'}` }, effects: {} },
         { id: 'action_farm_herbs', text: { vi: '🌾 Thuê linh điền trồng Linh thảo (Tốn 5 Linh thạch, thu hoạch 5x Linh thảo sau 6 tháng)', en: '🌾 Lease spirit land (Costs 5 Gold, harvest 5x Herbs after 6 months)' }, effects: {} },
         { id: 'action_bet_arena', text: { vi: '🎲 Đấu pháp cá cược (Tốn 10 Linh thạch, 50% thắng nhận +30 Linh thạch, 50% thua mất sạch)', en: '🎲 Bet on arena fight (Costs 10 Gold, 50% win +30 Gold, 50% lose)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2218,7 +2156,7 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_quan_he_xa_hoi') {
     return {
       id: 'menu_quan_he_xa_hoi',
-      title: { vi: '🤝 Nhân Mạch Quan Hệ', en: '🤝 Social Networks' },
+      title: { vi: '🤝 Nhân Mạch Quan Hệ', en: '🤝 Social Networks'},
       description: {
         vi: 'Kết hảo hữu, chọn phe cánh trong nội bộ môn phái để thuận lợi tu hành.',
         en: 'Make friends and join factions within the sect to facilitate cultivation.'
@@ -2228,8 +2166,8 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       choices: [
         { id: 'action_social_gift', text: { vi: '🎁 Tặng lễ kết giao đồng môn (Tốn 15 Linh thạch, Thưởng: +10 Cống Hiến)', en: '🎁 Give gift to fellow disciples (Costs 15 Gold, Reward: +10 Contrib)' }, effects: {} },
         { id: 'action_social_faction_li', text: { vi: '⚖️ Theo phe Trưởng Lão Vương (Tốn 10 Linh thạch, Thưởng: +10 Cống Hiến, +5 Đạo tâm)', en: '⚖️ Join Elder Wang\'s faction (Costs 10 Gold, Reward: +10 Contrib, +5 Dao Heart)' }, effects: {} },
-        { id: 'action_social_dao_companion', text: { vi: '🍶 Uống rượu giao lưu tìm Đạo Lữ (Thưởng: +5 Vận May)', en: '🍶 Drink and search for Dao Companion (Reward: +5 Luck)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_social_dao_companion', text: { vi: '🍶 Uống rượu giao lưu tìm Đạo Lữ (Thưởng: +5 Vận May)', en: '🍶 Drink and search for Dao Companion (Reward: +5 Luck)'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2237,17 +2175,14 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   if (menuId === 'menu_hoat_dong_tong_mon') {
     return {
       id: 'menu_hoat_dong_tong_mon',
-      title: { vi: '⚔️ Hoạt Động Tông Môn', en: '⚔️ Sect Events' },
-      description: {
-        vi: 'Đại hội so tài hoặc thám hiểm bí cảnh do tông môn tổ chức hàng năm.',
-        en: 'Arena tournament or secret realm expedition organized by the sect.'
-      },
+      title: { vi: '⚔️ Hoạt Động Tông Môn', en: '⚔️ Sect Events'},
+      description: { vi: 'Đại hội so tài hoặc thám hiểm bí cảnh do tông môn tổ chức hàng năm.', en: 'Arena tournament or secret realm expedition organized by the sect.'},
       minRealm: 'Mortal',
       weight: 1,
       choices: [
-        { id: 'action_event_tournament', text: { vi: '🏟️ Đăng ký tham gia Ngoại Môn Đại Bỉ', en: '🏟️ Register for Outer Sect Tournament' }, effects: {} },
-        { id: 'action_event_secret_realm', text: { vi: '🌀 Tế đàn Cổ Ma Bí Cảnh (Yêu cầu Luyện Khí tầng 6 trở lên)', en: '🌀 Ancient Demon Secret Realm (Requires Qi Level 6+)' }, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back' }, effects: {} }
+        { id: 'action_event_tournament', text: { vi: '🏟️ Đăng ký tham gia Ngoại Môn Đại Bỉ', en: '🏟️ Register for Outer Sect Tournament'}, effects: {} },
+        { id: 'action_event_secret_realm', text: { vi: '🌀 Tế đàn Cổ Ma Bí Cảnh (Yêu cầu Luyện Khí tầng 6 trở lên)', en: '🌀 Ancient Demon Secret Realm (Requires Qi Level 6+)'}, effects: {} },
+        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2273,7 +2208,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     let tempLogs: LogEntry[] = [];
     let alive = true;
     let deathCause: LocalizedText | undefined;
-    let lastMessage: LocalizedText = { vi: '', en: '' };
+    let lastMessage: LocalizedText = { vi: '', en: ''};
 
     if (choiceId === 'action_punishment_labor') {
       nextStats.health = Math.max(1, nextStats.health - 15);
@@ -2286,10 +2221,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           en: `Hard labor punishment: -15 HP, aged +1 year.`
         }
       });
-      lastMessage = {
-        vi: `Bạn chấp nhận lao dịch khổ sai để chuộc tội.`,
-        en: `You accepted hard labor to redeem yourself.`
-      };
+      lastMessage = { vi: `Bạn chấp nhận lao dịch khổ sai để chuộc tội.`, en: `You accepted hard labor to redeem yourself.`};
     } else if (choiceId === 'action_punishment_fine') {
       const stones = nextSpiritStones;
       const contribution = nextSectContribution;
@@ -2298,15 +2230,9 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         tempLogs.push({
           type: 'info',
           age: state.age,
-          message: {
-            vi: `Nộp phạt tiền tài: Khấu trừ 100 Linh Thạch.`,
-            en: `Paid fine: Deducted 100 Spirit Stones.`
-          }
+          message: { vi: `Nộp phạt tiền tài: Khấu trừ 100 Linh Thạch.`, en: `Paid fine: Deducted 100 Spirit Stones.`}
         });
-        lastMessage = {
-          vi: `Bạn nộp phạt 100 Linh Thạch để giải quyết vi phạm.`,
-          en: `You paid 100 Spirit Stones to settle the violation.`
-        };
+        lastMessage = { vi: `Bạn nộp phạt 100 Linh Thạch để giải quyết vi phạm.`, en: `You paid 100 Spirit Stones to settle the violation.`};
       } else {
         const remainingNeeded = 100 - stones;
         nextSpiritStones = 0;
@@ -2315,15 +2241,10 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           tempLogs.push({
             type: 'info',
             age: state.age,
-            message: {
-              vi: `Nộp phạt tiền tài: Khấu trừ hết ${stones} Linh Thạch đang có và bù thêm ${remainingNeeded} cống hiến tông môn.`,
-              en: `Paid fine: Deducted all ${stones} Spirit Stones and compensated with ${remainingNeeded} sect contribution.`
+            message: { vi: `Nộp phạt tiền tài: Khấu trừ hết ${stones} Linh Thạch đang có và bù thêm ${remainingNeeded} cống hiến tông môn.`, en: `Paid fine: Deducted all ${stones} Spirit Stones and compensated with ${remainingNeeded} sect contribution.`
             }
           });
-          lastMessage = {
-            vi: `Bù trừ linh thạch và cống hiến tông môn để nộp phạt.`,
-            en: `Compensated with spirit stones and sect contribution to pay the fine.`
-          };
+          lastMessage = { vi: `Bù trừ linh thạch và cống hiến tông môn để nộp phạt.`, en: `Compensated with spirit stones and sect contribution to pay the fine.`};
         } else {
           nextSectContribution = 0;
           // Forced hard labor penalty
@@ -2354,10 +2275,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           en: `Law lashes punishment: -2.0 Cultivation, -5 Dao Heart.`
         }
       });
-      lastMessage = {
-        vi: `Chịu phạt roi pháp luật tại Chấp Pháp Đường.`,
-        en: `Suffered law lashes at the Law Enforcement Hall.`
-      };
+      lastMessage = { vi: `Chịu phạt roi pháp luật tại Chấp Pháp Đường.`, en: `Suffered law lashes at the Law Enforcement Hall.`};
     }
 
     if (nextAge >= nextStats.lifespan) {
@@ -2375,11 +2293,11 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       type: 'choice',
       age: state.age,
       eventTitle: state.currentEvent.title,
-      choiceText: state.currentEvent.choices.find(c => c.id === choiceId)?.text || { vi: '', en: '' },
+      choiceText: state.currentEvent.choices.find(c => c.id === choiceId)?.text || { vi: '', en: ''},
       message: renderLocalizedTemplate(defaultMessages.choiceProgress, {
         age: state.age,
         event: state.currentEvent.title,
-        choice: state.currentEvent.choices.find(c => c.id === choiceId)?.text || { vi: '', en: '' }
+        choice: state.currentEvent.choices.find(c => c.id === choiceId)?.text || { vi: '', en: ''}
       })
     };
 
@@ -2393,7 +2311,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         stats: nextStats,
         realm: newRealm,
         currentEvent: null,
-        lastMessage: deathCause ?? { vi: 'Tịch Diệt', en: 'Deceased' },
+        lastMessage: deathCause ?? { vi: 'Tịch Diệt', en: 'Deceased'},
         log: newLog,
         deathCause,
         isTicking: false,
@@ -2494,9 +2412,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     tempLogs.push({
       type: 'item_gain',
       age: state.age,
-      message: {
-        vi: `Nhận phúc lợi nhập môn: +${startingStones} Hạ Phẩm Linh Thạch.`,
-        en: `Received entry welfare: +${startingStones} Spirit Stones.`
+      message: { vi: `Nhận phúc lợi nhập môn: +${startingStones} Hạ Phẩm Linh Thạch.`, en: `Received entry welfare: +${startingStones} Spirit Stones.`
       }
     });
 
@@ -2559,7 +2475,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       inventory: nextInventory,
       log: [...state.log, ...tempLogs],
       currentEvent: getMenuEvent('menu_monthly_plan', { ...state, sectContribution: nextSectContribution, spiritStones: nextSpiritStones, inventory: nextInventory }, language),
-      lastMessage: { vi: 'Rút lui đại hội', en: 'Withdrew from tournament' }
+      lastMessage: { vi: 'Rút lui đại hội', en: 'Withdrew from tournament'}
     };
   }
 
@@ -2604,14 +2520,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       let nextIsTicking = false;
       let durationMonths = 1;
       let logTitle = state.currentEvent.title;
-      let choiceText: TextResource = { vi: 'Hành động', en: 'Action' };
+      let choiceText: TextResource = { vi: 'Hành động', en: 'Action'};
       
       if (choiceId === 'action_tinh_tu_binh_thuong') {
         const mult = getCultivationGainMultiplier(state);
         const gain = (0.3 + (nextStats.comprehension * 0.05)) * mult;
         nextStats.cultivation = Math.round((nextStats.cultivation + gain) * 100) / 100;
         nextStats.health = Math.min(100, nextStats.health + 2);
-        choiceText = { vi: 'Tĩnh tu thường', en: 'Normal Meditation' };
+        choiceText = { vi: 'Tĩnh tu thường', en: 'Normal Meditation'};
         tempLogs.push({
           type: 'info',
           message: {
@@ -2639,7 +2555,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         const mult = getCultivationGainMultiplier(state);
         const gain = (0.8 + (nextStats.comprehension * 0.05)) * mult;
         nextStats.cultivation = Math.round((nextStats.cultivation + gain) * 100) / 100;
-        choiceText = { vi: 'Đốt tài nguyên ít', en: 'Low-cost resource cultivation' };
+        choiceText = { vi: 'Đốt tài nguyên ít', en: 'Low-cost resource cultivation'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Đốt 5 Linh Thạch luyện khí: Tu vi +${Number(gain.toFixed(2))}.`, en: `Spent 5 Stones: Cultivation +${Number(gain.toFixed(2))}.` }
@@ -2651,7 +2567,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         const mult = getCultivationGainMultiplier(state);
         const gain = (2.0 + (nextStats.comprehension * 0.05)) * mult;
         nextStats.cultivation = Math.round((nextStats.cultivation + gain) * 100) / 100;
-        choiceText = { vi: 'Đốt tài nguyên vừa', en: 'Moderate-cost resource cultivation' };
+        choiceText = { vi: 'Đốt tài nguyên vừa', en: 'Moderate-cost resource cultivation'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Đốt 15 Linh Thạch luyện khí: Tu vi +${Number(gain.toFixed(2))}.`, en: `Spent 15 Stones: Cultivation +${Number(gain.toFixed(2))}.` }
@@ -2672,7 +2588,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         const mult = getCultivationGainMultiplier(state);
         const gain = (5.0 + (nextStats.comprehension * 0.05)) * mult;
         nextStats.cultivation = Math.round((nextStats.cultivation + gain) * 100) / 100;
-        choiceText = { vi: 'Đốt lực lượng tối đa', en: 'All-out resource cultivation' };
+        choiceText = { vi: 'Đốt lực lượng tối đa', en: 'All-out resource cultivation'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Đốt 30 Linh Thạch và 1 Huyền Nguyên Đan: Tu vi +${Number(gain.toFixed(2))}.`, en: `Spent 30 Stones & 1 Pill: Cultivation +${Number(gain.toFixed(2))}.` }
@@ -2680,25 +2596,25 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       }
       else if (choiceId === 'action_nghien_cuu_kiem') {
         nextStats.comprehension += 1;
-        choiceText = { vi: 'Tham ngộ kiếm quyết', en: 'Study Sword Secrets' };
+        choiceText = { vi: 'Tham ngộ kiếm quyết', en: 'Study Sword Secrets'};
         tempLogs.push({
           type: 'info',
-          message: { vi: `Nghiên cứu kiếm quyết tinh túy: Ngộ Tính +1.`, en: `Studied sword secrets: Comprehension +1.` }
+          message: { vi: `Nghiên cứu kiếm quyết tinh túy: Ngộ Tính +1.`, en: `Studied sword secrets: Comprehension +1.`}
         });
       }
       else if (choiceId === 'action_nghien_cuu_tam_phap') {
         nextStats.daoHeart = Math.min(100, nextStats.daoHeart + 2);
-        choiceText = { vi: 'Tĩnh tâm tâm pháp', en: 'Study Mind Manuals' };
+        choiceText = { vi: 'Tĩnh tâm tâm pháp', en: 'Study Mind Manuals'};
         tempLogs.push({
           type: 'info',
-          message: { vi: `Tĩnh tâm nghiên cứu đạo thư: Đạo Tâm +2.`, en: `Meditated on Dao scriptures: Dao Heart +2.` }
+          message: { vi: `Tĩnh tâm nghiên cứu đạo thư: Đạo Tâm +2.`, en: `Meditated on Dao scriptures: Dao Heart +2.`}
         });
       }
       else if (choiceId === 'action_work_alchemy') {
         const isEligible = nextStats.comprehension >= 10 || state.sect === 'Đan Tông';
         const coins = isEligible ? 20 : 2;
         nextSpiritStones += coins;
-        choiceText = { vi: 'Luyện đan thuê', en: 'Alchemy Work' };
+        choiceText = { vi: 'Luyện đan thuê', en: 'Alchemy Work'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Lao động luyện đan thuê cho hiệu thuốc: Nhận +${coins} Linh Thạch.`, en: `Refined pills for medical shop: Received +${coins} Spirit Stones.` }
@@ -2708,7 +2624,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         const isEligible = nextStats.health >= 15 || state.sect === 'Kiếm Tông';
         const coins = isEligible ? 20 : 2;
         nextSpiritStones += coins;
-        choiceText = { vi: 'Rèn đúc thuê', en: 'Forging Work' };
+        choiceText = { vi: 'Rèn đúc thuê', en: 'Forging Work'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Rèn đúc vũ khí pháp khí thuê cho thợ rèn: Nhận +${coins} Linh Thạch.`, en: `Forged tools for blacksmith: Received +${coins} Spirit Stones.` }
@@ -2725,7 +2641,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         };
         nextIsTicking = true;
         durationMonths = 0;
-        choiceText = { vi: 'Thuê ruộng trồng Linh thảo', en: 'Leased spirit farm' };
+        choiceText = { vi: 'Thuê ruộng trồng Linh thảo', en: 'Leased spirit farm'};
       }
       else if (choiceId === 'action_bet_arena') {
         if (nextSpiritStones < 10) return state;
@@ -2735,24 +2651,24 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           nextSpiritStones += 30;
           tempLogs.push({
             type: 'info',
-            message: { vi: `Đặt cược trận đấu pháp tại võ đài: Thắng cược! Nhận +30 Linh thạch.`, en: `Placed bet at arena: Won bet! Received +30 Spirit Stones.` }
+            message: { vi: `Đặt cược trận đấu pháp tại võ đài: Thắng cược! Nhận +30 Linh thạch.`, en: `Placed bet at arena: Won bet! Received +30 Spirit Stones.`}
           });
         } else {
           tempLogs.push({
             type: 'info',
-            message: { vi: `Đặt cược trận đấu pháp tại võ đài: Thua cuộc! Mất trắng 10 Linh thạch.`, en: `Placed bet at arena: Lost bet! Lost 10 Spirit Stones.` }
+            message: { vi: `Đặt cược trận đấu pháp tại võ đài: Thua cuộc! Mất trắng 10 Linh thạch.`, en: `Placed bet at arena: Lost bet! Lost 10 Spirit Stones.`}
           });
         }
-        choiceText = { vi: 'Đấu pháp cá cược', en: 'Bet on arena fight' };
+        choiceText = { vi: 'Đấu pháp cá cược', en: 'Bet on arena fight'};
       }
       else if (choiceId === 'action_social_gift') {
         if (nextSpiritStones < 15) return state;
         nextSpiritStones -= 15;
         nextSectContribution += 10;
-        choiceText = { vi: 'Tặng lễ kết giao', en: 'Gave social gifts' };
+        choiceText = { vi: 'Tặng lễ kết giao', en: 'Gave social gifts'};
         tempLogs.push({
           type: 'info',
-          message: { vi: `Tặng quà linh vật kết hảo hữu với đồng môn: Cống hiến tông môn +10.`, en: `Gave gifts to fellow disciples: Sect Contribution +10.` }
+          message: { vi: `Tặng quà linh vật kết hảo hữu với đồng môn: Cống hiến tông môn +10.`, en: `Gave gifts to fellow disciples: Sect Contribution +10.`}
         });
       }
       else if (choiceId === 'action_social_faction_li') {
@@ -2760,7 +2676,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         nextSpiritStones -= 10;
         nextSectContribution += 10;
         nextStats.daoHeart = Math.min(100, nextStats.daoHeart + 5);
-        choiceText = { vi: 'Bái phái theo phe Vương', en: 'Joined Wang\'s faction' };
+        choiceText = { vi: 'Bái phái theo phe Vương', en: 'Joined Wang\'s faction'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Dâng lễ gia nhập phe cánh Trưởng Lão Vương: Cống hiến +10, Đạo Tâm +5.`, en: `Joined Elder Wang's faction: Sect Contribution +10, Dao Heart +5.` }
@@ -2768,10 +2684,10 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       }
       else if (choiceId === 'action_social_dao_companion') {
         nextStats.luck += 5;
-        choiceText = { vi: 'Uống rượu giao lưu tìm Đạo lữ', en: 'Drink and find Dao Companion' };
+        choiceText = { vi: 'Uống rượu giao lưu tìm Đạo lữ', en: 'Drink and find Dao Companion'};
         tempLogs.push({
           type: 'info',
-          message: { vi: `Đàm đạo uống rượu cùng hồng nhan đạo hữu: Vận may +5.`, en: `Drank with potential Dao Companions: Luck +5.` }
+          message: { vi: `Đàm đạo uống rượu cùng hồng nhan đạo hữu: Vận may +5.`, en: `Drank with potential Dao Companions: Luck +5.`}
         });
       }
       else if (choiceId.startsWith('action_quest_') && !choiceId.startsWith('action_quest_bi_mat_')) {
@@ -2791,7 +2707,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       else if (choiceId === 'action_quest_bi_mat_trung_thanh') {
         nextSectContribution += 30;
         nextStats.daoHeart = Math.min(100, nextStats.daoHeart + 2);
-        choiceText = { vi: 'Báo cáo trung thực', en: 'Reported Smuggling' };
+        choiceText = { vi: 'Báo cáo trung thực', en: 'Reported Smuggling'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Báo cáo trung thực đệ tử buôn lậu cho chấp pháp trưởng lão: Cống hiến +30, Đạo Tâm +2.`, en: `Reported smuggler to Law Enforcement: Sect Contribution +30, Dao Heart +2.` }
@@ -2800,7 +2716,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       else if (choiceId === 'action_quest_bi_mat_nhan_hoi_lo') {
         nextSpiritStones += 100;
         nextStats.karma -= 4;
-        choiceText = { vi: 'Nhận hối lộ đệ tử khả nghi', en: 'Accepted Bribe' };
+        choiceText = { vi: 'Nhận hối lộ đệ tử khả nghi', en: 'Accepted Bribe'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Nhận 100 Linh Thạch hối lộ để làm ngơ cho vụ buôn lậu: Linh Thạch +100, Nghiệp Lực -4.`, en: `Accepted 100 Spirit Stones bribe to turn a blind eye: Gold +100, Karma -4.` }
@@ -2809,14 +2725,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       else if (choiceId === 'action_quest_bi_mat_bo_mac') {
         nextStats.luck += 2;
         nextStats.daoHeart = Math.max(0, nextStats.daoHeart - 1);
-        choiceText = { vi: 'Làm ngơ bỏ mặc', en: 'Ignored Elder Request' };
+        choiceText = { vi: 'Làm ngơ bỏ mặc', en: 'Ignored Elder Request'};
         tempLogs.push({
           type: 'info',
           message: { vi: `Làm ngơ không can thiệp, tập trung tu luyện: Vận may +2, Đạo tâm -1.`, en: `Ignored request and focused on meditation: Luck +2, Dao Heart -1.` }
         });
       }
       else if (choiceId === 'action_hunt_herbs') {
-        choiceText = { vi: 'Hái linh thảo dã ngoại', en: 'Harvest Herbs' };
+        choiceText = { vi: 'Hái linh thảo dã ngoại', en: 'Harvest Herbs'};
         const roll = Math.random();
         if (roll < 0.3) {
           const isLien = Math.random() < 0.2;
@@ -2828,16 +2744,13 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         } else if (roll < 0.7) {
           const combatEvent: EventDefinition = {
             id: 'combat_encounter_beast_herb',
-            title: { vi: '🌳 Yêu Thú Linh Thảo', en: '🌳 Herb Guardian Beast' },
-            description: {
-              vi: 'Một con Dã Linh Hổ hung tợn đang nhe nanh bảo vệ cụm Linh Thảo ở gốc sồi cổ thụ. Bạn có muốn giao chiến để đoạt lấy?',
-              en: 'A ferocious Spirit Tiger is snarling, guarding the Spirit Herbs under the ancient oak tree. Will you fight to claim them?'
-            },
+            title: { vi: '🌳 Yêu Thú Linh Thảo', en: '🌳 Herb Guardian Beast'},
+            description: { vi: 'Một con Dã Linh Hổ hung tợn đang nhe nanh bảo vệ cụm Linh Thảo ở gốc sồi cổ thụ. Bạn có muốn giao chiến để đoạt lấy?', en: 'A ferocious Spirit Tiger is snarling, guarding the Spirit Herbs under the ancient oak tree. Will you fight to claim them?'},
             minRealm: 'Mortal',
             weight: 1,
             choices: [
-              { id: 'start_combat_beast_herb', text: { vi: '⚔️ Giao Chiến Đoạt Dược', en: '⚔️ Fight to Claim Herbs' }, effects: {} },
-              { id: 'action_back', text: { vi: '↩️ Bỏ chạy thối lui', en: '↩️ Retreat safely' }, effects: {} }
+              { id: 'start_combat_beast_herb', text: { vi: '⚔️ Giao Chiến Đoạt Dược', en: '⚔️ Fight to Claim Herbs'}, effects: {} },
+              { id: 'action_back', text: { vi: '↩️ Bỏ chạy thối lui', en: '↩️ Retreat safely'}, effects: {} }
             ]
           };
           return {
@@ -2849,17 +2762,17 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         } else {
           tempLogs.push({
             type: 'info',
-            message: { vi: `Bạn lội qua suối sâu sườn đá rừng hoang nhưng không thu hoạch được Linh thảo nào.`, en: `You searched through valleys but found no spiritual herbs.` }
+            message: { vi: `Bạn lội qua suối sâu sườn đá rừng hoang nhưng không thu hoạch được Linh thảo nào.`, en: `You searched through valleys but found no spiritual herbs.`}
           });
         }
       }
       else if (choiceId === 'action_hunt_beasts') {
-        choiceText = { vi: 'Săn dã thú dã ngoại', en: 'Hunt Beasts' };
+        choiceText = { vi: 'Săn dã thú dã ngoại', en: 'Hunt Beasts'};
         const roll = Math.random();
         if (roll < 0.75) {
           const combatEvent: EventDefinition = {
             id: 'combat_encounter_beast_hunt',
-            title: { vi: '🐆 Gặp Yêu Thú', en: '🐆 Beast Encounter' },
+            title: { vi: '🐆 Gặp Yêu Thú', en: '🐆 Beast Encounter'},
             description: {
               vi: 'Một con Lôi Tê yêu thú hung dữ bỗng nhảy ra từ bụi rậm rít gào, lao thẳng về phía bạn!',
               en: 'A fearsome Thunder Rhino jumps out of the brush growling, charging directly at you!'
@@ -2867,8 +2780,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
             minRealm: 'Mortal',
             weight: 1,
             choices: [
-              { id: 'start_combat_beast_hunt', text: { vi: '⚔️ Quyết Chiến Sinh Tử', en: '⚔️ Fight to the Death' }, effects: {} },
-              { id: 'action_back', text: { vi: '↩️ Trốn chạy lánh xa', en: '↩️ Flee safely' }, effects: {} }
+              { id: 'start_combat_beast_hunt', text: { vi: '⚔️ Quyết Chiến Sinh Tử', en: '⚔️ Fight to the Death'}, effects: {} },
+              { id: 'action_back', text: { vi: '↩️ Trốn chạy lánh xa', en: '↩️ Flee safely'}, effects: {} }
             ]
           };
           return {
@@ -2880,17 +2793,17 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         } else {
           tempLogs.push({
             type: 'info',
-            message: { vi: `Bạn đuổi theo dấu chân Yêu cọp nhưng bị mất dấu trong rừng sâu.`, en: `You tracked a demon tiger but lost its trail in the deep woods.` }
+            message: { vi: `Bạn đuổi theo dấu chân Yêu cọp nhưng bị mất dấu trong rừng sâu.`, en: `You tracked a demon tiger but lost its trail in the deep woods.`}
           });
         }
       }
       else if (choiceId === 'action_find_ancient_cave') {
-        choiceText = { vi: 'Khám phá Động phủ cổ', en: 'Discover Ancient Cave' };
+        choiceText = { vi: 'Khám phá Động phủ cổ', en: 'Discover Ancient Cave'};
         const roll = Math.random();
         if (roll < 0.5) {
           const combatEvent: EventDefinition = {
             id: 'combat_encounter_demonic',
-            title: { vi: '🔮 Ma Tu Phục Kích', en: '🔮 Demonic Cultivator Ambush' },
+            title: { vi: '🔮 Ma Tu Phục Kích', en: '🔮 Demonic Cultivator Ambush'},
             description: {
               vi: 'Lối vào động phủ sụp đổ bỗng trào ra ma khí cuồn cuộn. Một Ma Tu mặt quỷ rít lên: "Đệ tử danh môn chính phái, nộp mạng!"',
               en: 'Thick demonic aura overflows from the ruined cave. A demonic cultivator shrieks: "Righteous disciple, pay with your life!"'
@@ -2898,8 +2811,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
             minRealm: 'Mortal',
             weight: 1,
             choices: [
-              { id: 'start_combat_demonic', text: { vi: '⚔️ Trảm Sát Ma Tu', en: '⚔️ Fight the Demonic Cultivator' }, effects: {} },
-              { id: 'action_back', text: { vi: '↩️ Rút lui bảo toàn tính mạng', en: '↩️ Flee and escape' }, effects: {} }
+              { id: 'start_combat_demonic', text: { vi: '⚔️ Trảm Sát Ma Tu', en: '⚔️ Fight the Demonic Cultivator'}, effects: {} },
+              { id: 'action_back', text: { vi: '↩️ Rút lui bảo toàn tính mạng', en: '↩️ Flee and escape'}, effects: {} }
             ]
           };
           return {
@@ -2913,19 +2826,19 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           nextStats.comprehension += 2;
           tempLogs.push({
             type: 'technique_breakthrough',
-            message: { vi: `Đại kỳ ngộ! Bạn giải mã thành công trận pháp động phủ cổ sĩ: Ngộ tính +2.`, en: `Great Serendipity! Deciphered ancient cave array: Comprehension +2.` }
+            message: { vi: `Đại kỳ ngộ! Bạn giải mã thành công trận pháp động phủ cổ sĩ: Ngộ tính +2.`, en: `Great Serendipity! Deciphered ancient cave array: Comprehension +2.`}
           });
           tempLogs = [...tempLogs, ...techResult.logs];
         } else {
           nextStats.health = Math.max(1, nextStats.health - 8);
           tempLogs.push({
             type: 'info',
-            message: { vi: `Bẫy rập động phủ phát sinh tự bạo! Bạn bị chấn thương nhẹ (-8 HP).`, en: `Ancient trap detonated! You were injured (-8 HP).` }
+            message: { vi: `Bẫy rập động phủ phát sinh tự bạo! Bạn bị chấn thương nhẹ (-8 HP).`, en: `Ancient trap detonated! You were injured (-8 HP).`}
           });
         }
       }
       else if (choiceId === 'action_town_auction') {
-        choiceText = { vi: 'Vào Đấu giá hội', en: 'Town Auction' };
+        choiceText = { vi: 'Vào Đấu giá hội', en: 'Town Auction'};
         if (nextSpiritStones >= 50) {
           nextSpiritStones -= 50;
           const result = addItem(nextInventory, 'item_tho_nguyen_dan', 1, state.age);
@@ -2934,12 +2847,12 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         } else {
           tempLogs.push({
             type: 'info',
-            message: { vi: `Linh thạch của bạn không đủ tham gia đấu giá Thọ Nguyên Đan (Cần 50 Linh thạch).`, en: `You do not have enough Spirit Stones to bid on Lifespan Pills (Requires 50).` }
+            message: { vi: `Linh thạch của bạn không đủ tham gia đấu giá Thọ Nguyên Đan (Cần 50 Linh thạch).`, en: `You do not have enough Spirit Stones to bid on Lifespan Pills (Requires 50).`}
           });
         }
       }
       else if (choiceId === 'action_town_black_market') {
-        choiceText = { vi: 'Giao thương Chợ đen', en: 'Black Market Trade' };
+        choiceText = { vi: 'Giao thương Chợ đen', en: 'Black Market Trade'};
         if (nextSpiritStones >= 10) {
           nextSpiritStones -= 10;
           const result = addItem(nextInventory, 'item_linh_thao', 2, state.age);
@@ -2948,15 +2861,15 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         } else {
           tempLogs.push({
             type: 'info',
-            message: { vi: `Linh thạch không đủ để mua Linh Thảo thô tại chợ đen (Cần 10 Linh thạch).`, en: `Insufficient Spirit Stones to trade on black market (Requires 10).` }
+            message: { vi: `Linh thạch không đủ để mua Linh Thảo thô tại chợ đen (Cần 10 Linh thạch).`, en: `Insufficient Spirit Stones to trade on black market (Requires 10).`}
           });
         }
       }
       else if (choiceId === 'action_travel_caravan') {
         const caravanQuest: SectQuest = {
           id: 'quest_caravan_travel',
-          title: { vi: 'Theo Thương Đoàn Viễn Hành', en: 'Travel With Caravan' },
-          description: { vi: 'Vượt vạn lý núi tuyết sang vương quốc Đại Chu giao thương.', en: 'Cross snow mountains to trade with the Great Zhou Empire.' },
+          title: { vi: 'Theo Thương Đoàn Viễn Hành', en: 'Travel With Caravan'},
+          description: { vi: 'Vượt vạn lý núi tuyết sang vương quốc Đại Chu giao thương.', en: 'Cross snow mountains to trade with the Great Zhou Empire.'},
           difficulty: 'Hoàng',
           durationMonths: 6,
           minRank: 'ngoại_môn',
@@ -2982,29 +2895,23 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         };
         nextIsTicking = true;
         durationMonths = 0;
-        choiceText = { vi: 'Viễn du Đại Chu', en: 'Travel to Great Zhou' };
+        choiceText = { vi: 'Viễn du Đại Chu', en: 'Travel to Great Zhou'};
       }
       else if (choiceId === 'action_event_tournament') {
         if (state.realm !== 'Qi Refinement' || state.sectRank !== 'ngoại_môn') {
           tempLogs.push({
             type: 'info',
-            message: {
-              vi: 'Ngoại môn đại bỉ chỉ dành cho đệ tử Ngoại Môn cảnh giới Luyện Khí.',
-              en: 'Outer Sect Tournament is only open to Outer Disciples in Qi Refinement.'
-            }
+            message: { vi: 'Ngoại môn đại bỉ chỉ dành cho đệ tử Ngoại Môn cảnh giới Luyện Khí.', en: 'Outer Sect Tournament is only open to Outer Disciples in Qi Refinement.'}
           });
         } else if (state.month !== 12) {
           tempLogs.push({
             type: 'info',
-            message: {
-              vi: 'Ngoại môn đại bỉ chỉ khai mạc vào tháng 12 hàng năm. Hãy tích lũy thọ nguyên và tu vi.',
-              en: 'Outer Sect Tournament only starts in December. Prepare yourself.'
-            }
+            message: { vi: 'Ngoại môn đại bỉ chỉ khai mạc vào tháng 12 hàng năm. Hãy tích lũy thọ nguyên và tu vi.', en: 'Outer Sect Tournament only starts in December. Prepare yourself.'}
           });
         } else {
           const combatEvent: EventDefinition = {
             id: 'combat_encounter_tournament_1',
-            title: { vi: '🏟️ Đại Hội Tỷ Thí Ngoại Môn (Vòng Tứ Kết)', en: '🏟️ Outer Sect Tournament (Quarter-finals)' },
+            title: { vi: '🏟️ Đại Hội Tỷ Thí Ngoại Môn (Vòng Tứ Kết)', en: '🏟️ Outer Sect Tournament (Quarter-finals)'},
             description: {
               vi: 'Đến hẹn lại lên, Đại Hội Tỷ Thí sơn môn khai mở. Vòng đầu tiên: Bạn gặp đối thủ Lâm Phong (Luyện Khí tầng 2). Hãy chứng tỏ thực lực của mình!',
               en: 'The Mount Gates open for the Sect Tournament. Round 1: Opponent is Lâm Phong (Qi Refinement Layer 2). Show your strength!'
@@ -3012,8 +2919,8 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
             minRealm: 'Mortal',
             weight: 1,
             choices: [
-              { id: 'start_combat_tournament_1', text: { vi: '⚔️ Vào Võ Đài Tỷ Thí', en: '⚔️ Step onto the Ring' }, effects: {} },
-              { id: 'action_back', text: { vi: '↩️ Rút lui không tham gia', en: '↩️ Withdraw' }, effects: {} }
+              { id: 'start_combat_tournament_1', text: { vi: '⚔️ Vào Võ Đài Tỷ Thí', en: '⚔️ Step onto the Ring'}, effects: {} },
+              { id: 'action_back', text: { vi: '↩️ Rút lui không tham gia', en: '↩️ Withdraw'}, effects: {} }
             ]
           };
           return {
@@ -3024,7 +2931,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         }
       }
       else if (choiceId === 'action_event_secret_realm') {
-        choiceText = { vi: 'Tiến vào Cổ Ma Bí Cảnh', en: 'Ancient Demon Secret Realm' };
+        choiceText = { vi: 'Tiến vào Cổ Ma Bí Cảnh', en: 'Ancient Demon Secret Realm'};
         if (nextStats.cultivation < 20) {
           tempLogs.push({
             type: 'info',
@@ -3073,7 +2980,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
                 nextStats.cultivation = matching.next_cult;
                  nextRealmOverride = matching.realm_to as Realm;
                  nextSubStageIndexOverride = matching.subStageIndex + 1;
-                choiceText = { vi: 'Dùng đan dược đột phá', en: 'Breakthrough with Pill' };
+                choiceText = { vi: 'Dùng đan dược đột phá', en: 'Breakthrough with Pill'};
                 tempLogs.push({
                   type: 'info',
                   message: { vi: `✨ Hoàn mỹ! Sử dụng đan dược phá vỡ bình cảnh, tu vi chuyển biến cảnh giới mới!`, en: `✨ Perfect! Used pill to break the bottleneck, transitioned to the next realm!` }
@@ -3099,7 +3006,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
               nextStats.cultivation = matching.next_cult;
                  nextRealmOverride = matching.realm_to as Realm;
                  nextSubStageIndexOverride = matching.subStageIndex + 1;
-              choiceText = { vi: 'Thuận Thiên Đột Phá', en: 'Natural Breakthrough' };
+              choiceText = { vi: 'Thuận Thiên Đột Phá', en: 'Natural Breakthrough'};
               tempLogs.push({
                 type: 'info',
                 message: {
@@ -3109,7 +3016,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
               });
             } else {
               nextStats.health = Math.max(1, nextStats.health - 20); // recoil
-              choiceText = { vi: 'Đột phá thất bại', en: 'Breakthrough Failed' };
+              choiceText = { vi: 'Đột phá thất bại', en: 'Breakthrough Failed'};
               tempLogs.push({
                 type: 'info',
                 message: { vi: `🔥 Thất bại! Linh lực bạo động cắn trả, tổn thương kinh mạch (-20 HP). Bình cảnh vẫn chưa thể phá vỡ.`, en: `🔥 Failed! Spiritual backlash damaged meridians (-20 HP). The bottleneck remains.` }
@@ -3119,7 +3026,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         }
       }
       else if (choiceId === 'action_breakthrough_wait' || choiceId === 'action_breakthrough_pill_disabled') {
-        choiceText = { vi: 'Chờ đợi thời cơ', en: 'Wait for opportunity' };
+        choiceText = { vi: 'Chờ đợi thời cơ', en: 'Wait for opportunity'};
         tempLogs.push({
           type: 'info',
           message: { vi: 'Tạm thời áp chế tu vi, chờ cơ hội đột phá tốt hơn.', en: 'Suppressed cultivation, waiting for a better breakthrough opportunity.' }
@@ -3253,7 +3160,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           stats: nextStats,
           realm: newRealm,
           currentEvent: null,
-          lastMessage: deathCause ?? { vi: 'Tịch Diệt', en: 'Deceased' },
+          lastMessage: deathCause ?? { vi: 'Tịch Diệt', en: 'Deceased'},
           log: newLog,
           deathCause,
           isTicking: false,
@@ -3291,10 +3198,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           tempLogs.push({
             type: 'info',
             age: nextAge,
-            message: {
-              vi: '🏟️ Ngoại Môn Đại Bỉ năm nay khai mở! Trống lôi đài vang rền toàn tông môn.',
-              en: '🏟️ The annual Outer Sect Tournament has begun! War drums echo across the whole sect.'
-            }
+            message: { vi: '🏟️ Ngoại Môn Đại Bỉ năm nay khai mở! Trống lôi đài vang rền toàn tông môn.', en: '🏟️ The annual Outer Sect Tournament has begun! War drums echo across the whole sect.'}
           });
         } else {
           const activeConfig = combatConfig;
@@ -3430,7 +3334,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       });
       const bettingEvent: EventDefinition = {
         id: 'tournament_betting',
-        title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament' },
+        title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament'},
         description: {
           vi: 'Bạn ngồi trên khán đài quan sát các cao thủ tỷ thí. Linh khí trên lôi đài giao thoa mãnh liệt, từng thức chiêu đều chứa đựng cơ hội ngộ đạo. Bạn có muốn cá cược không?',
           en: 'You watch from the stands as masters compete. Spiritual energy clashes intensely on the arena – every technique holds enlightenment. Do you want to bet?'
@@ -3462,7 +3366,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       });
       const bettingEvent: EventDefinition = {
         id: 'tournament_betting',
-        title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament' },
+        title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament'},
         description: {
           vi: 'Bạn ngồi trên khán đài quan sát các cao thủ tỷ thí. Linh khí trên lôi đài giao thoa mãnh liệt, từng thức chiêu đều chứa đựng cơ hội ngộ đạo. Bạn có muốn cá cược không?',
           en: 'You watch from the stands as masters compete. Spiritual energy clashes intensely on the arena – every technique holds enlightenment. Do you want to bet?'
@@ -3495,7 +3399,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     if (cult >= 25 && luck >= 10 && roll < 0.5) {
       const briberEvent: EventDefinition = {
         id: 'tournament_bribe_vuong_thieu_gia',
-        title: { vi: '💰 Vương Tư Thông Hối Lộ', en: '💰 Vuong Tu Thong\\\'s Bribe' },
+        title: { vi: '💰 Vương Tư Thông Hối Lộ', en: '💰 Vuong Tu Thong\\\'s Bribe'},
         description: {
           vi: 'Trước khi vào bán kết, Vương Tư Thông – con trai của Vương trưởng lão – chặn đường bạn trong hành lang tối. Hắn ném túi linh thạch xuống sàn nói lạnh lùng: "500 Linh thạch và ta đảm bảo ngươi được chứng nhận Top 10 mà không cần đánh trận chung kết. Còn không... ngươi đấu với Long Ngạo Thiên mà xem!"',
           en: 'Before the semi-finals, Vuong Tu Thong – son of Elder Wang – intercepts you in a dark corridor. He drops a pouch of stones and says coldly: "500 Spirit Stones and I guarantee you a Top 10 certification without fighting the final. Or face Long Ngao Thien... your choice!"'
@@ -3503,7 +3407,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         minRealm: 'Mortal', weight: 0,
         choices: [
           { id: 'action_bribe_accept', text: { vi: '💰 Chấp nhận tiền hối lộ (+500 Linh thạch, +50 Cống hiến, -10 Đạo Tâm)', en: '💰 Accept bribe (+500 Stones, +50 Contribution, -10 Dao Heart)' }, effects: {} },
-          { id: 'action_bribe_refuse', text: { vi: '⚔️ Cự tuyệt! Đối mặt Long Ngạo Thiên trong trận chung kết!', en: '⚔️ Refuse! Face Long Ngao Thien in the final!' }, effects: {} }
+          { id: 'action_bribe_refuse', text: { vi: '⚔️ Cự tuyệt! Đối mặt Long Ngạo Thiên trong trận chung kết!', en: '⚔️ Refuse! Face Long Ngao Thien in the final!'}, effects: {} }
         ]
       };
       tempLogs.push({
@@ -3534,7 +3438,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     // ── Quan sát & cá cược ──
     const bettingEvent: EventDefinition = {
       id: 'tournament_betting',
-      title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament' },
+      title: { vi: '👁️ Quan Sát & Cá Cược Đại Bỉ', en: '👁️ Watch & Bet Tournament'},
       description: {
         vi: 'Bạn ngồi trên khán đài quan sát các cao thủ tỷ thí. Linh khí trên lôi đài giao thoa mãnh liệt, từng thức chiêu đều chứa đựng cơ hội ngộ đạo. Bạn có muốn cá cược không?',
         en: 'You watch from the stands as masters compete. Spiritual energy clashes intensely on the arena – every technique holds enlightenment. Do you want to bet?'
@@ -3556,7 +3460,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     if (choiceId === 'action_bet_tournament_none') {
       tempLogs.push({
         type: 'info',
-        message: { vi: 'Tọa sơn quan hổ đấu: Tham ngộ chiêu thức của các cao thủ trên đài tỷ võ (+3 Ngộ Tính).', en: 'Observed the tournament masters\\\'s techniques without betting (+3 Comprehension).' }
+        message: { vi: 'Tọa sơn quan hổ đấu: Tham ngộ chiêu thức của các cao thủ trên đài tỷ võ (+3 Ngộ Tính).', en: 'Observed the tournament masters\\\'s techniques without betting (+3 Comprehension).'}
       });
     } else {
       const betAmount = choiceId === 'action_bet_tournament_20' ? 20 : 50;
@@ -3564,7 +3468,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         // Not enough stones – just watch
         tempLogs.push({
           type: 'info',
-          message: { vi: 'Không đủ Linh thạch để cá cược! Đành ngồi quan sát tích lũy kinh nghiệm (+3 Ngộ Tính).', en: 'Insufficient Stones to bet! Observed and gained experience instead (+3 Comprehension).' }
+          message: { vi: 'Không đủ Linh thạch để cá cược! Đành ngồi quan sát tích lũy kinh nghiệm (+3 Ngộ Tính).', en: 'Insufficient Stones to bet! Observed and gained experience instead (+3 Comprehension).'}
         });
       } else {
         newSpiritStones -= betAmount;
@@ -3573,12 +3477,12 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           newSpiritStones += betAmount * 2;
           tempLogs.push({
             type: 'info',
-            message: { vi: 'Cá cược ' + betAmount + ' Linh thạch: Thắng cược! Nhận lại +' + (betAmount * 2) + ' Linh thạch (lời ' + betAmount + '). Quan sát đài tỷ võ (+3 Ngộ Tính).', en: 'Bet ' + betAmount + ' Stones: Won! Received +' + (betAmount * 2) + ' Stones (profit ' + betAmount + '). Observed the arena (+3 Comprehension).' }
+            message: { vi: 'Cá cược ' + betAmount + ' Linh thạch: Thắng cược! Nhận lại +' + (betAmount * 2) + ' Linh thạch (lời ' + betAmount + '). Quan sát đài tỷ võ (+3 Ngộ Tính).', en: 'Bet ' + betAmount + ' Stones: Won! Received +' + (betAmount * 2) + ' Stones (profit ' + betAmount + '). Observed the arena (+3 Comprehension).'}
           });
         } else {
           tempLogs.push({
             type: 'info',
-            message: { vi: 'Cá cược ' + betAmount + ' Linh thạch: Thua cược! Mất trắng ' + betAmount + ' Linh thạch. Quan sát đài tỷ võ (+3 Ngộ Tính).', en: 'Bet ' + betAmount + ' Stones: Lost! Lost ' + betAmount + ' Stones. Observed the arena (+3 Comprehension).' }
+            message: { vi: 'Cá cược ' + betAmount + ' Linh thạch: Thua cược! Mất trắng ' + betAmount + ' Linh thạch. Quan sát đài tỷ võ (+3 Ngộ Tính).', en: 'Bet ' + betAmount + ' Stones: Lost! Lost ' + betAmount + ' Stones. Observed the arena (+3 Comprehension).'}
           });
         }
       }
@@ -3612,14 +3516,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     // ── Cự tuyệt → chiến đấu Long Ngạo Thiên ──
     const ngaoThienEvent: EventDefinition = {
       id: 'combat_encounter_ngao_thien',
-      title: { vi: '⚔️ Trận Chung Kết: Long Ngạo Thiên!', en: '⚔️ Championship Final: Long Ngao Thien!' },
+      title: { vi: '⚔️ Trận Chung Kết: Long Ngạo Thiên!', en: '⚔️ Championship Final: Long Ngao Thien!'},
       description: {
         vi: 'Long Ngạo Thiên – Thiên Kiêu đương đại của ngoại môn, Luyện Khí tầng 12 viên mãn. Hắn đứng trên lôi đài áo trắng phất phơ, linh khí bạo động cuộn xoáy. "Ngươi dám đến? Tốt lắm. Ta sẽ không nương tay!"',
         en: 'Long Ngao Thien – the top genius of the outer sect, Qi Refinement Layer 12 Consummate. He stands on the arena in white robes, spiritual energy raging. "You dare come? Very well. I will show no mercy!"'
       },
       minRealm: 'Mortal', weight: 0,
       choices: [
-        { id: 'start_combat_tournament_ngao_thien', text: { vi: '⚔️ Dốc toàn lực quyết chiến!', en: '⚔️ Fight with all your strength!' }, effects: {} }
+        { id: 'start_combat_tournament_ngao_thien', text: { vi: '⚔️ Dốc toàn lực quyết chiến!', en: '⚔️ Fight with all your strength!'}, effects: {} }
       ]
     };
     return {
@@ -3693,10 +3597,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       npcLogEntries.push({
         type: 'info',
         age: state.age,
-        message: {
-          vi: `Bạn cúi đầu nhận 10 Linh thạch sỉ nhục từ Vương Tư Thông để bảo toàn tính mạng.`,
-          en: `You bow your head and accept 10 Spirit Stones as insult from Vuong Tu Thong to preserve your life.`
-        }
+        message: { vi: `Bạn cúi đầu nhận 10 Linh thạch sỉ nhục từ Vương Tư Thông để bảo toàn tính mạng.`, en: `You bow your head and accept 10 Spirit Stones as insult from Vuong Tu Thong to preserve your life.`}
       });
     }
   }
@@ -3707,10 +3608,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       npcLogEntries.push({
         type: 'info',
         age: state.age,
-        message: {
-          vi: `Thành công! Bạn khéo léo lập trận pháp ẩn nấp hái đi Huyết Liên ngàn năm và rút lui an toàn trước khi Yêu Vương thức giấc.`,
-          en: `Success! You skillfully set up a stealth array, harvest the thousand-year Blood Lotus, and escape safely before the Beast King wakes.`
-        }
+        message: { vi: `Thành công! Bạn khéo léo lập trận pháp ẩn nấp hái đi Huyết Liên ngàn năm và rút lui an toàn trước khi Yêu Vương thức giấc.`, en: `Success! You skillfully set up a stealth array, harvest the thousand-year Blood Lotus, and escape safely before the Beast King wakes.`}
       });
     } else {
       newStats.luck = Math.max(0, state.stats.luck - 3);
@@ -3731,10 +3629,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       npcLogEntries.push({
         type: 'info',
         age: state.age,
-        message: {
-          vi: `Bạn nộp 50 Linh thạch bôi trơn. Tên Chấp Sự cười híp mắt nhận tiền và giao cho bạn nhiệm vụ hái thuốc nhàn nhã.`,
-          en: `You pay the 50 Spirit Stone greasing fee. The Deacon grins and assigns you a relaxed herb-gathering quest.`
-        }
+        message: { vi: `Bạn nộp 50 Linh thạch bôi trơn. Tên Chấp Sự cười híp mắt nhận tiền và giao cho bạn nhiệm vụ hái thuốc nhàn nhã.`, en: `You pay the 50 Spirit Stone greasing fee. The Deacon grins and assigns you a relaxed herb-gathering quest.`}
       });
     } else {
       newSpiritStones = state.spiritStones ?? 0;
@@ -3777,10 +3672,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       npcLogEntries.push({
         type: 'info',
         age: state.age,
-        message: {
-          vi: `Bạn cho nữ tử tà tu uống Hồi Huyết Đan trị thương và che giấu nàng khỏi đám chính đạo. Nàng trao cho bạn một Tàn quyển Ma công rồi rời đi.`,
-          en: `You feed the demonic woman a Blood Elixir and hide her from the righteous cultivators. She hands you a Demonic Manual Fragment and departs.`
-        }
+        message: { vi: `Bạn cho nữ tử tà tu uống Hồi Huyết Đan trị thương và che giấu nàng khỏi đám chính đạo. Nàng trao cho bạn một Tàn quyển Ma công rồi rời đi.`, en: `You feed the demonic woman a Blood Elixir and hide her from the righteous cultivators. She hands you a Demonic Manual Fragment and departs.`}
       });
     } else {
       newStats.karma = state.stats.karma;
@@ -3808,10 +3700,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       npcLogEntries.push({
         type: 'info',
         age: state.age,
-        message: {
-          vi: `Bạn trả 150 Linh thạch mua viên Trúc Cơ Đan Hạ Phẩm chứa đầy đan độc tanh nồng. Tên thương nhân cười gian ngoắt tay ra hiệu giao dịch hoàn tất.`,
-          en: `You pay 150 Spirit Stones to buy the low-grade Foundation Pill full of bloody poison. The merchant grins and winks as the trade completes.`
-        }
+        message: { vi: `Bạn trả 150 Linh thạch mua viên Trúc Cơ Đan Hạ Phẩm chứa đầy đan độc tanh nồng. Tên thương nhân cười gian ngoắt tay ra hiệu giao dịch hoàn tất.`, en: `You pay 150 Spirit Stones to buy the low-grade Foundation Pill full of bloody poison. The merchant grins and winks as the trade completes.`}
       });
     } else {
       newStats.karma = state.stats.karma;
@@ -3820,10 +3709,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       npcLogEntries.push({
         type: 'info',
         age: state.age,
-        message: {
-          vi: `Bạn không đủ 150 Linh thạch! Tên thương nhân chợ đen liếc xéo khinh bỉ rồi thu hồi đan dược không thèm nói chuyện tiếp.`,
-          en: `Insufficient Spirit Stones! The black market merchant glares at you with contempt, retrieves the pill, and refuses to trade.`
-        }
+        message: { vi: `Bạn không đủ 150 Linh thạch! Tên thương nhân chợ đen liếc xéo khinh bỉ rồi thu hồi đan dược không thèm nói chuyện tiếp.`, en: `Insufficient Spirit Stones! The black market merchant glares at you with contempt, retrieves the pill, and refuses to trade.`}
       });
     }
   }
@@ -3831,10 +3717,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     npcLogEntries.push({
       type: 'info',
       age: state.age,
-      message: {
-        vi: `Bạn rút kiếm uy hiếp thương nhân và cướp lấy Trúc Cơ Đan Hạ Phẩm. Trong lúc giao chiến dữ dội bạn bị thương (-12 HP) và bị chợ đen truy nã.`,
-        en: `You draw your sword to threaten the merchant and rob the low-grade Foundation Pill. During the fierce brawl, you get injured (-12 HP) and blacklisted.`
-      }
+      message: { vi: `Bạn rút kiếm uy hiếp thương nhân và cướp lấy Trúc Cơ Đan Hạ Phẩm. Trong lúc giao chiến dữ dội bạn bị thương (-12 HP) và bị chợ đen truy nã.`, en: `You draw your sword to threaten the merchant and rob the low-grade Foundation Pill. During the fierce brawl, you get injured (-12 HP) and blacklisted.`}
     });
   }
   else if (choiceId === 'action_npc_ta_tieu_lend') {
@@ -3921,10 +3804,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_kiem_tong_chap_su', 5);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn chịu phạt lao dịch nặng quét dọn Tẩy Kiếm Trì. Chấp sự Tạ Trần gật đầu hài lòng (Hảo cảm Tạ Trần +5).`,
-        en: `You clean the Sword Pool. Chấp sự Tạ Trần nods in satisfaction (Tạ Trần favor +5).`
-      }
+      message: { vi: `Bạn chịu phạt lao dịch nặng quét dọn Tẩy Kiếm Trì. Chấp sự Tạ Trần gật đầu hài lòng (Hảo cảm Tạ Trần +5).`, en: `You clean the Sword Pool. Chấp sự Tạ Trần nods in satisfaction (Tạ Trần favor +5).`}
     });
   }
   else if (choiceId === 'action_npc_ta_tran_protest') {
@@ -3941,20 +3821,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_kiem_tong_chap_su', 15);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn dâng 15 Linh thạch trà nước. Chấp sự Tạ Trần cười hớn hở: "Đồng môn tốt!" (Hảo cảm Tạ Trần +15).`,
-        en: `You offer 15 Stones. Chấp sự Tạ Trần is pleased (Tạ Trần favor +15).`
-      }
+      message: { vi: `Bạn dâng 15 Linh thạch trà nước. Chấp sự Tạ Trần cười hớn hở: "Đồng môn tốt!" (Hảo cảm Tạ Trần +15).`, en: `You offer 15 Stones. Chấp sự Tạ Trần is pleased (Tạ Trần favor +15).`}
     });
   }
   else if (choiceId === 'action_npc_ta_tran_talk') {
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_kiem_tong_chap_su', 2);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn đàm đạo lễ phép với chấp sự. Tạ Trần gật đầu hài lòng (Hảo cảm Tạ Trần +2).`,
-        en: `You converse politely with the Chấp sự (Tạ Trần favor +2).`
-      }
+      message: { vi: `Bạn đàm đạo lễ phép với chấp sự. Tạ Trần gật đầu hài lòng (Hảo cảm Tạ Trần +2).`, en: `You converse politely with the Chấp sự (Tạ Trần favor +2).`}
     });
   }
   else if (choiceId === 'action_npc_linh_duong_eat') {
@@ -3965,9 +3839,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     }
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn nuốt viên độc đan chịu đau đớn dữ dội (-15 HP). Linh Dương gật gù ghi lại kết quả (Hảo cảm Linh Dương +10)${bonusComp ? ' • Cơ duyên giúp Ngộ tính +1!' : ''}.`,
-        en: `You swallow the poisonous pill suffering severe pain (-15 HP). Linh Dương is satisfied (Linh Dương favor +10)${bonusComp ? ' • Comprehension +1!' : ''}.`
+      message: { vi: `Bạn nuốt viên độc đan chịu đau đớn dữ dội (-15 HP). Linh Dương gật gù ghi lại kết quả (Hảo cảm Linh Dương +10)${bonusComp ? ' • Cơ duyên giúp Ngộ tính +1!' : ''}.`, en: `You swallow the poisonous pill suffering severe pain (-15 HP). Linh Dương is satisfied (Linh Dương favor +10)${bonusComp ? ' • Comprehension +1!' : ''}.`
       }
     });
   }
@@ -3975,10 +3847,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_dan_tong_chap_su', -15);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn cự tuyệt làm vật thí nghiệm thuốc. Linh Dương tức giận bỏ đi (Hảo cảm Linh Dương -15).`,
-        en: `You refuse to test the pill. Linh Dương is angry (Linh Dương favor -15).`
-      }
+      message: { vi: `Bạn cự tuyệt làm vật thí nghiệm thuốc. Linh Dương tức giận bỏ đi (Hảo cảm Linh Dương -15).`, en: `You refuse to test the pill. Linh Dương is angry (Linh Dương favor -15).`}
     });
   }
   else if (choiceId === 'action_npc_khau_vo_ky_surrender') {
@@ -4005,20 +3874,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_ma_dao_chap_su', -5);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn từ chối đi cướp. Khấu Vô Kỵ chép miệng khinh bỉ: "Đồ nhát gan!" (Hảo cảm -5).`,
-        en: `You refuse the raid. Khấu Vô Kỵ is disappointed (Khấu Vô Kỵ favor -5).`
-      }
+      message: { vi: `Bạn từ chối đi cướp. Khấu Vô Kỵ chép miệng khinh bỉ: "Đồ nhát gan!" (Hảo cảm -5).`, en: `You refuse the raid. Khấu Vô Kỵ is disappointed (Khấu Vô Kỵ favor -5).`}
     });
   }
   else if (choiceId === 'action_npc_khau_vo_ky_pay') {
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_ma_dao_chap_su', 15);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn nộp 10 Linh thạch phí bảo kê. Khấu Vô Kỵ hài lòng hứa hẹn bảo hộ (Hảo cảm +15).`,
-        en: `You pay 10 Stones protection fee. Khấu Vô Kỵ is pleased (Khấu Vô Kỵ favor +15).`
-      }
+      message: { vi: `Bạn nộp 10 Linh thạch phí bảo kê. Khấu Vô Kỵ hài lòng hứa hẹn bảo hộ (Hảo cảm +15).`, en: `You pay 10 Stones protection fee. Khấu Vô Kỵ is pleased (Khấu Vô Kỵ favor +15).`}
     });
   }
   else if (choiceId === 'action_npc_khau_vo_ky_defy') {
@@ -4035,20 +3898,14 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_huyet_tong_chap_su', 15);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn tự trích tinh huyết dâng nộp (-25 HP). Xích Liệt cười lớn hài lòng (Hảo cảm Xích Liệt +15).`,
-        en: `You sacrifice blood (-25 HP). Xích Liệt is satisfied (Xích Liệt favor +15).`
-      }
+      message: { vi: `Bạn tự trích tinh huyết dâng nộp (-25 HP). Xích Liệt cười lớn hài lòng (Hảo cảm Xích Liệt +15).`, en: `You sacrifice blood (-25 HP). Xích Liệt is satisfied (Xích Liệt favor +15).`}
     });
   }
   else if (choiceId === 'action_npc_xich_liet_rebel') {
     nextNpcFavorability = changeNpcFavorability(nextNpcFavorability, 'npc_huyet_tong_chap_su', -25);
     npcLogEntries.push({
       type: 'info', age: state.age,
-      message: {
-        vi: `Bạn cự tuyệt hiến tế máu và bỏ chạy thoát thân (Hảo cảm Xích Liệt -25).`,
-        en: `You refuse blood feast and escape (Xích Liệt favor -25).`
-      }
+      message: { vi: `Bạn cự tuyệt hiến tế máu và bỏ chạy thoát thân (Hảo cảm Xích Liệt -25).`, en: `You refuse blood feast and escape (Xích Liệt favor -25).`}
     });
   }
   
@@ -4110,17 +3967,15 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
   const rankLogEntries: LogEntry[] = [];
   if (newRank !== (state.sectRank ?? 'ngoại_môn')) {
     const rankNames = {
-      'ngoại_môn': { vi: 'Đệ Tử Ngoại Môn', en: 'Outer Disciple' },
-      'nội_môn': { vi: 'Đệ Tử Nội Môn', en: 'Inner Disciple' },
-      'chân_truyền': { vi: 'Đệ Tử Chân Truyền', en: 'Core Disciple' },
-      'trưởng_lão': { vi: 'Trưởng Lão Tông Môn', en: 'Sect Elder' }
+      'ngoại_môn': { vi: 'Đệ Tử Ngoại Môn', en: 'Outer Disciple'},
+      'nội_môn': { vi: 'Đệ Tử Nội Môn', en: 'Inner Disciple'},
+      'chân_truyền': { vi: 'Đệ Tử Chân Truyền', en: 'Core Disciple'},
+      'trưởng_lão': { vi: 'Trưởng Lão Tông Môn', en: 'Sect Elder'}
     };
     rankLogEntries.push({
       type: 'info',
       age: state.age,
-      message: {
-        vi: `Chúc mừng! Bạn đã thăng cấp thân phận tông môn thành [${rankNames[newRank].vi}]!`,
-        en: `Congratulations! Your sect rank has been promoted to [${rankNames[newRank].en}]!`
+      message: { vi: `Chúc mừng! Bạn đã thăng cấp thân phận tông môn thành [${rankNames[newRank].vi}]!`, en: `Congratulations! Your sect rank has been promoted to [${rankNames[newRank].en}]!`
       }
     });
   }
@@ -4188,7 +4043,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     
     nextEvent = {
       id: 'sect_entry_welfare',
-      title: { vi: 'Bái Kiến Sơn Môn & Nhập Môn Phúc Lợi', en: 'Mountain Gate Greeting & Welcoming Welfare' },
+      title: { vi: 'Bái Kiến Sơn Môn & Nhập Môn Phúc Lợi', en: 'Mountain Gate Greeting & Welcoming Welfare'},
       description: {
         vi: `Sơn môn sừng sững hiện ra giữa ngàn khơi vân ảnh. Phù hợp với tôn phong của ${state.sect}, một hành trình nghịch thiên mới bắt đầu.\n\nNhập môn Đệ tử Ngoại môn, Chấp pháp Chấp sự đã chuẩn bị sẵn phúc lợi cho bạn bao gồm: ${startingStones} hạ phẩm linh thạch (tinh chỉnh tại Thần Điện) và 1 quyển tâm pháp luyện khí sơ cấp tương ứng với Linh Căn của bản thể.`,
         en: `The grand gates rise high into the swirling clouds. In accordance with the way of ${state.sect}, a new path opens before you.\n\nOfficially joining as an Outer Disciple, you receive your entry welfare: ${startingStones} low-grade spirit stones and 1 basic qi refinement manual matching your spiritual root.`
@@ -4199,7 +4054,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       choices: [
         {
           id: 'claim_welfare_and_continue',
-          text: { vi: 'Tiếp tục hành trình ➔', en: 'Continue Journey ➔' },
+          text: { vi: 'Tiếp tục hành trình ➔', en: 'Continue Journey ➔'},
           effects: {}
         }
       ]
@@ -4269,7 +4124,7 @@ export const generateBreakthroughEvent = (state: GameState, stats: Stats, active
   const choices = [
     {
       id: 'action_breakthrough_natural',
-      text: { vi: '🔥 Quyết định đột phá (Tự nhiên)', en: '🔥 Decide to Breakthrough (Natural)' },
+      text: { vi: '🔥 Quyết định đột phá (Tự nhiên)', en: '🔥 Decide to Breakthrough (Natural)'},
       effects: {}
     }
   ];
@@ -4289,7 +4144,7 @@ export const generateBreakthroughEvent = (state: GameState, stats: Stats, active
 
   choices.push({
     id: 'action_breakthrough_wait',
-    text: { vi: '🧘 Nghỉ ngơi chờ thời cơ tốt hơn', en: '🧘 Rest and wait for a better chance' },
+    text: { vi: '🧘 Nghỉ ngơi chờ thời cơ tốt hơn', en: '🧘 Rest and wait for a better chance'},
     effects: {}
   });
 
@@ -4618,17 +4473,14 @@ export const buildQuestCompleteEvent = (quest: SectQuest, language: Lang, isPart
 
   return {
     id: `quest_complete_${quest.id}`,
-    title: { vi: title, en: title },
-    description: { vi: desc, en: desc },
+    title: { vi: title, en: title},
+    description: { vi: desc, en: desc},
     minRealm: 'Mortal',
     weight: 1,
     choices: [
       {
         id: `claim_rewards_${quest.id}`,
-        text: {
-          vi: "Nhận Phần Thưởng",
-          en: "Claim Rewards"
-        },
+        text: { vi: "Nhận Phần Thưởng", en: "Claim Rewards"},
         effects
       }
     ]
@@ -4659,17 +4511,14 @@ export const buildQuestFailedEvent = (quest: SectQuest, language: Lang, isParty:
 
   return {
     id: `quest_failed_${quest.id}`,
-    title: { vi: title, en: title },
-    description: { vi: desc, en: desc },
+    title: { vi: title, en: title},
+    description: { vi: desc, en: desc},
     minRealm: 'Mortal',
     weight: 1,
     choices: [
       {
         id: `confirm_fail_${quest.id}`,
-        text: {
-          vi: "Xác Nhận",
-          en: "Confirm"
-        },
+        text: { vi: "Xác Nhận", en: "Confirm"},
         effects
       }
     ]
@@ -4695,7 +4544,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
       if (tatieuFavor <= -30) {
         return {
           id: 'event_npc_ta_tieu_revenge',
-          title: { vi: '☠️ Tạ Tiêu Báo Thù', en: '☠️ Tạ Tiêu\'s Revenge' },
+          title: { vi: '☠️ Tạ Tiêu Báo Thù', en: '☠️ Tạ Tiêu\'s Revenge'},
           description: {
             vi: `Tạ Tiêu mang vẻ mặt oán hận chặn đường bạn cùng hai tên đệ tử ngoại môn khác. Hắn cười lạnh: "Lần trước dám làm ta bẽ mặt, hôm nay ta phải phế đi tu vi của ngươi!" Cả ba rút kiếm lao vào oanh kích.`,
             en: `Tạ Tiêu blocks your path with two other outer disciples. He sneers: "You humiliated me last time, today I will ruin your cultivation!" They draw swords.`
@@ -4704,12 +4553,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           choices: [
             {
               id: 'start_combat_npc_ta_tieu',
-              text: { vi: '⚔️ Rút kiếm quyết đấu', en: '⚔️ Draw sword and fight' },
+              text: { vi: '⚔️ Rút kiếm quyết đấu', en: '⚔️ Draw sword and fight'},
               effects: {}
             },
             {
               id: 'action_npc_ta_tieu_bribe',
-              text: { vi: '💸 Chi ra 20 Linh thạch để cầu hòa', en: '💸 Spend 20 Spirit Stones to make peace' },
+              text: { vi: '💸 Chi ra 20 Linh thạch để cầu hòa', en: '💸 Spend 20 Spirit Stones to make peace'},
               effects: { spiritStones: -20 }
             }
           ]
@@ -4717,7 +4566,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
       } else if (tatieuFavor >= 30) {
         return {
           id: 'event_npc_ta_tieu_friendly',
-          title: { vi: '🍶 Tạ Tiêu Chiêu Đãi', en: '🍶 Tạ Tiêu\'s Invitation' },
+          title: { vi: '🍶 Tạ Tiêu Chiêu Đãi', en: '🍶 Tạ Tiêu\'s Invitation'},
           description: {
             vi: `Tạ Tiêu hồ hởi chạy đến vỗ vai bạn: "Đạo hữu! Hôm nay ta vừa kiếm được bình Bách Hoa Tửu cực ngon, lại đây đàm đạo uống rượu cùng ta!"`,
             en: `Tạ Tiêu runs up and pats your shoulder: "Daoist brother! I just got a flask of fine Hundred Flowers Wine, come drink and talk with me!"`
@@ -4726,12 +4575,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           choices: [
             {
               id: 'action_npc_ta_tieu_drink',
-              text: { vi: '🍶 Vui vẻ uống rượu cạn ly', en: '🍶 Gladly drink with him' },
+              text: { vi: '🍶 Vui vẻ uống rượu cạn ly', en: '🍶 Gladly drink with him'},
               effects: { luck: 2, daoHeart: -1 }
             },
             {
               id: 'action_npc_ta_tieu_decline_friendly',
-              text: { vi: '🧘 Từ chối khéo để lo tu luyện', en: '🧘 Politely decline to meditate' },
+              text: { vi: '🧘 Từ chối khéo để lo tu luyện', en: '🧘 Politely decline to meditate'},
               effects: { cultivation: 0.5 }
             }
           ]
@@ -4741,7 +4590,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         if (rollSub) {
           return {
             id: 'event_npc_ta_tieu_borrow',
-            title: { vi: '💰 Tạ Tiêu Mượn Linh Thạch', en: '💰 Tạ Tiêu Borrows Stones' },
+            title: { vi: '💰 Tạ Tiêu Mượn Linh Thạch', en: '💰 Tạ Tiêu Borrows Stones'},
             description: {
               vi: `Tạ Tiêu chặn đường bạn, bộ dáng ngả ngớn nói: "Đạo hữu, gần đây ta túng thiếu quá, cho ta mượn tạm 10 Linh thạch tiêu xài, vài ngày nữa ta trả!" (Ai cũng biết hắn mượn không bao giờ trả).`,
               en: `Tạ Tiêu blocks you, saying casually: "Daoist brother, I am short on cash, lend me 10 Spirit Stones for fun, I will return it soon!" (Everyone knows he never returns money).`
@@ -4750,12 +4599,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
             choices: [
               {
                 id: 'action_npc_ta_tieu_lend',
-                text: { vi: '💸 Ngậm ngùi cho mượn 10 Linh thạch', en: '💸 Reluctantly lend 10 Stones' },
+                text: { vi: '💸 Ngậm ngùi cho mượn 10 Linh thạch', en: '💸 Reluctantly lend 10 Stones'},
                 effects: { spiritStones: -10 }
               },
               {
                 id: 'action_npc_ta_tieu_refuse',
-                text: { vi: '❌ Từ chối thẳng thừng và răn đe', en: '❌ Flatly refuse and warn him' },
+                text: { vi: '❌ Từ chối thẳng thừng và răn đe', en: '❌ Flatly refuse and warn him'},
                 effects: {}
               },
               {
@@ -4768,11 +4617,8 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         } else {
           return {
             id: 'event_npc_ta_tieu_bully',
-            title: { vi: '👿 Tạ Tiêu Ỷ Thế Hiếp Người', en: '👿 Tạ Tiêu Bullying Disciples' },
-            description: {
-              vi: `Bạn bắt gặp Tạ Tiêu đang bắt một tên đệ tử ngoại môn mới nhập môn phải quỳ xuống nộp linh thạch phí bảo kê. Tên đệ tử tội nghiệp đang khóc lóc cầu xin.`,
-              en: `You catch Tạ Tiêu forcing a newly entered outer disciple to kneel and hand over spirit stones as protection fee. The poor disciple is crying.`
-            },
+            title: { vi: '👿 Tạ Tiêu Ỷ Thế Hiếp Người', en: '👿 Tạ Tiêu Bullying Disciples'},
+            description: { vi: `Bạn bắt gặp Tạ Tiêu đang bắt một tên đệ tử ngoại môn mới nhập môn phải quỳ xuống nộp linh thạch phí bảo kê. Tên đệ tử tội nghiệp đang khóc lóc cầu xin.`, en: `You catch Tạ Tiêu forcing a newly entered outer disciple to kneel and hand over spirit stones as protection fee. The poor disciple is crying.`},
             minRealm: 'Mortal', weight: 1,
             choices: [
               {
@@ -4782,7 +4628,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
               },
               {
                 id: 'action_npc_ta_tieu_help_bully',
-                text: { vi: '🤝 Tiếp tay cùng Tạ Tiêu cướp đoạt', en: '🤝 Join Tạ Tiêu to extort' },
+                text: { vi: '🤝 Tiếp tay cùng Tạ Tiêu cướp đoạt', en: '🤝 Join Tạ Tiêu to extort'},
                 effects: { spiritStones: 5, karma: -3, daoHeart: -3 }
               },
               {
@@ -4800,7 +4646,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
       if (tatranFavor <= -30) {
         return {
           id: 'event_npc_ta_tran_punish',
-          title: { vi: '⚖️ Chấp Sự Tạ Trần Gây Khó Dễ', en: '⚖️ Chấp Sự Tạ Trần\'s Punishment' },
+          title: { vi: '⚖️ Chấp Sự Tạ Trần Gây Khó Dễ', en: '⚖️ Chấp Sự Tạ Trần\'s Punishment'},
           description: {
             vi: `Chấp sự Tạ Trần nhìn bạn bằng ánh mắt lạnh lùng: "Đệ tử ngoại môn phải siêng năng, ngươi tu luyện chểnh mảng, đi quét dọn Tẩy Kiếm Trì 3 tháng cho ta!"`,
             en: `Chấp sự Tạ Trần looks at you coldly: "Outer disciples must work hard, you are lazy, clean the Sword Washing Pool for 3 months!"`
@@ -4809,7 +4655,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           choices: [
             {
               id: 'action_npc_ta_tran_accept_punish',
-              text: { vi: '🧹 Chấp nhận chịu phạt lao dịch nặng', en: '🧹 Accept hard chore punishment' },
+              text: { vi: '🧹 Chấp nhận chịu phạt lao dịch nặng', en: '🧹 Accept hard chore punishment'},
               effects: { health: -10 }
             },
             {
@@ -4822,7 +4668,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
       } else if (tatranFavor >= 30) {
         return {
           id: 'event_npc_ta_tran_reward',
-          title: { vi: '🎁 Chấp Sự Tạ Trần Chỉ Điểm', en: '🎁 Chấp Sự Tạ Trần\'s Guidance' },
+          title: { vi: '🎁 Chấp Sự Tạ Trần Chỉ Điểm', en: '🎁 Chấp Sự Tạ Trần\'s Guidance'},
           description: {
             vi: `Chấp sự Tạ Trần vẻ mặt nhu hòa, gọi bạn lại: "Ngươi gần đây có tiến bộ, kiếm ý vững vàng. Quyển kiếm quyết tàn thiên này ta vô tình có được, ban cho ngươi tham ngộ."`,
             en: `Chấp sự Tạ Trần looks pleased: "You have shown progress, sword intent is firm. I found this fragment of sword manual, I bestow it upon you."`
@@ -4839,7 +4685,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
       } else {
         return {
           id: 'event_npc_ta_tran_normal',
-          title: { vi: '🤝 Chấp Sự Tạ Trần Gặp Gỡ', en: '🤝 Chấp Sự Tạ Trần\'s Enquiry' },
+          title: { vi: '🤝 Chấp Sự Tạ Trần Gặp Gỡ', en: '🤝 Chấp Sự Tạ Trần\'s Enquiry'},
           description: {
             vi: `Chấp sự Tạ Trần đi tuần ngang qua động phủ của bạn, dừng chân hỏi thăm: "Tiến độ tu luyện gần đây thế nào? Môn phái chuẩn bị kiểm tra đệ tử ngoại môn đấy."`,
             en: `Chấp sự Tạ Trần patrols past your cave, asking: "How is your cultivation progressing? The sect exam for outer disciples is coming."`
@@ -4848,7 +4694,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           choices: [
             {
               id: 'action_npc_ta_tran_gift',
-              text: { vi: '🎁 Biếu Chấp sự 15 Linh thạch trà nước', en: '🎁 Offer 15 Spirit Stones as tea money' },
+              text: { vi: '🎁 Biếu Chấp sự 15 Linh thạch trà nước', en: '🎁 Offer 15 Spirit Stones as tea money'},
               effects: { spiritStones: -15 }
             },
             {
@@ -4867,7 +4713,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     if (linhduongFavor <= -30) {
       return {
         id: 'event_npc_linh_duong_test',
-        title: { vi: '☠️ Linh Dương Thử Thuốc', en: '☠️ Linh Dương\'s Elixir Test' },
+        title: { vi: '☠️ Linh Dương Thử Thuốc', en: '☠️ Linh Dương\'s Elixir Test'},
         description: {
           vi: `Chấp sự Linh Dương đưa cho bạn một viên đan dược đen xì, tỏa ra mùi hăng hắc: "Ta đang luyện chế độc môn đan dược, ngươi đi thử thuốc cho ta!"`,
           en: `Chấp sự Linh Dương hands you a dark, pungent pill: "I am refining a custom pill, test it for me!"`
@@ -4876,12 +4722,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         choices: [
           {
             id: 'action_npc_linh_duong_eat',
-            text: { vi: '🤢 Cắn răng nuốt thử dược', en: '🤢 Swallow the experimental pill' },
+            text: { vi: '🤢 Cắn răng nuốt thử dược', en: '🤢 Swallow the experimental pill'},
             effects: { health: -15 }
           },
           {
             id: 'action_npc_linh_duong_refuse',
-            text: { vi: '❌ Cự tuyệt làm vật thí nghiệm', en: '❌ Refuse to be a lab rat' },
+            text: { vi: '❌ Cự tuyệt làm vật thí nghiệm', en: '❌ Refuse to be a lab rat'},
             effects: {}
           }
         ]
@@ -4889,7 +4735,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     } else if (linhduongFavor >= 30) {
       return {
         id: 'event_npc_linh_duong_reward',
-        title: { vi: '🧪 Linh Dương Tặng Đan', en: '🧪 Linh Dương\'s Elixir Gift' },
+        title: { vi: '🧪 Linh Dương Tặng Đan', en: '🧪 Linh Dương\'s Elixir Gift'},
         description: {
           vi: `Chấp sự Linh Dương vẻ mặt vui cười, đưa cho bạn một lọ thuốc ngọc bích: "Đạo hữu, viên đan dược này ta luyện chế dư ra, tặng cho ngươi ôn dưỡng kinh mạch."`,
           en: `Chấp sự Linh Dương smiles, handing you a jade bottle: "Daoist brother, I refined this extra pill, take it to soothe your meridians."`
@@ -4898,7 +4744,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         choices: [
           {
             id: 'action_npc_linh_duong_receive',
-            text: { vi: '🙇 Nhận đan dược (Nhận 1x Huyền Nguyên Đan)', en: '🙇 Accept pill (Gain 1x Huyền Nguyên Đan)' },
+            text: { vi: '🙇 Nhận đan dược (Nhận 1x Huyền Nguyên Đan)', en: '🙇 Accept pill (Gain 1x Huyền Nguyên Đan)'},
             effects: {}
           }
         ]
@@ -4906,7 +4752,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     } else {
       return {
         id: 'event_npc_linh_duong_normal',
-        title: { vi: '🌿 Linh Dương Thu Mua Dược Liệu', en: '🌿 Linh Dương Seeks Herbs' },
+        title: { vi: '🌿 Linh Dương Thu Mua Dược Liệu', en: '🌿 Linh Dương Seeks Herbs'},
         description: {
           vi: `Chấp sự Linh Dương đang cần gấp một số Linh Thảo để luyện đan, hỏi xem bạn có bán lại cho lão không.`,
           en: `Chấp sự Linh Dương urgently needs some Spirit Herbs for alchemy, asking if you can sell them to him.`
@@ -4915,17 +4761,17 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         choices: [
           {
             id: 'action_npc_linh_duong_sell_herbs',
-            text: { vi: '🌿 Nộp 2 Linh Thảo đổi lấy 10 Linh thạch', en: '🌿 Hand over 2 Spirit Herbs for 10 Stones' },
+            text: { vi: '🌿 Nộp 2 Linh Thảo đổi lấy 10 Linh thạch', en: '🌿 Hand over 2 Spirit Herbs for 10 Stones'},
             effects: { spiritStones: 10 }
           },
           {
             id: 'action_npc_linh_duong_donate_herbs',
-            text: { vi: '🎁 Biếu không Linh dược cống hiến', en: '🎁 Gift him the herbs for free' },
+            text: { vi: '🎁 Biếu không Linh dược cống hiến', en: '🎁 Gift him the herbs for free'},
             effects: { sectContribution: 10 }
           },
           {
             id: 'action_npc_linh_duong_ignore',
-            text: { vi: '💬 Lắc đầu từ chối vì không có sẵn', en: '💬 Politely decline' },
+            text: { vi: '💬 Lắc đầu từ chối vì không có sẵn', en: '💬 Politely decline'},
             effects: {}
           }
         ]
@@ -4938,7 +4784,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     if (khauvokyFavor <= -30) {
       return {
         id: 'event_npc_khau_vo_ky_ambush',
-        title: { vi: '🔮 Khấu Vô Kỵ Âm Mưu Ám Hại', en: '🔮 Khấu Vô Kỵ\'s Plot' },
+        title: { vi: '🔮 Khấu Vô Kỵ Âm Mưu Ám Hại', en: '🔮 Khấu Vô Kỵ\'s Plot'},
         description: {
           vi: `Chấp sự Khấu Vô Kỵ mặt sạm đen chặn đường bạn tại ngách núi hoang vắng. Lão cười khặc khặc âm hiểm: "Ngươi đắc tội với bản chấp sự, hôm nay lấy hồn của ngươi luyện cờ!"`,
           en: `Chấp sự Khấu Vô Kỵ blocks you in a deserted canyon. He cackles: "You offended me, today I will take your soul to refine my banner!"`
@@ -4947,12 +4793,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         choices: [
           {
             id: 'start_combat_npc_khau_vo_ky',
-            text: { vi: '⚔️ Quyết chiến sinh tử cùng Ma đầu', en: '⚔️ Fight to the death with the Demon' },
+            text: { vi: '⚔️ Quyết chiến sinh tử cùng Ma đầu', en: '⚔️ Fight to the death with the Demon'},
             effects: {}
           },
           {
             id: 'action_npc_khau_vo_ky_surrender',
-            text: { vi: '🙇 Quỳ xuống nộp hết 30 Linh thạch cầu tha mạng', en: '🙇 Kneel and hand over 30 Stones for mercy' },
+            text: { vi: '🙇 Quỳ xuống nộp hết 30 Linh thạch cầu tha mạng', en: '🙇 Kneel and hand over 30 Stones for mercy'},
             effects: { spiritStones: -30 }
           }
         ]
@@ -4960,7 +4806,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     } else if (khauvokyFavor >= 30) {
       return {
         id: 'event_npc_khau_vo_ky_friendly',
-        title: { vi: '🔮 Khấu Vô Kỵ Chỉ Điểm Cướp Đoạt', en: '🔮 Khấu Vô Kỵ\'s Raid Offer' },
+        title: { vi: '🔮 Khấu Vô Kỵ Chỉ Điểm Cướp Đoạt', en: '🔮 Khấu Vô Kỵ\'s Raid Offer'},
         description: {
           vi: `Chấp sự Khấu Vô Kỵ cười lớn vỗ vai bạn: "Hắc hắc, ta vừa nghe nói đệ tử Đan Tông vận chuyển một lô dược liệu đi ngang phụ cận. Ngươi có gan cùng ta đi cướp một chuyến không?"`,
           en: `Chấp sự Khấu Vô Kỵ laughs and pats you: "Heh, I heard a Dan sect disciple carrying pill materials is passing by. Dare to raid them with me?"`
@@ -4974,7 +4820,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
           },
           {
             id: 'action_npc_khau_vo_ky_decline',
-            text: { vi: '❌ Từ chối vì không muốn gây thêm thù oán', en: '❌ Decline the offer' },
+            text: { vi: '❌ Từ chối vì không muốn gây thêm thù oán', en: '❌ Decline the offer'},
             effects: { daoHeart: 2 }
           }
         ]
@@ -4982,7 +4828,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     } else {
       return {
         id: 'event_npc_khau_vo_ky_normal',
-        title: { vi: '💸 Khấu Vô Kỵ Thu Phí Bảo Kê', en: '💸 Khấu Vô Kỵ\'s Extortion' },
+        title: { vi: '💸 Khấu Vô Kỵ Thu Phí Bảo Kê', en: '💸 Khấu Vô Kỵ\'s Extortion'},
         description: {
           vi: `Chấp sự Khấu Vô Kỵ chìa bàn tay xương xẩu ra trước mặt bạn: "Tuần này thu phí bảo kê ngoại môn, nộp 10 Linh thạch ra đây, nếu không đừng trách ta không che chở ngươi."`,
           en: `Chấp sự Khấu Vô Kỵ stretches out his bony hand: "Weekly outer sect fee, hand over 10 Stones, or don't blame me for not protecting you."`
@@ -4991,12 +4837,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         choices: [
           {
             id: 'action_npc_khau_vo_ky_pay',
-            text: { vi: '💸 Nộp tiền yên ổn (Tốn 10 Linh thạch)', en: '💸 Pay the fee (Spend 10 Stones)' },
+            text: { vi: '💸 Nộp tiền yên ổn (Tốn 10 Linh thạch)', en: '💸 Pay the fee (Spend 10 Stones)'},
             effects: { spiritStones: -10 }
           },
           {
             id: 'action_npc_khau_vo_ky_defy',
-            text: { vi: '👊 Kiên quyết từ chối nộp tiền vô lý', en: '👊 Firmly refuse to pay' },
+            text: { vi: '👊 Kiên quyết từ chối nộp tiền vô lý', en: '👊 Firmly refuse to pay'},
             effects: { health: -5 }
           }
         ]
@@ -5009,7 +4855,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     if (xichlietFavor <= -30) {
       return {
         id: 'event_npc_xich_liet_drain',
-        title: { vi: '🩸 Xích Liệt Ép Buộc Tế Huyết', en: '🩸 Xích Liệt\'s Blood Feast' },
+        title: { vi: '🩸 Xích Liệt Ép Buộc Tế Huyết', en: '🩸 Xích Liệt\'s Blood Feast'},
         description: {
           vi: `Chấp sự Xích Liệt toàn thân mùi huyết tinh rống lên: "Lò luyện huyết hải của ta đang thiếu huyết khí, ngươi tự nộp ra tinh huyết nhục thân tế luyện cho ta!"`,
           en: `Chấp sự Xích Liệt, smelling of fresh blood, roars: "My blood sea furnace lacks energy, hand over your vital blood to refine!"`
@@ -5018,12 +4864,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         choices: [
           {
             id: 'action_npc_xich_liet_give_blood',
-            text: { vi: '🩸 Chấp nhận hiến tinh huyết (Tổn hại kinh mạch: -25 HP)', en: '🩸 Accept blood sacrifice (HP -25)' },
+            text: { vi: '🩸 Chấp nhận hiến tinh huyết (Tổn hại kinh mạch: -25 HP)', en: '🩸 Accept blood sacrifice (HP -25)'},
             effects: { health: -25 }
           },
           {
             id: 'action_npc_xich_liet_rebel',
-            text: { vi: '❌ Cự tuyệt và trốn chạy khỏi lò luyện', en: '❌ Refuse and escape' },
+            text: { vi: '❌ Cự tuyệt và trốn chạy khỏi lò luyện', en: '❌ Refuse and escape'},
             effects: { spiritStones: -10 }
           }
         ]
@@ -5031,7 +4877,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     } else if (xichlietFavor >= 30) {
       return {
         id: 'event_npc_xich_liet_reward',
-        title: { vi: '🩸 Xích Liệt Ban Huyết Đan', en: '🩸 Xích Liệt\'s Blood Elixir' },
+        title: { vi: '🩸 Xích Liệt Ban Huyết Đan', en: '🩸 Xích Liệt\'s Blood Elixir'},
         description: {
           vi: `Chấp sự Xích Liệt ném cho bạn viên đan dược đỏ lòm như máu: "Tốt lắm, đệ tử đắc lực của ta. Viên Huyết Phách Đan này rèn luyện nhục thân rất tốt, cầm lấy tu luyện!"`,
           en: `Chấp sự Xích Liệt tosses you a bloody red pill: "Very well, my disciple. This Blood Soul Pill is great for the physical body, take it!"`
@@ -5048,7 +4894,7 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
     } else {
       return {
         id: 'event_npc_xich_liet_normal',
-        title: { vi: '🦴 Xích Liệt Thu Thập Yêu Cốt', en: '🦴 Xích Liệt Demands Bones' },
+        title: { vi: '🦴 Xích Liệt Thu Thập Yêu Cốt', en: '🦴 Xích Liệt Demands Bones'},
         description: {
           vi: `Chấp sự Xích Liệt đang rèn đúc Huyết Sát Ma khí, yêu cầu bạn nộp cho hắn Linh Thú Thần Cốt hoặc Linh Quặng thô để chế luyện.`,
           en: `Chấp sự Xích Liệt is forging blood weapons, demanding you to bring him Beast Bones or Ore.`
@@ -5057,12 +4903,12 @@ export const generateNpcEvent = (state: GameState, language: Lang): EventDefinit
         choices: [
           {
             id: 'action_npc_xich_liet_give_bone',
-            text: { vi: '🦴 Nộp 1 mảnh Thần Cốt', en: '🦴 Hand over 1 Beast Bone' },
+            text: { vi: '🦴 Nộp 1 mảnh Thần Cốt', en: '🦴 Hand over 1 Beast Bone'},
             effects: { sectContribution: 25 }
           },
           {
             id: 'action_npc_xich_liet_ignore',
-            text: { vi: '💬 Nói rằng chưa đi săn nên không có', en: '💬 Say you do not have any' },
+            text: { vi: '💬 Nói rằng chưa đi săn nên không có', en: '💬 Say you do not have any'},
             effects: {}
           }
         ]
@@ -5095,11 +4941,11 @@ export const changeLocation = (
   };
   const nextSpiritStones = Math.max(0, (state.spiritStones ?? 0) - costStones);
 
-  const locLabels: Record<string, { vi: string, en: string }> = {
-    sect: { vi: 'Tông Môn', en: 'Sect' },
-    city: { vi: 'Thanh Dương Thành', en: 'Thanh Duong City' },
-    mountain: { vi: 'Vạn Thú Sơn Mạch', en: 'Beast Mountain Range' },
-    secret_realm: { vi: 'Bí Cảnh Cổ Đại', en: 'Ancient Secret Realm' }
+  const locLabels: Record<string, LocalizedText> = {
+    sect: { vi: 'Tông Môn', en: 'Sect', zh: '宗门' },
+    city: { vi: 'Thanh Dương Thành', en: 'Thanh Duong City', zh: '青阳城' },
+    mountain: { vi: 'Vạn Thú Sơn Mạch', en: 'Beast Mountain Range', zh: '万兽山脉' },
+    secret_realm: { vi: 'Bí Cảnh Cổ Đại', en: 'Ancient Secret Realm', zh: '古代秘境' }
   };
 
   const oldLocLabel = locLabels[state.currentLocation || 'sect']?.[language] || 'Tông Môn';
