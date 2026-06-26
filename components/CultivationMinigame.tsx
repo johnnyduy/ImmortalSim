@@ -9,38 +9,91 @@ interface Props {
   onFatalFail?: () => void;
 }
 
-interface Entity {
-  id: string;
-  isSpiritual: boolean;
-  x: number;
-  y: number;
-  word: string;
-}
+type ArrowKey = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
+
+const ARROW_SYMBOLS: Record<ArrowKey, string> = {
+  UP: '↑',
+  DOWN: '↓',
+  LEFT: '←',
+  RIGHT: '→'
+};
+
+const KEY_MAP: Record<string, ArrowKey> = {
+  ArrowUp: 'UP', w: 'UP', W: 'UP',
+  ArrowDown: 'DOWN', s: 'DOWN', S: 'DOWN',
+  ArrowLeft: 'LEFT', a: 'LEFT', A: 'LEFT',
+  ArrowRight: 'RIGHT', d: 'RIGHT', D: 'RIGHT'
+};
 
 export default function CultivationMinigame({ technique, onSuccess, onCancel, isFatal, onFatalFail }: Props) {
+  const maxRounds = technique.tier === 'thiên' || technique.tier === 'địa' ? 5 : 3;
+  
   const [phase, setPhase] = useState<'init' | 'playing' | 'success' | 'fail'>('init');
-  const [score, setScore] = useState(0);
+  const [round, setRound] = useState(1);
   const [timeLeft, setTimeLeft] = useState(30);
-  const [entities, setEntities] = useState<Entity[]>([]);
-  const targetScore = 10;
-  
-  const entitiesRef = useRef<Entity[]>([]);
-  const frameRef = useRef<number>();
-  const lastSpawnRef = useRef<number>(0);
-  const startTimeRef = useRef<number>(0);
-  
-  const spiritualWords = ['悟', '道', '法', '玄', '灵'];
+  const [targetSequence, setTargetSequence] = useState<ArrowKey[]>([]);
+  const [inputSequence, setInputSequence] = useState<ArrowKey[]>([]);
+  const [rhythmPos, setRhythmPos] = useState(0); // 0 to 100
+  const [glitch, setGlitch] = useState(false);
+  const [feedback, setFeedback] = useState<string>('');
 
-  // Start game loop
+  const rhythmRef = useRef<number>(0);
+  const rhythmDirRef = useRef<1 | -1>(1);
+  const frameRef = useRef<number>();
+  const startTimeRef = useRef<number>(0);
+  const inputRef = useRef<ArrowKey[]>([]);
+  
+  const playSound = (type: 'type' | 'error' | 'success') => {
+    try {
+      const path = '/audio/crystal-bowl.mp3'; // simple fallback audio
+      const audio = new Audio(path);
+      audio.volume = type === 'error' ? 0.4 : 0.2;
+      audio.play().catch(() => {});
+    } catch(e) {}
+  };
+
+  const generateSequence = (roundNum: number) => {
+    const keys: ArrowKey[] = ['UP', 'DOWN', 'LEFT', 'RIGHT'];
+    const baseLength = technique.tier === 'thiên' ? 6 : (technique.tier === 'địa' ? 5 : 4);
+    const length = baseLength + Math.floor(roundNum / 2);
+    
+    const seq: ArrowKey[] = [];
+    for (let i = 0; i < length; i++) {
+      seq.push(keys[Math.floor(Math.random() * keys.length)]);
+    }
+    return seq;
+  };
+
+  const triggerGlitch = (msg: string) => {
+    setGlitch(true);
+    setFeedback(msg);
+    playSound('error');
+    setTimeout(() => {
+      setGlitch(false);
+      setFeedback('');
+    }, 500);
+  };
+
+  // Khởi tạo game loop
   useEffect(() => {
     if (phase === 'playing') {
       startTimeRef.current = Date.now();
+      setTargetSequence(generateSequence(1));
+      setInputSequence([]);
+      inputRef.current = [];
+      setRound(1);
       
-      const gameLoop = () => {
-        const now = Date.now();
-        
-        // Update timer
-        const elapsed = Math.floor((now - startTimeRef.current) / 1000);
+      let speed = 1.2; 
+      if (technique.tier === 'thiên') speed = 2.0;
+      else if (technique.tier === 'địa') speed = 1.6;
+
+      let lastTime = performance.now();
+
+      const gameLoop = (time: number) => {
+        const deltaTime = time - lastTime;
+        lastTime = time;
+
+        const elapsed = Math.floor((Date.now() - startTimeRef.current) / 1000);
         const remaining = Math.max(0, 30 - elapsed);
         setTimeLeft(remaining);
         
@@ -49,46 +102,17 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
            return;
         }
 
-        // Spawn logic
-        if (now - lastSpawnRef.current > 1200) {
-          const isSpiritual = Math.random() > 0.3; // 70% chance for word, 30% for demon
-          const side = Math.floor(Math.random() * 4);
-          let startX, startY;
-          if(side === 0) { startX = Math.random() * 100; startY = -10; } // Top
-          else if(side === 1) { startX = 110; startY = Math.random() * 100; } // Right
-          else if(side === 2) { startX = Math.random() * 100; startY = 110; } // Bottom
-          else { startX = -10; startY = Math.random() * 100; } // Left
-
-          const newEntity: Entity = {
-            id: Math.random().toString(36).substr(2, 9),
-            isSpiritual,
-            x: startX,
-            y: startY,
-            word: spiritualWords[Math.floor(Math.random() * spiritualWords.length)]
-          };
-          
-          entitiesRef.current = [...entitiesRef.current, newEntity];
-          lastSpawnRef.current = now;
+        let newPos = rhythmRef.current + (speed * rhythmDirRef.current * (deltaTime / 16));
+        if (newPos >= 100) {
+          newPos = 100;
+          rhythmDirRef.current = -1;
+        } else if (newPos <= 0) {
+          newPos = 0;
+          rhythmDirRef.current = 1;
         }
-        
-        // Movement logic: move entities towards center (50, 50)
-        entitiesRef.current = entitiesRef.current.map(ent => {
-          const dx = 50 - ent.x;
-          const dy = 50 - ent.y;
-          // Speed
-          const speed = 0.3;
-          return {
-            ...ent,
-            x: ent.x + dx * 0.01 * speed,
-            y: ent.y + dy * 0.01 * speed
-          };
-        }).filter(ent => {
-          // If it reaches the center, it disappears.
-          const dist = Math.sqrt(Math.pow(50 - ent.x, 2) + Math.pow(50 - ent.y, 2));
-          return dist > 5;
-        });
+        rhythmRef.current = newPos;
+        setRhythmPos(newPos);
 
-        setEntities([...entitiesRef.current]);
         frameRef.current = requestAnimationFrame(gameLoop);
       };
 
@@ -98,19 +122,75 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
         if (frameRef.current) cancelAnimationFrame(frameRef.current);
       };
     }
-  }, [phase]);
+  }, [phase, technique.tier]);
 
-  // Handle score changes
+  // Handle Input
   useEffect(() => {
-    if (score >= targetScore && phase === 'playing') {
-      setPhase('success');
-    }
-  }, [score, phase]);
-  
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (phase !== 'playing' || glitch) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        const currentIn = inputRef.current;
+        const target = targetSequence;
+        
+        if (currentIn.length === target.length) {
+          const isSweetSpot = rhythmRef.current >= 40 && rhythmRef.current <= 60;
+          if (isSweetSpot) {
+            playSound('success');
+            setFeedback('[ SYNC PERFECT ]');
+            setTimeout(() => setFeedback(''), 800);
+            
+            if (round >= maxRounds) {
+              setPhase('success');
+            } else {
+              const nextRound = round + 1;
+              setRound(nextRound);
+              setTargetSequence(generateSequence(nextRound));
+              inputRef.current = [];
+              setInputSequence([]);
+            }
+          } else {
+            triggerGlitch('[ SYNC FAILED ] OUT OF RHYTHM');
+            inputRef.current = [];
+            setInputSequence([]);
+          }
+        } else {
+          triggerGlitch('[ ERROR ] INCOMPLETE SEQUENCE');
+          inputRef.current = [];
+          setInputSequence([]);
+        }
+        return;
+      }
+
+      const mappedKey = KEY_MAP[e.key];
+      if (mappedKey) {
+        e.preventDefault();
+        playSound('type');
+        
+        const currentIn = [...inputRef.current, mappedKey];
+        const target = targetSequence;
+        const currentIndex = currentIn.length - 1;
+        
+        if (currentIndex < target.length && currentIn[currentIndex] === target[currentIndex]) {
+          inputRef.current = currentIn;
+          setInputSequence(currentIn);
+        } else {
+          triggerGlitch('[ ERROR ] INVALID INPUT SEQUENCE');
+          inputRef.current = [];
+          setInputSequence([]);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [phase, targetSequence, round, maxRounds, glitch]);
+
   // Handle outcome
   useEffect(() => {
     if (phase === 'success') {
-      const timer = setTimeout(() => onSuccess(true), 2000);
+      const timer = setTimeout(() => onSuccess(true), 1500);
       return () => clearTimeout(timer);
     } else if (phase === 'fail') {
       const timer = setTimeout(() => {
@@ -121,209 +201,141 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
     }
   }, [phase, isFatal, onFatalFail, onCancel, onSuccess]);
 
-  const handleEntityClick = (e: React.MouseEvent | React.TouchEvent, id: string, isSpiritual: boolean) => {
-    e.stopPropagation();
-    if (phase !== 'playing') return;
-    
-    // Remove entity
-    entitiesRef.current = entitiesRef.current.filter(ent => ent.id !== id);
-    setEntities([...entitiesRef.current]);
-
-    if (isSpiritual) {
-      setScore(s => s + 1);
-    } else {
-      // Touched a demon!
-      setPhase('fail');
-    }
-  };
-
-  const startGame = () => {
-    setPhase('playing');
-    setScore(0);
-    entitiesRef.current = [];
-  };
-
-  return (
-    <div className="fixed inset-0 z-[200] bg-[#0f102f] text-[#e1e0ff] select-none font-sans overflow-hidden">
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes minigame-float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-        @keyframes minigame-pulse-glow {
-            0%, 100% { filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4)); }
-            50% { filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.8)); }
-        }
-        @keyframes minigame-particle-drift {
-            from { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            to { transform: translateY(-100vh) translateX(30px); opacity: 0; }
-        }
-        @keyframes minigame-combo-pulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 5px #ffdb3c); }
-            50% { transform: scale(1.1); filter: drop-shadow(0 0 20px #ffdb3c); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 5px #ffdb3c); }
-        }
-        .minigame-floating-cultivator { animation: minigame-float 4s ease-in-out infinite; }
-        .minigame-spirit-aura { animation: minigame-pulse-glow 3s ease-in-out infinite; }
-        .minigame-combo-aura { animation: minigame-combo-pulse 0.8s ease-in-out infinite; }
-        .minigame-glass-panel {
-            background: rgba(15, 16, 47, 0.4);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 240, 255, 0.1);
-        }
-        .minigame-sea-of-consciousness {
-            background: radial-gradient(circle at center, #1b1c3c 0%, #090a2a 100%);
-        }
-      `}} />
-
-      {/* Sea of Consciousness Background */}
-      <div className="minigame-sea-of-consciousness absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0">
-          {Array.from({ length: 40 }).map((_, i) => (
-            <div 
-              key={i}
-              className="absolute w-1 h-1 bg-[#00f0ff] rounded-full shadow-[0_0_5px_#00f0ff]"
-              style={{
-                left: `${Math.random() * 100}vw`,
-                top: `${Math.random() * 100 + 100}vh`,
-                animation: `minigame-particle-drift ${Math.random() * 10 + 5}s linear infinite`,
-                opacity: Math.random()
-              }}
-            />
-          ))}
+  if (phase === 'init') {
+    return (
+      <div className="relative w-full h-full bg-[#050505] text-[#00ff41] font-mono flex flex-col items-center justify-center p-4 min-h-[400px]">
+        <div className="absolute inset-0 scanlines opacity-20 pointer-events-none" />
+        <div className="max-w-md w-full border border-[#00ff41] bg-[#0a0a0a] p-6 shadow-[0_0_20px_rgba(0,255,65,0.2)] z-10">
+          <h2 className="text-xl font-bold tracking-widest mb-4 uppercase">[ INITIALIZE OVERRIDE PROTOCOL ]</h2>
+          <div className="space-y-4 text-sm opacity-80 mb-8">
+            <p>{'>'} TARGET: {technique.label}</p>
+            <p>{'>'} REQUIRED_ROUNDS: {maxRounds}</p>
+            <p className="mt-4 border-l-2 border-[#00ff41] pl-3 py-1 bg-[#00ff41]/10">
+              INSTRUCTION: <br/>
+              1. Nhập chính xác chuỗi phím mũi tên (Arrow/WASD).<br/>
+              2. Đợi con trỏ nhịp điệu (Rhythm) vào vùng tâm <span className="text-white font-bold">[ || ]</span>.<br/>
+              3. Bấm phím SPACE để thực thi lệnh (Execute).
+            </p>
+          </div>
+          <button 
+            onClick={() => setPhase('playing')}
+            className="w-full py-3 border border-[#00ff41] hover:bg-[#00ff41] hover:text-black transition-colors font-bold uppercase tracking-widest animate-[pulse_2s_infinite]"
+          >
+            Bắt đầu (EXECUTE)
+          </button>
+          <button 
+            onClick={onCancel}
+            className="w-full mt-3 py-2 text-xs opacity-60 hover:opacity-100 transition-opacity"
+          >
+            Hủy Bỏ (ABORT)
+          </button>
         </div>
       </div>
+    );
+  }
 
-      <main className="relative h-screen w-full max-w-[500px] mx-auto flex flex-col justify-between items-center py-4">
-        
-        {/* Top Header & Progress */}
-        <section className="w-full px-4 flex flex-col gap-2 pt-4 z-50 pointer-events-none">
-          <header className="flex justify-between items-center bg-[#0f102f]/40 backdrop-blur-xl border-b border-[#00f0ff]/10 p-3 rounded-lg pointer-events-auto">
-            <div className="flex flex-col">
-               <span className="font-serif text-xl font-bold text-[#00f0ff] shadow-[0_0_10px_rgba(0,240,255,0.5)]">
-                 Khảo Nghiệm Nhập Môn
-               </span>
-               <span className="text-[#00f0ff] text-sm">{technique.name}</span>
+  return (
+    <div className={`relative w-full h-full min-h-[400px] bg-[#050505] text-[#00ff41] font-mono flex flex-col items-center justify-center p-4 transition-all duration-100 ${glitch ? 'animate-[shake_0.2s_infinite] bg-red-950/20 text-red-500 border-red-500' : ''}`}>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-5px); }
+          75% { transform: translateX(5px); }
+        }
+      `}} />
+      <div className="absolute inset-0 scanlines opacity-20 pointer-events-none" />
+      
+      {phase === 'success' && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#00ff41]/10 z-50 backdrop-blur-sm">
+          <h1 className="text-4xl font-bold tracking-widest animate-[pulse_1s_infinite] shadow-[0_0_20px_#00ff41] p-8 border border-[#00ff41] bg-[#050505]">
+            [ OVERRIDE SUCCESSFUL ]
+          </h1>
+        </div>
+      )}
+
+      {phase === 'fail' && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-red-950/40 z-50 backdrop-blur-sm">
+          <h1 className="text-4xl font-bold tracking-widest text-red-500 animate-[shake_0.5s_infinite] shadow-[0_0_20px_red] p-8 border border-red-500 bg-[#050505]">
+            [ OVERRIDE FAILED ]
+          </h1>
+          <p className="mt-4 text-red-400">Meridian collapse detected...</p>
+        </div>
+      )}
+
+      <div className={`max-w-2xl w-full border ${glitch ? 'border-red-500 shadow-[0_0_30px_rgba(255,0,0,0.4)]' : 'border-[#00ff41] shadow-[0_0_30px_rgba(0,255,65,0.15)]'} bg-[#0a0a0a] p-8 flex flex-col relative overflow-hidden`}>
+        <div className={`flex justify-between items-center pb-4 border-b ${glitch ? 'border-red-500/50' : 'border-[#00ff41]/50'} mb-8`}>
+          <div>
+            <div className="text-xs opacity-60">TARGET_MANUAL</div>
+            <div className="font-bold text-lg">{technique.label}</div>
+          </div>
+          <div className="text-right">
+            <div className="text-xs opacity-60">TIME_REMAINING</div>
+            <div className={`font-bold text-2xl ${timeLeft <= 10 ? 'text-red-500 animate-pulse' : ''}`}>
+              {timeLeft.toFixed(2)}s
             </div>
-            <button onClick={onCancel} className="text-[#00f0ff] hover:bg-[#00f0ff]/10 p-2 rounded-full transition-colors font-bold text-xl">
-               ✕
-            </button>
-          </header>
+          </div>
+        </div>
 
-          {(phase === 'playing' || phase === 'success' || phase === 'fail') && (
-            <div className="mt-4 flex flex-col gap-1">
-              <div className="flex justify-between items-end">
-                <span className="text-xs text-[#00f0ff] tracking-widest font-bold">LINH LỰC ({timeLeft}s)</span>
-                <span className="text-xs text-[#ffe16d]">{score}/{targetScore}</span>
-              </div>
-              <div className="h-3 w-full bg-[#1b1c3c] rounded-full overflow-hidden border border-white/5 p-[1px]">
-                <div 
-                  className="h-full bg-gradient-to-r from-[#00f0ff] to-[#ffdb3c] rounded-full shadow-[0_0_10px_rgba(0,240,255,0.5)] transition-all duration-300" 
-                  style={{ width: `${Math.min(100, (score / targetScore) * 100)}%` }}
-                />
-              </div>
-            </div>
-          )}
-        </section>
+        <div className="flex justify-between text-sm mb-6 font-bold">
+          <div>ROUND: [{round}/{maxRounds}]</div>
+          <div className={feedback.includes('FAILED') || feedback.includes('ERROR') ? 'text-red-500' : 'text-yellow-400'}>
+            {feedback || '> WAITING FOR INPUT...'}
+          </div>
+        </div>
 
-        {/* Central Area */}
-        <section className="relative flex-1 w-full flex items-center justify-center overflow-visible">
-          
-          {phase === 'init' && (
-            <div className="absolute z-30 minigame-glass-panel p-6 rounded-xl flex flex-col items-center gap-4 border border-[#00f0ff]/30 shadow-[0_0_20px_rgba(0,240,255,0.2)]">
-              <h2 className="text-2xl font-bold text-[#00f0ff]">Chuẩn Bị</h2>
-              <p className="text-center text-sm text-[#b9cacb]">
-                Hãy chạm vào <span className="text-[#00f0ff] font-bold">Linh Tự</span> để hấp thụ linh khí.<br/>
-                Tránh xa <span className="text-[#ffb4ab] font-bold">Tâm Ma</span> kẻo tẩu hoả nhập ma bạo thể!
-              </p>
-              <button 
-                onClick={startGame}
-                className="mt-2 bg-[#00f0ff]/20 border border-[#00f0ff] px-6 py-2 rounded-full text-[#00f0ff] font-bold hover:bg-[#00f0ff]/40 transition-colors shadow-[0_0_15px_rgba(0,240,255,0.4)] active:scale-95 cursor-pointer"
-              >
-                BẮT ĐẦU VẬN CÔNG
-              </button>
-            </div>
-          )}
-
-          {phase === 'success' && (
-            <div className="absolute z-30 flex flex-col items-center">
-              <span className="text-4xl text-[#ffe16d] font-bold drop-shadow-[0_0_20px_#ffe16d] animate-bounce text-center">
-                ĐỘT PHÁ<br/>THÀNH CÔNG!
-              </span>
-            </div>
-          )}
-
-          {phase === 'fail' && (
-            <div className="absolute z-30 flex flex-col items-center">
-              <span className="text-4xl text-[#ffb4ab] font-bold drop-shadow-[0_0_20px_#ffb4ab] animate-pulse text-center">
-                TẨU HỎA<br/>NHẬP MA!
-              </span>
-            </div>
-          )}
-
-          {phase === 'playing' && score > 0 && (
-            <div className="absolute top-10 flex flex-col items-center z-20 pointer-events-none">
-              <div className="minigame-combo-aura text-2xl font-bold text-[#ffdb3c] drop-shadow-lg scale-125">
-                 Combo x{score}
-              </div>
-            </div>
-          )}
-
-          {/* Chibi Cultivator */}
-          <div className="relative w-64 h-64 minigame-floating-cultivator flex items-center justify-center pointer-events-none">
-            <div className="absolute inset-0 rounded-full border border-[#00f0ff]/20 animate-[ping_3s_linear_infinite] opacity-30"></div>
-            <div className="absolute inset-8 rounded-full border border-[#fff9ef]/10 animate-[pulse_2s_ease-in-out_infinite]"></div>
-            <div className="minigame-spirit-aura rounded-full bg-[#1b1c3c]/50 flex items-center justify-center">
-               <div className="w-48 h-48 rounded-full overflow-hidden flex items-center justify-center text-[100px]">
-                 🧘‍♂️
-               </div>
+        <div className="flex flex-col gap-8 my-8 items-center justify-center min-h-[160px]">
+          <div className="flex flex-col items-center">
+            <span className="text-xs opacity-50 mb-2">EXPECTED_SEQUENCE</span>
+            <div className="flex gap-4">
+              {targetSequence.map((key, i) => (
+                <div key={i} className={`w-12 h-12 flex items-center justify-center border-2 text-2xl
+                  ${inputSequence.length > i 
+                    ? 'border-[#00ff41] bg-[#00ff41]/20 text-white' 
+                    : 'border-[#00ff41]/30 text-[#00ff41]/50' 
+                  }
+                `}>
+                  {ARROW_SYMBOLS[key]}
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Entities layer */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-auto">
-             {entities.map(ent => (
-               <div 
-                 key={ent.id}
-                 onMouseDown={(e) => handleEntityClick(e, ent.id, ent.isSpiritual)}
-                 onTouchStart={(e) => handleEntityClick(e, ent.id, ent.isSpiritual)}
-                 className="absolute flex items-center justify-center transition-transform cursor-pointer hover:scale-110 active:scale-95"
-                 style={{ 
-                   left: `${ent.x}%`, 
-                   top: `${ent.y}%`,
-                   transform: 'translate(-50%, -50%)'
-                 }}
-               >
-                 {ent.isSpiritual ? (
-                    <div className="relative group">
-                        <div className="absolute inset-0 bg-[#ffdb3c]/20 blur-md rounded-full"></div>
-                        <div className="w-12 h-12 minigame-glass-panel border-[#ffdb3c]/40 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(255,219,60,0.4)]">
-                            <span className="text-[#ffdb3c] text-xl font-bold">{ent.word}</span>
-                        </div>
-                    </div>
-                 ) : (
-                    <div className="relative group">
-                        <div className="absolute inset-0 bg-[#ffb4ab]/20 blur-xl rounded-full animate-pulse"></div>
-                        <div className="w-14 h-14 rounded-full flex items-center justify-center border-[#ffb4ab]/30 bg-[#93000a]/30 border-2 shadow-[0_0_15px_rgba(255,180,171,0.5)]">
-                            <span className="text-[#ffb4ab] text-3xl font-bold">☠️</span>
-                        </div>
-                    </div>
-                 )}
-               </div>
-             ))}
+          <div className="flex flex-col items-center">
+            <span className="text-xs opacity-50 mb-2">USER_INPUT</span>
+            <div className="flex gap-4">
+              {targetSequence.map((_, i) => (
+                <div key={`in-${i}`} className={`w-12 h-12 flex items-center justify-center border-2 text-2xl
+                  ${i < inputSequence.length 
+                    ? `border-white bg-white/20 text-white` 
+                    : glitch ? 'border-red-500/50 bg-red-500/10' : 'border-dashed border-[#00ff41]/20'
+                  }
+                `}>
+                  {i < inputSequence.length ? ARROW_SYMBOLS[inputSequence[i]] : ''}
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
 
-        </section>
+        <div className="mt-8 mb-4">
+          <div className="flex justify-between text-xs opacity-60 mb-2">
+            <span>RHYTHM_SYNC</span>
+            <span className="animate-pulse">[PRESS SPACE TO EXECUTE]</span>
+          </div>
+          <div className={`w-full h-8 border-2 ${glitch ? 'border-red-500/50' : 'border-[#00ff41]/50'} relative bg-[#050505]`}>
+            <div className={`absolute top-0 bottom-0 left-[40%] right-[40%] ${glitch ? 'bg-red-500/20 border-x border-red-500' : 'bg-[#00ff41]/20 border-x border-[#00ff41]'}`} />
+            <div 
+              className="absolute top-[-4px] bottom-[-4px] w-2 bg-white shadow-[0_0_10px_white]"
+              style={{ left: `calc(${rhythmPos}% - 4px)` }}
+            />
+          </div>
+        </div>
 
-        {/* Bottom controls */}
-        <footer className="w-full px-4 pb-8 pt-4 flex flex-col items-center gap-4 z-40 pointer-events-none">
-          <p className="text-[10px] text-[#b9cacb]/50 animate-pulse text-center tracking-widest uppercase font-bold">
-            CHẠM ĐỂ THU THẬP LINH TỰ • TRÁNH TÂM MA
-          </p>
-        </footer>
-      </main>
+        <div className={`mt-auto pt-4 border-t ${glitch ? 'border-red-500/30 text-red-500/60' : 'border-[#00ff41]/30 text-[#00ff41]/60'} text-xs flex justify-between`}>
+          <span>Use ARROWS or W A S D to type.</span>
+          <span>SYS_VERSION: 1.0.4</span>
+        </div>
+      </div>
     </div>
   );
 }

@@ -243,7 +243,7 @@ const buildLevelRewardPayload = (
 };
 
 export default function HomePage() {
-  const [language, setLanguage] = useState<Lang>('en');
+  const [language, setLanguage] = useState<Lang>('vi');
   const [inheritance, setInheritance] = useState<Inheritance>(getInitialInheritance());
   const [game, setGame] = useState<GameState | null>(null);
   const [previousGame, setPreviousGame] = useState<GameState | null>(null);
@@ -2112,6 +2112,70 @@ export default function HomePage() {
     );
   }
 
+  let activeOverlayNode: React.ReactNode = null;
+  if (learningTechnique && game) {
+    activeOverlayNode = (
+      <CultivationMinigame
+        technique={learningTechnique}
+        isFatal={isFatalMinigame}
+        onFatalFail={() => {
+          const deathCause = { vi: 'Tẩu hoả nhập ma bạo thể tử vong khi lần đầu vận hành linh khí.', en: 'Qi deviation during first manual initiation.'};
+          const newState = {
+            ...game,
+            alive: false,
+            deathCause,
+            lastMessage: deathCause,
+            log: [...game.log, { type: 'death' as const, age: game.age, message: deathCause }]
+          };
+          setGame(newState);
+          setLearningTechnique(null);
+          setIsFatalMinigame(false);
+        }}
+        onSuccess={(perfect) => {
+          let newState = completeTechniqueLearning(game, learningTechnique.id, perfect, language);
+          if (newState.realm === 'Mortal') {
+            const nextStats = { ...newState.stats, cultivation: 0, lifespan: newState.stats.lifespan + 40 };
+            const newRealm = 'Qi Refinement';
+            const logEntry = {
+              type: 'technique_breakthrough' as const,
+              age: newState.age,
+              message: { vi: `🌟 Chúc mừng! Bạn đã đột phá từ Phàm Nhân thành công bước vào Luyện Khí Tầng 1! Thọ nguyên gia tăng +40 năm.`, en: `🌟 Congratulations! You broke through from Mortal to Qi Refinement Layer 1! Lifespan increased by +40 years.`}
+            };
+            newState = { ...newState, stats: nextStats, realm: newRealm, subStageIndex: 1, log: [...newState.log, logEntry] };
+          }
+          if (newState.currentEvent?.id.startsWith('menu_')) {
+            newState.currentEvent = getMenuEvent(newState.currentEvent.id, newState, language) || newState.currentEvent;
+          }
+          setGame(newState);
+          setLearningTechnique(null);
+          setIsFatalMinigame(false);
+        }}
+        onCancel={() => {
+          setLearningTechnique(null);
+          setIsFatalMinigame(false);
+        }}
+      />
+    );
+  } else if (breakthroughData) {
+    activeOverlayNode = breakthroughData.isMajor ? (
+      <MajorBreakthrough
+        oldStageName={breakthroughData.oldStageName}
+        newStageName={breakthroughData.newStageName}
+        majorRealm={breakthroughData.majorRealm}
+        language={language as "vi" | "en"}
+        onClose={() => setBreakthroughData(null)}
+      />
+    ) : (
+      <SubStageBreakthrough
+        oldStageName={breakthroughData.oldStageName}
+        newStageName={breakthroughData.newStageName}
+        majorRealm={breakthroughData.majorRealm}
+        language={language as "vi" | "en"}
+        onClose={() => setBreakthroughData(null)}
+      />
+    );
+  }
+
   return (
     <>
       <AtmosphereBackground gameState={game} previousGameState={previousGame} />
@@ -2122,6 +2186,10 @@ export default function HomePage() {
           game={game} 
           setGame={setGame} 
           language={language as "vi" | "en"}
+          onChoice={handleChoice}
+          levelRewardAnimation={levelRewardAnimation}
+          onRewardDone={() => setLevelRewardAnimation(null)}
+          activeOverlayNode={activeOverlayNode}
           onAscension={() => {
             const subStage = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
             if (game.stats.cultivation >= 500) {
@@ -2149,7 +2217,7 @@ export default function HomePage() {
       )}
 
       {/* Fallback to original UI for character creation, test combat, etc. */}
-      {(!game || showCharacterCreation || showTestCombat) && (
+      {/* Removed outer wrapper */}
       <div className={`relative flex min-h-[100dvh] flex-col antialiased ${!game || !game.alive ? 'overflow-auto' : 'overflow-hidden max-h-[100dvh]'}`}>
       {game?.activeCombat && (
         <CombatModal state={game} onAction={handleCombatModalAction} onClose={handleCombatModalClose} />
@@ -2182,33 +2250,6 @@ export default function HomePage() {
           onClose={() => setShowBlackMarket(false)}
         />
       )}
-      {breakthroughData ? (
-        breakthroughData.isMajor ? (
-          <MajorBreakthrough
-            oldStageName={breakthroughData.oldStageName}
-            newStageName={breakthroughData.newStageName}
-            majorRealm={breakthroughData.majorRealm}
-            language={language as "vi" | "en"}
-            onClose={() => setBreakthroughData(null)}
-          />
-        ) : (
-          <SubStageBreakthrough
-            oldStageName={breakthroughData.oldStageName}
-            newStageName={breakthroughData.newStageName}
-            majorRealm={breakthroughData.majorRealm}
-            language={language as "vi" | "en"}
-            onClose={() => setBreakthroughData(null)}
-          />
-        )
-      ) : (
-        levelRewardAnimation && (
-          <LevelRewardAnimation
-            payload={levelRewardAnimation}
-            language={language as "vi" | "en"}
-            onDone={() => setLevelRewardAnimation(null)}
-          />
-        )
-      )}
       
       {/* Floating Settings Gear Button (visible on all screens) */}
       <button
@@ -2224,6 +2265,8 @@ export default function HomePage() {
         />
       </button>
       
+      {(!game || showCharacterCreation || showTestCombat || !game?.alive) && (
+      <>
       {/* Conditionally render header HUD only if simulation is running */}
       {game && !showTestCombat && !activeCombat && (
         <StatsPanel
@@ -2990,7 +3033,7 @@ export default function HomePage() {
 
             {/* Title Block */}
             <div className="relative z-20 text-center w-full max-w-md border border-outline-variant/30 bg-surface-container-low/50 p-8 shadow-[0_0_30px_rgba(255,176,0,0.05)] backdrop-blur-md animate-fade-in">
-              <div className="text-secondary/60 text-[10px] tracking-widest mb-4 font-headline-sm uppercase">{'<System Initialization>'}</div>
+              <div className="text-secondary/60 text-[10px] tracking-widest mb-4 font-headline-sm uppercase">{uiText[language]?.['systemInitialization'] || '<System Initialization>'}</div>
               <h1 className="font-headline-lg text-4xl text-primary font-bold tracking-[0.2em] uppercase drop-shadow-[0_0_15px_rgba(255,176,0,0.3)]">
                 {(uiText[language]?.['immortalSim'] || 'Immortal Sim')}
               </h1>
@@ -3023,23 +3066,20 @@ export default function HomePage() {
             <div className="relative z-20 w-full max-w-md mt-8 grid grid-cols-2 gap-4">
               {/* Audio/Language Settings Panel */}
               <div className="border border-outline-variant/30 bg-surface-container-low/40 p-4 flex flex-col gap-4">
-                <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-2">{'// Cấu Hình'}</div>
+                <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-2">{uiText[language]?.['settingsTitleStart'] || '// SETTINGS'}</div>
                 
                 <div className="flex justify-between items-center">
                   <span className="text-[10px] text-on-surface-variant">{(uiText[language]?.['language1'] || 'Language:')}</span>
-                  <div className="flex gap-1.5">
-                    {(['en', 'vi'] as const).map((l) => (
-                      <button
-                        key={l}
-                        type="button"
-                        onClick={() => setLanguage(l)}
-                        className={`text-[9px] px-2 py-1 uppercase border transition-colors ${
-                          language === l ? 'border-secondary text-secondary bg-secondary/10' : 'border-outline-variant/50 text-on-surface-variant hover:text-white hover:border-outline-variant'
-                        }`}
-                      >
-                        {l}
-                      </button>
-                    ))}
+                  <div className="flex gap-1.5 w-16">
+                    <select
+                      value={language}
+                      onChange={(e) => setLanguage(e.target.value as Lang)}
+                      className="w-full text-[9px] px-2 py-1 uppercase border border-outline-variant/50 bg-transparent text-on-surface hover:border-secondary focus:border-secondary outline-none transition-colors cursor-pointer"
+                    >
+                      <option value="vi" className="bg-[#1a1512]">VI</option>
+                      <option value="en" className="bg-[#1a1512]">EN</option>
+                      <option value="zh" className="bg-[#1a1512]">ZH</option>
+                    </select>
                   </div>
                 </div>
 
@@ -3085,7 +3125,7 @@ export default function HomePage() {
 
               {/* Legacy Data Panel */}
               <div className="border border-outline-variant/30 bg-surface-container-low/40 p-4 flex flex-col gap-3">
-                <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-1">{'// Dữ Liệu Di Sản'}</div>
+                <div className="text-[10px] text-secondary/60 uppercase tracking-wider mb-1">{uiText[language]?.['legacyDataStart'] || '// LEGACY DATA'}</div>
                 
                 {[
                   { label: copy.legacyPower || ((uiText[language]?.['power'] || 'Power')), value: inheritance.legacyPower },
@@ -3116,6 +3156,8 @@ export default function HomePage() {
           />
         )}
       </main>
+      </>
+      )}
 
       {isAdminPortalVisible && (
         <button
@@ -3251,57 +3293,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {learningTechnique && game && (
-        <CultivationMinigame
-          technique={learningTechnique}
-          isFatal={isFatalMinigame}
-          onFatalFail={() => {
-            const deathCause = { vi: 'Tẩu hoả nhập ma bạo thể tử vong khi lần đầu vận hành linh khí.', en: 'Qi deviation during first manual initiation.'};
-            const newState = {
-              ...game,
-              alive: false,
-              deathCause,
-              lastMessage: deathCause,
-              log: [...game.log, { type: 'death' as const, age: game.age, message: deathCause }]
-            };
-            setGame(newState);
-            setLearningTechnique(null);
-            setIsFatalMinigame(false);
-          }}
-          onSuccess={(perfect) => {
-            let newState = completeTechniqueLearning(game, learningTechnique.id, perfect, language);
-            
-            if (newState.realm === 'Mortal') {
-              const nextStats = { ...newState.stats, cultivation: 0, lifespan: newState.stats.lifespan + 40 };
-              const newRealm = 'Qi Refinement';
-              const logEntry = {
-                type: 'technique_breakthrough' as const,
-                age: newState.age,
-                message: { vi: `🌟 Chúc mừng! Bạn đã đột phá từ Phàm Nhân thành công bước vào Luyện Khí Tầng 1! Thọ nguyên gia tăng +40 năm.`, en: `🌟 Congratulations! You broke through from Mortal to Qi Refinement Layer 1! Lifespan increased by +40 years.`}
-              };
-              newState = {
-                ...newState,
-                stats: nextStats,
-                realm: newRealm,
-                subStageIndex: 1,
-                log: [...newState.log, logEntry]
-              };
-            }
-            
-            if (newState.currentEvent?.id.startsWith('menu_')) {
-              newState.currentEvent = getMenuEvent(newState.currentEvent.id, newState, language) || newState.currentEvent;
-            }
-
-            setGame(newState);
-            setLearningTechnique(null);
-            setIsFatalMinigame(false);
-          }}
-          onCancel={() => {
-            setLearningTechnique(null);
-            setIsFatalMinigame(false);
-          }}
-        />
-      )}
+      
 
       {transitionOutcome && (
         <OutcomeTransition
@@ -3313,8 +3305,8 @@ export default function HomePage() {
           language={language as 'vi' | 'en'}
         />
       )}
+
       </div>
-      )}
     </>
   );
 }

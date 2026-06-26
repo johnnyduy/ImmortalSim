@@ -6,7 +6,7 @@ import sectVi from '../locales/vi/sects.json';
 import uiZh from '../locales/zh/ui.json';
 import sectZh from '../locales/zh/sects.json';
 
-export const defaultLanguage = 'en';
+export const defaultLanguage = 'vi';
 export const supportedLanguages = ['en', 'vi', 'zh'] as const;
 
 export const uiText: Record<string, Record<string, string>> = {

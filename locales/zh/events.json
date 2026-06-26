@@ -1,13 +1,13 @@
 [
   {
     "id": "auction_house_conflict",
-    "title": "[ZH-TODO] Auction House Conflict",
-    "description": "[ZH-TODO] At the decennial auction in Qingyang City, you spent all your Spirit Stones on a Foundation Establishment Pill. As you step out, Young Master Wang blocks your path, tosses 10 Spirit Stones at you, and demands the pill.",
+    "title": "拍卖行冲突",
+    "description": "在青阳城十年一度的拍卖会上，你用了所有的灵石，购买了一颗筑基丹。当你走出去时，王公子挡住了你的去路，并向你扔了十块灵石，并索要丹药。",
     "weight": 2,
     "choices": [
       {
         "id": "slap_young_master",
-        "text": "[ZH-TODO] Use your strength to slap the young master's face!",
+        "text": "用你的力气打少爷的脸！",
         "effects": {
           "cultivation": 2,
           "daoMind": 5,
@@ -17,7 +17,7 @@
       },
       {
         "id": "endure_humiliation",
-        "text": "[ZH-TODO] Endure the humiliation and hand over the pill.",
+        "text": "忍辱负重，交出丹药。",
         "effects": {
           "daoMind": -10,
           "luck": -1,
@@ -34,13 +34,13 @@
   },
   {
     "id": "slum_black_market",
-    "title": "[ZH-TODO] Slum Black Market",
-    "description": "[ZH-TODO] Sneaking into the city's slums, you find a hidden black market. A masked merchant offers a 'Supreme Foundation Establishment Pill' for half the market price, but it reeks of blood.",
+    "title": "贫民窟黑市",
+    "description": "潜入城市的贫民窟，你发现了一个隐藏的黑市。蒙面商人以市价一半的价格出售‘太上筑基丹’，却散发着血腥味。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_bloody_pill",
-        "text": "[ZH-TODO] Buy the blood-reeking pill.",
+        "text": "买血腥药丸。",
         "effects": {
           "money": -150,
           "karma": -5,
@@ -52,7 +52,7 @@
       },
       {
         "id": "rob_the_merchant",
-        "text": "[ZH-TODO] Draw your weapon and rob the pill!",
+        "text": "拔出你的武器，抢夺丹药！",
         "effects": {
           "health": -12,
           "gainItem": {
@@ -71,13 +71,13 @@
   },
   {
     "id": "mortal_plague",
-    "title": "[ZH-TODO] Mortal Plague",
-    "description": "[ZH-TODO] Passing through a mortal village at the foot of the mountain, you discover a strange plague spreading due to leaking demonic energy. Hundreds are crying out in agony.",
+    "title": "致命瘟疫",
+    "description": "路过山下的一个凡人村庄时，你发现一场奇怪的瘟疫因邪气外泄而蔓延。数百人在痛苦中哭泣。",
     "weight": 2,
     "choices": [
       {
         "id": "heal_mortals",
-        "text": "[ZH-TODO] Consume herbs to brew an antidote and save them.",
+        "text": "消耗草药来酿造解药并拯救他们。",
         "effects": {
           "health": -5,
           "karma": 10
@@ -85,7 +85,7 @@
       },
       {
         "id": "collect_plague",
-        "text": "[ZH-TODO] Collect the plague aura to refine a Poison Pill.",
+        "text": "收集瘟疫光环，炼制毒丹。",
         "effects": {
           "karma": -10,
           "gainItem": {
@@ -103,13 +103,13 @@
   },
   {
     "id": "rogue_cultivator_scam",
-    "title": "[ZH-TODO] Rogue Cultivator Scam",
-    "description": "[ZH-TODO] Wandering the market, a mysterious ragged old man pulls you aside, offering to sell the 'Nine Turns Divine Art' for only 50 Spirit Stones.",
+    "title": "盗修者骗局",
+    "description": "逛到集市上，一个神秘的衣衫褴褛的老者将你拉到一边，主动以五十灵石的价格出售《九转神功》。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_scam_manual",
-        "text": "[ZH-TODO] Gamble and buy it.",
+        "text": "赌一把就买了。",
         "effects": {
           "money": -50,
           "comprehension": -1,
@@ -121,7 +121,7 @@
       },
       {
         "id": "expose_scammer",
-        "text": "[ZH-TODO] Coldly expose and chase away the old man.",
+        "text": "冷冷揭穿并赶走老者。",
         "effects": {
           "daoMind": 1,
           "karma": 1
@@ -135,13 +135,13 @@
   },
   {
     "id": "beast_tide_mortals",
-    "title": "[ZH-TODO] Beast Tide Sweeps Mortals",
-    "description": "[ZH-TODO] Violent beasts swarm down the mountain, slaughtering a mortal village. You happen to be passing by.",
+    "title": "兽潮横扫凡人",
+    "description": "猛兽从山下蜂拥而下，屠杀凡人村庄。你恰好路过。",
     "weight": 2,
     "choices": [
       {
         "id": "defend_mortals",
-        "text": "[ZH-TODO] Set up a defensive array to protect the mortals.",
+        "text": "布下防御阵法，保护凡人。",
         "effects": {
           "health": -10,
           "karma": 8
@@ -149,7 +149,7 @@
       },
       {
         "id": "loot_beasts",
-        "text": "[ZH-TODO] Ignore the mortals and harvest beast corpses.",
+        "text": "无视凡人，收割兽尸。",
         "effects": {
           "karma": -5,
           "gainItem": {
@@ -167,13 +167,13 @@
   },
   {
     "id": "demonic_invasion",
-    "title": "[ZH-TODO] Demonic Invasion",
-    "description": "[ZH-TODO] The sky turns blood red as dense demonic energy suffocates the area. A horde of demonic cultivators breaches the defenses, slaughtering everyone in sight.",
+    "title": "恶魔入侵",
+    "description": "天空变成了血红色，浓郁的魔气窒息了这片区域。一群魔修突破了防御，屠杀了所有看到的人。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_demonic_horde",
-        "text": "[ZH-TODO] Fight to the death to protect the innocent.",
+        "text": "为了保护无辜者而战斗至死。",
         "effects": {
           "health": -25,
           "karma": 15,
@@ -183,7 +183,7 @@
       },
       {
         "id": "join_demons",
-        "text": "[ZH-TODO] Surrender and offer them mortal blood to survive.",
+        "text": "投降并为他们提供致命的鲜血以求生存。",
         "effects": {
           "karma": -20,
           "daoMind": -10,
@@ -202,13 +202,13 @@
   },
   {
     "id": "grand_decennial_auction",
-    "title": "[ZH-TODO] Grand Decennial Auction",
-    "description": "[ZH-TODO] The city is highly prosperous, hosting a grand auction. Rare treasures and supreme martial fragments are displayed, but the prices are astronomical.",
+    "title": "十年一度的盛大拍卖会",
+    "description": "这座城市非常繁荣，经常举办盛大的拍卖会。珍稀的宝物和无上武魂碎片展示出来，但价格却是天文数字。",
     "weight": 1,
     "choices": [
       {
         "id": "buy_supreme_fragment",
-        "text": "[ZH-TODO] Spend a fortune to buy a Supreme Manual Fragment.",
+        "text": "花重金购买至尊手册碎片。",
         "effects": {
           "money": -300,
           "luck": 1,
@@ -220,7 +220,7 @@
       },
       {
         "id": "steal_from_vip",
-        "text": "[ZH-TODO] Try to pickpocket a distracted VIP guest.",
+        "text": "尝试对心烦意乱的贵宾进行扒窃。",
         "effects": {
           "health": -15,
           "luck": -3,
@@ -237,13 +237,13 @@
   },
   {
     "id": "market_crash_scavenging",
-    "title": "[ZH-TODO] Market Crash Scavenging",
-    "description": "[ZH-TODO] Due to a surplus of goods, the market has crashed. Desperate merchants are dumping raw spirit herbs on the streets at dirt-cheap prices to cut losses.",
+    "title": "市场崩盘清理",
+    "description": "由于商品过剩，市场崩溃了。绝望的商人以极低的价格在街头倾销生灵草药以减少损失。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_cheap_herbs",
-        "text": "[ZH-TODO] Spend a little money to hoard cheap herbs.",
+        "text": "花点钱囤积便宜的药草。",
         "effects": {
           "money": -30,
           "gainItem": {
@@ -254,7 +254,7 @@
       },
       {
         "id": "extort_merchants",
-        "text": "[ZH-TODO] Threaten the bankrupt merchants to hand over goods for free.",
+        "text": "威胁破产的商人免费交出货物。",
         "effects": {
           "karma": -8,
           "daoMind": -2,
@@ -273,13 +273,13 @@
   },
   {
     "id": "event_thieu_gia_gay_su",
-    "title": "[ZH-TODO] Young Master's Oppression",
-    "description": "[ZH-TODO] At the grand auction, Young Master Wang uses his overwhelming wealth to maliciously outbid and humiliate you over a supreme treasure.",
+    "title": "少爷的压迫",
+    "description": "拍卖会上，王公子利用​​巨额财富，为了一件至宝，恶意竞价羞辱你。",
     "weight": 2,
     "choices": [
       {
         "id": "slap_thieu_gia",
-        "text": "[ZH-TODO] Slap his face and ambush him outside the city to take the treasure back!",
+        "text": "打他脸，埋伏在城外，夺回宝物！",
         "effects": {
           "health": -5,
           "money": 200,
@@ -288,7 +288,7 @@
       },
       {
         "id": "endure_thieu_gia",
-        "text": "[ZH-TODO] Swallow your anger and endure the humiliation.",
+        "text": "忍住怒气，忍受屈辱。",
         "effects": {
           "daoMind": 2,
           "karma": 2
@@ -304,13 +304,13 @@
   },
   {
     "id": "soul_festival",
-    "title": "[ZH-TODO] Soul Festival",
-    "description": "[ZH-TODO] You stumble upon a rare Soul Festival in the city where spirits and mortals gather, overflowing with mystical energies.",
+    "title": "灵魂节",
+    "description": "你在这座城市中偶然发现了一场罕见的灵魂节日，灵魂与凡人聚集在一起，充满了神秘的能量。",
     "weight": 1,
     "choices": [
       {
         "id": "join_festival",
-        "text": "[ZH-TODO] Join the spirits and build relationships.",
+        "text": "加入精神并建立关系。",
         "effects": {
           "luck": 2,
           "karma": -1,
@@ -323,7 +323,7 @@
       },
       {
         "id": "study_scripture",
-        "text": "[ZH-TODO] Study the sacred scriptures left at the altar.",
+        "text": "研究祭坛上留下的神圣经文。",
         "effects": {
           "comprehension": 3,
           "cultivation": 1
@@ -338,13 +338,13 @@
   },
   {
     "id": "herb_price_surge",
-    "title": "[ZH-TODO] Skyrocketing Herb Prices",
-    "description": "[ZH-TODO] Due to a severe shortage, the price of spirit herbs has skyrocketed! The market is in a frenzy, offering a perfect opportunity for hoarding and speculation.",
+    "title": "药草价格飞涨",
+    "description": "由于严重短缺，灵药价格暴涨！市场处于疯狂状态，为囤积和投机提供了绝佳的机会。",
     "weight": 2,
     "choices": [
       {
         "id": "speculate_market",
-        "text": "[ZH-TODO] Take advantage of the chaos to speculate and profit.",
+        "text": "利用混乱进行投机获利。",
         "effects": {
           "money": 300,
           "luck": -1,
@@ -353,7 +353,7 @@
       },
       {
         "id": "rob_merchant_convoy",
-        "text": "[ZH-TODO] Rob a merchant convoy carrying rare herbs.",
+        "text": "抢劫载有稀有草药的商船队。",
         "effects": {
           "health": -15,
           "karma": -10,
@@ -372,13 +372,13 @@
   },
   {
     "id": "demonic_town_activity",
-    "title": "[ZH-TODO] Demonic Activity in Town",
-    "description": "[ZH-TODO] Demonic cultivators have appeared in the town's outskirts, significantly reducing security. Cultivators are warned to stay away.",
+    "title": "镇上的恶魔活动",
+    "description": "镇郊出现了魔修，治安大为降低。警告种植者远离。",
     "weight": 2,
     "choices": [
       {
         "id": "hunt_demonic_cultivators",
-        "text": "[ZH-TODO] Hunt down the demonic cultivators to protect the town.",
+        "text": "追捕魔修，保护小镇。",
         "effects": {
           "health": -20,
           "karma": 15,
@@ -388,7 +388,7 @@
       },
       {
         "id": "ignore_warning",
-        "text": "[ZH-TODO] Ignore the warning and go about your business.",
+        "text": "忽略警告并继续做你的事情。",
         "effects": {
           "health": -5,
           "luck": -2,
@@ -405,13 +405,13 @@
   },
   {
     "id": "illicit_demonic_caravan",
-    "title": "[ZH-TODO] Illicit Demonic Caravan",
-    "description": "[ZH-TODO] Due to poor city security and rising demonic infiltration, a suspicious merchant caravan sets up shop in an alley, secretly selling forbidden Demonic path materials.",
+    "title": "非法恶魔商队",
+    "description": "由于城市治安较差，魔族渗透不断增加，一支心存疑虑的商队在巷子里开设店铺，秘密贩卖魔道禁材。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_blood_crystal",
-        "text": "[ZH-TODO] Quietly buy a Blood Crystal to accelerate your progress.",
+        "text": "悄悄购买血晶，加速进度。",
         "effects": {
           "money": -100,
           "karma": -8,
@@ -423,7 +423,7 @@
       },
       {
         "id": "report_to_guards",
-        "text": "[ZH-TODO] Report them to the city guards for a bounty.",
+        "text": "向城市守卫报告他们以获得赏金。",
         "effects": {
           "money": 50,
           "karma": 5,
@@ -439,13 +439,13 @@
   },
   {
     "id": "mortal_rebellion",
-    "title": "[ZH-TODO] Mortal Rebellion",
-    "description": "[ZH-TODO] City morale has hit rock bottom. Starving mortals are violently rebelling against the corrupt city lord who serves the cultivation sects.",
+    "title": "凡人叛逆",
+    "description": "城市士气跌至谷底。饥饿的凡人正在暴力反抗为修真门派服务的腐败城主。",
     "weight": 2,
     "choices": [
       {
         "id": "distribute_wealth",
-        "text": "[ZH-TODO] Distribute your spirit stones to buy them food.",
+        "text": "分发你的灵石来给他们买食物。",
         "effects": {
           "money": -100,
           "karma": 15,
@@ -454,7 +454,7 @@
       },
       {
         "id": "suppress_rebels",
-        "text": "[ZH-TODO] Help the city lord brutally suppress the mortals.",
+        "text": "帮助城主残酷镇压凡人。",
         "effects": {
           "money": 150,
           "karma": -15,
@@ -470,13 +470,13 @@
   },
   {
     "id": "corrupted_pill_vendor",
-    "title": "[ZH-TODO] Corrupted Pill Vendor",
-    "description": "[ZH-TODO] Taking advantage of the high demonic infiltration in the city, a hooded vendor in a dark alley offers you a Foundation Establishment Pill. It's cheap, but it reeks of heavy pill-toxins and dark arts.",
+    "title": "腐败的药丸供应商",
+    "description": "趁着城市恶魔渗透率高的时候，黑暗小巷里的蒙面小贩为你提供了筑基丹。它很便宜，但散发着浓重的药丸毒素和黑暗魔法的味道。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_corrupted_pill",
-        "text": "[ZH-TODO] Buy it! A breakthrough is worth any risk.",
+        "text": "买吧！突破是值得冒任何风险的。",
         "effects": {
           "money": -100,
           "karma": -5,
@@ -489,7 +489,7 @@
       },
       {
         "id": "refuse_corrupted_pill",
-        "text": "[ZH-TODO] Refuse the wicked temptation and leave immediately.",
+        "text": "拒绝邪恶的诱惑，立即离开。",
         "effects": {
           "daoMind": 3,
           "karma": 2
@@ -505,13 +505,13 @@
   },
   {
     "id": "demonic_blood_raid",
-    "title": "[ZH-TODO] Demonic Blood Raid",
-    "description": "[ZH-TODO] Demonic activity is peaking. A group of masked demonic cultivators sets up a blood array in the city outskirts, attempting to refine passing mortals into pills.",
+    "title": "恶魔之血突袭",
+    "description": "恶魔活动达到顶峰。一群蒙面魔修在城郊布下血阵，试图将路过的凡人炼成丹药。",
     "weight": 2,
     "choices": [
       {
         "id": "destroy_blood_array",
-        "text": "[ZH-TODO] Risk your life to break the array and save the mortals.",
+        "text": "冒着生命危险打破阵法，拯救凡人。",
         "effects": {
           "health": -20,
           "karma": 15,
@@ -521,7 +521,7 @@
       },
       {
         "id": "steal_blood_pill",
-        "text": "[ZH-TODO] Wait in the shadows and steal the finished Blood Pill.",
+        "text": "在阴影中等待并偷走完成的血丹。",
         "effects": {
           "health": -5,
           "karma": -15,
@@ -540,13 +540,13 @@
   },
   {
     "id": "underground_black_auction",
-    "title": "[ZH-TODO] Underground Black Auction",
-    "description": "[ZH-TODO] City security is lax. You receive a secret invitation to an underground black auction selling stolen sect artifacts and forbidden pills.",
+    "title": "地下黑色拍卖会",
+    "description": "城市治安松懈。您收到一份秘密邀请，参加一场地下黑色拍卖会，出售被盗的宗派神器和禁药。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_forbidden_item",
-        "text": "[ZH-TODO] Spend heavily to buy a forbidden artifact.",
+        "text": "花重金购买一件禁物。",
         "effects": {
           "money": -250,
           "karma": -5,
@@ -558,7 +558,7 @@
       },
       {
         "id": "report_black_market",
-        "text": "[ZH-TODO] Report the location to the righteous sects.",
+        "text": "将位置报告给正派。",
         "effects": {
           "karma": 10,
           "money": 100,
@@ -575,13 +575,13 @@
   },
   {
     "id": "counterfeit_manual_scam",
-    "title": "[ZH-TODO] Counterfeit Manual Scam",
-    "description": "[ZH-TODO] With city security failing, scammers are rampant. A merchant tries to sell you a 'Heavenly Grade' manual fragment for a suspiciously low price.",
+    "title": "假冒手册诈骗",
+    "description": "由于城市治安不力，骗子猖獗。商人试图以低得可疑的价格向你出售‘天级’手册碎片。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_fake_manual",
-        "text": "[ZH-TODO] Take the risk and buy it.",
+        "text": "承担风险并购买它。",
         "effects": {
           "money": -120,
           "comprehension": -2,
@@ -590,7 +590,7 @@
       },
       {
         "id": "intimidate_scammer",
-        "text": "[ZH-TODO] Threaten the scammer to reveal his real goods.",
+        "text": "威胁骗子透露他的真货。",
         "effects": {
           "money": 50,
           "karma": -5,
@@ -609,13 +609,13 @@
   },
   {
     "id": "herb_monopoly_challenge",
-    "title": "[ZH-TODO] Herb Monopoly Challenge",
-    "description": "[ZH-TODO] With the price index skyrocketing, a local merchant guild has monopolized all spirit herbs, driving prices even higher. A group of rogue cultivators plans to raid their warehouse.",
+    "title": "草药垄断挑战",
+    "description": "随着物价指数的飙升，当地的一个商会垄断了所有的灵药，使得价格更加水涨船高。一群散修计划袭击他们的仓库。",
     "weight": 2,
     "choices": [
       {
         "id": "join_the_raid",
-        "text": "[ZH-TODO] Join the raid to secure herbs for yourself.",
+        "text": "加入突袭行动，为自己获取草药。",
         "effects": {
           "health": -15,
           "karma": -10,
@@ -627,7 +627,7 @@
       },
       {
         "id": "protect_merchant",
-        "text": "[ZH-TODO] Protect the warehouse to earn the guild's favor.",
+        "text": "保护仓库以赢得公会的青睐。",
         "effects": {
           "health": -10,
           "money": 200,
@@ -644,13 +644,13 @@
   },
   {
     "id": "demonic_merchant_trap",
-    "title": "[ZH-TODO] Demonic Merchant Trap",
-    "description": "[ZH-TODO] Demonic activity is high. A merchant offers you a 'Breakthrough Pill' at an impossibly low price, but you notice a faint, dark aura emanating from him.",
+    "title": "恶魔商人陷阱",
+    "description": "恶魔活动频繁。一名商人以极低的价格向你提供“突破丹”，但你注意到他身上散发出微弱的黑暗气息。",
     "weight": 2,
     "choices": [
       {
         "id": "accept_and_test",
-        "text": "[ZH-TODO] Buy the pill and test its efficacy.",
+        "text": "购买药丸并测试其功效。",
         "effects": {
           "money": -50,
           "health": -15,
@@ -660,7 +660,7 @@
       },
       {
         "id": "expose_merchant",
-        "text": "[ZH-TODO] Call out the merchant's demonic identity and engage in combat.",
+        "text": "唤出商人的恶魔身份并进行战斗。",
         "effects": {
           "health": -20,
           "money": 150,
@@ -677,13 +677,13 @@
   },
   {
     "id": "corrupt_speculation_frenzy",
-    "title": "[ZH-TODO] Corrupt Speculation Frenzy",
-    "description": "[ZH-TODO] Due to skyrocketing spirit herb prices, a group of corrupt merchants is hoarding life-saving pills to sell at ten times the cost. The city's morale is plummeting as phantoms of hunger haunt the streets,.",
+    "title": "腐败投机狂潮",
+    "description": "由于灵药价格疯涨，一群贪官囤积救命丹药，以十倍的价格出售。饥饿的幽灵在街道上徘徊，这座城市的士气一落千丈。",
     "weight": 2,
     "choices": [
       {
         "id": "join_speculators",
-        "text": "[ZH-TODO] Use your sect influence to join the monopoly for massive profit,.",
+        "text": "利用你的教派影响力加入垄断，获取巨额利润。",
         "effects": {
           "money": 400,
           "karma": -20,
@@ -693,7 +693,7 @@
       },
       {
         "id": "raid_merchant_vault",
-        "text": "[ZH-TODO] Raid their hidden vault and distribute the pills to the poor,.",
+        "text": "袭击他们隐藏的金库并将药丸分发给穷人。",
         "effects": {
           "health": -15,
           "karma": 25,
@@ -710,13 +710,13 @@
   },
   {
     "id": "the_shadow_ritual",
-    "title": "[ZH-TODO] The Shadow Ritual",
-    "description": "[ZH-TODO] Demonic activity has reached a fever pitch. In the city's slums, you find a ritual using phàm nhân (mortal) children to birth a new Demonic Seed,.",
+    "title": "暗影仪式",
+    "description": "恶魔的活动已经达到了白热化的程度。在城市的贫民窟中，您会发现一种使用 phàm nhân（凡人）儿童来诞生新的恶魔种子的仪式。",
     "weight": 2,
     "choices": [
       {
         "id": "purify_the_slums",
-        "text": "[ZH-TODO] Risk a direct clash with the cult to stop the ritual and save the mortals,.",
+        "text": "冒着与邪教发生直接冲突的风险来阻止仪式并拯救凡人。",
         "effects": {
           "health": -35,
           "karma": 50,
@@ -726,7 +726,7 @@
       },
       {
         "id": "harvest_the_ma_chung",
-        "text": "[ZH-TODO] Wait for the ritual to conclude, then kill the cultists and take the Demonic Seed for yourself,.",
+        "text": "等待仪式结束，然后杀死邪教徒并为自己夺取恶魔种子。",
         "effects": {
           "karma": -100,
           "daoMind": -20,
@@ -746,13 +746,13 @@
   },
   {
     "id": "mysterious_wandering_merchant",
-    "title": "[ZH-TODO] Mysterious Wandering Merchant",
-    "description": "[ZH-TODO] The city's price index is low. A wandering merchant from a distant land offers rare spiritual materials at prices that seem too good to be true.",
+    "title": "神秘的流浪商人",
+    "description": "全市物价指数较低。一位来自远方的流浪商人以令人难以置信的价格提供稀有的灵材。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_bulk_materials",
-        "text": "[ZH-TODO] Invest your spirit stones and buy materials in bulk.",
+        "text": "投资你的灵石并大量购买材料。",
         "effects": {
           "money": -150,
           "gainItem": {
@@ -764,7 +764,7 @@
       },
       {
         "id": "haggle_for_pills",
-        "text": "[ZH-TODO] Haggle aggressively for a rare cultivation pill.",
+        "text": "积极讨价还价，获得稀有的修炼丹药。",
         "effects": {
           "money": -80,
           "luck": 2,
@@ -783,13 +783,13 @@
   },
   {
     "id": "corrupt_guard_extortion",
-    "title": "[ZH-TODO] Corrupt Guard Extortion",
-    "description": "[ZH-TODO] City security is low. A corrupt captain of the guard accuses you of smuggling forbidden demonic artifacts and demands a 'settlement' fee.",
+    "title": "腐败守卫勒索",
+    "description": "城市安全水平较低。一名腐败的守卫队长指控你走私违禁的恶魔神器，并要求你支付“和解”费。",
     "weight": 2,
     "choices": [
       {
         "id": "pay_the_bribe",
-        "text": "[ZH-TODO] Pay the bribe to avoid legal trouble with the city.",
+        "text": "行贿以避免与市政府发生法律纠纷。",
         "effects": {
           "money": -100,
           "karma": -2,
@@ -798,7 +798,7 @@
       },
       {
         "id": "fight_the_guards",
-        "text": "[ZH-TODO] Defend your honor and fight the corrupt guards.",
+        "text": "捍卫你的荣誉并与腐败的守卫作战。",
         "effects": {
           "health": -15,
           "karma": 5,
@@ -815,13 +815,13 @@
   },
   {
     "id": "starving_mob_riot",
-    "title": "[ZH-TODO] The Starving Mob",
-    "description": "[ZH-TODO] City morale has reached a critical low. A desperate mob of starving mortals is blocking your path, demanding spirit stones to buy food from the price-gouging merchants.",
+    "title": "饥饿的暴民",
+    "description": "城市士气已降至严重低点。一群绝望的饥饿的凡人挡住了你的道路，要求灵石从哄抬物价的商人那里购买食物。",
     "weight": 2,
     "choices": [
       {
         "id": "give_alms",
-        "text": "[ZH-TODO] Generously distribute your spirit stones to feed them.",
+        "text": "慷慨地分发你的灵石来喂养它们。",
         "effects": {
           "money": -150,
           "karma": 20,
@@ -831,7 +831,7 @@
       },
       {
         "id": "disperse_mob",
-        "text": "[ZH-TODO] Use your spiritual pressure to forcefully disperse the mob.",
+        "text": "用你的精神威压强行驱散暴民。",
         "effects": {
           "karma": -15,
           "daoMind": -5,
@@ -847,13 +847,13 @@
   },
   {
     "id": "city_guard_mutiny",
-    "title": "[ZH-TODO] City Guard Mutiny",
-    "description": "[ZH-TODO] City security and morale have collapsed. The guards, unpaid for months, have turned into looters, terrorizing the merchants they once protected.",
+    "title": "城卫兵叛变",
+    "description": "城市安全和士气已经崩溃。数月没有领到工资的警卫变成了抢劫者，恐吓他们曾经保护的商人。",
     "weight": 2,
     "choices": [
       {
         "id": "suppress_mutiny",
-        "text": "[ZH-TODO] Slay the rogue guards to restore order.",
+        "text": "杀死流氓守卫以恢复秩序。",
         "effects": {
           "health": -20,
           "karma": 15,
@@ -863,7 +863,7 @@
       },
       {
         "id": "loot_with_guards",
-        "text": "[ZH-TODO] Join the guards and raid the local merchant guild.",
+        "text": "加入守卫并袭击当地的商人行会。",
         "effects": {
           "money": 300,
           "karma": -20,
@@ -880,13 +880,13 @@
   },
   {
     "id": "mortal_hunger_riot",
-    "title": "[ZH-TODO] Riot of the Starving Phantoms",
-    "description": "[ZH-TODO] City morale has collapsed due to price-gouging. Starving mortals are attacking cultivator convoys for any scraps of spirit energy.",
+    "title": "饥饿幻影的骚乱",
+    "description": "由于哄抬物价，城市士气低落。饥饿的凡人正在攻击修士车队，以获取任何一点灵气。",
     "weight": 2,
     "choices": [
       {
         "id": "distribute_rations",
-        "text": "[ZH-TODO] Distribute your spirit herbs to appease the mob.",
+        "text": "分发你的灵草来安抚暴民。",
         "effects": {
           "money": -150,
           "karma": 30,
@@ -896,7 +896,7 @@
       },
       {
         "id": "ruthless_suppression",
-        "text": "[ZH-TODO] Brutally suppress the riot to restore market order.",
+        "text": "残酷镇压骚乱，恢复市场秩序。",
         "effects": {
           "karma": -40,
           "money": 100,
@@ -913,13 +913,13 @@
   },
   {
     "id": "mystical_lantern_festival",
-    "title": "[ZH-TODO] Mystical Lantern Festival",
-    "description": "[ZH-TODO] The city is highly prosperous and spiritual Qi is dense. A grand festival is held where lanterns infused with soul power fill the sky, creating a resonance with the Heavenly Dao.",
+    "title": "神秘的元宵节",
+    "description": "城池繁华，灵气浓郁。举行盛大的节日，注入魂力的灯笼布满天空，与天道产生共鸣。",
     "weight": 2,
     "choices": [
       {
         "id": "make_a_dao_wish",
-        "text": "[ZH-TODO] Release a lantern and make a wish for your Dao journey.",
+        "text": "放灯笼，许愿你的道行。",
         "effects": {
           "luck": 3,
           "daoMind": 5,
@@ -929,7 +929,7 @@
       },
       {
         "id": "collect_fallen_essence",
-        "text": "[ZH-TODO] Quietly collect the falling soul essence from the lanterns.",
+        "text": "静静地收集灯笼中掉落的灵魂精华。",
         "effects": {
           "comprehension": 3,
           "cultivation": 5,
@@ -949,13 +949,13 @@
   },
   {
     "id": "black_market_smuggling",
-    "title": "[ZH-TODO] Black Market Smuggling",
-    "description": "[ZH-TODO] The price index is skyrocketing and city security is low. A hidden network of smugglers is moving forbidden spirit herbs and demonic blood stones through the city sewers.",
+    "title": "黑市走私",
+    "description": "物价指数疯涨，城市治安低下。一个隐藏的走私网络正在通过城市下水道运送禁灵草药和恶魔血石。",
     "weight": 2,
     "choices": [
       {
         "id": "intercept_smugglers",
-        "text": "[ZH-TODO] Ambush the smugglers and seize their cargo.",
+        "text": "伏击走私者并夺取他们的货物。",
         "effects": {
           "health": -15,
           "money": 200,
@@ -968,7 +968,7 @@
       },
       {
         "id": "invest_in_smuggling",
-        "text": "[ZH-TODO] Invest your own spirit stones to fund their next run.",
+        "text": "投资你自己的灵石来资助他们的下一次跑步。",
         "effects": {
           "money": -200,
           "luck": -5,
@@ -988,13 +988,13 @@
   },
   {
     "id": "black_market_hoarding",
-    "title": "[ZH-TODO] Black Market Hoarding",
-    "description": "[ZH-TODO] With the city's price index at an all-time high, a shadowy figure offers you a chance to join a scheme to hoard essential spiritual ores and manipulate the market.",
+    "title": "黑市囤积",
+    "description": "由于该城市的价格指数处于历史最高水平，一个神秘人物为您提供了一个机会，让您参与一项囤积重要灵矿石并操纵市场的计划。",
     "weight": 2,
     "choices": [
       {
         "id": "invest_in_monopoly",
-        "text": "[ZH-TODO] Invest heavily to monopolize the supply of Spirit Ores.",
+        "text": "投入巨资，垄断灵矿供应。",
         "effects": {
           "money": -300,
           "luck": 5,
@@ -1004,7 +1004,7 @@
       },
       {
         "id": "expose_to_authorities",
-        "text": "[ZH-TODO] Expose the scheme to the City Lord for a bounty.",
+        "text": "向城主揭露这个计划以获得赏金。",
         "effects": {
           "money": 100,
           "reputation": 15,
@@ -1021,13 +1021,13 @@
   },
   {
     "id": "ghost_market_whispers",
-    "title": "[ZH-TODO] Ghost Market Whispers",
-    "description": "[ZH-TODO] City security is low. You find a hidden entrance to the Ghost Market, where rogue cultivators trade forbidden demonic artifacts. A masked dealer offers you a piece of 'Huyền Thiết' for a suspicious price.",
+    "title": "鬼市窃窃私语",
+    "description": "城市安全水平较低。你会发现鬼市的一个隐藏入口，散修们在那里交易禁忌的恶魔神器。蒙面经销商以可疑的价格向您提供一块“Huyền Thiết”。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_huyen_thiet",
-        "text": "[ZH-TODO] Buy the rare ore to upgrade your weapon.",
+        "text": "购买稀有矿石来升级你的武器。",
         "effects": {
           "money": -120,
           "luck": -2,
@@ -1040,7 +1040,7 @@
       },
       {
         "id": "steal_from_dealer",
-        "text": "[ZH-TODO] Wait for the dealer to leave and ambush him.",
+        "text": "等庄家走后伏击他。",
         "effects": {
           "health": -15,
           "karma": -15,
@@ -1060,13 +1060,13 @@
   },
   {
     "id": "mortal_plague_curse",
-    "title": "[ZH-TODO] The Wailing Plague",
-    "description": "[ZH-TODO] A mysterious plague, suspected to be a demonic curse, is ravaging the mortal population. The city's morale is at rock bottom as phàm nhân die by the hundreds.",
+    "title": "哀嚎瘟疫",
+    "description": "一场被怀疑是恶魔诅咒的神秘瘟疫正在肆虐凡人。随着数百名范仁的死亡，这座城市的士气跌入谷底。",
     "weight": 2,
     "choices": [
       {
         "id": "heal_with_spiritual_qi",
-        "text": "[ZH-TODO] Exhaust your Qi to heal the dying mortals.",
+        "text": "耗尽你的气来治愈垂死的凡人。",
         "effects": {
           "cultivation": -10,
           "health": -10,
@@ -1077,7 +1077,7 @@
       },
       {
         "id": "ignore_mortal_suffering",
-        "text": "[ZH-TODO] Ignore them; mortal lives are but fleeting smoke.",
+        "text": "忽略他们；凡人的生命不过是过眼烟云。",
         "effects": {
           "daoMind": -5,
           "karma": -20,
@@ -1093,13 +1093,13 @@
   },
   {
     "id": "city_embargo_crisis",
-    "title": "[ZH-TODO] City Resource Embargo",
-    "description": "[ZH-TODO] The city is under a resource embargo due to high demonic activity. Prices have reached extreme levels, and the black market is the only way to survive.",
+    "title": "城市资源禁运",
+    "description": "由于恶魔活动频繁，这座城市正处于资源禁运之下。价格已经达到极限，黑市是唯一的生存途径。",
     "weight": 2,
     "choices": [
       {
         "id": "smuggle_goods",
-        "text": "[ZH-TODO] Risk smuggling essential herbs into the city for profit.",
+        "text": "冒着走私基本草药进入城市的风险。",
         "effects": {
           "money": 500,
           "karma": -20,
@@ -1109,7 +1109,7 @@
       },
       {
         "id": "defend_caravans",
-        "text": "[ZH-TODO] Work as a guard for the few remaining legal caravans.",
+        "text": "担任仅存的少数合法商队的守卫。",
         "effects": {
           "health": -20,
           "money": 150,
@@ -1126,13 +1126,13 @@
   },
   {
     "id": "city_spirit_tide",
-    "title": "[ZH-TODO] City Spirit Tide",
-    "description": "[ZH-TODO] Due to a massive surge in global spiritual Qi, the city's spiritual wells have overflowed. A literal tide of energy washes through the streets, momentarily turning the marketplace into a supreme cultivation ground.",
+    "title": "城市精神潮",
+    "description": "由于全球灵气大量涌动，这座城市的灵井已经溢出。一股真正的能量浪潮冲刷着街道，瞬间将市场变成了至高无上的修炼之地。",
     "weight": 2,
     "choices": [
       {
         "id": "meditate_in_public",
-        "text": "[ZH-TODO] Sit in the middle of the street and absorb the tide.",
+        "text": "坐在街道中央，吸收潮水。",
         "effects": {
           "cultivation": 15,
           "health": 5,
@@ -1142,7 +1142,7 @@
       },
       {
         "id": "gather_spirit_liquid",
-        "text": "[ZH-TODO] Use your flasks to gather the condensed spiritual liquid to sell later.",
+        "text": "用你的瓶子收集浓缩的灵液以供稍后出售。",
         "effects": {
           "money": 200,
           "gainItem": {
@@ -1160,13 +1160,13 @@
   },
   {
     "id": "demonic_market_raid",
-    "title": "[ZH-TODO] Demonic Market Raid",
-    "description": "[ZH-TODO] City security is high and demonic activity is rising. The City Lord calls for volunteers to raid a secret demonic market discovered beneath the city's slums.",
+    "title": "恶魔市场袭击",
+    "description": "城市治安高度戒备，恶魔活动不断增加。城主号召志愿者突袭在城市贫民窟地下发现的一个秘密恶魔市场。",
     "weight": 2,
     "choices": [
       {
         "id": "join_the_raid",
-        "text": "[ZH-TODO] Join the city guards and strike the cultists.",
+        "text": "加入城市守卫并打击邪教分子。",
         "effects": {
           "health": -20,
           "karma": 15,
@@ -1180,7 +1180,7 @@
       },
       {
         "id": "leak_info",
-        "text": "[ZH-TODO] Secretly tip off the market in exchange for a 'donation'.",
+        "text": "秘密向市场通风报信以换取“捐赠”。",
         "effects": {
           "money": 300,
           "karma": -30,
@@ -1197,13 +1197,13 @@
   },
   {
     "id": "huyen_thiet_black_market",
-    "title": "[ZH-TODO] Huyền Thiết Black Market",
-    "description": "[ZH-TODO] City security is low and the price index is rising. A rogue cultivator is secretly selling 'Huyền Thiết' stolen from a sect convoy, useful for crafting superior weapons.",
+    "title": "Huyền Thiết 黑市",
+    "description": "城市治安较低，物价指数不断上涨。一名散修正在秘密出售从教派车队偷来的“Huyền Thiết”，可用于制造高级武器。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_huyen_thiet_cheap",
-        "text": "[ZH-TODO] Pay spirit stones to buy the illegal ore.",
+        "text": "支付灵石购买非法矿石。",
         "effects": {
           "money": -150,
           "karma": -10,
@@ -1215,7 +1215,7 @@
       },
       {
         "id": "report_to_sect",
-        "text": "[ZH-TODO] Report the location to your sect deacons for a reward.",
+        "text": "向您的教派执事报告该位置以获得奖励。",
         "effects": {
           "reputation": 15,
           "karma": 10,
@@ -1232,13 +1232,13 @@
   },
   {
     "id": "corrupt_city_lord_tax",
-    "title": "[ZH-TODO] Corrupt City Lord's Tax",
-    "description": "[ZH-TODO] City morale and security are low. The corrupt City Lord has imposed a 'Spiritual Protection Tax' on all visiting cultivators to fund his private army.",
+    "title": "腐败的城主税",
+    "description": "城市士气和治安低落。腐败的城主对所有来访的修真者征收‘精神保护税’，以资助他的私人军队。",
     "weight": 2,
     "choices": [
       {
         "id": "pay_the_tax",
-        "text": "[ZH-TODO] Pay the tax to maintain a low profile.",
+        "text": "纳税是为了保持低调。",
         "effects": {
           "money": -150,
           "daoMind": -5,
@@ -1247,7 +1247,7 @@
       },
       {
         "id": "incite_rebellion",
-        "text": "[ZH-TODO] Secretly incite the starving mortals to rebel against the Lord.",
+        "text": "暗中煽动饥饿的凡人反抗主。",
         "effects": {
           "karma": 20,
           "reputation": 10,
@@ -1265,13 +1265,13 @@
   },
   {
     "id": "city_tax_riot_interaction",
-    "title": "[ZH-TODO] The Bread and Stone Riot",
-    "description": "[ZH-TODO] With skyrocketing prices and low morale, starving mortals are blocking your path, accusing cultivators of hoarding the world's lifeblood [cite: 53, 60].",
+    "title": "面包和石头暴乱",
+    "description": "物价飞涨，士气低落，饥饿的凡人挡住了你的道路，指责修真者囤积世界的命脉[引用: 53, 60]。",
     "weight": 2,
     "choices": [
       {
         "id": "bribe_the_mob",
-        "text": "[ZH-TODO] Throw spirit stones to disperse the crowd and gain karma.",
+        "text": "扔灵石可以驱散人群并获得业力。",
         "effects": {
           "money": -200,
           "karma": 25,
@@ -1281,7 +1281,7 @@
       },
       {
         "id": "protect_merchant_convoy",
-        "text": "[ZH-TODO] Help a nearby merchant suppress the mob to earn a discount.",
+        "text": "帮助附近的商人镇压暴徒以获得折扣。",
         "effects": {
           "karma": -20,
           "money": 100,
@@ -1298,13 +1298,13 @@
   },
   {
     "id": "grand_decade_auction",
-    "title": "[ZH-TODO] Grand Auction of the Decade",
-    "description": "[ZH-TODO] With city prosperity at its peak, the legendary Decade Auction has opened. Rare treasures from across the continent, including breakthrough pills and supreme manuals, are being showcased [cite: 60, 18].",
+    "title": "十年大拍卖",
+    "description": "随着城市的繁荣达到顶峰，传奇的十年拍卖会开幕了。来自整个大陆的稀世珍宝，包括突破丹药和无上秘籍，正在展出[引用：60, 18]。",
     "weight": 2,
     "choices": [
       {
         "id": "bid_for_breakthrough_pill",
-        "text": "[ZH-TODO] Spend a fortune to secure a guaranteed Breakthrough Pill.",
+        "text": "花一大笔钱来获得有保证的突破药丸。",
         "effects": {
           "money": -500,
           "luck": 5,
@@ -1316,7 +1316,7 @@
       },
       {
         "id": "sell_rare_materials",
-        "text": "[ZH-TODO] Take advantage of the high prices to sell your rare ores and herbs.",
+        "text": "利用高价出售你的稀有矿石和草药。",
         "effects": {
           "money": 400,
           "reputation": 10,
@@ -1332,13 +1332,13 @@
   },
   {
     "id": "event_thien_kieu_tra_xanh_gap_go",
-    "title": "[ZH-TODO] Encountering Moc Uyen Thanh",
-    "description": "[ZH-TODO] At the Ancient Cave, you see Moc Uyen Thanh surrounded by demonic beasts, looking weak and calling for help.",
+    "title": "遇见木渊清",
+    "description": "在古洞中，木渊青被妖兽包围，看上去很虚弱，正在呼救。",
     "weight": 2,
     "choices": [
       {
         "id": "rescue_tra_xanh",
-        "text": "[ZH-TODO] Lend a hand, cannot leave her to die.",
+        "text": "伸出援手，不能让她死。",
         "effects": {
           "health": -5,
           "karma": 5,
@@ -1352,7 +1352,7 @@
       },
       {
         "id": "ignore_tra_xanh",
-        "text": "[ZH-TODO] Sense something is wrong and leave quietly.",
+        "text": "察觉到事情不对劲，就悄悄离开。",
         "effects": {
           "luck": 1,
           "npcFavorability": {
@@ -1371,13 +1371,13 @@
   },
   {
     "id": "save_demonic_cultivator",
-    "title": "[ZH-TODO] Saving a Demonic Cultivator",
-    "description": "[ZH-TODO] In the pouring rain, you find a woman in black robes collapsed by the road, covered in blood. Her aura is cold and reeks of demonic energy. Righteous cultivators are searching nearby.",
+    "title": "拯救魔修",
+    "description": "倾盆大雨中，你发现一名身穿黑袍的女子倒在路边，浑身是血。她的气息冰冷，充满了魔气。正道修士正在附近寻找。",
     "weight": 1,
     "choices": [
       {
         "id": "save_demonic_girl",
-        "text": "[ZH-TODO] Use a Blood Recovery Pill to save her.",
+        "text": "使用回血丹来救她。",
         "effects": {
           "karma": -5,
           "gainFragment": {
@@ -1388,7 +1388,7 @@
       },
       {
         "id": "call_righteous",
-        "text": "[ZH-TODO] Call the righteous cultivators to capture her.",
+        "text": "呼叫正修们来抓她。",
         "effects": {
           "money": 100
         }
@@ -1402,13 +1402,13 @@
   },
   {
     "id": "abyssal_whispers",
-    "title": "[ZH-TODO] Abyssal Whispers",
-    "description": "[ZH-TODO] While cultivating in seclusion in a remote cave, you hear murmurs echoing from an underground spring, promising unmatched power and infinite lifespan if you abandon your Dao Mind.",
+    "title": "深渊低语",
+    "description": "在偏僻的山洞里闭关修炼时，听到地下泉水的声音回荡，预示着放弃道心，将获得无与伦比的力量和无限的寿命。",
     "weight": 2,
     "choices": [
       {
         "id": "resist_whisper",
-        "text": "[ZH-TODO] Keep your mind clear and reject the demonic voice.",
+        "text": "保持头脑清醒，拒绝恶魔的声音。",
         "effects": {
           "daoMind": 5,
           "cultivation": 2,
@@ -1417,7 +1417,7 @@
       },
       {
         "id": "accept_whisper",
-        "text": "[ZH-TODO] Open your mind and embrace the evil power.",
+        "text": "敞开心扉，拥抱邪恶的力量。",
         "effects": {
           "cultivation": 15,
           "daoMind": -10,
@@ -1437,13 +1437,13 @@
   },
   {
     "id": "black_roadhouse_inn",
-    "title": "[ZH-TODO] Black Roadhouse Inn",
-    "description": "[ZH-TODO] In the dark wilderness, you stop at a dimly lit inn. The sly old innkeeper serves a bowl of braised meat that has a strange but incredibly appetizing spiritual aura.",
+    "title": "布莱克路德豪斯旅馆",
+    "description": "在黑暗的荒野中，你停在一家灯光昏暗的旅馆前。狡猾的老店主端上来的一碗红烧肉，有着奇异而又令人胃口大开的灵气。",
     "weight": 2,
     "choices": [
       {
         "id": "stay_awake",
-        "text": "[ZH-TODO] Carefully avoid eating and stay awake to defend yourself.",
+        "text": "小心避免进食并保持清醒以保护自己。",
         "effects": {
           "health": -2,
           "daoMind": 2,
@@ -1452,7 +1452,7 @@
       },
       {
         "id": "eat_and_sleep",
-        "text": "[ZH-TODO] Feast on the meat and go to sleep.",
+        "text": "吃完肉就去睡觉了。",
         "effects": {
           "health": -15,
           "luck": -2,
@@ -1468,13 +1468,13 @@
   },
   {
     "id": "blood_sacrifice_array",
-    "title": "[ZH-TODO] Blood Sacrifice Array",
-    "description": "[ZH-TODO] While patrolling, you discover a wicked array absorbing mortal blood to condense a Blood Pill.",
+    "title": "血祭阵",
+    "description": "巡逻时，发现一个邪阵，吸收凡人之血，凝成血丹。",
     "weight": 1,
     "choices": [
       {
         "id": "destroy_array",
-        "text": "[ZH-TODO] Risk your life to destroy the array.",
+        "text": "冒着生命危险去破坏阵法。",
         "effects": {
           "health": -15,
           "daoMind": 5,
@@ -1483,7 +1483,7 @@
       },
       {
         "id": "steal_blood_pill",
-        "text": "[ZH-TODO] Wait for completion and steal the pill.",
+        "text": "等待完成并偷走药丸。",
         "effects": {
           "health": -5,
           "karma": -15,
@@ -1502,13 +1502,13 @@
   },
   {
     "id": "qi_deviation_crisis",
-    "title": "[ZH-TODO] Qi Deviation Crisis",
-    "description": "[ZH-TODO] Rising demonic energy triggers your inner demons during meditation. The spiritual Qi in your meridians turns chaotic, threatening to explode.",
+    "title": "气走危机",
+    "description": "冥想时，恶魔能量的上升会触发你内心的恶魔。经脉中的灵气变得混乱，有爆炸的危险。",
     "weight": 2,
     "choices": [
       {
         "id": "force_breakthrough",
-        "text": "[ZH-TODO] Use the chaotic energy to forcefully increase cultivation!",
+        "text": "利用混沌能量，强行提升修为！",
         "effects": {
           "health": -20,
           "cultivation": 10,
@@ -1517,7 +1517,7 @@
       },
       {
         "id": "suppress_qi",
-        "text": "[ZH-TODO] Bite your tongue and brutally suppress the energy.",
+        "text": "咬住舌头，残酷的压制能量。",
         "effects": {
           "cultivation": -5,
           "daoMind": 5,
@@ -1533,13 +1533,13 @@
   },
   {
     "id": "demonic_qi_overload",
-    "title": "[ZH-TODO] Demonic Qi Overload",
-    "description": "[ZH-TODO] The world's demonic energy is so dense it begins to seep into your meridians during regular rest, causing a violent struggle between your spiritual Qi and the dark aura.",
+    "title": "魔气超载",
+    "description": "天地魔气浓郁，在平时休息的时候，就开始渗入你的经脉，导致你的灵气与黑暗气息剧烈的斗争。",
     "weight": 2,
     "choices": [
       {
         "id": "refine_demonic_qi",
-        "text": "[ZH-TODO] Attempt to refine the demonic Qi into your own power.",
+        "text": "尝试将魔气炼化为自己的力量。",
         "effects": {
           "cultivation": 15,
           "health": -20,
@@ -1549,7 +1549,7 @@
       },
       {
         "id": "expel_darkness",
-        "text": "[ZH-TODO] Focus entirely on expelling the darkness from your body.",
+        "text": "完全专注于驱除体内的黑暗。",
         "effects": {
           "health": -5,
           "daoMind": 8,
@@ -1565,13 +1565,13 @@
   },
   {
     "id": "shadow_demonic_ambush",
-    "title": "[ZH-TODO] Shadow of the Demonic Path",
-    "description": "[ZH-TODO] High demonic energy has emboldened dark cultivators. A skilled demonic assassin ambushes you from the shadows, seeking to steal your cultivation base.",
+    "title": "魔道之影",
+    "description": "高强的魔气，让黑暗修士的底气更加的嚣张。一名熟练的恶魔刺客从暗处伏击你，试图窃取你的修为。",
     "weight": 2,
     "choices": [
       {
         "id": "counter_ambush",
-        "text": "[ZH-TODO] React instantly and engage in a deadly duel.",
+        "text": "立即做出反应并进行致命的决斗。",
         "effects": {
           "health": -25,
           "cultivation": 15,
@@ -1584,7 +1584,7 @@
       },
       {
         "id": "use_escape_talisman",
-        "text": "[ZH-TODO] Use an escape talisman to flee, leaving your treasures behind.",
+        "text": "使用逃生护身符逃离，留下你的财宝。",
         "effects": {
           "money": -200,
           "luck": -2,
@@ -1600,13 +1600,13 @@
   },
   {
     "id": "void_visions_meditation",
-    "title": "[ZH-TODO] Visions of the Void",
-    "description": "[ZH-TODO] Dense demonic energy surrounds you during meditation. Visions of a dark void begin to tempt your mind, promising power in exchange for your humanity.",
+    "title": "虚空幻象",
+    "description": "冥想时，浓密的恶魔能量围绕着你。黑暗虚空的幻象开始诱惑你的思想，承诺以力量换取你的人性。",
     "weight": 2,
     "choices": [
       {
         "id": "embrace_the_darkness",
-        "text": "[ZH-TODO] Embrace the visions and harness the void energy.",
+        "text": "拥抱愿景并利用虚空能量。",
         "effects": {
           "cultivation": 18,
           "karma": -15,
@@ -1620,7 +1620,7 @@
       },
       {
         "id": "recite_heart_sutra",
-        "text": "[ZH-TODO] Recite the Heart-Cleansing Sutra to purge the corruption.",
+        "text": "念诵《净心经》，可以清除贪污。",
         "effects": {
           "daoMind": 15,
           "cultivation": -5,
@@ -1637,13 +1637,13 @@
   },
   {
     "id": "demonic_whisper_meditation",
-    "title": "[ZH-TODO] Whispers of the Demonic Seed",
-    "description": "[ZH-TODO] As demonic energy saturates the world, a dark voice begins to whisper in your mind during meditation, offering forbidden power to bypass your current bottleneck.",
+    "title": "恶魔种子的低语",
+    "description": "当恶魔能量充满世界时，冥想期间一个黑暗的声音开始在你的脑海中低语，提供禁忌的力量来绕过你当前的瓶颈。",
     "weight": 2,
     "choices": [
       {
         "id": "listen_to_whispers",
-        "text": "[ZH-TODO] Listen to the whispers and embrace the dark shortcut.",
+        "text": "聆听低语，拥抱黑暗的捷径。",
         "effects": {
           "cultivation": 20,
           "karma": -30,
@@ -1656,7 +1656,7 @@
       },
       {
         "id": "seal_the_mind",
-        "text": "[ZH-TODO] Seal your senses and protect your righteous Dao Heart.",
+        "text": "封印你的感官，保护你的正道心。",
         "effects": {
           "daoMind": 15,
           "health": -10,
@@ -1672,13 +1672,13 @@
   },
   {
     "id": "demonic_blood_sacrifice_interruption",
-    "title": "[ZH-TODO] Interrupting the Blood Sacrifice",
-    "description": "[ZH-TODO] You stumble upon a hidden ritual where demonic cultivators are sacrificing mortals to fuel their dark energy. The atmosphere is heavy with the smell of iron and death.",
+    "title": "中断血祭",
+    "description": "你偶然发现了一个隐藏的仪式，恶魔修行者正在牺牲凡人来补充他们的黑暗能量。空气中弥漫着铁与死亡的气息。",
     "weight": 2,
     "choices": [
       {
         "id": "save_mortals",
-        "text": "[ZH-TODO] Risk your life to slay the cultists and save the survivors.",
+        "text": "冒着生命危险杀死邪教徒并拯救幸存者。",
         "effects": {
           "health": -35,
           "karma": 50,
@@ -1688,7 +1688,7 @@
       },
       {
         "id": "wait_and_scavenge",
-        "text": "[ZH-TODO] Wait for the ritual to end, then loot the abandoned demonic tools.",
+        "text": "等待仪式结束，然后掠夺废弃的恶魔工具。",
         "effects": {
           "karma": -50,
           "daoMind": -20,
@@ -1708,13 +1708,13 @@
   },
   {
     "id": "heart_demon_resonance",
-    "title": "[ZH-TODO] Heart Demon Resonance",
-    "description": "[ZH-TODO] The world's demonic energy is overflowing, triggering a resonance with the lingering 'Pill Toxins' and repressed desires in your soul, manifested as a Heart Demon [cite: 18, 56].",
+    "title": "心魔共鸣",
+    "description": "天地魔气泛滥，与灵魂中残留的“丹毒”和压抑的欲望产生共鸣，表现为心魔[引：18、56]。",
     "weight": 2,
     "choices": [
       {
         "id": "conquer_heart_demon",
-        "text": "[ZH-TODO] Engage in a spiritual battle to conquer your inner darkness.",
+        "text": "进行一场精神战斗，征服你内心的黑暗。",
         "effects": {
           "daoMind": 20,
           "comprehension": 5,
@@ -1724,7 +1724,7 @@
       },
       {
         "id": "surrender_to_darkness",
-        "text": "[ZH-TODO] Surrender to the whispers for a sudden surge in cultivation.",
+        "text": "屈服于低语，以获得修为的突然激增。",
         "effects": {
           "cultivation": 40,
           "daoMind": -30,
@@ -1741,13 +1741,13 @@
   },
   {
     "id": "waking_dawn",
-    "title": "[ZH-TODO] Waking Dawn",
-    "description": "[ZH-TODO] A cold dawn breaks. A choice appears: cultivate steadily or chase a risky shortcut.",
+    "title": "黎明醒来",
+    "description": "寒冷的黎明来临。一个选择出现了：稳步耕耘还是走一条冒险的捷径。",
     "weight": 1,
     "choices": [
       {
         "id": "steady_practice",
-        "text": "[ZH-TODO] Practice patiently, build your foundation.",
+        "text": "耐心练习，打好基础。",
         "effects": {
           "cultivation": 2,
           "comprehension": 1,
@@ -1760,7 +1760,7 @@
       },
       {
         "id": "shortcut_burst",
-        "text": "[ZH-TODO] Use a risky shortcut to leap forward.",
+        "text": "使用危险的捷径向前跳跃。",
         "effects": {
           "cultivation": 5,
           "luck": -2,
@@ -1775,13 +1775,13 @@
   },
   {
     "id": "chosen_one_duel",
-    "title": "[ZH-TODO] Duel with the Chosen One",
-    "description": "[ZH-TODO] Long Ngao Thien, the arrogant child of destiny, blocks your path. He points his glittering sword at you, demanding a duel to step on your dignity.",
+    "title": "与天选者决斗",
+    "description": "傲慢的命运之子 Long Ngao Thien 挡住了你的道路。他用闪闪发光的剑指着你，要求决斗来践踏你的尊严。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_ngao_thien",
-        "text": "[ZH-TODO] Go all out and prove your worth!",
+        "text": "全力以赴，证明你的价值！",
         "effects": {
           "health": -20,
           "cultivation": 20,
@@ -1791,7 +1791,7 @@
       },
       {
         "id": "surrender_ngao_thien",
-        "text": "[ZH-TODO] Acknowledge his superiority and back down.",
+        "text": "承认他的优越性并退缩。",
         "effects": {
           "daoMind": -10,
           "health": 0
@@ -1805,13 +1805,13 @@
   },
   {
     "id": "spirit_herbs",
-    "title": "[ZH-TODO] Spirit Herbs",
-    "description": "[ZH-TODO] You stumble upon mysterious spirit herbs. Their aura is intoxicating but slightly unstable.",
+    "title": "灵草",
+    "description": "你偶然发现了神秘的灵草。他们的气息令人陶醉，但又有些不稳定。",
     "weight": 1,
     "choices": [
       {
         "id": "accept_herbs",
-        "text": "[ZH-TODO] Refine them safely using your core techniques.",
+        "text": "使用您的核心技术安全地改进它们。",
         "effects": {
           "health": 2,
           "cultivation": 1,
@@ -1824,7 +1824,7 @@
       },
       {
         "id": "test_herbs",
-        "text": "[ZH-TODO] Test the raw herbs directly on yourself.",
+        "text": "直接在自己身上测试原始草药。",
         "effects": {
           "health": -2,
           "comprehension": 2,
@@ -1833,7 +1833,7 @@
       },
       {
         "id": "decline_herbs",
-        "text": "[ZH-TODO] Decline the temptation and leave silently.",
+        "text": "拒绝诱惑，默默离开。",
         "effects": {
           "karma": 1,
           "luck": 1
@@ -1847,13 +1847,13 @@
   },
   {
     "id": "duel_challenge",
-    "title": "[ZH-TODO] Duel Challenge",
-    "description": "[ZH-TODO] A wandering martial artist abruptly blocks your path, drawing their weapon and demanding a duel to hone their Dao.",
+    "title": "决斗挑战",
+    "description": "一名流浪的武术家突然挡住了你的道路，拔出武器并要求决斗以磨练他们的道。",
     "weight": 1,
     "choices": [
       {
         "id": "accept_duel",
-        "text": "[ZH-TODO] Accept the duel and prove yourself.",
+        "text": "接受决斗并证明自己。",
         "effects": {
           "cultivation": 2,
           "luck": 1,
@@ -1866,7 +1866,7 @@
       },
       {
         "id": "avoid_duel",
-        "text": "[ZH-TODO] Avoid the confrontation but observe their stance.",
+        "text": "避免对抗，但观察他们的立场。",
         "effects": {
           "comprehension": 2,
           "karma": 1
@@ -1880,13 +1880,13 @@
   },
   {
     "id": "heavenly_dao_quake",
-    "title": "[ZH-TODO] Heavenly Dao Quake",
-    "description": "[ZH-TODO] Spiritual energy fluctuates violently, reaching an alarming level! An extraordinary destiny is approaching, and a hidden secret realm might be opening.",
+    "title": "天道震",
+    "description": "灵气波动剧烈，达到了惊人的程度！一个非凡的命运即将来临，一个隐藏的秘境可能正在开启。",
     "weight": 1,
     "choices": [
       {
         "id": "absorb_violent_qi",
-        "text": "[ZH-TODO] Risk your life to absorb the violent spiritual Qi.",
+        "text": "冒着生命危险，吸收狂暴的灵气。",
         "effects": {
           "health": -25,
           "cultivation": 30,
@@ -1899,7 +1899,7 @@
       },
       {
         "id": "seek_secret_realm",
-        "text": "[ZH-TODO] Search for the entrance to the opening secret realm.",
+        "text": "寻找开启秘境的入口。",
         "effects": {
           "luck": 2,
           "health": -10,
@@ -1919,13 +1919,13 @@
   },
   {
     "id": "heavenly_qi_surge",
-    "title": "[ZH-TODO] Heavenly Qi Surge",
-    "description": "[ZH-TODO] The spiritual Qi of the world suddenly surges to an incredibly dense level! It completely suppresses demonic auras, but inhaling too much might overwhelm a weak body.",
+    "title": "天气涌动",
+    "description": "天地灵气顿时暴涨到了无比浓郁的程度！它可以完全抑制魔气，但吸入太多可能会压倒虚弱的身体。",
     "weight": 1,
     "choices": [
       {
         "id": "absorb_madly",
-        "text": "[ZH-TODO] Absorb the Qi madly to surge your cultivation!",
+        "text": "疯狂吸收真气，提升修为！",
         "effects": {
           "health": -15,
           "cultivation": 20,
@@ -1934,7 +1934,7 @@
       },
       {
         "id": "refine_into_pills",
-        "text": "[ZH-TODO] Safely guide the Qi to refine it into spiritual pills.",
+        "text": "安然引导真气，炼成灵丹。",
         "effects": {
           "daoMind": 5,
           "gainItem": {
@@ -1952,13 +1952,13 @@
   },
   {
     "id": "heavenly_epiphany_surge",
-    "title": "[ZH-TODO] Heavenly Epiphany Surge",
-    "description": "[ZH-TODO] The Heavenly Dao fluctuates wildly. A sudden surge of profound Dao rhythm washes over you, resonating with your meridians and presenting a rare chance for a sudden epiphany.",
+    "title": "天道顿悟涌动",
+    "description": "天道剧烈波动。一股玄道韵律骤然涌动，与经脉共鸣，难得顿悟。",
     "weight": 1,
     "choices": [
       {
         "id": "absorb_epiphany",
-        "text": "[ZH-TODO] Close your eyes and absorb the Dao rhythm to surge your cultivation.",
+        "text": "闭上眼睛，吸收道韵，提升修为。",
         "effects": {
           "health": -5,
           "cultivation": 15,
@@ -1967,7 +1967,7 @@
       },
       {
         "id": "comprehend_manual",
-        "text": "[ZH-TODO] Use this profound moment to deduce martial techniques.",
+        "text": "利用这深奥的瞬间，演绎武技。",
         "effects": {
           "comprehension": 5,
           "daoMind": 5,
@@ -1986,13 +1986,13 @@
   },
   {
     "id": "echoes_of_the_immortal_rift",
-    "title": "[ZH-TODO] Echoes of the Immortal Rift",
-    "description": "[ZH-TODO] A sudden spike in Dao fluctuations has caused a localized temporal rift. You hear echoes of a future breakthrough or a past failure resonating with your soul,.",
+    "title": "不朽裂痕的回响",
+    "description": "道波动突然激增，造成了局部的时空裂痕。你会听到未来突破或过去失败的回声与你的灵魂产生共鸣。",
     "weight": 1,
     "choices": [
       {
         "id": "peer_into_destiny",
-        "text": "[ZH-TODO] Force your mind through the rift to grasp a fragment of supreme knowledge,.",
+        "text": "强迫你的思想穿过裂缝，掌握最高知识的片段。",
         "effects": {
           "comprehension": 15,
           "daoMind": -5,
@@ -2005,7 +2005,7 @@
       },
       {
         "id": "sacrifice_cultivation_for_luck",
-        "text": "[ZH-TODO] Offer your current cultivation base to the rift in exchange for a shift in destiny,.",
+        "text": "将自己现在的修为奉献给裂痕，换取命运的转变。",
         "effects": {
           "cultivation": -20,
           "luck": 10,
@@ -2021,13 +2021,13 @@
   },
   {
     "id": "heavenly_thunder_tempering",
-    "title": "[ZH-TODO] Heavenly Thunder Tempering",
-    "description": "[ZH-TODO] Heavenly Dao is fluctuating wildly. A localized spiritual storm has summoned bolts of Heavenly Thunder. You can try to use the lightning to temper your meridians.",
+    "title": "天雷淬炼",
+    "description": "天道剧烈波动。一场局部的精神风暴召唤出了天雷。你可以尝试用雷电来淬炼你的经脉。",
     "weight": 1,
     "choices": [
       {
         "id": "face_the_thunder",
-        "text": "[ZH-TODO] Face the thunder head-on to purge your body.",
+        "text": "迎面雷霆，净化身体。",
         "effects": {
           "health": -35,
           "cultivation": 30,
@@ -2037,7 +2037,7 @@
       },
       {
         "id": "flee_the_storm",
-        "text": "[ZH-TODO] Retreat to safety and avoid the deadly lightning.",
+        "text": "撤退到安全地带并避免致命的闪电。",
         "effects": {
           "luck": 2,
           "daoMind": -2
@@ -2052,13 +2052,13 @@
   },
   {
     "id": "ancient_array_puzzle",
-    "title": "[ZH-TODO] The Lost Array of the Ancients",
-    "description": "[ZH-TODO] While exploring a remote area, you discover an ancient array carved into the rock. It flickers with a mysterious light, resonating with the current Heavenly Dao fluctuations.",
+    "title": "失落的远古阵列",
+    "description": "在探索偏远地区时，你发现了一个刻在岩石上的古老阵列。它闪烁着神秘的光芒，与当下的天道波动产生共鸣。",
     "weight": 2,
     "choices": [
       {
         "id": "solve_with_wisdom",
-        "text": "[ZH-TODO] Use your deep comprehension to solve the puzzle peacefully.",
+        "text": "运用你的深刻理解力和平地解决这个难题。",
         "effects": {
           "comprehension": 5,
           "daoMind": 3,
@@ -2070,7 +2070,7 @@
       },
       {
         "id": "break_with_force",
-        "text": "[ZH-TODO] Use sheer martial power to shatter the array's core.",
+        "text": "使用纯粹的武力，粉碎阵法核心。",
         "effects": {
           "health": -20,
           "cultivation": 5,
@@ -2089,13 +2089,13 @@
   },
   {
     "id": "immortal_tomb_emergence",
-    "title": "[ZH-TODO] Immortal's Tomb Emergence",
-    "description": "[ZH-TODO] Extreme Dao fluctuations have caused the earth to split, revealing the entrance to a majestic tomb belonging to an ancient Ascendant Immortal.",
+    "title": "不朽之墓的出现",
+    "description": "极致的道波动，让大地裂开，露出了一座远古飞升仙人的宏伟陵墓入口。",
     "weight": 1,
     "choices": [
       {
         "id": "enter_the_core_tomb",
-        "text": "[ZH-TODO] Brave the deadly traps to enter the core burial chamber.",
+        "text": "勇敢地面对致命的陷阱，进入核心墓室。",
         "effects": {
           "health": -35,
           "comprehension": 10,
@@ -2108,7 +2108,7 @@
       },
       {
         "id": "scavenge_the_outskirts",
-        "text": "[ZH-TODO] Stay safe and scavenge the offerings in the outer halls.",
+        "text": "确保安全并清理外厅的祭品。",
         "effects": {
           "money": 200,
           "gainItem": {
@@ -2128,13 +2128,13 @@
   },
   {
     "id": "world_dao_epiphany",
-    "title": "[ZH-TODO] Heavenly Dao Resonance",
-    "description": "[ZH-TODO] The world's Dao fluctuates violently, causing spiritual energy to manifest as physical lotus petals falling from the sky.",
+    "title": "天道共鸣",
+    "description": "天地大道剧烈波动，灵气化为肉身莲瓣从天而降。",
     "weight": 1,
     "choices": [
       {
         "id": "meditate_on_dao",
-        "text": "[ZH-TODO] Focus on comprehending the laws of the universe.",
+        "text": "专注于领悟宇宙法则。",
         "effects": {
           "comprehension": 10,
           "daoMind": 10,
@@ -2143,7 +2143,7 @@
       },
       {
         "id": "absorb_petals",
-        "text": "[ZH-TODO] Quickly absorb the manifestation petals for cultivation.",
+        "text": "快速吸收化身花瓣进行修炼。",
         "effects": {
           "cultivation": 15,
           "health": 5,
@@ -2159,13 +2159,13 @@
   },
   {
     "id": "heavenly_karma_judgment",
-    "title": "[ZH-TODO] Heavenly Karma Judgment",
-    "description": "[ZH-TODO] Heavenly Dao fluctuations have triggered a moment of karmic clarity. The world judges your past actions, resonating with your soul's purity or corruption.",
+    "title": "天业审判",
+    "description": "天道波动，引发了片刻的业力清明。世界会评判你过去的行为，与你灵魂的纯洁或腐败产生共鸣。",
     "weight": 1,
     "choices": [
       {
         "id": "embrace_the_judgment",
-        "text": "[ZH-TODO] Offer your soul to the judgment of the heavens.",
+        "text": "将你的灵魂交给上天的审判。",
         "effects": {
           "daoMind": 10,
           "luck": 5,
@@ -2175,7 +2175,7 @@
       },
       {
         "id": "defy_the_heavens",
-        "text": "[ZH-TODO] Defy the judgment and rely only on your own power.",
+        "text": "抗拒判断，只依靠自己的力量。",
         "effects": {
           "cultivation": 15,
           "daoMind": -10,
@@ -2192,13 +2192,13 @@
   },
   {
     "id": "pill_toxin_backlash",
-    "title": "[ZH-TODO] Accumulated Pill Toxins",
-    "description": "[ZH-TODO] Your over-reliance on low-grade pills to survive the lifespan race has caused 'Pill Toxins' to accumulate in your meridians. A backlash is imminent.",
+    "title": "累积的丹毒",
+    "description": "你过度依赖劣质丹药来求生，导致经脉中‘丹毒’积聚。反弹即将到来。",
     "weight": 2,
     "choices": [
       {
         "id": "cleanse_meridians",
-        "text": "[ZH-TODO] Endure excruciating pain to manually cleanse the toxins.",
+        "text": "忍受剧痛手动清除毒素。",
         "effects": {
           "health": -20,
           "daoMind": 10,
@@ -2208,7 +2208,7 @@
       },
       {
         "id": "neutralize_with_herb",
-        "text": "[ZH-TODO] Use a rare Snow Lotus to neutralize the toxins safely.",
+        "text": "使用稀有的雪莲可以安全地中和毒素。",
         "effects": {
           "money": -150,
           "health": 5,
@@ -2228,13 +2228,13 @@
   },
   {
     "id": "pill_toxin_cleansing_ritual",
-    "title": "[ZH-TODO] Pill Toxin Cleansing Ritual",
-    "description": "[ZH-TODO] Your meridians are clogged with dark residues from excessive pill consumption. A wandering healer offers a dangerous ritual to burn away the toxins using pure spiritual fire.",
+    "title": "丹毒排毒仪式",
+    "description": "你的经络被过量服药后的黑色残留物堵塞。一位流浪治疗师提供了一种危险的仪式，用纯粹的精神之火烧掉毒素。",
     "weight": 2,
     "choices": [
       {
         "id": "endure_the_fire",
-        "text": "[ZH-TODO] Endure the excruciating spiritual fire to cleanse your body.",
+        "text": "忍受痛苦的灵火来净化你的身体。",
         "effects": {
           "health": -30,
           "daoMind": 10,
@@ -2248,7 +2248,7 @@
       },
       {
         "id": "refuse_and_seek_herbs",
-        "text": "[ZH-TODO] Refuse the ritual and try to neutralize toxins with rare herbs.",
+        "text": "拒绝仪式并尝试用稀有草药中和毒素。",
         "effects": {
           "money": -200,
           "luck": 1,
@@ -2267,13 +2267,13 @@
   },
   {
     "id": "fragment_of_the_heavens",
-    "title": "[ZH-TODO] Fragment of the Heavens",
-    "description": "[ZH-TODO] Extreme Dao fluctuations have caused a physical fragment of the Heavenly Dao to fall from the sky. It radiates a rhythm that defies mortality.",
+    "title": "天堂碎片",
+    "description": "极致的道波动，让一块天道的物质碎片从天而降。它散发出一种反抗死亡的节奏。",
     "weight": 1,
     "choices": [
       {
         "id": "grasp_the_fragment",
-        "text": "[ZH-TODO] Risk your body to grasp the divine fragment.",
+        "text": "冒着生命危险去抓住神圣碎片。",
         "effects": {
           "health": -40,
           "comprehension": 20,
@@ -2286,7 +2286,7 @@
       },
       {
         "id": "watch_it_dissolve",
-        "text": "[ZH-TODO] Don't touch it; simply sit nearby and observe as it dissolves.",
+        "text": "不要碰它；只需坐在附近观察它的溶解即可。",
         "effects": {
           "comprehension": 10,
           "daoMind": 20,
@@ -2302,13 +2302,13 @@
   },
   {
     "id": "heavenly_dao_vision_war",
-    "title": "[ZH-TODO] Vision of the Eternal War",
-    "description": "[ZH-TODO] Extreme Dao fluctuations have triggered a spiritual resonance. You see a vision of the founding Sect Leader battling a Great Demon, revealing a flaw in your current technique.",
+    "title": "永恒战争的愿景",
+    "description": "极致的道波动，引发了精神共鸣。你看到了创始宗主与大魔战斗的幻象，揭示了你当前技术的缺陷。",
     "weight": 1,
     "choices": [
       {
         "id": "correct_the_flaw",
-        "text": "[ZH-TODO] Focus on correcting the technique's flaw to boost efficiency.",
+        "text": "专注于纠正技术缺陷以提高效率。",
         "effects": {
           "comprehension": 15,
           "cultivation": 5,
@@ -2321,7 +2321,7 @@
       },
       {
         "id": "capture_demon_technique",
-        "text": "[ZH-TODO] Try to memorize the Demon's forbidden moves instead.",
+        "text": "尝试记住恶魔的禁忌动作。",
         "effects": {
           "comprehension": 10,
           "karma": -20,
@@ -2341,13 +2341,13 @@
   },
   {
     "id": "pill_toxin_meridian_blockage",
-    "title": "[ZH-TODO] Meridian Blockage Crisis",
-    "description": "[ZH-TODO] The high spiritual Qi in the environment is reacting violently with the 'Pill Toxins' in your body, causing a localized Qi explosion within your meridians.",
+    "title": "经络阻塞危机",
+    "description": "环境中的高灵气与你体内的‘丹毒’发生剧烈的反应，导致经脉内局部气爆。",
     "weight": 2,
     "choices": [
       {
         "id": "force_suppression",
-        "text": "[ZH-TODO] Forcefully suppress the explosion, risking permanent damage.",
+        "text": "强行抑制爆炸，可能会造成永久性损坏。",
         "effects": {
           "health": -40,
           "cultivation": -5,
@@ -2357,7 +2357,7 @@
       },
       {
         "id": "vent_excess_qi",
-        "text": "[ZH-TODO] Vent the excess energy outwards, causing a small shockwave.",
+        "text": "将多余的能量向外排出，引起小型冲击波。",
         "effects": {
           "health": -15,
           "cultivation": -10,
@@ -2374,13 +2374,13 @@
   },
   {
     "id": "ancient_spatial_rift_puzzle",
-    "title": "[ZH-TODO] Ancient Spatial Rift",
-    "description": "[ZH-TODO] Extreme Heavenly Dao fluctuations have opened a localized spatial rift. It leads to a pocket dimension containing ancient cultivation techniques [cite: 56, 59].",
+    "title": "远古空间裂缝",
+    "description": "极致的天道波动，开启了局部的空间裂痕。它通向一个包含古代耕作技术的口袋维度[引用：56, 59]。",
     "weight": 1,
     "choices": [
       {
         "id": "decipher_the_rift",
-        "text": "[ZH-TODO] Use your high comprehension to stabilize the rift and enter safely.",
+        "text": "用你的高领悟力稳定裂痕，安全进入。",
         "effects": {
           "comprehension": 10,
           "daoMind": 5,
@@ -2392,7 +2392,7 @@
       },
       {
         "id": "force_entry",
-        "text": "[ZH-TODO] Brave the chaotic space to snatch a supreme manual fragment.",
+        "text": "勇闯混沌空间，抢夺至尊手工碎片。",
         "effects": {
           "health": -40,
           "luck": 5,
@@ -2411,13 +2411,13 @@
   },
   {
     "id": "heavenly_nectar_epiphany",
-    "title": "[ZH-TODO] Heavenly Nectar Rain",
-    "description": "[ZH-TODO] A rare phenomenon occurs when spiritual Qi peaks! Rain that directly nourishes the soul falls from the sky, bypassing ordinary bottlenecks [cite: 56, 12].",
+    "title": "天上甘露雨",
+    "description": "灵气巅峰时，会出现罕见的现象！直接滋养灵魂的雨水从天而降，绕过了普通的瓶颈[引用：56, 12]。",
     "weight": 1,
     "choices": [
       {
         "id": "meditate_in_rain",
-        "text": "[ZH-TODO] Meditate openly to maximize tu vi gain.",
+        "text": "公开冥想以最大化你的收益。",
         "effects": {
           "cultivation": 25,
           "health": 10,
@@ -2427,7 +2427,7 @@
       },
       {
         "id": "collect_nectar",
-        "text": "[ZH-TODO] Focus on collecting the rain into jade bottles for later sale.",
+        "text": "集中精力将雨水收集到玉瓶中以便以后出售。",
         "effects": {
           "money": 300,
           "gainItem": {
@@ -2445,13 +2445,13 @@
   },
   {
     "id": "beast_king_lotus",
-    "title": "[ZH-TODO] Beast King Guarding the Blood Lotus",
-    "description": "[ZH-TODO] Deep in the core of the Myriad Beast Mountain Range, you discover a thousand-year Blood Lotus. However, coiled tightly beside it is a slumbering Blood Python Beast King.",
+    "title": "兽王守护血莲",
+    "description": "在万兽山脉的核心深处，发现了一株千年血莲。然而，在它身边，却紧紧盘着一头沉睡的血蟒兽王。",
     "weight": 1,
     "choices": [
       {
         "id": "steal_lotus",
-        "text": "[ZH-TODO] Set up a stealth array, steal the Blood Lotus, and run.",
+        "text": "布下隐身阵法，偷走血莲，就跑。",
         "effects": {
           "health": -5,
           "gainItem": {
@@ -2462,7 +2462,7 @@
       },
       {
         "id": "leave_safely",
-        "text": "[ZH-TODO] Walk away, your life is more important.",
+        "text": "走开吧，你的命更重要。",
         "effects": {
           "daoMind": 2,
           "luck": 1
@@ -2478,13 +2478,13 @@
   },
   {
     "id": "corpse_in_swamp",
-    "title": "[ZH-TODO] Corpse in the Swamp",
-    "description": "[ZH-TODO] Deep in the Myriad Beast Mountain Range, you see a Foundation Establishment cultivator's corpse half-submerged in a swamp, with a bulging storage bag still glittering on their waist.",
+    "title": "沼泽中的尸体",
+    "description": "万兽山脉深处，一名筑基修士的尸体半没在沼泽之中，腰间还挂着一个鼓鼓囊囊的储物袋。",
     "weight": 2,
     "choices": [
       {
         "id": "loot_corpse",
-        "text": "[ZH-TODO] Use sword control or a branch to hook the storage bag.",
+        "text": "使用剑控或树枝钩住储物袋。",
         "effects": {
           "health": -15,
           "luck": 1,
@@ -2497,7 +2497,7 @@
       },
       {
         "id": "burn_corpse",
-        "text": "[ZH-TODO] Burn the corpse from afar to avoid future trouble.",
+        "text": "远方烧尸，免得后患。",
         "effects": {
           "daoMind": 2,
           "karma": 2
@@ -2512,13 +2512,13 @@
   },
   {
     "id": "unfinished_go_game",
-    "title": "[ZH-TODO] Unfinished Go Game",
-    "description": "[ZH-TODO] Exploring a stalactite-filled cave, you find a white jade Go board. The unfinished game radiates profound Dao rhythm, likely left behind by two ascendant masters millennia ago.",
+    "title": "未完成的围棋游戏",
+    "description": "探索充满钟乳石的洞穴，你会发现一块白玉围棋棋盘。未完成的游戏散发着深奥的道韵，很可能是千年前两位飞升大师留下的。",
     "weight": 1,
     "choices": [
       {
         "id": "solve_go_game",
-        "text": "[ZH-TODO] Sit down and dedicate your entire mind to solving the game.",
+        "text": "坐下来，全神贯注地解决游戏。",
         "effects": {
           "cultivation": 20,
           "comprehension": 5,
@@ -2530,7 +2530,7 @@
       },
       {
         "id": "observe_briefly",
-        "text": "[ZH-TODO] Just bow respectfully, watch briefly, and leave.",
+        "text": "只需恭敬地鞠躬，短暂观看，然后离开。",
         "effects": {
           "comprehension": 1,
           "cultivation": 2,
@@ -2546,13 +2546,13 @@
   },
   {
     "id": "demon_king_metamorphosis",
-    "title": "[ZH-TODO] Demon King's Metamorphosis",
-    "description": "[ZH-TODO] The sky darkens over the Myriad Beast Mountain Range. A Demon King is undergoing Heavenly Tribulation to take human form and is extremely weak.",
+    "title": "魔王的变态",
+    "description": "万兽山脉上空，天色暗了下来。魔王正在经历天劫化为人形，身体极其虚弱。",
     "weight": 1,
     "choices": [
       {
         "id": "protect_demon",
-        "text": "[ZH-TODO] Protect the Demon King through the tribulation.",
+        "text": "保护魔王渡过难关。",
         "effects": {
           "health": -20,
           "karma": 5,
@@ -2564,7 +2564,7 @@
       },
       {
         "id": "sneak_attack_demon",
-        "text": "[ZH-TODO] Take advantage of the situation and attack!",
+        "text": "趁势进攻！",
         "effects": {
           "karma": -8,
           "luck": 2,
@@ -2583,13 +2583,13 @@
   },
   {
     "id": "secret_realm_opening",
-    "title": "[ZH-TODO] Secret Realm Opening",
-    "description": "[ZH-TODO] Heavenly Dao fluctuates violently. A spatial rift tears open in the mountains, revealing an ancient secret realm glowing with supreme spiritual energy.",
+    "title": "秘境开启",
+    "description": "天道波动剧烈。山峦间裂开一条空间裂痕，露出了一个闪烁着无上灵气的古老秘境。",
     "weight": 1,
     "choices": [
       {
         "id": "enter_realm",
-        "text": "[ZH-TODO] Risk your life and leap into the spatial rift.",
+        "text": "冒着生命危险，跳入空间裂缝。",
         "effects": {
           "health": -20,
           "cultivation": 25,
@@ -2602,7 +2602,7 @@
       },
       {
         "id": "meditate_outside",
-        "text": "[ZH-TODO] Too dangerous. Meditate outside to absorb the leaking Qi.",
+        "text": "太危险了。外出打坐，吸收漏气。",
         "effects": {
           "cultivation": 5,
           "luck": 2,
@@ -2618,13 +2618,13 @@
   },
   {
     "id": "heavenly_treasure_emerges",
-    "title": "[ZH-TODO] Heavenly Treasure Emerges",
-    "description": "[ZH-TODO] The mountain's resources are overflowing. A rare Snow Lotus has bloomed on a cliff, attracting numerous greedy rogue cultivators who are already fighting for it.",
+    "title": "天材地宝出现",
+    "description": "山上的资源已经泛滥成灾。一朵罕见的雪莲花在悬崖上绽放，吸引了无数贪婪的散修争相争夺。",
     "weight": 2,
     "choices": [
       {
         "id": "sneak_and_grab",
-        "text": "[ZH-TODO] Sneak through the chaos to grab the Snow Lotus.",
+        "text": "潜入混乱之中，夺取雪莲。",
         "effects": {
           "health": -10,
           "luck": 1,
@@ -2636,7 +2636,7 @@
       },
       {
         "id": "ambush_survivors",
-        "text": "[ZH-TODO] Wait for them to kill each other, then ambush the survivors.",
+        "text": "等待他们互相残杀，然后伏击幸存者。",
         "effects": {
           "karma": -10,
           "money": 100,
@@ -2655,13 +2655,13 @@
   },
   {
     "id": "encounter_mu_wanqing",
-    "title": "[ZH-TODO] Encountering Mu Wanqing",
-    "description": "[ZH-TODO] At the Ancient Ruins, you find Mu Wanqing, a famous inner sect beauty, surrounded by demonic beasts. She is crying weakly for help.",
+    "title": "遇见穆婉青",
+    "description": "远古遗迹中，著名内门美女木晚晴被妖兽包围。她虚弱地哭喊着寻求帮助。",
     "weight": 2,
     "choices": [
       {
         "id": "rescue_tra_xanh",
-        "text": "[ZH-TODO] Rush in to save her like a hero.",
+        "text": "像英雄一样冲进去救她。",
         "effects": {
           "health": -15,
           "karma": 5,
@@ -2670,7 +2670,7 @@
       },
       {
         "id": "ignore_tra_xanh",
-        "text": "[ZH-TODO] See through the trouble and walk away silently.",
+        "text": "看破烦恼，默默走开。",
         "effects": {
           "luck": 2,
           "daoMind": 2,
@@ -2686,13 +2686,13 @@
   },
   {
     "id": "mountain_meditation",
-    "title": "[ZH-TODO] Mountain Meditation",
-    "description": "[ZH-TODO] The towering peaks of the ancient mountain invite you to sit and ponder the Heavenly Dao.",
+    "title": "山地冥想",
+    "description": "古山巍峨，邀你坐思天道。",
     "weight": 1,
     "choices": [
       {
         "id": "embrace_silence",
-        "text": "[ZH-TODO] Sit with the mountain's soul and listen to the silence.",
+        "text": "与山魂同坐，聆听寂静。",
         "effects": {
           "comprehension": 2,
           "karma": 2,
@@ -2705,7 +2705,7 @@
       },
       {
         "id": "seek_fortune",
-        "text": "[ZH-TODO] Search the surrounding peaks for hidden treasures.",
+        "text": "搜索周围的山峰寻找隐藏的宝藏。",
         "effects": {
           "health": -1,
           "cultivation": 1,
@@ -2725,13 +2725,13 @@
   },
   {
     "id": "event_hong_nhan_ma_dao_am_sat",
-    "title": "[ZH-TODO] Blood Rose Ambush",
-    "description": "[ZH-TODO] While exploring the Myriad Beast Mountain Range, Blood Rose suddenly drops her disguise, revealing her demonic nature, and surrounds you with killing intent.",
+    "title": "血玫瑰伏击",
+    "description": "在探索万兽山脉的过程中，血玫瑰突然卸下伪装，露出魔性，杀意弥漫。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_hong_nhan",
-        "text": "[ZH-TODO] Fight to the death and break out!",
+        "text": "决一死战，突围而出！",
         "effects": {
           "health": -15,
           "cultivation": 10,
@@ -2740,7 +2740,7 @@
       },
       {
         "id": "flee_hong_nhan",
-        "text": "[ZH-TODO] Leave your Spirit Stones behind and flee for your life.",
+        "text": "丢下你的灵石，逃命吧。",
         "effects": {
           "health": -5,
           "money": -100
@@ -2755,13 +2755,13 @@
   },
   {
     "id": "ancestral_memory",
-    "title": "[ZH-TODO] Ancestral Memory",
-    "description": "[ZH-TODO] Deep within the ancient ruins, a mysterious resonance triggers a flood of ancient ancestral memories in your mind.",
+    "title": "祖先记忆",
+    "description": "在远古遗迹的深处，一种神秘的共鸣，在你的脑海中引发了远古祖先记忆的洪流。",
     "weight": 1,
     "choices": [
       {
         "id": "remember_ancestors",
-        "text": "[ZH-TODO] Embrace the ancestors and nurture the legacy.",
+        "text": "拥抱祖先，培育遗产。",
         "effects": {
           "karma": 2,
           "cultivation": 1,
@@ -2770,7 +2770,7 @@
       },
       {
         "id": "forge_own_path",
-        "text": "[ZH-TODO] Break the old path and forge your own destiny.",
+        "text": "打破旧路，开创自己的命运。",
         "effects": {
           "luck": 2,
           "comprehension": 1,
@@ -2786,13 +2786,13 @@
   },
   {
     "id": "grave_storm",
-    "title": "[ZH-TODO] Grave Storm",
-    "description": "[ZH-TODO] A terrifying spectral storm filled with resentful spirits suddenly sweeps across the ancient burial grounds.",
+    "title": "坟墓风暴",
+    "description": "一股充满怨灵的恐怖幽灵风暴突然席卷了古老的墓地。",
     "weight": 1,
     "choices": [
       {
         "id": "stand_firm",
-        "text": "[ZH-TODO] Stand firm and protect your Dao Heart.",
+        "text": "坚守住自己的道心。",
         "effects": {
           "health": -1,
           "karma": 2,
@@ -2801,7 +2801,7 @@
       },
       {
         "id": "evade_pain",
-        "text": "[ZH-TODO] Evade the pain and conserve your energy.",
+        "text": "逃避痛苦并保存能量。",
         "effects": {
           "luck": 2,
           "health": -2
@@ -2816,13 +2816,13 @@
   },
   {
     "id": "helping_hand_daoist",
-    "title": "[ZH-TODO] A Daoist in Distress",
-    "description": "[ZH-TODO] You encounter a severely injured righteous cultivator being cornered by a pack of demonic wolves. They beg you for help.",
+    "title": "困境中的道士",
+    "description": "你遇到了一位身受重伤的正修，被一群魔狼围困。他们向你求助。",
     "weight": 2,
     "choices": [
       {
         "id": "help_daoist",
-        "text": "[ZH-TODO] Draw your sword and save them.",
+        "text": "拔出你的剑并拯救他们。",
         "effects": {
           "health": -10,
           "karma": 5,
@@ -2831,7 +2831,7 @@
       },
       {
         "id": "loot_daoist",
-        "text": "[ZH-TODO] Wait for them to die, then loot their corpse.",
+        "text": "等他们死了，然后掠夺他们的尸体。",
         "effects": {
           "karma": -10,
           "money": 80,
@@ -2850,13 +2850,13 @@
   },
   {
     "id": "ruined_alchemy_furnace",
-    "title": "[ZH-TODO] Ruined Alchemy Furnace",
-    "description": "[ZH-TODO] In a forgotten cave, you find a cracked alchemy furnace still radiating intense, unstable medicinal Qi after centuries.",
+    "title": "炼金炉废墟",
+    "description": "在一个被遗忘的山洞里，你发现一座已经破裂的炼丹炉，历经数百年，依然散发着强烈、不稳定的药气。",
     "weight": 1,
     "choices": [
       {
         "id": "absorb_medicinal_qi",
-        "text": "[ZH-TODO] Inhale the scorching Qi to temper your body.",
+        "text": "吸入灼热之气，淬炼身体。",
         "effects": {
           "health": -5,
           "cultivation": 5,
@@ -2865,7 +2865,7 @@
       },
       {
         "id": "scavenge_furnace",
-        "text": "[ZH-TODO] Break the furnace to search for leftover pills.",
+        "text": "打破熔炉寻找剩余的药丸。",
         "effects": {
           "luck": -1,
           "gainItem": {
@@ -2883,13 +2883,13 @@
   },
   {
     "id": "ancient_array_trap",
-    "title": "[ZH-TODO] Ancient Array Trap",
-    "description": "[ZH-TODO] Heavenly Dao fluctuations have revealed the entrance to an Ancient Cave Dwelling, but it is protected by a deadly and complex killing array.",
+    "title": "远古阵法陷阱",
+    "description": "天道波动，显露出一座古洞府的入口，但却被致命而复杂的杀阵所守护。",
     "weight": 2,
     "choices": [
       {
         "id": "force_break_array",
-        "text": "[ZH-TODO] Use sheer martial power to break the array!",
+        "text": "用纯粹的武力破阵！",
         "effects": {
           "health": -25,
           "cultivation": 5,
@@ -2901,7 +2901,7 @@
       },
       {
         "id": "decipher_array",
-        "text": "[ZH-TODO] Sit down and use your comprehension to decipher the array.",
+        "text": "坐下来，用你的理解力来破译这个数组。",
         "effects": {
           "comprehension": 3,
           "luck": 1,
@@ -2920,13 +2920,13 @@
   },
   {
     "id": "demonic_altar_discovery",
-    "title": "[ZH-TODO] Demonic Altar Discovery",
-    "description": "[ZH-TODO] Deep in the misty mountains, you stumble upon a hidden Demonic Altar. Fresh blood covers the runes, and a dark artifact throbs with forbidden power.",
+    "title": "恶魔祭坛发现",
+    "description": "在迷雾山脉深处，你偶然发现了一座隐藏的恶魔祭坛。新鲜的血液覆盖了符文，一件黑暗的神器带着禁忌的力量颤动着。",
     "weight": 2,
     "choices": [
       {
         "id": "take_artifact",
-        "text": "[ZH-TODO] Endure the corrupted energy and take the artifact.",
+        "text": "忍受腐化的能量并夺取神器。",
         "effects": {
           "health": -15,
           "karma": -15,
@@ -2939,7 +2939,7 @@
       },
       {
         "id": "destroy_altar",
-        "text": "[ZH-TODO] Purify the altar with your cultivation base.",
+        "text": "以你的修为净化祭坛。",
         "effects": {
           "health": -20,
           "karma": 15,
@@ -2956,13 +2956,13 @@
   },
   {
     "id": "millennial_ginseng_guardian",
-    "title": "[ZH-TODO] Guardian of the Millennial Ginseng",
-    "description": "[ZH-TODO] Deep in the Beast Mountain Range, you discover a patch of rare spirit herbs, including a Millennial Ginseng. However, a fierce demonic wolf is aggressively guarding the area.",
+    "title": "千年人参的守护者",
+    "description": "在兽岭深处，你发现了一片珍稀灵草，其中就有千年人参。然而，一头凶猛的魔狼正在凶猛地守护着这片区域。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_wolf_for_ginseng",
-        "text": "[ZH-TODO] Engage the demonic wolf in a bloody battle for the herbs.",
+        "text": "与魔狼展开一场争夺草药的血战。",
         "effects": {
           "health": -20,
           "cultivation": 5,
@@ -2974,7 +2974,7 @@
       },
       {
         "id": "sneak_and_steal_herbs",
-        "text": "[ZH-TODO] Hold your breath and try to steal a few herbs without alerting it.",
+        "text": "屏住呼吸，尝试在不惊动它的情况下偷取一些草药。",
         "effects": {
           "health": -10,
           "luck": 2,
@@ -2994,13 +2994,13 @@
   },
   {
     "id": "ancient_dao_stele",
-    "title": "[ZH-TODO] Ancient Dao Stele",
-    "description": "[ZH-TODO] Triggered by intense Heavenly Dao fluctuations, a massive stone stele rises from the earth, radiating ancient Dao runes that resonate with your soul.",
+    "title": "古道碑",
+    "description": "强烈的天道波动引发，一座巨大的石碑拔地而起，散发着与灵魂共鸣的古老道纹。",
     "weight": 2,
     "choices": [
       {
         "id": "meditate_stele",
-        "text": "[ZH-TODO] Sit beneath the stele and meditate on the runes.",
+        "text": "坐在石碑下，默想符文。",
         "effects": {
           "comprehension": 5,
           "daoMind": 5,
@@ -3013,7 +3013,7 @@
       },
       {
         "id": "pry_fragment",
-        "text": "[ZH-TODO] Pry a fragment off the stele to sell.",
+        "text": "从石碑上撬下一块碎片来出售。",
         "effects": {
           "karma": -5,
           "luck": -2,
@@ -3029,13 +3029,13 @@
   },
   {
     "id": "beast_king_lair",
-    "title": "[ZH-TODO] Beast King's Lair",
-    "description": "[ZH-TODO] With beast activity at a peak, you stumble upon the empty lair of a Beast King while it's out leading the beast tide. Treasures are scattered everywhere.",
+    "title": "兽王巢穴",
+    "description": "当野兽活动达到顶峰时，你偶然发现了兽王的空巢穴，而它正引领着兽潮。宝藏散落各处。",
     "weight": 2,
     "choices": [
       {
         "id": "loot_lair_quickly",
-        "text": "[ZH-TODO] Loot as much as you can and run before it returns!",
+        "text": "尽可能多地掠夺并在它回来之前逃跑！",
         "effects": {
           "health": -5,
           "luck": 2,
@@ -3048,7 +3048,7 @@
       },
       {
         "id": "trap_beast_king",
-        "text": "[ZH-TODO] Set up a killing array to ambush the weakened Beast King.",
+        "text": "布置杀阵，伏击实力减弱的兽王。",
         "effects": {
           "health": -30,
           "cultivation": 15,
@@ -3067,13 +3067,13 @@
   },
   {
     "id": "miasma_mountain_trail",
-    "title": "[ZH-TODO] Miasma on the Mountain Trail",
-    "description": "[ZH-TODO] Rising demonic energy has created a thick, toxic miasma on the mountain trail. You hear the distorted growls of mutated beasts within the fog.",
+    "title": "山路上的瘴气",
+    "description": "魔气升腾，山道上弥漫着浓浓的毒瘴气。你听到雾中变异野兽扭曲的咆哮声。",
     "weight": 2,
     "choices": [
       {
         "id": "push_through_miasma",
-        "text": "[ZH-TODO] Hold your breath and push through to find rare herbs.",
+        "text": "屏住呼吸，努力寻找稀有草药。",
         "effects": {
           "health": -15,
           "cultivation": 2,
@@ -3085,7 +3085,7 @@
       },
       {
         "id": "wait_for_clearance",
-        "text": "[ZH-TODO] Wait for the miasma to clear, losing precious time.",
+        "text": "等待瘴气散去，浪费了宝贵的时间。",
         "effects": {
           "daoMind": 2,
           "luck": 1
@@ -3100,13 +3100,13 @@
   },
   {
     "id": "spiritual_spring_epiphany",
-    "title": "[ZH-TODO] Spiritual Spring Epiphany",
-    "description": "[ZH-TODO] High spiritual Qi in the area has manifested a hidden spiritual spring. The water is pure and radiates profound Dao energy.",
+    "title": "心灵春天的顿悟",
+    "description": "区域灵气高强，显现出隐藏的灵泉。水质纯净，散发着玄妙的道气。",
     "weight": 1,
     "choices": [
       {
         "id": "bathe_in_spring",
-        "text": "[ZH-TODO] Bathe in the spring to cleanse your meridians.",
+        "text": "沐浴泉水，净化经络。",
         "effects": {
           "health": 10,
           "cultivation": 5,
@@ -3115,7 +3115,7 @@
       },
       {
         "id": "collect_spring_water",
-        "text": "[ZH-TODO] Collect the water into jade flasks to sell or use later.",
+        "text": "将水收集到玉瓶中以供以后出售或使用。",
         "effects": {
           "money": 100,
           "gainItem": {
@@ -3133,13 +3133,13 @@
   },
   {
     "id": "ghost_battlefield_scavenging",
-    "title": "[ZH-TODO] Ghost Battlefield Scavenging",
-    "description": "[ZH-TODO] The mountain is littered with remains from the ongoing sect war. Ghostly wails echo as you search the area for abandoned spiritual tools and weapons.",
+    "title": "幽灵战场拾荒",
+    "description": "山上散落着正在进行的教派战争的遗迹。当你在该地区寻找被遗弃的精神工具和武器时，幽灵般的哀号会回响。",
     "weight": 2,
     "choices": [
       {
         "id": "search_remains",
-        "text": "[ZH-TODO] Deeply search the battlefield despite the spectral danger.",
+        "text": "尽管存在幽灵般的危险，但仍深入搜索战场。",
         "effects": {
           "health": -15,
           "gainItem": {
@@ -3151,7 +3151,7 @@
       },
       {
         "id": "purify_battlefield",
-        "text": "[ZH-TODO] Use your cultivation to purify the souls of the fallen.",
+        "text": "用你的修为来净化堕落者的灵魂。",
         "effects": {
           "cultivation": -5,
           "karma": 20,
@@ -3167,13 +3167,13 @@
   },
   {
     "id": "ancient_battlefield_vision",
-    "title": "[ZH-TODO] Ancient Battlefield Vision",
-    "description": "[ZH-TODO] High Heavenly Dao fluctuations trigger a temporal rift. You see a vision of an ancient battle between Immortals and Demons, revealing profound combat techniques.",
+    "title": "远古战场视野",
+    "description": "高等天道波动，引发时空裂痕。你看到了远古仙魔之战的景象，揭示了高深的战技。",
     "weight": 1,
     "choices": [
       {
         "id": "study_vision",
-        "text": "[ZH-TODO] Immerse yourself in the vision to learn the ancient ways.",
+        "text": "沉浸在学习古老方法的视野中。",
         "effects": {
           "comprehension": 10,
           "daoMind": 5,
@@ -3185,7 +3185,7 @@
       },
       {
         "id": "resist_vision",
-        "text": "[ZH-TODO] Close your eyes to protect your mind from the brutal killing intent.",
+        "text": "闭上眼睛，保护自己的心灵免受残酷杀意的伤害。",
         "effects": {
           "daoMind": 10,
           "luck": 2
@@ -3200,13 +3200,13 @@
   },
   {
     "id": "spirit_beast_egg_discovery",
-    "title": "[ZH-TODO] Spirit Beast Egg Discovery",
-    "description": "[ZH-TODO] Mountain resources are abundant. You find a glowing Spirit Beast egg hidden in a crevice, but the parent beast is nearby, hunting for food.",
+    "title": "灵兽蛋发现",
+    "description": "山区资源丰富。你发现一个发光的灵兽蛋藏在裂缝中，但母兽就在附近，正在寻找食物。",
     "weight": 2,
     "choices": [
       {
         "id": "steal_egg",
-        "text": "[ZH-TODO] Quietly steal the egg and escape.",
+        "text": "悄悄偷走鸡蛋并逃跑。",
         "effects": {
           "luck": 5,
           "health": -5,
@@ -3218,7 +3218,7 @@
       },
       {
         "id": "leave_beast_alone",
-        "text": "[ZH-TODO] Leave the egg undisturbed to respect the laws of nature.",
+        "text": "让鸡蛋不受干扰，以尊重自然法则。",
         "effects": {
           "karma": 10,
           "daoMind": 5,
@@ -3234,13 +3234,13 @@
   },
   {
     "id": "night_of_the_blood_moon",
-    "title": "[ZH-TODO] Night of the Blood Moon",
-    "description": "[ZH-TODO] The sky turns a sickly crimson. Extreme demonic energy has driven the mountain beasts into a murderous frenzy, and the veil between worlds is thinning,.",
+    "title": "血月之夜",
+    "description": "天空变成了病态的深红色。极致的魔气让山兽陷入杀戮狂潮，世界之间的面纱正在变薄。",
     "weight": 2,
     "choices": [
       {
         "id": "absorb_blood_essence",
-        "text": "[ZH-TODO] Sit in the center of the slaughter and absorb the chaotic blood essence to surge your cultivation,.",
+        "text": "坐在杀戮中心，吸收混沌精血，修为暴增，。",
         "effects": {
           "cultivation": 25,
           "health": -30,
@@ -3250,7 +3250,7 @@
       },
       {
         "id": "slay_frenzied_beasts",
-        "text": "[ZH-TODO] Slay the frenzied beasts to harvest their mutated cores for crafting,.",
+        "text": "杀死疯狂的野兽，收获它们变异的核心用于制作。",
         "effects": {
           "health": -20,
           "money": 100,
@@ -3269,13 +3269,13 @@
   },
   {
     "id": "beast_mountain_landslide",
-    "title": "[ZH-TODO] Beast Mountain Landslide",
-    "description": "[ZH-TODO] High danger levels in the mountains have caused a massive landslide. Ancient ores are now exposed, but the area is unstable and crawling with agitated beasts.",
+    "title": "兽山滑坡",
+    "description": "山区的高危险等级导致了大规模的山体滑坡。远古矿石现已暴露出来，但该地区不稳定，爬满了焦躁的野兽。",
     "weight": 2,
     "choices": [
       {
         "id": "mine_rare_ores",
-        "text": "[ZH-TODO] Risk the falling rocks to mine the exposed ores.",
+        "text": "冒着落石的危险开采裸露的矿石。",
         "effects": {
           "health": -15,
           "gainItem": {
@@ -3286,7 +3286,7 @@
       },
       {
         "id": "hunt_agitated_beasts",
-        "text": "[ZH-TODO] Hunt the beasts confused by the landslide for their cores.",
+        "text": "追捕被山体滑坡迷惑的野兽，寻找它们的核心。",
         "effects": {
           "health": -10,
           "gainItem": {
@@ -3304,13 +3304,13 @@
   },
   {
     "id": "beast_tide_vanguard",
-    "title": "[ZH-TODO] Beast Tide Vanguard",
-    "description": "[ZH-TODO] Beast activity has exploded! A massive tide of monsters is rushing down the mountain. You are caught directly in the path of the beast vanguard.",
+    "title": "兽潮先锋",
+    "description": "猛兽活动爆发！一大群怪物正从山上冲下来。你直接被困在了野兽先锋的道路上。",
     "weight": 2,
     "choices": [
       {
         "id": "hold_the_line",
-        "text": "[ZH-TODO] Stand your ground and slay the beasts to protect the valley.",
+        "text": "坚守阵地，消灭野兽，保护山谷。",
         "effects": {
           "health": -30,
           "cultivation": 10,
@@ -3323,7 +3323,7 @@
       },
       {
         "id": "retreat_and_scavenge",
-        "text": "[ZH-TODO] Retreat to the rear and scavenge remains of fallen beasts.",
+        "text": "撤退到后方并清理倒下的野兽的残骸。",
         "effects": {
           "health": -5,
           "karma": -5,
@@ -3342,13 +3342,13 @@
   },
   {
     "id": "herbalist_hidden_garden",
-    "title": "[ZH-TODO] The Herbalist's Hidden Garden",
-    "description": "[ZH-TODO] With high spiritual Qi in the mountains, a hidden array has failed, revealing a long-forgotten herb garden once owned by a legendary herbalist.",
+    "title": "草药师的隐秘花园",
+    "description": "山中灵气极高，一座隐藏的阵法失效了，露出了一座曾经属于传奇药师的、被遗忘已久的药草园。",
     "weight": 2,
     "choices": [
       {
         "id": "harvest_rare_strains",
-        "text": "[ZH-TODO] Harvest the most precious and rare spiritual strains.",
+        "text": "收获最珍贵、最稀有的精神菌株。",
         "effects": {
           "gainItem": {
             "itemId": "item_linh_thao_tho",
@@ -3360,7 +3360,7 @@
       },
       {
         "id": "transplant_to_sect",
-        "text": "[ZH-TODO] Carefully transplant seedlings back to your sect's garden.",
+        "text": "小心地将树苗移植回你教派的花园。",
         "effects": {
           "reputation": 20,
           "karma": 10,
@@ -3377,13 +3377,13 @@
   },
   {
     "id": "ancient_alchemy_relic",
-    "title": "[ZH-TODO] Remnants of an Immortal Alchemist",
-    "description": "[ZH-TODO] High mountain resources have revealed a hidden cave in the Ancient Ruins. Inside, a furnace still burns with a faint, divine flame.",
+    "title": "不朽炼金术士的遗迹",
+    "description": "高山资源揭示了远古遗迹中隐藏的洞穴。里面，一座熔炉还在燃烧着微弱的神圣火焰。",
     "weight": 2,
     "choices": [
       {
         "id": "complete_the_pill",
-        "text": "[ZH-TODO] Attempt to finish the ancient pill-making process.",
+        "text": "尝试完成古老的炼丹过程。",
         "effects": {
           "comprehension": 5,
           "luck": 5,
@@ -3396,7 +3396,7 @@
       },
       {
         "id": "salvage_the_furnace",
-        "text": "[ZH-TODO] Deconstruct the furnace for rare smelting materials.",
+        "text": "解构稀有熔炼材料的熔炉。",
         "effects": {
           "money": 200,
           "gainItem": {
@@ -3414,13 +3414,13 @@
   },
   {
     "id": "ancient_beast_seal_weakening",
-    "title": "[ZH-TODO] Weakening of the Ancient Seal",
-    "description": "[ZH-TODO] High demonic energy and beast activity have weakened an ancient seal in the mountains. A terrifying aura from the era of the Ancient War is leaking out.",
+    "title": "远古封印的削弱",
+    "description": "高昂的魔气和凶兽的活跃，削弱了山中的远古封印。一股远古战争时代的恐怖气息正在泄露。",
     "weight": 2,
     "choices": [
       {
         "id": "reinforce_seal_with_qi",
-        "text": "[ZH-TODO] Sacrifice your spiritual Qi to reinforce the seal.",
+        "text": "牺牲自己的灵气来强化封印。",
         "effects": {
           "cultivation": -15,
           "karma": 30,
@@ -3430,7 +3430,7 @@
       },
       {
         "id": "enter_leaking_fissure",
-        "text": "[ZH-TODO] Enter the fissure to scavenge for ancient artifacts.",
+        "text": "进入裂缝寻找古代文物。",
         "effects": {
           "health": -35,
           "luck": 2,
@@ -3453,13 +3453,13 @@
   },
   {
     "id": "ancient_weapon_awakening",
-    "title": "[ZH-TODO] Awakening of the Ancient Relic",
-    "description": "[ZH-TODO] Deep within the Ancient Ruins, a rusted weapon begins to resonate with the high Dao fluctuations, radiating a faint but sharp sword intent.",
+    "title": "远古遗迹的觉醒",
+    "description": "远古遗迹深处，一把锈迹斑斑的兵器，开始与高高的道波动产生共鸣，散发出淡淡而锋利的剑意。",
     "weight": 2,
     "choices": [
       {
         "id": "awaken_with_blood",
-        "text": "[ZH-TODO] Offer your essence blood to re-awaken the weapon's spirit.",
+        "text": "献上你的精血，重新唤醒武器的灵魂。",
         "effects": {
           "health": -15,
           "luck": 5,
@@ -3471,7 +3471,7 @@
       },
       {
         "id": "study_the_intent",
-        "text": "[ZH-TODO] Meditate on the sword intent to enhance your comprehension.",
+        "text": "冥想剑意，提升领悟力。",
         "effects": {
           "comprehension": 8,
           "daoMind": 5,
@@ -3490,13 +3490,13 @@
   },
   {
     "id": "corrupted_spirit_spring",
-    "title": "[ZH-TODO] Corrupted Spirit Spring",
-    "description": "[ZH-TODO] A spiritual spring in the mountains has been corrupted by the rising demonic energy. The water glows with a sickly purple light, but its energy is still incredibly potent.",
+    "title": "腐化之灵之泉",
+    "description": "山中的一处灵泉，已经被不断升腾的魔气所腐蚀。水发出令人恶心的紫色光芒，但它的能量仍然非常强大。",
     "weight": 2,
     "choices": [
       {
         "id": "absorb_corrupted_qi",
-        "text": "[ZH-TODO] Absorb the dark Qi to break through your limits.",
+        "text": "吸收黑暗之气，突破自己的极限。",
         "effects": {
           "cultivation": 15,
           "health": -20,
@@ -3506,7 +3506,7 @@
       },
       {
         "id": "purify_the_spring",
-        "text": "[ZH-TODO] Use your spiritual power to purify the water.",
+        "text": "用你的精神力量净化水。",
         "effects": {
           "cultivation": -5,
           "karma": 20,
@@ -3523,13 +3523,13 @@
   },
   {
     "id": "hibernating_beast_king",
-    "title": "[ZH-TODO] Hibernating Beast King",
-    "description": "[ZH-TODO] While exploring, you find the lair of a hibernating Beast King. Rare 'Linh Thảo' and 'Linh Quặng' are piled around its massive, slumbering form.",
+    "title": "冬眠的兽王",
+    "description": "在探索过程中，你发现了冬眠的兽王的巢穴。罕见的“Linh Thảo”和“Linh Quặng”堆放在其巨大的沉睡体周围。",
     "weight": 1,
     "choices": [
       {
         "id": "steal_materials_carefully",
-        "text": "[ZH-TODO] Carefully steal the materials without waking it.",
+        "text": "小心地偷走材料，不要唤醒它。",
         "effects": {
           "health": -10,
           "luck": 5,
@@ -3541,7 +3541,7 @@
       },
       {
         "id": "slay_the_sleeping_beast",
-        "text": "[ZH-TODO] Take the opportunity to slay the beast for its core.",
+        "text": "趁机斩杀野兽，获取其核心。",
         "effects": {
           "health": -40,
           "cultivation": 20,
@@ -3561,13 +3561,13 @@
   },
   {
     "id": "ancient_sword_intent_ruins",
-    "title": "[ZH-TODO] Sword Intent of the Ancient Master",
-    "description": "[ZH-TODO] At the Ancient Ruins, high Dao fluctuations have awakened the lingering sword intent of a long-dead master. The air itself feels sharp and lethal.",
+    "title": "古主剑意",
+    "description": "远古遗迹之中，高高的道波动，唤醒了一位逝去已久的高手残存的剑意。空气本身就让人感觉尖锐而致命。",
     "weight": 2,
     "choices": [
       {
         "id": "meditate_on_intent",
-        "text": "[ZH-TODO] Meditate directly within the sword intent to sharpen your mind.",
+        "text": "直接冥想剑意，磨砺心志。",
         "effects": {
           "comprehension": 12,
           "health": -15,
@@ -3580,7 +3580,7 @@
       },
       {
         "id": "protect_yourself",
-        "text": "[ZH-TODO] Use your spiritual Qi to protect your body and collect spirit ores.",
+        "text": "用你的灵气来保护你的身体并收集灵矿。",
         "effects": {
           "health": -5,
           "gainItem": {
@@ -3599,13 +3599,13 @@
   },
   {
     "id": "cursed_herb_patch",
-    "title": "[ZH-TODO] Cursed Herb Patch",
-    "description": "[ZH-TODO] Rising demonic energy has corrupted a patch of rare herbs. The spirit herbs are glowing with a dark, pulsating light, offering immense power at the cost of your soul's purity.",
+    "title": "被诅咒的药草补丁",
+    "description": "不断升腾的魔气，腐蚀了一片珍稀药材。灵草散发着黑暗、脉动的光芒，以牺牲灵魂的纯洁为代价提供巨大的力量。",
     "weight": 2,
     "choices": [
       {
         "id": "harvest_dark_herbs",
-        "text": "[ZH-TODO] Harvest the corrupted herbs and refine them into dark pills.",
+        "text": "收获腐化的草药并将其炼制成黑色药丸。",
         "effects": {
           "cultivation": 20,
           "karma": -25,
@@ -3618,7 +3618,7 @@
       },
       {
         "id": "burn_the_patch",
-        "text": "[ZH-TODO] Burn the corrupted patch to prevent the spread of demonic Qi.",
+        "text": "烧掉腐化的补丁，防止邪气蔓延。",
         "effects": {
           "karma": 15,
           "daoMind": 10,
@@ -3635,13 +3635,13 @@
   },
   {
     "id": "ancient_ruins_puzzle_box",
-    "title": "[ZH-TODO] Ancient Ruins: The Puzzle Box",
-    "description": "[ZH-TODO] While exploring the Ancient Ruins, you find a metallic box sealed with a complex array. High Dao fluctuations have weakened its lock.",
+    "title": "远古遗迹：谜盒",
+    "description": "在探索远古遗迹时，你会发现一个用复杂阵列密封的金属盒子。高道波动，削弱了它的锁定。",
     "weight": 2,
     "choices": [
       {
         "id": "solve_with_comprehension",
-        "text": "[ZH-TODO] Use your deep comprehension to decipher the array.",
+        "text": "运用你的深刻理解力来破译阵法。",
         "effects": {
           "comprehension": 5,
           "luck": 2,
@@ -3653,7 +3653,7 @@
       },
       {
         "id": "break_with_force",
-        "text": "[ZH-TODO] Shatter the box with sheer spiritual power.",
+        "text": "用纯粹的精神力将盒子打碎。",
         "effects": {
           "health": -15,
           "cultivation": 2,
@@ -3673,13 +3673,13 @@
   },
   {
     "id": "blood_moon_beast_tide",
-    "title": "[ZH-TODO] Blood Moon Beast Tide",
-    "description": "[ZH-TODO] Beast activity has reached critical levels! Driven by the blood moon, a tide of monsters is rushing towards the mortal settlements.",
+    "title": "血月兽潮",
+    "description": "野兽活动已达到临界水平！在血月的驱使下，怪物们如潮水般涌向凡人聚居地。",
     "weight": 2,
     "choices": [
       {
         "id": "protect_the_village",
-        "text": "[ZH-TODO] Join the defense to save the mortals.",
+        "text": "加入保卫战，拯救凡人。",
         "effects": {
           "health": -35,
           "karma": 30,
@@ -3692,7 +3692,7 @@
       },
       {
         "id": "hunt_mutated_leaders",
-        "text": "[ZH-TODO] Focus on slaying the alpha beasts for their mutated cores.",
+        "text": "专注于消灭阿尔法野兽，获取它们变异的核心。",
         "effects": {
           "health": -25,
           "cultivation": 10,
@@ -3712,13 +3712,13 @@
   },
   {
     "id": "ancient_furnace_residual_fire",
-    "title": "[ZH-TODO] Residual Fire of the Ancient Furnace",
-    "description": "[ZH-TODO] High spiritual Qi has re-ignited a fragment of divine fire in an abandoned alchemy furnace within the Ancient Ruins. The heat is melting the surrounding stone, revealing hidden ores.",
+    "title": "古炉余火",
+    "description": "高等灵气，在远古遗迹内一座废弃的炼丹炉中，重新点燃了一块神火碎片。热量正在融化周围的石头，露出隐藏的矿石。",
     "weight": 2,
     "choices": [
       {
         "id": "extract_huyen_thiet",
-        "text": "[ZH-TODO] Risk the divine fire to extract 'Huyền Thiết' from the molten stone.",
+        "text": "冒着神圣之火的危险，从熔石中提取“Huyền Thiết”。",
         "effects": {
           "health": -20,
           "luck": 3,
@@ -3730,7 +3730,7 @@
       },
       {
         "id": "absorb_residual_heat",
-        "text": "[ZH-TODO] Meditate near the heat to temper your fire-element spiritual root.",
+        "text": "在高温附近冥想，淬炼你的火元素灵根。",
         "effects": {
           "cultivation": 8,
           "comprehension": 5,
@@ -3747,13 +3747,13 @@
   },
   {
     "id": "sect_war_convoy_ambush",
-    "title": "[ZH-TODO] Sect War: Convoy Ambush",
-    "description": "[ZH-TODO] The war level is high. You are part of an escort for a sect resource convoy that has been ambushed by elite disciples of the Ten Thousand Immortals Sect.",
+    "title": "宗派战争：车队伏击",
+    "description": "战争水平很高。你是一支护送宗门资源的车队，遭到了万仙宗精英弟子的伏击。",
     "weight": 2,
     "choices": [
       {
         "id": "defend_the_convoy",
-        "text": "[ZH-TODO] Fight to the death to protect the sect's resources.",
+        "text": "为了保护教派的资源而战斗至死。",
         "effects": {
           "health": -35,
           "reputation": 30,
@@ -3767,7 +3767,7 @@
       },
       {
         "id": "seize_and_flee",
-        "text": "[ZH-TODO] Seize a portion of the resources and flee in the chaos.",
+        "text": "夺取一部分资源，趁乱逃跑。",
         "effects": {
           "money": 500,
           "karma": -30,
@@ -3788,13 +3788,13 @@
   },
   {
     "id": "ma_huyet_quang_mach",
-    "title": "[ZH-TODO] Demonic Blood Ore Vein",
-    "description": "[ZH-TODO] High demonic energy has seeped into a spirit ore vein in the mountains. The ores are pulsing with a dark, blood-red light, offering high power but risking severe corruption [cite: 54, 56].",
+    "title": "魔血矿脉",
+    "description": "崇高的魔气，已经渗入了山脉中的灵矿矿脉之中。这些矿石闪烁着暗红色的光芒，提供强大的力量，但也有严重腐败的风险[引用：54, 56]。",
     "weight": 2,
     "choices": [
       {
         "id": "mine_corrupted_ore",
-        "text": "[ZH-TODO] Mine the corrupted ore to craft demonic weapons.",
+        "text": "开采腐化的矿石来制造恶魔武器。",
         "effects": {
           "health": -15,
           "karma": -20,
@@ -3807,7 +3807,7 @@
       },
       {
         "id": "purify_with_righteous_qi",
-        "text": "[ZH-TODO] Use your spiritual base to purify a small portion of the vein.",
+        "text": "用你的灵根净化一小部分的静脉。",
         "effects": {
           "cultivation": -5,
           "karma": 15,
@@ -3828,13 +3828,13 @@
   },
   {
     "id": "lost_huyen_thiet_vein",
-    "title": "[ZH-TODO] Lost Huyền Thiết Vein",
-    "description": "[ZH-TODO] Abundant mountain resources have revealed a hidden cave containing a pure vein of 'Huyền Thiết'—the supreme material for crafting Earth-grade weapons [cite: 19, 54].",
+    "title": "失去Huyền Thiết矿脉",
+    "description": "丰富的山地资源揭示了一个隐藏的洞穴，其中含有纯正的“Huyền Thiết”矿脉——制造地球级武器的最高材料[引用：19, 54]。",
     "weight": 2,
     "choices": [
       {
         "id": "intensive_mining",
-        "text": "[ZH-TODO] Dedicate months to mining as much Huyền Thiết as possible.",
+        "text": "花几个月的时间尽可能多地开采 Huyền Thiết。",
         "effects": {
           "health": -15,
           "money": 100,
@@ -3846,7 +3846,7 @@
       },
       {
         "id": "report_location_for_merit",
-        "text": "[ZH-TODO] Report the vein to the sect in exchange for massive merit points.",
+        "text": "向宗门报告脉络，换取海量功德点。",
         "effects": {
           "reputation": 50,
           "money": 150,
@@ -3863,13 +3863,13 @@
   },
   {
     "id": "event_thien_kieu_chan_chinh_thach_dau",
-    "title": "[ZH-TODO] Tournament Finals",
-    "description": "[ZH-TODO] Long Ngao Thien, the child of heaven, stands on the arena waiting for you. Spiritual energy violently swirls around him.",
+    "title": "锦标赛决赛",
+    "description": "天之子龙吴天站在竞技场上等你。灵气在他的周围剧烈的旋转。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_ngao_thien",
-        "text": "[ZH-TODO] Go all out and prove who the real prodigy is!",
+        "text": "全力以赴，证明谁才是真正的神童！",
         "effects": {
           "health": -20,
           "cultivation": 20,
@@ -3889,7 +3889,7 @@
       },
       {
         "id": "surrender_ngao_thien",
-        "text": "[ZH-TODO] Know when to retreat, surrender to save your life.",
+        "text": "知道何时撤退，投降以挽救生命。",
         "effects": {
           "daoHeart": -5,
           "health": 0
@@ -3903,13 +3903,13 @@
   },
   {
     "id": "corrupt_sect_deacon",
-    "title": "[ZH-TODO] Corrupt Sect Deacon",
-    "description": "[ZH-TODO] When you arrive at the Deacon Hall to receive your mandatory annual sect quest, the fat Deacon winks at you: 50 Spirit Stones for an easy herb-gathering task. Otherwise, you go to the deepest mining tunnels.",
+    "title": "腐败教派执事",
+    "description": "当你到达执事大厅接受年度强制宗派任务时，胖胖的执事会向你眨眼：50 块灵石，可以完成一项简单的草药采集任务。否则，你就会去最深的采矿隧道。",
     "weight": 2,
     "choices": [
       {
         "id": "bribe_deacon",
-        "text": "[ZH-TODO] Grit your teeth and bribe him with 50 Spirit Stones.",
+        "text": "咬咬牙，用五十块灵石贿赂他。",
         "effects": {
           "money": -50,
           "health": 5,
@@ -3918,7 +3918,7 @@
       },
       {
         "id": "refuse_and_mine",
-        "text": "[ZH-TODO] Better to break than bend, go to the mines!",
+        "text": "与其弯曲，不如折断，去矿井吧！",
         "effects": {
           "health": -15,
           "cultivation": 1,
@@ -3938,13 +3938,13 @@
   },
   {
     "id": "immortal_guidance",
-    "title": "[ZH-TODO] Immortal's Guidance",
-    "description": "[ZH-TODO] Heavenly Dao fluctuates wildly. An illusion of an ancient immortal appears in your mind, preaching the supreme Dao.",
+    "title": "不朽者的指引",
+    "description": "天道剧烈波动。脑海中浮现出远古仙人的幻象，宣讲无上大道。",
     "weight": 1,
     "choices": [
       {
         "id": "listen_respectfully",
-        "text": "[ZH-TODO] Listen respectfully, clearing all mundane thoughts.",
+        "text": "恭敬聆听，清除一切世俗杂念。",
         "effects": {
           "comprehension": 5,
           "cultivation": 10,
@@ -3953,7 +3953,7 @@
       },
       {
         "id": "beg_for_treasures",
-        "text": "[ZH-TODO] Give in to greed and beg for treasures.",
+        "text": "屈服于贪婪，乞求财宝。",
         "effects": {
           "luck": -5,
           "daoMind": -5,
@@ -3969,13 +3969,13 @@
   },
   {
     "id": "sect_rebellion",
-    "title": "[ZH-TODO] Sect Rebellion",
-    "description": "[ZH-TODO] The sect's stability has plummeted. A deacon is assassinated in broad daylight, and rogue disciples are burning the outer sect pavilions to loot resources.",
+    "title": "教派叛乱",
+    "description": "教派的稳定性急剧下降。执事光天化日之下被刺杀，流氓弟子焚烧外门楼阁掠夺资源。",
     "weight": 2,
     "choices": [
       {
         "id": "defend_sect",
-        "text": "[ZH-TODO] Draw your sword and defend the sect!",
+        "text": "拔出你的剑，保卫宗门！",
         "effects": {
           "health": -15,
           "karma": 10,
@@ -3985,7 +3985,7 @@
       },
       {
         "id": "loot_chaos",
-        "text": "[ZH-TODO] Take advantage of the chaos to loot the storage.",
+        "text": "利用混乱来抢劫仓库。",
         "effects": {
           "health": -5,
           "karma": -15,
@@ -4005,13 +4005,13 @@
   },
   {
     "id": "sect_conscription",
-    "title": "[ZH-TODO] Sect Conscription",
-    "description": "[ZH-TODO] Sect warfare has escalated drastically. Deacons are forcefully conscripting outer disciples to serve as cannon fodder at the frontline.",
+    "title": "宗派征兵",
+    "description": "宗派战争急剧升级。执事们强行征召外门弟子，充当前线的炮灰。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_frontline",
-        "text": "[ZH-TODO] Draw your sword and fight bravely for the sect!",
+        "text": "拔出你的剑，为宗门奋战吧！",
         "effects": {
           "health": -20,
           "cultivation": 5,
@@ -4022,7 +4022,7 @@
       },
       {
         "id": "bribe_to_hide",
-        "text": "[ZH-TODO] Bribe the deacon heavily to stay in the rear.",
+        "text": "重金贿赂执事，让他留在后方。",
         "effects": {
           "money": -150,
           "daoMind": -2,
@@ -4038,13 +4038,13 @@
   },
   {
     "id": "possessed_deacon",
-    "title": "[ZH-TODO] Possessed Deacon",
-    "description": "[ZH-TODO] Demonic infiltration is severe. Late at night, you accidentally spot a highly respected Sect Deacon practicing a forbidden blood art. He notices you.",
+    "title": "着魔的执事",
+    "description": "邪魔渗透严重。深夜，你无意间看到一名德高望重的宗门执事正在修炼血禁术。他注意到你了。",
     "weight": 2,
     "choices": [
       {
         "id": "flee_and_report",
-        "text": "[ZH-TODO] Flee desperately and report to the Sect Leader.",
+        "text": "拼命逃走，报告教主。",
         "effects": {
           "health": -18,
           "daoMind": 5,
@@ -4054,7 +4054,7 @@
       },
       {
         "id": "join_demonic_path",
-        "text": "[ZH-TODO] Swear loyalty to him and embrace the Demonic path.",
+        "text": "发誓效忠他并拥抱魔道。",
         "effects": {
           "karma": -15,
           "cultivation": 10,
@@ -4074,13 +4074,13 @@
   },
   {
     "id": "event_ke_sinh_ton_phan_boi",
-    "title": "[ZH-TODO] Cau Du's Betrayal",
-    "description": "[ZH-TODO] Taking advantage of sect instability, Cau Du secretly leads a group of rebel disciples to raid your cave dwelling.",
+    "title": "Cau Du的背叛",
+    "description": "考杜趁着宗门不稳之际，秘密率领一众叛徒弟子，袭击你的洞府。",
     "weight": 2,
     "choices": [
       {
         "id": "kill_cau_du",
-        "text": "[ZH-TODO] Cleanse the sect, show no mercy!",
+        "text": "净化宗门，毫不留情！",
         "effects": {
           "health": -10,
           "karma": -10,
@@ -4089,7 +4089,7 @@
       },
       {
         "id": "bribe_cau_du",
-        "text": "[ZH-TODO] Bribe him heavily to leave you in peace.",
+        "text": "重金贿赂他，让你安息。",
         "effects": {
           "money": -500,
           "karma": 5
@@ -4105,13 +4105,13 @@
   },
   {
     "id": "golden_core_trial",
-    "title": "[ZH-TODO] Golden Core Trial",
-    "description": "[ZH-TODO] You discover a hidden trial left by a Golden Core master, designed to test a cultivator's readiness to break through.",
+    "title": "金丹试炼",
+    "description": "你发现了金丹大师留下的隐藏试炼，旨在测试修士突破的准备程度。",
     "weight": 1,
     "choices": [
       {
         "id": "enter_trial",
-        "text": "[ZH-TODO] Enter the trial and risk everything for a breakthrough.",
+        "text": "进入试验并冒一切风险寻求突破。",
         "effects": {
           "cultivation": 4,
           "health": -4,
@@ -4128,7 +4128,7 @@
       },
       {
         "id": "defer_trial",
-        "text": "[ZH-TODO] Wait and prepare yourself better.",
+        "text": "等待并做好更好的准备。",
         "effects": {
           "comprehension": 2,
           "karma": 1
@@ -4143,13 +4143,13 @@
   },
   {
     "id": "spirit_mine_collapse",
-    "title": "[ZH-TODO] Spirit Mine Collapse",
-    "description": "[ZH-TODO] Due to sect instability and poor maintenance, the outer sect spirit mine suddenly starts collapsing around you. Priceless ores are revealed in the rubble.",
+    "title": "灵矿崩塌",
+    "description": "由于宗派不稳定，维护不善，你周围的外宗灵矿突然开始崩塌。无价的矿石在瓦砾中显露出来。",
     "weight": 2,
     "choices": [
       {
         "id": "risk_digging",
-        "text": "[ZH-TODO] Risk your life to dig out the precious ores.",
+        "text": "冒着生命危险挖掘珍贵的矿石。",
         "effects": {
           "health": -15,
           "gainItem": {
@@ -4160,7 +4160,7 @@
       },
       {
         "id": "flee_mine",
-        "text": "[ZH-TODO] Flee the mine immediately to survive.",
+        "text": "立即逃离矿井以求生存。",
         "effects": {
           "luck": 1,
           "daoMind": 2
@@ -4175,13 +4175,13 @@
   },
   {
     "id": "berserk_spirit_beast",
-    "title": "[ZH-TODO] Berserk Spirit Beast",
-    "description": "[ZH-TODO] A usually docile spirit beast in the outer sect's pens has gone berserk due to a demonic aura, breaking its chains and attacking disciples.",
+    "title": "狂暴灵兽",
+    "description": "外门圈舍里一头平时温顺的灵兽，因为魔气而变得狂暴，挣脱锁链，攻击弟子。",
     "weight": 2,
     "choices": [
       {
         "id": "subdue_gently",
-        "text": "[ZH-TODO] Use your Dao Mind to calm and subdue it.",
+        "text": "用你的道心来镇定它。",
         "effects": {
           "daoMind": 2,
           "karma": 2,
@@ -4190,7 +4190,7 @@
       },
       {
         "id": "kill_for_parts",
-        "text": "[ZH-TODO] Kill it swiftly to harvest its valuable materials.",
+        "text": "迅速杀死它以收获其宝贵的材料。",
         "effects": {
           "karma": -5,
           "money": 50
@@ -4205,13 +4205,13 @@
   },
   {
     "id": "ten_thousand_immortals_war",
-    "title": "[ZH-TODO] Ten Thousand Immortals War",
-    "description": "[ZH-TODO] The Ten Thousand Immortals Sect has officially declared war on the Heavenly Dao Sect! The sect is in chaos, and all disciples are ordered to the frontlines.",
+    "title": "万仙大战",
+    "description": "万仙宗正式向天道宗宣战！宗门一片混乱，所有弟子都被命令上前线。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_frontline",
-        "text": "[ZH-TODO] Follow the orders and fight fiercely on the frontline.",
+        "text": "听从命令，奋战在前线。",
         "effects": {
           "health": -25,
           "cultivation": 15,
@@ -4221,7 +4221,7 @@
       },
       {
         "id": "desert_sect",
-        "text": "[ZH-TODO] Become a deserter and flee the sect.",
+        "text": "成为逃兵并逃离教派。",
         "effects": {
           "health": -5,
           "karma": -15,
@@ -4239,13 +4239,13 @@
   },
   {
     "id": "sect_internal_strife",
-    "title": "[ZH-TODO] Sect Internal Strife",
-    "description": "[ZH-TODO] Factional infighting has reached its peak. A sect deacon was assassinated, and the sect is highly dangerous with a high risk of betrayal.",
+    "title": "宗派内讧",
+    "description": "派系内讧已达到顶峰。宗门执事被暗杀，宗门危险重重，背叛风险极高。",
     "weight": 2,
     "choices": [
       {
         "id": "join_faction",
-        "text": "[ZH-TODO] Pick a strong faction and eliminate rivals.",
+        "text": "选择一个强大的派系并消灭对手。",
         "effects": {
           "health": -15,
           "karma": -5,
@@ -4255,7 +4255,7 @@
       },
       {
         "id": "hide_in_cave",
-        "text": "[ZH-TODO] Seal your cave dwelling and avoid the conflict.",
+        "text": "封闭你的窑洞并避免冲突。",
         "effects": {
           "health": 5,
           "daoMind": -2,
@@ -4270,13 +4270,13 @@
   },
   {
     "id": "sect_outer_tournament",
-    "title": "[ZH-TODO] Outer Sect Tournament",
-    "description": "[ZH-TODO] The sect is stable and hosting its decennial Outer Sect Tournament. Disciples from all peaks gather to prove their martial prowess and win supreme pills.",
+    "title": "外门大赛",
+    "description": "门派稳定，十年举办一次外门大赛。各峰弟子齐聚，一展武功，夺取无上丹药。",
     "weight": 2,
     "choices": [
       {
         "id": "participate_tournament",
-        "text": "[ZH-TODO] Enter the arena and fight for the championship!",
+        "text": "进入竞技场，争夺冠军！",
         "effects": {
           "health": -15,
           "cultivation": 5,
@@ -4289,7 +4289,7 @@
       },
       {
         "id": "observe_tournament",
-        "text": "[ZH-TODO] Sit on the mountain and watch the tigers fight.",
+        "text": "坐山观虎斗。",
         "effects": {
           "comprehension": 3,
           "daoMind": 2,
@@ -4305,13 +4305,13 @@
   },
   {
     "id": "sect_resource_famine",
-    "title": "[ZH-TODO] Sect Resource Famine",
-    "description": "[ZH-TODO] The sect's resource reserves have plummeted to a critical low. Allowances are cut, and desperate outer disciples are fighting each other over meager scraps of spirit herbs.",
+    "title": "宗派资源匮乏",
+    "description": "宗门的资源储备已经骤降到了临界点。津贴被削减，绝望的外门弟子为了微薄的灵草而互相争斗。",
     "weight": 2,
     "choices": [
       {
         "id": "fight_for_scraps",
-        "text": "[ZH-TODO] Join the brawl to secure your cultivation resources.",
+        "text": "加入战斗以确保您的耕种资源。",
         "effects": {
           "health": -10,
           "karma": -5,
@@ -4323,7 +4323,7 @@
       },
       {
         "id": "bribe_for_ration",
-        "text": "[ZH-TODO] Secretly bribe the treasury deacon for your portion.",
+        "text": "秘密贿赂财政部执事以获得你的份额。",
         "effects": {
           "money": -50,
           "luck": 1,
@@ -4339,13 +4339,13 @@
   },
   {
     "id": "spirit_beast_mutation",
-    "title": "[ZH-TODO] Spirit Beast Mutation",
-    "description": "[ZH-TODO] While tending to the sect's spirit beasts, one of them swallows a strange glowing insect and begins to mutate violently, radiating intense spiritual energy.",
+    "title": "灵兽变异",
+    "description": "在照顾宗门灵兽的过程中，其中一只灵兽吞下了一只奇怪的发光虫，开始剧烈变异，散发出强烈的灵气。",
     "weight": 2,
     "choices": [
       {
         "id": "help_assimilate",
-        "text": "[ZH-TODO] Use your Dao Mind to help it assimilate the power.",
+        "text": "用你的道念，帮助它吸收力量。",
         "effects": {
           "daoMind": 2,
           "health": -5,
@@ -4357,7 +4357,7 @@
       },
       {
         "id": "kill_mutant",
-        "text": "[ZH-TODO] Kill it before it completely loses control.",
+        "text": "在它完全失去控制之前杀死它。",
         "effects": {
           "karma": -2,
           "money": 80,
@@ -4376,13 +4376,13 @@
   },
   {
     "id": "outer_sect_herb_theft",
-    "title": "[ZH-TODO] Herb Garden Theft",
-    "description": "[ZH-TODO] Sect resources are dwindling. You catch a fellow outer disciple desperately stealing a spirit herb to save their dying mortal mother.",
+    "title": "药草园失窃",
+    "description": "宗派资源日渐减少。你发现一名外门弟子为了拯救垂死的凡母而拼命偷取灵草。",
     "weight": 2,
     "choices": [
       {
         "id": "look_away",
-        "text": "[ZH-TODO] Look the other way and pretend you saw nothing.",
+        "text": "看向别处，假装什么也没看见。",
         "effects": {
           "karma": 5,
           "daoMind": 2
@@ -4390,7 +4390,7 @@
       },
       {
         "id": "report_theft",
-        "text": "[ZH-TODO] Arrest them and report to the deacon for a reward.",
+        "text": "逮捕他们并向执事报告以获取奖励。",
         "effects": {
           "karma": -5,
           "money": 50,
@@ -4406,13 +4406,13 @@
   },
   {
     "id": "corrupt_promotion_offer",
-    "title": "[ZH-TODO] Corrupt Promotion Offer",
-    "description": "[ZH-TODO] A greedy Inner Sect Elder approaches you in secret. He offers to bend the rules and promote you to the Inner Sect early, but for a steep price.",
+    "title": "腐败促销优惠",
+    "description": "一个贪婪的内门长老暗中接近你。他愿意打破规则，提前将你晋升为内门，但代价高昂。",
     "weight": 2,
     "choices": [
       {
         "id": "pay_bribe",
-        "text": "[ZH-TODO] Pay the massive bribe for early promotion.",
+        "text": "为了提前晋升而支付巨额贿赂。",
         "effects": {
           "money": -300,
           "cultivation": 10,
@@ -4422,7 +4422,7 @@
       },
       {
         "id": "refuse_bribe",
-        "text": "[ZH-TODO] Refuse and rely firmly on your own strength.",
+        "text": "拒绝并坚定地依靠自己的力量。",
         "effects": {
           "daoMind": 10,
           "karma": 5,
@@ -4438,13 +4438,13 @@
   },
   {
     "id": "sect_beast_feeding_frenzy",
-    "title": "[ZH-TODO] Frenzied Spirit Beast",
-    "description": "[ZH-TODO] While performing your mandatory sect quest to feed the outer sect's spirit beasts, one of them, corrupted by a sudden spike in demonic energy, breaks its cage and lunges at you.",
+    "title": "狂暴灵兽",
+    "description": "当你执行强制宗门任务喂养外宗灵兽时，其中一只因恶魔能量突然激增而腐化，打破了笼子并向你猛扑。",
     "weight": 2,
     "choices": [
       {
         "id": "calm_the_beast",
-        "text": "[ZH-TODO] Use your Dao Mind and cultivation to forcefully calm the beast.",
+        "text": "用你的道心和修为，强行镇定这凶兽。",
         "effects": {
           "health": -5,
           "daoMind": 5,
@@ -4454,7 +4454,7 @@
       },
       {
         "id": "slay_the_beast",
-        "text": "[ZH-TODO] Draw your weapon and slay it before it hurts others.",
+        "text": "拔出你的武器，在它伤害他人之前杀死它。",
         "effects": {
           "health": -15,
           "karma": -2,
@@ -4474,13 +4474,13 @@
   },
   {
     "id": "strict_deacon_inspection",
-    "title": "[ZH-TODO] Strict Deacon Inspection",
-    "description": "[ZH-TODO] The sect is tightening its rules. A strict deacon stops you to inspect your annual sect contributions. He glares at you, demanding either proof of hard work or a hefty 'fine'.",
+    "title": "严格的执事检查",
+    "description": "该教派正在收紧其规则。严格的执事会阻止你检查你每年的教派贡献。他怒视着你，要么要求你提供努力工作的证明，要么要求你巨额“罚款”。",
     "weight": 2,
     "choices": [
       {
         "id": "pay_deacon_fine",
-        "text": "[ZH-TODO] Bite your tongue and pay the hefty fine in Spirit Stones.",
+        "text": "咬住你的舌头，用灵石支付巨额罚款。",
         "effects": {
           "money": -100,
           "daoMind": -2,
@@ -4489,7 +4489,7 @@
       },
       {
         "id": "accept_physical_punishment",
-        "text": "[ZH-TODO] Refuse to pay and accept the physical punishment.",
+        "text": "拒绝支付费用并接受体罚。",
         "effects": {
           "health": -15,
           "cultivation": -2,
@@ -4506,13 +4506,13 @@
   },
   {
     "id": "traitorous_deacon",
-    "title": "[ZH-TODO] Traitorous Deacon",
-    "description": "[ZH-TODO] Sect stability is crumbling. You catch a senior deacon sneaking out with the sect's core technique manual, planning to defect to a rival sect.",
+    "title": "叛逆的执事",
+    "description": "教派的稳定性正在崩溃。你发现一名高级执事带着宗派的核心功法手册偷偷溜走，计划叛逃到敌对的宗派。",
     "weight": 2,
     "choices": [
       {
         "id": "intercept_traitor",
-        "text": "[ZH-TODO] Intercept him to protect the sect's legacy!",
+        "text": "拦截他，保护宗门传承！",
         "effects": {
           "health": -25,
           "karma": 5,
@@ -4525,7 +4525,7 @@
       },
       {
         "id": "extort_traitor",
-        "text": "[ZH-TODO] Extort him for hush money to let him pass.",
+        "text": "向他勒索封口费，让他通过。",
         "effects": {
           "money": 300,
           "karma": -10,
@@ -4541,13 +4541,13 @@
   },
   {
     "id": "sect_debt_collector",
-    "title": "[ZH-TODO] Sect Debt Collector",
-    "description": "[ZH-TODO] Sect resources are depleted. A debt-collecting deacon is making rounds, forcefully demanding 'voluntary contributions' from outer disciples to fill the treasury.",
+    "title": "教派收债员",
+    "description": "宗门资源枯竭。一名讨债执事四处巡游，强行要求外门弟子“自愿捐款”，以填补国库。",
     "weight": 2,
     "choices": [
       {
         "id": "pay_contribution",
-        "text": "[ZH-TODO] Pay the contribution to avoid trouble.",
+        "text": "缴纳捐款以避免麻烦。",
         "effects": {
           "money": -80,
           "daoMind": -2,
@@ -4556,7 +4556,7 @@
       },
       {
         "id": "refuse_and_hide",
-        "text": "[ZH-TODO] Refuse and hide your valuables.",
+        "text": "拒绝并隐藏您的贵重物品。",
         "effects": {
           "health": -10,
           "daoMind": 5,
@@ -4572,13 +4572,13 @@
   },
   {
     "id": "elder_funeral_conspiracy",
-    "title": "[ZH-TODO] Sect Elder's Funeral",
-    "description": "[ZH-TODO] An inner sect elder has passed away, and the sect's stability is shaken. Rumors of a hidden legacy left to an outer disciple are spreading like wildfire.",
+    "title": "宗门长老葬礼",
+    "description": "一位内门长老去世，宗门的稳定受到动摇。外门弟子留下隐秘遗产的传闻不胫而走。",
     "weight": 2,
     "choices": [
       {
         "id": "investigate_legacy",
-        "text": "[ZH-TODO] Sneak into the elder's forbidden peak to investigate.",
+        "text": "潜入长老禁峰探查。",
         "effects": {
           "health": -10,
           "luck": 2,
@@ -4590,7 +4590,7 @@
       },
       {
         "id": "attend_honorably",
-        "text": "[ZH-TODO] Attend the funeral honorably to show your loyalty.",
+        "text": "光荣地参加葬礼以表达你的忠诚。",
         "effects": {
           "daoMind": 5,
           "karma": 5,
@@ -4606,13 +4606,13 @@
   },
   {
     "id": "captured_sect_rebel",
-    "title": "[ZH-TODO] Captured Sect Rebel",
-    "description": "[ZH-TODO] Internal strife is high. You've cornered a fellow disciple who was caught stealing core scriptures. They beg you to let them go, claiming they only wanted to save their family.",
+    "title": "抓获教派叛徒",
+    "description": "内部纷争很高。你将一位因偷窃核心经文而被捕的弟子陷入困境。他们恳求你放他们走，声称他们只是想拯救家人。",
     "weight": 2,
     "choices": [
       {
         "id": "execute_rebel",
-        "text": "[ZH-TODO] Execute the traitor to uphold sect law.",
+        "text": "处决叛徒以维护教法。",
         "effects": {
           "karma": -5,
           "reputation": 10,
@@ -4622,7 +4622,7 @@
       },
       {
         "id": "release_for_bribe",
-        "text": "[ZH-TODO] Accept a hidden treasure in exchange for their freedom.",
+        "text": "接受隐藏的宝藏以换取他们的自由。",
         "effects": {
           "money": 100,
           "karma": -10,
@@ -4642,13 +4642,13 @@
   },
   {
     "id": "sect_manual_preservation",
-    "title": "[ZH-TODO] Sect Manual Preservation",
-    "description": "[ZH-TODO] The Library Pavilion has caught fire during a riot. Rare manual fragments are scattered in the smoke and flames. You can only save a few.",
+    "title": "宗派手工保存",
+    "description": "图书馆馆在骚乱中起火。稀有的手工碎片散落在烟雾和火焰中。你只能保存一些。",
     "weight": 2,
     "choices": [
       {
         "id": "save_high_grade",
-        "text": "[ZH-TODO] Risk the flames to save an Earth-grade fragment.",
+        "text": "冒着火焰的危险拯救地球级碎片。",
         "effects": {
           "health": -12,
           "gainFragment": {
@@ -4659,7 +4659,7 @@
       },
       {
         "id": "save_many_basic",
-        "text": "[ZH-TODO] Save as many basic manuals as possible for the sect's future.",
+        "text": "尽可能多地保存一些基础手册，为宗门的未来着想。",
         "effects": {
           "reputation": 15,
           "karma": 10,
@@ -4675,13 +4675,13 @@
   },
   {
     "id": "sect_resource_leak",
-    "title": "[ZH-TODO] Sect Resource Leak",
-    "description": "[ZH-TODO] The sect's resources are at a critical low, and management is in shambles. You discover a hidden hole in the resource warehouse where spirit stones and low-grade pills are leaking out.",
+    "title": "宗门资源泄漏",
+    "description": "教派资源严重匮乏，管理混乱。你发现资源仓库里有一个隐藏的洞，里面有灵石和下品丹药正在泄漏。",
     "weight": 2,
     "choices": [
       {
         "id": "pocket_the_leak",
-        "text": "[ZH-TODO] Quietly pocket the leaking resources for yourself.",
+        "text": "悄悄地将泄露的资源收入囊中。",
         "effects": {
           "money": 100,
           "karma": -8,
@@ -4693,7 +4693,7 @@
       },
       {
         "id": "report_the_leak",
-        "text": "[ZH-TODO] Report the leak to the elders to show your loyalty.",
+        "text": "向长辈报告泄密事件，以表示你的忠诚。",
         "effects": {
           "reputation": 10,
           "karma": 5,
@@ -4709,13 +4709,13 @@
   },
   {
     "id": "alchemy_hall_explosion",
-    "title": "[ZH-TODO] Alchemy Hall Explosion",
-    "description": "[ZH-TODO] While passing the Alchemy Hall, a massive explosion rocks the building. Smoke fills the air, and scorched remains of rare spirit herbs are scattered everywhere.",
+    "title": "炼金殿爆炸",
+    "description": "当经过炼金大厅时，一场巨大的爆炸震动了这座建筑。烟雾缭绕，稀有灵草烧焦的残骸散落各处。",
     "weight": 2,
     "choices": [
       {
         "id": "scavenge_smoke",
-        "text": "[ZH-TODO] Rush into the smoke to scavenge usable herb remains.",
+        "text": "冲进烟雾中寻找可用的药草残骸。",
         "effects": {
           "health": -10,
           "luck": 1,
@@ -4727,7 +4727,7 @@
       },
       {
         "id": "help_extinguish",
-        "text": "[ZH-TODO] Use your spiritual Qi to help extinguish the fires.",
+        "text": "用你的灵气来帮助扑灭大火。",
         "effects": {
           "cultivation": -2,
           "reputation": 8,
@@ -4744,13 +4744,13 @@
   },
   {
     "id": "sect_treasury_betrayal",
-    "title": "[ZH-TODO] Sect Treasury Betrayal",
-    "description": "[ZH-TODO] Internal stability has collapsed. You find a group of high-ranking disciples and an elder attempting to empty the treasury before defecting to a rival sect,.",
+    "title": "宗门金库背叛",
+    "description": "内部稳定已经崩溃。你发现一群高级弟子和一位长老试图在叛逃到敌对教派之前清空宝库。",
     "weight": 2,
     "choices": [
       {
         "id": "extort_the_betrayers",
-        "text": "[ZH-TODO] Threaten to sound the alarm unless they share the stolen artifacts with you,.",
+        "text": "威胁要拉响警报，除非他们与你分享被盗的文物。",
         "effects": {
           "money": 500,
           "karma": -15,
@@ -4763,7 +4763,7 @@
       },
       {
         "id": "defend_the_legacy",
-        "text": "[ZH-TODO] Draw your sword to protect the sect's last legacy, even if it means fighting your brothers,.",
+        "text": "拔出你的剑来保护教派最后的遗产，即使这意味着与你的兄弟战斗。",
         "effects": {
           "health": -40,
           "cultivation": 10,
@@ -4780,13 +4780,13 @@
   },
   {
     "id": "sect_meridian_cleansing_pool",
-    "title": "[ZH-TODO] Meridian Cleansing Pool",
-    "description": "[ZH-TODO] The spiritual Qi in the sect is exceptionally dense. The legendary cleansing pool has opened its doors to outer disciples for a limited time.",
+    "title": "经络净化池",
+    "description": "宗门内的灵气异常浓郁。传说中的净化池已限时对外门弟子开放。",
     "weight": 1,
     "choices": [
       {
         "id": "deep_soak",
-        "text": "[ZH-TODO] Soak deeply to cleanse your internal impurities.",
+        "text": "深度浸泡以净化体内杂质。",
         "effects": {
           "cultivation": 8,
           "health": 5,
@@ -4795,7 +4795,7 @@
       },
       {
         "id": "gather_pool_essence",
-        "text": "[ZH-TODO] Quickly gather the pool's essence into a jade vial.",
+        "text": "赶紧将池中精华收进玉瓶之中。",
         "effects": {
           "money": 50,
           "gainItem": {
@@ -4813,13 +4813,13 @@
   },
   {
     "id": "forced_labor_duty",
-    "title": "[ZH-TODO] Forced Labor Duty",
-    "description": "[ZH-TODO] The sect's stability is low, and the elders are demanding more from outer disciples. You have been assigned to the most dangerous section of the spirit mines as a 'mandatory contribution'.",
+    "title": "强迫劳动义务",
+    "description": "门派稳定性低，长老对外门弟子的要求更高。你被分配到灵矿最危险的地段，作为‘强制贡献’。",
     "weight": 2,
     "choices": [
       {
         "id": "accept_labor",
-        "text": "[ZH-TODO] Accept the labor and work through the exhaustion.",
+        "text": "接受劳作，劳累劳作。",
         "effects": {
           "health": -15,
           "cultivation": 1,
@@ -4832,7 +4832,7 @@
       },
       {
         "id": "bribe_supervisor",
-        "text": "[ZH-TODO] Bribe the mine supervisor to give you a lighter task.",
+        "text": "贿赂矿长，让他给你减轻一些任务。",
         "effects": {
           "money": -100,
           "daoMind": -5,
@@ -4848,13 +4848,13 @@
   },
   {
     "id": "hidden_jade_chamber",
-    "title": "[ZH-TODO] The Hidden Jade Chamber",
-    "description": "[ZH-TODO] The sect is stable and prosperous. The Sect Leader decides to open the 'Hidden Jade Chamber' for the most promising disciples, offering access to restricted knowledge.",
+    "title": "隐藏的玉石室",
+    "description": "教派安定、繁荣。教主决定为最有前途的弟子开放“玉藏密室”，提供接触受限知识的机会。",
     "weight": 2,
     "choices": [
       {
         "id": "study_forbidden_scroll",
-        "text": "[ZH-TODO] Study a forbidden Earth-grade scroll.",
+        "text": "研究一张被禁止的地球级卷轴。",
         "effects": {
           "cultivation": 12,
           "comprehension": 5,
@@ -4867,7 +4867,7 @@
       },
       {
         "id": "claim_spiritual_bounty",
-        "text": "[ZH-TODO] Claim a bounty of spirit stones instead of studying.",
+        "text": "索取灵石赏金而不是学习。",
         "effects": {
           "money": 250,
           "reputation": -5,
@@ -4883,13 +4883,13 @@
   },
   {
     "id": "great_sect_war_frontline",
-    "title": "[ZH-TODO] Frontline of the Great War",
-    "description": "[ZH-TODO] Sect war has reached a fever pitch. You are drafted to the frontline to defend the Spirit Mine against the Ten Thousand Immortals Sect's elite vanguard.",
+    "title": "伟大战争的前线",
+    "description": "宗派战争已经进入白热化阶段。你被征召到前线，保卫灵矿，对抗万仙门的精锐先锋。",
     "weight": 2,
     "choices": [
       {
         "id": "brave_the_charge",
-        "text": "[ZH-TODO] Lead a counter-charge to break their formations.",
+        "text": "发起反冲锋，打破他们的阵型。",
         "effects": {
           "health": -30,
           "cultivation": 15,
@@ -4900,7 +4900,7 @@
       },
       {
         "id": "desert_battlefield",
-        "text": "[ZH-TODO] Desert the battlefield and hide in the mortal world.",
+        "text": "逃离战场，隐匿红尘。",
         "effects": {
           "karma": -20,
           "luck": 5,
@@ -4918,13 +4918,13 @@
   },
   {
     "id": "deacon_infiltration_scandal",
-    "title": "[ZH-TODO] Demonic Mole Revealed",
-    "description": "[ZH-TODO] High demonic infiltration has compromised a Senior Deacon. You catch them transmitting sect secrets via a blood-red transmission jade.",
+    "title": "恶魔鼹鼠揭晓",
+    "description": "高级恶魔渗透已经危及一名高级执事。你发现他们通过血红色的传玉传递宗门秘密。",
     "weight": 2,
     "choices": [
       {
         "id": "expose_the_traitor",
-        "text": "[ZH-TODO] Publicly expose the traitor to the Law Enforcement Hall.",
+        "text": "向执法堂公开揭露叛徒。",
         "effects": {
           "reputation": 15,
           "karma": 10,
@@ -4934,7 +4934,7 @@
       },
       {
         "id": "blackmail_the_traitor",
-        "text": "[ZH-TODO] Blackmail them for demonic resources to keep silent.",
+        "text": "勒索他们获取恶魔资源，让他们保持沉默。",
         "effects": {
           "money": 300,
           "karma": -25,
@@ -4954,13 +4954,13 @@
   },
   {
     "id": "sect_coup_attempt",
-    "title": "[ZH-TODO] Outer Sect Coup Attempt",
-    "description": "[ZH-TODO] Sect stability has reached a critical low. A group of radical disciples, fueled by the resource famine, is attempting to overthrow the treasury deacons.",
+    "title": "外门政变企图",
+    "description": "教派的稳定性已经达到了一个临界点。一群激进的信徒在资源饥荒的推动下，试图推翻财政部的执事。",
     "weight": 2,
     "choices": [
       {
         "id": "suppress_rebels_for_loyalty",
-        "text": "[ZH-TODO] Stand with the deacons and suppress the rebellion.",
+        "text": "与执事们站在一起，镇压叛乱。",
         "effects": {
           "health": -20,
           "reputation": 20,
@@ -4970,7 +4970,7 @@
       },
       {
         "id": "join_the_overthrow",
-        "text": "[ZH-TODO] Join the rebels to claim your 'fair share' of the treasury.",
+        "text": "加入叛军，夺取你的“公平份额”的国库。",
         "effects": {
           "money": 300,
           "karma": -20,
@@ -4990,13 +4990,13 @@
   },
   {
     "id": "sect_war_raiding_party",
-    "title": "[ZH-TODO] Sect War: Raiding Party",
-    "description": "[ZH-TODO] Sect warfare has escalated. You are ordered to join a high-risk raiding party to sabotage the enemy sect's spirit herb garden.",
+    "title": "宗派战争：突袭派对",
+    "description": "宗派战争愈演愈烈。你奉命加入一支高风险的突袭小队，破坏敌方的灵药园。",
     "weight": 2,
     "choices": [
       {
         "id": "lead_the_sabotage",
-        "text": "[ZH-TODO] Lead the charge into the enemy's formation.",
+        "text": "带领冲锋进入敌人的阵型。",
         "effects": {
           "health": -25,
           "cultivation": 10,
@@ -5009,7 +5009,7 @@
       },
       {
         "id": "bribe_to_stay_back",
-        "text": "[ZH-TODO] Bribe the task official to assign you to the rear guards.",
+        "text": "贿赂任务官员，让你分配到后卫。",
         "effects": {
           "money": -150,
           "daoMind": -5,
@@ -5025,13 +5025,13 @@
   },
   {
     "id": "sect_merit_hoarding",
-    "title": "[ZH-TODO] Sect Merit Hoarding",
-    "description": "[ZH-TODO] The sect is flourishing with resources. A greedy deacon is secretly allowing disciples to 'buy' merit points with large sums of spirit stones.",
+    "title": "宗门功德囤积",
+    "description": "门派资源繁盛。贪婪的执事暗中允许弟子用大量灵石‘购买’功德点。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_merit_points",
-        "text": "[ZH-TODO] Spend your savings to boost your sect reputation.",
+        "text": "用你的积蓄来提高你的教派声誉。",
         "effects": {
           "money": -200,
           "reputation": 20,
@@ -5041,7 +5041,7 @@
       },
       {
         "id": "report_the_deacon",
-        "text": "[ZH-TODO] Report this corruption to the Law Enforcement Hall.",
+        "text": "向执法大厅举报此类腐败行为。",
         "effects": {
           "karma": 15,
           "daoMind": 10,
@@ -5058,13 +5058,13 @@
   },
   {
     "id": "sect_manual_leak",
-    "title": "[ZH-TODO] Sect Manual Leak",
-    "description": "[ZH-TODO] Internal stability is low. A corrupted librarian is secretly selling fragments of the sect's high-grade manuals to the highest bidder.",
+    "title": "门派手册泄漏",
+    "description": "内部稳定性低。一名腐败的图书管理员正在秘密地将该教派的高级手册碎片出售给出价最高的人。",
     "weight": 2,
     "choices": [
       {
         "id": "buy_earth_fragment",
-        "text": "[ZH-TODO] Pay a heavy price to acquire an Earth-grade manual fragment.",
+        "text": "付出惨重代价，获得地级手册碎片。",
         "effects": {
           "money": -400,
           "gainFragment": {
@@ -5076,7 +5076,7 @@
       },
       {
         "id": "report_to_elders",
-        "text": "[ZH-TODO] Report the librarian to increase your reputation.",
+        "text": "举报图书馆员以提高您的声誉。",
         "effects": {
           "reputation": 25,
           "karma": 15,
@@ -5093,13 +5093,13 @@
   },
   {
     "id": "sect_heritage_trial",
-    "title": "[ZH-TODO] Sect Heritage Trial",
-    "description": "[ZH-TODO] With the sect's reputation at an all-time high, the Grand Elder opens the 'Heritage Path'—a trial designed to test a disciple's core comprehension and loyalty to the sect's founding Dao.",
+    "title": "宗门传承试炼",
+    "description": "在宗门声誉空前高涨的情况下，太上长老开启了‘传承之路’，这是一场考验弟子核心领悟和对宗门祖道忠诚度的试炼。",
     "weight": 2,
     "choices": [
       {
         "id": "walk_the_path",
-        "text": "[ZH-TODO] Focus your mind and attempt to walk the path of the ancestors.",
+        "text": "集中你的思想，尝试走祖先的道路。",
         "effects": {
           "comprehension": 5,
           "daoMind": 10,
@@ -5112,7 +5112,7 @@
       },
       {
         "id": "memorize_runes",
-        "text": "[ZH-TODO] Don't enter the path, but try to memorize the ancient runes from the side.",
+        "text": "不要进入小路，而是尝试从侧面记住远古符文。",
         "effects": {
           "comprehension": 3,
           "luck": 1,
@@ -5128,13 +5128,13 @@
   },
   {
     "id": "spirit_root_resonance_test",
-    "title": "[ZH-TODO] Spirit Root Resonance Test",
-    "description": "[ZH-TODO] With global spiritual Qi peaking, the sect's resonance crystal has activated. It offers a rare chance to refine your Spirit Root's purity and enhance your cultivation multiplier.",
+    "title": "灵根共鸣测试",
+    "description": "随着全球灵气达到顶峰，宗门共鸣晶启动。这是一个难得的机会，可以提升你的灵根纯度，提升你的修为倍数。",
     "weight": 2,
     "choices": [
       {
         "id": "refine_spirit_root",
-        "text": "[ZH-TODO] Focus your soul to refine your Spirit Root's efficiency.",
+        "text": "集中灵魂，提升灵根的效率。",
         "effects": {
           "cultivation": 5,
           "comprehension": 3,
@@ -5145,7 +5145,7 @@
       },
       {
         "id": "absorb_raw_energy",
-        "text": "[ZH-TODO] Directly absorb the crystal's raw energy for immediate cultivation.",
+        "text": "直接吸收水晶的原始能量，立即修炼。",
         "effects": {
           "cultivation": 15,
           "health": -5,
@@ -5161,13 +5161,13 @@
   },
   {
     "id": "sect_internal_betrayal",
-    "title": "[ZH-TODO] Sect Internal Betrayal",
-    "description": "[ZH-TODO] Sect stability is low and demonic infiltration is high. You catch a senior disciple attempting to poison the spirit well with demonic energy.",
+    "title": "宗门内部背叛",
+    "description": "宗派稳定性低，邪魔渗透高。你发现一名高级弟子试图用邪气毒害灵魂。",
     "weight": 2,
     "choices": [
       {
         "id": "intercept_traitor",
-        "text": "[ZH-TODO] Engage the traitor in a deadly duel to protect the well.",
+        "text": "为了保护水井，与叛徒进行一场致命的决斗。",
         "effects": {
           "health": -25,
           "reputation": 20,
@@ -5178,7 +5178,7 @@
       },
       {
         "id": "blackmail_traitor",
-        "text": "[ZH-TODO] Promise silence in exchange for forbidden demonic pills.",
+        "text": "承诺保持沉默，以换取禁制魔丹。",
         "effects": {
           "karma": -40,
           "daoMind": -15,
@@ -5198,13 +5198,13 @@
   },
   {
     "id": "sect_pill_warehouse_chaos",
-    "title": "[ZH-TODO] Sect Pill Warehouse Breach",
-    "description": "[ZH-TODO] Internal stability has collapsed! A riot has broken out, and the sect's pill warehouse is being looted by desperate disciples [cite: 52, 59].",
+    "title": "宗门丹库突破",
+    "description": "内部稳定崩溃了！一场骚乱爆发，宗门的丹药库被绝望的弟子洗劫[引用：52, 59]。",
     "weight": 2,
     "choices": [
       {
         "id": "join_the_looting",
-        "text": "[ZH-TODO] Rush in and seize whatever pills you can carry.",
+        "text": "冲进去，拿走你能携带的任何药丸。",
         "effects": {
           "karma": -15,
           "reputation": -30,
@@ -5216,7 +5216,7 @@
       },
       {
         "id": "defend_the_gates",
-        "text": "[ZH-TODO] Stand with the elders to defend the sect's remaining resources.",
+        "text": "与长老们站在一起，保卫宗门剩余的资源。",
         "effects": {
           "health": -25,
           "reputation": 40,
@@ -5234,13 +5234,13 @@
   },
   {
     "id": "sect_ancestor_statue_awakening",
-    "title": "[ZH-TODO] Sect Ancestor's Statue Awakening",
-    "description": "[ZH-TODO] Fueled by the sect's high reputation and spiritual Qi, the statue of the founding ancestor begins to radiate a golden light, offering guidance to the faithful [cite: 52, 57].",
+    "title": "宗门始祖雕像觉醒",
+    "description": "在宗门崇高的声誉和灵气的推动下，祖师雕像开始散发出金光，为信徒指引方向[引：52、57]。",
     "weight": 2,
     "choices": [
       {
         "id": "receive_guidance",
-        "text": "[ZH-TODO] Kneel and receive the ancestor's spiritual transmission.",
+        "text": "跪下接受祖师的精神传承。",
         "effects": {
           "comprehension": 10,
           "daoMind": 15,
@@ -5252,7 +5252,7 @@
       },
       {
         "id": "offer_sacrifices",
-        "text": "[ZH-TODO] Offer rare spirit herbs to the statue to gain the sect's favor.",
+        "text": "向神像献上珍稀灵草，以获得宗门青睐。",
         "effects": {
           "reputation": 30,
           "luck": 5,
@@ -5268,13 +5268,13 @@
   },
   {
     "id": "demonic_possession_scandal",
-    "title": "[ZH-TODO] Possession of the Deacon",
-    "description": "[ZH-TODO] Extremely high demonic infiltration and energy have led to a catastrophe: a senior deacon has been possessed by a demonic entity and is wreaking havoc in the outer sect [cite: 59, 55].",
+    "title": "执事的占有",
+    "description": "极高的恶魔渗透和能量导致了一场灾难：一位高级执事被恶魔附体，正在外门肆虐[引用：59, 55]。",
     "weight": 2,
     "choices": [
       {
         "id": "exorcise_the_demon",
-        "text": "[ZH-TODO] Risk your life to perform an exorcism and save the deacon.",
+        "text": "冒着生命危险进行驱魔并拯救执事。",
         "effects": {
           "health": -30,
           "karma": 40,
@@ -5284,7 +5284,7 @@
       },
       {
         "id": "slay_the_possessed",
-        "text": "[ZH-TODO] Slay the possessed deacon immediately to stop the spread.",
+        "text": "立即杀死被附身的执事以阻止蔓延。",
         "effects": {
           "health": -20,
           "money": 200,

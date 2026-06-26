@@ -21,7 +21,7 @@ Game style:
 - Dark cultivation world (dark xianxia)
 - Mysterious
 - Highly replayable
-- Minimalist UI
+- Terminal/Cyberpunk HUD (Player acts as an "Entity" accessing a simulated system to control the cultivator)
 - Mobile-friendly
 
 Core systems:

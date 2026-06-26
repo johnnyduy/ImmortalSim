@@ -21,7 +21,7 @@ Phong cách trò chơi:
 - Thế giới tu chân u tối (dark xianxia)
 - Bí ẩn, huyền bí
 - Khả năng chơi lại cao (replayable)
-- Giao diện tối giản (minimalist UI)
+- Giao diện mô phỏng hệ thống Cyberpunk / Terminal (Terminal/Cyberpunk HUD - người chơi đóng vai một "Thực thể" truy cập vào hệ thống giả lập).
 - Thân thiện với thiết bị di động (mobile-friendly)
 
 Các hệ thống cốt lõi:

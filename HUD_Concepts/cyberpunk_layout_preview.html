@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CULTIVATION_OS_V1.0</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#00ff41",
+                        "on-surface-variant": "#b9ccb2",
+                        "surface-container": "#201f1f",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#ebffe2",
+                        "secondary": "#69df5c",
+                        "surface": "#131313",
+                        "background": "#0a0a0a",
+                        "outline": "#008f11",
+                        "outline-variant": "#3b4b37",
+                        "on-primary": "#003907",
+                        "on-surface": "#e5e2e1",
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "container-padding": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "code-sm": ["10px", {"lineHeight": "14px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0a;
+            color: #00ff41;
+            font-family: 'JetBrains Mono', monospace;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 99;
+            background: linear-gradient(0deg, rgba(0, 255, 65, 0) 0%, rgba(0, 255, 65, 0.05) 50%, rgba(0, 255, 65, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+        .terminal-border {
+            border: 1px solid #008f11;
+            position: relative;
+        }
+        .terminal-border::before {
+            content: '+'; position: absolute; top: -5px; left: -5px; font-weight: bold; background: #0a0a0a;
+        }
+        .terminal-border::after {
+            content: '+'; position: absolute; bottom: -5px; right: -5px; font-weight: bold; background: #0a0a0a;
+        }
+        .scrolling-log::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scrolling-log::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        .scrolling-log::-webkit-scrollbar-thumb {
+            background: #008f11;
+        }
+        .radar-grid {
+            background-image: radial-gradient(circle, #008f11 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="flex flex-col crt-flicker">
+<div class="scanline"></div>
+<!-- Top AppBar -->
+<header class="flex justify-between items-center w-full px-margin py-unit bg-surface border-b border-outline-variant z-10">
+<div class="flex items-center gap-gutter">
+<span class="font-headline-lg text-headline-lg text-primary-container tracking-tighter">CULTIVATION_OS_V1.0</span>
+<div class="flex gap-4 ml-8">
+<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md" href="#">SYSTEM_LOG</a>
+<a class="text-on-surface-variant font-body-md font-label-md text-label-md hover:bg-primary hover:text-on-primary px-2 transition-all" href="#">VITAL_SIGNS</a>
+<a class="text-on-surface-variant font-body-md font-label-md text-label-md hover:bg-primary hover:text-on-primary px-2 transition-all" href="#">MATRIX_MAP</a>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<span class="font-code-sm text-code-sm text-primary-container mr-4" id="system-clock">INIT_CLOCK...</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80">settings</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80">terminal</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80">power_settings_new</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar: Character Profile -->
+<aside class="w-72 bg-surface-container-lowest border-r border-outline-variant flex flex-col p-gutter shrink-0">
+<div class="mb-gutter text-center">
+<div class="relative w-48 h-48 mx-auto border-2 border-outline p-1 mb-4 group overflow-hidden">
+<div class="absolute inset-0 bg-primary opacity-10 group-hover:opacity-20 transition-opacity"></div>
+<img alt="Cultivator Silhouette" class="w-full h-full object-cover grayscale brightness-50 contrast-150" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRz-Dq5q7Gd7QAyDbsOLdTZVbH91avJmvA7wnat7Y38Q65LD4Es4tMhCcvMfb04QQyLesUlxGgbFPxsV9vdWAnEgXS3MEPqsgj-Nf2RyU0PVgyk5_8Ci2oW7F1QdkcGFaIyi_6bS3g4rW0agDgsXXyt_xCT3_Rh8EtKszDycOvvXK_nqSU4lgtjMF4N3CCRczRrGExM2EsVk1J1jQUTKSn9Ny2s6dH3OtETuJAwTQ2OY-QjH9RjyOMR0iHqqG6-kjME5sZzYaYKoZ2"/>
+<div class="absolute bottom-0 left-0 right-0 bg-primary-container text-on-primary py-1 font-label-md text-label-md uppercase tracking-widest">
+                        SOUL_BONDED
+                    </div>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">[ USER_001 ]</h2>
+<div class="flex flex-col gap-1 mt-2 text-left bg-surface-container-high p-unit border border-outline-variant">
+<div class="flex justify-between px-2">
+<span class="text-on-surface-variant text-label-md">SECT:</span>
+<span class="text-primary-container text-label-md">KIẾM TÔNG</span>
+</div>
+<div class="flex justify-between px-2">
+<span class="text-on-surface-variant text-label-md">REALM:</span>
+<span class="text-primary-container text-label-md">NGUYÊN ANH KỲ</span>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<div class="flex items-center gap-3 p-3 bg-surface-container-high border-l-4 border-secondary text-secondary font-bold translate-x-1 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">STATS</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-secondary cursor-pointer transition-colors">
+<span class="material-symbols-outlined">diamond</span>
+<span class="font-label-md text-label-md">REALM</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-secondary cursor-pointer transition-colors">
+<span class="material-symbols-outlined">castle</span>
+<span class="font-label-md text-label-md">SECT</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:text-secondary cursor-pointer transition-colors">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-label-md text-label-md">VEINS</span>
+</div>
+</nav>
+<div class="mt-auto pt-gutter border-t border-outline-variant">
+<button class="w-full py-3 border border-primary-container text-primary-container font-bold hover:bg-primary-container hover:text-on-primary transition-all mb-4">
+                    [ MEDITATE_CTRL ]
+                </button>
+<div class="flex justify-around text-on-surface-variant">
+<div class="flex flex-col items-center cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined">restart_alt</span>
+<span class="text-code-sm">REBOOT</span>
+</div>
+<div class="flex flex-col items-center cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-code-sm">LOGOUT</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Center Main: EVENT LOG -->
+<main class="flex-1 bg-background p-margin flex flex-col overflow-hidden relative">
+<div class="flex justify-between items-baseline mb-4 border-b border-outline pb-2">
+<h1 class="font-headline-md text-headline-md text-primary-container flex items-center">
+<span class="mr-3">>>></span> NHẬT KÝ SỰ KIỆN <span class="ml-3 animate-pulse">_</span>
+</h1>
+<span class="text-on-surface-variant text-code-sm">STATUS: CONNECTED // SOURCE: [QI_NET]</span>
+</div>
+<div class="flex-1 terminal-border bg-surface-container-lowest p-6 overflow-y-auto scrolling-log space-y-4">
+<div class="flex flex-col gap-2">
+<div class="text-outline text-label-md flex items-center">
+<span class="mr-4">[ 10:42:01 ]</span>
+<span>[ BROADCAST_SYSTEM ] Initializing protocol...</span>
+</div>
+<p class="text-primary-container font-headline-md">THÔNG BÁO: ĐẠI HỘI TỶ THÍ NGOẠI MÔN</p>
+<div class="text-primary border-y border-dashed border-outline-variant py-4 my-2">
+<p class="mb-2">> Các đệ tử đạt cảnh giới [LUYỆN KHÍ TẦNG 7] trở lên có thể đăng ký.</p>
+<p class="mb-2">> Địa điểm: Võ Đài Trung Tâm - Kiếm Tông.</p>
+<p class="mb-2">> Phần thưởng: Trúc Cơ Đan cực phẩm x3 và quyền vào Tàng Kinh Các.</p>
+</div>
+<div class="text-primary-container opacity-60">
+                        +-------------------------------------------------------------+<br/>
+                        | ACCESSING SPIRITUAL DATA NODE #4029... SUCCESSFUL           |<br/>
+                        +-------------------------------------------------------------+
+                    </div>
+</div>
+<div class="pt-6 space-y-3">
+<div class="text-outline text-label-md flex items-center">
+<span class="mr-4">[ 09:15:30 ]</span>
+<span>[ SELF_DIAGNOSTICS ] Qi circulation optimal.</span>
+</div>
+<div class="flex items-start gap-4 p-2 border border-outline-variant hover:border-primary transition-colors cursor-pointer group">
+<span class="text-secondary font-bold group-hover:translate-x-1 transition-transform">></span>
+<div>
+<span class="text-secondary-fixed block text-label-md mb-1">CẢNH GIỚI ĐỘT PHÁ</span>
+<p class="text-body-md text-on-surface">Bạn đã cảm nhận được bình cảnh của Nguyên Anh Kỳ. Hãy chuẩn bị cho tâm ma kiếp tiếp theo.</p>
+</div>
+</div>
+<div class="text-outline text-label-md flex items-center mt-6">
+<span class="mr-4">[ 07:00:12 ]</span>
+<span>[ WORLD_EVENT ] Celestial alignment occurring in Sector 7.</span>
+</div>
+<div class="flex items-start gap-4 p-2 border border-outline-variant bg-surface-container-high">
+<span class="text-primary-container font-bold">*</span>
+<div>
+<span class="text-primary-container block text-label-md mb-1">CƠ DUYÊN</span>
+<p class="text-body-md text-on-surface">Một luồng linh khí cổ xưa vừa xuất hiện tại Vạn Thú Sơn. Các đại năng đang tập hợp...</p>
+</div>
+</div>
+</div>
+<!-- Loading/Cursor line -->
+<div class="pt-8 flex items-center gap-2">
+<span class="text-primary-container font-bold">$</span>
+<span class="w-3 h-6 bg-primary-container animate-[pulse_0.8s_infinite]"></span>
+</div>
+</div>
+</main>
+<!-- Right Sidebar: Stats and Core -->
+<aside class="w-80 bg-surface-container border-l border-outline-variant flex flex-col p-gutter shrink-0 overflow-y-auto scrolling-log">
+<!-- Radar Chart Section -->
+<div class="mb-8">
+<h3 class="font-label-md text-label-md text-primary mb-4 flex justify-between border-b border-outline-variant pb-1">
+<span>CÂN BẰNG THUỘC TÍNH</span>
+<span class="material-symbols-outlined text-sm">settings_input_antenna</span>
+</h3>
+<div class="relative w-full aspect-square border border-outline-variant radar-grid flex items-center justify-center">
+<!-- Fake Radar SVG -->
+<svg class="w-full h-full stroke-primary-container fill-primary-container/20" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke-dasharray="2 2" stroke-width="0.5"></circle>
+<circle cx="50" cy="50" fill="none" r="30" stroke-dasharray="2 2" stroke-width="0.5"></circle>
+<line stroke-dasharray="2 2" stroke-width="0.5" x1="50" x2="50" y1="5" y2="95"></line>
+<line stroke-dasharray="2 2" stroke-width="0.5" x1="5" x2="95" y1="50" y2="50"></line>
+<polygon class="opacity-50" points="50,15 80,40 70,85 30,80 15,45"></polygon>
+<polygon fill="none" points="50,15 80,40 70,85 30,80 15,45" stroke-width="1.5"></polygon>
+</svg>
+<div class="absolute top-1 left-1/2 -translate-x-1/2 text-[8px]">STR</div>
+<div class="absolute bottom-1 left-1/2 -translate-x-1/2 text-[8px]">VIT</div>
+<div class="absolute top-1/2 right-1 -translate-y-1/2 text-[8px]">AGI</div>
+<div class="absolute top-1/2 left-1 -translate-y-1/2 text-[8px]">INT</div>
+</div>
+</div>
+<!-- Core Stats Section -->
+<div class="mb-8">
+<h3 class="font-label-md text-label-md text-primary mb-4 border-b border-outline-variant pb-1">BẢN NGUYÊN (CORE)</h3>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-code-sm uppercase">
+<span>Khí (Spiritual)</span>
+<span>82%</span>
+</div>
+<div class="font-code-sm tracking-tight text-primary-container">
+                            [||||||||||||||||||............]
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-code-sm uppercase">
+<span>Hồn (Soul)</span>
+<span>64%</span>
+</div>
+<div class="font-code-sm tracking-tight text-primary-container">
+                            [||||||||||||.................]
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-code-sm uppercase">
+<span>Thể (Body)</span>
+<span>95%</span>
+</div>
+<div class="font-code-sm tracking-tight text-primary-container">
+                            [||||||||||||||||||||||||......]
+                        </div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-code-sm uppercase">
+<span>Vận (Luck)</span>
+<span>12%</span>
+</div>
+<div class="font-code-sm tracking-tight text-primary-container">
+                            [||............................]
+                        </div>
+</div>
+</div>
+</div>
+<!-- Next Breakthrough -->
+<div class="mt-auto bg-surface-container-highest p-3 terminal-border">
+<h4 class="font-label-md text-label-md text-secondary mb-2">ĐỘT PHÁ TIẾP THEO</h4>
+<div class="text-code-sm space-y-1">
+<p class="flex justify-between"><span>TARGET:</span> <span>[THẦN PHÂN]</span></p>
+<p class="flex justify-between"><span>CHANCE:</span> <span class="text-error">15.4%</span></p>
+<p class="flex justify-between"><span>REQ:</span> <span>[TÂM MA ĐAN]</span></p>
+</div>
+<div class="mt-4 border-t border-outline-variant pt-2">
+<button class="w-full text-code-sm text-center py-1 hover:bg-secondary hover:text-on-secondary transition-colors">
+                        [ VIEW_DETAILS ]
+                    </button>
+</div>
+</div>
+</aside>
+</div>
+<!-- Bottom Navigation Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-stretch h-16 bg-surface-container border-t border-primary-container">
+<button class="flex flex-col items-center justify-center bg-primary text-on-primary p-unit flex-1 hover:bg-primary-container hover:text-on-primary-container scale-95 duration-100">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-code-sm text-code-sm">[F1] TU_LUYEN</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary-container p-unit flex-1 hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">upgrade</span>
+<span class="font-code-sm text-code-sm">[F2] DOT_PHA</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary-container p-unit flex-1 hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-code-sm text-code-sm">[F3] TUI_DO</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary-container p-unit flex-1 hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-code-sm text-code-sm">[F4] TONG_MON</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary-container p-unit flex-1 hover:bg-primary-container hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-code-sm text-code-sm">[F5] PHI_THANG</span>
+</button>
+</footer>
+<script>
+        // Simple Clock micro-interaction
+        function updateClock() {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+            const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('system-clock').textContent = `SYS_TIME: ${dateStr} // ${timeStr}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Keyboard Shortcuts Simulator
+        window.addEventListener('keydown', (e) => {
+            const keys = ['F1', 'F2', 'F3', 'F4', 'F5'];
+            if (keys.includes(e.key)) {
+                e.preventDefault();
+                console.log(`Command detected: ${e.key}`);
+                // Visual feedback could be added here
+            }
+        });
+
+        // Simulated terminal typewriter effect for event logs
+        const logs = document.querySelector('.scrolling-log');
+        function addPulse() {
+            const elements = document.querySelectorAll('.animate-pulse');
+            elements.forEach(el => {
+                el.style.opacity = Math.random() > 0.5 ? '1' : '0';
+            });
+        }
+    </script>
+</body></html>

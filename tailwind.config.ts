@@ -5,6 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       "colors": {
+        "abyssal-ink": "#0A0A0C",
+        "void-surface": "#111111",
+        "jade-bloom": "#0BC4E2",
+        "celestial-gold": "#C89B3C",
+        "ethereal-silver": "#F9F9F9",
         "on-tertiary-container": "#626161",
         "primary": "#efffe3",
         "on-secondary-fixed-variant": "#614000",
@@ -87,9 +92,11 @@ const config: Config = {
         "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
         "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
         "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
         "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
         "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
         "mono-data": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "code-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
         "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
         "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
       }
