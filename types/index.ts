@@ -33,6 +33,8 @@ export type Stats = {
   toxicity: number; // Đan độc (tích tụ khi dùng thuốc)
   spiritualRoot?: string; // Linh căn (chỉ định phẩm chất)
   alchemyLevel?: number; // Cấp độ/Tiến trình luyện đan
+  innerDemons?: number; // Tâm ma (tích tụ khi nhập môn thất bại thảm hại)
+  meridianDamage?: number; // Kinh mạch tổn thương (giảm % Max HP)
 };
 
 export type TechniqueCompleteness = 'tàn_quyển' | 'khuyết_thiên' | 'hoàn_chỉnh' | 'viên_mãn';
@@ -98,10 +100,11 @@ export interface SectShopItem {
   id: string;
   itemId?: string; // If buying an item
   techniqueId?: string; // If buying a technique fragment
+  petId?: string; // If buying a pet
   quantity?: number; // How many items to give, default 1
   cost: number; // Cost in Sect Contribution
   minRank: 'ngoại_môn' | 'nội_môn' | 'chân_truyền' | 'trưởng_lão';
-  type: 'item' | 'technique';
+  type: 'item' | 'technique' | 'pet';
 }
 
 export interface SectQuest {
@@ -231,6 +234,87 @@ export type CombatState = {
   onLossEffects?: GameEffect;
 };
 
+export interface ActiveHerb {
+  id: string;
+  name: string;
+  description: string;
+  ageMonths: number;
+  careQuality: number;
+  bondLevel: number;
+  activeEvent: 'linh_vu' | 'ma_trung' | 'nhat_thuc' | 'di_huong' | 'tien_diep' | null;
+  currentNeed: 'water' | 'weed' | 'array' | 'bug' | 'moon' | 'qi' | null;
+  personality: 'ưa_nước' | 'thích_tĩnh_lặng' | 'tham_linh_khí';
+}
+
+export interface ActiveBuff {
+  id: string;
+  name: string;
+  description: string;
+  durationMonths: number;
+  effectType: 'comprehension' | 'cultivation_speed' | 'luck' | 'max_hp' | 'dao_rhyme';
+  effectValue: number;
+  isDaoRhyme: boolean;
+}
+
+export type BugRarity = 'Phàm' | 'Linh' | 'Huyền' | 'Địa' | 'Thiên' | 'Tiên' | 'Cổ' | 'Thần';
+export type BugStage = 'Ấu Trùng' | 'Trưởng Thành' | 'Linh Chủ' | 'Trùng Vương' | 'Trùng Hoàng' | 'Trùng Đế';
+export type BugJob = 'none' | 'herb_garden' | 'cultivation' | 'exploration' | 'production';
+export type BugElement = 'Kim' | 'Mộc' | 'Thủy' | 'Hỏa' | 'Thổ' | 'Âm' | 'Dương' | 'Hỗn Độn';
+export type BugPersonality = 'Ưa Nước' | 'Thích Tĩnh Lặng' | 'Tham Linh Khí' | 'Khát Máu' | 'Lười Biếng' | 'Chăm Chỉ';
+
+export interface SpiritBugSpecies {
+  id: string;
+  name: string;
+  description: string;
+  element: BugElement;
+  baseLifespan: number;
+  baseComprehension: number;
+  baseProduceInterval?: number;
+  producesItemId?: string;
+  explorationBonus?: string;
+  herbBonus?: string;
+  cultivationBonus?: number;
+}
+
+export interface SpiritBugInstance {
+  id: string;
+  speciesId: string;
+  name: string;
+  rarity: BugRarity;
+  stage: BugStage;
+  age: number;
+  lifespan: number;
+  comprehension: number;
+  loyalty: number;
+  breedSpeed: number;
+  mutationRate: number;
+  element: BugElement;
+  personality: BugPersonality;
+  job: BugJob;
+  exp: number;
+  produceProgress: number;
+  exploreProgress: number;
+}
+
+export interface SpiritBeast {
+  id: string; // Unique ID cho instance
+  baseId: string; // ID trỏ về data của pet
+  name: string;
+  species: string; // Loài
+  tier: 'hoàng' | 'huyền' | 'địa' | 'thiên' | 'thánh' | 'tiên';
+  level: number;
+  exp: number;
+  stats: {
+    health: number;
+    attack: number;
+    defense: number;
+    speed: number;
+  };
+  loyalty: number; // 0 - 100
+  hunger: number; // 0 - 100
+  skills: string[]; // Các kỹ năng
+}
+
 export type GameState = {
   run: number;
   life: number;
@@ -257,9 +341,12 @@ export type GameState = {
   sect?: string; // Môn phái đã gia nhập
   startingStoryId?: number | null; // Cốt truyện xuất sinh đã random
   sectContribution?: number; // Điểm cống hiến tông môn
+  protectedByRelicId?: string; // ID của Pháp Bảo Bảo Mệnh đang trang bị
   spiritStones?: number; // Điểm linh thạch hiện có
   sectRank?: 'ngoại_môn' | 'nội_môn' | 'chân_truyền' | 'trưởng_lão'; // Cấp bậc đệ tử
   sectPrestige?: number; // Uy vọng tông môn của đệ tử
+  pets?: SpiritBeast[]; // Danh sách linh thú
+  activePetId?: string; // ID của linh thú đang xuất chiến
   activeQuest?: {
     quest: SectQuest;
     monthsRemaining: number;
@@ -274,6 +361,10 @@ export type GameState = {
   worldState?: WorldState;
   currentLocation: 'sect' | 'mountain' | 'city' | 'secret_realm';
   activeCombat?: CombatState;
+  activeHerb?: ActiveHerb | null;
+  activeBuffs?: ActiveBuff[];
+  bugs?: SpiritBugInstance[];
+  bugCollection?: Record<string, boolean>;
 };
 
 // ════════════════════════════════════════════════════════════

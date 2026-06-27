@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { uiText } from '../lib/i18n';
 
 interface SubStageBreakthroughProps {
   oldStageName: string;

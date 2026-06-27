@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { GameState, ItemInstance, SectShopItem } from '../types';
+import { GameState, ItemInstance, SectShopItem, SpiritBeast } from '../types';
 import itemsData from '../data/items.json';
 import sectShopData from '../data/sect-shop.json';
+import petsData from '../data/pets.json';
 import { uiText } from '../lib/i18n';
 
 interface SectShopModalProps {
@@ -82,6 +83,20 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
         };
         nextState.techniques = [...(nextState.techniques || []), newTech];
       }
+    } else if (shopItem.type === 'pet' && shopItem.petId) {
+      const basePet = (petsData as SpiritBeast[]).find(p => p.id === shopItem.petId);
+      if (basePet) {
+        itemName = basePet.name;
+        const newPet: SpiritBeast = {
+          ...basePet,
+          id: `${basePet.id}_${Date.now()}`,
+          baseId: basePet.id,
+          exp: 0,
+          loyalty: 100,
+          hunger: 100
+        };
+        nextState.pets = [...(nextState.pets || []), newPet];
+      }
     }
 
     nextState.log = [
@@ -134,6 +149,11 @@ export default function SectShopModal({ state, onUpdateState, onClose, language 
               displayName = item.techniqueId.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') + ' (Mảnh)';
               description = (uiText[language]?.['techniqueFragmentCol'] || 'Technique fragment, collect enough to comprehend.');
               displayTier = item.techniqueId.includes('hoang') ? 'hoàng' : item.techniqueId.includes('dia') ? 'địa' : 'thiên';
+            } else if (item.type === 'pet' && item.petId) {
+              const basePet = (petsData as SpiritBeast[]).find(p => p.id === item.petId);
+              displayName = basePet?.name || item.petId;
+              description = `Linh thú hệ [${basePet?.species}]. Máu: ${basePet?.stats.health}, Công: ${basePet?.stats.attack}`;
+              displayTier = basePet?.tier || '';
             }
 
             return (

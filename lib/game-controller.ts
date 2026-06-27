@@ -1,5 +1,7 @@
 import type { GameState, Lang, EventDefinition, LogEntry, LocalizedText, ItemInstance, WorldState } from '../types';
+import { handleDeathProtection } from './engine';
 import combatConfig from '../data/combat-config.json';
+import { BUG_SPECIES } from './bugs';
 import {
   getCultivationCap, getCultivationGainMultiplier, checkAndApplySubStageTransition,
   getBottlenecks, generateBreakthroughEvent, buildQuestCompleteEvent,
@@ -37,13 +39,119 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
   let lastMessage = state.lastMessage;
   const newLog = [...state.log];
 
-  
+  let nextPets = state.pets ? [...state.pets].map(pet => {
+    let newHunger = Math.max(0, pet.hunger - 2);
+    let newLoyalty = pet.loyalty;
+    if (newHunger === 0) {
+      newLoyalty = Math.max(0, newLoyalty - 5);
+    }
+    return { ...pet, hunger: newHunger, loyalty: newLoyalty };
+  }) : undefined;
+
   // =========================================================
   // 1. CHUẨN BỊ BIẾN TOÀN CỤC
   // =========================================================
   let nextQuestsCompletedThisYear = state.questsCompletedThisYear ?? 0;
 
+  let nextActiveHerb = state.activeHerb ? { ...state.activeHerb } : null;
+  let nextActiveBuffs = state.activeBuffs ? [...state.activeBuffs] : [];
+
+  if (nextActiveHerb) {
+    if (nextActiveHerb.currentNeed) {
+      nextActiveHerb.careQuality = Math.max(0, nextActiveHerb.careQuality - 10);
+    }
+    nextActiveHerb.ageMonths += 1;
+    const needs: ('water' | 'weed' | 'array' | 'bug' | 'moon' | 'qi')[] = ['water', 'weed', 'array', 'bug', 'moon', 'qi'];
+    if (Math.random() < 0.5) {
+      nextActiveHerb.currentNeed = needs[Math.floor(Math.random() * needs.length)];
+    } else {
+      nextActiveHerb.currentNeed = null;
+    }
+  }
   
+  if (nextActiveBuffs.length > 0) {
+    nextActiveBuffs = nextActiveBuffs.map(b => ({ ...b, durationMonths: b.durationMonths - 1 }))
+                                     .filter(b => b.durationMonths > 0);
+  }
+
+  // =========================================================
+  // 1.5. XỬ LÝ HỆ SINH THÁI LINH TRÙNG (BUG ECOSYSTEM)
+  // =========================================================
+  let nextBugs = state.bugs ? [...state.bugs] : [];
+  let nextInventory = state.inventory ? [...state.inventory] : [];
+  
+  if (nextBugs.length > 0) {
+    const survivingBugs = [];
+    for (let bug of nextBugs) {
+      let b = { ...bug };
+      
+      // Age increase
+      b.age += 1;
+      if (b.age > (b.lifespan * 12)) {
+        newLog.push({
+          type: 'info',
+          message: {
+            vi: `Linh trùng ${b.name} của bạn đã hết thọ nguyên và hóa thành cát bụi.`,
+            en: `Your spirit bug ${b.name} has reached the end of its lifespan and turned to dust.`
+          }
+        });
+        continue;
+      }
+
+      // Job Processing
+      if (b.job === 'herb_garden' && nextActiveHerb) {
+        nextActiveHerb.careQuality = Math.min(100, nextActiveHerb.careQuality + 2);
+      } else if (b.job === 'cultivation') {
+        nextStats.cultivation += 1 + (b.comprehension * 0.1);
+      } else if (b.job === 'exploration') {
+        b.exploreProgress = (b.exploreProgress || 0) + 1;
+        if (b.exploreProgress >= 12) {
+          b.exploreProgress = 0;
+          newLog.push({
+            type: 'item_gain',
+            message: {
+              vi: `Linh trùng ${b.name} đi thám hiểm trở về mang theo Linh Thạch!`,
+              en: `Your bug ${b.name} returned from exploration with Spirit Stones!`
+            }
+          });
+          state.spiritStones = (state.spiritStones || 0) + 10 + Math.floor(Math.random() * 20);
+        }
+      } else if (b.job === 'production') {
+        b.produceProgress = (b.produceProgress || 0) + 1;
+        const species = BUG_SPECIES.find(s => s.id === b.speciesId);
+        if (species && species.baseProduceInterval && b.produceProgress >= species.baseProduceInterval) {
+          b.produceProgress = 0;
+          if (species.producesItemId) {
+            newLog.push({
+              type: 'item_gain',
+              message: {
+                vi: `${b.name} đã sản xuất ra ${species.producesItemId}!`,
+                en: `${b.name} produced ${species.producesItemId}!`
+              }
+            });
+            const newItem = {
+              id: `item_${Date.now()}_${Math.random()}`,
+              name: species.producesItemId,
+              description: `Vật liệu thu được từ ${species.name}`,
+              category: 'material' as const,
+              type: 'herb' as const,
+              tier: 'hoàng' as const,
+              quantity: 1
+            };
+            const existingItem = nextInventory.find(i => i.name === newItem.name);
+            if (existingItem) existingItem.quantity += 1;
+            else nextInventory.push(newItem);
+          }
+        }
+      }
+      survivingBugs.push(b);
+    }
+    nextBugs = survivingBugs;
+  }  
+
+  // Gắn lại vào state để các return { ...state } ở dưới lấy được dữ liệu cập nhật
+  state = { ...state, bugs: nextBugs, inventory: nextInventory };
+
   // =========================================================
   // 2. XỬ LÝ NHIỆM VỤ (QUESTS) & TĨNH TU BẾ QUAN
   // =========================================================
@@ -100,6 +208,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
           const desc = language === 'vi' ? `Tĩnh tu bế quan (Tu vi +${gain.toFixed(2)})` : `Closed-door retreat (Cultivation +${gain.toFixed(2)})`;
           return {
             ...state,
+            pets: nextPets,
             age: nextAge,
             month: nextMonth,
             isTicking: false,
@@ -149,7 +258,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       }
       questSuccess = success;
       
-      if (questSuccess && !quest.id.startsWith('quest_be_quan_') && quest.id !== 'quest_farm_herbs') {
+      if (questSuccess && !quest.id.startsWith('quest_be_quan_') && !quest.id.startsWith('quest_skip_time_') && quest.id !== 'quest_farm_herbs') {
         nextQuestsCompletedThisYear += 1;
       }
 
@@ -201,10 +310,13 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
   }
 
   if (!alive) {
-    return {
+    return handleDeathProtection({
       ...state,
+      pets: nextPets,
       age: nextAge,
       month: nextMonth,
+      activeHerb: nextActiveHerb,
+      activeBuffs: nextActiveBuffs,
       alive: false,
       stats: nextStats,
       realm: nextRealm,
@@ -215,7 +327,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
       lastMessage,
       log: newLog,
       questsCompletedThisYear: nextQuestsCompletedThisYear
-    };
+    }, deathCause);
   }
 
   if (nextActiveQuest) {
@@ -262,8 +374,11 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
     if (breakthroughEvent) {
       return {
         ...state,
+        pets: nextPets,
         age: nextAge,
         month: nextMonth,
+        activeHerb: nextActiveHerb,
+        activeBuffs: nextActiveBuffs,
         isTicking: false,
         activeQuest: null,
         currentEvent: breakthroughEvent,
@@ -291,6 +406,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
     };
     return {
       ...state,
+      pets: nextPets,
       age: nextAge,
       month: nextMonth,
       isTicking: false,
@@ -329,6 +445,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
 
     return {
       ...state,
+      pets: nextPets,
       age: nextAge,
       month: nextMonth,
       isTicking: false,
@@ -355,6 +472,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
 
     return {
       ...state,
+      pets: nextPets,
       age: nextAge,
       month: nextMonth,
       isTicking: false,
@@ -372,7 +490,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
 
   if (nextActiveQuest) {
     let passiveGain = 0;
-    if (!nextActiveQuest.quest.id.startsWith('quest_be_quan_')) {
+    if (!nextActiveQuest.quest.id.startsWith('quest_be_quan_') && !nextActiveQuest.quest.id.startsWith('quest_skip_time_')) {
       passiveGain = 0.02 * getCultivationGainMultiplier(state, customConfig);
       nextStats.cultivation = Math.round((nextStats.cultivation + passiveGain) * 100) / 100;
       
@@ -404,6 +522,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
         if (breakthroughEvent) {
           return {
             ...state,
+            pets: nextPets,
             age: nextAge,
             month: nextMonth,
             isTicking: false,
@@ -424,6 +543,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
 
     return {
       ...state,
+      pets: nextPets,
       age: nextAge,
       month: nextMonth,
       monthlyLog: nextMonthlyLog,
@@ -585,6 +705,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
 
     return {
       ...state,
+      pets: nextPets,
       age: nextAge,
       month: nextMonth,
       isTicking: false,
@@ -634,6 +755,7 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
     if (breakthroughEvent) {
       return {
         ...state,
+        pets: nextPets,
         age: nextAge,
         month: nextMonth,
         isTicking: false,
@@ -652,8 +774,11 @@ export const tickMonth = (state: GameState, language: Lang, customConfig?: any):
 
   return {
     ...state,
+    pets: nextPets,
     age: nextAge,
     month: nextMonth,
+    activeHerb: nextActiveHerb,
+    activeBuffs: nextActiveBuffs,
     monthlyLog: nextMonthlyLog,
     worldState: nextWorldState,
     log: [...newLog, ...worldNewsLog, ...voiceLogEntries],

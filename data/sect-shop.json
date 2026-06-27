@@ -62,5 +62,125 @@
     "cost": 1000,
     "minRank": "trưởng_lão",
     "type": "item"
+  },
+  {
+    "id": "shop_the_than_phu",
+    "itemId": "relic_the_than_phu",
+    "quantity": 1,
+    "cost": 300,
+    "minRank": "nội_môn",
+    "type": "item"
+  },
+  {
+    "id": "shop_na_di_phu",
+    "itemId": "relic_na_di_phu",
+    "quantity": 1,
+    "cost": 500,
+    "minRank": "chân_truyền",
+    "type": "item"
+  },
+  {
+    "id": "shop_pet_tank_1",
+    "petId": "pet_tank_1",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_tank_2",
+    "petId": "pet_tank_2",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_tank_3",
+    "petId": "pet_tank_3",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_speed_1",
+    "petId": "pet_speed_1",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_speed_2",
+    "petId": "pet_speed_2",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_speed_3",
+    "petId": "pet_speed_3",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_range_1",
+    "petId": "pet_range_1",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_range_2",
+    "petId": "pet_range_2",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_range_3",
+    "petId": "pet_range_3",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_support_1",
+    "petId": "pet_support_1",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_support_2",
+    "petId": "pet_support_2",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_pet_support_3",
+    "petId": "pet_support_3",
+    "quantity": 1,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "pet"
+  },
+  {
+    "id": "shop_thuc_an_linh_thu",
+    "itemId": "item_thuc_an_linh_thu",
+    "quantity": 10,
+    "cost": 1,
+    "minRank": "ngoại_môn",
+    "type": "item"
   }
 ]

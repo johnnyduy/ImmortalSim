@@ -15,6 +15,15 @@ export const uiText: Record<string, Record<string, string>> = {
   zh: uiZh,
 };
 
+export function t(lang: Lang, key: string, fallback: string): string {
+  const result = uiText[lang]?.[key];
+  if (result === undefined) {
+    console.warn(`[i18n] Missing translation key: "${key}" for language: "${lang}"`);
+    return fallback;
+  }
+  return result;
+}
+
 export const sects = {
   en: sectEn,
   vi: sectVi,

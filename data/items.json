@@ -281,5 +281,55 @@
       "karma": -10,
       "health": -20
     }
+  },
+  {
+    "id": "relic_the_than_phu",
+    "name": "Thế Thân Phù",
+    "description": "Một đạo linh phù có khả năng chịu mạng thay chủ nhân. Khi chủ nhân sắp chết, phù sẽ bốc cháy và hồi lại 50% sinh lực, đồng thời dịch chuyển chủ nhân đến nơi an toàn.",
+    "category": "relic",
+    "type": "relic",
+    "tier": "huyền",
+    "quantity": 1,
+    "equipped": false
+  },
+  {
+    "id": "relic_na_di_phu",
+    "name": "Na Di Phù",
+    "description": "Phù triện mang sức mạnh không gian. Khi gặp nguy hiểm trí mạng, tự động kích hoạt đưa chủ nhân na di ngàn dặm, hồi phục 10% sinh lực.",
+    "category": "relic",
+    "type": "relic",
+    "tier": "địa",
+    "quantity": 1,
+    "equipped": false
+  },
+  {
+    "id": "relic_cuu_chuyen_hon_dang",
+    "name": "Cửu Chuyển Hồn Đăng",
+    "description": "Hàng hiếm cấp cao! Giữ lại một tia tàn hồn. Khi chết đi có thể mượn hồn đăng sống lại, phục hồi 100% sinh lực nhưng tu vi và đạo tâm sẽ chịu tổn hao nghiêm trọng.",
+    "category": "relic",
+    "type": "relic",
+    "tier": "thánh",
+    "quantity": 1,
+    "equipped": false
+  },
+  {
+    "id": "relic_huyet_mach_than_phu",
+    "name": "Huyết Mạch Thần Phù",
+    "description": "Bảo vật tuyệt thế do Lão Tổ luyện chế bằng tinh huyết. Không thể chủ động sử dụng, chỉ kích hoạt khi rơi vào cửa tử. Triệu hồi hư ảnh Lão Tổ một kích miễu sát kẻ thù, bảo toàn mạng sống và thanh tẩy mọi tạp niệm.",
+    "category": "relic",
+    "type": "relic",
+    "tier": "tiên",
+    "quantity": 1,
+    "equipped": false
+  },
+  {
+    "id": "item_thuc_an_linh_thu",
+    "name": "Thức Ăn Linh Thú",
+    "description": "Lương khô được chế biến từ yêu đan và linh thảo cấp thấp, dùng để cho linh thú ăn, giúp tăng độ no và độ trung thành.",
+    "category": "consumable",
+    "type": "elixir",
+    "tier": "hoàng",
+    "quantity": 1,
+    "effects": {}
   }
 ]

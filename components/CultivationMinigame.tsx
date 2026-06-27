@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TechniqueInstance } from '../types';
 
+import { uiText } from '../lib/i18n';
+import type { Lang } from '../types';
+
 interface Props {
+  language: Lang;
   technique: TechniqueInstance;
   onSuccess: (perfect: boolean) => void;
+  onFail: (severity: 'mild' | 'heavy' | 'severe') => void;
   onCancel: () => void;
-  isFatal?: boolean;
-  onFatalFail?: () => void;
 }
 
 type ArrowKey = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
@@ -25,7 +28,7 @@ const KEY_MAP: Record<string, ArrowKey> = {
   ArrowRight: 'RIGHT', d: 'RIGHT', D: 'RIGHT'
 };
 
-export default function CultivationMinigame({ technique, onSuccess, onCancel, isFatal, onFatalFail }: Props) {
+export default function CultivationMinigame({ technique, onSuccess, onFail, onCancel, language }: Props) {
   const maxRounds = technique.tier === 'thiên' || technique.tier === 'địa' ? 5 : 3;
   
   const [phase, setPhase] = useState<'init' | 'playing' | 'success' | 'fail'>('init');
@@ -127,6 +130,12 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
   // Handle Input
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.code === 'KeyR') {
+        e.preventDefault();
+        setPhase('success');
+        return;
+      }
+
       if (phase !== 'playing' || glitch) return;
 
       if (e.code === 'Space') {
@@ -194,40 +203,45 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
       return () => clearTimeout(timer);
     } else if (phase === 'fail') {
       const timer = setTimeout(() => {
-        if (isFatal && onFatalFail) onFatalFail();
-        else onCancel();
+        let severity: 'mild' | 'heavy' | 'severe' = 'severe';
+        if (round >= maxRounds) {
+          severity = 'mild';
+        } else if (round > 1) {
+          severity = 'heavy';
+        }
+        onFail(severity);
       }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [phase, isFatal, onFatalFail, onCancel, onSuccess]);
+  }, [phase, onFail, onSuccess, round, maxRounds]);
 
   if (phase === 'init') {
     return (
       <div className="relative w-full h-full bg-[#050505] text-[#00ff41] font-mono flex flex-col items-center justify-center p-4 min-h-[400px]">
         <div className="absolute inset-0 scanlines opacity-20 pointer-events-none" />
         <div className="max-w-md w-full border border-[#00ff41] bg-[#0a0a0a] p-6 shadow-[0_0_20px_rgba(0,255,65,0.2)] z-10">
-          <h2 className="text-xl font-bold tracking-widest mb-4 uppercase">[ INITIALIZE OVERRIDE PROTOCOL ]</h2>
+          <h2 className="text-xl font-bold tracking-widest mb-4 uppercase">{uiText[language]?.initOverrideProtocol || '[ INITIALIZE OVERRIDE PROTOCOL ]'}</h2>
           <div className="space-y-4 text-sm opacity-80 mb-8">
-            <p>{'>'} TARGET: {technique.label}</p>
-            <p>{'>'} REQUIRED_ROUNDS: {maxRounds}</p>
+            <p>{'>'} {uiText[language]?.targetManual || 'TARGET:'} {technique.name}</p>
+            <p>{'>'} {uiText[language]?.requiredRounds || 'REQUIRED_ROUNDS:'} {maxRounds}</p>
             <p className="mt-4 border-l-2 border-[#00ff41] pl-3 py-1 bg-[#00ff41]/10">
-              INSTRUCTION: <br/>
-              1. Nhập chính xác chuỗi phím mũi tên (Arrow/WASD).<br/>
-              2. Đợi con trỏ nhịp điệu (Rhythm) vào vùng tâm <span className="text-white font-bold">[ || ]</span>.<br/>
-              3. Bấm phím SPACE để thực thi lệnh (Execute).
+              {uiText[language]?.instructionCaps || 'INSTRUCTION:'} <br/>
+              {uiText[language]?.minigameInst1 || '1. Enter exact arrow keys.'}<br/>
+              {uiText[language]?.minigameInst2 || '2. Wait for rhythm cursor.'} <span className="text-white font-bold">[ || ]</span>.<br/>
+              {uiText[language]?.minigameInst3 || '3. Press SPACE to execute.'}
             </p>
           </div>
           <button 
             onClick={() => setPhase('playing')}
             className="w-full py-3 border border-[#00ff41] hover:bg-[#00ff41] hover:text-black transition-colors font-bold uppercase tracking-widest animate-[pulse_2s_infinite]"
           >
-            Bắt đầu (EXECUTE)
+            {uiText[language]?.executeBtn || 'Bắt đầu (EXECUTE)'}
           </button>
           <button 
             onClick={onCancel}
             className="w-full mt-3 py-2 text-xs opacity-60 hover:opacity-100 transition-opacity"
           >
-            Hủy Bỏ (ABORT)
+            {uiText[language]?.abortBtn || 'Hủy Bỏ (ABORT)'}
           </button>
         </div>
       </div>
@@ -248,7 +262,7 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
       {phase === 'success' && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#00ff41]/10 z-50 backdrop-blur-sm">
           <h1 className="text-4xl font-bold tracking-widest animate-[pulse_1s_infinite] shadow-[0_0_20px_#00ff41] p-8 border border-[#00ff41] bg-[#050505]">
-            [ OVERRIDE SUCCESSFUL ]
+            {uiText[language]?.overrideSuccessful || '[ OVERRIDE SUCCESSFUL ]'}
           </h1>
         </div>
       )}
@@ -256,20 +270,20 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
       {phase === 'fail' && (
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-red-950/40 z-50 backdrop-blur-sm">
           <h1 className="text-4xl font-bold tracking-widest text-red-500 animate-[shake_0.5s_infinite] shadow-[0_0_20px_red] p-8 border border-red-500 bg-[#050505]">
-            [ OVERRIDE FAILED ]
+            {uiText[language]?.overrideFailed || '[ OVERRIDE FAILED ]'}
           </h1>
-          <p className="mt-4 text-red-400">Meridian collapse detected...</p>
+          <p className="mt-4 text-red-400">{uiText[language]?.meridianCollapse || 'Meridian collapse detected...'}</p>
         </div>
       )}
 
       <div className={`max-w-2xl w-full border ${glitch ? 'border-red-500 shadow-[0_0_30px_rgba(255,0,0,0.4)]' : 'border-[#00ff41] shadow-[0_0_30px_rgba(0,255,65,0.15)]'} bg-[#0a0a0a] p-8 flex flex-col relative overflow-hidden`}>
         <div className={`flex justify-between items-center pb-4 border-b ${glitch ? 'border-red-500/50' : 'border-[#00ff41]/50'} mb-8`}>
           <div>
-            <div className="text-xs opacity-60">TARGET_MANUAL</div>
-            <div className="font-bold text-lg">{technique.label}</div>
+            <div className="text-xs opacity-60">{uiText[language]?.targetManualHeader || 'TARGET_MANUAL'}</div>
+            <div className="font-bold text-lg">{technique.name}</div>
           </div>
           <div className="text-right">
-            <div className="text-xs opacity-60">TIME_REMAINING</div>
+            <div className="text-xs opacity-60">{uiText[language]?.timeRemaining || 'TIME_REMAINING'}</div>
             <div className={`font-bold text-2xl ${timeLeft <= 10 ? 'text-red-500 animate-pulse' : ''}`}>
               {timeLeft.toFixed(2)}s
             </div>
@@ -277,7 +291,7 @@ export default function CultivationMinigame({ technique, onSuccess, onCancel, is
         </div>
 
         <div className="flex justify-between text-sm mb-6 font-bold">
-          <div>ROUND: [{round}/{maxRounds}]</div>
+          <div>{uiText[language]?.roundLabel || 'ROUND:'} [{round}/{maxRounds}]</div>
           <div className={feedback.includes('FAILED') || feedback.includes('ERROR') ? 'text-red-500' : 'text-yellow-400'}>
             {feedback || '> WAITING FOR INPUT...'}
           </div>

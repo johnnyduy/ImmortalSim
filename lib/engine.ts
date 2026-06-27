@@ -36,6 +36,77 @@ import itemsData from '../data/items.json';
 
 const startingStories = [story1, story2, story3, story4, story5];
 
+export const handleDeathProtection = (state: GameState, cause?: LocalizedText | string): GameState => {
+  if (!state.inventory) return { ...state, alive: false, deathCause: typeof cause === 'string' ? { vi: cause, en: cause } : cause };
+
+  const relicIndex = state.inventory.findIndex(i => i.id === state.protectedByRelicId && i.quantity > 0);
+  if (relicIndex === -1) {
+    return { ...state, alive: false, deathCause: typeof cause === 'string' ? { vi: cause, en: cause } : cause };
+  }
+
+  const relic = state.inventory[relicIndex];
+  const newState = { ...state };
+  newState.inventory = [...state.inventory];
+  const logs = [...(state.log || [])];
+
+  // Consume relic
+  const newQuantity = relic.quantity - 1;
+  if (newQuantity <= 0) {
+    newState.inventory.splice(relicIndex, 1);
+    newState.protectedByRelicId = undefined;
+  } else {
+    newState.inventory[relicIndex] = { ...relic, quantity: newQuantity };
+  }
+
+  // Apply relic effects based on id
+  let effectText = '';
+  newState.stats = { ...state.stats };
+
+  switch (relic.id) {
+    case 'relic_the_than_phu':
+      newState.stats.health = Math.max(newState.stats.health, 50); // Restore 50 HP
+      effectText = 'Một đạo linh phù bốc cháy, thế thân gánh chịu sát thương, thành công cứu chủ nhân một mạng!';
+      break;
+    case 'relic_na_di_phu':
+      newState.stats.health = Math.max(newState.stats.health, 10);
+      effectText = 'Na Di Phù tự động kích hoạt! Trút bỏ mọi giam cầm, thuấn di ngàn dặm về nơi an toàn.';
+      break;
+    case 'relic_cuu_chuyen_hon_dang':
+      newState.stats.health = 100; // Restore 100 HP
+      newState.stats.cultivation = Math.max(0, newState.stats.cultivation - 20); // Lose cultivation
+      newState.stats.daoHeart = Math.max(0, newState.stats.daoHeart - 10);
+      effectText = 'Cửu Chuyển Hồn Đăng thắp sáng! Nhục thân dẫu diệt, một tia tàn hồn mượn đèn trọng sinh. Tu vi tổn hao nghiêm trọng!';
+      break;
+    case 'relic_huyet_mach_than_phu':
+      newState.stats.health = 200;
+      newState.stats.daoHeart += 10;
+      effectText = 'Huyết Mạch Thần Phù thức tỉnh! Hư ảnh Lão Tổ hiển hóa gầm lên: "Kẻ nào dám diệt huyết mạch của ta?". Địch nhân bị mạt sát, thân tâm được tẩy lễ!';
+      break;
+    default:
+      newState.stats.health = 1;
+      effectText = `${relic.name} đã vỡ nát để bảo vệ mạng sống của bạn!`;
+      break;
+  }
+
+  logs.push({
+    year: Math.floor(state.age),
+    month: state.month || 1,
+    message: {
+      vi: `[BẢO MỆNH] ${effectText}`,
+      en: `[PROTECTION] ${relic.name} activated and saved your life!`,
+    },
+    type: 'event',
+    isDeathProtection: true, // Special marker for UI styling
+  } as any);
+
+  newState.log = logs;
+  newState.alive = true;
+  // If it was supposed to be a death by zero hp, ensure it's > 0
+  if (newState.stats.health <= 0) newState.stats.health = 1;
+
+  return newState;
+};
+
 
 const realmThresholds: Array<[number, Realm]> = [
   [0, 'Mortal'],
@@ -1602,7 +1673,7 @@ export const equipItemInState = (state: GameState, itemIndexInInventory: number)
   if (itemIndexInInventory < 0 || itemIndexInInventory >= inventory.length) return state;
 
   const item = inventory[itemIndexInInventory];
-  if (item.category !== 'equipment') return state;
+  if (item.category !== 'equipment' && item.category !== 'relic') return state;
 
   const targetEquip = !item.equipped;
 
@@ -1611,7 +1682,8 @@ export const equipItemInState = (state: GameState, itemIndexInInventory: number)
       return { ...invItem, equipped: targetEquip };
     }
     
-    if (targetEquip && invItem.category === 'equipment' && invItem.type === item.type && invItem.equipped) {
+    // Unequip items of the same type if it's equipment, or if it's a relic
+    if (targetEquip && ((invItem.category === 'equipment' && invItem.type === item.type) || (invItem.category === 'relic' && item.category === 'relic')) && invItem.equipped) {
       return { ...invItem, equipped: false };
     }
     
@@ -1625,12 +1697,18 @@ export const equipItemInState = (state: GameState, itemIndexInInventory: number)
     }
   };
 
-  return {
+  const newState = {
     ...state,
     inventory: updatedInventory,
     log: [...state.log, equipLogEntry],
     lastMessage: equipLogEntry.message
   };
+
+  if (item.category === 'relic') {
+    newState.protectedByRelicId = targetEquip ? item.id : undefined;
+  }
+
+  return newState;
 };
 
 // getInitialInheritance (Lấy di sản thừa kế khởi tạo ban đầu khi chưa có điểm tích lũy)
@@ -1923,27 +2001,13 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
       minRealm: 'Mortal',
       weight: 1,
       choices: [
-        { id: 'action_tinh_tu_binh_thuong', text: { vi: '✨ Tĩnh tu bình thường (An toàn, +Tu vi)', en: '✨ Normal Meditation (Safe, +Cultivation)' }, effects: {} },
-        { id: 'goto_menu_be_quan', text: { vi: '🚪 Bế quan dài hạn (Tăng nhiều tu vi)', en: '🚪 Closed-door Retreat (High Cultivation)'}, effects: {} },
+        { id: 'action_dao_foundation_1', text: { vi: '🧘 Bế quan 1 tháng (20s chơi)', en: '🧘 Retreat for 1 month (20s)'}, effects: {} },
+        { id: 'action_dao_foundation_3', text: { vi: '🧘 Bế quan 3 tháng (60s chơi)', en: '🧘 Retreat for 3 months (60s)'}, effects: {} },
+        { id: 'action_dao_foundation_6', text: { vi: '🧘 Bế quan 6 tháng (120s chơi)', en: '🧘 Retreat for 6 months (120s)'}, effects: {} },
+        { id: 'action_dao_foundation_12', text: { vi: '🧘 Bế quan 1 năm (240s chơi)', en: '🧘 Retreat for 1 year (240s)'}, effects: {} },
         { id: 'goto_menu_dot_tai_nguyen', text: { vi: '🔥 Đốt tài nguyên tu luyện (Tốn Linh thạch)', en: '🔥 Spend resources to cultivate'}, effects: {} },
         { id: 'goto_menu_nghien_cuu_cong_phap', text: { vi: '📖 Tham ngộ/Nghiên cứu công pháp', en: '📖 Comprehend/Study Techniques'}, effects: {} },
         { id: 'action_back', text: { vi: '↩️ Quay lại menu chính', en: '↩️ Back to main menu'}, effects: {} }
-      ]
-    };
-  }
-
-  if (menuId === 'menu_be_quan') {
-    return {
-      id: 'menu_be_quan',
-      title: { vi: '🚪 Bế Quan Tu Luyện', en: '🚪 Closed-Door Retreat'},
-      description: { vi: 'Chọn khoảng thời gian bế quan. Trong suốt thời gian này thời gian sẽ trôi tự động và không có sự kiện ngoài cắt ngang.', en: 'Select the retreat duration. Time will pass automatically without external events during this period.'},
-      minRealm: 'Mortal',
-      weight: 1,
-      choices: [
-        { id: 'action_be_quan_3', text: { vi: '⏳ Bế quan 3 tháng (+2 Tu Vi)', en: '⏳ Retreat for 3 months (+2 Cultivation)'}, effects: {} },
-        { id: 'action_be_quan_6', text: { vi: '⏳ Bế quan 6 tháng (+5 Tu Vi)', en: '⏳ Retreat for 6 months (+5 Cultivation)'}, effects: {} },
-        { id: 'action_be_quan_12', text: { vi: '⏳ Bế quan 1 năm (+10 Tu Vi)', en: '⏳ Retreat for 1 year (+10 Cultivation)'}, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
       ]
     };
   }
@@ -2103,17 +2167,23 @@ export const getMenuEvent = (menuId: string, state: GameState, language: Lang): 
   }
 
   if (menuId === 'menu_lich_luyen_thanh_thi') {
+    const isAuctionMonth = state.month % 36 === 1;
+    const choices: any[] = [];
+    if (isAuctionMonth) {
+      choices.push({ id: 'action_town_auction', text: { vi: '🏛️ Vào Đấu Giá Hội (Chỉ mở Tháng 1 mỗi 3 năm)', en: '🏛️ Enter Auction Hall (Open Jan every 3 yrs)'}, effects: {} });
+    }
+    choices.push(
+      { id: 'action_town_black_market', text: { vi: '👁️ Giao dịch Chợ Đen (Mua bán nguyên liệu thô)', en: '👁️ Black Market Trade (Buy/sell raw materials)'}, effects: {} },
+      { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
+    );
+
     return {
       id: 'menu_lich_luyen_thanh_thi',
       title: { vi: '🏮 Thành Thị Tu Chân', en: '🏮 Cultivator Town'},
       description: { vi: 'Chợ giao dịch sầm uất. Nơi tu sĩ tụ tập trao đổi tin tức và vật phẩm.', en: 'Busy trading market where cultivators gather to trade news and items.'},
       minRealm: 'Mortal',
       weight: 1,
-      choices: [
-        { id: 'action_town_auction', text: { vi: '🏛️ Vào Đấu Giá Hội (Mua Đan dược bằng Linh thạch)', en: '🏛️ Enter Auction Hall (Buy Elixirs with Gold)'}, effects: {} },
-        { id: 'action_town_black_market', text: { vi: '👁️ Giao dịch Chợ Đen (Mua bán nguyên liệu thô)', en: '👁️ Black Market Trade (Buy/sell raw materials)'}, effects: {} },
-        { id: 'action_back', text: { vi: '↩️ Quay lại', en: '↩️ Back'}, effects: {} }
-      ]
+      choices
     };
   }
 
@@ -2305,7 +2375,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
     const newRealm = determineRealm(nextStats.cultivation, state.realm);
 
     if (!alive) {
-      return {
+      return handleDeathProtection({
         ...state,
         alive: false,
         stats: nextStats,
@@ -2320,7 +2390,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
         month: nextMonth,
         spiritStones: nextSpiritStones,
         sectContribution: nextSectContribution
-      };
+      }, deathCause ?? { vi: 'Tịch Diệt', en: 'Deceased'});
     }
 
     const nextEvent = getMenuEvent('menu_monthly_plan', {
@@ -2522,33 +2592,25 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       let logTitle = state.currentEvent.title;
       let choiceText: TextResource = { vi: 'Hành động', en: 'Action'};
       
-      if (choiceId === 'action_tinh_tu_binh_thuong') {
-        const mult = getCultivationGainMultiplier(state);
-        const gain = (0.3 + (nextStats.comprehension * 0.05)) * mult;
-        nextStats.cultivation = Math.round((nextStats.cultivation + gain) * 100) / 100;
-        nextStats.health = Math.min(100, nextStats.health + 2);
-        choiceText = { vi: 'Tĩnh tu thường', en: 'Normal Meditation'};
+      if (choiceId.startsWith('action_be_quan_complete_')) {
+        const parts = choiceId.split('_');
+        const months = parseInt(parts[4], 10);
+        const earned = parseFloat(parts[5]);
+        
+        nextStats.cultivation = Math.round((nextStats.cultivation + earned) * 100) / 100;
+        
+        nextIsTicking = false;
+        durationMonths = months;
+        choiceText = { vi: `Bế quan ${months} tháng`, en: `Retreat for ${months} months` };
         tempLogs.push({
           type: 'info',
           message: {
-            vi: `Bế quan tĩnh tu hồi khí: Tu vi +${Number(gain.toFixed(2))}, Khí huyết +2.`,
-            en: `Meditating inside chamber: Cultivation +${Number(gain.toFixed(2))}, HP +2.`
+            vi: `Hoàn thành Bế quan tụ Đạo Cơ: Tu vi +${earned.toFixed(2)}.`,
+            en: `Completed Dao Foundation Retreat: Cultivation +${earned.toFixed(2)}.`
           }
         });
       }
-      else if (choiceId === 'action_be_quan_3' || choiceId === 'action_be_quan_6' || choiceId === 'action_be_quan_12') {
-        const months = choiceId === 'action_be_quan_3' ? 3 : choiceId === 'action_be_quan_6' ? 6 : 12;
-        nextActiveQuest = {
-          quest: beQuanQuest(months),
-          monthsRemaining: months,
-          progressLogs: [],
-          isParty: false,
-          accumulatedCultivation: 0
-        };
-        nextIsTicking = true;
-        durationMonths = 0; // ticking advances time
-        choiceText = { vi: `Bế quan ${months} tháng`, en: `Retreat for ${months} months` };
-      }
+
       else if (choiceId === 'action_dot_tai_nguyen_it') {
         if (nextSpiritStones < 5) return state;
         nextSpiritStones -= 5;
@@ -3154,7 +3216,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       const newLog = [...state.log, choiceLogEntry, ...tempLogs];
       
       if (!alive) {
-        return {
+        return handleDeathProtection({
           ...state,
           alive: false,
           stats: nextStats,
@@ -3169,7 +3231,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
           sectContribution: nextSectContribution,
           inventory: nextInventory,
           techniques: currentTechniques
-        };
+        }, deathCause ?? { vi: 'Tịch Diệt', en: 'Deceased'});
       }
       
       let nextEvent: EventDefinition | null = null;
@@ -4032,7 +4094,7 @@ const applyChoiceToStateInternal = (state: GameState, choiceId: string, language
       npcFavorability: nextNpcFavorability,
       worldState: nextWorldState,
       inheritance: { ...(state.inheritance || {}), npc_grudges: nextNpcGrudges } as any};
-    return deadState;
+    return handleDeathProtection(deadState, deathText);
   }
 
   let nextEvent: EventDefinition;
@@ -4234,7 +4296,6 @@ const getMenuLocation = (menuId: string): 'sect' | 'mountain' | 'city' | 'secret
   if (
     menuId === 'menu_monthly_plan' ||
     menuId === 'menu_tinh_tu' ||
-    menuId === 'menu_be_quan' ||
     menuId === 'menu_dot_tai_nguyen' ||
     menuId === 'menu_nghien_cuu_cong_phap' ||
     menuId === 'menu_nhan_nhiem_vu' ||
@@ -4366,9 +4427,21 @@ export const monthlyNarrativesEn = [
 ];
 
 export const getPlayerStat = (state: GameState, stat: 'combatPower' | 'luck' | 'comprehension' | 'daoHeart' | 'health' | 'speed'): number => {
-  if (stat === 'health') return state.stats.health;
-  if (stat === 'luck') return state.stats.luck;
-  if (stat === 'comprehension') return state.stats.comprehension;
+  let baseHealth = state.stats.health;
+  let baseLuck = state.stats.luck;
+  let baseComprehension = state.stats.comprehension;
+  
+  if (state.activeBuffs && state.activeBuffs.length > 0) {
+    for (const buff of state.activeBuffs) {
+      if (buff.effectType === 'comprehension') baseComprehension += Math.floor((baseComprehension || 10) * buff.effectValue / 100);
+      if (buff.effectType === 'luck') baseLuck += Math.floor((baseLuck || 10) * buff.effectValue / 100);
+      if (buff.effectType === 'max_hp') baseHealth += Math.floor((baseHealth || 100) * buff.effectValue / 100);
+    }
+  }
+
+  if (stat === 'health') return baseHealth;
+  if (stat === 'luck') return baseLuck;
+  if (stat === 'comprehension') return baseComprehension;
   if (stat === 'daoHeart') return state.stats.daoHeart;
 
   const equipSpdBonus = (state.inventory || [])

@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react';
 import type { GameState, WorldState } from '../types';
 import { getNpcFavorabilityLabel, changeNpcFavorability, createInitialWorldState, getWorldEventModifiers, generateWorldThresholdEvent, worldStateToNews, applyChoiceToState, createNewGame } from '../lib/engine';
-import { tickMonth } from '../lib/game-controller';;
+import { tickMonth } from '../lib/game-controller';
 import TestCharacterTab from './TestCharacterTab';
 import EventGraphTab from './EventGraphTab';
+import MinigamesTab from './MinigamesTab';
 
 
-type Tab = 'techniques' | 'npcs' | 'sects' | 'events' | 'event_graph' | 'time_gear' | 'scriptures' | 'cultivation' | 'npc_relations' | 'world_state' | 'test_character';
+type Tab = 'techniques' | 'npcs' | 'sects' | 'events' | 'event_graph' | 'time_gear' | 'scriptures' | 'cultivation' | 'npc_relations' | 'world_state' | 'test_character' | 'minigames';
 
 type Props = {
   isOpen: boolean;
@@ -334,7 +335,7 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
 
         {/* Tab Navigation */}
         <nav className="flex bg-zinc-950 border-b border-zinc-800/50 overflow-x-auto">
-          {(['techniques', 'npcs', 'sects', 'events', 'event_graph', 'time_gear', 'scriptures', 'cultivation', 'npc_relations', 'world_state', 'test_character'] as Tab[]).map((tab) => {
+          {(['techniques', 'npcs', 'sects', 'events', 'event_graph', 'time_gear', 'scriptures', 'cultivation', 'npc_relations', 'world_state', 'test_character', 'minigames'] as Tab[]).map((tab) => {
             const labels: Record<Tab, string> = {
               techniques: 'Công pháp & Vũ kĩ',
               npcs: 'Nhân vật NPC',
@@ -347,6 +348,7 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
               npc_relations: '👥 Lược Đồ Nhân Mạch',
               world_state: '🌍 Mạch Máu Thế Giới',
               test_character: '🛠️ Test Nhân Vật',
+              minigames: '🎮 Test Minigames',
             };
             return (
               <button
@@ -374,6 +376,8 @@ export default function AdminPanel({ isOpen, onClose, showAudioPaths, onToggleAu
           {/* World State and Test Character tabs render independently - no config fetch needed */}
           {activeTab === 'test_character' ? (
             <TestCharacterTab game={game} onChangeGame={onChangeGame!} onClose={onClose} combatConfig={combatConfig} sects={sects} />
+          ) : activeTab === 'minigames' ? (
+            <MinigamesTab />
           ) : activeTab === 'event_graph' ? (
             <EventGraphTab 
               onEditEvent={(eventId) => {

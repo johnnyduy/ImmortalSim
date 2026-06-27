@@ -52,10 +52,11 @@ type Props = {
   playerChar: Character;
   enemyChar: Character;
   env: CombatEnvironment;
+  petChar?: Character;
   onFinished: (winner: 'player' | 'enemy' | 'escaped', logs: string[]) => void;
 };
 
-export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: Props) {
+export default function CombatPanel({ playerChar, enemyChar, env, petChar, onFinished }: Props) {
   const startedCombatKeyRef = useRef<string | null>(null);
   const autoFinishedRef = useRef(false);
 
@@ -112,8 +113,8 @@ export default function CombatPanel({ playerChar, enemyChar, env, onFinished }: 
   useEffect(() => {
     if (startedCombatKeyRef.current === combatKey) return;
     startedCombatKeyRef.current = combatKey;
-    startCombat(playerChar, enemyChar, env);
-  }, [combatKey, playerChar, enemyChar, env, startCombat]);
+    startCombat(playerChar, enemyChar, env, petChar);
+  }, [combatKey, playerChar, enemyChar, env, petChar, startCombat]);
 
   // Handle escape (Nhiên Huyết Thuật)
   const handleEscape = () => {

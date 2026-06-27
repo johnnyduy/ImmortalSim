@@ -2116,18 +2116,52 @@ export default function HomePage() {
   if (learningTechnique && game) {
     activeOverlayNode = (
       <CultivationMinigame
+        language={language}
         technique={learningTechnique}
-        isFatal={isFatalMinigame}
-        onFatalFail={() => {
-          const deathCause = { vi: 'Tẩu hoả nhập ma bạo thể tử vong khi lần đầu vận hành linh khí.', en: 'Qi deviation during first manual initiation.'};
-          const newState = {
-            ...game,
-            alive: false,
-            deathCause,
-            lastMessage: deathCause,
-            log: [...game.log, { type: 'death' as const, age: game.age, message: deathCause }]
-          };
-          setGame(newState);
+        onFail={(severity) => {
+          const nextState = { ...game };
+          let gotComprehension = false;
+          let compAmount = 0;
+          let tierChance = 30; // default hoàng
+          if (learningTechnique.tier === 'huyền') tierChance = 40;
+          else if (learningTechnique.tier === 'địa') tierChance = 50;
+          else if (learningTechnique.tier === 'thiên') tierChance = 60;
+
+          let msg = '';
+          let msgEn = '';
+
+          if (severity === 'severe') {
+            nextState.stats.innerDemons = (nextState.stats.innerDemons || 0) + 1;
+            msg = `[Nhập môn thất bại thảm hại] Hoàn toàn sai lệch. Trong bóng tối thức hải, Tâm Ma bắt đầu thì thầm... Tâm ma +1.`;
+            msgEn = `[Severe Failure] Completely misguided. In the dark corners of your mind sea, Inner Demons begin to whisper... Inner Demons +1.`;
+          } else if (severity === 'heavy') {
+            nextState.stats.health = Math.max(1, Math.floor(nextState.stats.health * 0.7)); // lose 30% hp
+            nextState.stats.meridianDamage = (nextState.stats.meridianDamage || 0) + 10;
+            msg = `[Nhập môn thất bại nặng] Khí Hải rạn nứt! Kinh mạch tổn thương, linh lực tối đa giảm 10%. Mất 30% HP.`;
+            msgEn = `[Heavy Failure] Qi Sea cracked! Meridians damaged, max Qi reduced by 10%. Lost 30% HP.`;
+            if (Math.random() * 100 < tierChance * 1.5) {
+              gotComprehension = true;
+              compAmount = 2;
+            }
+          } else { // mild
+            nextState.stats.health = Math.max(1, Math.floor(nextState.stats.health * 0.8)); // lose 20% hp
+            msg = `[Nhập môn thất bại] Linh khí nghịch lưu, kinh mạch rung chuyển. Tẩu hỏa nhập ma nhẹ, mất 20% HP.`;
+            msgEn = `[Mild Failure] Qi reversed, meridians shaken. Mild Qi deviation, lost 20% HP.`;
+            if (Math.random() * 100 < tierChance) {
+              gotComprehension = true;
+              compAmount = 1;
+            }
+          }
+
+          if (gotComprehension) {
+            nextState.stats.comprehension = (nextState.stats.comprehension || 0) + compAmount;
+            msg += ` Tuy nhiên, ngươi đã hiểu được cốt lõi công pháp. Ngộ tính +${compAmount}.`;
+            msgEn += ` However, you grasped the core concept. Comprehension +${compAmount}.`;
+          }
+
+          nextState.log = [...nextState.log, { type: 'info', message: { vi: msg, en: msgEn } }];
+
+          setGame(nextState);
           setLearningTechnique(null);
           setIsFatalMinigame(false);
         }}
@@ -2190,6 +2224,19 @@ export default function HomePage() {
           levelRewardAnimation={levelRewardAnimation}
           onRewardDone={() => setLevelRewardAnimation(null)}
           activeOverlayNode={activeOverlayNode}
+          centerPanelOverride={game?.currentLocation === 'mountain' && !activeCombat ? (
+            <MountainExploration
+              language={languageRef.current}
+              onReturn={() => handleMoveLocationWithTransition('sect')}
+              onEventResult={handleMountainExploreEventResult}
+              onCombat={handleMountainExploreCombat}
+              onTimePass={handleMountainExploreTimePass}
+              travelCostStones={activeCombatConfigRef.current?.time_gear?.travel_cost_stones ?? 10}
+              travelCostHp={activeCombatConfigRef.current?.time_gear?.travel_cost_hp ?? 2}
+            />
+          ) : undefined}
+          onUseItem={handleUseItem}
+          onEquipItem={handleEquipItem}
           onAscension={() => {
             const subStage = getRealmSubStage(game.stats.cultivation, game.realm, game.subStageIndex);
             if (game.stats.cultivation >= 500) {
@@ -2255,14 +2302,12 @@ export default function HomePage() {
       <button
         type="button"
         onClick={() => setIsSettingsOpen(true)}
-        className="fixed top-4 right-4 z-50 w-10 h-10 rounded-full border border-accent bg-surface/90 backdrop-blur-sm shadow-md flex items-center justify-center hover:scale-105 hover:border-accent-hover transition-all duration-300 group"
+        className="fixed top-4 right-4 z-50 w-12 h-12 rounded-xl bg-surface-container-high/60 backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.2)] flex items-center justify-center hover:scale-105 hover:bg-primary/20 hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transition-all duration-300 group"
         aria-label="Cài đặt"
       >
-        <img
-          src="/images/gear_icon.png"
-          alt="Settings"
-          className="w-6.5 h-6.5 object-contain group-hover:rotate-45 transition-transform duration-500"
-        />
+        <span className="material-symbols-outlined text-primary text-2xl group-hover:rotate-90 transition-transform duration-500 drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">
+          settings
+        </span>
       </button>
       
       {(!game || showCharacterCreation || showTestCombat || !game?.alive) && (
@@ -3143,18 +3188,6 @@ export default function HomePage() {
           </div>
         )}
         </div>
-        
-        {game?.currentLocation === 'mountain' && !activeCombat && (
-          <MountainExploration
-            language={languageRef.current}
-            onReturn={() => handleMoveLocationWithTransition('sect')}
-            onEventResult={handleMountainExploreEventResult}
-            onCombat={handleMountainExploreCombat}
-            onTimePass={handleMountainExploreTimePass}
-            travelCostStones={activeCombatConfigRef.current?.time_gear?.travel_cost_stones ?? 10}
-            travelCostHp={activeCombatConfigRef.current?.time_gear?.travel_cost_hp ?? 2}
-          />
-        )}
       </main>
       </>
       )}

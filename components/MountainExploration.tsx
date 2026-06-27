@@ -1,8 +1,32 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { Lang } from '../types';
 import { uiText } from '../lib/i18n';
+
+// Group 1
+import MemoryHerbGame from './minigames/MemoryHerbGame';
+import WhackAMoleGame from './minigames/WhackAMoleGame';
+import TimingBarGame from './minigames/TimingBarGame';
+import MinesweeperLiteGame from './minigames/MinesweeperLiteGame';
+import SwipeDirectionGame from './minigames/SwipeDirectionGame';
+import CatchDropsGame from './minigames/CatchDropsGame';
+
+// Group 2
+import BulletHellGame from './minigames/BulletHellGame';
+import SpamClickGame from './minigames/SpamClickGame';
+import RedLightGreenLightGame from './minigames/RedLightGreenLightGame';
+import QuickReactionGame from './minigames/QuickReactionGame';
+import MastermindGame from './minigames/MastermindGame';
+import TrackingGame from './minigames/TrackingGame';
+
+// Group 3
+import BalanceYinYangGame from './minigames/BalanceYinYangGame';
+import SimonSaysGame from './minigames/SimonSaysGame';
+import TypingMantraGame from './minigames/TypingMantraGame';
+import LockPickingGame from './minigames/LockPickingGame';
+import WordScrambleGame from './minigames/WordScrambleGame';
+import FlappySwordGame from './minigames/FlappySwordGame';
 
 interface MountainExplorationProps {
   language: Lang;
@@ -14,29 +38,47 @@ interface MountainExplorationProps {
   travelCostHp: number;
 }
 
-type GameObjectType = 'herb' | 'ore' | 'corpse' | 'beast' | 'realm' | 'evil' | 'npc';
+type MinigameId = 
+  | 'MemoryHerb' | 'WhackAMole' | 'TimingBar' | 'Minesweeper' | 'SwipeDirection' | 'CatchDrops' // Group 1
+  | 'BulletHell' | 'SpamClick' | 'RedLightGreenLight' | 'QuickReaction' | 'Mastermind' | 'Tracking' // Group 2
+  | 'BalanceYinYang' | 'SimonSays' | 'TypingMantra' | 'LockPicking' | 'WordScramble' | 'FlappySword'; // Group 3
 
-interface GameObject {
+type EventLog = {
   id: string;
-  type: GameObjectType;
-  x: number; 
-  y: number; 
-  icon: string;
-  nameVi: string;
-  nameEn: string;
-  image?: string;
-  scale?: number;
-}
-
-const OBJECT_TYPES: Record<GameObjectType, { icon: string; nameVi: string; nameEn: string; image?: string; scale?: number }> = {
-  herb: { icon: '🌿', nameVi: 'Linh thảo', nameEn: 'Spirit Herb' },
-  ore: { icon: '🪨', nameVi: 'Khoáng thạch', nameEn: 'Spirit Ore' },
-  corpse: { icon: '☠️', nameVi: 'Thi thể tu sĩ', nameEn: 'Cultivator Corpse' },
-  beast: { icon: '🐺', nameVi: 'Yêu thú', nameEn: 'Demonic Beast', image: '/images/obj_wolf.png', scale: 1.0 },
-  realm: { icon: '🌌', nameVi: 'Bí cảnh', nameEn: 'Secret Realm', image: '/images/obj_book.png', scale: 1.0 },
-  evil: { icon: '😈', nameVi: 'Tà tu', nameEn: 'Evil Cultivator' },
-  npc: { icon: '🧙', nameVi: 'NPC Đặc biệt', nameEn: 'Special NPC' },
+  month: number;
+  text: string;
+  type: 'info' | 'reward' | 'danger' | 'minigame';
+  minigameId?: MinigameId;
+  minigameGroup?: 1 | 2 | 3;
+  isCompleted?: boolean;
 };
+
+const GATHERING_MINIGAMES = [
+  { id: 'MemoryHerb', hint: 'Phát hiện một khóm linh thảo mọc lẫn với độc thảo, phải căng mắt nhìn kỹ mới phân biệt được.' },
+  { id: 'WhackAMole', hint: 'Bắt gặp Đan Sâm vạn năm đã có linh tính, rất giỏi độn thổ chạy trốn. Nhanh tay bắt lấy!' },
+  { id: 'TimingBar', hint: 'Nhìn thấy Tuyết Liên mọc ở nơi cương phong dữ dội, cần chớp đúng thời cơ mới hái được nguyên vẹn.' },
+  { id: 'Minesweeper', hint: 'Tìm thấy mạch khoáng chứa linh thạch nhưng lại xen kẽ nhiều luồng bạo loạn linh khí nguy hiểm.' },
+  { id: 'SwipeDirection', hint: 'Phát hiện thân cây Mộc Tinh cứng như sắt, phải chặt nương theo từng đường vân rẽ nhánh liên tục.' },
+  { id: 'CatchDrops', hint: 'Bắt gặp luồng linh tuyền bị hòa lẫn với bùn độc, cần khéo léo chắt lọc lấy tinh hoa.' }
+];
+
+const COMBAT_MINIGAMES = [
+  { id: 'BulletHell', hint: 'Bất ngờ bị Tà tu tập kích! Hắn phóng ra vô vàn ám khí độc châm, cần lách qua để áp sát!' },
+  { id: 'SpamClick', hint: 'Rơi vào trận Đấu Pháp giằng co với một cao thủ. Phải liên tục dồn chân khí để đẩy lùi hắc khí của hắn!' },
+  { id: 'RedLightGreenLight', hint: 'Vô tình đi vào khu vực rà soát của một lão quái. Phải lẩn trốn, tuyệt đối không cử động khi hắn quét thần thức!' },
+  { id: 'QuickReaction', hint: 'Trời đất tối sầm, sát khí bao trùm... Một tên sát thủ đang rình rập, chuẩn bị phản kích chớp nhoáng!' },
+  { id: 'Mastermind', hint: 'Bị mắc kẹt vào Ngũ Hành Trận do tà tu giăng sẵn. Phải giải mã vị trí các viên ngọc ngũ hành để thoát ra!' },
+  { id: 'Tracking', hint: 'Đả thương một tên Tà tu, hắn dùng huyết độn bỏ chạy để lại tàn dư khói mù. Lập tức truy tung diệt tận!' }
+];
+
+const MYSTERY_MINIGAMES = [
+  { id: 'BalanceYinYang', hint: 'Phát hiện một khe nứt âm dương bất ổn. Phải điều hòa nội tức, giữ thăng bằng linh lực cơ thể mới mong vượt qua.' },
+  { id: 'SimonSays', hint: 'Tìm thấy một trận pháp cổ xưa bị phong ấn. Cần ghi nhớ trình tự phát sáng của Ngũ Hành để khai mở!' },
+  { id: 'TypingMantra', hint: 'Gặp phải một cấm chế tự động tấn công thần thức! Phải tụng niệm đúng khẩu quyết để khởi động bùa chú bảo vệ.' },
+  { id: 'LockPicking', hint: 'Tiến vào một khu mật thất bị khóa bằng cơ quan tinh vi. Cần tìm ra điểm yếu của cấm chế và đánh mạnh vào đó.' },
+  { id: 'WordScramble', hint: 'Phát hiện một cuốn cổ tịch bị rách nát. Các ký tự bên trong nhảy múa hỗn loạn, phải ghép lại mới đọc được.' },
+  { id: 'FlappySword', hint: 'Lạc vào một khu vực bão từ trường và sấm sét. Chỉ có cách ngự phi kiếm luồn lách qua các khe hẹp mới sống sót!' }
+];
 
 export default function MountainExploration({
   language,
@@ -44,341 +86,246 @@ export default function MountainExploration({
   onEventResult,
   onCombat,
   onTimePass,
-  travelCostStones,
-  travelCostHp,
 }: MountainExplorationProps) {
-  const [isPaused, setIsPaused] = useState(false);
-  const [speedMultiplier, setSpeedMultiplier] = useState(1);
-  const [distance, setDistance] = useState(0);
-  const [daysPassed, setDaysPassed] = useState(0);
-  const [objects, setObjects] = useState<GameObject[]>([]);
-  const [activeEvent, setActiveEvent] = useState<GameObject | null>(null);
+  const [logs, setLogs] = useState<EventLog[]>([]);
+  const [currentMonth, setCurrentMonth] = useState(1);
+  const [isTyping, setIsTyping] = useState(false);
+  const [activeMinigame, setActiveMinigame] = useState<MinigameId | null>(null);
+  
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const requestRef = useRef<number>();
-  const lastTimeRef = useRef<number>();
-  const spawnTimerRef = useRef(0);
-  const stepTimerRef = useRef(0);
+  // Auto scroll to bottom
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [logs, isTyping]);
 
-  const SPAWN_INTERVAL = 4000;
-  const STEP_INTERVAL = 3000;
-
-  const generateRandomObject = (): GameObject => {
-    const keys = Object.keys(OBJECT_TYPES) as GameObjectType[];
-    const type = keys[Math.floor(Math.random() * keys.length)];
-    const def = OBJECT_TYPES[type];
-    return {
+  const addLog = (log: Omit<EventLog, 'id' | 'month'>) => {
+    const newLog: EventLog = {
+      ...log,
       id: Math.random().toString(36).substring(7),
-      type,
-      x: 110,
-      y: 75 + Math.random() * 5,
-      icon: def.icon,
-      nameVi: def.nameVi,
-      nameEn: def.nameEn,
-      image: def.image,
-      scale: def.scale,
+      month: currentMonth
     };
+    setLogs(prev => [...prev, newLog]);
   };
 
-  const update = useCallback((time: number) => {
-    if (lastTimeRef.current != null) {
-      const deltaTime = time - lastTimeRef.current;
-
-      if (!isPaused) {
-        setDistance((prev) => prev + (deltaTime / 1000) * speedMultiplier);
-
-        spawnTimerRef.current += deltaTime * speedMultiplier;
-        stepTimerRef.current += deltaTime * speedMultiplier;
-
-        if (stepTimerRef.current >= STEP_INTERVAL) {
-          stepTimerRef.current -= STEP_INTERVAL;
-          setDaysPassed(prev => prev + 5);
-          onTimePass(5);
-        }
-
-        if (spawnTimerRef.current >= SPAWN_INTERVAL) {
-          spawnTimerRef.current -= SPAWN_INTERVAL;
-          setObjects((prev) => [...prev, generateRandomObject()]);
-        }
-
-        setObjects((prevObjects) => {
-          let updated = prevObjects.map((obj) => ({
-            ...obj,
-            x: obj.x - 0.015 * deltaTime * speedMultiplier,
-          }));
-
-          const centerObjIndex = updated.findIndex((obj) => obj.x > 32 && obj.x < 36);
-          if (centerObjIndex !== -1) {
-            const centerObj = updated[centerObjIndex];
-            setActiveEvent(centerObj);
-            setIsPaused(true);
-            updated = updated.filter((_, i) => i !== centerObjIndex);
-          }
-
-          return updated.filter((obj) => obj.x > -20);
+  const generateEvent = () => {
+    setIsTyping(true);
+    onTimePass(30); // 1 month = 30 days
+    
+    // Simulate thinking/typing
+    setTimeout(() => {
+      const rand = Math.random();
+      
+      if (rand < 0.2) {
+        // Nothing happens
+        addLog({ text: 'Một tháng trôi qua bình yên. Ngươi dạo bước trong sơn mạch, hít thở linh khí nhưng không thu hoạch được gì đáng kể.', type: 'info' });
+      } else if (rand < 0.35) {
+        // Safe reward
+        const stones = 50 + Math.floor(Math.random() * 50);
+        addLog({ text: `Vô tình nhặt được một túi trữ vật của tu sĩ tản tu rơi lại. Thu được ${stones} linh thạch!`, type: 'reward' });
+        onEventResult({ spiritStones: stones });
+      } else if (rand < 0.55) {
+        // Group 1 Minigame (Gathering)
+        const mg = GATHERING_MINIGAMES[Math.floor(Math.random() * GATHERING_MINIGAMES.length)];
+        addLog({ 
+            text: mg.hint, 
+            type: 'minigame', 
+            minigameId: mg.id as MinigameId,
+            minigameGroup: 1,
+            isCompleted: false
+        });
+      } else if (rand < 0.8) {
+        // Group 2 Minigame (Combat/Escape)
+        const mg = COMBAT_MINIGAMES[Math.floor(Math.random() * COMBAT_MINIGAMES.length)];
+        addLog({ 
+            text: mg.hint, 
+            type: 'minigame', 
+            minigameId: mg.id as MinigameId,
+            minigameGroup: 2,
+            isCompleted: false
+        });
+      } else {
+        // Group 3 Minigame (Mystery/Puzzle)
+        const mg = MYSTERY_MINIGAMES[Math.floor(Math.random() * MYSTERY_MINIGAMES.length)];
+        addLog({ 
+            text: mg.hint, 
+            type: 'minigame', 
+            minigameId: mg.id as MinigameId,
+            minigameGroup: 3,
+            isCompleted: false
         });
       }
-    }
-    lastTimeRef.current = time;
-    requestRef.current = requestAnimationFrame(update);
-  }, [isPaused, speedMultiplier, onTimePass]);
+      
+      setCurrentMonth(m => m + 1);
+      setIsTyping(false);
+    }, 1000);
+  };
 
+  const startMinigame = (id: MinigameId) => {
+    setActiveMinigame(id);
+  };
+
+  const handleMinigameComplete = (score: 'perfect' | 'good' | 'fail', group: 1 | 2 | 3) => {
+    setActiveMinigame(null);
+    
+    // Mark log as completed
+    setLogs(prev => {
+        const newLogs = [...prev];
+        const lastLog = newLogs[newLogs.length - 1];
+        if (lastLog && lastLog.type === 'minigame') {
+            lastLog.isCompleted = true;
+        }
+        return newLogs;
+    });
+
+    // Handle reward based on group and score
+    setTimeout(() => {
+        if (group === 1) { // Gathering
+            if (score === 'perfect') {
+                addLog({ text: '[ KẾT QUẢ ] Thu hoạch hoàn mỹ! Nhận được lượng lớn linh thạch và tài nguyên.', type: 'reward' });
+                onEventResult({ spiritStones: 100 + currentMonth * 10, cultivation: 5 });
+            } else if (score === 'good') {
+                addLog({ text: '[ KẾT QUẢ ] Thu hoạch thành công. Nhận được một ít linh thạch.', type: 'reward' });
+                onEventResult({ spiritStones: 50 + currentMonth * 5 });
+            } else {
+                addLog({ text: '[ KẾT QUẢ ] Thất bại! Không thu được gì, lại còn trúng một chút độc khí.', type: 'danger' });
+                onEventResult({ hp: -10 });
+            }
+        } else if (group === 2) { // Combat/Stealth
+            if (score === 'perfect') {
+                addLog({ text: '[ KẾT QUẢ ] Xuất sắc! Kẻ địch bỏ mạng, đoạt được toàn bộ gia tài của hắn!', type: 'reward' });
+                onEventResult({ spiritStones: 200 + currentMonth * 20, luck: 1, daoHeart: 2 });
+            } else if (score === 'good') {
+                addLog({ text: '[ KẾT QUẢ ] Thành công đánh đuổi kẻ địch, nhặt được một vài món đồ hắn đánh rơi.', type: 'reward' });
+                onEventResult({ spiritStones: 80 + currentMonth * 10 });
+            } else {
+                addLog({ text: '[ KẾT QUẢ ] Thất bại thảm hại! Chịu trọng thương và phải chật vật tẩu thoát.', type: 'danger' });
+                onEventResult({ hp: -30, daoHeart: -2 });
+            }
+        } else { // Group 3: Mystery/Puzzle
+            if (score === 'perfect') {
+                addLog({ text: '[ KẾT QUẢ ] Thấu triệt huyền cơ! Không chỉ bình yên vượt qua mà Đạo Tâm còn thêm phần viên mãn.', type: 'reward' });
+                onEventResult({ daoHeart: 3, cultivation: 10 + currentMonth * 5 });
+            } else if (score === 'good') {
+                addLog({ text: '[ KẾT QUẢ ] Miễn cưỡng vượt qua, tuy có chút chật vật nhưng vẫn an toàn.', type: 'info' });
+                onEventResult({ cultivation: 5 });
+            } else {
+                addLog({ text: '[ KẾT QUẢ ] Thất bại! Cấm chế phản phệ khiến thần hồn chấn động, nội tức rối loạn.', type: 'danger' });
+                onEventResult({ hp: -20, daoHeart: -1 });
+            }
+        }
+    }, 500);
+  };
+
+  const handleMinigameCancel = () => {
+    setActiveMinigame(null);
+  };
+
+  // Initial greeting
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(requestRef.current!);
-  }, [update]);
-
-  const handleAction = (actionType: 'positive' | 'negative' | 'ignore') => {
-    if (!activeEvent) return;
-
-    if (actionType !== 'ignore') {
-      if (activeEvent.type === 'beast' || activeEvent.type === 'evil') {
-        onCombat(activeEvent.type === 'evil' ? 'npc_ta_tieu' : 'beast_herb');
-      } else {
-        let reward: any = {};
-        if (activeEvent.type === 'herb') reward = { spiritStones: 20 + Math.floor(distance), cultivation: 1.5 };
-        if (activeEvent.type === 'ore') reward = { spiritStones: 40 + Math.floor(distance) };
-        if (activeEvent.type === 'corpse') reward = { spiritStones: 50, luck: Math.random() > 0.5 ? 1 : -1 };
-        if (activeEvent.type === 'realm') reward = { cultivation: 5, luck: 2, daoHeart: 5 };
-        if (activeEvent.type === 'npc') reward = { comprehension: 3, daoHeart: 2 };
-
-        onEventResult(reward);
-      }
+    if (logs.length === 0) {
+      addLog({ text: 'Ngươi đã tiến vào vùng ven của Vạn Thú Sơn Mạch. Sương mù dày đặc che khuất tầm nhìn, thỉnh thoảng có tiếng gầm gừ vọng lại từ sâu thẳm. Hãy cẩn thận từng bước đi...', type: 'info' });
     }
-
-    setActiveEvent(null);
-    setIsPaused(false);
-  };
-
-  const getEventOptions = () => {
-    if (!activeEvent) return null;
-
-    switch (activeEvent.type) {
-      case 'herb':
-        return [
-          { label: (uiText[language]?.['harvest'] || 'Harvest'), type: 'positive' },
-          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
-        ];
-      case 'ore':
-        return [
-          { label: (uiText[language]?.['mine'] || 'Mine'), type: 'positive' },
-          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
-        ];
-      case 'corpse':
-        return [
-          { label: (uiText[language]?.['examine'] || 'Examine'), type: 'positive' },
-          { label: (uiText[language]?.['leave'] || 'Leave'), type: 'ignore' },
-        ];
-      case 'beast':
-      case 'evil':
-        return [
-          { label: (uiText[language]?.['fight'] || 'Fight'), type: 'positive' },
-          { label: (uiText[language]?.['flee'] || 'Flee'), type: 'ignore' },
-        ];
-      case 'realm':
-        return [
-          { label: (uiText[language]?.['enter'] || 'Enter'), type: 'positive' },
-          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
-        ];
-      case 'npc':
-        return [
-          { label: (uiText[language]?.['talk'] || 'Talk'), type: 'positive' },
-          { label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' },
-        ];
-      default:
-        return [{ label: (uiText[language]?.['ignore'] || 'Ignore'), type: 'ignore' }];
-    }
-  };
+  }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm font-sans p-2 sm:p-6 md:p-12">
-      {/* Container maintains 16:10 or 16:9 aspect ratio based on the monolithic image */}
-      <div 
-        className="relative w-full max-w-[1400px] aspect-[16/10] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden shadow-[0_0_80px_rgba(100,150,255,0.2)]"
-        style={{
-          backgroundImage: 'url("/images/full_layout_bg.jpg")',
-          backgroundSize: '100% 100%',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        {/* Fake Parallax moving stars/dust layer */}
-        <div 
-          className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-screen pointer-events-none"
-          style={{ transform: `translateX(-${(distance * 5) % 100}px)` }}
-        />
-
-        {/* --- MOVING MIST LAYERS --- */}
-        {/* Solid dark fog base to obscure the rocky ground with blur */}
-        <div className="absolute top-[85%] left-0 right-0 h-[15%] -translate-y-1/2 bg-gradient-to-t from-transparent via-[#101926]/95 to-transparent pointer-events-none z-15 backdrop-blur-[3px] mask-image-gradient" 
-             style={{ WebkitMaskImage: 'linear-gradient(to top, transparent 0%, black 30%, black 70%, transparent 100%)' }} />
-
-        {/* Background Mist (slower, behind character) - Doubled for thickness */}
-        <div 
-          className="absolute top-[85%] left-0 right-0 h-[20%] -translate-y-1/2 opacity-100 pointer-events-none z-20 contrast-125 brightness-150"
-          style={{ 
-            backgroundImage: "url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png'), url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png')",
-            backgroundSize: 'auto 100%, auto 100%',
-            backgroundRepeat: 'repeat-x, repeat-x',
-            backgroundPosition: `-${(distance * 60) % 2000}px center, -${(distance * 40) % 2000}px center`
-          }}
-        />
-        {/* Foreground Mist (faster, in front of character) - Doubled for thickness */}
-        <div 
-          className="absolute top-[85%] left-0 right-0 h-[16%] -translate-y-1/2 opacity-100 pointer-events-none z-35 contrast-125 brightness-150 drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-          style={{ 
-            backgroundImage: "url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png'), url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png')",
-            backgroundSize: 'auto 100%, auto 100%',
-            backgroundRepeat: 'repeat-x, repeat-x',
-            backgroundPosition: `-${(distance * 100) % 2000}px center, -${(distance * 120) % 2000}px center`
-          }}
-        />
-
-        {/* --- DYNAMIC OVERLAYS FOR LEFT SCROLL --- */}
-        {/* Time Overlay */}
-        <div className="absolute top-[45%] left-[14.5%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-10 w-32">
-          <span className="text-[#3b2b18] font-serif text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold tracking-wide leading-tight text-center drop-shadow-sm">
-             {Math.floor(daysPassed / 30)} tháng {daysPassed % 30} ngày
-          </span>
-        </div>
-
-        {/* Speed Text Overlay */}
-        <div className="absolute top-[61.5%] left-[20%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-10">
-          <span className="text-[#3b2b18] font-serif text-[0.7rem] sm:text-xs md:text-sm lg:text-base font-bold drop-shadow-sm">
-            x{speedMultiplier}
-          </span>
-        </div>
-
-        {/* Progress Bar Container Overlay */}
-        <div className="absolute top-[52.52%] left-[7.13%] w-[14.55%] h-[1.7%] -translate-y-1/2 z-10">
-          {/* Track background to cover the old one */}
-          <div className="absolute inset-0 bg-[#1f2924] rounded-full shadow-inner overflow-hidden border-[1px] border-[#c2964a]/30">
-             {/* Filled portion */}
-             <div 
-               className="h-full bg-gradient-to-r from-[#2ecc71] to-[#10b981] transition-all duration-300 shadow-[0_0_8px_rgba(46,204,113,0.6)]"
-               style={{ width: `${(distance % 100)}%` }}
-             />
+    <div className="w-full h-full bg-[#0c1015] flex flex-col relative overflow-hidden animate-fade-in">
+        
+        {/* Header */}
+        <div className="flex justify-between items-center p-4 border-b border-[#c2964a]/30 bg-[#151b23] shrink-0">
+          <div>
+            <h2 className="text-[#c2964a] text-xl font-bold uppercase tracking-wider">VẠN THÚ SƠN MẠCH - KÝ SỰ</h2>
+            <p className="text-gray-500 text-xs mt-1">Sơn mạch hung hiểm, cơ duyên và tử vong cùng tồn tại.</p>
           </div>
-          {/* Moving Gem indicator */}
-          <div 
-            className="absolute top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 rounded-full bg-gradient-to-br from-[#34d399] to-[#047857] border-[2px] border-[#e8d5a8] shadow-[0_0_12px_rgba(16,185,129,1)] transition-all duration-300 z-20"
-            style={{ left: `${(distance % 100)}%`, transform: 'translate(-50%, -50%)' }}
-          />
-        </div>
-
-        {/* --- INVISIBLE BUTTONS OVERLAYS FOR RIGHT SIDE --- */}
-        <button
-          onClick={() => setSpeedMultiplier(speedMultiplier === 1 ? 2 : 1)}
-          title="Tốc độ x2"
-          className="absolute right-[2.4%] top-[37.2%] -translate-y-1/2 w-[7%] aspect-square rounded-full hover:bg-white/20 active:bg-white/30 transition-colors z-40 outline-none"
-        />
-        <button
-          onClick={() => setIsPaused(!isPaused)}
-          disabled={!!activeEvent}
-          title="Dừng lại / Tiếp tục"
-          className="absolute right-[2.4%] top-[50.7%] -translate-y-1/2 w-[7%] aspect-square rounded-full hover:bg-white/20 active:bg-white/30 transition-colors z-40 outline-none disabled:opacity-50"
-        />
-        <button
-          onClick={onReturn}
-          title="Trở về"
-          className="absolute right-[2.4%] top-[63.0%] -translate-y-1/2 w-[7%] aspect-square rounded-full hover:bg-white/20 active:bg-white/30 transition-colors z-40 outline-none"
-        />
-
-
-        {/* --- GAME WORLD AREA --- */}
-        <div className="absolute inset-0 z-20 pointer-events-none">
-          {/* Player Icon: Scaled down */}
-          <div 
-            className="absolute left-[30%] z-30 transition-transform duration-300 ease-in-out pointer-events-auto"
-            style={{ 
-              top: '80%',
-              transform: `translate(-50%, -50%) translateY(${Math.sin(distance * 5) * 6}px)`
-            }}
+          <button 
+            onClick={onReturn}
+            className="px-4 py-2 border border-red-500/50 text-red-500 hover:bg-red-500 hover:text-white transition-colors rounded text-sm"
           >
-            <img 
-              src="/images/char_mount.png" 
-              alt="Character"
-              className="w-12 sm:w-16 md:w-20 lg:w-24 h-auto drop-shadow-[0_5px_10px_rgba(255,255,255,0.2)] animate-pulse"
-              style={{ animationDuration: '3s' }}
-            />
-          </div>
+            [ RỜI KHỎI ]
+          </button>
+        </div>
 
-          {/* Interactive Event Objects */}
-          {objects.map((obj) => (
-            <div
-              key={obj.id}
-              className="absolute z-40 transition-transform duration-100 ease-linear pointer-events-auto"
-              style={{ 
-                left: `${obj.x}%`, 
-                top: `${obj.y}%`,
-                transform: `translate(-50%, -50%) scale(${obj.x > 28 && obj.x < 36 ? 1.2 : 1})`
-              }}
-            >
-              <div className="relative group cursor-pointer hover:scale-110 transition-transform flex items-center justify-center">
-                {obj.image ? (
-                  <img 
-                    src={obj.image} 
-                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain filter drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]"
-                    style={{ transform: `scale(${obj.scale || 1}) translateY(${Math.sin(distance * 8 + obj.id.charCodeAt(0)) * 3}px)` }}
-                  />
-                ) : (
-                  <>
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-6 h-2 bg-black/60 rounded-[100%] blur-[2px]" />
-                    <div className="absolute inset-0 bg-[#34d399] rounded-full blur-xl opacity-40 group-hover:opacity-80 transition-opacity" />
-                    <div 
-                      className="text-2xl sm:text-3xl md:text-4xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-                      style={{ transform: `translateY(${Math.sin(distance * 8 + obj.id.charCodeAt(0)) * 3}px)` }}
+        {/* Logs Area */}
+        <div 
+          ref={scrollRef}
+          className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
+        >
+          {logs.map((log) => (
+            <div key={log.id} className="animate-fade-in-up">
+              <div className="text-[#c2964a]/60 text-xs mb-1">--- THÁNG THỨ {log.month} ---</div>
+              
+              <div className={`p-4 rounded-lg border-l-4 ${
+                log.type === 'reward' ? 'border-[#34d399] bg-[#34d399]/5 text-[#34d399]' :
+                log.type === 'danger' ? 'border-red-500 bg-red-500/5 text-red-400' :
+                log.type === 'minigame' ? 'border-[#818cf8] bg-[#818cf8]/5 text-[#818cf8]' :
+                'border-gray-500 bg-gray-500/5 text-gray-300'
+              }`}>
+                {log.text}
+                
+                {log.type === 'minigame' && log.minigameId && !log.isCompleted && (
+                  <div className="mt-4">
+                    <button
+                      onClick={() => startMinigame(log.minigameId!)}
+                      className="px-6 py-2 bg-[#818cf8]/20 border border-[#818cf8] text-[#818cf8] hover:bg-[#818cf8] hover:text-white transition-colors font-bold rounded shadow-[0_0_15px_rgba(129,140,248,0.3)] animate-pulse"
                     >
-                      {obj.icon}
-                    </div>
-                  </>
+                      [ THAM GIA THỬ THÁCH ]
+                    </button>
+                  </div>
+                )}
+                {log.type === 'minigame' && log.isCompleted && (
+                  <div className="mt-4 opacity-50 text-xs italic">
+                    [ Đã vượt qua thử thách ]
+                  </div>
                 )}
               </div>
             </div>
           ))}
-        </div>
-      </div>
 
-      {/* Event Modal Overlay */}
-      {activeEvent && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-50 backdrop-blur-md p-4">
-          <div className="bg-gradient-to-b from-[#1c1611] to-[#09090b] border-[4px] border-[#c2964a] p-6 sm:p-8 rounded-xl max-w-sm sm:max-w-md w-full text-center shadow-[0_0_50px_rgba(197,160,89,0.3)] animate-in fade-in zoom-in-95 duration-300">
-            {/* Event Icon */}
-            <div className="relative inline-block mb-4 sm:mb-6 mt-2">
-              {activeEvent.image ? (
-                <img src={activeEvent.image} className="w-24 h-24 sm:w-32 sm:h-32 object-contain mx-auto drop-shadow-[0_0_20px_rgba(255,255,255,0.3)] animate-bounce" />
-              ) : (
-                <>
-                  <div className="absolute inset-0 bg-[#34d399] rounded-full blur-3xl opacity-30" />
-                  <div className="text-[4rem] sm:text-[5rem] relative z-10 animate-bounce">{activeEvent.icon}</div>
-                </>
-              )}
+          {isTyping && (
+            <div className="animate-pulse flex items-center gap-2 text-gray-500 p-4">
+              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+              <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+              <span className="ml-2 text-sm italic">Đang tiến về phía trước...</span>
             </div>
-            
-            <h3 className="text-2xl sm:text-3xl font-serif text-[#f5e6cd] mb-3 drop-shadow-md italic">
-              {language === 'vi' ? activeEvent.nameVi : activeEvent.nameEn}
-            </h3>
-            
-            <p className="text-[#d4af37] mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed px-2 sm:px-4">
-              {(uiText[language]?.['throughTheMistYouEnc'] || 'Through the mist, you encountered a ${activeEvent.nameEn.toLowerCase()}! Make your decision carefully.')}
-            </p>
-            
-            <div className="flex flex-col gap-3 sm:gap-4">
-              {getEventOptions()?.map((opt, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleAction(opt.type as any)}
-                  className={`py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-bold text-base sm:text-lg tracking-wide transition-all duration-300 border-[3px] ${
-                    opt.type === 'positive' 
-                      ? 'bg-gradient-to-r from-[#10b981] to-[#047857] text-white border-[#34d399] shadow-[0_0_15px_rgba(16,185,129,0.5)] hover:shadow-[0_0_25px_rgba(16,185,129,0.8)] hover:scale-[1.03]' 
-                      : 'bg-[#15110e] text-[#d4af37] border-[#c2964a]/50 hover:bg-[#c2964a]/20 hover:border-[#c2964a]'
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          </div>
+          )}
         </div>
-      )}
+
+        {/* Footer Actions */}
+        <div className="p-4 border-t border-[#c2964a]/30 bg-[#151b23] flex justify-center">
+          <button
+            onClick={generateEvent}
+            disabled={isTyping || (logs.length > 0 && logs[logs.length - 1].type === 'minigame' && !logs[logs.length - 1].isCompleted)}
+            className="w-full sm:w-auto px-12 py-4 bg-gradient-to-r from-[#c2964a]/20 to-[#8b6932]/20 border border-[#c2964a] text-[#f5e6cd] font-bold text-lg hover:from-[#c2964a] hover:to-[#8b6932] hover:text-black transition-all disabled:opacity-50 disabled:cursor-not-allowed rounded shadow-[0_0_20px_rgba(194,150,74,0.2)]"
+          >
+            [ TIẾP TỤC THÁM HIỂM (Qua 1 Tháng) ]
+          </button>
+        </div>
+
+      {/* MINIGAME OVERLAYS */}
+      {activeMinigame === 'MemoryHerb' && <MemoryHerbGame onComplete={(s) => handleMinigameComplete(s, 1)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'WhackAMole' && <WhackAMoleGame onComplete={(s) => handleMinigameComplete(s, 1)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'TimingBar' && <TimingBarGame onComplete={(s) => handleMinigameComplete(s, 1)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'Minesweeper' && <MinesweeperLiteGame onComplete={(s) => handleMinigameComplete(s, 1)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'SwipeDirection' && <SwipeDirectionGame onComplete={(s) => handleMinigameComplete(s, 1)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'CatchDrops' && <CatchDropsGame onComplete={(s) => handleMinigameComplete(s, 1)} onCancel={handleMinigameCancel} />}
+
+      {activeMinigame === 'BulletHell' && <BulletHellGame onComplete={(s) => handleMinigameComplete(s, 2)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'SpamClick' && <SpamClickGame onComplete={(s) => handleMinigameComplete(s, 2)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'RedLightGreenLight' && <RedLightGreenLightGame onComplete={(s) => handleMinigameComplete(s, 2)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'QuickReaction' && <QuickReactionGame onComplete={(s) => handleMinigameComplete(s, 2)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'Mastermind' && <MastermindGame onComplete={(s) => handleMinigameComplete(s, 2)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'Tracking' && <TrackingGame onComplete={(s) => handleMinigameComplete(s, 2)} onCancel={handleMinigameCancel} />}
+
+      {/* Group 3 */}
+      {activeMinigame === 'BalanceYinYang' && <BalanceYinYangGame onComplete={(s) => handleMinigameComplete(s, 3)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'SimonSays' && <SimonSaysGame onComplete={(s) => handleMinigameComplete(s, 3)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'TypingMantra' && <TypingMantraGame onComplete={(s) => handleMinigameComplete(s, 3)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'LockPicking' && <LockPickingGame onComplete={(s) => handleMinigameComplete(s, 3)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'WordScramble' && <WordScrambleGame onComplete={(s) => handleMinigameComplete(s, 3)} onCancel={handleMinigameCancel} />}
+      {activeMinigame === 'FlappySword' && <FlappySwordGame onComplete={(s) => handleMinigameComplete(s, 3)} onCancel={handleMinigameCancel} />}
     </div>
   );
 }

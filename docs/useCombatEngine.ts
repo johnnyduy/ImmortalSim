@@ -13,6 +13,7 @@ export function useCombatEngine(allAvailableChoices: ChoiceRule[], allAvailableA
   const timelineRef = useRef<TimelineEngine>(new TimelineEngine());
   const playerRef = useRef<Character | null>(null);
   const enemyRef = useRef<Character | null>(null);
+  const petRef = useRef<Character | null>(null);
   const envRef = useRef<CombatEnvironment | null>(null);
   const narrativeRef = useRef<NarrativeCombatEngine>(new NarrativeCombatEngine());
 
@@ -191,11 +192,12 @@ export function useCombatEngine(allAvailableChoices: ChoiceRule[], allAvailableA
     }
   }, []);
 
-  const startCombat = useCallback((player: Character, enemy: Character, env: CombatEnvironment) => {
+  const startCombat = useCallback((player: Character, enemy: Character, env: CombatEnvironment, pet?: Character) => {
     narrativeRef.current.reset();
     playerRef.current = player;
     enemyRef.current = enemy;
     envRef.current = env;
+    petRef.current = pet || null;
     
     timelineRef.current = new TimelineEngine();
     setCombatPhase('active');
@@ -278,6 +280,33 @@ export function useCombatEngine(allAvailableChoices: ChoiceRule[], allAvailableA
                const validChoices = allAvailableChoices.filter(c => triggeredChoices.includes(c.id));
                setActiveChoices(prev => [...prev, ...validChoices]);
                isPausedRef.current = true;
+            }
+
+            // Pet auto attack
+            if (petRef.current) {
+                const petAction: CombatAction = {
+                    id: 'act_pet_strike',
+                    name: `Linh Thú (${petRef.current.name}) Tấn Công`,
+                    narrativeTags: [],
+                    dangerRating: 2,
+                    narrative_template: '{source.name} lao đến tấn công {target.name}.',
+                    effects: [{
+                        type: 'damage',
+                        formula: 'self.attack * 1.0',
+                        target: 'enemy',
+                        narrative_template: '{source.name} gây {amount} sát thương lên {target.name}.'
+                    }]
+                };
+                timelineRef.current.scheduleEvent(5, {
+                    sourceId: petRef.current.id,
+                    type: 'action',
+                    execute: () => {
+                        if (petRef.current && enemyRef.current && envRef.current) {
+                            SkillProcessor.executeAction(petAction, petRef.current, enemyRef.current, envRef.current, addLog);
+                            setEnemyStats(ModifierPipeline.calculateCurrentStats(enemyRef.current, envRef.current));
+                        }
+                    }
+                });
             }
          } else {
             addLog(`Action executed: ${choice.action_id} (No effect defined)`);

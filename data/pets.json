@@ -1,0 +1,170 @@
+[
+  {
+    "id": "pet_tank_1",
+    "name": "Nham Thạch Quy",
+    "species": "Thể phách",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 150,
+      "attack": 10,
+      "defense": 30,
+      "speed": 5
+    },
+    "skills": ["Vỏ Cứng"]
+  },
+  {
+    "id": "pet_tank_2",
+    "name": "Thiết Giáp Tê Ngưu",
+    "species": "Thể phách",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 120,
+      "attack": 15,
+      "defense": 25,
+      "speed": 10
+    },
+    "skills": ["Thiết Giáp"]
+  },
+  {
+    "id": "pet_tank_3",
+    "name": "Hùng Miêu Tinh",
+    "species": "Thể phách",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 130,
+      "attack": 12,
+      "defense": 28,
+      "speed": 8
+    },
+    "skills": ["Mỡ Dày"]
+  },
+  {
+    "id": "pet_speed_1",
+    "name": "Thiểm Điện Báo",
+    "species": "Tốc độ",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 50,
+      "attack": 25,
+      "defense": 10,
+      "speed": 40
+    },
+    "skills": ["Lôi Tốc"]
+  },
+  {
+    "id": "pet_speed_2",
+    "name": "Huyễn Ảnh Hồ",
+    "species": "Tốc độ",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 60,
+      "attack": 20,
+      "defense": 12,
+      "speed": 35
+    },
+    "skills": ["Mê Ảnh"]
+  },
+  {
+    "id": "pet_speed_3",
+    "name": "Tật Phong Điểu",
+    "species": "Tốc độ",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 40,
+      "attack": 22,
+      "defense": 8,
+      "speed": 45
+    },
+    "skills": ["Phong Nhẫn"]
+  },
+  {
+    "id": "pet_range_1",
+    "name": "Hỏa Vĩ Hầu",
+    "species": "Sát thương tầm xa",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 70,
+      "attack": 35,
+      "defense": 15,
+      "speed": 20
+    },
+    "skills": ["Hỏa Cầu"]
+  },
+  {
+    "id": "pet_range_2",
+    "name": "Băng Sương Ngô Công",
+    "species": "Sát thương tầm xa",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 80,
+      "attack": 30,
+      "defense": 20,
+      "speed": 15
+    },
+    "skills": ["Băng Thứ"]
+  },
+  {
+    "id": "pet_range_3",
+    "name": "Độc Giác Xà",
+    "species": "Sát thương tầm xa",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 75,
+      "attack": 32,
+      "defense": 18,
+      "speed": 18
+    },
+    "skills": ["Độc Tiễn"]
+  },
+  {
+    "id": "pet_support_1",
+    "name": "Linh Dược Thố",
+    "species": "Hỗ trợ",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 90,
+      "attack": 5,
+      "defense": 15,
+      "speed": 25
+    },
+    "skills": ["Trị Liệu"]
+  },
+  {
+    "id": "pet_support_2",
+    "name": "Huyễn Điệp",
+    "species": "Hỗ trợ",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 85,
+      "attack": 8,
+      "defense": 10,
+      "speed": 30
+    },
+    "skills": ["Huyễn Thuật"]
+  },
+  {
+    "id": "pet_support_3",
+    "name": "Mộc Tinh",
+    "species": "Hỗ trợ",
+    "tier": "hoàng",
+    "level": 1,
+    "stats": {
+      "health": 100,
+      "attack": 10,
+      "defense": 20,
+      "speed": 15
+    },
+    "skills": ["Tụ Linh"]
+  }
+]
